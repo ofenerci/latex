@@ -1,0 +1,296 @@
+\section{Notation}
+
+\begin{multicols}{2}
+%%%
+%%%
+\subsection{General Commands}
+\begin{itemize}
+\item to be defined by: a defby b: $a\defby b$.
+\item difference operator: diff a: $\diff a$.
+\item text in equations: eqtxt.
+\end{itemize}
+
+
+\subsection{Sets}
+\begin{itemize}
+\item set: set A: $\set A$.
+\item elements of a set: elset(a,b,c): $\elset{a,b,c}$.
+\item set with a property: setprop(x)(x>0): $\setprop{x}{x>0}$.
+%\item Cartesian (set) product: set A setprod set B: $\set A\sprod\set B$.
+\item Cartesian (set) product: set A sprod set B: $\set A\sprod\set B$.
+\item Cartesian power: nset An: $\nset An$.
+\item union of sets: set A union set B: $\set A\union\set B$.
+\item intersection of sets: set A inter set B: $\set A\inter\set B$.
+\item Dim-grade space (2 is the dimension and 3 is the grade): dgspace V23: $\dgspace V23$.
+\item $n$-dim Euclidean space: espace n: $\espace n$.
+\item $n$-dim Minkowski space: mkspace n: $\mkspace n$.
+\item geometric algebra: ga: $\ga$.
+\item geometric algebra on a $n$-dim. linear space $\nset Vn$: nga n: $\nga n$.
+\item dimension grade geometric algebra (2 is the dimension and 3 is the grade): dgga 23: $\dgga 23$.
+\item tuple: tuple(1,2,3): $\tuple{1,2,3}$.
+\end{itemize}
+
+
+\subsection{Probability}
+\begin{itemize}
+\item event A: A: $A$.
+\item not event A: lnot A: $\lnot A$.
+\item probability of event $A$ occurring: p vat A: $p\vat A$.
+\item probability of event $A$ not occurring: p vat(lnot A): $p\vat{\lnot A}$.
+\item $A$ and $B$: A land B: $A\land B$.
+\item $A$ or $B$: A lor B: $A\lor B$.
+\item $A$ given $B$ (provided $B$): A given B: $A\given B$.
+\end{itemize}
+
+
+\subsection{Functions}
+\begin{itemize}
+\item function definition: fdef(f)(set A cartprod set B)(set R): $\fdef{f}{\set A\sprod\set B}{\set R}$.
+\item function mapping: fmap(f)(x)(x**2): $\fmap f x{x^2}$.
+\item maps to: x mapsto x**2: $x\mapsto x^2$.
+\item function class (calculus): class k: $\class k$.
+\item value at: f vat(x): $f\vat x$.
+\item function composition: f fcomp g: $f\fcomp g$.
+\item a binary operation: a bprod b: $a\bprod b$.
+\item derivative operator (on functions): fder f: $\fder f$.
+\item partial derivative operator (on functions): derivative with respect to $x$ of $f$: fpder xf: $\fpder xf$.
+\end{itemize}
+
+
+\subsection{Sequences and Series}
+\begin{itemize}
+\item sequence: seq ak()(): $\seq ak{}{}$.
+\item sequence with limits: seq(a)(k)(k=1)(10): $\seq{a}{k}{k=1}{10}$.
+\item series: serie(ak)(k=1)(n): $\serie{a_k}{k = 1}{n}$.
+\item Fibonacci numbers: fib vat 10: $\fib\vat 10$.
+\end{itemize}
+
+
+\subsection{Geometric Algebra}
+\begin{itemize}
+\item point: point P: $\point P$.
+\item curve: curve C: $\curve C$.
+\item surface: surf S: $\surf S$.
+\item region: region R: $\region R$.
+\item bound: bound region A: $\bound{\region A}$.
+\item vector: vec a: $\vec a$.
+\item normal (unit) vector: nvec(a): $\nvec{a}$.
+\item omitted vector from a product: ovec(a): $\ovec{a}$.
+\item clifs or multivectors: (use capitals) A: $A$.
+\item pseudoscalar: pscl: $\pscl$.
+\item better, less typing, use lower-case for vectors $a$ and upper-case for other objects (bivectors, trivectors,...): $A$.
+\item use i for the pscl: $i$.
+\item orthogonal: ortho: $a\ortho b$.
+\item parallel: parallel: $a\parallel b$.
+\item to be perpendicular to: perto(a)(b): $\perto{a}{b}$.
+\item to be parallel to: parto(a)(b): $\parto{a}{b}$.
+\item to be orthogonal to: ortto(a)(b): $\ortto{a}{b}$.
+\item to be colinear to: colto(a)(b): $\colto{a}{b}$.
+\item projection of $p$ onto $q$: projon pq: $\projon pq$.
+\item rejection of $p$ onto $q$: rejon pq: $\rejon pq$.
+\item magnitude: magn(a): $\magn{a}$.
+\item inverse: inv(a): $\inv{a}$.
+\item reverse: rev(a): $\rev{a}$.
+\item hodge dual: hdual(a): $\hdual{a}$.
+\item anticommutator: acom(a)(b): $\acom{a}{b}$.
+\item commutator: com(a)(b): $\com{a}{b}$.
+\item expanded anticommutator: xacom(a)(b): $\xacom ab$.
+\item expanded commutator: xcom(a)(b): $\xcom ab$.
+\item step: step(A1): $\step A1$.
+\item scalar step: sstep(A): $\sstep A$.
+\item grade operator: Grade A: $\Grade A$.
+\item grade: grade A2: $\grade A2$.
+\item scalar grade: sgrade A: $\sgrade A$.
+\item clif with step: sclif Ak: $\sclif Ak$.
+\item even part: even(A): $\even A$.
+\item odd part: odd(A): $\odd A$.
+\item gorm (geometric norm?): gorm A: $\gorm A$.
+\item expanded gorm: xgorm A: $\xgorm A$.
+\item metric: metric: $\metric$.
+\item Kronecker delta: kron: $\kron$.
+\item signature: diag a: $\diag a$.
+\item signature: sign a: $\sign a$.
+\item inner product: iprod: $a\iprod b$.
+\item outer product: oprod: $a\oprod b$.
+\item cross product: cprod: $a\cprod b$.
+\item cannonical decomposition of the geometric product: cgprod ab: $\cgprod ab$.
+\end{itemize}
+
+
+\subsection{Geometric Calculus}
+\begin{itemize}
+\item ordinary one-dim. derivative: dx x: $\dx x$.
+\item ordinary time derivative (dot derivative): dt x: $\dt x$.
+\item ordinary second time derivative (dot-dot derivative): ddt x: $\ddt x$.
+\item expanded ordinary derivative: xod Hq: $\xod Hq$.
+\item expanded partial derivative: xpd Hq: $\xpd Hq$.
+\item expanded material derivative: xmd phi t: $\xpd\phi t$.
+\item expanded $n$-order ordinary derivative: nxod 3xt:$\nxod 3xt$.
+\item expanded $n$-order partial derivative: nxpd 3xt:$\nxpd 3xt$.
+\item comma derivative: cder phi k: $\cder\phi k$.
+\item semi-colon: covariant derivative: coder(cntens Aa)(k): $\coder{\cntens Aa}{k}$.
+\item material derivative: mder phi t: $\mder \phi t$.
+\item absolute time derivative: abstder a: $\abstder a$.
+\item Christoffel symbol: chris abc: $\chris abc$.
+\item geometric derivative: gder(a): $\gder{a}$.
+\item directional derivative: dder(F)(a): $\dder F{a}$.
+\item Laplace derivative: lder(a): $\lder{a}$.
+\item Laplace operator: lap a: $\lap a$.
+\item D'Alembert operator: dalder(phi): $\dalder\phi$.
+\item gradient: grad(phi): $\grad\phi$.
+\item divergence: div(phi): $\div\phi$.
+\item curl: curl(phi): $\curl\phi$.
+\item rotational (curl): rot(phi): $\rot\phi$.
+\end{itemize}
+
+
+\subsection{Tensors}
+\begin{itemize}
+\item spatial coordinates: scord k: $\scoord k$.
+\item spatial coordinates time derivative: dtscoord k: $\dtscoord k$.
+\item tensor: tens T: $\tens T$.
+\item (empty) slot: tuple(slot, a, slot): $\tuple{\slot, a, \slot}$.
+\item tensor product: a tprod b: $a\tprod b$.
+\item tensor contraction: tcont(a tprod b): $\tcont(a \tprod b)$.
+\item indexed tensor contraction: itcont(1,2)(a tprod b tprod c): $\itcont{1,2}(a \tprod b \tprod c)$.
+\item tensor components: tcomp T: $\tcomp T$.
+\item covariant tensor components: cotens T(ij): $\cotens T{ij}$.
+\item contravariant tensor components: cntens T(ij): $\cntens T{ij}$.
+\item Levi-Civita tensor: lct: $\lct$.
+\item covariant tensor time derivative: dtcotens ak: $\dtcotens ak$.
+\item contravariant tensor time derivative: dtcntens ak: $\dtcntens ak$.
+\end{itemize}
+
+
+\subsection{Index Notation}
+\begin{itemize}
+\item frame element, vector: fvec: $\fvec$.
+\item frame: frm(k): $\frm k$.
+\item indexed frame: ifrm(k)(0)(n): $\ifrm{k}{0}{n}$.
+\item reciprocal frame: rfrm k: $\rfrm k$.
+\item indexed frame vector: ifvec k: $\ifvec k$.
+\item indexed reciprocal frame vector: rfvec k: $\rfvec k$.
+\item components of vector in frame: comp vk: $\comp vk$.
+\item components of vector in reciprocal frame: rcomp vk: $\rcomp vk$.
+\item metric coefficients in frame: imet kl: $\imet kl$.
+\item metric coefficients in reciprocal frame: rmet kl: $\rmet kl$.
+\item mixed metric coefficients: mmet kl: $\mmet kl$.
+\item kronecker delta coefficients in frame: ikron kl: $\ikron kl$.
+\item kronecker delta coefficients in reciprocal frame: rkron kl: $\rkron kl$.
+\item mixed kronecker coefficients: mkron kl: $\mkron kl$.
+\item indexed geometric derivative (in reciprocal frame): igder k: $\igder k$.
+\item indexed geometric derivative (in frame): rgder k: $\rgder k$.
+\end{itemize}
+
+
+\subsection{Dimensional Analysis}
+\begin{itemize}
+\item dimension: dim k: $\dim k$.
+\item dimension and system of units (use underscore as lim): sdim(FLT)k: $\sdim_{FLT}p = \phdim{F/L^2}$.
+\item unit: unit k: $\unit k$.
+\item physical dimension: phdim k: $\phdim k$.
+\item dimensionless quantity: kdim: $\kdim$.
+\item characteristic physical quantity: chpq a: $\chpq a$.
+\item scaled physical quantity: scpq x: $\scpq x$.
+%
+\item reynolds number: rey: $\rey$.
+\item biot number: biot: $\biot$.
+\end{itemize}
+
+
+\subsection{Mechanics}
+\begin{itemize}
+\item position vector: pvec vat t: $\pvec\vat t$.
+\item value at time and position vector (for functions): vattpvec: $\vattpvec$.
+\item separation vector between points: svec: $\svec$.
+\item linear momentum: lmom: $\lmom$.
+\item kinetic energy: ken vat t: $\ken\vat t$.
+\item potential energy: pen vat t: $\pen\vat t$.
+\item Action functional: action: $\action$.
+\item Lagrange function: lag: $\lag$.
+\item Hamilton function: ham: $\ham$.
+%
+\item Hamilton Kinetic energy: hken: $\hken$.
+\item Hamilton potential energy: hpen: $\hpen$.
+%
+\item Euler-Lagrange Equation: eleqn(q)(i): $\eleqn{q}{i}$.
+%
+\item contra-variant vector: cnvec pi: $\cnvec pi$.
+\item (contra-variant) indexed vector: ivec pi: $\ivec pi$.
+\item covariant vector (covector): covec pi: $\covec pi$.
+%
+\item basis vector: bvec: $\bvec$.
+\item natural basis vector: nbvec i: $\nbvec i$.
+\item dual basis vector: dbvec i: $\dbvec i$.
+%
+\item generalized position vector: gpvec: $\gpvec$.
+\item indexed generalized position: gpos i: $\gpos i$.
+\item indexed generalized velocity: gvel i: $\gvel i$.
+\item indexed generalized momentum: gmom i: $\gmom i$.
+\item indexed generalized force: gfor i: $\gfor i$.
+\end{itemize}
+
+
+\subsection{Transport Phenomena}
+\begin{itemize}
+\item thermodynamic temperature: temp: $\temp$.
+\item substance: subs A: $\subs A$.
+\item flux: flux: $\flux$.
+\item mass flux of substance A: mflux A: $\mflux A$.
+\item concentration of substance A: conc A: $\conc A$.
+\item bracket concentration of substance A: bconc Aa: $\bconc Aa$.
+\item chemical amount of substance A: amount A: $\amount A$.
+\item reaction rate of substance A: rrate A: $\rrate A$.
+\item time derivative of conc.: dtconc A: $\dtconc A$.
+\item time derivative of chem. amount: dtamount A: $\dtamount A$.
+\end{itemize}
+
+
+\subsection{Various}
+\begin{itemize}
+\item Iverson brackets: iverson(k=l): $\iverson{k=l}$.
+\item Poisson brackets: poisson(f,g): $\poisson{f,g}$.
+\item matrix representation: mtrx metric: $\mtrx\metric$.
+\item Taylor series generated by $f$ at the point $a$: tseries(f)(x)(a): $\tseries{f}{x}{a}$.
+\item Taylor polynomial of degree $n$ generated by $f$ at the point $a$: ntpol(n)(f)(x)(a): $\ntpol{n}{f}{x}{a}$.
+\item Fourier series generated by $f$ at the point $x$: fseries fx: $\fseries fx$.
+\item partial sums of the Fourier series generated by $f$ at the point $x$: nfsum(f)(n)(x): $\nfsum{f}{n}{x}$.
+\item Legendre transform of a function: ltrans f: $\ltrans f$.
+\item conjugate variable (under Legendre transf.): cvar: $\cvar x$.
+\item average quantity: avg a: $\avg a$.
+\end{itemize}
+
+
+\subsection{Constants}
+\begin{itemize}
+\item Boltzmann constant: boltz: $\boltz$.
+\item speed of ligth in vacuum: ligth: $\ligth$.
+\item Avogadro's number: avog: $\avog$.
+\end{itemize}
+
+
+\subsection{Alphabet}
+\begin{itemize}
+\item Latin minuscules:
+\beq
+a b c d e f g h i j k l m n o p q r s t u v w x y z\,.
+\eeq
+%
+\item Latin majuscules:
+\beq
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z\,.
+\eeq
+%
+\item Greek:
+\beq
+\alpha\beta\gamma\delta\epsilon\varepsilon\zeta\eta\theta\vartheta\iota\kappa\lambda\mu\nu\xi\pi\varpi
+\eeq
+%
+\item Greek:
+\beq
+\rho\varrho\sigma\varsigma\tau\upsilon\phi\varphi\chi\psi\omega\Gamma\Delta\Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega
+\eeq
+\end{itemize}
+
+\end{multicols}
+

@@ -1,0 +1,485 @@
+\section{Poisson Bracket and Hamiltonian Mechanics}
+
+\epigraph{Sometimes laws of physics are just guessed using a bit of intuition and a gut feeling that nature must be beautiful or elegantly simple (though occasionally awesomely complex in beauty).}
+{John C. Baez}{Lectures on Classical Mechanics, Lectures, 2005}
+
+
+\subsection{Momentum}
+In classical mechanics, \lingo{linear momentum} or translational momentum is the product of the mass and velocity of an object. For example, a heavy truck moving fast has a large momentum -- it takes a large and prolonged force to get the truck up to this speed, and it takes a large and prolonged force to bring it to a stop afterwards. If the truck were lighter, or moving more slowly, then it would have less momentum.
+
+Like velocity, linear momentum is a vector quantity, possessing a direction as well as a magnitude:
+\beq
+\lmom = mv\,.
+\eeq
+Linear momentum is also a \lingo{conserved quantity}, meaning that if a closed system is not affected by external forces, its total linear momentum cannot change. In classical mechanics, conservation of linear momentum is implied by Newton's laws; but it also holds in special relativity (with a modified formula) and, with appropriate definitions, a (generalized) linear momentum conservation law holds in electrodynamics, quantum mechanics, quantum field theory and general relativity.
+
+
+\subsubsection{Newtonian mechanics}
+Momentum has a direction as well as magnitude. Quantities that have both a magnitude and a direction are known as vector quantities. Because momentum has a direction, it can be used to predict the resulting direction of objects after they collide, as well as their speeds. Below, the basic properties of momentum are described in one dimension. The vector equations are almost identical to the scalar equations.
+
+Single particle: The momentum of a particle is traditionally represented by the letter $\lmom$. It is the product of two quantities, the mass (represented by the letter $m$) and velocity ($v$):
+\beq
+\lmom = mv\,.
+\eeq
+
+The units of momentum are the product of the units of mass and velocity. In SI units, if the mass is in kilograms and the velocity in meters per second, then the momentum is in kilograms meters/second (\si{kg.m/s}). Being a vector, momentum has magnitude and direction. For example, a model airplane of \SI{1}{kg}, traveling due north at \SI{1}{m/s} in straight and level flight, has a momentum of \SI{1}{kg.m/s} due north measured from the ground.
+
+Many particles: The momentum of a system of particles is the sum of their momenta. If two particles have masses $m_1$ and $m_2$ and velocities $v_1$ and $v_2$, the total momentum is
+\beq
+\lmom = \lmom_1 + \lmom_2 = m_1v_1 + m_2v_2\,.
+\eeq
+The momenta of more than two particles can be added in the same way.
+
+A system of particles has a \lingo{center of mass}, a point determined by the weighted sum of their positions:
+\beq
+\pvec\txt{cm} = \dfrac{m_1\pvec_1 + m_2\pvec_2 + \dotsb}{m_1 + m_2 + \dotsb}\,.
+\eeq
+
+If all the particles are moving, the center of mass will generally be moving as well. If the center of mass is moving at velocity $v\txt{cm}$, the momentum is:
+\beq
+\lmom = mv\txt{cm}\,.
+\eeq
+This is known as Euler's first law.
+
+Relation to force: If a force $f$ is applied to a particle for a time interval $\diff t$, the momentum of the particle changes by an amount
+\beq
+\diff\lmom = f\diff t\,.
+\eeq
+In differential form, this gives Newton's second law: the rate of change of the momentum of a particle is equal to the force $f$ acting on it:
+\beq
+f = \xod\lmom t\,.
+\eeq
+
+If the force depends on time, the change in momentum (or impulse) between times $t_1$ and $t_2$ is
+\beq
+\diff\lmom = \int_{t_1}^{t_2}f\vat t\,\dx t\,.
+\eeq
+
+The second law only applies to a particle that does not exchange matter with its surroundings, and so it is equivalent to write
+\beq
+f = m\xod vt = ma\,,
+\eeq
+so the force is equal to mass times acceleration.
+
+Example: a model airplane of \SI{1}{kg} accelerates from rest to a velocity of \SI{6}{m/s} due north in \SI{2}{s}. The thrust required to produce this acceleration is \SI{3}{N}. The change in momentum is \SI{6}{kg.m/s}. The rate of change of momentum is $\SI{3}{(kg.m/s)/s} = \SI{3}{N}$.
+
+
+Conservation: In a closed system (one that does not exchange any matter with the outside and is not acted on by outside forces) the total momentum is constant. This fact, known as the law of conservation of momentum, is implied by Newton's laws of motion. Suppose, for example, that two particles interact. Because of the third law, the forces between them are equal and opposite. If the particles are numbered 1 and 2, the second law states that $f_1 = \dx\lmom_1/\dx t$ and $f_2 = \dx\lmom_2/\dx t$. Therefore
+\beq
+\xod{\lmom_1}{t} = \xod{\lmom_2}{t}
+\eeq
+or
+\beq
+\xod{}{t}\left(\lmom_1 + \lmom_2\right)\,.
+\eeq
+
+If the velocities of the particles are $u_1$ and $u_2$ before the interaction, and afterwards they are $v_1$ and $v_2$, then
+\beq
+m_1 u_1 + m_2 u_2 = m_1 v_1 + m_2 v_2\,.
+\eeq
+This law holds no matter how complicated the force is between particles. Similarly, if there are several particles, the momentum exchanged between each pair of particles adds up to zero, so the total change in momentum is zero. This conservation law applies to all interactions, including collisions and separations caused by explosive forces.[5] It can also be generalized to situations where Newton's laws do not hold, for example in the theory of relativity and in electrodynamics.
+
+Objects of variable mass: The concept of momentum plays a fundamental role in explaining the behavior of variable-mass objects such as a rocket ejecting fuel or a star accreting gas. In analyzing such an object, one treats the object's mass as a function that varies with time: $m\vat t$. The momentum of the object at time $t$ is therefore $\lmom\vat t = m\vat t v\vat t$. One might then try to invoke Newton's second law of motion by saying that the external force $f$ on the object is related to its momentum $\lmom\vat t$ by $f = \dx\lmom/\dx t$, but this is \emph{incorrect}, as is the related expression found by applying the product rule to $\dx (mv)/\dx t$:
+\begin{align*}
+f &= m\vat t \xod vt + v\vat t \xod mt\,.&\eqtxt{wrong!}
+\end{align*}
+This equation does \emph{not} correctly describe the motion of variable-mass objects. The correct equation is
+\beq
+f = m\vat t \xod vt - u \xod mt\,.
+\eeq
+where $u$ is the velocity of the ejected/accreted mass \emph{as seen in the object's rest frame}. This is distinct from $v$, which is the velocity of the object itself as seen in an inertial frame.
+
+This equation is derived by keeping track of both the momentum of the object as well as the momentum of the ejected/accreted mass. When considered together, the object and the mass constitute a closed system in which total momentum is conserved.
+
+
+\subsubsection{Generalized coordinates}
+Newton's laws can be difficult to apply to many kinds of motion because the motion is limited by constraints. For example, a bead on an abacus is constrained to move along its wire and a pendulum bob is constrained to swing at a fixed distance from the pivot. Many such constraints can be incorporated by changing the normal Cartesian coordinates to a set of generalized coordinates that may be fewer in number. Refined mathematical methods have been developed for solving mechanics problems in generalized coordinates. They introduce a generalized momentum, also known as the canonical or conjugate momentum, that extends the concepts of both linear momentum and angular momentum. To distinguish it from generalized momentum, the product of mass and velocity is also referred to as mechanical, kinetic or kinematic momentum. The two main methods are described below.
+
+Lagrangian mechanics: In Lagrangian mechanics, a Lagrangian is defined as the difference between the kinetic energy $\ken$ and the potential energy $\pen$:
+\beq
+\lag = \ken - \pen\,.
+\eeq
+
+If the generalized coordinates are represented as a vector $\gpvec = \tuple{\gpos 1,\gpos 2,\dotsc,\gpos n}$ and time differentiation is represented by a dot over the variable, then the equations of motion (known as the Lagrange or Euler-Lagrange equations) are a set of $N$ equations:
+\beq
+\eleqn{\gpvec}{j} = 0\,.
+\eeq
+
+If a coordinate $\gpos i$ is \emph{not} a Cartesian coordinate, the associated generalized momentum component $\gmom i$ does \emph{not} necessarily have the dimensions of linear momentum. Even if $\gpos i$ is a Cartesian coordinate, $\gmom i$ will \emph{not} be the same as the mechanical momentum if the potential depends on velocity. Some sources represent the kinematic momentum by the symbol $\Pi$.
+
+In this mathematical framework, a generalized momentum is associated with the generalized coordinates. Its components are defined as
+\beq
+\gmom j = \xpd{\lag}{\gpos j}\,.
+\eeq
+Each component $\gmom j$ is said to be the conjugate momentum for the coordinate $\gpos j$.
+
+Now if a given coordinate $\gpos i$ does \emph{not} appear in the Lagrangian (although its time derivative might appear), then
+\beq
+\gmom j = \text{constant}\,.
+\eeq
+This is the \lingo{generalization of the conservation of momentum}.
+
+Even if the generalized coordinates are just the ordinary spatial coordinates, the conjugate momenta are \emph{not} necessarily the ordinary momentum coordinates.
+
+
+\subsubsection{Hamiltonian mechanics}
+In Hamiltonian mechanics, the Lagrangian (a function of generalized coordinates and their derivatives) is replaced by a Hamiltonian that is a function of generalized coordinates and momentum. The Hamiltonian is defined as
+\beq
+\ham\vat{\gpvec, \lmom, t} = \lmom\iprod\dt\gpvec - \lag\vat{\gpvec, \dt\gpvec, t} \,,
+\eeq
+where the momentum is obtained by differentiating the Lagrangian as above. The Hamiltonian equations of motion are
+\beq
+      \gvel i = \xpd{\ham}{\gmom i}\,,\qquad
+-\dt{\gmom i} = \xpd{\ham}{\gpos i}\qquad\text{and}\qquad
+  -\xpd\lag t = \xod\ham t\,.
+\eeq
+(Note the signs and the partial and ordinary derivatives!)
+
+As in Lagrangian mechanics, if a generalized coordinate does \emph{not} appear in the Hamiltonian, its conjugate momentum component is \emph{conserved}.
+
+Symmetry and conservation: Conservation of momentum is a mathematical consequence of the homogeneity (shift symmetry) of space (position in space is the \lingo{canonical conjugate quantity to momentum}). That is, conservation of momentum is a consequence of the fact that the laws of physics do not depend on position; this is a special case of Noether's theorem.
+
+
+\subsection{Poisson Bracket}
+In mathematics and classical mechanics, the \lingo{Poisson bracket} is an important binary operation in Hamiltonian mechanics, playing a central role in Hamilton's equations of motion, which govern the time-evolution of a Hamiltonian dynamical system. The Poisson bracket also distinguishes a certain class of coordinate-transformations, called \lingo{canonical transformations}, which maps canonical coordinate systems into canonical coordinate systems. (A ``canonical coordinate system'' consists of canonical position and momentum variables that satisfy canonical Poisson-bracket relations.) Note that the set of possible canonical transformations is always very rich. For instance, often it is possible to choose the Hamiltonian itself $\ham = \ham\vat{\gpvec,\lmom; t}$ as one of the new canonical momentum coordinates.
+
+In a more general sense: the Poisson bracket is used to define a Poisson algebra, of which the algebra of functions on a Poisson manifold is a special case.
+
+
+\subsubsection{Canonical coordinates}
+In canonical coordinates (also known as Darboux coordinates) $\tuple{\gpos i,\gmom j}$ on the phase space, given two functions $f\vat{\gmom i,\gpos i, t}$ and $g\vat{\gmom i,\gpos i, t}$, then the Poisson bracket takes the form
+\beq
+\poisson{f,g} = \sum_{i = 1}^{n}
+                \left(
+                    \xpd{f}{\gpos i}\xpd{g}{\gmom i}
+                    - \xpd{f}{\gmom i}\xpd{g}{\gpos i}
+                \right)\,.
+\eeq
+
+
+\subsubsection{Hamilton's Equations of Motion}
+The Hamilton's equations of motion have an equivalent expression in terms of the Poisson bracket. This may be most directly demonstrated in an explicit coordinate frame. Suppose that $f\vat{\lmom, \gpvec, t}$ is a function on the manifold. Then from the multivariable chain rule, one has
+\beq
+\xod ft\vat{\lmom, \gpvec, t} = \xpd f\lmom \xod\lmom t + \xpd f\gpvec \xod\gpvec t + \xpd ft\,.
+\eeq
+Further, one may take $\lmom = \lmom\vat t$ and $\gpvec = \gpvec\vat t$ to be solutions to Hamilton's equations; that is,
+\beq
+\dt\gpvec = \xpd\ham\lmom  = \poisson{\gpvec, \ham}\qquad\text{and}\qquad
+\dt\lmom  = \xpd\ham\gpvec = \poisson{\gmom, \ham}\,.
+\eeq
+Then one has
+\beq
+\xod ft\vat{\lmom, \gpvec, t} = \poisson{f,\ham} + \xpd ft\,.
+\eeq
+Thus, the time evolution of a function $f$ on a symplectic manifold can be given as a one-parameter family of symplectomorphisms (\ie, canonical transformations, area-preserving diffeomorphisms), with the time $t$ being the parameter: Hamiltonian motion is a canonical transformation generated by the Hamiltonian. That is, Poisson brackets are preserved in it, so that \emph{any} time $t$ in the solution to Hamilton's equations, 
+\beq
+\gpvec\vat t = \exp{-t\poisson{\ham,\cdot}}\gpvec\vat 0\qquad\text{and}\qquad
+\lmom\vat t  = \exp{-t\poisson{\ham,\cdot}}\lmom\vat 0\,,
+\eeq
+can serve as the bracket coordinates. Poisson brackets are \lingo{canonical invariants}.
+
+Dropping the coordinates, one has
+\beq
+\xod{f}{t} = \left( \xpd{}{t} - \poisson{\ham, \cdot} \right)f\,.
+\eeq
+The operator in the convective part of the derivative, $i\hat{\lag} = -\poisson{\ham, \cdot}$ is sometimes referred to as the Liouvillian.
+
+
+\subsubsection{Constants of Motion}
+An integrable dynamical system will have constants of motion in addition to the energy. Such constants of motion will commute with the Hamiltonian under the Poisson bracket. Suppose some function $f\vat{\lmom,\gpvec}$ is a constant of motion. This implies that if $\lmom\vat t$, $\gpvec\vat t$ is a trajectory or solution to the Hamilton's equations of motion, then one has that
+\beq
+0 = \xod ft
+\eeq
+along that trajectory. Then one has
+\beq
+0 = \xod ft\vat{\lmom,\gpvec} = \poisson{f,\ham} + \xpd ft\,,
+\eeq
+where, as above, the intermediate step follows by applying the equations of motion. This equation is known as the \lingo{Liouville equation}. The content of Liouville's theorem is that the time evolution of a measure (or ``distribution function'' on the phase space) is given by the above.
+
+If the Poisson bracket of $f$ and $g$ vanishes ($\poisson{f,g} = 0$), then $f$ and $g$ are said \lingo{to be in involution}. In order 
+\begin{quote}
+for a Hamiltonian system to be completely integrable, all of the constants of motion must be in mutual involution.
+\end{quote}
+
+
+\subsection{Lagrangian versus Hamiltonian Approaches}
+[Lectures on Classical Mechanics -- John C. Baez]
+
+I am not sure where to mention this, but before launching into the history of the Lagrangian approach may be as good a time as any. In later chapters we will describe another approach to classical mechanics: the Hamiltonian approach. Why do we need two approaches, Lagrangian and Hamiltonian?
+
+They both have their own advantages. In the simplest terms, the Hamiltonian approach focuses on \emph{position and momentum}, while the Lagrangian approach focuses on \emph{position and velocity}. The Hamiltonian approach focuses on energy, which is a function of position and momentum -- indeed, `Hamiltonian' is just a fancy word for energy. The Lagrangian approach focuses on the \emph{Lagrangian}, which is a function of position and velocity. Our first task in understanding Lagrangian mechanics is to get a gut feeling for what the Lagrangian means. The key is to understand the integral of the Lagrangian over time -- the `action', $\action$. We shall see that this describes the `total amount that happened' from one moment to another as a particle traces out a path. And, peeking ahead to quantum mechanics, the quantity $\exp\vat{i\action/\hbar}$, where $\hbar$ is Planck's constant, will describe the `change in phase' of a \emph{quantum} system as it traces out this path.
+
+In short, while the Lagrangian approach takes a while to get used to, it provides invaluable insights into classical mechanics and its relation to quantum mechanics.
+
+
+\subsection{Prehistory of the Lagrangian Approach}
+We've seen that a particle going from point $a$ at time $t_0$ to a point $b$ at time $t_1$ follows a path that is a critical point of the action,
+\beq
+\action = \int_{t_0}^{t_1}(\ken - \pen)\,\dx t\,,
+\eeq
+so that slight changes in its path do not change the action (to first order). Often, though not always, the action is minimized, so this is called the \lingo{Principle of Least Action}.
+
+Suppose we did not have the hindsight afforded by the Newtonian picture. Then we might ask, ``Why does nature like to minimize the action? And why \emph{this} action $(\ken - \pen)\,\dx t$? Why not some other action?''
+
+`Why' questions are always tough. Indeed, some people say that scientists should never ask `why'. This seems too extreme: a more reasonable attitude is that we should only ask a `why' question if we expect to learn something scientifically interesting in our attempt to answer it. 
+
+There are certainly some interesting things to learn from the question ``why is action minimized?'' First, note that total energy is conserved, so energy can slosh back and forth between kinetic and potential forms. The Lagrangian $\lag = \ken - \pen$ is big when most of the energy is in kinetic form, and small when most of the energy is in potential form. Kinetic energy measures how much is `happening' -- how much our system is moving around. Potential energy measures how much \emph{could} happen, but isn't yet -- that's what the word `potential' means. (Imagine a big rock sitting on top of a cliff, with the potential to fall down.) So, the Lagrangian measures something we could vaguely refer to as the `activity' or `liveliness' of a system: the higher the kinetic energy the more lively the system, the higher the potential energy the less lively. So, we're being told that nature likes to minimize the total of `liveliness' over time: that is, the total action. In other words,
+\begin{quote}
+nature is as lazy as possible!
+\end{quote}
+
+For example, consider the path of a thrown rock in the Earth's gravitational field. The rock traces out a parabola, and we can think of it as doing this in order to minimize its action. On the one hand, it wants to spend a lot much time near the top of its trajectory, since this is where the kinetic energy is least and the potential energy is greatest. On the other hand, if it spends \emph{too} much time near the top of its trajectory, it will need to really rush to get up there and get back down, and this will take a lot of action. The perfect compromise is a parabolic path!
+
+Here we are anthropomorphizing the rock by saying that it `wants' to minimize its action. This is okay if we don't take it too seriously. Indeed, one of the virtues of the Principle of Least Action is that it lets us put ourselves in the position of some physical system and imagine what we would do to minimize the action.
+
+There is another way to make progress on understanding `why' action is minimized: history. Historically there were two principles that were fairly easy to deduce from observations of nature: (i) the principle of minimum energy used in statics, and (ii) the principle of least time, used in optics. By putting these together, we can guess the principle of least action.
+
+
+\subsection{Hamilton's Equations}
+[Hamilton's equations. Dr. M Ramegowda]
+
+
+\subsubsection{The Hamilton equations of motion}
+Lagrange formulation is in terms of generalized coordinates $\gpos i$ and generalized velocities $\gvel i$ gives equations of motion, which are second order in time. Instead if we regard $N$ generalized coordinates $\gpos i$ and $N$ generalized momenta $\gmom i$ as independent variables, and again $\gpvec\vat t$ and $\lmom\vat t$ at every instant of time $t$, we will get $2N$ first order equations. Hence the $2N$ equations of motion describe the behavior of the system in a phase space whose coodinates are the $2N$ independent variables. These are called \lingo{canonical coordinates} and \lingo{canonical momenta}. This new formulation is by the Hamiltonian and is known as Hamiltonian formulation.
+
+The Lagrange equations for a free particle can be written as
+\beq
+\eleqn{\gpvec}{i} = 0\,,
+\eeq
+where 
+\beq
+\lag\vat{\gpvec, \dt\gpvec, t} = \ken - \pen = \dfrac{1}{2}\sum_i m_i\gvel i\gvel i - \pen
+\eeq
+and
+\beq
+\xpd{\lag}{\gvel i} = m_i\gvel i = \gmom i\,.
+\eeq
+
+The $\gmom i$ are called \lingo{generalized or conjugate momenta}. Replacing last equation in Lagrange equations gives,
+\beq
+\dt{\gmom i} = \xpd{\lag}{\gpos i}\,.
+\eeq
+The differential of the Lagrangian can be written as
+\beq
+\dx\lag = \sum_i \xpd{\lag}{\gpos i}\dx\gpos i 
+          + \sum_i \xpd{\lag}{\gvel i}\dx\gvel i
+          + \xpd{\lag}{t}\dx t\,.
+\eeq
+Applying the previous definitions into the last equations, one has
+\beq
+\dx\lag = \sum_i\dt{\gmom i}\dx\gpos i 
+          + \sum_i\gmom i\dx\gvel i 
+          + \xpd\lag t\dx t\,.
+\eeq
+If we define the Hamiltonian $\ham\vat{\gpvec, \lmom, t}$ as a function of generalized coordinates $\gpos i$ and generalized momenta $\gmom i$, the Legendre transformation generate the Hamiltonian
+\beq
+\ham\vat{\gpvec, \lmom, t} = \sum_i \gvel i\gmom i - \lag\vat{\gpvec, \dt\gpvec, t}\,.
+\eeq
+Finding the differential of the Hamiltonian and plugging it into the last equation, one has
+\beq
+      \gvel i = \xpd{\ham}{\gmom i}\,,\qquad
+-\dt{\gmom i} = \xpd{\ham}{\gpos i}\qquad\text{and}\qquad
+  -\xpd\lag t = \xpd\ham t\,.
+\eeq
+(Note the signs!)
+
+The first two equations are known as the \lingo{canonical equations of Hamilton}. They constitute the desired set of $2N$ first order equations of motion replacing the $N$ second order Lagrange equations.
+
+If $\tuple{x,y,z}$ are the Cartesian coordinates at time $t$ of a free material point of mass $m$ moving in a potential field $\pen\vat{x,y,z} = \pen\vat{\gpos i}$, we may take $\gpos 1 = x$, $\gpos 2 = y$ and $\gpos 3 = z$.
+
+The kinetic energy $\ken$ is given by
+\beq
+\ken = \dfrac{1}{m}\left(\dt x^2 + \dt y^2 + \dt z^2\right) 
+     = \dfrac{1}{2}m\sum_i(\gvel i)^2\,.
+\eeq
+
+The Lagrangian for the particle is
+\beq
+\ken - \pen = \lag = \dfrac{1}{2}m\sum_i (\gvel i)^2 - \pen\vat{\gpos i}\,,
+\eeq
+which implies that
+\beq
+\xpd{\lag}{\gvel i} = m\gvel i \qquad\text{and}\qquad \gmom i = m\gvel i\,.
+\eeq
+On substituting for $\lag$ and $\gmom i$ in the definition of the Hamiltonian, one has
+\beq
+\ham = \sum_i \gvel i\gmom i - \lag 
+     = m\sum_i (\gvel i)^2 - (\ken - \pen)
+     = \ken + \pen\,.
+\eeq
+Thus the Hamiltonian becomes the total energy of the system.
+
+
+\subsubsection{Hamiltonian for a free particle in different coordinates}
+Using Cartesian coordinates: $\tuple{x,y,z}$ are the Cartesian coordinates at time $t$ of a free material point of mass $m$ moving in a potential field
+$\pen\vat{x,y,z}$. The kinetic energy $\ken$ is given by $2\ken = m\left(\dt x^2 + \dt y^2 + \dt z^2\right)$. Thus the Hamiltonian for the particle is
+\beq
+\ham = \ken + \pen 
+     = \dfrac{1}{2}m\left(\dt x^2 + \dt y^2 + \dt z^2\right) + \pen\vat{x,y,z} 
+     = \dfrac{1}{2m}\left(\gmom x^2 + \gmom y^2 + \gmom z^2\right) + \pen\vat{x,y,z}\,.
+\eeq
+
+
+Using cylindrical polar coordinates: $\tuple{r, \theta, z}$ are the cylindrical coordinates at time $t$ of a free material point of mass $m$ in the potential field $\pen\vat r$. The kinetic energy $\ken$ is
+\beq
+\ken = \dfrac{1}{2}m\left(\dt r^2 + (r\dt\theta)^2 + \dt z^2\right) 
+     = \dfrac{1}{2m}\left((m\dt r)^2 + 1/r^2 (mr^2\dt\theta)^2 + (m\dt z)^2\right)
+     = \dfrac{1}{2m}\left(\gmom r^2 + \dfrac{\gmom\theta^2}{r^2} + \gmom z^2 \right)\,.
+\eeq
+Thus,
+\beq
+\ham = \dfrac{1}{2m}\left(\gmom r^2 + \dfrac{\gmom\theta^2}{r^2} + \gmom z^2 \right) + \pen\vat r\,.
+\eeq
+
+
+Using spherical polar coordinates: $\tuple{r,\theta,\phi}$ are the spherical polar coordinates at time $t$ of a free material point of mass $m$ in the potential field $\pen\vat r$.
+
+Following a procedure analogous to the one used to find the Hamiltonian in cylindrical polar coordinates, then the Hamiltonian in spherical polar coordinates becomes
+\beq
+\ham = \dfrac{1}{2m}\left( \gmom r^2 + \dfrac{\gmom\theta^2}{r^2} + \dfrac{\gmom\phi^2}{r^2\,\sin\vat\theta} \right) + \pen\vat r\,.
+\eeq
+
+
+\subsubsection{Hamiltonian for an electron in a Coulomb field}
+When an electron revolving about the charge $e$, its potential energy is given by $\pen = -e^2/r$. Then, the Hamiltonian is
+\beq
+\ham = \dfrac{1}{2m}\left( \gmom r^2 + \dfrac{\gmom\theta^2}{r^2} + \dfrac{\gmom\phi^2}{r^2\,\sin\vat\theta} \right) - \dfrac{e^2}{r} \,.
+\eeq
+
+
+\subsubsection{Hamiltonian for the simple harmonic oscillator}
+The Lagrangian for a simple harmonic oscillator can be written as
+\beq
+\lag = \dfrac{1}{2}m\sum_i (\gvel i)^2 - \dfrac{1}{2}m\omega^2\sum_i(\gpos i)^2\,.
+\eeq
+
+The generalized momentum is
+\beq
+\gmom i = \xpd{\lag}{\gvel i} 
+        = m\gvel i \implies \gvel i = \dfrac{\gmom i}{m}\,.
+\eeq
+Then, the Hamiltonian becomes
+\beq
+\ham = \sum_i \gmom i\gvel i - \lag 
+     = \dfrac{1}{2m}\sum_i\gmom i^2 + \dfrac{1}{2}m\omega^2\sum_i (\gpos i)^2\,.
+\eeq
+
+
+\subsubsection{Hamiltonian for an electron in electromagnetic field}
+Consider a particle of mass $m$ and charge $e$ moving in an electromagnetic field. Lagrangian for the particle is
+\beq
+\lag = \ken - \pen
+     = \dfrac{1}{2}m\sum_i(\gvel i)^2 - e\left(\phi - A\iprod \sum_i \gpos i\right)\,,
+\eeq
+where $e\left(\phi - A\iprod \sum_i \gpos i\right)$ is the velocity dependent potential.
+
+The generalized momentum is
+\beq
+\gmom i = \xpd{\lag}{\gvel i}
+        = m\gvel i + eA\,.
+\eeq
+And thus the Hamiltonian becomes
+\beq
+\ham = \sum_i \gmom i\gvel i - \lag 
+     = \dfrac{1}{2m}\left( p - eA \right)^2 + e\phi\,.
+\eeq
+
+
+\subsubsection{Cyclic Coordinates}
+Consider a system of $N$ degrees of freedom described by $\gpos i$ generalized coordinates. Then, the Lagrangian of the system is
+\beq
+\eleqn{\gpvec}{i} = 0\,.
+\eeq
+
+If the Lagrangian of the system does not contain a given coordinate $\gpos i$ even though it may contain corresponding velocity $\gvel i$, then the coordinate $\gpos i$ is said to be \lingo{cyclic} or \lingo{ignorable}. Then,
+\beq
+         \xpd{\lag}{\gpos i} = 0\implies
+\xod{}{t}\xpd{\lag}{\gvel i} = 0\implies
+              \xod{\lmom}{t} = 0\implies
+                     \gmom i = \text{constant}\,.
+\eeq
+
+Therefore, \emph{the generalized momentum conjugate to a cyclic coordinate is conserved}. 
+
+Example: In a planetary motion, $\theta$ is cyclic. Therefore, the angular momentum $\gmom\theta = mr^2\dt\theta^2$ is constant or, equivalently, the angular momentum is conserved.
+
+
+\subsubsection{Poisson brackets}
+Poisson brackets are a powerful and sophisticated tool in the Hamiltonian formalism of Classical Mechanics. They also happen to provide a direct link between classical and quantum mechanics. A classical system with $N$ degrees of freedom, say a set of $N/3$ particles in three dimensions, is described by $2N$ \lingo{phase space} coordinates. These are the $N$ generalized coordinates $\elset{\gpos 1, \gpos 2, \dotsc, \gpos N}$ and $N$ conjugate momenta $\elset{\gmom 1, \gmom 2, \dotsc, \gmom n}$. The Hamiltonian of the system depends on these $2N$ variables and possibly on time $t$ as well, and it can be expressed as
+\beq
+\ham\vat{\gpos 1, \dotsc, \gpos n; \gmom 1, \dotsc, \gmom N; t}\ham\vat{\gpos i, \gmom i, t}\,.
+\eeq
+The Poisson bracket is an operation which takes \emph{two} functions of phase space and time, call them $f\vat{\gpos i, \gmom i, t}$ and $g\vat{\gpos i, \gmom i, t}$ and produces a \emph{new} function. With respect to canonical coordinates $\tuple{\gpos i, \gmom i}$, it is defined as
+\beq
+\poisson{f,g} = \sum_i^N\left( \xpd{f}{\gpos i}\xpd{g}{\gmom i} - \xpd{f}{\gmom i}\xpd{g}{\gpos i} \right)\,.
+\eeq
+
+In vector notation, Hamilton's equations can be expressed in a more symmetric fashion using Poisson brackets:
+\beq
+\dt\gpvec = \poisson{\gpvec, \ham} \qquad\text{and}\qquad 
+ \dt\lmom = \poisson{\lmom, \ham}\,.
+\eeq
+\begin{proof}
+Expand the last equations using the definition of Poisson brackets and note that, in Hamilton formalism, $\gpvec$ and $\lmom$ are \emph{independent of each other} (\ie, $\cder\gpvec\lmom = \cder\lmom\gpvec = 0$) to have
+\beq
+\dt\gpvec = \xpd{\gpvec}{\gpvec}\xpd{\ham}{\lmom} - \xpd{\gpvec}{\lmom}\xpd{\ham}{\gpvec} 
+          = \xpd{\ham}{\lmom} 
+          \qquad\text{and}\qquad 
+ \dt\lmom = \xpd{\lmom}{\gpvec}\xpd{\ham}{\lmom} - \xpd{\lmom}{\lmom}\xpd{\ham}{\gpvec} 
+          = - \xpd{\ham}{\gpvec} \,.\mqed
+\eeq
+\end{proof}
+
+In the case of a single degree of freedom, $N = 1$, phase space is 2-dimensional, $\tuple{\gpvec, \lmom}$, and the Poisson bracket has only two terms
+\beq
+\poisson{f,g} = \xpd{f}{\gpos{}}\xpd{g}{\gmom{}} - \xpd{f}{\gmom{}}\xpd{g}{\gpos{}}\,.
+\eeq
+
+The time derivative of the function $f\vat{\gpos i, \gmom i, t}$ is
+\beq
+\xod ft = \poisson{f,\ham} + \xpd ft\,.
+\eeq
+This is the equation of motion of the function $f$ expressed in terms of Poisson bracket.
+
+
+\subsubsection{Constants of the Motion}
+A constant of the motion is some function of phase space, independent of time, $f\vat{\gpos i, \gmom i}$, whose value is constant for any particle. In other words, $f$ is a constant of the motion if
+\beq
+\xod ft = \dt f = 0\,.
+\eeq
+
+Since we specified that $f$ does not depend explicitly in time it follows that $\cder ft = 0$. Then,
+\beq
+\poisson{f,\ham} = 0\,.
+\eeq
+Thus $f$ is a constant of the motion if and only if $\poisson{f,\ham} = 0$ for all points in phase space.
+
+Energy: Due to the anti-symmetry of the Poisson bracket $\poisson{\ham, \ham} = 0$. Using this we find
+\beq
+\xod\ham t = \xpd\ham t\,.
+\eeq
+
+If the Hamiltonian does not depend on time explicitly, then $\cder\ham t = 0$. Therefore $\dt\ham = 0$ and $\ham\vat{\gpos i, \gmom i}$ is constant. In other words,
+\begin{quote}
+energy is conserved in cases where the Hamiltonian is time independent.
+\end{quote}
+
+Linear Momentum: In a case where the Hamiltonian does not contain a particular coordinate, $\gpos i$, explicitly it is said to be cyclic in that coordinate. Then
+\beq
+\poisson{\gmom i, \ham} = -\xpd\ham{\gpos i}\,,
+\eeq
+Since $\gpos i$ is cyclic, then $\cder\ham{\gpos i} = 0$ and $\poisson{\gmom i, \ham} = 0$. Therfore, $\gmom i$ is a constant of the motion. In other words, 
+\begin{quote}
+momentum is conserved if it is conjugate to a cyclic coordinate.
+\end{quote}
+
+
+Angular Momentum: Consider a particle in three dimension, $\tuple{x,y,z}$, object to a central force potential $\pen\vat r = \pen\vat{x,y,z}$. [... maths here to show the following]
+\begin{quote}
+for a particle moving in a central force potential all three components of angular momentum are conserved.
+\end{quote}
+
+
+
+
+

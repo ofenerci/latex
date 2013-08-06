@@ -1,0 +1,58 @@
+\section{Geometric Calculus}
+
+Let $x\in\nset Vn$ be the position vector, then call a \lingo{scalar field $\phi$} a function $\fmap {\phi}{x}{a}$, where $a\in\set R$; \ie, a scalar field \lingo{maps} the position vector to a scalar. Analogously, call a \lingo{vector field $\Phi$} a function $\fmap {\Phi}{x}{v}$, where $v\in\nset Vn$; \ie, a vector field \lingo{maps} the position vector to a vector. Alternatively, a scalar field can be seen as a function that \lingo{assigns} a scalar to every point in $\nset Vn$, while a vector field can be seen as a function that \lingo{assigns} a vector to every point in $\nset Vn$.
+
+
+Let $x\in\nset Vn$ be the position vector and $\elset{\comp xk}$ be the components of $x$ onto a standard frame. Then, agree on the \lingo{delta derivative}, $\igder{}$, notation for partial derivatives:
+\beq
+\igder k = \igder{\comp xk} \defby \dfrac{\partial}{\partial\comp xk}\,.
+\eeq
+
+Sometimes, the \lingo{comma derivative} notation is used instead of the delta derivative. The comma derivative consists on appending to a function a subscript containing a comma and the variable with respect to which the partial derivative is to be taken.
+
+\begin{example}
+Consider a vector $x\in\nset Vn$ whose components on a given frame are $\tuple{\comp x1, \comp x2, \dotsc, \comp xn}$ and let $f$ be a function of $x$; \ie, $f\vat x = f\vat{\tuple{x_1, x_2, \dotsc, x_n}}$. Then, represent the partial derivative of $f$ with respect to the $k$-component of $x$ ($k$th variable) by
+\beq
+\cder fk = \cder f{\comp xk} \defby \xpd f{\comp xk}\,.\mqed
+\eeq
+\end{example}
+
+Consider a reciprocal frame $\rfrm k$, then define the geometric derivative $\gder$ by
+\beq
+\gder \defby \rfvec k\igder k\,.
+\eeq
+Treat $\gder$ as a vector.
+
+Consider $\phi$ to be a scalar field. Then, define the \lingo{gradient of $\phi$}, denoted $\grad\phi$, by
+\beq
+\grad\phi \defby \gder\phi = \rfvec k\igder k\phi = \rfvec k\cder\phi k\,.
+\eeq
+
+\begin{example}
+Consider $\espace 3$ and consider a scalar field $\fmap\phi x{x^2 + y^2 + z^2}$. Then, find $\grad\phi$.
+\end{example}
+\begin{solution}
+The position vector $\pvec$ is implicitly given by the coordinates $\tuple{x,y,z}$, thus a standard frame could be defined by $\elset{\ifvec x,\ifvec y, \ifvec z}$. However, instead of expanding the geometric derivative onto any frame and then applying it to $\phi$, the solution to the problem is simplified by working directly with geometric algebra. This is done by noticing that $\phi = \pvec\pvec = \pvec^2$. Thus, $\grad\phi = \gder\pvec^2 = 2\pvec$. Now, expand $\pvec$ onto the frame to find
+\beq
+\grad\phi = 2(x\rfvec x + y\rfvec y + z\rfvec z)\,.\mqed
+\eeq
+\end{solution}
+
+\begin{verification}
+The geometric derivative onto the frame $\elset{\ifvec x,\ifvec y, \ifvec z}$ takes the form
+\beq
+\gder = \rfvec k\igder k 
+      = \rfvec x\igder x + \rfvec y\igder y + \rfvec z\igder z\,.
+\eeq
+Find the gradient of the field by applying geometric derivative to it:
+\beq
+\grad\phi = \gder\phi 
+          %= \rfvec x\cder\phi x + \rfvec y\cder\phi y + \rfvec z\cder\phi z 
+          = \rfvec x\xpd\phi x + \rfvec y\xpd\phi y + \rfvec z\xpd\phi z\,,
+\eeq
+that is,
+\beq
+\grad\phi = 2(x\rfvec x + y\rfvec y + z\rfvec z)\,,
+\eeq
+which agrees with the previous result.
+\end{verification}

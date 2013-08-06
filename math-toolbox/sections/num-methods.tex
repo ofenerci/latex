@@ -1,0 +1,645 @@
+\section{Some Numeric Methods}
+
+\subsection{Back-of-the-envelop Calculations}
+%
+% [street-figthing-maths: sanjoy mahajan: p.78]
+%
+\lingo{Back-of-the-envelope calculations} use rough estimates for important factors and correction. Calculations are done in two parts:
+\begin{itemize}
+\item The ``big part'': the most important factor in a back-of-the-envelope product usually comes from the powers of 10, so evaluate this big part first; and
+%
+\item The correction, the ``small part'': after taking out the big part, the remaining part is a correction factor. Normally, this product too is simplified by taking out its big part. To perform the calculation, round each factor to the closest number among \emph{three} choices: 1, ``few'' or 10. The invented number few lies midway between 1 and 10: It is the geometric mean of 1 and 10, so $(\text{few})^2 = 10$ and $\text{few} \sim 3$.
+\end{itemize}
+
+
+\subsection{Chinese Multiplication}
+Cool trick: it replaces multiplication by counting dots! Easy to apply!
+
+\url{https://www.youtube.com/watch?v=OAREm_4Z8fs}.
+
+
+\subsection{Lumping}
+Approximate methods are robust: They almost always provide a reasonable answer. And the least accurate but most robust method is lumping. Instead of dividing a changing process into many tiny pieces (as done in calculus), group or lump it into one or two pieces. This simple approximation and its advantages are illustrated using examples ranging from demographics to nonlinear differential equations.
+
+\subsubsection{Estimating populations: How many babies?}
+The first example is to estimate the number of babies in the United States. For definiteness, call a child a baby until he or she turns 2 years old. An exact calculation requires the birth dates of every person in the United States. This, or closely similar, information is collected once every decade by the US Census Bureau.
+
+As an approximation to this voluminous data, the Census Bureau publishes the number of people at each age. The data for 1991 is a set of points lying on a yr wiggly line $N\vat t$, where $t$ is age. Then
+\beq
+N\txt{babies} = \int_0^{\SI{2}{yr}}N\vat t\,\dx t\,.
+\eeq
+This method has several problems. First, it depends on the huge resources of the US Census Bureau, so it is not usable on a desert island for back-of-the-envelope calculations. Second, it requires integrating a curve with no analytic form, so the integration must be done numerically. Third, the integral is of data specific to this problem, whereas mathematics should be about generality. An exact integration, in short, provides little insight and has minimal transfer value. Instead of integrating the population curve exactly, approximate it -- lump the curve into one rectangle.
+
+What are the height and width of this rectangle? The rectangle's width is a time, and a plausible time related to populations is the life expectancy. It is roughly 80 years, so make 80 years the width by pretending that everyone dies abruptly on his or her 80th birthday. The rectangle's height can be computed from the rectangle's area, which is the US population -- conveniently 300 million in 2008. Therefore,
+\beq
+\text{height} = \dfrac{\text{area}}{\text{width}} \sim \dfrac{\num{3e8}}{\SI{75}{yr}}\,.
+\eeq
+
+Why did the life expectancy drop from 80 to 75 years? Fudging the life expectancy simplifies the mental division: 75 divides easily into 3 and 300. The inaccuracy is no larger than the error made by lumping, and it might even cancel the lumping error. Using 75 years as the width makes the height approximately \SI{4e6}{yr^{-1}}.
+
+Integrating the population curve over the range $t=0,\dots,\SI{2}{yr}$ becomes just multiplication:
+\beq
+N\txt{babies} \sim \SI{4e6}{yr^{-1}}\times \SI{2}{yr} = \num{8e6} \,.
+\eeq
+The Census Bureau’s figure is very close: \num{7.980e6}. The error from lumping canceled the error from fudging the life expectancy to 75 years!
+
+
+\subsection{Estimating Integrals}
+The US population curve was difficult to integrate partly because it was unknown. But even well-known functions can be difficult to integrate. In such cases, two lumping methods are particularly useful: the $1/e$ heuristic and the full width at half maximum (FWHM) heuristic.
+
+
+\subsubsection{$1/e$ heuristic}
+Electronic circuits, atmospheric pressure and radioactive decay contain the ubiquitous exponential and its integral (given here in dimensionless form)
+\beq
+\int_0^\infty e^{-t}\,\dx t\,.
+\eeq
+To approximate its value, let's lump the $e^{-t}$ curve into one rectangle.
+
+What values should be chosen for the width and height of the rectangle? A reasonable height for the rectangle is the maximum of $e^{-t}$, namely 1. To choose its width, use significant change as the criterion (a method used again later): Choose a significant change in $e^{-t}$; then find the width $\diff t$ that produces this change. In an exponential decay, a simple and natural significant change is when $e^{-t}$ becomes a factor of $e$ closer to its final value (which is 0 here because $t$ goes to $\infty$). With this criterion, $\diff t = 1$. The lumping rectangle then has unit area -- which is the exact value of the integral!
+
+Encouraged by this result, let's try the heuristic on the difficult integral.
+\beq
+\int_\infty^\infty e^{-x^2}\,\dx x\,.
+\eeq
+
+Again lump the area into a single rectangle. Its height is the maximum of $e^{-x^2}$, which is 1. Its width is enough that $e^{-x^2}$ falls by a factor of $e$. This drop happens at $x = \pm 1$, so the width is $\diff x = 2$ and its area is $1\times 2$. The exact area is $\sqrt{\pi}\sim 1.77$, so lumping makes an error of only 13\%: For such a short derivation, the accuracy is extremely high.
+
+
+\subsubsection{Full width at half maximum}
+Another reasonable lumping heuristic arose in the early days of spectroscopy. As a spectroscope swept through a range of wavelengths, a chart recorder would plot how strongly a molecule absorbed radiation of that wavelength. This curve contains many peaks whose location and area reveal the structure of the molecule (and were essential in developing quantum theory). But decades before digital chart recorders existed, how could the areas of the peaks be computed?
+
+They were computed by lumping the peak into a rectangle whose height is the height of the peak and whose width is the full width at half maximum (FWHM). Where the $1/e$ heuristic uses a factor of e as the significant change, the FWHM heuristic uses a factor of 2.
+
+Try this recipe on the Gaussian integral $\int_\infty^\infty e^{-x^2}\,\dx x$. The maximum height of $e^{-x^2}$ is 1, so the half maxima~\footnote{~$f\vat x = e^{-x^2}$, then $f'\vat x = -2xe^{-x^2}$. $\max f\vat x = 1$, so the half-max occurs at $1/2$. Therefore, $e^{-x^2} = 1/2\implies -x^2 = \ln\vat{1/2}\implies x^2 = \ln\vat 2$. Finally, $x = \pm \sqrt{\ln\vat{2}}$.} are at $x = \pm\sqrt{\ln\vat 2}$ and the full width is $2\sqrt{\ln\vat 2}$. The lumped rectangle therefore has area $2\sqrt{\ln\vat 2}\sim 1.665$. The exact area is $\sqrt{\pi}\sim 1.77$: The FWHM heuristic makes an error of only 6\%, which is roughly one-half the error of the $1/e$ heuristic.
+
+
+\subsection{Estimating Derivatives}
+In the preceding examples, lumping helped estimate integrals. Because integration and differentiation are closely related, lumping also provides a method for estimating derivatives. The method begins with a dimensional observation about derivatives. A derivative is a ratio of differentials; for example, $\dx f/\dx x$ is the ratio of $\dx f$ to $\dx x$. Because $\dx{}$ is dimensionless, the dimensions of $\dx f/\dx x$ are the dimensions of $f/x$. This useful, surprising conclusion is worth testing with a familiar example: Differentiating height $y$ with respect to time $t$ produces velocity $\dx y/\dx t$, whose dimensions of $\phdim{L/T}$ are indeed the dimensions of $y/t$.
+
+
+\subsubsection{Secant Approximation}
+As $\dx f/\dx x$ and $f/x$ have identical dimensions, perhaps their magnitudes are similar:
+\beq
+\xod fx \sim \dfrac{f}{x}\,.
+\eeq
+Geometrically, the derivative $\dx f/\dx x$  is the slope of the \emph{tangent} line, whereas the approximation $f/x$ is the slope of the \emph{secant} line. By replacing the curve with the secant line, we make a lumping approximation.
+
+Let's test the approximation on an easy function such as $f\vat x = x^2$. Good news -- the secant and tangent slopes differ only by a factor of 2:
+\beq
+\xod fx\vat x = 2x\qquad\text{and}\qquad \dfrac{f}{x}\vat x = x\,.
+\eeq
+
+How accurate is the secant approximation for $f\vat x = x^2 + 100$? The secant approximation is quick and useful but can make large errors. When $f\vat x = x^2 + 100$, for example, the secant and tangent at $x = 1$ have dramatically different slopes. The tangent slope $\dx f/\dx x$ is 2, whereas the secant slope $f\vat 1/1$ is 101. The ratio of these two slopes, although dimensionless, is distressingly large.
+
+The large discrepancy in replacing the derivative $\dx f/\dx x$, which is
+\beq
+\lim_{\diff x\to 0}\dfrac{f\vat x - f\vat{x - \diff x}}{\diff x}\,,
+\eeq
+with the secant slope $f\vat x/x$ is due to two approximations. The first approximation is to take $\diff x = x$ rather than $\diff x = 0$. Then $\dx f/\dx x\sim (f\vat x - f\vat 0)/x$. This first approximation produces the slope of the line from $\tuple{0,f\vat 0}$ to $\tuple{x,f\vat x}$. The second approximation replaces $f\vat 0$ with 0, which produces $\dx f/\dx x\sim f/x$; that ratio is the slope of the secant from $\tuple{0,0}$ to $\tuple{x,f\vat x}$.
+
+
+\subsubsection{Improved Secant Approximation}
+The second approximation is fixed by starting the secant at $\tuple{x,f\vat x}$ instead of $\tuple{0,0}$.
+
+With that change, what are the secant and tangent slopes when $f\vat x = x^2 + C$? Call the secant starting at $\tuple{0,0}$ the origin secant; call the new secant the $x = 0$ secant. Then the $x = 0$ secant always has one-half the slope of the tangent, no matter the constant $C$. The $x = 0$ secant approximation is robust against -- is \emph{unaffected} by -- vertical translation.
+
+How robust is the $x = $0 secant approximation against horizontal translation? To investigate how the $x = 0$ secant handles horizontal translation, translate $f\vat x = x^2$ rightward by 100 to make $f\vat x = (x-100)^2$. At the parabola's vertex $x = 100$, the $x = 0$ secant, from $\tuple{0,104}$ to $\tuple{100,0}$, has slope -100; however, the tangent has zero slope. Thus the $x = 0$ secant, although an improvement on the origin secant, is \emph{affected} by horizontal translation.
+
+
+\subsubsection{Significant Change Approximation}
+The derivative itself is unaffected by horizontal and vertical translation, so a derivative suitably approximated might be translation invariant. An approximate derivative is
+\beq
+\xod fx\sim\dfrac{f\vat{x + \diff x} - f\vat x}{\diff x}\,,
+\eeq
+where $\diff x$ is not zero but is still small.
+
+How small should $\diff x$ be? Is $\diff x = 0.01$ small enough? The choice $\diff x = 0.01$ has two defects. First, it cannot work when $x$ has dimensions. If $x$ is a length, what length is small enough? Choosing $\diff x = \SI{1}{mm}$ is probably small enough for computing derivatives related to the solar system, but is probably too large for computing derivatives related to falling fog droplets. Second, no fixed choice can be scale invariant. Although $\diff x = 0.01$ produces accurate derivatives when $f\vat x = \sin\vat x$, it fails when $f\vat x = \sin\vat{1000 x}$, the result of simply rescaling $x$ to $1000x$.
+
+These problems suggest trying the following significant-change approximation:
+\beq
+\xod fx \sim \dfrac{\text{significant $\diff f$ (change in $f$) at $x$}}
+                   {\diff x\,\text{that produces a significant $\diff f$}}\,.
+\eeq
+Because the $\diff x$ here is defined by the properties of the curve at the point of interest, without favoring particular coordinate values or values of $\diff x$, the approximation is \emph{scale and translation invariant}.
+
+To illustrate this approximation, let's try $f\vat x = \cos\vat x$ and estimate $f'$ at $x = 3\pi/2$ with the three approximations: the origin secant, the $x = 0$ secant, and the significant-change approximation. The origin secant goes from $\tuple{0,0}$ to $\tuple{3\pi/2,0}$, so it has zero slope. It is a poor approximation to the exact slope of 1. The $x = 0$ secant goes from $\tuple{0,1}$ to $\tuple{3\pi/2,0}$, so it has a slope of $-2/3\pi$, which is worse than predicting zero slope because even the sign is wrong!
+
+The significant-change approximation might provide more accuracy. What is a significant change in $f\vat x = \cos\vat x$? Because the cosine changes by 2 (from $-1$ to $1$), call 1/2 a significant change in $f\vat x$. That change happens when $x$ changes from $3\pi/2$, where $f\vat x = 0$, to $3\pi/2 + \pi/6$, where $f\vat x = 1/2$. In other words, $\diff x$ is $\pi/6$. The approximate derivative is therefore
+\beq
+\xod fx\sim \dfrac{\text{significant $\diff f$ near $x$}}{\diff x}
+        \sim \dfrac{1/2}{\pi/6} = 3/\pi\,.
+\eeq
+This estimate is approximately 0.955 -- amazingly close to the true derivative of 1.
+
+
+\subsection{Analyzing differential equations: The spring-mass system}
+Estimating derivatives reduces differentiation to division; it thereby reduces differential equations to algebraic equations.
+
+To produce an example equation to analyze, connect a block of mass $m$ to an ideal spring with spring constant (stiffness) $k$, pull the block a distance $x_0$ to the right relative to the equilibrium position $x = 0$, and release it at time $t = 0$. The block oscillates back and forth, its position $x$ described by the ideal-spring differential equation
+\beq
+m\ddt x + kx = 0\,.
+\eeq
+Let's approximate the equation and thereby estimate the oscillation frequency.
+
+
+\subsubsection{Checking Dimensions}
+Upon seeing any equation, first check its dimensions. If all terms do not have identical dimensions, the equation is not worth solving -- a great saving of effort. If the dimensions match, the check has prompted reflection on the meaning of the terms; this reflection helps prepare for solving the equation and for understanding any solution.
+
+What are the dimensions of the two terms in the spring equation? Look first at the simple second term $kx$. It arises from Hooke's law, which says that an ideal spring exerts a force $kx$ where $x$ is the extension of the spring relative to its equilibrium length. Thus the second term $kx$ is a force. Is the first term also a force?
+
+The first term $m\ddt x$ contains the second derivative $\ddt x = \dx^2 x/\dx t^2$, which is familiar as an acceleration. Many differential equations, however, contain unfamiliar derivatives. The Navier-Stokes equations of fluid mechanics are an example.
+
+To practice for later handling such complicated terms, let's now find the dimensions of $\dx^2 x/\dx t^2$ by hand. Because $\dx^2 x/\dx t^2$ contains two exponents of 2, and $x$ is length and $t$ is time, $\dx^2 x/\dx t^2$ might plausibly have dimensions of $\phdim{L^2/T^2}$.
+
+Are $\phdim{L^2/T^2}$ the correct dimensions? To decide, use the idea that the differential symbol $\dx{}$ means ``a little bit of''. The numerator $\dx^2 x$, meaning $\dx{}$ of $\dx x$, is ``a little bit of a little bit of x''. Thus, it is a length. The denominator $\dx t^2$ could plausibly mean $(\dx t)^2$ or $\dx(t^2)$. [It turns out to mean $(\dx t)^2$.] In either case, its dimensions are $\phdim{T^2}$. Therefore, the dimensions of the second derivative are $\phdim{L/T^2}$:
+\beq
+\dim\nxod 2xt = \dfrac{\phdim{L}}{\phdim{T^2}}\,.
+\eeq
+This combination is an acceleration, so the spring equation's first term $m\ddt x$ is mass times acceleration -- giving it the same dimensions as the $kx$ term.
+
+
+\subsubsection{Estimating the magnitudes of the terms}
+The spring equation passes the dimensions test, so it is worth analyzing to find the oscillation frequency. The method is to replace each term with its approximate magnitude. These replacements will turn a complicated differential equation into a simple algebraic equation for the frequency.
+
+To approximate the first term $m\ddt x$, use the significant-change approximation to estimate the magnitude of the acceleration $\ddt x$:
+\beq
+\nxod 2xt \sim \dfrac{\text{significant}\;\diff x}{
+                \left(\diff t\,\text{that produces a significant}\;\diff x\right)}\,.
+\eeq
+To evaluate this approximate acceleration, first decide on a significant $\diff x$ -- on what constitutes a significant change in the mass's position. The mass moves between the points $x = -x_0$ and $x = +x_0$, so a significant change in position should be a significant fraction of the peak-to-peak amplitude $2x_0$. The simplest choice is $\diff x = x_0$.
+
+Now estimate $\diff t$: the time for the block to move a distance comparable to $\diff x$. This time -- called the characteristic time of the system -- is related to the oscillation period $T$. During one period, the mass moves back and forth and travels a distance $4x_0$ -- much farther than $x_0$. If $\diff t$ were, say, $T/4$ or $T/2\pi$, then in the time $\diff t$ the mass would travel a distance comparable to $x_0$. Those choices for $\diff t$ have a natural interpretation as being approximately $1/\omega$, where the angular frequency $\omega$ is connected to the period by the definition $\omega \defby 2\pi/T$. With the preceding choices for $\diff x$ and $\diff t$, the $m\ddt x$ term is roughly $mx_0\omega^2$.
+
+What does ``is roughly'' mean? The phrase cannot mean that $mx_0\omega^2$ and $m\ddt x$ are within, say, a factor of 2, because $m\ddt x$ varies and $mx_0/T^2$ is constant. Rather, ``is roughly'' means that a typical or characteristic magnitude of $m\ddt x$ -- for example, its root-mean-square value -- is comparable to $mx_0\omega^2$. Let's include this meaning within the twiddle notation $\sim$. Then the typical-magnitude estimate can be written
+\beq
+m\ddt x\sim mx_0\omega^2\,.
+\eeq
+
+With the same meaning of ``is roughly'', namely that the typical magnitudes are comparable, the spring equation's second term $kx$ is roughly $kx_0$. The two terms must add to zero -- a consequence of the spring equation $m\ddt x + kx = 0$.
+
+Therefore, the magnitudes of the two terms are comparable:
+\beq
+mx_0\omega^2\sim kx_0\,.
+\eeq
+The amplitude $x_0$ divides out! With $x_0$ gone, the frequency $\omega$ and oscillation period $T = 2\pi/\omega$ independent of amplitude. [This reasoning uses several approximations, but this conclusion is exact.] The approximated angular frequency $\omega$ is then $\sqrt{k/m}$.
+
+For comparison, the exact solution of the spring differential equation is
+\beq
+x = x_0\cos\vat{\omega t}\,,
+\eeq
+where $\omega$ is $\sqrt{k/m}$. The approximated angular frequency is also exact!
+
+
+\subsection{Predicting the period of a pendulum}
+Lumping not only turns integration into multiplication, it turns nonlinear into linear differential equations. Our example is the analysis of the period of a pendulum, for centuries the basis of Western timekeeping.
+
+How does the period of a pendulum depend on its amplitude? The amplitude $\theta_0$ is the maximum angle of the swing; for a loss-less pendulum released from rest, it is also the angle of release. The effect of amplitude is contained in the solution to the pendulum differential equation:
+\beq
+m\ddt\theta + g/l\sin\vat\theta = 0\,.
+\eeq
+The analysis will use all our tools: dimensions, easy cases and lumping.
+
+
+\subsubsection{Dimensions}
+Since the term $g/l$ has no dimensions nor do angles, the differential equation is manifestly dimensionless. So we can proceed to analyze the equation.
+
+
+\subsubsection{Small amplitudes: Applying extreme cases}
+The pendulum equation is difficult because of its nonlinear factor $\sin\vat\theta$. Fortunately, the factor is easy in the small-amplitude extreme case $\theta\to 0$. In that limit, the height of the triangle, which is $\sin\vat\theta$, is almost exactly the arclength $\theta$. Therefore, for small angles, $\sin\vat\theta\sim\theta$.
+
+In the small-amplitude extreme, the pendulum equation becomes linear:
+\beq
+\ddt\theta + g/l\theta = 0\,.
+\eeq
+Compare this equation to the spring-mass equation:
+\beq
+m\ddt x + kx = 0\,.
+\eeq
+The equations correspond with $x$ analogous to $\theta$ and $k/m$ analogous to $g/l$. The frequency of the spring-mass system is $\omega = \sqrt{k/m}$ k/m, and its period is $T = 2\pi/\omega = 2\pi m/k$. For the pendulum equation, the corresponding period is
+\begin{align*}
+T &= 2\pi\sqrt{\dfrac{l}{g}}\,. &\eqtxt{for small amplitudes}
+\end{align*}
+(This analysis is a preview of the method of analogy.)
+
+
+\subsubsection{Arbitrary amplitudes: Applying dimensional analysis}
+The preceding results might change if the amplitude $\theta_0$ is no longer small. 
+
+As $\theta_0$ increases, does the period increase, remain constant, or decrease? Any analysis becomes cleaner if expressed using dimensionless groups. This problem involves the period $T$, length $l$, gravitational strength $g$, and amplitude $\theta$. Therefore, $T$ can belong to the dimensionless group $T/\sqrt{l/g}$. Because angles are dimless, $\theta_0$ is itself a dimless group. The two groups are independent.
+
+An instructive contrast is the ideal spring-mass system. The period $T$, spring constant $k$ and mass $m$ can form the dimensionless group $T/\sqrt{m/k}$; but the amplitude $x_0$, as the only quantity containing a length, cannot be part of any dimensionless group and cannot therefore affect the period of the spring-mass system. In contrast, the pendulum's amplitude $\theta_0$ is already a dimensionless group, so it can affect the period of the system.
+
+Two dimensionless groups produce the general dimensionless form
+\beq
+\text{one group} = \text{function of the other group},
+\eeq
+so
+\beq
+\dfrac{T}{\sqrt{l/g}} = \text{function of $\theta_0$}\,.
+\eeq
+Because $T/\sqrt{l/g} = 2\pi$, when $\theta_0 = 0$ (the small-amplitude limit), factor out the $2\pi$ to simplify the subsequent equations, and define a dimensionless period $h$ as follows:
+\beq
+\dfrac{T}{\sqrt{l/g}} = 2\pi h\vat{\theta_0}\,.
+\eeq
+The function $h$ contains all information about how amplitude affects the period of a pendulum. Using $h$, the original question about the period becomes the following: Is $h$ an increasing, constant, or decreasing function of amplitude? This question is answered in the following section.
+
+
+\subsubsection{Large amplitudes: Extreme cases again}
+For guessing the general behavior of $h$ as a function of amplitude, useful clues come from evaluating $h$ at two amplitudes. One easy amplitude is the extreme of zero amplitude, where $h\vat 0 = 1$h. A second easy amplitude is the opposite extreme of large amplitudes.
+
+How does the period behave at large amplitudes? As part of that question, what is a large amplitude? An interesting large amplitude is $\pi/2$, which means releasing the pendulum from horizontal. However, at $\pi/2$ the exact $h$ is the following awful expression~\footnote{~According to Wolfram Alpha, the value of the integral is $\sqrt{\pi}/\Gamma\vat{3/4}^2\sim 1.180340599\dots$, where $\Gamma$ is the gamma function.}
+\beq
+h\vat{\pi/2} = \dfrac{\sqrt{2}}{\pi}\int_{0}^{\pi/2}\dfrac{\dx\theta}{\sqrt{\cos\vat\theta}}\,.
+\eeq
+Is this integral less than, equal to or more than 1? Who knows? The integral is likely to have no closed form and to require numerical evaluation.
+
+Because $\theta_0 = \pi/2$ is not a helpful extreme, be even more extreme. Try $\theta_0 = \pi$, which means releasing the pendulum bob from vertical. If the bob is connected to the pivot point by a string, however, a vertical release would mean that the bob falls straight down instead of oscillating. This novel behavior is neither included in nor described by the pendulum differential equation.
+
+Fortunately, a thought experiment is cheap to improve: Replace the string with a massless steel
+rod. Balanced perfectly at $\theta_0 = \pi$, the pendulum bob hangs upside down forever, so $T\vat\pi = \infty$ and $h\vat\pi = \infty$. Thus, $h\vat\pi > 1$ and $h\vat 0 = 1$. From these data, the most likely conjecture is that $h$ increases monotonically with amplitude. Although $h$ could first decrease and then increase, such twists and turns would be surprising behavior from such a clean differential equation.
+
+
+\subsubsection{Moderate amplitudes: Applying lumping}
+The conjecture that $h$ increases monotonically was derived using the extremes of zero and vertical amplitude, so it should apply at intermediate amplitudes. Before taking that statement on faith, recall a proverb from arms-control negotiations: ``Trust, but verify''.
+
+At moderate (small but nonzero) amplitudes, does the period, or its dimensionless cousin $h$, increase with amplitude? In the zero-amplitude extreme, $\sin\vat\theta$ is close to $\theta$. That approximation turned the nonlinear pendulum equation $\ddt\theta + g/l\sin\vat\theta = 0$ into the linear, ideal-spring equation -- in which the period is independent of amplitude.
+
+At nonzero amplitude, however, $\theta$ and $\sin\vat\theta$ differ and their difference affects the period. To account for the difference and predict the period, split $\sin\vat\theta$ into the tractable factor $\theta$ and an adjustment factor $f\vat\theta$. The resulting equation is
+\beq
+\ddt\theta + \dfrac{g}{l}\theta\dfrac{\sin\vat\theta}{\theta} = 0\,,
+\eeq
+where the adjustment factor: $f\vat\theta = \sin\vat\theta / \theta$.
+
+The nonconstant $f\vat\theta$ encapsulates the nonlinearity of the pendulum equation. When $\theta$ is tiny, $f\vat\theta \sim 1$: The pendulum behaves like a linear, ideal-spring system. But when $\theta$ is large, $f\vat\theta$ falls significantly below 1, making the ideal-spring approximation significantly inaccurate. As is often the case, a changing process is difficult to analyze. As a countermeasure, make a lumping approximation by replacing the changing $f\vat\theta$ with a constant.
+
+The simplest constant is $f\vat 0$. Then the pendulum differential equation becomes $\ddt\theta + g/l = 0$. This equation is, again, the ideal-spring equation. In this approximation, period does not depend on amplitude, so $h = 1$ for all amplitudes. For determining how the period of an unapproximated pendulum depends on amplitude, the $f\vat\theta\to f\vat 0$ lumping approximation discards too much information.
+
+Therefore, replace $f\vat\theta$ with the other extreme $f\vat{\theta_0}$. Then the pendulum equation becomes
+\beq
+\ddt\theta + g/l\,\theta\,f\vat{\theta_0} = 0\,.
+\eeq
+Is this equation linear? What physical system does it describe? Because $f\vat{\theta_0}$ is a constant, this equation is linear! It describes a zero-amplitude pendulum on a planet with gravity $g\txt{eff}$ that is slightly weaker than earth gravity -- as shown by the following slight regrouping:
+\beq
+\ddt\theta + \dfrac{gf\vat{\theta_0}}{l}\theta = 0\,,
+\eeq
+where $g\txt{eff} = gf\vat{\theta_0}$.
+
+Because the zero-amplitude pendulum has period $T = 2\pi\sqrt{l/g}$, the zero-amplitude, low-gravity pendulum has period
+\beq
+T\vat{\theta_0}\sim 2\pi\sqrt{\dfrac{l}{g\txt{eff}}} 
+                = 2\pi\sqrt{\dfrac{l}{gf\vat{\theta_0}}}\,.
+\eeq
+Using the dimensionless period $h$ avoids writing the factors of $2\pi$, $l$ and $g$, and it yields the simple prediction
+\beq
+h\vat{\theta_0} \sim f\vat{\theta_0}^{-1/2} 
+                = \left(\dfrac{\sin\vat{\theta_0}}{\theta_0}\right)^{-1/2}\,.
+\eeq
+At moderate amplitudes the approximation closely follows the exact dimensionless period (dark curve, in figure). As a bonus, it also predicts $h\vat\pi = \infty$, so it agrees with the thought experiment of releasing the pendulum from upright.
+
+How much larger than the period at zero amplitude is the period at \ang{10} amplitude? A \ang{10} amplitude is roughly \SI{0.17}{rad}, a moderate angle, so the approximate prediction for $h$ can itself accurately be approximated using a Taylor series. The Taylor series for $\sin\vat\theta$ begins $\theta - \theta^3/6$, so
+\beq
+f\vat{\theta_0}\sim 1 - \dfrac{\theta_0^2}{6}\,.
+\eeq
+Then $h\vat{\theta_0}$, which is roughly $f\vat{\theta_0}^{-1/2}$, becomes
+\beq
+h\vat{\theta_0} = \left( 1 - \dfrac{\theta_0^2}{6} \right)^{-1/2}\,.
+\eeq
+
+Another Taylor series yields $(1 + x)^{-1/2}\sim 1 - x/2$ (for small $x$). Therefore,
+\beq
+h\vat{\theta_0} \sim 1 + \dfrac{\theta_0^2}{12}\,.
+\eeq
+
+Restoring the dimensioned quantities gives the period itself:
+\beq
+T \sim 2\pi \sqrt{\dfrac{l}{g}}\left( 1 + \dfrac{\theta_0^2}{12}\right)\,.
+\eeq
+Compared to the period at zero amplitude, a \ang{10} amplitude produces a fractional increase of roughly $\theta_0^2/12\sim 0.0025$ or 0.25\%. Even at moderate amplitudes, the period is nearly independent of amplitude!
+
+Does our lumping approximation underestimate or overestimate the period? The lumping approximation simplified the pendulum differential equation by replacing $f\vat\theta$ with $f\vat{\theta_0}$. Equivalently, it assumed that the mass always remained at the endpoints of the motion where $\magn\theta = \theta_0$. Instead, the pendulum spends much of its time at intermediate positions where $\magn\theta < \theta_0$ and $f\vat\theta > f\vat{\theta_0}$. Therefore, the average $f$ is greater than $f\vat{\theta_0}$. Because $h$ is inversely related to $f$ ($h = f^{-1/2}$), the $f\vat\theta\to f\vat{\theta_0}$ lumping approximation overestimates $h$ and the period.
+
+The $f\vat\theta\to f\vat{0}$ lumping approximation, which predicts $T = 2\pi\sqrt{l/g}$, underestimates the period. Therefore, the true coefficient of the $\theta_0^2$ term in the period approximation
+\beq
+T \sim 2\pi \sqrt{\dfrac{l}{g}}\left( 1 + \dfrac{\theta_0^2}{12}\right)
+\eeq
+lies between 0 and $1/12$. A natural guess is that the coefficient lies halfway between these extremes -- namely, $1/24$. However, the pendulum spends more time toward the extremes (where $f\vat\theta = f\vat{\theta_0}$) than it spends near the equilibrium position (where $f\vat\theta = f\vat 0$. Therefore, the true coefficient is probably closer to $1/12$ -- the prediction of the $f\vat\theta\to f\vat{\theta_0}$ approximation -- than it is to 0. An improved guess might be two-thirds of the way from 0 to $1/12$, namely $1/18$.
+
+In comparison, a full successive-approximation solution of the pendulum differential equation gives the following period
+\beq
+T = 2\pi \sqrt{\dfrac{l}{g}}\left( 1 + \dfrac{1}{16}\theta_0^2 + \dfrac{11}{3072}\theta_0^4 + \dotsb \right)\,.
+\eeq
+Our educated guess of $1/18$ is very close to the true coefficient of $1/16$!
+
+
+\subsubsection{Summary}
+Lumping turns calculus on its head. Whereas calculus analyzes a changing process by dividing it into ever finer intervals, lumping simplifies a changing process by combining it into one unchanging process. It turns curves into straight lines, difficult integrals into multiplication, and mildly nonlinear differential equations into linear differential equations.
+
+
+\subsection{Newton's Method}
+In numerical analysis, \lingo{Newton's method}, \aka Newton-Raphson method, is a method for finding successively better approximations to the roots (or zeroes) of a real-valued function: $x\,:\,f\vat x = 0$.
+
+
+\subsubsection{Algorithm}
+The algorithm in one variable is the following:
+\begin{itemize}
+%
+\item Given a function $f$ defined over the reals $x$ and given its derivative $f'$, then guess $x_0$ for a root of the function $f$.
+%
+\item Provided the function satisfies all the assumptions made in the derivation formula, a better approximation $x_1$ is
+\beq
+x_1 = x_0 - \dfrac{f\vat{x_0}}{f'\vat{x_0}}\,.
+\eeq
+%
+\item Geometrically, $\tuple{x_1,0}$ is the intersection with the $x$-axis of a line tangent to $f$ at $\tuple{x_0, f\vat{x_0}}$\,.
+%
+\item The process is repeated as
+\beq
+x_{n+1} = x_n - \dfrac{f\vat{x_n}}{f'\vat{x_n}}\,,
+\eeq
+until a sufficiently accurate value is reached.
+%
+\end{itemize}
+
+
+\subsubsection{Description}
+The idea of the method is as follows: one starts with an initial guess which is reasonably close to the true root, then the function is approximated by its tangent line (which can be computed using the tools of calculus) and one computes the $x$-intercept of this tangent line. This $x$-intercept will typically be a better approximation to the function's root than the original guess and the method can be iterated.
+
+Suppose $\fdef f{[a,b]}{\set R}$ is a differentiable function defined on the interval $[a,b]$ with values in the real numbers $\set R$. The formula for converging on the root can be easily derived. Suppose we have some current approximation $x_n$. Then, we can derive the formula for a better approximation, $x_{n+1}$. We know from the definition of the derivative at a given point that it is the slope of a tangent at that point. That is,
+\beq
+f'\vat{x_n} = \dfrac{\diff y}{\diff x} = \dfrac{f\vat{x_n} - 0}{x_n - x_{n+1}}\,.
+\eeq
+Here, $f'$ denotes the derivative of the function $f$. Then, by algebra, we can derive
+\beq
+x_{n+1} = x_n - \dfrac{f\vat{x_n}}{f'\vat{x_n}}\,.
+\eeq
+
+We start the process off with some arbitrary initial value $x_0$. (The closer to the zero, the better. But, in the absence of any intuition about where the zero might lie, a ``guess and check'' method might narrow the possibilities to a reasonably small interval by appealing to the intermediate value theorem.) The method will usually converge, provided this initial guess is close enough to the unknown zero and that $f'\vat{x_0}\neq 0$. Furthermore, for a zero of multiplicity 1, the convergence is at least quadratic in a neighborhood of the zero, which intuitively means that the number of correct digits roughly at least doubles in every step.
+
+
+\subsubsection{Failure Analysis}
+[read wiki article ;)]
+
+
+\subsubsection{Applications}
+Minimization and maximization problems: Newton's method can be used to find a minimum or maximum of a function. The derivative is zero at a minimum or maximum, so minima and maxima can be found by applying Newton's method to the derivative. The iteration becomes:
+\beq
+x_{n+1} = x_n - \dfrac{f'\vat{x_n}}{f''\vat{x_n}}\,.
+\eeq
+
+Solving transcendental equations: many transcendental equations can be solved using Newton's method. Given the equation
+\beq
+g\vat x = h\vat x\,,
+\eeq
+with $g\vat x$ or $h\vat x$ a transcendental equation, one writes
+\beq
+f\vat x = g\vat x - h\vat x\,.
+\eeq
+The values of $x$ that solves the original equation are then the roots of $f\vat x$, which may be found via Newton's method.
+
+
+\subsubsection{Examples}
+Square root of a number: find the square root of 612. This is equivalent to finding the solution to
+\beq
+x^2 = 612\,,
+\eeq
+with derivative $f'\vat x = 2x$.
+
+With an initial guess of 10, the sequence given by Newton's method is ... With only 5 iterations, one can obtain a solution accurate to many decimal places: 24.738 633 753 767.
+
+Solution of $\cos\vat x = x^3$. Rephrase this problem to find the roots of the equation $f\vat x = \cos\vat x - x^3$. We have $f'\vat x = -\sin\vat x - 3x^2$. Since $\cos x\leq 1$ for all $x$ and $x^3 > 1$ for $x > 1$, then we know that our zero lies between 0 and 1. We try a starting value of $x_0 = 0.5$. (Note that a starting value of 0 will lead to a undefined result, showing the importance of using a starting point that is close to the zero.)...
+
+The correct digits are underlined in the above example. In particular, $x_6$ is correct to the number of decimal places given (0.865 474 033 102). We see that the number of correct digits after the decimal point increases from 2 (for $x_3$) to 5 and 10, illustrating the quadratic convergence.
+
+
+\subsubsection{Pseudocode}
+[wiki article ;)]
+
+
+\subsection{Rectangle Method}
+The \lingo{rectangle method} computes an approximation to a definite integral, made by finding the area of a collection of rectangles whose heights are determined by the values of the function.
+
+
+\subsubsection{Formula}
+Specifically, the interval $]a,b[$ over which the function is to be integrated is divided into $N$ equal subintervals of length $h = (b-a)/N$. The rectangles are then drawn so that either their left or right corners, or the middle of their top line lies on the graph of the function, with bases running along the $x$-axis. The approximation to the integral is then calculated by adding up the areas (base multiplied by height) of the $N$ rectangles, giving the formula
+\beq
+\int_a^b f\vat x\,\dx x\sim h\sum_{n = 0}^{N - 1}f\vat{x_n}\,,
+\eeq
+where $h = (b-a)/N$ and $x_n = a + nh$.
+
+The formula for $x_n$ above gives $x_n$ for the top-left corner approximation.
+
+As $N$ gets larger, this approximation gets more accurate. In fact, this computation is the spirit of the definition of the Riemann integral and the limit of this approximation as $n\to\infty$ is defined and equal to the integral of $f$ on $]a,b[$ if this Riemann integral is defined. Note that this is true regardless of which $i$ is used, however, the midpoint approximation tends to be more accurate for finite $n$.
+
+
+\subsubsection{Error}
+For a function $f$ which is twice differentiable, the approximation error in each section $]a, a+\diff[$ of the midpoint rule decays as the cube of the width of the rectangle.
+\beq
+E_i \leq \dfrac{\diff^3}{24}f''\vat{\xi}\,,
+\eeq
+for some $\xi$ in $]a, a+\diff[$. Summing this, the approximation error for $n$ intervals with width $\diff$ is less than or equal to $n = 1,2,3,\dotsc$, where $n+1$ is the number of nodes
+\beq
+E \leq \dfrac{n\diff^3}{24}f''\vat{\xi}
+\eeq
+in terms of the total interval, we know that $n\diff = b - a$, so we can rewrite the expression:
+\beq
+E\leq \dfrac{(b-a)\diff^2}{24}f''\vat\xi\,,
+\eeq
+for some $\xi$ in $]a,b[$.
+
+
+\subsection{Trapezoidal Rule}
+The \lingo{trapezoidal rule}, \aka the trapezoid rule or trapezium rule, is a technique for approximating the definite integral
+\beq
+\int_a^b f\vat x\,\dx x\,.
+\eeq
+
+The trapezoid rule works by approximating the region under the graph of the function $f\vat x$ as a trapezoid and calculating its area. It follows that
+\beq
+\int_a^b f\vat x\,\dx x \sim (b - a)\dfrac{f\vat a + f\vat b}{2}\,.
+\eeq
+
+
+\subsubsection{Applicability and alternatives}
+The trapezoidal rule is one of a family of formulas for numerical integration called \lingo{Newton-Cotes formulas}, of which the midpoint rule is similar to the trapezoid rule. Simpson's rule is another member of the same family and, in general, has faster convergence than the trapezoidal rule for functions which are twice continuously differentiable, though not in all specific cases. However, for various classes of rougher function (ones with weaker smoothness conditions), the trapezoidal rule has faster convergence in general than Simpson's rule.
+
+Moreover, the trapezoidal rule tends to become extremely accurate when periodic functions are integrated over their periods, which can be analyzed in various ways.
+
+For non-periodic functions, however, methods with unequally spaced points such as Gaussian quadrature and Clenshaw-Curtis quadrature are generally far more accurate.
+
+
+\subsubsection{Numerical Implementation}
+For a domain discretized into $N$ equally spaced panels, or $N+1$ grid points ($1,2,3,\dotsc,N+1$), where the grid spacing is $h = (b-a)/N$, the approximation to the integral becomes
+\begin{align*}
+\int_a^b f\vat x\,\dx x 
+    &\sim \dfrac{h}{2}\sum_{k = 1}^{N}\left(f\vat{x_{k+1}} + f\vat{x_k} \right) \\
+    &= \dfrac{b-a}{2N}\left( f\vat{x_1} + 2f\vat{x_2} + 2f\vat{x_3} + \dotsb + 2f\vat{x_N} + 2f\vat{x_{N+1}} \right) \,.
+\end{align*}
+
+
+\subsubsection{Error Analysis}
+The error of the composite trapezoidal rule is the difference between the value of the integral and the numerical result:
+\beq
+E = \int_a^b f\vat x\,\dx x - \dfrac{b-a}{2N}
+    \left(\dfrac{f\vat a + f\vat b}{2} + \sum_{k=1}^{N-1} f\vat{a + k \dfrac{b-a}{2N}}
+    \right) \,.
+\eeq
+There exists a number $\xi$ between $a$ and $b$, such that
+\beq
+E = -\dfrac{(b - a)^3}{12N^2}f''\vat\xi\,.
+\eeq
+
+
+\subsection{Simpson's Rule}
+\lingo{Simpson's rule} is a method for numerical integration, the numerical approximation of definite integrals.
+
+Simpson's rule also corresponds to the 3-point Newton-Cotes quadrature rule.
+
+Simpson's rule is a staple of scientific data analysis and engineering. Ti si widely used, for instance, by naval architects to numerically integrate hull offsets and cross-sectional areas to determine volumes and centroids of ships or lifeboats.
+
+
+\subsubsection{Formula}
+Specifically, Simpson's rule is the following approximation
+\beq
+\int_a^b f\vat x\,\dx x\sim \dfrac{b - a}{6}\left( f\vat a + 4f\vat{\dfrac{a + b}{2}} + f\vat b \right)\,.
+\eeq
+
+
+\subsubsection{Error}
+The error in approximating an integral by Simpson's rule is
+\beq
+\dfrac{1}{90}\left(\dfrac{b - a}{2}\right)^5 \big\vert f^{(4)}\vat\xi \big\vert\,, 
+\eeq
+where $\xi$ is some number between $a$ and $b$.
+
+The error is asymptotically proportional to $(b-a)^5$. Since the error term is proportional to the fourth derivative of $f$ at $\xi$, then this shows that Simpson's rule provides exact results for any polynomial $f$ degree three or less, since the fourth derivative of such a polynomial is zero at all points.
+
+
+\subsection{Perturbation Theory}
+\lingo{Perturbation theory} comprises mathematical methods that are used to find an approximate solution to a problem which cannot be solved exactly, by starting from the exact solution of a related problem. Perturbation theory is applicable if the problem at hand can be formulated by adding a ``small'' term to the mathematical description of the exactly solvable problem.
+
+Perturbation theory leads to an expression for the desired solution in terms of a formal power series in some ``small'' parameter -- known as a \lingo{perturbation series} -- that quantifies the deviation from the exactly solvable problem. The leading term in this power series is the solution of the exactly solvable problem, while further terms describe the deviation in the solution, due to the deviation from the initial problem. Formally, we have for the approximation to the full solution $A$, a series in the small parameter (here called $\epsilon$), like the following:
+\beq
+A = A_0 + \epsilon^1 A_1 + \epsilon^2 A_2 + \dotsb\,.
+\eeq
+In this example, $A_0$ would be the known solution to the exactly solvable initial problem and , $A_1,A_2,\dotsc$ represent the \lingo{higher-order terms} which may be found iteratively by some systematic procedure. For small $\epsilon$ these higher-order terms in the series become successively smaller. An approximate ``perturbation solution'' is obtained by truncating the series, usually by keeping only the first two terms, the initial solution and the ``first-order'' perturbation correction:
+\beq
+A\sim A_0 + \epsilon A_1\,.
+\eeq
+
+
+\subsubsection{Perturbation Theory for Algebraic Equations}
+Consider the quadratic equation
+\beq
+x^2 -1 = \epsilon x\,.
+\eeq
+The two roots of this equation are
+\beq
+x_1 = \epsilon/2 + \sqrt{1 + \epsilon^2/4}\qquad\text{and}\qquad
+x_2 = \epsilon/2 - \sqrt{1 + \epsilon^2/4}\,.
+\eeq
+For small $\epsilon$, these roots are well approximated by the first few terms of their Taylor series expansion
+\beq
+x_1 =  1 + \epsilon/2 + \epsilon^2 /8 + O\vat{\epsilon^3}\qquad\text{and}\qquad
+x_2 = -1 + \epsilon/2 - \epsilon^2 /8 + O\vat{\epsilon^3}\,.
+\eeq
+
+Can we obtain the last equations without prior knowledge of the exact solutions of the quadratic? Yes, using regular perturbation theory. The technique involves four steps.
+%
+\begin{enumerate}
+%
+\item Assume that the solution(s) of the quadratic equation can be Taylor expanded in $\epsilon$. Then we have
+\beq
+x = X_0 + \epsilon X_1 + \epsilon^2 X_2 + O\vat{\epsilon^3}\,,
+\eeq
+for $X_0, X_1, X_2$ to be determined.
+%
+\item Substitute the last equation into that of the quadratic written as $x^2 - 1 - \epsilon x = 0$ and expand the left hand side of the resulting equation in power series of $\epsilon$. Using
+\beq
+       x^2 = X_0^2 + 2\epsilon X_0 X_1 + \epsilon^2 (X_1^2 + 2X_0 X_2) + O\vat{\epsilon^3}\implies
+\epsilon x = \epsilon X_0 + \epsilon^2 X_1 + O\vat{\epsilon^3}\,.
+\eeq
+this gives
+\beq
+X_0^2 - 1 + \epsilon (2X_0 X_1 - X_0) + \epsilon^2 (X_1^2 + 2X_0 X_1 - X_1) + O\vat{\epsilon^3} = 0\,.
+\eeq
+%
+\item Equate to zero the successive terms of the series in the left hand side of the last equation:
+\begin{align*}
+& O\vat{\epsilon^0}: & X_0^2 - 1 = 0\,,\\
+& O\vat{\epsilon^1}: & 2X_0 X_1 - X_0 = 0\,,\\
+& O\vat{\epsilon^2}: & X_1^2 + 2X_0 X_2 - X_1 = 0\,,\\
+& O\vat{\epsilon^3}: & \dots\,.
+\end{align*}
+%
+\item Successively solve the sequence of equations obtained in in the last step. Since $X_0^2 - 1 = 0$
+has two roots, $X_0 = \pm 1$, one obtains
+\begin{align*}
+X_0 &=  1, X_1 &= 1/2, X_2 &= 1/8\,,\\
+X_0 &= -1, X_1 &= 1/2, X_2 &=-1/8
+\end{align*}
+It can be checked that substituting the last equations into the roots of the quadratic one recovers the quadratic.
+%
+\end{enumerate}
+
+From the previous example it might not be clear what the advantage of regular perturbation theory is, since one can obtain the approximations to the quadratic roots more directly by Taylor expansion of the roots themselves. To see the strength of regular perturbation theory, consider the following equation
+\beq
+x^2 - 1 = \epsilon e^x\,.
+\eeq
+
+The solutions of this equation are not available; therefore the direct method is inapplicable here. However, the Taylor series expansion of these solutions can be obtained by perturbation theory. We introduce the expansion $x = X_0 + \epsilon X_1 + \epsilon^2 X_2 + O\vat{\epsilon^3}$ as in the first step of the solution to the last example. In the second step, we use (recall that $e^z = 1 + z + z^2/2 + O\vat{z^3}$)
+\beq
+\epsilon e^x = \epsilon e^{X_0 + \epsilon X_1 + \epsilon^2 X_2 + O\vat{\epsilon^3}}
+             = \epsilon e^{X_0} e^{\epsilon X_1 + \epsilon^2 X_2 + O\vat{\epsilon^3}}
+             = \epsilon e^{X_0} + \epsilon^2 X_1 e^{X_0} + O\vat{\epsilon^3}\,.
+\eeq
+
+Substituting this expression in the original equation written as $x^2 - 1 - \epsilon e^x = 0$, we obtain
+\beq
+X_0^2 
+  - 1 
+  + \epsilon \left(2 X_0 X_1 - e^{X_0} \right) 
+  + \epsilon^2 \left( X_1^2 + 2 X_0 X_1 - X_1 e^{X_0}\right) 
+  + O\vat{\epsilon^3}
+= 0\,.
+\eeq
+Then, after having obtained the roots to the last system of equations, the expansion can be written as
+\begin{align*}
+x_1 &=  1 + \epsilon e/2  + \epsilon^2 e^2/8  + O\vat{\epsilon^3}\,,\\
+x_2 &= -1 - \epsilon/(2e) - \epsilon^2/(8e^2) + O\vat{\epsilon^3}\,.
+\end{align*}
+
+
+\subsection{Normalization of Algebraic Equations}
+[Use of nondim. and approx. techniques]
+
+A simple example concerns finding roots of a simultaneous system of algebraic equations:
+\beq
+\begin{cases}
+x + 10y &= 21\,,\\
+5x + 5y &= 7\,.\\
+\end{cases}
+\eeq
+
+In the first equation, the coefficient of $x$ is small compared to the coefficient of $y$, so it is tempting to ignore $x$ and approximate the value of $y$:
+\beq
+y\sim 2.1
+\eeq
+
+Substituting the $y$ approximation into the second equation approximates the value of $x$:
+\beq
+x \sim\dfrac{7 - 2.1}{5}\sim 0.98\,.
+\eeq
+
+To check the approximation's validity, $\tuple{x,y}\sim\tuple{0.98,2.1}$ is substituted into the first equation of the system, producing the ratio of the first term to the second term:
+\beq
+\dfrac{x}{10y}\sim\dfrac{0.98}{2.1}\sim 0.05\ll 1\,.
+\eeq
+
+This ratio validates $y = 2.1$. In fact, approximate roots $x = 0.98$ and $y = 2.1$ are close to exact roots:
+\beq
+x = 1\qquad\text{and}\qquad
+y = 2\,.
+\eeq
+
+Notice the cycle: assume, derive, calculate, check!
+

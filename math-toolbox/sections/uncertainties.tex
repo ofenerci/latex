@@ -1,0 +1,351 @@
+\section{Uncertainties}
+
+[A Beginner's Guide to Uncertainty of Measurement, Stephanie Bell]
+
+\subsection{Basic Definitions}
+What is a measurement? A measurement tells us about a property of something. It might tell us how heavy an object is, or how hot, or how long it is. A measurement gives a number to that property. Measurements are always made using an instrument of some kind. Rulers, stopwatches, weighing scales, and thermometers are all measuring instruments. The result of a measurement is normally in two parts: a number and a unit of measurement, \eg. `How long is it? ... \SI{2}{m}'.
+
+What is not a measurement? There are some processes that might seem to be measurements, but are not. For example, comparing two pieces of string to see which is longer is not really a measurement. Counting is not normally viewed as a measurement. Often, a test is not a measurement: tests normally lead to a `yes/no' answer or a `pass/fail' result. (However, measurements may be part of the process leading up to a test result.)
+
+What is uncertainty of measurement? The uncertainty of a measurement tells us something about its quality.
+\begin{quote}
+Uncertainty of measurement is the doubt that exists about the result of any measurement.
+\end{quote}
+You might think that well-made rulers, clocks and thermometers should be trustworthy, and give the right answers. But for every measurement -- even the most careful -- there is always a margin of doubt. In everyday speech, this might be expressed as `give or take': \eg, a stick might be two meters long `give or take a centimeter'.
+
+
+\subsubsection{Expressing uncertainty of measurement}
+Since there is always a margin of doubt about any measurement, we need to ask `How big is the margin?' and `How bad is the doubt?' Thus, two numbers are really needed in order to quantify an uncertainty. One is the width of the margin, or interval. The other is a confidence level, and states how sure we are that the `true value' is within that margin. For example: We might say that the length of a certain stick measures \SI{20}{cm} plus or minus \SI{1}{cm}, at the 95 percent confidence level. This result could be written: $\SI{20}{cm}\pm\SI{1}{cm}$, at a level of confidence of 95\%.
+
+The statement says that we are 95 percent sure that the stick is between \SI{19}{cm} and \SI{21}{cm} long. There are other ways to state confidence levels.
+
+
+\subsubsection{Error versus uncertainty}
+It is important not to confuse the terms `error' and `uncertainty'.
+
+Error is the difference between the measured value and the `true value' of the thing being measured.
+
+Uncertainty is a quantification of the doubt about the measurement result.
+
+Whenever possible we try to correct for any known errors: for example, by applying corrections from calibration certificates. But any error whose value we do not know is a source of uncertainty.
+
+
+\subsection{How many readings should you average?}
+Broadly speaking, the more measurements you use, the better the estimate you will have of the `true' value. The ideal would be to find the mean from an infinite set of values. The more results you use, the closer you get to that ideal estimate of the mean. But performing more readings takes extra effort, and yields `diminishing returns'. What is a good number? Ten is a popular choice because it makes the arithmetic easy. Using 20 would only give a slightly better estimate than 10. Using 50 would be only slightly better than 20. As a rule of thumb usually between 4 and 10 readings is sufficient.
+
+
+\subsection{How many readings do you need to find an estimated standard deviation?}
+Again, the more readings you use, the better the estimate will be. In this case it is the estimate of uncertainty that improves with the number of readings (not the estimate of the mean or `end result'). In ordinary situations 10 readings is enough. For a more thorough estimate, the results should be adjusted to take into account the number of readings.
+
+
+\subsection{Where do errors and uncertainties come from?}
+Many things can undermine a measurement. Flaws in the measurement may be visible or invisible. Because real measurements are never made under perfect conditions, errors and uncertainties can come from:
+\begin{itemize}
+\item The measuring instrument: instruments can suffer from errors including bias, changes due to aging, wear, or other kinds of drift, poor readability, noise (for electrical instruments) and many other problems.
+%
+\item The item being measured: which may not be stable. (Imagine trying to measure the size of an ice cube in a warm room.)
+%
+\item The measurement process: the measurement itself may be difficult to make. For example measuring the weight of small but lively animals presents particular difficulties in getting the subjects to co-operate.
+%
+\item `Imported' uncertainties: calibration of your instrument has an uncertainty which is then built into the uncertainty of the measurements you make. (But remember that the uncertainty due to not calibrating would be much worse.)
+%
+\item Operator skill: some measurements depend on the skill and judgment of the operator. One person may be better than another at the delicate work of setting up a measurement, or at reading fine detail by eye. The use of an instrument such as a stopwatch depends on the reaction time of the operator. (But gross mistakes are a different matter and are not to be accounted for as uncertainties.)
+%
+\item Sampling issues: the measurements you make must be properly representative of the process you are trying to assess. If you want to know the temperature at the work-bench, don't measure it with a thermometer placed on the wall near an air conditioning outlet. If you are choosing samples from a production line for measurement, don't always take the first ten made on a Monday morning.
+%
+\item The environment: temperature, air pressure, humidity and many other conditions can affect the measuring instrument or the item being measured.
+\end{itemize}
+
+Where the size and effect of an error are known (\eg. from a calibration certificate) a correction can be applied to the measurement result. But, in general, uncertainties from each of these sources, and from other sources, would be individual `inputs' contributing to the overall uncertainty in the measurement.
+
+
+\subsection{The general kinds of uncertainty in any measurement}
+\subsubsection{Random or systematic}
+The effects that give rise to uncertainty in measurement can be either:
+\begin{itemize}
+\item random: where repeating the measurement gives a randomly different result. If so, the more measurements you make, and then average, the better estimate you generally can expect to get.
+%
+\item systematic: where the same influence affects the result for each of the repeated measurements (but you may not be able to tell). In this case, you learn nothing extra just by repeating measurements. Other methods are needed to estimate uncertainties due to systematic effects, \eg. different measurements, or calculations.
+\end{itemize}
+
+\subsubsection{Distribution - the `shape' of the errors}
+The spread of a set of values can take different forms, or probability distributions.
+
+Normal distribution: In a set of readings, sometimes the values are more likely to fall near the average than further away. This is typical of a normal or Gaussian distribution. You might see this type of distribution if you examined the heights of individuals in a large group of men. Most men are close to average height; few are extremely tall or short.
+
+Figure 2 shows a set of 10 `random' values in an approximately normal distribution. A sketch of a normal distribution is shown in Figure 3.
+
+Uniform or rectangular distribution: When the measurements are quite evenly spread between the highest and the lowest values, a rectangular or uniform distribution is produced. This would be seen if you examined how rain drops fall on a thin, straight telephone wire, for example. They would be as likely to fall on any one part as on another.
+
+Figure 4 shows a set of 10 `random' values in an approximately rectangular distribution. A sketch of a rectangular distribution is shown in Figure 5.
+
+
+\subsection{How to calculate uncertainty of measurement}
+To calculate the uncertainty of a measurement, firstly you must identify the sources of uncertainty in the measurement. Then you must estimate the size of the uncertainty from each source. Finally the individual uncertainties are combined to give an overall figure.
+
+There are clear rules for assessing the contribution from each uncertainty, and for combining these together.
+
+\subsubsection{The two ways to estimate uncertainties}
+No matter what are the sources of your uncertainties, there are two approaches to estimating them: `Type A' and `Type B' evaluations. In most measurement situations, uncertainty evaluations of both types are needed.
+\begin{enumerate}
+\item Type A evaluations: uncertainty estimates using statistics (usually from repeated readings).
+%
+\item Type B evaluations: uncertainty estimates from any other information. This could be information from past experience of the measurements, from calibration certificates, manufacturer's specifications, from calculations, from published information, and from common sense.
+\end{enumerate}
+There is a temptation to think of `Type A' as `random' and `Type B' as `systematic', but this is \emph{not} necessarily true.
+
+How to use the information from Type A and Type B evaluations is described below.
+
+
+\subsection{Eight main steps to evaluating uncertainty}
+The main steps to evaluating the overall uncertainty of a measurement are as follows.
+\begin{enumerate}
+\item Decide what you need to find out from your measurements. Decide what actual measurements and calculations are needed to produce the final result.
+%
+\item Carry out the measurements needed.
+%
+\item Estimate the uncertainty of each input quantity that feeds into the final result. Express all uncertainties in similar terms. (See below).
+%
+\item Decide whether the errors of the input quantities are independent of each other. If you think not, then some extra calculations or information are needed. (See correlation below.)
+%
+\item Calculate the result of your measurement (including any known corrections for things such as calibration).
+%
+\item Find the combined standard uncertainty from all the individual aspects. (See below.)
+%
+\item Express the uncertainty in terms of a coverage factor (see below), together with a size of the uncertainty interval, and state a level of confidence.
+%
+\item Write down the measurement result and the uncertainty, and state how you got both of these. (See below.)
+\end{enumerate}
+
+
+\subsection{Other things you should know before making an uncertainty calculation}
+Uncertainty contributions must be expressed in similar terms before they are combined. Thus, all the uncertainties must be given in the same units, and at the same level of confidence.
+
+
+\subsubsection{Standard uncertainty}
+All contributing uncertainties should be expressed at the same confidence level, by converting them into standard uncertainties. A standard uncertainty is a margin whose size can be thought of as `plus or minus one standard deviation'. The standard uncertainty tells us about the uncertainty of an average (not just about the spread of values). A standard uncertainty is usually shown by the symbol $u$ (small u), or $u\vat y$ (the standard uncertainty in $y$).
+
+\begin{itemize}
+\item Calculating standard uncertainty for a Type A evaluation: When a set of several repeated readings has been taken (for a Type A estimate of uncertainty), the mean, $\avg x$, and estimated standard deviation, $s$, can be calculated for the set. From these, the estimated standard uncertainty, $u$, of the mean is calculated from:
+\beq
+u = \dfrac{s}{\sqrt{n}}\,,
+\eeq
+where $n$ was the number of measurements in the set. (The standard uncertainty of the mean has historically also been called the standard deviation of the mean, or the standard error of the mean.)
+
+
+\item Calculating standard uncertainty for a Type B evaluation: Where the information is more scarce (in some Type B estimates), you might only be able to estimate the upper and lower limits of uncertainty. You may then have to assume the value is equally likely to fall anywhere in between, \ie, a rectangular or uniform distribution. The standard uncertainty for a rectangular distribution is found from:
+\beq
+\dfrac{a}{\sqrt{3}}\,,
+\eeq
+where $a$ is the semi-range (or half-width) between the upper and lower limits.
+
+Rectangular or uniform distributions occur quite commonly, but if you have good reason to expect some other distribution, then you should base your calculation on that. For example, you can usually assume that uncertainties `imported' from the calibration certificate for a measuring instrument are normally distributed.
+
+
+\item Converting uncertainties from one unit of measurement to another: Uncertainty contributions must be in the same units before they are combined. As the saying goes, you cannot `compare apples with pears'.
+\end{itemize}
+
+
+\subsection{Combining standard uncertainties}
+Individual standard uncertainties calculated by Type A or Type B evaluations can be combined validly by `summation in quadrature' (also known as `root sum of the squares'). The result of this is called the combined standard uncertainty, shown by $u_c$ or $u_c\vat y$.
+
+Summation in quadrature is simplest where the result of a measurement is reached by addition or subtraction. The more complicated cases are also covered below for the multiplication and division of measurements, as well as for other functions.
+
+
+\subsection{Correlation}
+The equations given above to calculate the combined standard uncertainty are only correct if the input standard uncertainties are not inter-related or correlated. This means we usually need to question whether all the uncertainty contributions are independent. Could a large error in one input cause a large error in another? Could some outside influence, such as temperature, have a similar effect on several aspects of uncertainty at once - visibly or invisibly? Often individual errors are independent. But if they are not, extra calculations are needed. These are not detailed here, but can be found in some of the further reading.
+
+
+\subsection{Coverage factor $k$}
+Having scaled the components of uncertainty consistently, to find the combined standard uncertainty, we may then want to re-scale the result. The combined standard uncertainty may be thought of as equivalent to `one standard deviation', but we may wish to have an overall uncertainty stated at another level of confidence, \eg, 95 percent. This re-scaling can be done using a coverage factor, $k$. Multiplying the combined standard uncertainty, $u_c$, by a coverage factor gives a result which is called the expanded uncertainty, usually shown by the symbol $U$; \ie,
+\beq
+U = ku_c\,.
+\eeq
+A particular value of coverage factor gives a particular confidence level for the expanded uncertainty.
+
+Most commonly, we scale the overall uncertainty by using the coverage factor $k = 2$, to give a level of confidence of approximately 95 percent. ($k = 2$ is correct if the combined standard uncertainty is normally distributed. This is usually a fair assumption, but the reasoning behind this is explained elsewhere, in the references.)
+
+Some other coverage factors (for a normal distribution) are:
+\begin{itemize}
+\item $k = 1$ for a confidence level of approximately 68 percent. 
+\item $k = 2.58$ for a confidence level of 99 percent.
+\item $k = 3$ for a confidence level of 99.7 percent.
+\end{itemize}
+Other, less common, shapes of distribution have different coverage factors.
+
+Conversely, wherever an expanded uncertainty is quoted with a given coverage factor, you can find the standard uncertainty by the reverse process, \ie, by dividing by the appropriate coverage factor. This means that expanded uncertainties given on calibration certificates, if properly expressed, can be `decoded' into standard uncertainties.
+
+
+\subsection{How to express the answer}
+It is important to express the answer so that a reader can use the information. The main things to mention are:
+\begin{itemize}
+\item The measurement result, together with the uncertainty figure, \eg, `The length of the stick was $\SI{20}{cm}\pm\SI{1}{cm}$' or `The length of the stick was $\SI{20+-1}{cm}$'.
+%
+\item The statement of the coverage factor and the level of confidence. A recommended wording is: `The reported uncertainty is based on a standard uncertainty multiplied by a coverage factor $k = 2$, providing a level of confidence of approximately 95\%'.
+%
+\item How the uncertainty was estimated (you could refer to a publication where the method is described, \eg, UKAS Publication M 3003).
+\end{itemize}
+
+
+\subsection{Example - a basic calculation of uncertainty}
+Below is a worked example of a simple uncertainty analysis. It is not realistic in every detail, but it is meant to be simple and clear enough to illustrate the method. First the measurement and the analysis of uncertainty are described. Secondly, the uncertainty analysis is shown in a table (a `spreadsheet model' or `uncertainty budget').
+
+
+\subsubsection{The measurement: how long is a piece of string?}
+Suppose you need to make a careful estimate of the length of a piece of string. Following the steps listed in above, the process is as follows.
+
+Step 1. Decide what you need to find out from your measurements. Decide what actual measurements and calculations are needed to produce the final result. You need to make a measurement of the length, using a tape measure. Apart from the actual length reading on the tape measure, you may need to consider:
+\begin{itemize}
+\item Possible errors of the tape measure: Does it need any correction, or has calibration shown it to read correctly  and what is the uncertainty in the calibration? Is the tape prone to stretching? Could bending have shortened it? How much could it have changed since it was calibrated? What is the resolution, \ie how small are the divisions on the tape (\eg, milimetres)?
+%
+\item Possible errors due to the item being measured: Does the string lie straight? Is it under- or over-stretched? Does the prevailing temperature or humidity (or anything else) affect its actual length? Are the ends of the string well-defined, or are they frayed?
+%
+\item Possible errors due to the measuring process, and the person making the measurement: How well can you line up the beginning of the string with the beginning of the tape measure? Can the tape be laid properly parallel with the string? How repeatable is the measurement? Can you think of any others?
+\end{itemize}
+
+Step 2. Carry out the measurements needed. You make and record your measurements of length. To be extra thorough, you repeat the measurement a total of 10 times, aligning the tape measure freshly each time (probably not very likely in reality!). Let us suppose you calculate the mean to be \SI{5.017}{m}, and the estimated standard deviation to be \SI{0.0021}{m} (\ie, \SI{2.1}{mm}).
+
+For a careful measurement you might also record:
+\begin{itemize}
+\item when you did it;
+\item how you did it, \eg, along the ground or vertically, reversing the tape measure or not, and other details of how you aligned the tape with the string - which tape measure you used;
+\item environmental conditions (if you think these could affect your results);
+\item anything else that could be relevant.
+\end{itemize}
+
+Step 3. Estimate the uncertainty of each input quantity that feeds into the final result. Express all uncertainties in similar terms (standard uncertainty, $u$). You would look at all the possible sources of uncertainty and estimate the magnitude of each. Let us say that in this case:
+\begin{itemize}
+\item The tape measure has been calibrated. It needs no correction, but the calibration uncertainty is 0.1 percent of reading, at a coverage factor $k = 2$ (for a normal distribution). In this case, 0.1 percent of \SI{5.017}{m} is close to \SI{5}{mm}. Dividing by 2 gives the standard uncertainty (for $k = 1$) to be $u = \SI{2.5}{mm}$.
+%
+\item The divisions on the tape are millimetres. Reading to the nearest division gives an error of no more than \SI{+-0.5}{mm}. We can take this to be a uniformly distributed uncertainty (the true readings could lie variously anywhere in the \SI{1}{mm} interval; \ie, \SI{+-0.5}{mm}). To find the standard uncertainty, $u$, we divide the half-width (\SI{0.5}{mm}) by $\sqrt 3$, giving $u = \SI{0.3}{mm}$, approximately.
+%
+\item The tape lies straight, but let us suppose the string unavoidably has a few slight bends in it. Therefore the measurement is likely to underestimate the actual length of the string. Let us guess that the underestimate is about 0.2 percent, and that the uncertainty in this is also 0.2 percent at most. That means we should correct the result by adding 0.2 percent (\ie, \SI{10}{mm}). The uncertainty is assumed to be uniformly distributed, in the absence of better information. Dividing the half-width of the uncertainty (\SI{10}{mm}) by $\sqrt 3$ gives the standard uncertainty $u = \SI{5.8}{mm}$ (to the nearest \SI{0.1}{mm}).
+\end{itemize}
+
+The above are all Type B estimates. Below is a Type A estimate.
+
+The standard deviation tells us about how repeatable the placement of the tape measure is, and how much this contributes to the uncertainty of the mean value. The estimated standard deviation of the mean of the 10 readings is found using the formula above:
+\beq
+\dfrac{s}{\sqrt n} = \dfrac{2.1}{10} = \SI{0.7}{mm}\qquad\eqtxt{to one decimal place}\,.
+\eeq
+Let us suppose that no other uncertainties need to be counted in this example. (In reality, other things would probably need to be included.)
+
+Step 4. Decide whether the errors of the input quantities are independent of each other. (If you think not, then some extra calculations or information are needed.) In this case, let us say that they are all independent.
+
+Step 5. Calculate the result of your measurement (including any known corrections for things such as calibration). The result comes from the mean reading, together with the correction needed for the string lying slightly crookedly, \ie,
+\beq
+\SI{5.017}{m} + \SI{0.010}{m} = \SI{5.027}{m}\,.
+\eeq
+
+Step 6. Find the combined standard uncertainty from all the individual aspects. The only calculation used in finding the result was the addition of a correction, so summation in quadrature can be used in its simplest form (using the equation above). The standard uncertainties are combined as
+\beq
+u_c = \sqrt{2.5^2 + 0.3^2 + 5.8^2 + 0.7^2} = \SI{6.4}{mm}\qquad\eqtxt{to one decimal place}\,.
+\eeq
+
+Step 7. Express the uncertainty in terms of a coverage factor (see above), together with a size of the uncertainty interval, and state a level of confidence. For a coverage factor $k = 2$, multiply the combined standard uncertainty by 2, to give an expanded uncertainty of \SI{12.8}{mm} (\ie, \SI{0.0128}{m}). This gives a level of confidence of about 95 percent.
+
+Step 8. Write down the measurement result and the uncertainty, and state how you got both of these. You might record:
+\begin{quote}
+The length of the string was \SI{5.027+-0.013}{m}. The reported expanded uncertainty is based on a standard uncertainty multiplied by a coverage factor $k = 2$, providing a level of confidence of approximately 95\%.
+
+The reported length is the mean of 10 repeated measurements of the string laid horizontally. The result is corrected for the estimated effect of the string not lying completely straight when measured. The uncertainty was estimated according to the method in `A Beginner's Guide to Uncertainty of Measurement'.
+\end{quote}
+
+
+\subsubsection{Analysis of uncertainty: spreadsheet model}
+To help in the process of calculation, it can be useful to summarize the uncertainty analysis or `uncertainty budget' in a spreadsheet as in \cref{tab:uncertaintybudget} below.
+%%%
+\begin{landscape}
+\docpretable{bt}{0.9\textwidth}{lcccc}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+%
+\toprule
+%
+{Source of uncertainty} & {Value ($\pm$)} & {Prob. distribution} & {Divisor} & {Std. uncertainty}\\
+%
+\midrule
+{Calibration uncertainty} & \SI{5.0}{mm} & Normal & 2 & \SI{2.5}{mm} \\
+%
+{Resolution (size of divisions)} & \SI{0.5}{mm}* & Rectangular & $\sqrt 3$ & \SI{0.3}{mm} \\
+%
+{String not lying perfectly straight} & \SI{10.0}{mm}* & Rectangular & $\sqrt 3$ & \SI{5.8}{mm} \\
+%
+{Std. uncer. of mean (10 repeated reads)} & \SI{0.7}{mm} & Normal & 1 & \SI{0.7}{mm} \\
+%
+{Combined standard uncertainty} & & Assumed normal & & \SI{6.4}{mm} \\
+%
+{Expanded uncertainty} & & Assumed normal ($k = 2$) & & \SI{12.8}{mm} \\
+\bottomrule
+%
+\end{tabularx}
+\docposttable{Uncertainty Budget}{Spreadsheet model showing the `uncertainty budget'. The * means that the ($\pm$) half-width divided by $\sqrt{3}$ was used.}{tab:uncertaintybudget}
+\end{landscape}
+%%%
+
+
+\subsection{How to reduce uncertainty in measurement}
+Always remember that it is usually as important to minimize uncertainties as it is to quantify them. There are some good practices which can help to reduce uncertainties in making measurements generally. A few recommendations are:
+\begin{itemize}
+\item Calibrate measuring instruments (or have them calibrated for you) and use the calibration corrections which are given on the certificate.
+%
+\item Make corrections to compensate for any (other) errors you know about.
+%
+\item Make your measurements traceable to national standards -- by using calibrations which can be traced to national standards via an unbroken chain of measurements. You can place particular confidence in measurement traceability if the measurements are quality-assured through a measurement accreditation (UKAS in the UK).
+%
+\item Choose the best measuring instruments, and use calibration facilities with the smallest uncertainties.
+%
+\item Check measurements by repeating them, or by getting someone else to repeat them from time to time, or use other kinds of checks. Checking by a different method may be best of all.
+%
+\item Check calculations, and where numbers are copied from one place to another, check this too.
+%
+\item Use an uncertainty budget to identify the worst uncertainties, and address these.
+%
+\item Be aware that in a successive chain of calibrations, the uncertainty increases at every step of the chain.
+%
+\end{itemize}
+
+
+\subsection{Some other good measurement practices}
+Overall, use recognized good practices in measurements, for example:
+\begin{itemize}
+\item Follow the maker's instructions for using and maintaining instruments.
+\item Use experienced staff, and provide training for measurement.
+\item Check or validate software, to make sure it works correctly.
+\item Use rounding correctly in your calculations.
+\item Keep good records of your measurements and calculations. Write down readings at the time they are made. Keep a note of any extra information that may be relevant. If past measurements are ever called into doubt, such records can be very useful.
+\end{itemize}
+Many more good measurement practices are detailed elsewhere, for example in the international standard ISO/IEC 17025 `General requirements for the competence of testing and calibration laboratories'.
+
+
+\subsection{Rounding}
+Calculators and spreadsheets can give an answer to many decimal places. There are some recommended practices for rounding the results:
+\begin{itemize}
+\item Use a meaningful degree of rounding in calculations. The uncertainty in a measurement result may define how many decimal places you should report. For example, if the uncertainty in your result is in the first decimal place, then the measurement result should probably also be stated to one decimal place, \eg, 
+\beq
+\SI{20.1+-0.2}{cm}\,.
+\eeq
+%
+\item Make your calculations to at least one more significant figure than you eventually require. Be aware of how many significant figures you need to use when multiplying or dividing or carrying out more complex calculations.
+%
+\item Rounding of values should be carried out only at the end of the calculation, to avoid rounding errors. For example, if 2.346 is rounded up to 2.35 at an early stage in a calculation, it could later be rounded up to 2.4. But if 2.346 is used throughout a calculation it would be correctly rounded to 2.3 at the \emph{final} stage.
+%
+\item Although results are finally rounded either up or down, depending on which is the nearest figure, the rule for rounding uncertainties is different. 
+\begin{quote}
+The final uncertainty is rounded up to the next largest figure, not down.
+\end{quote}
+\end{itemize}
+
+
+\subsection{Words of warning}
+Uncertainty analysis is an evolving subject area. There have been subtle changes in approach over the years. What is more, the rules given in this Beginner's Guide are not `absolute'. There are plenty of special cases where slightly different rules apply. There is even room for debate on the finer points of how to account for particular uncertainties. But still the advice given in this publication represents normal good practice.
+
+What is given here is not the full story. Special cases have not been dealt with in this Guide. Extra rules apply:
+\begin{itemize}
+\item if you use statistics on very small sets of data (less than about 10),
+\item if one component of uncertainty is much bigger than all the others involved,
+\item if some inputs to the calculation are correlated,
+\item if the spread or distribution is unusual in shape,
+\item if the uncertainty is not for a single result, but for fitting a curve or line to a number of points.
+\end{itemize}
+These cases are covered by some other texts.
+

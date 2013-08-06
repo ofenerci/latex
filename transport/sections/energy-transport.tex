@@ -1,0 +1,279 @@
+\section{Energy transport}
+%%%
+\epigraph{People goes to high place, water flows to low place}{Junping Shi}
+    {Partial Differential Equations and Mathematical Biology}
+%%%
+\epigraph{All streams flow to the sea because it is lower than they are. Humility gives it its power.}{Lao Tzu}{Tao Te Ching}
+%%%
+\epigraph{The flame that burns twice as bright burns half as long.}{Lao Tzu}{Tao Te Ching}
+%%%
+
+Be careful with notation:
+
+\begin{caution}
+We use the prime notation (Lagrange's notation for derivatives) to express time rate changes; \eg, when expressing a body internal energy time rate change: $\rate\ien$, or, equivalently, $\rate\ien = \ipd t\ien$. Note that $\dim\rate\ien = E/T$.
+
+Under the same dimensional basis, we also use the prime notation to express energy flows; \eg, when expressing thermal flow, \aka thermal power, $\flow\then$; since $\dim\flow\then = E/T$. The same applies for other flows, like work change rate, \aka mechanical power, $\flow\work$.
+
+On the other hand, however, in order to preserve undecorated variables and similarly looking equations, we use an analogous notation for fluxes: the double prime notation; \eg, when expressing thermal energy flux: $\flux\then$. Note that now $\dim\flux\then = E/L^2T$, which is \emph{not} the second derivative of thermal energy with respect to time; \ie, $\flux\then \neq \ddt\then = \iod t{\iod t\then}$.
+
+Therefore, in the case of any doubt, use the physicist's best allies: mathematical interpretation, physical reasoning and dimensional analysis.
+\end{caution}
+
+
+\subsection{Relation of thermal energy transfer and thermodynamics}
+
+\subsubsection{Theory}
+Consider a body of mass $m$ and volume $\vol$ being heated by an inflow of \lingo{thermal energy}, \lingo{thermal flow} or \lingo{thermal power}, $\flow\then$. Due to heating, the body expands and performs \lingo{work} onto the surroundings at a rate $\rate\work$. While both processes take place, on the other hand, the body \lingo{internal energy} $\ien$ changes, or accumulates, at a rate $\rate\ien$ given by the \lingo{energy conservation principle}:
+\beq
+\rate\ien = \flow\then - \flow\work\,,
+\eeq
+where the IUPAC sign convention for thermodynamics was used to find the signs for the different terms.
+
+The body internal energy is related to the body \lingo{thermodynamic temperature} $\theta$ via the phenomenological expression
+\beq
+\ien = \kshcap\mass\temp\,,
+\eeq
+where $\kshcap$ is a property of the body material called \lingo{specific heat capacity}~\footnote{~This property should really be called \lingo{specific energy capacity}, for ``heat'' is no more than energy in transit!}, or the capacity that a body has to store or release thermal energy, $\dim\kshcap = E/M\Theta$, and $\temp$ is the body thermodynamic temperature.
+
+If $\press\,\dx\vol$ is the only work that occurs, then,
+\beq
+\flow\then = \press\rate\vol + \rate\ien\,.
+\eeq
+This last equation has two well-known special cases: when the body is allowed to expand freely, \lingo{constant pressure process}, and when expansion is constrained, \lingo{constant volume process}:
+\beq
+\flow\then = 
+    \begin{cases}
+        m\kshcap_\vol\rate\temp\,, & \text{for constant volume processes; \ie, $\dx\vol = 0$,}\\
+        m\kshcap_\press\rate\temp\,, & \text{for constant pressure processes; \ie, $\dx\press = 0$,}
+    \end{cases}
+\eeq
+where $\kshcap_\vol$ is the \lingo{specific heat capacity at constant volume} and $\kshcap_\press$ the \lingo{specific heat capacity at constant pressure}.
+
+When the body is made of an incompressible substance, then, for any pressure variation, $\dx\vol = 0$ and thus the two specific capacities are equal:
+\beq
+\kshcap_\vol = \kshcap_\press = \kshcap\,.
+\eeq
+This approximation works well for solids and liquids. With this estimate, the energy conservation equation becomes
+\beq
+\flow\then = \rate\ien = \mass\kshcap\rate\temp\,.
+\eeq
+
+The work now is to solve the last equation to predict $\then$. Finding the solution, however, is not possible at this stage, for $\ien$ is not known \apriori, so some principles must be added to complete the problem formulation. These principles are called \lingo{transport laws} or \lingo{constitutive equations} and are \emph{not} a part of thermostatics. They include Fourier's law of thermal conduction, Newton's law of cooling and Stephan-Boltzmann's law of thermal radiation. Moreover, constitutive equations express physical quantities, in this case the internal energy $\ien$ and thermal energy $\then$, in terms of \lingo{state variables}, in this case temperature $\temp$.
+
+
+\subsubsection{Technical notes}
+Some technical notes on energy transfer theory.
+
+\begin{technote}
+The mathematical treatment of physical phenomena of systems composed of many particles depends on the size of the system; \ie, on the number of particles composing it. To better describe such a dependence, we rely on the concepts of microscopic and macroscopic systems. Microscopic systems can be mathematically treated by statistical mechanics, while macroscopic systems by energy transfer theory.
+
+Consider a system to be composed of $\npart$ particles. A system is called \lingo{macroscopic} if
+\beq
+\dfrac{1}{\sqrt\npart} \ll 1\,,
+\eeq
+which means that statistical arguments can be applied to reasonable accuracy. For instance, if we wish to keep the statistical error below one percent then a macroscopic system would have to contain more than about ten thousand particles. Any system containing less than this number of particles would be regarded as \lingo{microscopic}, and, hence, statistical arguments could not be applied to such a system without unacceptable error. Statistical quantum mechanics is required to analyze such systems.
+
+Thermal energy transfer is based on the macroscopic description of physical phenomena; it is thus an approximation to the microscopic description of phenomena ultimately given by statistical quantum mechanics. However, thermal energy transfer can be approximated by classical statistical mechanics. This approximation is valid when the number of particles in the system.
+\end{technote}
+
+\begin{technote}
+Thermal flow is also called \lingo{thermal energy transfer rate}.
+\end{technote}
+
+\begin{technote}
+IUPAC sign convention: All net energy transfers \emph{to} the system are positive. All net transfers \emph{from} the system are negative. A useful mnemonic is the wording `+accumulation = +inflow - outflow + release - storage'.
+\end{technote}
+
+\begin{note}
+Statistical mechanics provides a microscopic explanation of \lingo{temperature}, based on macroscopic systems' being composed of many particles, such as molecules and ions of various species, the particles of a species being all alike. It explains macroscopic phenomena in terms of the mechanics of the molecules and ions, and statistical assessments of their joint adventures. In the statistical thermodynamic approach, by the \lingo{equipartition theorem} each classical degree of freedom that the particle has will have an average energy of $\kboltz\temp/2$, where $\kboltz$ is Boltzmann's constant. The \lingo{translational motion} of the particle has three degrees of freedom, one in every direction of space, so that, except at very low temperatures where quantum effects predominate, the average translational energy of a particle in an system with temperature $\temp$ will be $3\kboltz\temp/2$.
+
+On the molecular level, temperature is the result of the motion of the particles that constitute the material. Moving particles carry kinetic energy. Temperature increases as this motion and the kinetic energy increase. The motion may be the translational motion of particles or the energy of the particle due to molecular vibration or the excitation of an electron energy level.
+
+In other words, since every degree of freedom that a particle has carries energy $e$ that equals $\kboltz\temp/2$ and since $\kboltz$ is a \emph{universal constant}, then energy is proportional to temperature: $e\propto\temp$. Therefore, one is entitled to think on temperature as energy, energy in ``disguise''.
+\end{note}
+
+\begin{dimensional}
+When analyzing thermal energy transfer, the most suitable \lingo{dimensional system} is the $ELT\Theta$ system -- a \lingo{dimensionally independent system}. Within this framework, the dimensions of energy transfer, \aka heat, of work and of internal energy are $\dim\then = \dim\work = \dim\ien = E$ and of energy flow, \aka thermal power or thermal flow, of work rate, \aka mechanical power, and of internal energy change rate, \aka accumulation, are $\dim\flow\then = \dim\rate\work = \dim\rate\ien = E/T$.
+\end{dimensional}
+
+\begin{technote}
+In giving the dimensions of the specific heat capacity $\kshcap$ as $E/M\Theta$, we are abusing of the $ELT\Theta$ system by adding mass, $M$, to it. This addition extends the dimensionally \emph{independent} $ELT\Theta$ system to the dimensionally \emph{dependent}, redundant, $EMLT\Theta$ system. We do so consciously, so to stress physics instead of mathematical purity; for, in the ``pure'' $ELT\Theta$ system, the dimensions of mass are $ET^2/L^2$ and then the dimensions of the $\kshcap$ are $L^2/T^2\Theta$; disguising therefore its physical meaning. In other words, we prefer to interpret specific heat capacity as the capacity that a body has to store energy at a given temperature per unit mass or $\dim\kshcap = E/M\Theta$, rather than the less informative $L^2/T^2\Theta$.
+\end{technote}
+
+
+\subsection{Modes of energy transfer}
+Thermal energy is transferred inside a body or among bodies by three means:
+\begin{enumerate}
+\item thermal (heat) conduction;
+\item thermal (heat) convection and
+\item thermal radiation.
+\end{enumerate}
+
+
+\subsubsection{Thermal conduction}
+Consider a body, say a rod, being heated up to temperature $\temp_1$ at one end while simultaneously being cooled down to $\temp_2$ at the other end. Consider also the body to be thermally isolated everywhere but not at the ends. Then, it can be observed that, driven by the temperature difference, $\Dx\temp = \temp_1 - \temp_2$, the thermal flow happens from the hot end to the cold one. Since such a flow happens through the body surface, it is useful to define physical quantity, \lingo{thermal flux}, to better express the energy flow and surface relation.
+
+\lingo{Thermal flux}, $\flux\then$, is thus defined as thermal flow per unit area, $\dim\flux\then = E/L^2T$. Then, \lingo{thermal conduction}, often called heat conduction, through a body is based on experimental observation: \lingo{Fourier's law}. 
+
+Fourier's law states that
+\begin{quote}
+the local thermal flux resulting from thermal conduction is proportional to the magnitude of the temperature gradient and opposite to it in sign. Mathematically,
+\beq
+\flux\then = -\kthcond\grad\temp\,.
+\eeq
+The minus sign accounts for the second law of thermostatics: thermal flow happens in the direction of \emph{falling} temperature.
+\end{quote}
+
+The proportionality ``constant'' in Fourier's law, $\kthcond$, is a definite positive number describing a substance thermal property, \lingo{thermal conductivity}, $\dim\kthcond = E/TL\Theta$. Thermal conductivity, rather than a constant, is a coefficient, because its value depends on temperature, pressure and, in mixtures, on the composition. It is a scalar as long as the material is \lingo{isotropic}, which means that the ability of the material to conduct thermal energy depends on position within the material, but for a given position not on the direction.
+
+\paragraph{Thermal conductivity values:}
+Because of how molecules are arranged, solids will have generally higher thermal conductivity values than gases. Thus, the process of thermal energy transfer is more efficient in solids than in gases. 
+
+In a gas, $\kthcond$ is proportional to the molecular speed and molar specific heat and inversely proportional to the cross-sectional area of molecules.
+
+The values for $\kthcond$ are experimentally found and presented in references as tables or figures.
+
+\begin{example}
+The front of a slab of lead ($\kthcond = \SI{35}{W/m.K}$) is kept at \SI{110}{\celsius} and the back is kept at \SI{50}{\celsius}. If the area of the slab is \SI{0.4}{m^2} and it is \SI{0.03}{m} thick, then compute the thermal energy flux and the thermal energy transfer rate.
+\end{example}
+
+\begin{solution}
+Use Fourier's law to find the energy flux:
+\beq
+\flux\then = -\kthcond\grad\temp
+           \sim -\kthcond\Dx\temp/\Dx x
+           = -(35)((110 - 50) + 273.15)/(0.03)
+           = \SI{70}{kW/m^2}\,.
+\eeq
+The thermal energy transfer rate is thus
+\beq
+\flow\then = \flux\then\surf
+           = (70)(0.4) 
+           = \SI{28}{kW}\,.\mqed
+\eeq
+\end{solution}
+
+
+\subsubsection{Thermal convection}
+Consider a typical convective cooling situation: cool gas flows past a warm body. The fluid immediately adjacent to the body forms a thin slowed-down region called \lingo{boundary layer}. Thermal energy is conducted into this layer, which sweeps it away and, farther downstream, mixes it into the stream. We call such a process of carrying thermal energy away from a body surface by a moving fluid \lingo{convection}. Isaac Newton considered the convective process and suggested that the cooling would be such that
+\beq
+\dt\temp\txt{body} \propto \temp\txt{body} - \temp\txt{fluid}\,,
+\eeq
+wherein $\temp\txt{fluid}$ is the temperature of the incoming fluid. This statement suggests that energy is flowing from the body. But if energy is constantly replenished, then the body temperature need not change. Therefore, with $\flow\then = \mass\kshcap\dt\temp$, we get
+\beq
+\flow\then \propto \temp\txt{body} - \temp\txt{fluid}\implies
+\flux\then = \kavthconv\left(\temp\txt{body} - \temp\txt{fluid}\right)\,,
+\eeq
+where $\flux\then = \flow\then/\surf$, $\surf$ is the surface area of the body and $\kavthconv$ is the \lingo{film coefficient} or \lingo{heat transfer coefficient}. The bar over $\kavthconv$ indicates that's an \emph{average} over the surface of the body. Without the bar, $\kthconv$ denotes the \lingo{local} value of the film coefficient at a point on the surface. The dimensions of both coefficients are $\dim\kthconv = \dim\kavthconv = E/TL^2\Theta$.
+
+It turns out that Newton oversimplified the process description, when he made his conjecture. Thermal convection is complicated and $\kavthconv$ can depend on the temperature difference $\temp\txt{body} - \temp\txt{fluid} = \Dx\temp$:
+\begin{itemize}
+\item $\kthconv$ is really independent of $\Dx\temp$ when the fluid is forced past a body and $\Dx\temp$ is not too large. This is called \lingo{forced convection}.
+%
+\item when fluid buoys up from a hot body or down from a cold one, $\kthconv$ varies as some weak power of $\Dx\temp$ -- typically as $\Dx\temp^{1/4}$ or $\Dx\temp^{1/3}$. This is called \lingo{free} or \lingo{natural convection}. If the body is hot enough to boil a liquid surrounding it, then $\kavthconv$ will typically vary as $\Dx\temp^{2}$.
+\end{itemize}
+
+Typical values of the film coefficient are presented in equations, tables or figures. However, they should be judiciously applied in actual designs.
+
+
+\paragraph{Lumped-capacity solution -- heat equation}
+The problem now is to predict the transient cooling of a convectively cooled object. Apply the familiar filst law statement to have
+\beq
+\flow\then = \rate\ien \implies
+-\kavthconv\surf\left(\temp - \temp\txt{fluid}\right) 
+    = \iod t\left(\dens\kshcap\vol\left(\temp - \temp\txt{ref}\right)\right)\,,
+\eeq
+where $\surf$ and $\vol$ are the surface area and volume of the body, $\temp$ the temperature of the body, $\temp = \temp\vat t$, and $\temp\txt{ref}$ is an arbitrary temperature at which the internal energy $\ien$ is defined to equal zero.
+
+The last equation can be solved by separating the variables $\temp$ and $t$. After solving the equation, after applying the initial condition $\temp\vat{t = 0} = \temp\txt i$, wherein $\temp\txt i$ the body initial temperature, and after rearranging terms, one has
+\beq
+\dfrac{\temp - \temp\txt{fluid}}{\temp\txt i - \temp\txt{fluid}} = \exp\vat{-t/\ktime}\,.
+\eeq
+Note that all the physical parameters in the problem have now been ``lumped'' into the \lingo{time constant} $\ktime$. This time constant represents the time required for a body to cool to $1/e$ or 35\% of its initial temperature difference above (or below) $\temp\txt{fluid}$. The ratio $t/\ktime$ can also be interpreted as 
+\beq
+\dfrac{t}{\ktime} = \dfrac{\kavthconv\surf t}{\dens\kshcap\vol} 
+                  = \dfrac{\text{capacity for convection from surface}}{\text{thermal capacity of the body}}\,.
+\eeq
+Note that the thermal conductivity of the body is missing from the last equations. The reason is that we have assumed that the body temperature is nearly uniform and thus means that internal conduction is unimportant. If $L/\kthcond\kavthconv \ll 1$, then the body temperature $\temp$ is almost constant within the body at any time. Therefore,
+\beq
+\dfrac{\kavthconv L}{\kthcond} \ll 1 \implies
+\temp\vat{\pos, t} \sim \temp\vat t 
+                   \sim \temp\txt{surface}
+\eeq
+and the thermal conductivity $\kthcond$ becomes irrelevant to the cooling process. This condition must be satisfied if the lumped solution is to be accurate.
+
+We call the group $\kavthconv L/\kthcond = \kbiot$ \lingo{Biot number}. If $\kbiot$ were large, then the situation would be reversed in this case, $\kbiot\ll 1$, and then the convection process offers little resistance to the thermal transfer (conduction). We could solve the \lingo{thermal diffusion equation}, \aka heat diffusion equation:
+\beq
+\kthdiff\ipd{xx}\temp = \ipd t\temp\,,
+\eeq
+object to the simple boundary condition $\temp\vat{\pos, t} = \temp\txt{fluid}$, when $x = L$ to determine the temperature in the body and its rate of cooling, in this case.
+
+Biot number will be therefore the basis for determining what sort of problem we have to solve.
+
+
+\subsubsection{Thermal radiation}
+When thermal energy is applied to a body, it generates motion of the charged particles in the body matter. Then, the body radiates electromagnetic energy -- \lingo{thermal radiation}. Equivalently, this means that all matter with temperature greater than the absolute zero emits thermal radiation, or, in other words, thermal radiation can be seen as the conversion of thermal energy into electromagnetic energy. Examples of thermal radiation are the visible light and infrared light emitted by an incandescent light bulb, the infrared radiation emitted by animals and detectable with an infrared camera.
+
+The thermal radiation of real bodies is modeled after a hypothetical radiative body called a \lingo{black-body}. If a radiation-emitting object meets the physical characteristics of a black body in thermodynamic equilibrium, then the radiation is called \lingo{black-body radiation}. There are three laws that describe the physical properties of black-bodies: Planck's law describes the \lingo{spectrum} of black-body radiation, which depends only on the object's temperature; Wien's displacement law determines the most likely \lingo{frequency of the emitted radiation} and, finally, Stefan-Boltzmann law gives the black-body \lingo{radiant emissivity}.
+
+\paragraph{Thermal transfer by thermal radiation:}
+All bodies constantly emit energy by a process of electromagnetic radiation. The intensity of such energy flux depends upon the body temperature. Most of the thermal energy that reaches you when you sit in front of a fire is radiant energy. Radiant energy warms you when you walk under the sun.
+
+Objects cooler than the fire or the sun emit much less energy, because the energy emission varies as the fourth power of absolute temperature. Very often, the emission of energy, or radiant energy transfer, from cooler bodies can be neglected in comparison with convection and conduction. (Approximate solutions and order of magnitude physics can be helpful here!) But energy transfer processes that occur at high temperatures, or with conduction or convection suppressed by evacuated insulators, usually involve a significant fraction of radiation.
+
+\paragraph{The electromagnetic spectrum:}
+Thermal radiation occurs in a range of the electromagnetic spectrum of energy emission. Accordingly, it inhabits the same wavelike properties as light or radio waves. Each quantum of radiant energy has a wavelength $\wlen$ and a frequency $\wfreq$ associated with it.
+
+The full electromagnetic spectrum includes an enormous range of energy-bearing waves, of which thermal energy is only a small part.
+
+Tables show the various forms over a range of wavelengths that spams 17 orders of magnitude. Thermal radiation, whose main component is usually the spectrum of infrared radiation, passes through a three-order-of-magnitude window in $\wlen$ or $\wfreq$. This window ranges \SIrange{0.1}{1000}{\micro m}, with a geometric mean of \SI{10}{\micro m}.
+
+\paragraph{Black-bodies:}
+The model for the perfect thermal radiator is the so-called \lingo{black-body}. This is a body that absorbs all energy that reaches it and reflects nothing. The term is a bit confusing, since they \emph{emit} energy. Thus, under infrared vision, a black-body would glow with ``color'' appropriate to its temperature. Perfect radiators are ``black'' in the sense that they absorb all visible light (and all other radiation) that reaches them.
+
+To model a black-body, a \lingo{Hohlraum} is used. Whet are the important features of a thermally black-body? First consider a distinction between thermal (heat) radiation and infrared radiation. \lingo{Infrared radiation} refers to a particular range of wavelengths, while thermal radiation refers to the whole range of radiant energy flowing from one body to another. Suppose that a radiant thermal flux $\flux\then$ falls upon a translucent plate that's not black. A fraction $\absorb$ of the total incident energy, called the \lingo{absorptance}, is absorbed by the body; a fraction $\reflect$, called the \lingo{reflectance}, is reflected by the body and a fraction $\transm$, called the \lingo{transmittance}, passes through. Thus,
+\beq
+1 = \absorb + \reflect + \transm \,.
+\eeq
+This relation can also be written for the energy carried by each wavelength in the distribution of wavelengths that makes up thermal radiant energy from a source at any temperature. 
+\beq
+1 = \absorb_\wlen + \reflect_\wlen + \transm_\wlen \,.
+\eeq
+All radiant energy incident on a black-body is absorbed, so that $\absorb\txt b = \absorb_{\wlen\txt b} = 1$ and $\reflect\txt b = \transm\txt b = 0$. Furthermore, the energy emitted by a black-body reaches a theoretical maximum given by Stefan-Boltzmann law.
+
+
+\subparagraph{Stefan-Boltzmann law:}
+The energy flux radiating from a body is designated by $\flux\then\vat t$, $\dim\flux\then = E/L^2T$. The symbol $\dbflux\vat{\wlen,\temp}$ designates the distribution function of radiative flux in $\wlen$, or the \lingo{monochromatic emission power}:
+\beq
+\dbflux\vat{\wlen,\temp} = \iod t \flux\then\vat{\wlen,\temp}\qquad\text{or}\qquad
+\flux\then\vat{\wlen,\temp}  = \int_{0}^{\wlen}\dbflux\vat{\wlen,\temp}\,\dx\wlen\,.
+\eeq
+Thus,
+\beq
+\flux\then\vat{\temp} = \flux\then\vat{\infty,\temp} 
+                      = \int_{0}^{\infty}\dbflux\vat{\wlen,\temp}\,\dx\wlen\,.
+\eeq
+
+The dependence of $\flux\then\vat{\temp}$ on temperature $\temp$ for a black-body, $\bbflux$, was found experimentally by Stefan and proved theoretically by Boltzmann. Stefan-Boltzmann law states that
+\beq
+\bbflux\vat\temp = \kstef\temp^4\,,
+\eeq
+where Stefan-Boltzmann constant $\kstef = \SI{5.670373(21)e-8}{W/m^2.K^4}$. In terms of other fundamental constants:
+\beq
+\kstef = \dfrac{2\pi^5}{15}\dfrac{\kboltz^4}{\kplanck^3\klight^2}
+       = \dfrac{2\pi^5}{15}\dfrac{\kgas^4}{\kplanck^3\klight^2\kavog^2}\,,
+\eeq
+where $\kboltz$ is Boltzmann constant, $\kplanck$ Planck constant, $\klight$ speed of light in vacuum, $\kgas$ ideal gas constant and $\kavog$ Avogadro's number.
+
+[a lot missing!]
+
+
+\subsection{A look ahead}
+To solve actual problems, three tasks must be completed:
+\begin{enumerate}
+\item thermal energy (heat) diffusion equation must be solved object to appropriate boundary and initial conditions;
+%
+\item the film (convective thermal transfer) coefficient must be determined if convection is relevant and
+\item the factor $F_{1-2}$ must be determined to calculate radiative thermal energy transfer.
+\end{enumerate}

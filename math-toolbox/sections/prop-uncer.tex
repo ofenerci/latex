@@ -1,0 +1,242 @@
+\section{Propagation of Uncertainties}
+
+[Analysis of experiments for the physical sciences, J. Mitroy]
+
+\subsection{The need for uncertainties}
+The whole structure and application of science depends on measurements which, however carefully made, are subject to uncertainties, or ``errors''. While it can take a great deal of knowledge and expertise to obtain accurate data it is just as important to analyze the data correctly. A significant part of the analysis of any experiment is to identify sources of uncertainties, reduce them whenever possible and determine the overall accuracy of the results. Unfortunately this aspect of scientific work is not treated with the importance it deserves, it is often done carelessly and in the worst cases ignored.
+
+In order to know whether two measurements of a physical quantity, say the local value of the gravitational acceleration, are the same, some idea of the reliability of each measurement is needed. Suppose the values of $g$ obtained using a sophisticated experiment that uses a laser to time the fall of a body down an evacuated tube are \SI{9.7831+-0.0002}{m/s^2} and \SI{9.7848+-0.0002}{m/s^2}. Even though the difference between the two values of $g$ is very small, being only \SI{0.0017}{m/s^2}, this difference is much larger than the stated uncertainty in the experiment and you would have to conclude that the results were mutually incompatible. On the other hand, we could hang a metal bob on the end of a string, and use this as a pendulum to measure $g$. If we obtained \SI{9.97+-0.18}{ m/s^2} and \SI{9.80+-0.20}{m/s^2} for two measurements of $g$, we would conclude that the measurements were consistent with each other. Despite the fact that the difference between the two measurements is quite large, \SI{0.17}{m/s^2}, the two results lie within their mutual uncertainties so they are compatible. The moral of the story is simple, 
+\begin{quote}
+unless the accuracy of the individual measurements is known, it is impossible to make a sensible comparison between the two measurements.
+\end{quote}
+
+The basic aim of most experiments is to obtain a value for a quantity, which I will call $x$, and determine its uncertainty $\dx x$, so that the result can be stated as
+\beq
+x\txt{best}\pm\dx x\,.
+\eeq
+This statement means that the experimenter's best estimate for the quantity is the value $x\txt{best}$, and in addition denotes the fact that the value of $x$ could in addition lie somewhere between $(x\txt{best} - \dx x)$ and $(x\txt{best} + \dx x)$. The standard convention is to define the uncertainty $\dx x$ to be positive so $(x\txt{best} + \dx x)$ is always the highest probable value of the quantity and $(x\txt{best} - \dx x)$ the lowest. In this chapter various sources of uncertainties will be discussed, then we will consider how the various uncertainties combine to give the final uncertainty. In the sections that follow, we use $x$ rather than the cumbersome expression $x\txt{best}$ to denote the best estimate of the experimental results, and we use the best estimate of $x$ when evaluating expressions.
+
+For low precision work, it is acceptable to quote the uncertainty with one significant figure. In high precision work uncertainties are stated with two significant figures. As will be seen below, there is no point in quoting uncertainties with three significant figures.
+
+
+\subsection{Relative and absolute uncertainties}
+There are two ways the uncertainty in an experimental quantity can be expressed. First as an absolute uncertainty, and second as a relative uncertainty. When an experimental measurement is written in the form
+\beq
+x\pm\dx x
+\eeq
+the quantity, $\dx x$ is the absolute uncertainty and is always positive by convention.
+
+It is also possible to express the uncertainty as a ratio. The relative (or fractional) uncertainty is defined as
+\beq
+\dx x_r = \dfrac{\dx x}{\magn{x}}\,.
+\eeq
+The relative uncertainty is always a positive number and, since $\dx x$ and $x$ have the same dimensions, the relative uncertainty, (or fractional uncertainty) is \emph{dimensionless}.
+
+The relative uncertainty is sometimes multiplied by 100 and quoted as a percentage error. While it is sometimes convenient to use the term ``percentage error'' when discussing the sizes of relative error, the use of percentage errors in written reports is discouraged.
+
+In a number of situations, such as when combining uncertainties from two different measurements, it is often more convenient to work with the relative uncertainty rather than the absolute uncertainty.
+
+
+\subsection{Uncertainties in Experimental Measurements}
+The theory which estimates the uncertainties in experimental results is sometimes called the ``Theory of Errors''. In the context of data analysis, the concept of error is used for several different things, such as spread of data resulting from random fluctuations in the length of a scale due to temperature changes, systematic errors resulting from the calibration errors in an electronic balance, or to a spread in data due to sloppy measurement technique. The term error is unfortunate, since it would seem to imply that experiments are plagued by mistakes whereas this is not always the case. A better term to use is uncertainty, and this will be used throughout this chapter and succeeding chapters. Uncertainties likely to be encountered arise from a number of causes including,
+\begin{itemize}
+\item mistakes, gross uncertainties,
+\item reading uncertainties,
+\item calibration errors,
+\item random uncertainties and
+\item systematic or regular uncertainties.
+\end{itemize}
+The first three items discuss some of the physical reasons causes result in uncertainties. The last two items divide the uncertainties into the two classes of random errors and systematic errors. As will be discussed in below, different procedures should be used when either random errors or statistical errors have to be combined to determine the total uncertainty.
+
+
+\subsection{Estimating the uncertainty in a single measurement}
+Having talked about the types of uncertainties that can arise, some discussion of how these uncertainties can be estimated immediately arises. There are no hard rules that can be used but the following methods are useful. Read The Manual or RTFM (as often abbreviated on the internet). If you are using an instrument such as a voltmeter or a Cathode Ray Oscilloscope or something more complicated it will likely come with an instruction manual. Somewhere in the manual will be a description of the reading error or the calibration error. Some simple instruments like rulers do not come with instruction manuals, but it is expected that students should be able to estimate the reading error of a ruler.
+
+One way to estimate the error is to repeat the measurement. If you are measuring the elapsed time for some process with a stopwatch, take a series of additional measurements for identical experimental conditions. The spread in the different measurements of the elapsed time will give you some idea of the uncertainty. If you are measuring the width of the bar, you might consider taking measurements at a number of different points along the length of the bar. When you have made a series of measurements, you might take the arithmetic mean as your best estimate for the experimental parameter. You also might take
+\beq
+\dx x = \dfrac{\magn{x\txt{biggest} - x\txt{smallest}}}{2}
+\eeq
+as your \emph{estimate} for the uncertainty in $x$.
+
+
+\subsection{Precision versus accuracy}
+When the words precision and accuracy are used in everyday language, they are usually interpreted as having the same meaning. (The word-processor used to create this manuscript has a built-in thesaurus. In this thesaurus, precision and accuracy are listed as synonyms).
+
+In the sciences these two words have different meanings. The best way to explain this is with an example. Suppose a series of measurements have been made with a Voltmeter which has a display showing 4 digits. However, according to the manual, the experimental uncertainty of the voltmeter might be \SI{+-1.5}{\%}. The precision of the reading refers to the accuracy of the voltmeter display (4 digits), while the accuracy of the reading is only \SI{+-1.5}{\%}.
+
+
+\subsection{Propagation of Uncertainties}
+After a number of direct measurements the final experimental result is usually calculated, via a graph and/or mathematical expression which uses all the measured quantities. The uncertainty in the final result must then be determined from measured uncertainties, that is, we must find out how measured uncertainties ``propagate'' through the calculations to produce the uncertainty in the final answer.
+
+Note: in Stephanie Bell's book, ``A Beginner's Guide to Uncertainty of Measurement'', this is called ``Combining standard uncertainties''.
+
+
+\subsubsection{Sums and Differences}
+Suppose we have measured quantities $x$, $y$, with corresponding uncertainties $\dx x$, $\dx y$, and we wish to know the uncertainty in $p$ where $p = x + y$. To estimate the uncertainty in $p$, it is only necessary to decide the highest and lowest values.
+
+Given $p = x + y$ the highest probable value of $p$ is $p = (x + y) + (\dx x + \dx y)$ and the lowest probable value is of $p$ is $p = (x + y) - (\dx x + \dx y)$. The best estimate of $p$ is $p = x + y$ and its uncertainty is $\dx p = \dx x + \dx y$.
+
+If $p$ is a function of $n$ variables, $\elset{x_i}$, then it is easy to generalize the last argument to
+\beq
+p = \left(\sum_{i = 1}^n x_i \right)\pm\left(\sum_{i = 1}^n \dx x_i\right)\,.
+\eeq
+
+
+\subsubsection{Arbitrary functions (use of differential calculus)}
+When more complicated relationships such as log, sin, \etc, occur uncertainties can be calculated by the application of differential calculus. If $x$ is measured with an uncertainty $\dx x$ and is used to calculate a function $p = p\vat x$, then the uncertainty $\dx p$ can be derived from differential calculus. Using Taylor's theorem to expand the function $p\vat x$ in the neighborhood of a point, $x$
+\beq
+p\vat{x + \dx x} = p\vat x + \xod px\,\dx x + \dotsb\,.
+\eeq
+Rearranging this, it is easy to see that
+\beq
+p\vat{x + \dx x} - p\vat x = \xod px\,\dx x + \dotsb\,.
+\eeq
+
+Interpreting, $\left(p\vat{x + \dx x} - p\vat x\right)$ as the change in $p$ resulting from a small change in $x$, gives
+\beq
+\dx p = \bigg\vert\dfrac{\dx p}{\dx x}\bigg\vert\dx x\,.
+\eeq
+(Sometimes $\dx p/\dx x$ is written as $p'\vat x$). A graphical depiction showing how a small change in $x$ leads to a change in $p$ is shown in Figure. The change in $p$ can be determined from the slope of the graph at the point of interest.
+
+
+\begin{example}
+A classic method of determining the height of a tall building involves a barometer. The method involves the experimenter taking the barometer to the top of the building, dropping it off the side and recording the time it takes to hit the ground. According to standard theory, the time taken for the barometer to reach the base is related to the height by the equation, $2h = gt^2$. Given that the local value of $g = \SI{9.783+-0.001}{m/s^2}$ and the elapsed time is \SI{3.4+-0.1}{s}, what is the height of the building and its uncertainty?
+\end{example}
+
+\begin{solution}
+Replace the values of $g$ and $t$ in the expression for $h$ to have
+\beq
+h = \dfrac{1}{2}gt^2 = \dfrac{1}{2}9.783\times 3.4^2 = \SI{56.5457}{m}\,.
+\eeq
+
+To find the absolute uncertainty in $h$, derivate the expression for $h$ using the product rule for derivatives:
+\beq
+2\dx h = \dx g t^2 + g 2t\dx t\implies
+\dx h = \dfrac{1}{2}t^2\dx g + gt\dx t\,.
+\eeq
+
+Replace numeric values for the quantities in the last equation to find
+\beq
+\dx h = (0.5)(3.4)^2(0.001) + (9.783)(3.4)(0.1) = \SI{3.332}{m}\,.
+\eeq
+
+Therefore, the height of the building can be expressed as
+\beq
+h = \SI{56.5+-3.3}{m}\,.\mqed
+\eeq
+\end{solution}
+
+An alternative solution uses the relative uncertainty instead of the absolute uncertainty:
+\begin{solution}
+Find $\dx h$ as in the previous solution, 
+\beq
+\dx h = \dfrac{1}{2}t^2\dx g + gt\dx t\,.
+\eeq
+
+Then, divide the last equation by $2h = gt^2$ to have the relative uncertainty:
+\beq
+\dfrac{\dx h}{h} = \dfrac{\dx g}{g} + 2\dfrac{\dx t}{t}\,.
+\eeq
+Note that the last equation is easier to apply and uses less operations to yield $\dx h$; \ie, it's less error prone!
+
+Next, replace numeric values in the last equation to yield:
+\beq
+\dfrac{\dx h}{h} = \dfrac{0.001}{9.783} + 2\dfrac{0.1}{3.4} = 0.0589257 \implies
+\dx h = (56.5457)(0.0589257) = 3.331997 \sim \SI{3.3}{m}\,,
+\eeq
+which agrees with the previous result.
+\end{solution}
+
+
+\begin{example}
+Suppose the diagonal length of a rectangle, $c$, has to be computed from the horizontal and vertical dimensions. Given $a = \SI{0.760 +- 0.001}{m}$ and $b = \SI{0.246 +- 0.001}{m}$, compute $c$ using the identity $c^2 = a^2 + b^2$ and determine uncertainty in $c$.
+\end{example}
+
+\begin{solution}
+Calculate $c$ as
+\beq
+c = \sqrt{a^2 + b^2} = \sqrt{0.760^2 + 0.246^2} = 0.79882\,.
+\eeq
+
+Then, find the absolute uncertainty by
+\beq
+c\dx c = a\dx a + b\dx b\implies
+\dx c = \dfrac{a}{c}\dx a + \dfrac{b}{c}\dx b\implies
+\dx c = \dfrac{0.760}{0.79882}0.001 + \dfrac{0.246}{0.79882}0.001 \sim 0.001259 \,.
+\eeq
+
+Therefore, the diagonal length of the rectangle is
+\beq
+c = \SI{0.7988+-0.0012}{m}\,.\mqed
+\eeq
+\end{solution}
+
+
+\subsubsection{General Expression for Error Propagation}
+In this section a general technique will be developed from which all the previous rules can be derived. The general technique discussed in this section is often easier to apply in situations where there are quite complicated functional relations between the experimental variables. The general expression avoids the calculation of the uncertainty in a number of steps.
+
+Suppose two quantities $x$ and $y$ have been measured and then used to calculate some function $p = p\vat{x,y}$. This function could be as simple as $p\vat{x,y} = x + y$ or something more complicated like $p\vat{x,y} = \exp{x} + \log\vat{y}$.
+
+Using Taylor's theorem generalized to two dimensions
+\beq
+p\vat{x + \dx x, y + \dx y} = p\vat{x,y} + \xpd px\dx x + \xpd py\dx y + \dotsb\,,
+\eeq
+where $\dx x$ and $\dx y$ are any small changes in $x$ and $y$ and $\cder px$ and $\cder py$ are the partial derivatives of $p$ with respect to $x$ and $y$. Identifying the uncertainty in $p$ with $(p\vat{x + \dx x, y + \dx y} - p\vat{x, y})$ we see that
+\beq
+\dx p = \bigg\vert\xpd px\bigg\vert\dx x + \bigg\vert\xpd py\bigg\vert\dx y\,.
+\eeq
+
+This result can be generalized to a system with $n$ measured variables $\elset{x_i}$ with uncertainties $\elset{\dx x_i}$. When the measured values $\elset{x_i}$ are used to compute the function $p\vat{x_i}$, then the general expression for the uncertainty is
+\begin{equation}\label{eq:erroranalysisformula}
+\dx p = \sum_{i = 1}^n\bigg\vert\xpd{p}{x_i}\bigg\vert\,\dx x_i\,.
+\end{equation}
+
+You should note that the last equation does not represent that last word in error formulae. When individual errors are statistical in nature, the manner in which errors are added together should be modified. A detailed discussion of this topic is postponed until a further section.
+
+
+\subsection{Examples}
+Find the volume of \SI{0.25}{mol} of a gas at \SI{200}{kPa} and \SI{300}{K}.
+
+
+\subsubsection{Volume calculation}
+Assume the gas to be an ideal gas. Then, model its properties by the ideal gas law: $pv = nrt$. Using such a model, the volume the gas occupies becomes
+\beq
+v = \dfrac{nrt}{p} = \dfrac{(0.25)(8.3144621)(300)}{200} \sim \SI{3.12}{L},
+\eeq
+where the value for the molar gas constant, $r = \SI[separate-uncertainty = false]{8.314 4621(75)}{J/mol.K}$, was taken from the NIST website.
+
+
+\subsubsection{Estimation of uncertainties}
+Since no uncertainties were given for the data but for $r$, assume the following:
+\begin{itemize}
+\item Type A uncertainties: molar gas constant: std. unc.: $\dx r = \SI[scientific-notation = true]{0.0000075}{J/mol.K}$. (According to the NIST website, all the values for fundamental constants are quoted with standard uncertainties.)
+%
+\item Type B uncertainties: all the rest of physical quantities are assumed to be rectangular distributed; \ie, their standard uncertainties are given by $a/\sqrt{3}$, where $a$ is an estimated uncertainty. Specifically, assume the following values for the standard uncertainties:
+\begin{itemize}
+\item amount of gas, $\dx n = 0.05/\sqrt{3} \sim \SI{0.029}{mol}$, 
+\item pressure, $\dx p = 1/\sqrt{3} \sim \SI{0.58}{kPa}$, 
+\item thermodynamic temperature, $\dx t = 1/\sqrt{3} \sim \SI{0.58}{K}$.
+\end{itemize}
+\end{itemize}
+
+Then, the combined uncertainty for $v$ can be calculated by
+\beq
+\dfrac{\dx v}{v} = \dfrac{\dx n}{n} + \dfrac{\dx r}{r} + \dfrac{\dx t}{t} - \dfrac{\dx p}{p}\,,
+\eeq
+which comes from the application of \cref{eq:erroranalysisformula}  divided by $v = nrt/p$.
+
+Introduce numeric values in the last equation to have
+\beq
+\dfrac{\dx v}{v} = \dfrac{0.029}{0.25} + \dfrac{\num[scientific-notation = true]{7.5e-6}}{8.3144626} + \dfrac{0.58}{300} - \dfrac{0.58}{200}\,,
+\eeq
+which yields the combined standard uncertainty for the volume: $\dx v \sim \SI{0.36}{L}$.
+
+Next, use a coverage factor of 2 to find the expanded uncertainty for the volume with a confidence level of 95\%; \ie, $u_v = (2)(0.36) = \SI{0.72}{L}$.
+
+Finally, report the value for the volume and its uncertainty:
+\begin{quote}
+The volume of \SI{0.25}{mol} of a gas at \SI{200}{kPa} and \SI{300}{K} is \SI{3.12+-0.72}{L}. The reported value assumes the gas to be ideal and, thus, comes directly from the application of the ideal gas law.
+
+The reported expanded uncertainty, on the other hand, results from a combined standard uncertainty multiplied by a coverage factor of 2, providing then a level of confidence of \ca 95\%.
+\end{quote}
+

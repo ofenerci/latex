@@ -1,0 +1,686 @@
+\section{Calculus}
+
+\epigraph{
+%
+When guys at MIT or Princeton had trouble doing a certain integral, it was because they couldn't do it with the standard methods they had learned in school. [..] I come along and try differentiating under the integral sign, and often it worked. So I got a great reputation for doing integrals, only because my box of tools was different from everybody else's, and they had tried all their tools on it before giving the problem to me.
+%
+}
+{Richard Feynman}
+{Surely You're Joking, Mr. Feynman!}
+
+
+\subsection{Derivative}
+In calculus, the \lingo{derivative} is a measure of how a function changes as its input changes. Loosely speaking, a derivative can be thought of as how much one quantity is changing in response to changes in some other quantity; \eg, the derivative of the position of a moving object with respect to time is the object's instantaneous velocity.
+
+The derivative of a function at a chosen input value describes \emph{the best linear approximation of the function} near that input value. Informally, the derivative is the ratio of the infinitesimal change of the output over the infinitesimal change of the input producing that change of output. For a real-valued function of a single real variable, the derivative at a point equals the slope of the tangent line to the graph of the function at that point. In higher dimensions, the derivative of a function at a point is a linear transformation called the linearization. A closely related notion is the \lingo{differential of a function}.
+
+The process of finding a derivative is called \lingo{differentiation}. The reverse process is called \lingo{antidifferentiation}. The fundamental theorem of calculus states that antidifferentiation is the same as integration. Differentiation and integration constitute the two fundamental operations in single-variable calculus.
+
+\subsubsection{Definition via difference quotients}
+Let $f$ be a real valued function. In classical geometry, the \lingo{tangent line to the graph of the function $f$ at a real number $a$} was the unique line through the point $\tuple{a,f\vat a}$ that did not meet the graph of $f$ transversally, meaning that the line did not pass straight through the graph. The derivative of $y$ with respect to $x$ at a is, geometrically, the slope of the tangent line to the graph of $f$ at $a$. The slope of the tangent line is very close to the slope of the line through $\tuple{a, f\vat a}$ and a nearby point on the graph, \eg, $\tuple{a+h, f\vat{a+h}}$. These lines are called \lingo{secant lines}. A value of $h$ close to zero gives a good approximation to the slope of the tangent line and smaller values (in absolute value) of $h$ will, in general, give better approximations. The slope $m$ of the secant line is the difference between the $y$ values of these points divided by the difference between the $x$ values, that is,
+\beq
+m = \dfrac{\diff f\vat a}{\diff a} = \dfrac{f\vat{a+h} - f\vat a}{(a+h)-a} = \dfrac{f\vat{a+h}-f\vat x}{h}\,.
+\eeq
+This expression is \lingo{Newton's difference quotient}. The derivative is the value of the difference quotient as the secant lines approach the tangent line. Formally, the \lingo{derivative of the function $f$ at $a$} is the limit
+\beq
+f'\vat a = \lim_{h\to 0} \dfrac{f\vat{a+h}-f\vat x}{h}\,.
+\eeq
+of the difference quotient as $h$ approaches zero, if this limit exists. If the limit exists, then $f$ is differentiable at $a$. Here $f'\vat a$ is one of several common notations for the derivative.
+
+Equivalently, the derivative satisfies the property that
+\beq
+\lim_{h\to 0} \dfrac{f\vat{a+h} - f\vat a - f'\vat a h}{h}\,,
+\eeq
+which has the intuitive interpretation that the tangent line to $f$ at $a$ gives \emph{the best linear approximation}~\footnote{~Example: calculate $\sin\vat{0.3}$. Solution: let $f$ be $\sin$, $a = 0$ and $h = 0.3$, then find $\sin\vat{0.3}\sim \sin\vat{0+0.3} \sim \sin\vat 0 + \cos\vat 0 0.3 \sim 0 + (1)(0.3)\sim 0.3$. Verification: the exact solution is $\sin\vat{0.3} = 0.2955202\dotsc$.}
+\beq
+f\vat{a+h}\sim f\vat a + f'\vat a h
+\eeq
+to $f$ near $a$ (\ie, for small $h$). This interpretation is the easiest to generalize to other settings.
+
+Substituting 0 for $h$ in the difference quotient causes division by zero, so the slope of the tangent line cannot be found directly using this method. Instead, define $Q\vat h$ to be the difference quotient as a function of $h$:
+\beq
+Q\vat h = \dfrac{f\vat{a+h} - f\vat a}{h}\,.
+\eeq
+$Q\vat h$ is the slope of the secant line between $\tuple{a,f\vat a}$ and $\tuple{a+h,f\vat{a+h}}$. If $f$ is a \lingo{continuous function}, meaning that its graph is an unbroken curve with no gaps, then $Q$ is a continuous function away from $h = 0$. If the limit $\lim_{h\to 0}Q\vat h$ exists, meaning that there is a way of choosing a value for 
+$Q\vat 0$ that makes the graph of $Q$ a continuous function, then the function $f$ is differentiable at $a$, and its derivative at $a$ equals $Q\vat 0$.
+
+In practice, the existence of a continuous extension of the difference quotient $Q\vat h$ to $h = 0$ is shown by modifying the numerator to cancel $h$ in the denominator. Such manipulations can make the limiting value of $Q$ for small $h$ clear even though $Q$ is still not defined at $h = 0$. This process can be long and tedious for complicated functions and many shortcuts are commonly used to simplify the process.
+
+
+\subsubsection{Continuity and Differentiability}
+If $y = f\vat x$ is differentiable at $a$, then $f$ must also be continuous at $a$. However, even if a function is continuous at a point, it may not be differentiable there. Even a function with a smooth graph is not differentiable at a point where its tangent is vertical. In summary: for a function $f$ to have a derivative it is necessary for the function $f$ to be continuous, but continuity alone is not sufficient.
+
+
+\subsubsection{The Derivative as a Function}
+Let $f$ be a function that has a derivative at every point $a$ in the domain of $f$. Because every point $a$ has a derivative, there is a function that sends the point $a$ to the derivative of $f$ at $a$. This function is written $f'\vat x$ and is called the \lingo{derivative function} or the \lingo{derivative of $f$}. The derivative of $f$ collects all the derivatives of $f$ at all the points in the domain of $f$.
+
+Sometimes $f$ has a derivative at most, but not all, points of its domain. The function whose value at a equals $f'\vat a$ whenever $f'\vat a$ is defined and elsewhere is undefined is \lingo{also called the derivative of $f$}. It is still a function, but its domain is strictly smaller than the domain of $f$.
+
+Using this idea, \emph{differentiation becomes a function of functions}: The derivative is an \lingo{operator} whose domain is the set of all functions that have derivatives at every point of their domain and whose range is a set of functions. If we denote this operator by $\fder$, then $\fder f$ is the function $f'$. Since $\fder f$ is a function, it can be evaluated at a point $a$. By the definition of the derivative function, then 
+\beq
+\fder f\vat a = f'\vat a\,.
+\eeq
+
+\subsubsection{Higher derivatives}
+Let $f$ be a differentiable function and let $f'\vat x$ be its derivative. The derivative of $f'\vat x$ (if it has one) is written $f''\vat x$ and is called the \lingo{second derivative of $f$}. Similarly, the derivative of a second derivative, if it exists, is written $f'''\vat x$ and is called the \lingo{third derivative of $f$}. These repeated derivatives are called \lingo{higher-order derivatives}.
+
+If $\pvec\vat t$ represents the \lingo{position} of an object at time $t$, then the higher-order derivatives of $x$ have physical interpretations. The second derivative of $x$ is the derivative of $x'\vat t$, the \lingo{velocity}, and by definition this is the object's \lingo{acceleration}. The third derivative of $x$ is defined to be the \lingo{jerk} and the fourth derivative is defined to be the \lingo{jounce}.
+
+A function that has $k$ successive derivatives is called \lingo{$k$ times differentiable}. If in addition the $k$-th derivative is continuous, then the function is said to be of differentiability class $C^k$. (This is a stronger condition than having $k$ derivatives. A function that has infinitely many derivatives is called \lingo{infinitely differentiable} or \lingo{smooth}.
+
+On the real line, every polynomial function is infinitely differentiable. By standard differentiation rules, if a polynomial of degree $n$ is differentiated $n$ times, then it becomes a \lingo{constant function}. All of its subsequent derivatives are identically zero. In particular, they exist, so polynomials are smooth functions.
+
+The derivatives of a function $f$ at a point $x$ provide \emph{polynomial approximations to that function near $x$}. For example, if $f$ is twice differentiable, then
+\beq
+f\vat{x+h}\sim f\vat x + f'\vat x h + \dfrac{1}{2} f''\vat x h^2\,,
+\eeq
+in the sense that
+\beq
+\lim_{h\to 0} \dfrac{f\vat{x+h} - f\vat x - f'\vat x h - \tfrac{1}{2}f''\vat x h^2}{h^2}\,.
+\eeq
+If $f$ is infinitely differentiable, then this is the beginning of the \lingo{Taylor series for $f$}.
+
+
+\subsubsection{Inflection point}
+A point where the second derivative of a function changes sign is called an \lingo{inflection point}. At an inflection point, the second derivative may be zero, as in the case of the inflection point $x=0$ of the function $y=x^3$, or it may fail to exist, as in the case of the inflection point $x=0$ of the function $y=x^{1/3}$. \emph{At an inflection point, a function switches from being a convex function to being a concave function or \vis.}
+
+
+\subsection{Chain Rule}
+In calculus, the \lingo{chain rule} is a formula for computing the derivative of the composition of two or more functions. That is, if $f$ is a function and $g$ is a function, then the chain rule expresses the derivative of the composite function $f\fcomp g$ in terms of the derivatives of $f$ and $g$. For example, the chain rule for $(f\fcomp g)\vat x\defby f\vat{g\vat x}$ is
+\beq
+\xod fx = \xod fg \xod gx\,.
+\eeq
+In other notation: $(f\fcomp g )'\vat x = f'\vat{g\vat x}g\vat x$.
+
+
+\begin{example}
+Analyze the physics of a skydiver who jumps from an aircraft. Assume that $t$ seconds after his jump, his height above sea level in meters is given by $g\vat t = 4000 - 4.9t^2$. One model for the atmospheric pressure at a height $h$ is $f\vat h = 101325 e^{-0.0001h}$. 
+\end{example}
+These two equations can be differentiated and combined in various ways to produce the following data:
+\begin{itemize}
+\item $g'\vat t = -9.8t$ is the velocity of the skydiver at time $t$
+%
+\item $f'\vat h = -10.1325e^{-0.0001h}$ is the rate of change in atmospheric pressure with respect to height at the height $h$ and is proportional to the buoyant force on the skydiver at $h$ meters above sea level. (The true buoyant force depends on the volume of the skydiver.)
+%
+\item $(f\fcomp g)\vat t$ is the atmospheric pressure the skydiver experiences $t$ seconds after his jump.
+%
+\item $(f\fcomp g)'\vat t$ is the rate of change in atmospheric pressure with respect to time at $t$ seconds after the skydiver's jump and is proportional to the buoyant force on the skydiver at $t$ seconds after his jump.
+\end{itemize}
+The chain rule gives a method for computing $(f\fcomp g)'\vat t$ in terms of $f'$ and $g'$. While it is always possible to directly apply the definition of the derivative to compute the derivative of a composite function, this is usually very difficult. The utility of the chain rule is that it turns a complicated derivative into several easy derivatives.
+
+The chain rule states that, under appropriate conditions, $(f\fcomp g)'\vat x = f'\vat{g\vat x}g\vat x$. In this example, this equals
+\beq
+(f\fcomp g)'\vat t = (-10.1325\,e^{-0.0001(4000 - 4.9t^2)})(-9.8t) \,.
+\eeq
+
+In the statement of the chain rule, $f$ and $g$ play slightly different roles because $f'$ is evaluated at $g\vat t$, whereas $g'$ is evaluated at $t$. This is necessary to make the units work out correctly. For example, suppose that we want to compute the rate of change in atmospheric pressure ten seconds after the skydiver jumps. This is $(f\fcomp g)'\vat{10}$ and has units of Pascals per second. The factor $g'\vat{10}$ in the chain rule is the velocity of the skydiver ten seconds after his jump, and it is expressed in meters per second. $f'\vat{g\vat{10}}$ is the change in pressure with respect to height at the height $g\vat{10}$ and is expressed in Pascals per meter. The product of $f'\vat{g\vat{10}}$ and $g'\vat{10}$ therefore has the correct units of Pascals per second. It is not possible to evaluate $f$ anywhere else. For instance, because the 10 in the problem represents ten seconds, the expression $f'\vat{10}$ represents the change in pressure at a height of ten seconds, which is nonsense. Similarly, because $g'\vat{10 = -\SI{98}{m/s}}$, the expression $f'\vat{g'\vat{10}}$ represents the change in pressure at a height of -98 meters per second, which is also nonsense. However, $g\vat{10}$ is 3020 meters above sea level, the height of the skydiver ten seconds after his jump. This has the correct units for an input to $f$.
+
+
+\subsection{Riemann Sums and Definite Integrals}
+
+\subsubsection{Riemann Sums}
+For a function $f$ defined on $[a,b]$, a \lingo{partition} $P$ of $[a,b]$ into a collection of subintervals
+\beq
+[a=x_0, x_1],\,[x_1, x_2],\,\dotsc\,,[x_{n-1}, x_n = b]\,,
+\eeq
+for each $i = 1,2,\dotsc,n$, a point $x_i^*$ in $[x_{i-1},x_i]$, the sum
+\beq
+\sum_{i=1}^{n}f\vat{x_i^*}\left(x_i - x_{i-1} \right) = \sum_{i=1}^{n}f\vat{x_i^*}\,\diff x
+\eeq
+is called a \lingo{Riemann sum} for $f$ determined by the partition $P$. Let 
+\beq
+\magn P = \max\elset{x_i - x_{i-1}\text{ for all } i = 1,2,\dotsc,n}
+\eeq
+denote the longest length of all the subintervals.
+
+
+\subsubsection{The Definite Integral}
+The \lingo{definite integral} of $f$ from $a$ to $b$ is the number
+\beq
+\int_a^b f\vat x\,\dx x = \lim_{\magn P\to 0}\sum_{i=1}^{n}f\vat{x_i^*}\,\diff x
+\eeq
+provided the limit exists. (We in this case say $f$ is \lingo{integrable} on $[a,b]$).
+
+
+\subsubsection{Computing Riemann Sums}
+For a continuous function $f$ on $[a,b]$, then $\int_a^b f\vat x\,\dx x$ always exists and can be computed by
+\beq
+\int_a^b\,f\vat x\,\dx x = \lim_{n\to\infty}\sum_{i=1}^{n}f\vat{x_i^*}\,\diff x
+\eeq
+for any choice of the $x_i^*$ in $[x_{i-1} - x_i]$ with $\diff x = (b - a)/n$ and $x_i = a + i\diff x$. This is, $P$ partitions $[a,b]$ into equal length subintervals, called a \lingo{regular partition}.
+
+
+\begin{example}
+Compute the Riemann sum $\sum_{i = 1}^{n}f\vat{x_i^*}\,\diff x$ for the function $f\vat x = 1/x$ on $[1,6]$ with a regular partition into $n = 5$ subintervals and width $x_i^* = x_i$.
+\end{example}
+
+\begin{solution}
+%
+Note that $a = 1$, $b = 6$ and $n = 5$. Compute then the following
+\begin{align*}
+     \diff x &= \dfrac{b - a}{n} = \dfrac{6 - 1}{5} = 1\,,\\
+         x_i &= a + i\diff x = 1 + i\,, \text{ for each $i$}\,,\\
+f\vat{x_i^*} &= f\vat{x_i} = \dfrac{1}{1 + i}\,, \text{ for each $i$}\,.
+\end{align*}
+
+Therefore, we have
+\beq
+\sum_{i = 1}^{5}f\vat{x_i^*}\,\diff x = \sum_{i = 1}^{5}\dfrac{1}{1 + i} 
+    = \dfrac{1}{2} + \dfrac{1}{3} + \dfrac{1}{4} + \dfrac{1}{5} + \dfrac{1}{6}\,.
+\eeq
+%
+\end{solution}
+
+
+\subsubsection{Properties of the Integral}
+\begin{itemize}
+%
+\item Linearity with respect to the integrand: if $f_1, f_2,\dotsc, f_n$ are integrable in $[a,b]$, then so is $c_1f_1, c_2f_2,\dotsc,c_nf_n$ for all reals $c_1, c_2,\dotsc,c_n$, and
+\beq
+\int_a^b \sum_{k = 1}^{n}c_k f_k = \sum_{k = 1}^{n}c_k \int_a^b f_k\,.
+\eeq
+%
+\item Additivity with respect to the interval of integration: if two of the following three integrals exist, then the third also exists, and we have
+\beq
+\int_a^b f + \int_b^c f = \int_a^c f \,.
+\eeq
+%
+\item Invariance under translation: if $f$ is integrable on $[a,b]$, then for every real $c$ we have
+\beq
+\int_a^b f\vat x\,\dx x = \int_{a+c}^{b+c}f\vat{x - c}\,\dx x\,.
+\eeq
+%
+\item Expansion and contraction of the interval of integration: if $f$ is integrable on $[a,b]$, then for every real $k\neq 0$ we have
+\beq
+\int_a^b f\vat x\,\dx x = \dfrac{1}{k}\int_{ka}^{kb}f\vat{\dfrac{1}{k}}\,\dx x\,.
+\eeq
+When $k = -1$, the last theorem is called \lingo{reflection property}.
+%
+\item Comparison theorem: if both $f$ and $g$ are integrable on $[a,b]$ and if $g\vat x\leq f\vat x$ for every $x$ in $[a,b]$, then we have
+\beq
+\int_a^b g \leq \int_a^b f\,.
+\eeq 
+In particular, when $g\vat x = 0$ for every $x$. In this case, if $f\vat x \geq 0$ everywhere on $[a,b]$, then $\int_a^b f\vat x\,\dx x \geq 0$. In other words, a nonnegative function has a nonnegative integral.
+%
+\end{itemize}
+
+
+\subsection{Definite Integral}
+If $f$ is a continuous function defined on $[a,b]$, if $[a,b]$ is divided into $n$ equal subintervals of width $\diff x = (b - a)/n$ and if $x_k = a + k\diff x$ is the right endpoint of the subinterval $k$, then the definite integral of $f$ from $a$ to $b$ is the number
+\beq
+\int_a^b f\vat x\,\dx x = \lim_{n\to\infty}\sum_{k = 1}^{n}f\vat{x_k}\,\diff x\,.
+\eeq
+
+
+\subsection{Leibniz Integral Rule}
+In Calculus, \lingo{Leibniz's rule for differentiation under the integral sign} tells us that if we have an integral of the form
+\beq
+\int_{y_0}^{y_1}f\vat{x,y}\,\dx y\,,
+\eeq
+then for $x$ in $\tuple{x_0, x_1}$ the derivative of this integral is thus expressible
+\beq
+\xod{}x \left(\int_{y_0}^{y_1}f\vat{x,y}\,\dx y\right) = \int_{y_0}^{y_1}\cder fx\vat{x,y}\dx y\,,
+\eeq
+provided that $f$ and its partial derivative $\cder fx$ are both continuous over a region in the form $[x_0, x_1]\sprod[y_0, y_1]$.
+
+Thus under certain conditions, one may \emph{interchange the integral and partial differential operators}. This important result is particularly useful in the \emph{differentiation of integral transforms}. An example of such is the moment generating function in probability theory, a variation of the Laplace transform, which can be differentiated to generate the moments of a random variable. Whether Leibniz's Integral Rule applies is essentially a question about the interchange of limits.
+
+A Leibniz integral rule for three dimensions is
+\beq
+\xod{}{t}\iint_{\Sigma\,\vat{t}}F\vat{\pvec, t}\iprod\dx A 
+    = \iint_{\Sigma\,\vat{t}}\left(\cder Ft\vat{\pvec, t} + \left( \gder\iprod F\vat{\pvec, t} \right)v \right)\iprod\dx A
+      -\oint_{\partial\Sigma\,\vat{t}}\left(v\cprod F\vat{\pvec, t}\right)\iprod\dx s \,,
+\eeq
+where $F\vat{\pvec, t}$ is a \lingo{vector field} at the \lingo{spatial position vector} $\pvec$ at \lingo{time} $t$; $\Sigma$ is a \lingo{moving surface} in three-space bounded by the closed curve $\partial\Sigma$; $\dx A$ is a \lingo{vector element of the surface} $\Sigma$;  $\dx s$ is a \lingo{vector element of the curve} $\partial\Sigma$; $v$ is the \lingo{velocity vector} of movement of the region $\Sigma$; $\gder\iprod{}$ is the \lingo{vector divergence} and $\cprod$ is the vector cross product. The \lingo{double integrals} are \lingo{surface integrals over the surface} $\Sigma$, and the \lingo{line integral} is over the bounding curve $\partial\Sigma$.
+
+[another form]
+\lingo{Differentiation under the integral sign} is a useful operation in calculus. Formally it can be stated as follows:
+
+\begin{theorem}
+Let $f\vat{x, t}$ be a function such that both $f\vat{x, t}$ and its partial derivative $\cder fx\vat{x, t}$ are continuous in $t$ and $x$ in some region of the $(x,t)$-plane, including $a\vat x \leq t \leq b\vat x$, $x_0 \leq x \leq x_1$. Also suppose that the functions $a\vat x$ and $b\vat x$ are both continuous and both have continuous derivatives for $x_0 \leq x \leq x_1$. Then $x_0 \leq x \leq x_1$:
+\beq
+\xod{}{x}\left(\int_{a\vat x}^{b\vat x}f\vat{x,t}\,\dx t \right) 
+    = f\vat{x, b\vat x}b'\vat x 
+      - f\vat{x,a\vat x}a'\vat x
+      + \int_{a\vat x}^{b\vat x}\cder fx\vat{x,t}\,\dx t\,.
+\eeq
+\end{theorem}
+
+This formula is the general form of the Leibniz integral rule and can be derived using the fundamental theorem of calculus. The [second] fundamental theorem of calculus is just a particular case of the above formula, for $a\vat x = a$, $a$ constant, $b\vat x = x$ and $f\vat{x,t} = f\vat t$.
+
+The following three basic theorems on the interchange of limits are essentially equivalent:
+\begin{itemize}
+\item the interchange of a derivative and an integral (differentiation under the integral sign; \ie, Leibniz integral rule),
+\item the change of order of partial derivatives,
+\item the change of order of integration (integration under the integral sign; \ie, Fubini's theorem).
+\end{itemize}
+
+The Leibniz integral rule can be extended to multidimensional integrals. In two and three dimensions, this rule is better known from the field of fluid dynamics as the \lingo{Reynolds transport theorem}:
+\beq
+\xod{}{t}\int_{D\vat t}\phi\vat{\pvec,t}\,\dx V 
+    = \int_{D\vat t}\cder{\phi}{t}\vat{\pvec,t}\,\dx V
+      + \int_{\partial D\vat t}\phi\vat{\pvec,t}v_b\iprod\dx\Sigma\,,
+\eeq
+where $\phi\vat{\pvec, t}$ is a \lingo{scalar function}, $D\vat t$ and $\partial D\vat t$ denote a \lingo{time-varying connected region of $\nset R3$ and its boundary}, $v_b$ is the \lingo{Eulerian velocity of the boundary} and $\dx\Sigma = n\dx S$ is the \lingo{unit normal component of the surface element}.
+
+
+\subsection{Lagrangian and Eulerian Specification of the Flow Field}
+In fluid dynamics and finite-deformation plasticity the \lingo{Lagrangian specification of the flow field} is a way of looking at fluid motion where the
+\begin{quote}
+observer follows an individual fluid parcel as it moves through space and time.
+\end{quote} 
+Plotting the position of an individual parcel through time gives the \lingo{pathline} of the parcel. This can be visualized as sitting in a boat and drifting down a river.
+
+The \lingo{Eulerian specification of the flow field} is a way of looking at fluid motion that focuses on 
+\begin{quote}
+specific locations in the space through which the fluid flows as time passes.
+\end{quote}
+This can be visualized by sitting on the bank of a river and watching the water pass the fixed location.
+
+The Lagrangian and Eulerian specifications of the flow field are sometimes loosely denoted as the Lagrangian and Eulerian frame of reference. However, in general both the Lagrangian and Eulerian specification of the flow field can be applied in any observer's frame of reference, and in any coordinate system used within the chosen frame of reference.
+
+\subsubsection{Description}
+In the Eulerian specification of the flow field, the flow quantities are depicted as a function of position $\pvec$ and time $t$. Specifically, the flow is described by a function
+\beq
+v\vat{\pvec, t}
+\eeq
+giving the flow \lingo{velocity at position $x$ at time $t$}.
+
+On the other hand, in the Lagrangian specification, individual \lingo{fluid parcels} are followed through time. The fluid parcels are labelled by some (time-independent) \emph{vector field $a$}. (Often, $a$ is chosen to be the \lingo{center of mass of the parcels at some initial time $t_0$}. It is chosen in this particular manner to account for the possible changes of the shape over time. Therefore, the center of mass is a good parametrization of the velocity $v$ of the parcel.) In the Lagrangian description, the flow is described by a function
+\beq
+X\vat{a,t}
+\eeq
+giving the position of the parcel labeled $a$ at time $t$.\\
+
+The two specification are related as follows:
+\beq
+v\vat{X\vat{a,t}} = \cder Xt\vat{a,t}\,.
+\eeq
+because both sides describe the velocity of the parcel labeled $a$ at time $t$.
+
+Within a chosen coordinate system, $a$ and $x$ are referred to as the Lagrangian coordinates and Eulerian coordinates of the flow.
+
+\subsubsection{Substantial Derivative}
+The Lagrangian and Eulerian specifications of the kinematics and dynamics of the flow field are related by the \lingo{substantial derivative} (\aka, the Lagrangian derivative, convective derivative, material derivative, particle derivative and so on).
+
+Suppose we have a flow field with Eulerian specification $v$, and we are also given some function (vector field or scalar field) $f\vat{x,t}$ defined for every position $x$ and every time $t$. (For instance, $f$ could be an external force field -- vector field -- or temperature -- scalar field.) Now one might ask about the total rate of change of $f$ experienced by a specific flow parcel. This can be computed as
+\beq
+\xmd ft = \xpd ft + (v\iprod\gder) f \implies \dt f = \cder ft + (v\iprod\gder) f\,,
+\eeq
+(where $\gder$ denotes the gradient with respect to $x$ and the operator $v\iprod\gder$ is to be applied to each component of $f$.) This tells us that 
+\begin{quote}
+the total rate of change of the function $f$ as the fluid parcels moves through a flow field described by its Eulerian specification $v$ is equal to the sum of the local rate of change and the convective rate of change of $f$. 
+\end{quote}
+This is a consequence of the \emph{chain rule} since we are differentiating the function $f\vat{X\vat{a,t},t}$ with respect to $t$; \viz, let $\phi\vat{\pvec, t}$ be a scalar function where $\pvec$ in turns depend on $t$: $\pvec = \tuple{x\vat t, y\vat t, z\vat t}$. Then, by applying the chain rule, we have
+\beq
+\xmd \phi t = \xpd \phi t + \xpd \phi x \xod xt + \xpd \phi y \xod yt + \xpd \phi z \xod zt
+            = \cder \phi t + \dt x \cder \phi x + \dt y \cder \phi y + \dt z \cder \phi z\,.
+\eeq
+Noting that $v = \tuple{\dt x, \dt y, \dt z}$ is the velocity vector, then, we find
+\beq
+\mder\phi t = \dt\phi = \cder \phi t + v\iprod\gder \phi\,.\mqed
+\eeq
+
+Physically, the last equation describes the change rate of a scalar quantity with a parcel of fluid moving along the fluid, Lagrange description of fluid motion. The term $\cder ft$ is the Eulerian description of fluid motion, so the relationship between the two descriptions is
+\beq
+\cder\phi t = \mder\phi t - v\iprod\gder\phi \,.\mqed
+\eeq
+
+
+\subsubsection{Material Derivative}
+In continuum mechanics, the \lingo{material derivative} describes the time rate of change of some physical quantity (like heat or momentum) for a material element subjected to a space-and-time-dependent velocity field. The material derivative can serve as a link between Eulerian and Lagrangian descriptions of continuum deformation.
+
+For example, in fluid dynamics, take the case that the velocity field under consideration is the flow velocity itself, and the quantity of interest is the temperature of the fluid. Then the material derivative describes the temperature evolution of a certain fluid parcel in time, as it is being \emph{moved along its pathline} (trajectory) while following the fluid flow.
+
+There are many other names for this operator, including:
+\begin{multicols}{2}
+\begin{itemize}
+\item convective derivative,
+\item advective derivative,
+\item substantive derivative,
+\item substantial derivative,
+\item Lagrangian derivative,
+\item Stokes derivative,
+\item particle derivative,
+\item hydrodynamic derivative,
+\item derivative following the motion,
+\item \emph{total derivative}.
+\end{itemize}
+\end{multicols}
+
+The material derivatives of a \lingo{scalar field} $\phi\vat{\pvec\vat t, t}$ and a \lingo{vector field} $u\vat{\pvec\vat t, t}$ are defined as:
+\beq
+\begin{cases}
+\mder\phi t = \cder\phi t + v\iprod\gder\phi\,,\\
+\mder u t = \cder u t + v\iprod\gder u\,.
+\end{cases}
+\eeq
+where the distinction is that $\gder\phi$ is the \emph{gradient of a scalar}, while $\gder u$ is the \emph{covariant derivative of a vector}. In case of the material derivative of a vector field, the term $v\iprod\gder u$ can both be interpreted as $v\iprod(\gder u)$ involving the tensor derivative of $u$, or as $(v\iprod\gder)u$, leading to the same result.
+
+Confusingly, the term convective derivative is both used for the whole material derivative $\mder\phi t$ or $\mder ut$, and for only the spatial rate of change part, $v\iprod\gder\phi$ or $v\iprod\gder u$ respectively. For that case, the convective derivative only equals $\mathrm{D}/\mathrm{t}$ for time independent flows.
+
+These derivatives are physical in nature and describe the transport of a scalar or vector quantity in a velocity field $v\vat{\pvec, t}$. The effect of the time independent terms in the definitions are for the scalar and vector case respectively known as \lingo{advection} and \lingo{convection}.
+
+
+\subsection{Partial Derivative}
+In mathematics, a \lingo{partial derivative} of a function of several variables is its derivative with respect to one of those variables, with the others held constant (that is the rate of change is taken along one of the coordinate curves, all other coordinates being constant, as opposed to the total derivative, in which all variables are allowed to vary). Partial derivatives are used in vector calculus and differential geometry.
+
+The partial derivative of a function $f$ with respect to the variable $x$ is variously denoted by
+\beq
+f'_x, f_x, \cder fx, \partial_x f\text{ or } \xpd fx \,.
+\eeq
+
+
+\subsection{Directional Derivative}
+In mathematics, the \lingo{directional derivative} of a multivariate differentiable function along a given vector $v$ at a given point $x$ intuitively represents the instantaneous rate of change of the function, moving through $x$ with a velocity specified by $v$. It therefore generalizes the notion of a partial derivative, in which the rate of change is taken along one of the coordinate curves, all other coordinates being constant.
+
+The directional derivative is a special case of the Gâteaux derivative.
+
+
+\subsubsection{Definition}
+The directional derivative of a scalar function $f\vat{\pvec} = f\vat{x_1,x_2,\dotsc,x_n}$ along a vector $v = \tuple{v_1, v_2, \dotsc, v_n}$ is the function defined by the limit
+\beq
+\dder{f\vat x}{v} = \lim_{h\to 0}\dfrac{f\vat{x + hv} - f\vat x}{h}\,,
+\eeq
+where $h$ is a scalar.
+
+If the function $f$ is differentiable at $x$, then the directional derivative exists along any vector $v$, and one has
+\beq
+\dder{f\vat x}{v} = \gder f\vat x\iprod v\,,
+\eeq
+where the $\gder$ on the right denotes the gradient (scalar part of the geometric derivative) and $\iprod$ is the dot product. At any point $x$, the directional derivative of $f$ intuitively represents the rate of change in $f$ moving at a rate and direction given by $v$ at the point $x$.
+
+Some authors define the directional derivative to be with respect to the vector v after normalization, thus ignoring its magnitude. In this case, one has
+\beq
+\dder{f\vat x}{v} = \lim_{h\to 0}\dfrac{f\vat{x + hv} - f\vat x}{h\magn{v}}\,,
+\eeq
+or in case $f$ is differentiable at $x$,
+\beq
+\dder{f\vat x}{v} = \gder f\vat x\iprod \dfrac{v}{\magn v}\,,
+\eeq
+
+This definition has several disadvantages: it only applies when the norm of a vector is defined and the vector is not null. It is also incompatible with notation used elsewhere in mathematics and physics and engineering, and so should \emph{not} be used.
+
+
+\subsubsection{Notation}
+Directional derivatives can be also denoted by:
+\beq
+\dder{f\vat x}{v}\sim \xpd{f\vat x}{\magn v}\sim f'_{v}\vat x\sim \mder{f\vat x}{v}\sim v\iprod\gder f\vat x\,.
+\eeq
+
+
+\subsubsection{Properties}
+Many of the familiar properties of the ordinary derivative hold for the directional derivative. These include, for any functions (vector or scalar) $f$ and $g$ defined in a neighborhood of, and differentiable at, $p$:
+\begin{enumerate}
+\item The sum rule: $\dder{fg}{v} = \dder{f}{v} + \dder{g}{v}$\,.
+%
+\item The sum rule: for any constant $c$, $\dder{cf}{v} = c\dder{f}{v}$\,.
+%
+\item The product rule (or Leibniz rule): $\dder{fg}{v} = \dder{f}{v}\,g + f\dder{g}{v} = g\dder{f}{v} + f\dder{g}{v}$. (The rearrangement of $\dder{f}{v}\,g$ for $g\dder{f}{v}$ is possible when \emph{not} using geometric calculus (\ie, when using vector calculus), for the geometric product is not generally commutative; \viz, $\dder{f}{v}\,g\neq g\dder{f}{v}$. In any case, geometric calculus or vector calculus, the rearrangement is possible if both functions are scalar functions.)
+%
+\item The chain rule: If $g$ is differentiable at $p$ and $h$ is differentiable at $g\vat p$, then $\dder{h\fcomp g}{v}\vat p = h'\vat{g\vat p}\dder{g\vat p}{v}$.
+\end{enumerate}
+
+
+\subsection{Vector Area}
+In geometry, for a finite planar surface of scalar area $\magn S$, the \lingo{vector area} $S$ is defined as a vector whose magnitude is $\magn S$ and whose direction is perpendicular to the plane, as determined by the right hand rule on the rim:
+\beq
+S = n\magn S\,.
+\eeq
+For an orientable surface $S$ of a set $\magn{S_i}$ of flat facet areas, the vector area of the surface is given by
+\beq
+S = \sum_i n_i \magn{S_i}\,,
+\eeq
+where $n_i$ is the unit normal vector to the area $\magn{S_i}$.
+
+For bounded, oriented curved surfaces that are sufficiently well-behaved, we can still define vector area. First, we split the surface into infinitesimal elements, each of which is effectively flat. For each infinitesimal element of are, we have an area vector, also infinitesimal:
+\beq
+\dx S = n\,\dx\magn{S}\,,
+\eeq
+where $n$ is the local unit vector perpendicular to $\dx S$. Integrating gives the vector area for the surface:
+\beq
+S = \int\,\dx S\,.
+\eeq
+
+For a curved or faceted surface, the vetor area is smaller in magnitude than the area. As an extreme example, a closed surface can possess arbitrarily large area, but its vector area is necessarily zero. Surfaces that share a boundary may have very different areas, but they must have the same vector area -- the vector area is entirely determined by the boundary. These are consequences of Stokes theorem.
+
+The concept of an area vector simplifies the equation for determining the flux through the surface. Consider a planar surface in a uniform field. The flux can be written as the dot product of the field and area vector. This is much simpler than multiplying the field strength by the surface area and the cosine of the angle between the field and the surface normal.
+
+Projection of area onto planes: the projected area onto (for example) the $x-y$ plane is equivalent to the $z$-component of the vector area and is given by
+\beq
+S_z = \magn S\,\cos\vat\theta\,,
+\eeq
+where $\theta$ is the angle between the plane normal and the $z$-axis.
+
+
+\subsection{Line Integral}
+In mathematics, a \lingo{line integral} (sometimes called a \lingo{path integral}, contour integral or curve integral); not to be confused with calculating arc length using integration) is an integral where the function to be integrated is evaluated along a curve.
+
+The function to be integrated may be a scalar field or a vector field. The value of the line integral is the sum of values of the field at all points on the curve, weighted by some scalar function on the curve (commonly arc length or, for a vector field, the scalar product of the vector field with a differential vector in the curve). This weighting distinguishes the line integral form simpler integrals defined on intervals. Many simple formulae in physics (for example, $w = f\iprod s$) have natural continuous analogs in terms of line integrals ($w = \oint_C f\iprod\dx S$). The line integral finds the work done on an object moving through an electric or gravitational field, for example.
+
+
+\subsubsection{Vector Calculus}
+In qualitative terms, a line integral in vector calculus can be thought of as a measure of the total effect of a given field along a given curve. More specifically, the line integral over a scalar field can be interpreted as the area under the field carved out by a particular curve. This can be visualized as the surface created by $z = f\vat{x,y}$ and a curve $\curve C$ in the $x-y$ plane. The line integral of $f$ would be the area of the ``curtain'' created when the points of the surface that are directly over $\curve C$ are carved out.
+
+
+\subsubsection{Line Integral of a Scalar Field}
+Definition: for some scalar field $\fdef f{\set U\subset\nset Rn}{\set R}$, the line integral along a piecewise smooth curve $\curve C\subset\set U$ is deea
+\beq
+\int_C f\,\dx s = \int_a^b f\vat{r\vat t}\vert r'\vat t \vert\,\dx t\,,
+\eeq
+where $\fdef r{[a,b]}{\curve C}$ is an arbitrary bijective parametrization of $\curve C$ such that $r\vat a$ and $r\vat b$ give the endpoints of $\curve C$ and $a < b$.
+
+The function $f$ is called the integrand, the curve $\curve C$ is the domain of integration and the symbol $\dx s$ may be intuitively interpreted as an elementary arc length. Line integrals of scalar fields over a curve $\curve C$ do not depend on the chosen parametrization $r$ of $\curve C$.
+
+Geometrically, when the scalar field $f$ is defined over a plane, its graph is a surface $z = f\vat{x,y}$ in space and the line integral gives the (signed) cross-sectional area bounded by the curve $\curve C$ and the graph of $f$.
+
+
+\subsubsection{Line Integral of a Vector Field}
+Definition: for a vector field $\fdef f{\set U\subset\nset Rn}{\nset Rn}$, the line integral along a piecewise smooth curve $\curve C\subset\set U$, in the direction of $r$, is defined is
+\beq
+\int_C f\vat r \iprod\dx r = \int_a^b f\vat{r\vat t}\iprod r'\vat t\,\dx t\,,
+\eeq
+where $\iprod$ is the dot product and $\fdef r{[a,b]}{\curve C}$ is an arbitrary bijective parametrization of $\curve C$ such that $r\vat a$ and $r\vat b$ give the endpoints of $\curve C$ and $a < b$.
+
+A line integral of a scalar field is thus a line integral of a vector field were the vectors are always tangential to the line.
+
+Line integrals of vector fields are independent of the parametrization $r$ in absolute value, but they do depend on its orientation. Specifically, a reversal in the orientation of the parametrization changes the sign of the line integral.
+
+
+\subsubsection{Path Independence}
+If a vector field $f$ is the gradient of a scalar field $g$ (\ie, $f$ is conservative); \ie, $\grad g = f$, then the derivative of the composition of $g$ and $r\vat t$ is
+\beq
+\xod{g\vat{r\vat t}}t = \grad g\vat{r\vat t}\iprod r'\vat t = f\vat{r\vat t}\iprod r'\vat t\,,
+\eeq
+which happens to be the integrand for the line integral of $f$ on $r\vat t$. It follows that, given a path $C$, then
+\beq
+\int_C f\vat r\iprod\dx r = \int_a^b f\vat{r\vat t}\iprod r'\vat t\,\dx t 
+    = \int_a^b \xod{g\vat{r\vat t}}t\,\dx t
+    = g\vat{r\vat b} - g\vat{r\vat a}\,.
+\eeq
+In other words, the integral of $f$ over $C$ depends solely on the values of $g$ in the points $r\vat b$ and $r\vat a$ and is thus independent of the path between them. For this reason, a line integral of a conservative vector field is called \lingo{path independent}.
+
+
+\subsection{Surface Integral}
+A \lingo{surface integral} is a definite integral taken over a surface. It can be thought of as the double integral analog of the line integral. Given a surface, one may integrate over its scalar fields (that is, functions which return scalars as values), and vector field (that is, functions which return vectors as values).
+
+Surface integrals have applications in physics, particularly with the classical theory of electromagnetism.
+
+
+\subsubsection{Surface Integrals of Scalar Fields}
+To find an explicit formula for the surface integral, we need to parametrize the surface of interest, $S$, by considering a system of curvilinear coordinates on $S$, like the latitude and longitude on a sphere. Let such a parametrization be $x\vat{s,t}$, where $\vat{s,t}$ varies in some region $T$ in the plane. Then, the surface integral is given by
+\beq
+\int_S f\,\dx S = \iint_T f\vat{x\vat{s,t}}\biggl\vert \xpd xs\cprod\xpd xt \biggr\vert\,\dx s\dx t\,,
+\eeq
+where the expression between bars on the right-hand side is the magnitude of the cross product of the partial derivatives of $x\vat{s,t}$ and is known as the surface element.
+
+
+\subsubsection{Surface Integrals of Vector Fields}
+Consider a vector field $v$ on $S$, that is, for each $x$ in $S$, $v\vat x$ is a vector.
+
+The surface integral can be defined component-wise according to the definition of te surface integral of a scalar field; the result is a vector. This applies for instance in the expression of the electric field at some fixed point due to an electrically charged surface, or the gravity at some fixed point due to a sheet of material.
+
+Alternatively, if we integrate the normal component of the vector field, the result as a scalar. Imagine that we have a fluid flowing through $S$, such that $v\vat{x}$ determines the velocity of the fluid at $x$. The flux is defined as the quantity of fluid flowing through $S$ in unit amount of time.
+
+This illustration implies that if the vector field is tangent to $S$ at each point, then the flux is zero, because the fluid just flows in parallel to $S$ and neither in nor out. This also implies that if $v$ does not just flow along $S$, that is, if $v$ has both a tangential and a normal component, then only the normal component contributes to the flux. Based on this reasoning, to find the flux, we need to take the dot product of $v$ with the unit surface normal to $S$ at each point, which will give us a scalar field and integrate the obtained field as above. We find the formula
+\beq
+\int_S v\iprod\dx S = \int_S v\iprod n\,\dx S 
+                    = \iint_T v\vat{x\vat{s,t}}\iprod \left(\xpd xs\cprod\xpd xt \right)\,\dx s\dx t\,.
+\eeq
+The cross product on the right-hand side of this expression is a surface normal determined by the parametrization. This formula \emph{defines} the integral on the left (note the dot and the vector notation for the surface element).
+
+
+\subsection{Volume Integral}
+A \lingo{volume integral} refers to an integral over a 3-dimensional domain.
+
+A volume integral is a triple integral of the constant function 1, which gives the volume of the region $\region D$. That is, the integral
+\beq
+V\vat{\region D} = \iiint_{\region D}\,\dx x\,\dx y\,\dx z\,.
+\eeq
+
+It can also mean a triple integral within a region $\region D$ in $\nset R3$ of a function $f\vat{x,y,z}$ and is usually written as
+\beq
+\iiint_D f\vat{x,y,z}\,\dx x\,\dx y\,\dx z\,.
+\eeq
+
+
+\subsection{Note on Notation: Surface integrals in terms of double-integrals}
+Surface integrals can be calculated in Cartesian coordinates. This is the case usually when the surface $S$ does not have any symmetries, such as rotational symmetry. For this the surface $S$ is projected onto Cartesian plane $x_1\oprod x_2$X1X2 which gives a domain like $S$ (Fig.). Then, 
+\beq
+\int_S A\iprod n\,\dx S = \iint_S A\iprod n\,\dfrac{\dx x_1\dx x_2}{n\iprod\ifvec 3} \,.
+\eeq
+The transformation between the area element $\dx S$ and its projection $\dx x_1\dx x_2$ is given by 
+\beq
+\dx x_1\dx x_2 =(n\dx S)\iprod \ifvec 3 = (n\iprod \ifvec 3)\,dS\,,
+\eeq
+where $n$ is the unit normal vector to $\dx S$ and $\ifvec 3$ is the unit normal vector to $\dx x_1\dx x_2$.
+
+
+\subsection{Arc Length}
+Determining the \lingo{arc length of an irregular arc segment} is also called rectification of a curve. Historically, many methods were used for specific curves. The advent of calculus led to a general formula that provides closed-form solutions in some cases.
+
+
+\subsubsection{General Approach}
+a curve in the plane can be approximated by connecting a finite number of points on the curve using line segments to create a polygonal path. Since it is straightforward to calculate the length of each linear segment (using the Pythagorean theorem in Euclidean space, for instance), the total length of the approximation can be found by summing the lengths of each linear segment.
+
+Polygonal approximations are linearly dependent on the curve in a few select cases. One of these cases is when the curve is simply a point function as is its polygonal approximation. Another case where the polygonal approximation is linearly dependent on the curve is when the curve is linear. This would mean the approximation is also linear and the curve and its approximation overlap. Both of these two circumstances result in an eigenvalue equal to one. There are also a set of circumstances where the polygonal approximation is still linearly dependent but the eigenvalue is equal to zero. This case is a function with petals where all points for the polygonal approximation are at the origin.
+
+If the curve is not already a polygonal path, better approximations to the curve can be obtained by following the shape of the curve increasingly more closely. The approach is to use an increasingly larger number of segments of smaller lengths. The lengths of the successive approximations do not decrease and will eventually keep increasing -- possibly indefinitely, but for smooth curves this will tend to a limit as the lengths of the segments get arbitrarily small.
+
+For some curves there is a smallest number $L$ that is an upper bound on the length of any polygonal approximation. If such a number exists, then the curve is said to be \lingo{rectifiable} and the curve is defined to have \lingo{arc length $L$}.
+
+
+\subsubsection{Definition}
+Let $C$ be a curve in Euclidean (or, more generally, a metric) space $\set X = \nset Rn$, so $C$ is the image of a continuous function $\fdef{f}{[a,b]}{\set X}$ of the interval $[a,b]$ into $\set X$.
+
+From a partition $a = t_0 < t_1 < \dotsb < t_{n-1} < t_n = b$ of the interval $[a,b]$, we obtain a finite collection of points $f\vat{t_0},f\vat{t_1}, \dotsc, f\vat{t_{n-1}}, f\vat{t_n}$ on the curve $C$. Denote the distance from $f\vat{t_i}$ to $f\vat{t_{i+1}}$ by $d\vat{f\vat{t_i}, f\vat{t_{i+1}}}$, which is the length of the line segment connecting the two points.
+
+The \lingo{arc length} $L$ of $C$ is then defined to be
+\beq
+L\vat C = \sup_{a=t_0,\dotsc,t_n = b}\sum_{i = 0}^{n-1}\,d\vat{f\vat{t_i}, f\vat{t_{i+1}}}\,,
+\eeq
+where the supremum is taken over all possible partitions of $[a,b]$ and $n$ is unbounded.
+
+The arc length $L$ is either finite or infinite. If $L<\infty$, then we say that $C$ is \lingo{rectifiable}, and is \lingo{non-rectifiable} otherwise. This definition of arc length does not require that $C$ be defined by a differentiable function. In fact, in general, the notion of differentiabibity is not defined on a metric space.
+
+A curve may be parametrized in many ways. Suppose $C$ also has the parametrization $\fdef{g}{[c,b]}{\set X}$. Provided that $f$ and $g$ are injective, there is a continuous monotone function $S$ from $[a,b]$ to $[c,d]$ so that $g\vat{S\vat t} = f\vat t$ and an inverse function $S^{-1}$ from $[c,d]$ to $[a,b]$. It is clear that any sum of the form
+\beq
+\sum_{i = 0}^{n-1}d\vat{f\vat{t_i}, f\vat{t_{i+1}}}
+\eeq
+can be made equal to a sum of the form
+\beq
+\sum_{i = 0}^{n-1}d\vat{g\vat{u_i}, g\vat{u_{i+1}}}
+\eeq
+by taking $u_i = S\vat{t_i}$ and similarly a sum involving $g$ can be made equal to a sum involving $f$. So the arc length is an intrinsic property of the curve, meaning that it does not depend on the choice of parametrization. The definition of arc length for the curve is analogous to the definition of the total variation of a real-valued function.
+
+
+\subsubsection{Finding Arc Lengths by Integrating}
+Consider a real function $f$ such that $y = f\vat x$ and $f'\vat x = \dx y/\dx x$ (its derivative with respect to $x$) are continuous on $[a,b]$. The length $s$ of the part of the graph of $f$ between $x=a$ and $x=b$ can be found as follows:
+
+Consider an infinitesimal part of the curve $\dx s$ (or consider this as a limit in which the change in $s$ approaches $\dx s$). According to Pythagoras' theorem $\dx s^2 = \dx x^2 + \dx y^2$, from which
+\beq
+\dfrac{\dx s^2}{\dx x^2} = 1 + \dfrac{\dx y^2}{\dx x^2}
+          \implies \dx s = \sqrt{1 + \left(\dfrac{\dx y}{\dx x}\right)^2}\,\dx x\,,
+          \implies s = \int_a^b \sqrt{1 + \left(f'\vat x\right)^2}\,\dx x\,.
+\eeq 
+
+If a curve is defined parametrically by $x = X\vat t$ and $y = Y\vat t$, then its arc length between $t=a$ and $t=b$ is
+\beq
+s = \int_a^b \sqrt{\left(X'\vat t\right)^2 + \left(Y'\vat x\right)^2}\,\dx t\,.
+\eeq
+A useful mnemonic is
+\beq
+s = \lim\sum_a^b \sqrt{\diff x^2 + \diff y^2} 
+  = \int_a^b \sqrt{\dx x^2 + \dx y^2} 
+  = \int_a^b \sqrt{\left(\xod xt\right)^2 + \left(\xod yt\right)^2}\,\dx t\,.
+\eeq
+
+
+
+\subsection{Flow and Flux}
+In the various subfields of physics, there exist two common usages of the term flux, both with rigorous mathematical frameworks. A simple and ubiquitous concept throughout physics and applied mathematics is the flow of a physical property in space, frequently also with time variation. It is the basis of the field concept in physics and mathematics, with two principle applications: in transport phenomena and surface integrals. The terms ``flux'', ``current'', ``flux density'', ``current density'', can sometimes be used interchangeably and ambiguously, though the terms used below match those of the contexts in the literature.
+
+In transport phenomena (heat transfer, mass transfer and fluid dynamics), \lingo{flux}, $j$, is defined as the rate of flow of a property per unit area, which has the dimensions $\dim j = \phdim{Q}/(\phdim{T}\phdim{A})$, where $\phdim Q$ refers to the dimensions of the property, $\phdim T$ to the dimension of time and $\phdim A$ to the dimension of area. For example, the magnitude of a river's current, \ie the amount of water that flows through a cross-section of the river each second, or the amount of sunlight that lands on a patch of ground each second is also a kind of flux.
+
+
+\subsubsection{General Mathematical Definition (Transport)}
+In this definition, flux is generally a \emph{vector} due to the widespread and useful definition of \lingo{vector area}, although there are some cases where only the magnitude is important (like in number fluxes). The frequent symbol is $j$ (or $J$), and a definition for \lingo{scalar flux of physical quantity $q$} is the limit:
+\beq
+j = \lim_{\diff A\to 0}\dfrac{\diff I}{\diff A} = \xod IA\,,
+\eeq
+where
+\beq
+I = \lim_{\diff t\to 0}\dfrac{\diff q}{\diff t} = \xod qt
+\eeq
+is the \lingo{flow of quantity $q$} per unit time $t$ and $A$ is the area through which the quantity flows.
+
+For vector flux, the surface integral of $j$ over a surface $S$, followed by an integral over the time duration $t_1$ to $t_2$, gives the total amount of the property flowing through the surface in that time $(t_2 − t_1)$:
+\beq
+q = \int_{t_1}^{t_2}\iint_{S} j\iprod n\,\dx A\dx t\,.
+\eeq
+
+The area required to calculate the flux is real or imaginary, flat or curved, either as a cross-sectional area or a surface. The \lingo{vector area} $A$ is a combination of the magnitude of the area through which the mass passes through, $\magn A$, and a unit vector normal to the area, $n$. The relation is $A = \magn A n$.
+
+If the flux $j$ passes through the area at an angle $\theta$ to the area normal $n$, then
+\beq
+j\iprod n = j\cos\theta\,,
+\eeq
+where $\iprod$ is the dot product of the unit vectors. This is, the component of flux passing \emph{through} the surface (\ie, \emph{normal} to it) is $j\cos\theta$, while the component of flux passing \emph{tangential} to the area is $j\sin\theta$, but there is \emph{no} flux actually passing through the area in the \emph{tangential} direction. The \emph{only} component of flux passing normal to the area is the cosine component.
+
+\subsubsection{Transport fluxes}
+Eight of the most common forms of flux from the transport phenomena literature are defined as follows:
+\begin{itemize}
+\item \lingo{Momentum flux}: the rate of transfer of momentum across a unit area: \si{N.s/m^2.s}. (Newton's law of viscosity)
+%
+\item \lingo{Heat flux}: the rate of heat flow across a unit area: \si{J/m^2.s}. (Fourier's law of conduction) (This definition of heat flux fits Maxwell's original definition.)
+%
+\item \lingo{Diffusion flux}: the rate of movement of molecules across a unit area: \si{mol/m^2.s}. (Fick's law of diffusion)
+%
+\item \lingo{Volumetric flux}: the rate of volume flow across a unit area: \si{m^3/m^2.s}. (Darcy's law of groundwater flow)
+%
+\item \lingo{Mass flux}: the rate of mass flow across a unit area: \si{kg/m^2.s}. (Either an alternate form of Fick's law that includes the molecular mass or an alternate form of Darcy's law that includes the density.)
+%
+\item \lingo{Radiative flux}: the amount of energy transferred in the form of photons at a certain distance from the source per steradian per second \si{J/m^2.s}. (Used in astronomy to determine the magnitude and spectral class of a star. Also acts as a generalization of heat flux, which is equal to the radiative flux when restricted to the infrared spectrum.)
+%
+\item \lingo{Energy flux}: the rate of transfer of energy through a unit area: \si{J/m^2.s}. (The radiative flux and heat flux are specific cases of energy flux.)
+%
+\item \lingo{Particle flux}: the rate of transfer of particles through a unit area: \si{N_p/m^2.s}, where \si{N_p} represents the number of particles.
+%
+\end{itemize}
+These fluxes are vectors at each point in space, and have a definite magnitude and direction. Also, one can take the divergence of any of these fluxes to determine the accumulation rate of the quantity in a control volume around a given point in space. For incompressible flow, the divergence of the volume flux is zero.
+
+
+\subsubsection{Chemical diffusion}
+As mentioned above, chemical molar flux of a component $A$ in an isothermal, isobaric system is defined in Fick's law of diffusion as:
+\beq
+\mflux A = -D_{\ce{AB}}\gder \conc A\,,
+\eeq
+where $D_{\ce{AB}}$ is the diffusion coefficient (\si{m^2/s}) of component $\ce A$ diffusing through component $\ce B$, $\conc A$ is the concentration (\si{mol/m^3}) of component $\ce A$. This flux has units of \si{mol/(m^2.s)} and fits Maxwell's original definition of flux.
+
+For dilute gases, kinetic molecular theory relates the diffusion coefficient $D$ to the particle density $n = N/V$, the molecular mass $M$, the collision cross section $\sigma$ and the absolute temperature $T$ by
+\beq
+D = \dfrac{3}{2n\sigma}\sqrt{\dfrac{\boltz T}{\pi M}}\,,
+\eeq
+where the second factor is the mean free path and the square root (with Boltzmann's constant $\boltz$) is the mean velocity of the particles.
+
+In turbulent flows, the transport by eddy motion can be expressed as a grossly increased diffusion coefficient.

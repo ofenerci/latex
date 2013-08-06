@@ -1,0 +1,469 @@
+\section{Problem Solving}
+
+\epigraph{Before developing the necessary mathematics, survey the crucial physics.}
+{John F. Lindner}
+{Electromagnetism with Spacetime Algebra, 2011}
+
+
+\epigraph{Too much mathematical rigor teaches rigor mortis: the fear of making an unjustified leap even when it lands on a correct result. Instead of paralysis, have courage -- shoot first and ask questions later. Although unwise as public policy, it is a valuable problem-solving philosophy.}
+{Sanjoy Mahajan}
+{Street-Fighting Mathematics: The Art of Educated Guessing and Opportunistic Problem Solving, 2010}
+
+
+\subsection{Dimensional Analysis}
+
+\subsubsection{Fundamental Constants as Conversion Factors}
+Follow Michael Duff's ideas:
+\begin{quote}
+the laws of physics are inherently dimensionless and fundamental constants as $c$, $\hbar$ or $G$, in the fundamental equations of physics, must be seen as mere conversion factors to convert mass, time and length into each other or to scale between the macroscopic and the microscopic world.
+\end{quote}
+
+To see this, consider $c$, the speed of light in vacuum. This constant is not only a fundamental constant but also universal; \ie, it holds in the whole Universe! So, using the definition of velocity, $c = x/t$, we find that
+\beq
+x = ct\,,
+\eeq
+which is to say, we can measure distances in meters or in seconds or, conversely, time in seconds or in meters. The latter fact is used in the Theory of Relativity and Astronomy: the distance from Earth to our neighbor galaxy, Canus Major Dwarf, is \SI{25000}{light-yr}; yeap! Distance measured in years!
+
+Another example is given by Boltzmann constant $\boltz$ and the ideal gas law: $pv = nRT = N\boltz T$. Here, $\dim\boltz = \phdim{E/\Theta}$, where $\phdim\Theta$ represents the dimension of temperature. Thus $\boltz$ converts $T$, a macroscopic property, to energy, so that the product can be coupled with $N$, the number of particles, a microscopic property. In other words, $\boltz$ provides a bridge to move from the macro-world -- pressure, forces, temperature, volume, \etc., to the micro-world!
+
+
+\subsubsection{Energy of an Ideal Gas under Pressure}
+Say you have a piston acting on a cylinder of cross section $a$ containing a fluid of volume $v$. Say you apply a force $f$ perpendicular to the cross area. Then, the pressure $p$ exerted by the force is $p = f/a$. This pressure compresses the fluid, reducing its volume. See that pressure manifests macroscopically as a surface phenomenon. The question now is what changes in the fluid? How does the fluid react, internally, to $f$? To develop an approximate answer, use dimensional analysis. 
+
+First, determine the dimensions of pressure:
+\beq
+\dim p = \dim f/a = \phdim{ML}/\phdim{T^2L^2} \,.
+\eeq
+Multiply the RHS of the last equation by a factor $\phdim{L/L}$ to find
+\beq
+\dim p = \phdim{ML^2/T^2L^3} = \phdim{E/L^3} = \phdim{E/V}\sim e/v \,,
+\eeq
+where $e$ represents the energy imparted by the piston to the fluid. (We have used the tilde notation $\sim$ because dimensions match but dimensionless quantities are hidden to dimensional analysis.) Thus, we get that
+\beq
+pv\sim e\,.
+\eeq
+
+On the other hand, say that the fluid is a gas, an ideal gas. Then, according to the ideal gas law, we have
+\beq
+pv = NRT\,,
+\eeq
+where $p$ is the gas pressure, $v$ the gas volume, $N$ the amount of gas, $R$ the ideal gas constant and $T$ the gas thermodynamic temperature. Since the external energy imparted by the piston must equal the energy changed in the fluid, we have
+\beq
+e\sim NRT = \kdim NRT\,,
+\eeq
+where $\kdim$ is a dimensionless quantity.
+
+Therefore, aided by dimensional analysis, we found that the ideal gas internal energy is proportional $NRT$ and that it changes upon the action of $p$. 
+
+In general, \ie, not only for ideal gases, the relationship shows that $e$ increases when $p$ does, then if a compression force acts of a fluid, we would expect that the fluid energy increases, manifested as a change in the fluid temperature.
+
+Incidentally, for ideal gases, $\kdim$ is a gas property called the \lingo{dimensionless heat capacity}, denoted $c$. It's related to the \lingo{heat capacity}, $C$, by the relation
+\beq
+C = cNR\,,
+\eeq
+where $\dim C = \dim NR = \phdim{E/\Theta}$ and $c = 3/2$. Therefore, the energy of an ideal gas can be expressed as
+\beq
+e = CT = \dfrac{3}{2}T\,,
+\eeq
+which says that the internal energy of an ideal gas depends only on temperature.
+
+
+\subsubsection{Ratio between Electric and Gravitational Forces}
+Find the ratio of the electric force to the gravitational force between the nuclei of two hydrogen atoms in a rest frame.
+
+\begin{solution}
+Consider both atoms to be $\ce{^1 H}$. Model the electrostatic force between them $\magn{f\txt e}$ by Coulomb's force law: $\magn{f\txt e} = k\txt e e^2/r^2$, where $k\txt e$ represents Coulomb's constant, $e$ the proton's electric charge -- the elementary charge -- and $r$ the separation between the centers of the nuclei. Express next Coulomb's constant as a function of fundamental constants via the relation $k\txt e = \alpha c_0 h/2\pi e^2$, where $\alpha$ represents the fine-structure constant, $c_0$ the speed of light in vacuum and $h$ Planck's constant. Replace then the last equation into Coulomb's force law to have
+\beq
+\magn{f\txt e}\approx \dfrac{\alpha}{2\pi}c_0 h\,.
+\eeq
+
+On the other hand, model the gravitational force between the nuclei $\magn{f\txt g}$ by Newton's force law of universal gravitation: $\magn{f\txt g} = Gm\txt p^2/r^2$, where $G$ stands for the Newtonian constant of gravitation and $m\txt p$ for a proton's mass. Use the proton-electron mass ratio $\beta$ to express $m\txt p$ as a function of the electron's mass $m\txt e$, $m\txt p = \beta m\txt e$, then express $m\txt e$ as a function of fundamental constants: $m\txt e = 2hR_\infty/\alpha^2 c_0$, where $R_\infty$ stands for Rydberg constant, and thus rewrite Newton's force law:
+\beq
+\magn{f\txt g}\approx \dfrac{4\beta^2}{\alpha^4}\dfrac{h^2 G R_\infty^2}{c_0^2}\,.
+\eeq
+
+Finally, find the $\magn{f\txt e}$ to $\magn{f\txt g}$ ratio:
+\beq
+\dfrac{\magn{f\txt e}}{\magn{f\txt g}} = \dfrac{\alpha^5}{8\pi\beta^2}\dfrac{c_0^3}{hGR_\infty^2}\,.\mqed
+\eeq
+\end{solution}
+
+\begin{dimensional}
+Verify the dimensional homogeneity of the last equation by performing dimensional analysis on it -- note that the left hand side and the first term of the right hand side are manifestly dimensionless, so must the second term be:
+\beq
+\dim\dfrac{c_0^3}{hGR_\infty^2} = \phdim{\dfrac{L^3}{T^3}}
+                                  \phdim{\dfrac{MT^2}{L^3}}
+                                  \phdim{\dfrac{T}{ML^2}}
+                                  \phdim{\dfrac{L^2}{1}}
+                                = 1\,.\mqed
+\eeq
+\end{dimensional}
+
+
+\begin{approximation}
+Find the order of magnitude of the ratio $\magn{f\txt e}/\magn{f\txt g}$ given by the expression
+\beq
+\dfrac{\magn{f\txt e}}{\magn{f\txt g}} = \dfrac{\alpha^5}{8\pi\beta^2}\dfrac{c_0^3}{hGR_\infty^2}\,.
+\eeq
+
+Use the values provided by the NIST~\footnote{~List of frequently used constants: \url{http://physics.nist.gov/cuu/Constants/}.}:
+%
+\begin{multicols}{2}
+\begin{itemize}
+\item $\alpha = \num{7.297 352 5698d-3}$;
+\item $   \pi \sim\num{3.14159 26535 9}$;
+\item $ \beta = \num{1836.152 672 45}$;
+\item $c_0 = \SI{299 792 458}{m/s}$;
+\item $  h = \SI{6.626 069 57d-34}{J/s}$;
+\item $  G = \SI{6.673 84d-11}{m^3/kg.s^2}$;
+\item $R_\infty = \SI{10 973 731.568 539}{m^{-1}}$.
+\end{itemize}
+\end{multicols}
+%
+
+Use the ``back-of-the-envelope'' technique:
+\begin{itemize}
+%
+\item Approximate the values of the constants to 1, 3 or 10 for the ``small part'': $\alpha \sim \num{1d-2}$, $8\sim 10$, $\pi\sim 3$, $\beta \sim \num{1d3}$, $c_0 \sim \num{3d8}$, $h \sim \num{1d-33}$, $G \sim \num{1d-10}$ and $R_\infty \sim \num{1d7}$;
+%
+\item Replace the approximate values into the equation:
+\beq
+\dfrac{\alpha^5}{8\pi\beta^2}\dfrac{c_0^3}{hGR_\infty^2} \sim 
+\dfrac{(\num{1d-2})^5}{10\times 3\times(\num{1d3})^2}\dfrac{(\num{3d8})^3}{\num{1d-33}\times\num{1d-10}\times(\num{1d7})^2}\,.
+\eeq
+%
+\item Calculate the ``big part'', the powers of ten: \num{1d35}, and calculate then the ``small part'', $3^3/3$, to finally have
+\beq
+\dfrac{\magn{f\txt e}}{\magn{f\txt g}}\sim \num{9d35}\sim \num{1d36}\sim O\vat{\num{d36}}\,.
+\eeq
+%
+\end{itemize}
+
+This is, the electric force is \ca 36 orders of magnitude greater than the gravitational force.
+\end{approximation}
+
+
+\subsection{From Approximate Solutions to Formal Analytic Solutions}
+To illustrate various problem solving techniques, we will analyze the motion of a charged particle using Newtonian Physics. We will do so by showing various math and physics methods in different levels of sophistication: guessing, dimensional analysis, approximations and analytic techniques. Finally, we present a final wrapped-up solution.
+
+\begin{example}
+Consider a particle of constant electric charge $q$ and constant mass $m$ moving with velocity $v$ due to an interaction with a constant electromagnetic field. Assuming Newtonian physics, find the rate at which the particle's kinetic energy $k$ changes in time $t$.
+\end{example}
+
+
+\subsubsection{Guessing the Solution}
+
+As a first approximation to the solution, instead of working with the general case, we go to an specific example by considering the moving particle to be an electron and the electric field to be originated by a proton. The dynamics is described by Lorentz force law.
+
+Let's first analyze the electron-electric field interaction. The proton creates an electric field due to its charge $q\txt{p}$. Lorentz force states that the proton's field strength $\magn{e\txt{p}}$ is given by $\magn{e\txt{p}}\propto \magn{q\txt{p}}/r^2$, where $r$ is the distance from the proton's center. Geometrically, this means that $\magn{e\txt{p}}$ creates concentric surfaces of equal electric potential in $\espace 3$, called \lingo{isoelectric surfaces}, just like a static ``heat'' source forms concentric isothermal surfaces around its center. When something moves towards the proton, it will ``pierce'' such surfaces. Note that the field strength scales \emph{inversely} with the \emph{squared} distance: for instance, if the distance is \emph{halved}, the field strengthens by a factor of \emph{four}. In other words, the closer to the proton's center, the stronger the interaction with its field becomes. On the other hand, when an electron, with charge $\magn{q\txt{e}} < 0$, enters the field, it is ``attracted'' to the proton's center as the force between them, $\magn{f\txt{p-e}}\propto -\magn{q\txt{e}}\magn{q\txt{p}}/r^2$, increases with decreasing distance. In turn, the electron's velocity $v\txt{e}$ increases and so does its kinetic energy $k\txt{e} \propto v\txt{e}^2$. Therefore, we expect $\dt k\txt{e}\sim -q\txt{e}e\txt{p}v\txt{e}$. (Notice the negative sign in the expression. It says that the electron looses energy as it falls into the proton! Also, see that $\dt k\txt{e}$ does not depend on the electron's mass.)
+
+Now, let's analyze the electron-magnetic field interaction. An electron moving in a magnetic field experiences a \emph{sideways} force $f\txt{m}$ proportional to (i) the strength of the magnetic ``field'' $\magn{b}$, (ii) the component of the velocity perpendicular to such field $v\txt{e}$ and (iii) the charge of the electron $q\txt{e}$; \ie, the second term of the Lorentz force: $f\txt{m} = q\txt{e}v\txt{e}\cprod b$. Note that $f\txt{m}$ is always \emph{perpendicular} to both the $v\txt{e}$ and the $b$ that created it, mathematically expressed by the (cross) product $v\txt{e}\cprod b$. Then, when the electron moves in the field, it traces an helical path in which the helix axis is parallel to the field and in which $v\txt{e}$ remains constant. Because the magnetic force is always perpendicular to the motion, the $b$ can do \emph{no} work. It can only do work \emph{indirectly}, via the electric field generated by a changing $b$. This means that, if no work is directly created by the magnetic field, then the change rate of the electron's kinetic energy should not depend directly on it, but rather indirectly, via the electron's velocity: $k\txt{e}\propto v\txt{e}^2\implies\dt k\txt{e}\propto v\txt{e}$, which has the same dependence as the equation obtained in the electron-electric field analysis.
+
+Finally, because an electron moving towards a proton is an example of a more general case, expect the \emph{form} of the electron-proton case to work for \emph{any} moving charged particle under a constant electromagnetic field. This means that, physically, the change of the particle's kinetic energy $\dt k$ should directly depend only on the electric field (and not on the magnetic induction), the particle's charge and its velocity: $\dt k\sim qev$. Mathematically, see that, since $e$ and $v$ are both vectors, the product $ev$ must be a product between vectors. The only suitable product is the inner product, \aka scalar product, because it is the only one to return a scalar; this would agree with the scalar nature of $\dt k$. This means, therefore,
+\beq
+\dt k\sim qe\iprod v\,.
+\eeq
+We expect this guessed equation to be obtained by formal methods.
+
+
+\subsubsection{Dimensional Analysis}
+For the next solution, we will use dimensional analysis to determine the \emph{functional} form of the model to the phenomenon.
+
+To find the \lingo{functional form of the physical model} by means of dimensional analysis follow the steps:
+%
+\begin{enumerate}
+\item Instead of using the SI fundamental dimensions, use the set $\elset{\phdim F, \phdim L, \phdim T, \phdim Q}$ of \emph{four} dimensionally independent quantities, where $\phdim F$ represents the dimension of force, $\phdim L$ length, $\phdim T$ time and $\phdim Q$ electric charge.
+%
+\item In the chosen set, the dimensions of the \emph{six} physical quantities that model the phenomenon are $\dim k = \phdim{FL}$, $\dim t = \phdim{T}$, $\dim q = \phdim{Q}$, $\dim e = \phdim{FQ^{-1}}$, $\dim v = \phdim{LT^{-1}}$ and $\dim b = \phdim{FTQ^{-1}L^{-1}}$.
+%
+\item According to the Buckinham's theorem, \aka $\Pi$ theorem, there are $6 - 4 = 2$ dimensionless quantities $\kdim$. The first one is $\kdim_1 = k/(tevq)$ and the second $\kdim_2 = bv/e$.
+%
+\item Finally, the model should have the form:
+\beq
+g\vat{\kdim_1, \kdim_2} = g\vat{\dfrac{k}{tevq}, \dfrac{bv}{e}} = 0 \implies \dfrac{k}{t} = qev\,h\vat{\dfrac{bv}{e}}\,,
+\eeq
+where $h$ is a function of $(bv/e)$.
+\end{enumerate}
+
+In the last equation, the precise form of the function $h$ must be determined by experimentation or by analytic means. However, dimensional analysis confirms our suspicion: $\dt k\sim k/t \sim qev$; \ie, the product $qev$ ``lives upstairs'' in the equation. The second term, the function $h$, should be equal to a dimensionless parameter $\kdim$ if our guess is to be correct. We will keep $h$, nevertheless, for it may be that our guess is not correct.
+
+
+\subsubsection{Approximate Methods}
+For a second approximation, we will use actual equations and will apply to them approximate methods to find the \emph{form} of the physical model. This helps to better understand the physics behind the process by avoiding the distractions of unnecessary constants, numeric factors and complicated notation. Additionally, it helps, as a sketch, to develop and to present the analytic solution.
+
+First, write the complete set of equations modeling the phenomenon:
+\begin{align*}
+k &= \dfrac{1}{2}mv^2\,, &\eqtxt{kinetic energy}\\
+f &= q(e + v\cprod b)\,, &\eqtxt{Lorentz force law}\\
+f &= ma = m\dt v\,,      &\eqtxt{Newton's second law of motion}
+\end{align*}
+where the variables were already defined during guessing and dimensional analysis.
+
+Then, drop unnecessary constants and numeric factors, use the secant method to approximate derivatives~\footnote{~In the \lingo{secant method}, tangents (derivatives) are replaced by secants (quotients); \ie, if $f = f\vat x$, then $\dx f/\dx x\sim f/x$.} and treat vectors as scalars~\footnote{~This means to replace vectors by scalars and to replace products between vectors by multiplications between scalars.} to find
+\begin{align*}
+    k &\sim mv^2\,,                        &\eqtxt{approx. kinetic energy}\\
+\dt k &\sim k/t \sim mv^2/t\sim (mv/t)v\,, &\eqtxt{approx. kinetic energy time rate change}\\
+    f &\sim q(e + v b)\,,                  &\eqtxt{approx. Lorentz force law}\\
+    f &\sim mv/t\,.                        &\eqtxt{approx. Newton's second law of motion}
+\end{align*}
+
+Find the equation of motion by equating Newton's law to Lorentz law: $(mv/t)\sim q(e + v b)$. Plug this equation into the one for $k/t$, via the factor $(mv/t)$:
+\beq
+k/t \sim q(e + v b)v\sim qev + qvbv\,.
+\eeq
+In the last equation, the term $(qvbv)$ is likely to vanish, because $v$ is to enter $(v\cprod b)$ as $(v\cprod b)\iprod v$, for $v$ comes from $k\sim mv^2\sim mv\iprod v$ and thus $(qv\cprod b)\iprod v \sim (qvbv) = 0$, since $v\cprod b$ is orthogonal to $v$. Then, the expression would be $k/t\sim qev$ with some product of vectors between $e$ and $v$ -- the scalar product. The model could thus be written as $k/t\sim qe\iprod v$. Finally, remembering that $k/t\sim \dt k$, then 
+\beq
+\dt k\sim qe\iprod v\,.\mqed
+\eeq
+
+The equation found by approximate means agrees with our guess and, partially, with dimensional analysis. This increases our confidence in understanding the phenomenon! Besides, all the previous methods have cleared the derivation plan: i) find $\dt k$ from $k$; ii) find the equation of motion by using the definition of linear momentum, by equating Newton's law to Lorentz law and by leaving $mv$ on one side and iii) finally, plug in the equation of motion onto $\dt k$ and play with products between vectors to arrive to the final solution.
+
+
+\subsubsection{Wordy Derivation}
+We solve the problem now by presenting a ``wordy-version'' of the analytic solution: we describe the math derivation in detail.
+
+The particle kinetic energy is $2k = mv^2$. This could be rewritten as 
+\beq
+2k = mv\iprod v\,, 
+\eeq
+since $v$ is colinear to itself; \ie, its outer product is zero; \viz, $v^2 = vv = \cgprod vv = v\iprod v$. 
+
+Then, calculate the kinetic energy change rate with time by
+\beq
+2k = mv\iprod v\implies 2\dt k = m(\dt v\iprod v + v\iprod\dt v) 
+                               = m(\dt v\iprod v + \dt v\iprod v) 
+                               = 2m\dt v\iprod v\,,
+\eeq
+where the product rule for the differentiation of the inner product [$(f\iprod g)' = f'\iprod g + f\iprod g'$, for vector-valued functions $f$ and $g$], the commutativity property of the inner product [for vectors $a$ and $b$, $a\iprod b = b\iprod a$] and the dot notation [$\dt k\defby \dx k/\dx t$] were used. 
+
+Next, one cancels out the numerical factor 2 in both sides of the equality to find that
+\beq
+\dt k = m\dt v\iprod v\,.
+\eeq
+
+On the other hand, the particle's motion can be modeled by equating Newton's second law of motion with Lorentz force, since the particle interacts with an electromagnetic field. Thus, we find that 
+\beq
+\dt p = q(e + v\cprod b)\,,
+\eeq
+where $p$ is the particle's linear momentum. By definition, $p = mv$, so $\dt p = \dt mv + m\dt v = m\dt v$, because mass is constant, $\dt m = 0$, then we have that
+\beq
+m\dt v = q(e + v\cprod b)\,.
+\eeq
+
+Plug in the last equation (equation of motion) into the $\dt k$ expression:
+\beq
+\dt k = qe\iprod v + q(v\cprod b)\iprod v \,. 
+\eeq
+For vectors $x,y,z$, the product $(x\cprod y)\iprod z$ is called the \lingo{scalar triple product}. This product equals zero whenever $x = z$. In our case, we have that $x = z = v$, or, more precisely, $(v\cprod b)\iprod v = 0$. Therefore, one finally finds
+\beq
+\dt k = qe\iprod v\,,
+\eeq
+the rate at which the particle's kinetic energy changes with respect to time.
+
+This (analytic) solution confirms our guessed model and the approximate solutions. Then, it creates confidence, not only on our intuition, but also on the efficacy of approximate methods.
+
+
+\subsubsection{Formal Derivation}
+Finally, we present a more formal solution, suitable for publishing.
+
+Agree on the given hypotheses and on the symbols and notation previously established.
+
+To begin, model the motion of the charged particle by equating Newton's second law of motion with Lorentz force law to find the particle's equation of motion:
+\begin{equation}\label{eq:chargedparticlemotion}
+m\dt v = q(e + v\cprod b)\,.
+\end{equation}
+
+On the other hand, write the particle's kinetic energy as $2k = mv^2 = mv\iprod v$. Then, calculate the change rate of kinetic energy with respect to time $\dt k$:
+\begin{equation}\label{eq:kinenergychange}
+\dt k = m\dt v\iprod v\,.
+\end{equation}
+
+Plug \cref{eq:chargedparticlemotion} into \cref{eq:kinenergychange} to find that $\dt k = qe\iprod v + q(v\cprod b)\iprod v$. Since the scalar triple product vanishes this gives, finally,
+\beq
+\dt k = qe\iprod v\,.\mqed
+\eeq
+
+The formal solution was obtained from the derivation of the wordy solution. They only differ in presentation. In the formal solution,
+\begin{itemize}
+\item the presentation is brief, concise, straight to the point, but not incomplete. It only leaves ``obvious details'' to be filled in -- for instance, nowhere it is written that $\dt p = \dt mv + m\dt v = m\dt v$, because under hypotheses, $m$ is constant, so it is ``well-known'' that $f = ma$ in such a case;
+\item equations are referred to by proper, technical names (Newton's second law of motion, scalar triple product and so on);
+\item only ``important'' equations, derivations and results are displayed, whereas small equations, non-trivial, but small, derivations and partial results are presented in-line -- with the running text;
+\item verbs changed to the imperative to avoid the use of personal grammar forms -- we, us, one and so on -- and of the passive voice.
+\end{itemize}
+
+
+\subsection{Newton's, Lagrange's and Hamilton's Formalism of Classical Mechanics}
+Consider a simple harmonic oscillator: a mass $m$ attached to a spring of constant $\kappa$ object to a force $f\vat x = -\kappa x$, where $x$ is the mass position and where frictional forces are neglected. Find the equation of motion for the oscillator.
+
+
+\subsubsection{Newton's}
+The equation of motion reads, directly from Newton's second law of motion:
+\beq
+f = m\ddt x \implies m\ddt x + \kappa x = 0\,.
+\eeq
+Notice that $f\neq 0$, thus linear momentum is not conserved. Additionally, the force is central, so no angular momentum defined.
+
+
+\subsubsection{Lagrange's}
+Since the force depends only on position $f = f\vat x$, then it is conservative and therefore arises from a potential $\pen$ given by $2\pen = \kappa x^2$. This means that Lagrange's formalism can be applied. 
+
+The kinetic energy of the mass $\ken$ is $2\ken = m\dt x^2$. Then, the Lagrangian $\lag$ for the system is
+\beq
+\lag = \ken - \pen = \dfrac{1}{2}m\dt x^2 - \dfrac{1}{2}\kappa x^2 \,.
+\eeq
+
+The generalized force acting on the system is then $\cder\lag x = -\kappa x$. Since this is not zero, the generalized momentum is not conserved. Additionally, there are no cyclic quantities. Moreover, since $\lag$ is $t$ independent, then the total energy of the system is conserved.
+
+On the other hand, the generalized momentum of the system is $\cder\lag{\dt x} = m\dt x$ and thus $\dx(\cder\lag{\dt x})/\dx t = m\ddt x$. Therefore, the equation of motion can be read from Euler-Lagrange's equation:
+\beq
+\eleqn{x}{} = m\ddt x + \kappa x = 0\,.
+\eeq
+
+
+\subsubsection{Hamilton's}
+Consider the Lagrangian found in the previous section. By applying Legendre's transform, replace the generalized velocity $\dt x$ by the generalized momentum $p$ in $\lag$:
+\begin{itemize}
+\item the Lagrangian is well behaved for all $x$. The Lagrangian first derivative $\cder\lag{\dt x}$ is also well behaved for all $x$. And the second derivative $\cder\lag{\dt x\dt x} = m$ is always positive, since $m > 0$. Therefore, Legendre's transform can be applied to $\lag$.
+%
+\item Define $p = \cder\lag{\dt x} = m\dt x$. This implies that $\dt x = p/m$.
+%
+\item Define the Hamiltonian of the system by $\ham = p\dt x - \lag$. Replace the correspondent quantities to find
+\beq
+\ham = p\dt x - \lag 
+     = \dfrac{p^2}{m} - \left(\dfrac{1}{2}m\dt x^2 - \dfrac{1}{2}\kappa x^2\right)
+     = \dfrac{1}{2m}\left(p^2 + \kappa x^2\right)\,.
+\eeq
+%
+\end{itemize}
+In the last equation, note that $\ham$ is $t$ independent, so the total energy of the system is conserved.
+
+Finally, find the equations of motion from Hamilton's equations:
+\begin{align*}
+\dt x &= \poisson{p, \ham} = \xpd{\ham}{p}  = \dfrac{p}{m}\,,\\
+\dt p &= \poisson{x, \ham} = -\xpd{\ham}{x} = -\kappa x\,.
+\end{align*}
+
+\subsubsection{Comparison}
+From Newton's formalism, we know that $f$ arises from a potential $\ken$, that linear momentum is not conserved, that angular momentum is not defined and that the equation of motion reads $m\ddt x + \kappa x = 0$. From Lagrange's, we learn that momentum is not conserved, but total energy is, and that the equation of motion is the same as the one found by Newton's. Finally, from Hamilton's, we find that the momentum is not conserved, but total energy is, that the total energy is given by $2em = p^2 + \kappa x^2$ and that the Hamilton's equations of motion are $\dt x = p/m$ and $\dt p = -\kappa x$.
+
+
+\subsection{Nondimensionalization}
+
+
+\subsubsection{Damped Oscillator}
+Consider a mass $m$ attached to a spring with stiffness $k$ that is set into motion from a equilibrium position $x_0$ at time $t_0$. Consider the mass is object to a frictional force proportional to the mass velocity. Then, find the non-dim. equation of motion of the system.
+
+Use Hooke's law to model the restoring force $f\txt r$ of the spring: $f\txt r = -kx$, where $x$ represents the position of the mass from its equilibrium position.
+
+Then, find the frictional force as $f\txt f = -c\dt x$, where $c$ represents the viscous damping coefficient.
+
+Model the equation of motion by applying Newton's second law of motion:
+\beq
+m\ddt x + c\dt x + kx = 0\,.
+\eeq
+
+Before non-dim. the system equation of motion, verify its dimensional homogeneity:
+\beq
+\dim m\ddt x = \phdim{ML/T^2} = \phdim{F}\,,\,
+ \dim c\dt x = \phdim{M/T\cdot L/T} = \phdim{F}\,\text{and}\,
+     \dim kx = \phdim{M/T^2\cdot L} = \phdim{F}\,.
+\eeq
+Since all the terms have dimensions of force, $\phdim{F}$, the model equation is homogeneous, thus, nondim. can proceed.
+
+To begin with non-dim., rewrite the equation of motion as
+\beq
+m\nxod 2xt + c\xod xt + kx = 0\,.
+\eeq
+In this 2nd-order ordinary differential equation, the independent variable is $t$, the dependent one $x$ and the parameters $m$, $c$ and $k$.
+
+Scale time $\scpq t$ and position $\scpq x$ by finding characteristic quantities $\chpq t$ and $\chpq x$ satisfying $\scpq t = t/\chpq t$ and $\scpq x = x/\chpq x$. With these replacements, find
+\begin{align*}
+x &= \chpq x\scpq x\implies \dx x = \chpq x\dx \scpq x \implies \dx^2 x = \chpq x\dx^2 \scpq x\,,\\
+t &= \chpq t\scpq t\implies \dx t = \chpq t\dx \scpq t \implies \dx t^2 = \chpq t^2\dx \scpq t^2\,.
+\end{align*}
+
+Replace the characteristic and scaled quantities in the equation of motion to have
+\beq
+\dfrac{m\chpq x}{\chpq t^2}\nxod 2{\scpq x}{\scpq t} +
+\dfrac{c\chpq x}{\chpq t}\xod{\scpq x}{\scpq t} +
+k\chpq x\scpq x = 0\,.
+\eeq
+
+Divide the last equation through the coefficient of the highest order term; \ie, $m\chpq x/\chpq t^2$, to get
+\beq
+\nxod 2{\scpq x}{\scpq t} +
+\dfrac{c\chpq t}{m}\xod{\scpq x}{\scpq t} +
+\dfrac{k\chpq t^2}{m}\scpq x = 0\,.
+\eeq
+
+Since the last equation has only one characteristic quantity, do
+\beq
+\dfrac{k\chpq t^2}{m} = 1\implies 
+\chpq t^2 = \dfrac{m}{k}\implies
+\chpq t = \sqrt{\dfrac{m}{k}}\,.
+\eeq
+
+Replace these quantities in the equation of motion:
+\beq
+\nxod 2{\scpq x}{\scpq t} + 
+\dfrac{c}{m}\sqrt{\dfrac{m}{k}}\xod{\scpq x}{\scpq t} +
+\scpq x = 0\,.
+\eeq 
+
+Define the quantity $2\zeta = c/m\sqrt{m/k} = c/\sqrt{mk}$ and replace it in the previous equation
+\beq
+\nxod 2{\scpq x}{\scpq t} + 
+2\zeta\xod{\scpq x}{\scpq t} +
+\scpq x = 0\,.
+\eeq
+
+The quantity $\zeta$ physically represents the \lingo{damping ratio}, whereas the inverse of the characteristic time, denoted $\omega_0$, the \lingo{undamped angular frequency of the oscillator}. $\omega_0$ is thus given by
+\beq
+\omega_0 = \dfrac{1}{\chpq t} = \sqrt{\dfrac{k}{m}} \,.
+\eeq
+
+The value of the damping ratio $\zeta$ critically determines the behavior of the system. A damped harmonic oscillator can be:
+\begin{itemize}
+\item Overdamped ($\zeta > 1$): The system returns (exponentially decays) to steady state without oscillating. Larger values of the damping ratio return to equilibrium slower.
+%
+\item Critically damped ($\zeta = 1$): The system returns to steady state as quickly as possible without oscillating. This is often desired for the damping of systems such as doors.
+%
+\item Underdamped ($\zeta < 1$): The system oscillates (with a slightly different frequency than the undamped case) with the amplitude gradually decreasing to zero. The angular frequency of the underdamped harmonic oscillator is given by
+\beq
+\omega_1 = \omega_0 \sqrt{1 - \zeta^2}\,.
+\eeq
+\end{itemize}
+
+The $Q$ factor of a damped oscillator is defined as
+\beq
+Q = 2\pi\dfrac{\text{Energy stored}}{\text{Energy lost per cycle}}\,.
+\eeq
+$Q$ is related to the damping ratio by the equation 
+\beq
+Q = \dfrac{1}{2\zeta}\,.
+\eeq
+
+Finally, the nondimensionalized equation of motion is called the \lingo{universal oscillation equation}, since all second order linear oscillatory systems can be reduced to this form.
+
+
+\subsection{Think Physically}
+Maths methods are fine, since they provide a formal way to arrive to and present results in a mechanical way. However, this is the downside from a physical viewpoint: sometimes, physical arguments are forgotten.
+
+The idea in this section is to revert this pattern; \ie, to use physical reasoning supported by maths methods. Let's explain it with examples.
+
+
+\subsubsection{Circular Motion}
+Consider a particle tracing a 2-dim. circular shape while it moves during time $t$. The particle's position $\pvec\vat t$ can be tracked by means of two Cartesian coordinates, say $\pvec\vat t = \tuple{x\vat t, y\vat t}$. Now, in this case, maths are better expressed by using polar coordinates; \ie, by tracking the particle's position by $\pvec\vat t = \tuple{r\vat t, \theta\vat t}$, where $r\vat t$ is the distance from the circle's center, $\point O$, to $\pvec\vat t$ and $\theta\vat t$ the angle between the vector from $\point O$ to $\pvec\vat t$ and a reference line: chosen to be the $x$-axis in Cartesian coordinates.
+
+From a mathematical perspective, the next step is to express $\tuple{x\vat t, y\vat t}$ as functions of $\tuple{r,\theta}$, then write $\pvec\vat t$ and finally find all the physical parameters: velocity, acceleration, forces, equations of motion and so on. This is the path that we will not follow. We will use physical reasoning to find $\pvec\vat t$ and other parameters.
+
+The particle position $\pvec\vat t$ can be tracked by a vector with two coordinates: a radial component $r\vat t$ measuring only radial displacements (as if our circle would be expanding or contracting) and an arc component $s\vat t$ measuring only the arclength the particle traces in the circle. In this coordinates, $\pvec\vat t = \tuple{r\vat t, s\vat t}$. The particle velocity, then, becomes
+\beq
+\dt\pvec\vat t = \tuple{\dt x\vat t, \dt s\vat t} \,.
+\eeq
+
+Now we relate $\dt s\vat t$ to $\theta\vat t$ via the definition of radians: $\theta = s/r$. So $\dt s = r\dt\theta\vat t$ and we call $\dt\theta\vat t$ the angular velocity. Therefore, the equation of $\dt\pvec\vat t$ becomes
+\beq
+\dt\pvec\vat t = \tuple{\dt r, r\dt\theta}\,.
+\eeq
+The first component, $\dt r$, called radial velocity, measures the rate at which the particle's position moves towards or apart the center of the circle, $\point O$, whereas The angular velocity measures how the angle changes in time. Note that $r\dt\theta$ is tangent to the curve traced by the particle.

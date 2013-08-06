@@ -1,0 +1,82 @@
+%%% PHYSICS
+%
+%%% MECHANICS
+%
+\newcommand{\pos}{\xi}   % position
+\newcommand{\press}{p} % pressure
+%
+%\newcommand{\vattpos}{\vat{t, \pos}} % value at t and position
+%
+%%% ENERGY TRANSPORT
+%
+\newcommand{\temp}{\theta}       % temperature
+\newcommand{\then}{e}            % thermal energy (heat)
+\newcommand{\work}{w}
+%
+%\newcommand{\ien}{u}             % internal energy
+%\newcommand{\rate}[1]{\dt{#1}}   % change rate
+%\newcommand{\flow}[1]{\dot{#1}}
+%\newcommand{\flux}[1]{\tilde{#1}}
+%
+%%% TEST
+%
+\newcommand{\ien}{i}                   % internal energy
+\newcommand{\rate}[1]{{#1}^{\prime}}   % change rate
+\newcommand{\accu}[1]{\rate{#1}}       % accumulation
+\newcommand{\flow}[1]{{#1}^{\prime}}
+\newcommand{\flux}[1]{{#1}^{\prime\prime}}
+%
+%%% ANOTHER TEST
+%
+%\newcommand{\ien}{u}              % internal energy
+%\newcommand{\rate}[1]{\dot{#1}}   % change rate
+%\newcommand{\flow}[1]{\dot{#1}}
+%\newcommand{\flux}[1]{\dot{#1}^{\prime}}
+%
+%%%
+%
+\newcommand{\kshcap}{c}        % specific heat capacity
+\newcommand{\kthcond}{k}       % thermal conductivity
+\newcommand{\kthdiff}{\alpha}  % thermal diffusivity
+%
+\newcommand{\kthconv}{f}               % film coefficient
+\newcommand{\kavthconv}{\bar{\kthconv}} % average film coefficient
+%
+\newcommand{\ktime}{\tau} % time constant
+%
+\newcommand{\absorb}{\alpha} % absorbance
+\newcommand{\reflect}{\rho}  % reflectance
+\newcommand{\transm}{\tau}   % transmittance
+%
+\newcommand{\dbflux}{\check{e}_{\wlen\txt{body}}} % body energy flux distribution function
+%
+\newcommand{\bbflux}{\flux\then\txt{bb}} % black-body energy flux
+\newcommand{\dbbflux}{\check{e}_{\wlen\txt{bb}}} % black-body energy flux distribution function
+%
+%%% MASS TRANSPORT
+%
+\newcommand{\npart}{n}   % n (number of) particles
+\newcommand{\mass}{m}
+\newcommand{\dens}{\rho} % mass density
+\newcommand{\chthen}{r}  % chemical reaction thermal energy
+%
+%%% WAVES
+%
+\newcommand{\wlen}{\lambda} % wavelength
+\newcommand{\wfreq}{\mu}    % wave frequency
+%
+%%% PHYSICAL CONSTANTS
+%
+\newcommand{\kboltz}{k\txt{b}}      % Boltzmann constant
+\newcommand{\kstef}{\sigma\txt{sb}} % Stefan-Boltzmann constant
+\newcommand{\kplanck}{h\txt{p}}     % Planck constant
+\newcommand{\klight}{c_0}           % speed of light in vacuum
+\newcommand{\kgas}{r\txt{g}}        % ideal gas constant
+\newcommand{\kavog}{n\txt{a}}       % Avogadro's number
+%
+%%% DIMENSIONAL ANALYSIS
+%
+\DeclareMathOperator{\unit}{unit}
+\newcommand{\kdim}{\Pi}          % dimless quantity
+\newcommand{\kbiot}{\Pi\txt{bi}} % biot number
+%

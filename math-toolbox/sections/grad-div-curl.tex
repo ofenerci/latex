@@ -1,0 +1,612 @@
+\section{Grad, Div, Curl and All That}
+
+\subsection{Scalar and Vector Fields}
+A scalar field is a scalar-valued function of the position vector; \ie, a scalar field assigns a scalar to every point of a region in space. It's called scalar field because it returns a scalar when a vector is plugged into it. For instance, the temperature distribution of a body.
+
+A vector field is a vector-valued function of the position vector; \ie, a vector field assigns a vector to every point of a region in space. It's called vector field because it returns a vector when a vector is plugged into it. For instance, the velocity vector of a fluid.
+
+
+\subsection{Gradient}
+The \lingo{gradient of a scalar field} is a \emph{vector field} that points in the direction of the greatest rate of increase of the scalar field and whose magnitude is that rate of increase. In simple terms, 
+\begin{quote}
+the variation in space of any quantity can be represented (\eg, graphically) by a slope. The gradient represents the steepness and direction of that slope.
+\end{quote}
+
+A generalization of the gradient for functions on a Euclidean space that have values in another Euclidean space is the Jacobian. A further generalization for a function from one Banach space to another is the Fréchet derivative.
+
+
+\subsubsection{Interpretation}
+Consider a room in which the temperature is given by a scalar field, $T$, so at each point $\tuple{x,y,z}$ the temperature is $T\vat{\tuple{x,y,z}}$. (We will assume that the temperature does not change over time.) At each point in the room, the gradient of $T$ at that point will show the direction the temperature rises most quickly. The magnitude of the gradient will determine how fast the temperature rises in that direction.
+
+Consider a surface whose height above sea level at a point $\tuple{x,y}$ is $H\vat{\tuple{x,y}}$. The gradient of $H$ at a point is a vector pointing in the direction of the steepest slope or grade at that point. The steepness of the slope at that point is given by the magnitude of the gradient vector.
+
+\emph{The gradient can also be used to measure how a scalar field changes in other directions, rather than just the direction of greatest change, by taking a dot product}. Suppose that the steepest slope on a hill is 40\%. If a road goes directly up the hill, then the steepest slope on the road will also be 40\%. If, instead, the road goes around the hill at an angle, then it will have a shallower slope. For example, if the angle between the road and the uphill direction, projected onto the horizontal plane, is \ang{60}, then the steepest slope along the road will be 20\%, which is 40\% times the cosine of \ang{60}.
+
+This observation can be mathematically stated as follows. If the hill height function $H$ is differentiable, then the gradient of $H$ ``dotted'' with a unit vector gives the slope of the hill in the direction of the vector. More precisely, 
+\begin{quote}
+when $H$ is differentiable, the dot product of the gradient of $H$ with a given unit vector is equal to the \lingo{directional derivative of $H$ in the direction of that unit vector}.
+\end{quote}
+
+
+\subsubsection{Definition}
+The \lingo{gradient (or gradient vector field) of a scalar function} $f\vat{\comp x1, \comp x2, \dotsc, \comp xn}$ is denoted $\gder f$, where $\gder$ (the nabla symbol) denotes the vector differential operator, \lingo{del}. The notation $\grad f$ is also commonly used for the gradient. The gradient of $f$ is defined as the unique vector field whose dot product with any vector $v$ at each point $x$ is the directional derivative of $f$ along $v$. That is,
+\beq
+\left(\gder f\vat x \right)\iprod v = \dder fv\vat x
+\eeq
+
+In a rectangular coordinate system, the gradient is the vector field whose components are the partial derivatives of $f$:
+\beq
+\gder f = \grad f = \rfvec k\igder k f = \xpd f{\comp x1}\dbvec 1 + \dotsb + \xpd f{\comp xn}\dbvec n\,,
+\eeq
+where the $\elset{\dbvec i}$ are the \emph{orthogonal unit vectors} pointing in the coordinate directions. When a function also depends on a parameter such as time, the gradient often refers simply to the vector of its spatial derivatives only.
+
+
+\subsubsection{Linear Approximation to a Function}
+The gradient of a function $f$ from the Euclidean space $\espace n$ to $\set R$ at any particular point $x_0$ in $\espace n$ characterizes \lingo{the best linear approximation to $f$ at $x_0$}. The approximation is as follows
+\beq
+f\vat x \sim f\vat{x_0} + \left(\gder f\right)_{x_0}\iprod \left(x - x_0\right)\,,
+\eeq
+for $x$ close to $x_0$, where $(\gder f)_{x_0}$ is the gradient of $f$ computed at $x_0$, and the dot denotes the dot product on $\espace n$. This equation is equivalent to the first two terms in the multi-variable Taylor Series expansion of $f$ at $x_0$.
+
+
+\subsubsection{Properties of the Gradient}
+\begin{itemize}
+\item Linearity: The gradient is linear in the sense that if $f$ and $g$ are two real-valued functions differentiable at the point $a\in\espace n$ and $\alpha$ and $\beta$ are two constants, then $\alpha f + \beta g$ is differentiable at $a$. Moreover
+\beq
+\gder\left(\alpha f + \beta g \right)\vat a = \alpha\gder f\vat a + \beta\gder g\vat a \,.
+\eeq
+%
+\item Product rule: If $f$ and $g$ are real-valued functions differentiable at a point $a\in\espace n$, then the product rule asserts that the product $(fg)\vat x = f\vat x g\vat x$ of the functions $f$ and $g$ is differentiable at $a$ and
+\beq
+\gder(fg)\vat a = f\vat a\gder g\vat a + g\vat a\gder f\vat a \,.
+\eeq
+%
+\item Chain rule: Suppose that $\fdef f{\set A}{\set B}$ is a real-valued function defined on a subset $\set A$ of $\espace n$, and that $f$ is differentiable at a point $a$. There are two forms of the chain rule applying to the gradient. First, suppose that the function $g$ is a parametric curve; that is, a function $\fdef g{\set I}{\espace n}$ maps a subset $\set I\subset\set R$ into $\espace n$. If $g$ is differentiable at a point $c\in\set I$ such that {{{1}}}, then
+\beq
+(f\fcomp g)'\vat c = \gder f\vat a\iprod g'\vat c\,,
+\eeq
+where $\fcomp$ is the composition operator. More generally, if instead $\set I\subset\espace k$, then the following holds:
+\beq
+\gder(f\fcomp g)\vat c = (\fder g\vat c)^T (\gder f\vat a)\,,
+\eeq
+where (Dg)T denotes the transpose \lingo{Jacobian matrix}.
+
+For the second form of the chain rule, suppose that $\fdef h{\set I}{\set R}$ is a real valued function on a subset $\set I$ of $\set R$, and that $h$ is differentiable at the point $f\vat a\in\set I$. Then,
+\beq
+\gder(h\fcomp f)\vat a = h'\vat{f\vat a}\gder f\vat a \,.
+\eeq
+%
+\end{itemize}
+
+
+\subsubsection{Conservative Vector Fields and the Gradient Theorem}
+The gradient of a function is called a \lingo{gradient field}. A (continuous) gradient field is \emph{always} a conservative vector field: its line integral along any path depends \emph{only} on the endpoints of the path and can be evaluated by the gradient theorem (the fundamental theorem of calculus for line integrals). Conversely, 
+\begin{quote}
+a (continuous) conservative vector field is always the gradient of a function.
+\end{quote}
+This is the starting point of Lagrange's formulation of mechanics.
+
+
+\subsubsection{Integral Definition of the Gradient of a Scalar Field}
+The gradient of a scalar, $\phi$, at a point $\pvec x$, is determined by considering a small volume $\diff V$, which is bounded by the surface $S$, as shown in figure 4.3. The outward unit normal to the surface is $n$. Then, the gradient is defined as
+\beq
+\grad\phi = \lim_{\diff V\to 0}\dfrac{1}{\diff V}\int_S \phi n\dx S\,.
+\eeq
+It is evident that the gradient is a vector, since it is proportional to the integral of the unit normal and the scalar function $\phi$.
+
+The value of the gradient in Cartesian coordinates is determined by considering a cubic volume $\diff\cntens\pvec 1\diff\cntens\pvec 2\diff\cntens\pvec 3$ about the point $\pvec = \tuple{\cntens\pvec 1, \cntens\pvec 2, \cntens\pvec 3}$, as shown in figure 4.4. This volume has six faces, and the surface integral in the last equation is the sum of the contributions due to these six faces. The directions of the outward unit normals should be noted; the outward unit normal to the face $A$ at $(\cntens\pvec 2 + \diff\cntens\pvec 2/2)$ is $+\nbvec 1$, while the outward unit normal to the face $B$ at $(\cntens\pvec 2 - \diff\cntens\pvec 2/2)$ is $-\nbvec 2$. Similarly, for the rest of the faces. With these, the surface integral in the definition of the gradient becomes
+\beq
+\int_S \phi n\dx S = \nbvec 1\diff\cntens\pvec 2\diff\cntens\pvec 3
+    \left(
+    \phi\vat{\cntens\pvec 1 + \diff\cntens\pvec 1/2, \cntens\pvec 2, \cntens\pvec 3} - 
+    \phi\vat{\cntens\pvec 1 - \diff\cntens\pvec 1/2, \cntens\pvec 2, \cntens\pvec 3}
+    \right)
+    + \dotsb\,.
+\eeq
+
+When this surface integral is divided by the volume $\diff\cntens\pvec 1\diff\cntens\pvec 2\diff\cntens\pvec 3$, and the limit $\diff\cntens\pvec 1$, $\diff\cntens\pvec 2$ and $\diff\cntens\pvec 3\to 0$ is taken, we get the definition of the gradient,
+\beq
+\grad\phi = \nbvec 1\xpd{\phi}{\cntens\pvec 1} 
+            + \nbvec 2\xpd{\phi}{\cntens\pvec 2}
+            + \nbvec 3\xpd{\phi}{\cntens\pvec 3}\,.
+\eeq
+
+The physical significance of the gradient is as follows. The variation in the scalar $\phi$, due to a small variation in the position vector $\diff\pvec$ a point, can be written as the dot product of the gradient of $\phi$ and the vector displacement:
+\begin{align*}
+\phi\vat{\pvec + \diff\pvec} - \phi\vat\pvec 
+    &= \diff\cntens\pvec 1\xpd{\phi}{\cntens\pvec 1}
+        + \diff\cntens\pvec 2\xpd{\phi}{\cntens\pvec 2}
+        + \diff\cntens\pvec 3\xpd{\phi}{\cntens\pvec 3}\,,\\
+%    
+    &= \left(\nbvec 1\diff\cntens\pvec 1 + \nbvec 2\diff\cntens\pvec 2 + \nbvec 3\diff\cntens\pvec 3\right)
+        \iprod
+        \left(\nbvec 1\xpd{\phi}{\cntens\pvec 1} 
+            + \nbvec 2\xpd{\phi}{\cntens\pvec 2}
+            + \nbvec 3\xpd{\phi}{\cntens\pvec 3}\right)\,,\\
+%
+    &= \diff\pvec\iprod\gder\phi\,.
+\end{align*}
+
+Two important results arise from the above relation:
+\begin{enumerate}
+\item The gradient provides the direction of maximum variation of the scalar $\phi$. In the last equation, if we keep the magnitude of the displacement $\magn{\diff\pvec}$ a constant, and vary the direction, then the dot product $(\diff\pvec\iprod\gder\phi)$ is a maximum when $\diff\pvec$ and $\gder\phi$ are in the same direction. Thus, 
+\begin{quote}
+the direction of the gradient is the direction of the maximum variation of the function.
+\end{quote}
+%
+\item If the displacement $\diff\pvec$ is perpendicular to $\gder\phi$, then there is no variation in the function $\phi$ due to the displacement. Thus, 
+\begin{quote}
+the gradient vector is perpendicular to the surface of constant $\phi$.
+\end{quote}
+\end{enumerate}
+
+The variation in the scalar $\phi$ in the last equation was defined for a differential displacement $\diff\pvec$. This can be used to obtain the variation in $\phi$ for two points separated by a macroscopic distance, by connecting the two points by a path and summing the variation in $\phi$ over the differential displacements $\pvec^{(i)}$ along this path, as shown in figure 4.5:
+\beq
+\phi\vat{\pvec_{\point B}} - \phi\vat{\pvec_{\point A}}
+    = \sum_i \diff\pvec^{(i)}\iprod\gder\phi
+    = \int_{\pvec_{\point A}}^{\pvec_{\point B}} \dx\pvec\iprod\gder\phi\,.
+\eeq
+
+This is the equivalent of the integral relation 4.26 for the gradient. A consequence of this is that since the difference in $\phi$ between $\pvec_{\point A}$ and $\pvec_{\point B}$ is independent of the path used to reach $\point B$ from $\point A$, the integral $\int\dx\pvec\iprod\gder\phi$ is equal for all paths between the two points $\point A$ and $\point B$. Another consequence is that the integral of the gradient over a closed path is always equal to zero.
+
+
+\subsection{Divergence}
+\lingo{Divergence} is a vector operator that measures the magnitude of a vector field's source or sink at a given point, in terms of a signed scalar. More technically, 
+\begin{quote}
+the divergence represents the volume density of the outward flux of a vector field from an infinitesimal volume around a given point.
+\end{quote}
+
+For example, consider air as it is heated or cooled. The relevant vector field for this example is the velocity of the moving air at a point. If air is heated in a region it will expand in all directions such that the velocity field points outward from that region. Therefore, the divergence of the velocity field in that region would have a \emph{positive value}, as the region is a \lingo{source}. If the air cools and contracts, the divergence is \emph{negative} and the region is called a \lingo{sink}.
+
+
+\subsubsection{Definition of Divergence}
+In physical terms, the divergence of a three dimensional vector field is the extent to which the vector field flow behaves like a source or a sink at a given point. It is a local measure of its ``outgoingness'' -- the extent to which there is more exiting an infinitesimal region of space than entering it. If the divergence is \emph{nonzero} at some point then there must be a source or sink at that position. (Note that we are imagining the vector field to be like the velocity vector field of a fluid -- in motion -- when we use the terms flow, sink and so on.)
+
+More rigorously, the divergence of a vector field $f$ at a point $\point P$ is defined as the limit of the net flow of $f$ across the smooth boundary of a three dimensional region $\region V$ divided by the volume of $\region V$ as $\region V$ shrinks to $\point P$. Formally,
+\beq
+\div f\vat{\point P} = \lim_{\region V\to\point P} 
+                       \iint_{\surf S\vat{\region V}} 
+                           \dfrac{f\iprod n}{\magn{\region V}} 
+                           \,\dx S\,,
+\eeq
+where $\magn{\region V}$ is the volume of $\region V$, $\surf S\vat{\region V}$ is the boundary of $\region V$ and the integral is a \lingo{surface integral} with $n$ being the outward unit normal to that surface. The result, $\div f$, is a function of $\point P$. From this definition it also becomes explicitly visible that $\div f$ can be seen as the \lingo{source density of the flux of $f$}.
+
+In light of the physical interpretation, a vector field with constant zero divergence is called \lingo{incompressible} or \lingo{solenoidal} -- in this case, no net flow can occur across any closed surface.
+
+The intuition that the sum of all sources minus the sum of all sinks should give the net flow outwards of a region is made precise by the \lingo{divergence theorem}.
+
+Note the equivalent definition
+\beq
+\div f = \gder\iprod f\,.
+\eeq
+
+
+\subsubsection{Application in Cartesian Coordinates}
+Let $\elset{x,y,z}$ be a system of Cartesian coordinates in 3-dimensional Euclidean space, and let $\frm k$ be the corresponding basis of unit vectors.
+
+The divergence of a continuously differentiable vector field $f = u\ifvec x + v\ifvec y + w\ifvec z$ is equal to the scalar-valued function:
+\beq
+\div f = \gder\iprod f = \cder ux + \cder vy + \cder wz = \xpd ux + \xpd vy + \xpd wz \,.
+\eeq
+Although expressed in terms of coordinates, 
+\begin{quote}
+$\div f$ is \emph{invariant} under orthogonal transformations, as the physical interpretation suggests.
+\end{quote}
+
+The common notation for the divergence $\gder\iprod f$ is a convenient mnemonic, where the dot denotes an operation reminiscent of the dot product: take the components of $\gder$, apply them to the components of $f$ and sum the results. Because applying an operator is different from multiplying the components, this is considered an abuse of notation.
+
+
+\subsubsection{Decomposition Theorem}
+It can be shown that any stationary flux $v\vat r$ which is at least two times continuously differentiable in $\espace 3$ and vanishes sufficiently fast for $\magn r\to\infty$ can be decomposed into an \lingo{irrotational part} $e\vat r$  and a \lingo{source-free} part $b\vat r$. Moreover, these parts are explicitly determined by the respective source-densities (divergence) and circulation densities (curl):
+
+For the irrotational part one has
+\beq
+e = -\gder \phi\vat r\,,
+\eeq
+with
+\beq
+\phi\vat r = \int_{\espace 3} \dx^3 r'\,\dfrac{\div v\vat{r'}}{4\pi \magn{r - r'}}
+\eeq
+
+The source-free part, $b$, can be similarly written: one only has to replace the scalar potential $\phi\vat r$ by a vector potential $a\vat r$ and the terms $-\gder\phi$ by $+\gder\cprod a$ and the source-density $\div v$ by the circulation-density $\gder\cprod v$.
+
+This ``decomposition theorem'' is in fact a by-product of the stationary case of electrodynamics. It is a special case of the more general Helmholtz decomposition which works in dimensions greater than three as well.
+
+
+\subsubsection{Properties}
+The following properties can all be derived from the ordinary differentiation rules of calculus. 
+
+\begin{itemize}
+%
+\item the divergence is a linear operator, \ie,
+\beq
+\div(af + bg) = a\div f + b\div g\,,
+\eeq
+for all \emph{vector} fields $f$ and $g$ and all real numbers $a$ and $b$.
+%
+\item There is a product rule of the following type: if $\phi$ is a scalar valued function and $g$ is a vector field, then
+\beq
+\div(\phi f) = \grad\phi\iprod f + \phi\div f
+\eeq
+or in more suggestive notation
+\beq
+\gder\iprod(\phi f) = (\gder\phi)\iprod f + \phi (\gder\iprod f) \,.
+\eeq
+%
+\item Another product rule for the cross product of two vector fields $f$ and $g$ in three dimensions involves the curl and reads as follows:
+\beq
+\div(f\cprod g) = \curl f\iprod g - f\iprod\curl g \,.
+\eeq
+%
+\item The Laplacian of a scalar field is the divergence of the field's gradient:
+\beq
+\lder\phi = \div\grad\phi \,.
+\eeq
+%
+\item The divergence of the curl of any vector field (in three dimensions) is equal to zero:
+\beq
+\gder\iprod(\gder\cprod f) = 0\,.
+\eeq
+%
+\end{itemize}
+
+
+\subsection{Curl}
+\lingo{Curl} is a vector operator that describes the infinitesimal rotation of a 3-dimensional vector field. At every point in the field, the curl of that field is represented by a vector. The attributes of this vector (length and direction) characterize the rotation at that point.
+
+The direction of the curl is the axis of rotation, as determined by the right-hand rule, and the magnitude of the curl is the magnitude of rotation. If the vector field represents the flow velocity of a moving fluid, then 
+\begin{quote}
+the curl is the circulation density of the fluid. 
+\end{quote}
+A vector field whose curl is zero is called \lingo{irrotational}. The curl is a form of differentiation for vector fields. The corresponding form of the fundamental theorem of calculus is Stokes' theorem, which relates the surface integral of the curl of a vector field to the line integral of the vector field around the boundary curve.
+
+The alternative terminology \lingo{rotor} or \lingo{rotational} and alternative notations $\rot f$ and $\gder\cprod f$ are often used (the former especially in many European countries, the latter, using the del operator and the cross product, is more used in other countries) for curl and $\curl f$.
+
+Unlike the gradient and divergence, \emph{curl does not generalize as simply to other dimensions}; some generalizations are possible, but only in three dimensions is the geometrically defined curl of a vector field again a vector field. This is a similar phenomenon as in the 3 dimensional cross product, and the connection is reflected in the notation $\gder\cprod$ for the curl.
+
+
+\subsubsection{Definition}
+The curl of a vector field $f$, denoted by $\curl f$, $\rot f$ or $\gder\cprod f$, at a point is defined in terms of its projection onto various lines through the point. If $n$ is any unit vector, the projection of the curl of $f$ onto $n$ is defined to be the limiting value of a \lingo{closed line integral} in a plane orthogonal to $n$ as the path used in the integral becomes infinitesimally close to the point, divided by the area enclosed.
+
+As such, the curl operator maps $C^1$ functions from $\espace 3$ to $\espace 3$ to $C^0$ functions from $\espace 3$ to $\espace 3$.
+
+Implicitly, curl is defined by:
+\beq
+(\gder\cprod f)\iprod n = \lim_{\surf A\to 0} \left( \dfrac{1}{\magn{\surf A}} \oint_{\curve C}\,f\iprod\dx r\right) \,,
+\eeq
+where $\oint$ is a line integral along the boundary of the area in question, and $\magn{\surf A}$ is the magnitude of the area. If $v$ is an outward pointing in-plane normal, whereas $n$ is the unit vector perpendicular to the plane, then the orientation of $\curve C$ is chosen so that a tangent vector $\omega$ to $\curve C$ is positively oriented if and only if $\elset{n, v,\omega}$ forms a positively oriented basis for $\espace 3$ (right-hand rule).
+
+The above formula means that the curl of a vector field is defined as the infinitesimal area density of the circulation of that field. To this definition fit naturally
+\begin{itemize}
+\item the Kelvin-Stokes theorem, as a global formula corresponding to the definition, and
+%
+\item the following ``easy to memorize'' definition of the curl in curvilinear orthogonal coordinates, \eg, in cartesian coordinates, spherical, cylindrical, or even elliptical or parabolical coordinates:
+\beq
+\left( \curl f \right)_{3} = \dfrac{1}{a_1 a_2} \left( \xpd{(a_2 f_2)}{u_1} - \xpd{(a_1 f_1)}{u_2} \right) \,.
+\eeq
+
+If $\tuple{\comp x1, \comp x2, \comp x3}$ are the Cartesian coordinates and $\tuple{\comp u1, \comp u2, \comp u3}$ are the orthogonal coordinates, then
+\beq
+a_i = \sqrt{\sum_{j = 1}^{3}\left( \xpd{\comp xj}{\comp ui} \right)^2}
+\eeq
+is the length of the coordinate vector corresponding to $\comp ui$. The remaining two components of curl result from cyclic permutation of indices: $3,1,2\to 1,2,3\to 2,3,1$.
+\end{itemize}
+
+
+\subsubsection{Intuitive Interpretation}
+Suppose the vector field describes the velocity field of a fluid flow (such as a large tank of liquid or gas) and a small ball is located within the fluid or gas (the centre of the ball being fixed at a certain point). If the ball has a rough surface, the fluid flowing past it will make it rotate. The rotation axis (oriented according to the right hand rule) points in the direction of the curl of the field at the centre of the ball, and the angular speed of the rotation is half the magnitude of the curl at this point.
+
+
+\subsection{Laplace Operator}
+The \lingo{Laplace operator} or Laplacian is a differential operator given by the divergence of the gradient of a function on Euclidean space. It is usually denoted by the symbols $\gder\iprod\gder$, $\gder^2$ or $\lder$. The Laplacian $\lder f\vat p$ of a function $f$ at a point $p$, up to a constant depending on the dimension, is the rate at which the average value of $f$ over spheres centered at $p$, deviates from $f\vat p$ as the radius of the sphere grows. In a Cartesian coordinate system, the Laplacian is given by sum of second partial derivatives of the function with respect to each independent variable. In other coordinate systems such as cylindrical and spherical coordinates, the Laplacian also has a useful form.
+
+The Laplace operator is named after the French mathematician Pierre-Simon de Laplace (1749–1827), who first applied the operator to the study of celestial mechanics, where the operator gives a constant multiple of the mass density when it is applied to a given gravitational potential. Solutions of the equation $\lder f = 0$, now called Laplace's equation, are the so-called harmonic functions and represent the possible gravitational fields in free space.
+
+The Laplacian occurs in differential equations that describe many physical phenomena, such as electric and gravitational potentials, the diffusion equation for heat and fluid flow, wave propagation and quantum mechanics. The Laplacian represents the flux density of the gradient flow of a function. For instance, the net rate at which a chemical dissolved in a fluid moves toward or away from some point is proportional to the Laplacian of the chemical concentration at that point; expressed symbolically, the resulting equation is the diffusion equation. For these reasons, it is extensively used in the sciences for modelling all kinds of physical phenomena. The Laplacian is the simplest elliptic operator and is at the core of Hodge theory as well as the results of de Rham cohomology. In image processing and computer vision, the Laplacian operator has been used for various tasks such as blob and edge detection.
+
+
+\subsubsection{Definition}
+The Laplace operator is a second order differential operator in the $n$-dimensional Euclidean space, defined as the divergence $\gder\iprod$ of the gradient $\grad f$. Thus if $f$ is a twice-differentiable real-valued function, then the Laplacian of $f$ is defined by
+\beq
+\lder f = \gder^2 f = \gder\iprod\gder f = \div\grad f\,.
+\eeq
+
+Equivalently, the Laplacian of $f$ is the sum of all the unmixed second partial derivatives in the Cartesian coordinates  
+\beq
+\lder f = \sum_{i = 1}^{n}\dfrac{\partial^2 f}{\partial x_i^2}\,.
+\eeq
+As a second-order differential operator, the Laplace operator maps $C^k$-functions to $C^{k-2}$-functions for $k\geq 2$. The last expressions define an operator $\fdef{\lder}{C^k\vat{\nset Rn}}{C^{k-2}\vat{\nset Rn}}$ or more generally an operator $\fdef{\lder}{C^k\vat{\Omega}}{C^{k-2}\vat{\Omega}}$ for any open set $\Omega$.
+
+
+\subsection{Motivation}
+
+\subsubsection{Diffusion}
+In the physical theory of diffusion, the Laplace operator (via Laplace's equation) arises naturally in the mathematical description of equilibrium. Specifically, if $u$ is the density at equilibrium of some quantity such as a chemical concentration, then the net flux of $u$ through the boundary of any smooth region $V$ is zero, provided there is no source or sink within $V$:
+\beq
+\int_{\bound V}\gder u\iprod n\,\dx S = 0\,,
+\eeq
+where $n$ is the outward unit normal to the boundary of $V$. By the divergence theorem,
+\beq
+\int_{V}\div\gder u\,\dx V = \int_{\bound V}\gder u\iprod n\,\dx S\,.
+\eeq
+Since this holds for all smooth regions $V$, it can be shown that this implies
+\beq
+\div\gder u = \lder u = 0 \,.
+\eeq
+The left-hand side of this equation is the Laplace operator. The Laplace operator itself has a physical interpretation for non-equilibrium diffusion as the extent to which a point represents a source or sink of chemical concentration, in a sense made precise by the diffusion equation.
+
+
+\subsubsection{Density Associated to a Potential}
+If $\phi$ denotes the electrostatic potential associated to a charge distribution $q$, then the charge distribution itself is given by the Laplacian of $\phi$:
+\beq
+q = \lder\phi\,.
+\eeq
+This is a consequence of Gauss's law. Indeed, if $V$ is any smooth region, then by Gauss's law the flux of the electrostatic field $E$ is equal to the charge enclosed (in appropriate units):
+\beq
+\int_{\bound V}E\iprod n\,\dx S = \int_{\bound V}\grad\phi\iprod n\,\dx S = \int_{V}q\,\dx V \,,
+\eeq
+where the first equality uses the fact that the electrostatic field is the gradient of the electrostatic potential. The divergence theorem now gives
+\beq
+\int_V \lder\phi\,\dx V = \int_V q\,\dx V
+\eeq
+and since this holds for all regions $V$, $q = \lder\phi$ follows.
+
+The same approach implies that the Laplacian of the gravitational potential is the mass distribution. Often the charge (or mass) distribution are given, and the associated potential is unknown. Finding the potential function subject to suitable boundary conditions is equivalent to solving Poisson's equation.
+
+
+\subsection{Divergence Theorem}
+The \lingo{divergence theorem}, \aka Gauss's theorem, Green's theorem or Ostrogradsky's theorem, is a result that relates the flow (that is, \lingo{flux}) of a vector field through a surface to the behavior of the vector field inside the surface.
+
+More precisely, the divergence theorem states that 
+\begin{quote}
+the outward flux of a vector field through a closed surface is equal to the volume integral of the divergence over the region inside the surface. 
+\end{quote}
+Intuitively, it states that 
+\begin{quote}
+the sum of all sources minus the sum of all sinks gives the net flow out of a region.
+\end{quote}
+
+The divergence theorem is an important result for the mathematics of engineering, in particular in electrostatics and fluid dynamics.
+
+In physics and engineering, the divergence theorem is usually applied in three dimensions. However, it generalizes to any number of dimensions. In one dimension, it is equivalent to the fundamental theorem of calculus.
+
+The theorem is a special case of the more general Stokes' theorem.
+
+
+\subsubsection{Intuition}
+If a fluid is flowing in some area, and we wish to know how much fluid flows out of a certain region within that area, then we need to add up the sources inside the region and subtract the sinks. The fluid flow is represented by a vector field, and the vector field's divergence at a given point describes the strength of the source or sink there. So, integrating the field's divergence over the interior of the region should equal the integral of the vector field over the region's boundary. The divergence theorem says that this is true.
+
+The divergence theorem is thus a \emph{conservation law} which states that the volume total of all sinks and sources, the volume integral of the divergence, is equal to the net flow across the volume's boundary.
+
+
+\subsubsection{Mathematical Statement}
+Suppose $\region V$ is a subset of $\espace n$ (in the case of $n = 3$, $\region V$ represents a volume in 3D space) which is compact and has a piecewise smooth boundary $\surf S$. If $f$ is a continuously differentiable \emph{vector field} defined on a neighborhood of $\region V$, then we have
+\beq
+\int_{\region V} (\gder\iprod f)\,\dx\region V = \oint_{\surf S} (f\iprod n)\,\dx\surf S \,.
+\eeq
+The left side is a \lingo{volume integral} over the volume $\region V$, the right side is the \lingo{surface integral} over the boundary of the volume $\region V$. The closed manifold $\bound{\region V}$ is quite generally the boundary of $\region V$ oriented by outward-pointing normals, and $n$ is the outward pointing unit normal field of the boundary $\bound\region V$. ($\dx\surf S$ may be used as a shorthand for $n\dx S$.) By the symbol within the two integrals it is stressed once more that $\bound\region V$ is a closed surface. In terms of the intuitive description above, the left-hand side of the equation represents the total of the sources in the volume $\bound\region V$, and the right-hand side represents the total flow across the boundary $\bound\region V$.
+
+
+\subsubsection{Applications}
+Differential form and integral form of physical laws: As a result of the divergence theorem, a host of physical laws can be written in both a differential form (where one quantity is the divergence of another) and an integral form (where the flux of one quantity through a closed surface is equal to another quantity). Three examples are Gauss's law (in electrostatics), Gauss's law for magnetism, and Gauss's law for gravity.
+
+Continuity equations: Continuity equations offer more examples of laws with both differential and integral forms, related to each other by the divergence theorem. In fluid dynamics, electromagnetism, quantum mechanics, relativity theory, and a number of other fields, there are continuity equations that describe the conservation of mass, momentum, energy, probability, or other quantities. Generically, these equations state that the divergence of the flow of the conserved quantity is equal to the distribution of sources or sinks of that quantity. The divergence theorem states that any such continuity equation can be written in a differential form (in terms of a divergence) and an integral form (in terms of a flux).
+
+Inverse-square laws: Any inverse-square law can instead be written in a Gauss' law-type form (with a differential and integral form, as described above). Two examples are Gauss' law (in electrostatics), which follows from the inverse-square Coulomb's law, and Gauss' law for gravity, which follows from the inverse-square Newton's law of universal gravitation. The derivation of the Gauss' law-type equation from the inverse-square formulation (or \vis) is exactly the same in both cases.
+
+
+\subsection{Gradient Theorem}
+The \lingo{gradient theorem}, \aka the fundamental theorem of calculus for line integrals, says that a line integral through a gradient field can be evaluated by evaluating the original scalar field at the endpoints of the curve:
+\beq
+\phi\vat q - \phi\vat p = \int_{\gamma\vat{p,q}} \grad\phi\vat r\iprod\dx r\,.
+\eeq
+
+It is a generalization of the fundamental theorem of calculus to any curve in a plane or space (generally $n$-dimensional) rather that just the real line.
+
+The gradient theorem implies that line integrals through irrotational vector fields are path independent. In physics, this theorem is one of the ways of defining a ``conservative'' force. By placing $\phi$ as potential, $\grad\phi$ is a conservative field. Work done by conservative forces does not depend on the path followed by the object, but only the end points, as the above equation shows.
+
+The gradient theorem also has an interesting converse:
+\begin{quote}
+any conservative vector field can be expressed as the gradient of a scalar field.
+\end{quote}
+Just like the gradient theorem itself, this converse has many striking consequences and applications in both pure and applied mathematics.
+
+
+\subsection{Continuity Equation}
+A \lingo{continuity equation} in physics is an equation that describes the transport of a conserved quantity. Since mass, energy, momentum, electric charge and other natural quantities are conserved under their respective appropriate conditions, a variety of physical phenomena may be described using continuity equations.
+
+Continuity equations are a stronger, \emph{local} form of conservation laws. For example, it is true that ``the total energy in the universe is conserved''. But this statement does not immediately rule out the possibility that energy could disappear from Earth while simultaneously appearing in another galaxy. A stronger statement is that energy is locally conserved: Energy can neither be created nor destroyed, nor can it ``teleport'' from one place to another -- it can only move by a \emph{continuous flow}. A continuity equation is the mathematical way to express this kind of statement.
+
+Continuity equations more generally can include ``source'' and ``sink'' terms, which allow them to describe quantities which are often but not always conserved, such as the density of a molecular species which can be created or destroyed by chemical reactions. In an everyday example, there is a continuity equation for the number of living humans; it has a ``source term'' to account for people giving birth, and a ``sink term'' to account for people dying.
+
+Any continuity equation can be expressed in an ``integral form'' (in terms of a \lingo{flux integral}), which applies to any finite region, or in a ``differential form'' (in terms of the \lingo{divergence operator}) which applies at a point.
+Continuity equations underlie more specific transport equations such as the convection-diffusion equation, Boltzmann transport equation, and Navier-Stokes equations.
+
+
+\subsubsection{Preliminary Description}
+As stated above, the idea behind the continuity equation is the flow of some property, such as mass, energy, electric charge, momentum, and even probability, through surfaces from one region of space to another. The surfaces, in general, may either be open or closed, real or imaginary, and have an arbitrary shape, but are \emph{fixed} for the calculation (\ie, \emph{not} time-varying, which is appropriate since this complicates the maths for no advantage). Let this property be represented by just one scalar variable, $q$, and let the volume density of this property (the amount of $q$ per unit volume $V$) be $\rho$, and the union of all surfaces be denoted by $S$. Mathematically, $\rho$ is a ratio of two infinitesimal quantities:
+\beq
+\rho = \dfrac{\dx q}{\dx V}\,,
+\eeq
+which has the dimension $\phdim{quantity}/\phdim{L^3}$ (where $\phdim L$ is length).
+
+There are different ways to conceive the continuity equation:
+\begin{itemize}
+\item either the flow of particles carrying the quantity $q$, described by a velocity field $v$, which is also equivalent to a flux $j$ of $q$ (a vector function describing the flow per unit area per unit time of $q$), or,
+\item in the cases where a velocity field is not useful or applicable, the flux $j$ of the quantity $q$ only (no association with velocity).
+\end{itemize}
+In each of these cases, the transfer of $q$ occurs as it passes through two surfaces, the first $S_1$ and the second $S_2$.
+
+The flux $j$ should represent some flow or transport, which has dimensions $\phdim{quantity}/\phdim{T}\phdim{L^2}$. In cases where particles/carriers of quantity $q$ are moving with velocity $v$, such as particles of mass in a fluid or charge carriers in a conductor, $j$ can be related to $v$ by:
+\beq
+j = \rho v \,.
+\eeq
+This relation is only true in situations where there are particles moving and carrying $q$ -- it can't always be applied. To illustrate this: if $j$ is electric current density (electric current per unit area) and $\rho$ is the charge density (charge per unit volume), then the velocity of the charge carriers is $v$. However, if $j$ is heat flux density (heat energy per unit time per unit area), then even if we let $\rho$ be the heat energy density (heat energy per unit volume) it does not imply the ``velocity of heat'' is $v$ (this makes no sense and is not practically applicable). In the latter case only $j$ (with $\rho$) may be used in the continuity equation.
+
+
+\subsubsection{Elementary Vector Form}
+Consider the case when the surfaces are flat and planar cross-sections. For the case where a velocity field can be applied, \emph{dimensional analysis} leads to this form of the continuity equation:
+\beq
+\rho_1 v_1\iprod S_1 = \rho_2 v_2\iprod S_2\,,
+\eeq
+where the left hand side is the initial amount of $q$ flowing per unit time through surface $S_1$, the right hand side is the final amount through surface $S_2$ and $S_1$ and $S_2$ are the vector areas for the surfaces $S_1$ and $S_2$.
+
+Notice the dot products $v_i\iprod S_i$ are \lingo{volumetric flow rates} of $q$. The dimension of each side of the equation is $\phdim{quantity}/\phdim{L^3}\times\phdim L/\phdim{T}\times\phdim{L^2} = \phdim{quantity}/\phdim{T}$. For the more general cases, independent of whether a velocity field can be used or not, the continuity equation becomes:
+\beq
+j_1\iprod S_1 = j_2\iprod S_2 \,.
+\eeq
+This has exactly the same dimensions as the previous version. The relation between $j$ and $v$ allows us to pass from the velocity version to this \lingo{flux equation}, but not always the other way round (as explained above -- velocity fields are not always applicable). These results can be generalized further to curved surfaces by reducing the vector surfaces into infinitely many differential surface elements (that is $S\to\dx S$), then integrating over the surface:
+\beq
+\int_{S_1}\rho_1 v_1\iprod\dx S_1 = \int_{S_2}\rho_2 v_2\iprod\dx S_2
+\eeq
+or, more generally still,
+\beq
+\int_{S_1} j_1\iprod\dx S_1 = \int_{S_2} j_2\iprod\dx S_2\,,
+\eeq
+in which $\int_{S}\dx S = \int_{S} n\dx S$ denotes a surface integral over the surface S, $n$ is the outward-pointing unit normal to the surface $S$. Note that the scalar area $S$ and vector area $S$ are related by $\dx S = n\dx S$. Either notations may be used interchangeably.
+
+
+\subsubsection{Differential form}
+The differential form for a general continuity equation is (using the same $q$, $\rho$ and $j$ as above):
+\beq
+\xpd\rho t + \gder\iprod j = \sigma\,,
+\eeq
+where $\gder\iprod$ is divergence, $t$ is time, $\sigma$ is the \lingo{generation of $q$ per unit volume per unit time}. Terms that generate ($\sigma > 0$) or remove ($\sigma < 0$) $q$ are referred to as a ``sources'' and ``sinks''.
+
+This general equation may be used to derive \emph{any} continuity equation, ranging from as simple as the volume continuity equation to as complicated as the Navier-Stokes equations. This equation also generalizes the \lingo{advection equation}. Other equations in physics, such as Gauss's law of the electric field and Gauss's law for gravity, have a similar mathematical form to the continuity equation, but are not usually called by the term ``continuity equation'', because $j$ in those cases does \emph{not} represent the flow of a real physical quantity.
+
+In the case that $q$ is a conserved quantity that cannot be created or destroyed (such as energy), this translates to $\sigma = 0$ and the continuity equation is:
+\beq
+\xpd\rho t + \gder\iprod j = 0\,.
+\eeq
+
+
+\subsubsection{Integral Form}
+By the divergence theorem (see below), the continuity equation can be rewritten in an equivalent way, called the ``integral form'':
+\beq
+\xod q t + \oint_{S} j\iprod\dx S = \Sigma\,,
+\eeq
+where $S$ is a surface as described above -- except this time it has to be a \emph{closed surface} that encloses a volume $V$, $\oint_{S}\dx S$ denotes a surface integral over a closed surface, $\int_{V}\dx V$ denotes a volume integral over $V$. $q = \int_{V}\rho\dx V$ is the total amount of $\rho$ in the volume $V$; $\Sigma = \int_V \sigma\dx V$ is the total generation (negative in the case of removal) per unit time by the sources and sinks in the volume $V$.
+
+In a simple example, $V$ could be a building and $q$ could be the number of people in the building. The surface $S$ would consist of the walls, doors, roof and foundation of the building. Then, the continuity equation states that the number of people in the building increases when people enter the building (an inward flux through the surface), decreases when people exit the building (an outward flux through the surface), increases when someone in the building gives birth (a ``source'' where $\sigma > 0$) and decreases when someone in the building dies (a ``sink'' where $\sigma < 0$).
+
+\subsubsection{Derivation of the Differential Form}
+Suppose first an amount of quantity $q$ is contained in a region of volume $V$, bounded by a closed surface $S$, as described above. This can be written as
+\beq
+q\vat t = \int_V \rho\vat{r,t}\,\dx V \,.
+\eeq
+
+The rate of change of $q$ is simply the time derivative:
+\beq
+\xod qt\vat t = \xod{}{t}\int_V \rho\vat{r,t}\,\dx V = \int_V \xpd\rho t\vat{r,t}\,\dx V \,.
+\eeq
+The derivative is changed from the total to partial as it enters the integral because the integrand is not only a function of time, but also of coordinates due to the density nature of $\rho$. The rate of change of $q$ can also be expressed as a sum of the flow through the surface $S$ taken with the minus sign (the flow is from inside to outside) and the rate of production of $q$:
+\beq
+\xod qt\vat t = -\int_S j\vat{r,t}\iprod\dx S + \Sigma\vat t \,.
+\eeq
+
+Now equating these expressions:
+\beq
+-\int_S j\vat{r,t}\iprod\dx S + \Sigma\vat t = \int_V \xpd\rho t\vat{r,t}\,\dx V \,.
+\eeq
+
+Using the divergence theorem on the left-hand side:
+\beq
+-\int_V \gder\iprod j\vat{r,t}\,\dx V + \int_V \sigma\vat{r,t}\,\dx V = \int_V \xpd\rho t\vat{r,t}\,\dx V \,.
+\eeq
+
+Since the volume $V$ is arbitrary chosen this is only true if the integrands are equal, which directly leads to the differential continuity equation:
+\begin{align*}
+\gder\iprod j\vat{r,t}     &= -\xpd{\rho}{t}\vat{r,t} + \sigma\vat{r,t}\,,\\
+\gder\iprod j + \xpd\rho t &= \sigma\implies \gder\iprod \rho v + \xpd\rho t = \sigma\,.
+\end{align*}
+Either form may be useful and quoted, both can appear in hydrodynamics and electromagnetism, but for quantum mechanics and energy conservation, only the first is used. Therefore the first is more general.
+
+
+\subsubsection{Electromagnetism}
+In electromagnetic theory, the continuity equation is an empirical law expressing (local) charge conservation. Mathematically it is an automatic consequence of Maxwell's equations, although charge conservation is more fundamental than Maxwell's equations. It states that the divergence of the current density $J$ (in amperes per square meter) is equal to the negative rate of change of the charge density $\rho$ (in coulombs per cubic metre),
+\beq
+\gder\iprod J = -\xpd\rho t \,.
+\eeq
+
+Current is the movement of charge. The continuity equation says that if charge is moving out of a differential volume (\ie, divergence of current density is positive) then the amount of charge within that volume is going to decrease, so the rate of change of charge density is negative. Therefore the continuity equation amounts to a conservation of charge.
+
+
+\subsubsection{Fluid Dynamics}
+In fluid dynamics, the continuity equation states that, in any steady state process, the rate at which mass enters a system is equal to the rate at which mass leaves the system.
+
+The differential form of the continuity equation is:
+\beq
+\xpd\rho t + \gder\iprod(\rho u) = 0 \,,
+\eeq
+where $\rho$ is fluid density, $t$ is time, $u$ is the flow velocity vector field.
+
+In this context, this equation is also one of Euler equations. The Navier-Stokes equations form a vector continuity equation describing the conservation of linear momentum.
+
+If $\rho$ is a constant, as in the case of incompressible flow, the mass continuity equation simplifies to a volume continuity equation:
+\beq
+\gder\iprod u = 0\,,
+\eeq
+which means that the divergence of velocity field is zero everywhere. Physically, this is equivalent to saying that the local volume dilation rate is zero.
+
+
+\subsubsection{Heat Transfer}
+Conservation of energy (which, in non-relativistic situations, can only be transferred, and not created or destroyed) leads to a continuity equation, an alternative mathematical statement of energy conservation to the thermodynamic laws.
+Letting $u$ to be the local energy density (energy per unit volume), $q$ the energy flux (transfer of energy per unit cross-sectional area per unit time) as a vector, then the continuity equation is:
+\beq
+\gder\iprod q + \xpd u t = 0\,.
+\eeq
+
+
+\subsection{Green's Identities}
+In mathematics, Green's identities are a set of three identities in vector calculus. They are named after the mathematician George Green, who discovered Green's theorem.
+
+
+\subsubsection{Green's first identity}
+This identity is derived from the divergence theorem applied to the vector field : Let $\varphi$ and $\phi$ be scalar functions defined on some region $\region U$ in $\nset R3$, and suppose that $\varphi$ is twice continuously differentiable, and $\phi$ is once continuously differentiable. Then,
+\beq
+\int_{\region U}\left(\phi\lder\varphi + \grad\varphi\iprod \grad\phi \right)\,\dx\region V 
+    = \oint_{\bound\region U}\phi(\grad\varphi\iprod n)\,\dx S \,.
+\eeq
+where $\lder$ is the Laplace operator, $\bound\region U$ is the boundary of region $\region U$ and $n$ is the outward pointing unit normal of surface element $\dx S$. This theorem is essentially the higher dimensional equivalent of integration by parts with $\phi$ and the gradient of $\varphi$ replacing $u$ and $v$.
+
+Note that Green's first identity above is a special case of the more general identity derived from the divergence theorem by substituting $F = \phi\gamma$:
+\beq
+\int_{\region U}\left(\phi\grad\iprod\gamma + \gamma\iprod\grad\phi \right)\,\dx\region V 
+    = \oint_{\bound\region U}\phi(\gamma\iprod n)\,\dx S\,.
+\eeq
+
+
+\subsubsection{Green's second identity}
+If $\varphi$ and $\phi$ are both twice continuously differentiable on $\region U$ in $\nset R3$, and $\epsilon$ is once continuously differentiable, we can choose $F = \phi\epsilon\grad\varphi - \varphi\epsilon\grad\phi$ and obtain:
+\beq
+\int_{\region U}\left(\phi\grad\iprod(\epsilon\grad\varphi) 
+                    - \varphi\grad\iprod(\epsilon\grad\phi)
+                \right)\,\dx\region V
+= \oint_{\bound\region U}\epsilon\left(\phi\xpd\varphi n - \varphi\xpd\phi n \right)\,\dx S\,.                
+\eeq
+For the special case of $\epsilon = 1$ all across $\region U$ in $\nset R3$ then:
+\beq
+\int_{\region U}\left(\phi\lder\varphi - \varphi\lder\phi\right)\,\dx\region V
+= \oint_{\bound\region U}\left(\phi\xpd\varphi n - \varphi\xpd\phi n \right)\,\dx S\,. 
+\eeq
+In the equation above $\partial\phi/\partial n$ is the directional derivative of $\phi$ in the direction of the outward pointing normal $n$ to the surface element $\dx S$:
+\beq
+\xpd\phi n = \grad\phi\iprod n\,.
+\eeq
+
+
+\subsection{Stokes' Theorem}
+In differential geometry, \lingo{Stokes' theorem} (also called the generalized Stokes' theorem) is a statement about the integration of differential forms on manifolds, which both simplifies and generalizes several theorems from vector calculus. Stokes' theorem says that the integral of a differential form $\omega$ over the boundary of some orientable manifold $\Omega$ is equal to the integral of its exterior derivative $\dx\omega$ over the whole of $\Omega$, \ie,
+\beq
+\int_{\bound\Omega}\omega = \int_{\Omega}\dx\omega\,.
+\eeq
+
+This modern form of Stokes' theorem is a vast generalization of a classical result first discovered by Lord Kelvin, who communicated it to George Stokes in a letter dated July 2, 1850. Stokes set the theorem as a question on the 1854 Smith's Prize exam, which led to the result bearing his name. This classical Kelvin-Stokes theorem relates the surface integral of the curl of a vector field $F$ over a surface $\Sigma$ in Euclidean three-space to the line integral of the vector field over its boundary $\bound\Sigma$:
+\beq
+\iint_{\Sigma}\gder\cprod F\iprod\dx\Sigma = \oint_{\bound\Sigma}F\iprod\dx\pvec\,,
+\eeq
+where $\pvec$ is the position vector.
+
+This classical statement, as well as the classical Divergence theorem, fundamental theorem of calculus, and Green's Theorem are simply special cases of the general formulation stated above.
+

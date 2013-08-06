@@ -1,0 +1,96 @@
+%%% PHYSICS
+%
+%%% MECHANICS
+%
+\newcommand{\pvec}{x}                         % position vector
+\newcommand{\vattpvec}{\vat{t, \pvec\vat{t}}} % value at time and position vector (for functions)
+%
+\newcommand{\svec}{s}   % separation vector between points
+\newcommand{\lmom}{p}   % linear momentum
+%\newcommand{\vvec}{v}  % velocity vector
+%\newcommand{\avec}{a}  % acceleration vector
+%\newcommand{\fvec}{f}  % force vector
+\newcommand{\ken}{k}    % kinetic energy
+\newcommand{\pen}{v}    % potential energy
+\newcommand{\ien}{u}    % internal energy
+\newcommand{\action}{A} % action functional
+\newcommand{\lag}{L}    % lagrange function
+\newcommand{\ham}{H}    % hamilton function
+%
+\newcommand{\hken}{\ham\txt{kin}} % hamiltonian kin energy
+\newcommand{\hpen}{\ham\txt{pot}} % hamiltonian pen energy
+%
+\newcommand{\Gpos}{q}                          % generalized position
+\newcommand{\gpvec}{\Gpos}                     % generalizade position vector
+\newcommand{\gpos}[1]{\cnvec{\Gpos}{#1}}       % indexed generalized position
+\newcommand{\gvel}[1]{\cnvec{\dt{\Gpos}}{#1}}  % indexed generalized velocity
+\newcommand{\gacc}[1]{\cnvec{\ddt{\Gpos}}{#1}} % indexed generalized acceleration
+%
+\newcommand{\scoord}[1]{\cntens{\pvec}{k}} % spatial coordinates
+\newcommand{\dtscoord}[1]{\cntens{\dt\pvec}{k}} % spatial coordinates time derivative
+%
+\newcommand{\Gmom}{p}                         % generalized momentum
+\newcommand{\gmom}[1]{\covec{\Gmom}{#1}}      % indexed generalized momentum
+%
+\newcommand{\Gfor}{f}                    % generalized force
+\newcommand{\gfor}[1]{\covec{\Gfor}{#1}} % indexed generalized force
+%
+% Euler-Lagrange eqn
+\newcommand{\eleqn}[2]{
+\xod{}{t}
+    \left(\xpd{\lag}{\comp{\dt{#1}}{#2}}\right)
+    - \xpd{\lag}{\comp{#1}{#2}}
+}
+%
+%%% covariant and contravariant
+%
+\newcommand{\cnvec}[2]{\comp{#1}{#2}}  % contra-variant vector
+\newcommand{\ivec}[2]{\cnvec{#1}{#2}}  % (contra-variant) indexed vector
+%
+\newcommand{\covec}[2]{\rcomp{#1}{#2}} % co-variant vector (covector)
+%
+%\newcommand{\bvec}{\mathsf{e}}    % basis vector
+\newcommand{\bvec}{\gamma}         % basis vector
+\newcommand{\nbvec}[1]{\bvec_{#1}} % natural basis vector
+\newcommand{\dbvec}[1]{\bvec^{#1}} % dual basis vector
+%
+%%% DIM ANALYSIS
+%
+\DeclareMathOperator*{\sdim}{dim}         % dimension and system of units
+\DeclareMathOperator{\unit}{unit}         % unit operator
+\newcommand{\phdim}[1]{\left[{#1}\right]} % physical dimension
+\newcommand{\kdim}{\Pi}                   % dimensionless quantity (dim. constant)
+\newcommand{\chpq}[1]{{#1}_{c}}           % characteristic physical quantity
+\newcommand{\scpq}[1]{\bar{#1}}           % scaled physical quantity
+%
+%\newcommand{\dcharpq}[1]{\charpq{\dot{#1}}}      % dot derivative of char. phy. quant.
+%\newcommand{\ddcharpq}[1]{\charpq{\ddot{#1}}}    % ddot derivative of char. phy. quant.
+%
+%%% PHYSICOCHEMISTRY
+%
+\newcommand{\subs}[1]{\ce{#1}}            % substance
+\newcommand{\flux}{j}                     % flux
+\newcommand{\mflux}[1]{\flux_{\subs{#1}}} % mass flux of substance A
+\newcommand{\conc}[1]{c_{\subs{#1}}}      % concentration of substance A
+\newcommand{\amount}[1]{n_{\subs{#1}}}    % chemical amount of substance A
+\newcommand{\rrate}[1]{r_{\subs{#1}}}     % reaction rate of substance A
+%
+\newcommand{\dtamount}[1]{\dt{n}_{\subs{#1}}} % dt of chem. amount
+\newcommand{\dtconc}[1]{\dt{c}_{\subs{#1}}}   % dt of conc.
+%
+\newcommand{\bconc}[2]{\left[\ce{#1}\right]^{#2}} % bracket conc. of substance A
+%
+%%% TRANSPORT PHENOMENA
+%
+\newcommand{\temp}{\theta} % thermodynamic temperature
+%
+%%% CONSTANTS
+%
+\newcommand{\ligth}{c}        % speed of ligth in vacuum
+\newcommand{\boltz}{k\txt{b}} % boltzmann constant
+\newcommand{\avog}{n\txt{a}}  % avogadro's number
+%
+%%% DIMENSIONLESS NUMBERS
+\newcommand{\biot}{\kdim\txt{bi}} % biot number
+\newcommand{\rey}{\kdim\txt{re}}  % reynolds number
+

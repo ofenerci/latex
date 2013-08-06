@@ -1,0 +1,322 @@
+\section{Heat Transfer}
+
+\subsection{Relation of heat transfer and thermodynamics}
+
+\subsubsection{First law for closed systems}
+The result of applying the first law of thermodynamics -- conservation of energy -- to a closed system is
+\beq
+\dt h = \dt w + \dt\ien\,,
+\eeq
+wherein $\dt h$ is the heat transfer rate, $\dt w$ the work transfer rate and $\dt\ien$ the internal energy change rate. All the terms in the last equation have dimensions of energy flow, $\phdim{E/T}$. The sign convention adopted is that $\dt h$ is positive ($\dt h > 0$) when heat is added to the system, $\dt w > 0$ when energy is taken away from the system and $\dt\ien > 0$ when the system's energy increases. There's also, however, another sign convention, IUPAC's and Planck's: all net energy transfers to the system are taken as positive, all net energy transfers from the system are negative. Finally, the most suitable way of finding the correct signs of the energy transfer terms is via the conservation of energy statement -- all in rate change:
+\begin{quote}
++ accumulation = + input - output + generation, or,
+\beq
+\dt\ien = \dt h - \dt w\,.
+\eeq
+\end{quote}
+
+The most important measurable quantity in heat analysis is temperature. Then, we need a way to relate the internal energy of a system to its temperature. For homogeneous bodies, based on experimental results, it is regularly assumed that the internal energy of a macroscopic body is proportional to its average thermodynamic temperature, $T$; \ie,
+\beq
+\ien \propto T\implies 
+\ien = C T\,,
+\eeq
+where $C$ is a material's property called \lingo{heat capacity} (the capacity that a body has to store heat :). So defined, heat capacity is an \lingo{extensive property} (a property that depends on the body's mass), $\dim C = \phdim{E/\Theta}$. It is more convenient, though, to work with the \lingo{intensive property} $c$ called \lingo{specific heat capacity}; that is, the capacity that a body has to store heat per unit mass, $\dim c = \phdim{E/M\Theta}$. Then, the internal energy of a body can be calculated as
+\beq
+\ien = mcT\,,
+\eeq
+where $m$ is the body's mass.
+
+If $p\dx v$ work is the only work that occurs, and the body is assumed to be homogeneous (so $\dt c = 0$), then
+\beq
+\dt h = p \dt v + \dt\ien\,.
+\eeq
+
+The last equation has two important cases:
+\beq
+\dt h = 
+\begin{cases}
+\dt\ien = mc_v\dt T\,,&\text{constant volume process; \ie, $\dx v = 0$,}\\
+\dt H   = mc_p\dt T\,,&\text{constant pressure process; \ie, $\dx p = 0$,}
+\end{cases}
+\eeq
+where $H = \ien + pv$ is the enthalpy, $c_v$ and $c_p$ are the specific heat capacities at constant volume and constant pressure and mass is assumed to be constant, $\dt m = 0$.
+
+
+\subsubsection{Thermodynamic relations and definition of heat capacities}
+The internal energy of a closed system changes either by adding ``heat'' to the system of by the system performing work. Mathematically,
+\beq
+\dx\ien = \delta h + \delta w\,.
+\eeq
+
+For work as a result of an increase of the system volume, then we have
+\beq
+\dx\ien = \delta h - p\dx v\,.
+\eeq
+
+If now heat is added at constant volume, then the second term of the last equation vanishes and we have
+\beq
+\left(\xpd\ien T\right)_v = \left(\xpd h T\right)_v = c_v\,.
+\eeq
+This defines the heat capacity at constant volume, $c_v$, $\dim c_v = \phdim{E/\Theta}$.
+
+Another useful quantity is the heat capacity at constant pressure, $c_p$. With the enthalpy of the system given by
+\beq
+H = \ien + pv\,,
+\eeq
+then, the equation for $\dx\ien$ changes to
+\beq
+\dx H = \delta h + v\dx p\,,
+\eeq
+and, therefore, at constant pressure, we have
+\beq
+\left(\xpd H T\right)_p = \left(\xpd hT\right)_p = c_p\,.
+\eeq
+
+
+\subsubsection{Relation between heat capacities}
+Measuring the heat capacity at constant volume can be difficult for liquids and solids, since small temperature changes typically require large pressures to keep a solid or liquid at constant volume, implying that the containing vessel must be nearly rigid or at least very strong. Instead it's easier to measure the heat capacity at constant volume -- allowing the material to expand or contract freely -- and solve for the heat capacity at constant volume using maths derived from the basic thermodynamic laws. Starting from the fundamental thermodynamic relation, we can show
+\beq
+C_p - C_v = T\left(\xpd pT\right)_{v,n} T\left(\xpd vT\right)_{p,n}\,,
+\eeq
+where the partial derivatives are taken at constant volume and constant number of particles, and constant pressure and constant number of particles.
+
+This can also be written as
+\beq
+C_p - C_v = vT\dfrac{\alpha^2}{\beta_T}\,,
+\eeq
+where $\alpha$ is the \lingo{coefficient of thermal expansion} and $\beta_T$ is the isothermal compresibility.
+
+For an ideal gas, evaluation of the partial derivatives according to the equation of state $pv = nrT$, where $r$ is the gas constant, gives
+\beq
+C_p - C_v = r\,.
+\eeq
+
+
+\subsubsection{First law of thermodynamics}
+This is a version of the law of conservation of energy specialized for thermodynamic systems: the energy of an isolated system is constant.
+
+When a system expands in a quasistatic process, the work done by the system on the environment is $p\dx v$, whereas the work done on the system is $-p\dx v$. Using either convention sign for work gives the same relation for the change in internal energy:
+\beq
+\dx\ien = \delta h - p\dx v\,.
+\eeq
+
+Work and heat are expressions of actual physical processes which supply or remove energy, while internal energy is a math abstraction that keeps account of the exchanges of energy that befall the system. Thus, the term $\delta h$ means that amount of energy added or removed by heat conduction or radiation, rather than referring to a form of energy within the system. Likewise, work energy for $\delta w$ meas that amount of energy gained or lost as result of work. Internal energy is a system property, whereas work done and heat supplied are not.
+
+\begin{note}
+Thermodynamics is independent on the underlying atomic theory of matter. It only deals with macroscopic properties: pressure, temperature, \etc. This is thermodynamics major strength, for any microscopic theory must submit its results to thermodynamics. Paradoxically, this very strength might be seen as a weakness in physical explanation: it is desirable to have a microscopically based mechanical explanation for heat transfer phenomena.
+\end{note}
+
+\begin{note}
+Thermodynamics should be called \lingo{thermostatics}, because it only describes systems in thermal equilibrium. Thus, since thermodynamics doesn't take into account $t$, the problem is how to determine temperatures, because the internal energy as a function of time, $\ien\vat t$, cannot be predicted a priori. Therefore, some principles must be added to predict $\ien$, $h$ and $T$. These principles are called \lingo{transport laws} and are not a part of thermodynamics. They include Fourier's law of heat conduction, Newton's law of cooling and Stefan-Boltzmann law for thermal radiation. These are experimental laws. 
+\end{note}
+
+
+\subsubsection{Heat capacity for solids and liquids}
+When the substances undergoing the process in \lingo{incompressible}, then $\dx v = 0$ for any pressure variation. Therefore, the two specific heats are equal: $c_v = c_p = c$, implying that
+\beq
+\dt h = \dt\ien = mc\dt T\,.
+\eeq
+
+Since solids and liquids con often be approximated as being incompressible, we shall frequently use the last equation.
+
+
+\subsection{Modes of heat transfer}
+The basic modes of heat transfer are
+\begin{itemize}
+\item heat conduction;
+\item heat convection and
+\item heat radiation.
+\end{itemize}
+
+
+\subsubsection{Heat conduction}
+Fourier's law (empirical law): the local heat \lingo{flux} $\flux$ resulting from thermal conduction is proportional to the magnitude of the temperature gradient and opposite to it in sign; \ie,
+\beq
+\flux = -k\gder T\,,
+\eeq
+where $k > 0$ is the proportional constant that depends on the material called the \lingo{thermal conductivity}. It's a constant if the material is homogeneous or isotropic. The dimensions of the quantities in the last equation are $\dim \flux = \phdim{E/L^2T}$, $\dim k = \phdim{E/TL\Theta}$, $\dim\gder = \phdim{1/T}$ and $\dim T = \phdim{\Theta}$.
+
+The integral form of Fourier's law is obtained by integrating the differential form over the material's total surface $S$:
+\beq
+\dt h = -k\oint_S \gder T\iprod\dx A\,,
+\eeq
+where $\dt h$ is the amount of heat transferred per unit time, $\dim\dt h = \phdim{E/T}$, and $\dx A$ the oriented surface element (remember: $\dx A = n\dx a$, where $n$ is a unit vector normal to $\dx A$).
+
+Thermal conductivity values: because of how molecules are arranged, solids will have generally higher thermal conduction than gases. Thus, the process of heat transfer is more efficient in solids than in gases. In a gas $k$ is proportional to the molecular speed and molar specific heat and inversely proportional to the cross-sectional area of molecules. Values for $k$ can be found in tables, but it's desirable to have an idea of the $k$ order of magnitude.
+
+
+\subsubsection{Heat convection}
+Consider a typical convection cooling situation: cool gas flows past a warm body. The fluid immediately adjacent to the body forms a slowed-dense region called \lingo{boundary layer}. Heat is conducted into this layer, which sweeps it away and, farther downstream, mixes it into the streams. We call such process  of carrying heat away from a moving fluid \lingo{convection}. Newton considered the convection process and suggested that the cooling would be such that
+\beq
+\xod{T\txt{body}}{t}\propto T\txt{body} - T_\infty\,,
+\eeq
+where $T_\infty$ is the temperature of the incoming fluid. This statement suggests that energy is flowing from the body. But, if energy is constantly replenished, then the body temperature need not change. Thus, with $h = mc\dt T$, we get
+\beq
+h\propto T\txt{body} - T_\infty\,.
+\eeq
+This equation can then be rephrased in therms of $\flux = h/a$, where $a$ is the body outer surface area, as
+\beq
+\flux = \bar h\left(T\txt{body} - T_\infty\right)\,,
+\eeq
+This is the steady-state of Newton's law of cooling. The constant $h$ is the \lingo{film coefficient} or \lingo{heat transfer coefficient}. The bar over $h$ indicates that's an average over the surface of the body. Without the bar, $h$ denotes the ``local'' value of the heat transfer coefficient at a point on the surface. The dimensions of $h$ and $\bar h$ are $\dim h = \dim\bar h = \phdim{E/TL^2\Theta}$.
+
+It turns out that Newton oversimplified the process description when he made his conjecture. Heat convection is complicated and $\bar h$ can depend on the temperature difference $\left(T\txt{body} - T_\infty\right)= \diff T$:
+\begin{itemize}
+\item $h$ is really independent of $\diff T$ when the fluid is forced past a body and $\diff T$ is not too large. This is called \lingo{forced convection}.
+%
+\item When fluid buoys up from a hot body or down from a cold one, $h$ varies as some weak power of $\diff T$ -- typically as $\diff T^{1/4}$ or $\diff T^{1/3}$. This is called \lingo{free} or \lingo{natural convection}. If the body is hot enough to boil a liquid surrounding it, $h$ will typically vary as $\diff T^{2}$.
+\end{itemize}
+
+Typical values of $h$ are presented in tables.
+
+Lumped-capacity solution: the problem now is to predict the transient (time dependent) cooling of a convectively cooled object. Apply the first law statement (accumulation = -out energy; out energy: energy that goes from the system into the surrounding fluid) to have:
+\beq
+\dt\ien = -\flux\implies
+\xod{}{t}\left(\rho c v\left(T - T\txt{ref}\right)\right) = -\bar h a\left(T - T_\infty\right)\,,
+\eeq
+where $a$ and $v$ are the surface area and volume of the body, $T$ is the temperature of the body, $T = T\vat t$, and $T\txt{ref}$ is an arbitrary temperature at which $\ien$ is defined to equal zero. Thus,
+\beq
+\xod{}{t}\left(T - T_\infty\right) = -\dfrac{\bar h a}{\rho cv}\left(T - T_\infty\right)\,.
+\eeq
+The general solution to this equation is
+\beq
+\ln\left(T - T_\infty\right) = -\dfrac{t}{\tau} + C\,,
+\eeq
+where the group $\tau = \rho cv/\bar ha$ is the time constant. If the initial temperature is $T\vat{t = 0} = T\txt i$, then $C = \ln{\left(T\txt i - T_\infty\right)}$ and the cooling of the body is given by
+\beq
+\dfrac{T - T\infty}{T\txt i - T\infty} = \exp\vat{-t/\tau}\,.
+\eeq
+
+All the physical parameters in the problem have now been `lumped'' into the time constant. It represents the time required for a body to cool to $1/e$ or \SI{37}{\%} of its initial temperature above (or below) $T\infty$. The ratio $t/\tau$ can also be interpreted as
+\beq
+\dfrac{t}{\tau} = \dfrac{\bar h a t}{\rho cv} 
+                = \dfrac{\text{capacity for convection from surface}}{\text{heat capacity of the body}}\,.
+\eeq
+
+\begin{note}
+Thermal conductivity is missing from the last equations. The reason is that we have assumed that the temperature of the body is nearly uniform, and thus means that internal conduction is not important. If $L/(k\txt b/\bar h)\ll 1$, then the temperature of the body, $T\txt b$, is almost constant within the body at any time. Thus,
+\beq
+\dfrac{\bar h L}{k\txt b}\ll 1\implies
+T\txt b\vat{x,t}\sim T\vat t\sim T\txt{surface}
+\eeq
+and the thermal conductivity $k\txt b$ becomes irrelevant to the cooling process. This condition must be satisfied if the lumped solution is to be accurate.
+
+We call the group
+\beq
+\dfrac{\bar h L}{k\txt b} = \biot
+\eeq
+\lingo{Biot number}. If $\biot$ were large, the situation would be reversed. In this case, $\biot\gg 1$ and the convection process offers little resistance to heat transfer. We could solve the heat diffusion equation:
+\beq
+\nxpd 2Tx = \dfrac{1}{\alpha}\xpd Tt\,,
+\eeq
+subject to the simple boundary condition $T\vat{x,t} = T\infty$, when $x = L$ to determine the temperature in the body and its rate of cooling in this case.
+
+Biot number will therefore be the basis for determining what sort of problem we have to solve.
+\end{note}
+
+To calculate the rate of entropy production in a lumped-capacity system, we note that the entropy always in the universe is the sum of the entropy decrease of the body and the more rapid entropy increase of the surroundings. The source of irreversibility is heat flow through the boundary layer. Accordingly, we unite the time rate of change of entropy of the universe as
+\beq
+\dt S\txt{un} = \dt S\txt b + \dt S\txt{fl}
+              = -\dfrac{h\txt{rev}}{T\txt b} + \dfrac{h\txt{rev}}{T_\infty}
+              = -\rho c v \xod{T\txt b}{t}\left(\dfrac{1}{T_\infty} - \dfrac{1}{T\txt b}\right)\,.
+\eeq
+
+
+\subsubsection{Heat radiation -- thermal radiation}
+Electromagnetic radiation is generated by the thermal motion of charged particles in matter. All matter with temperature greater than the absolute zero emits thermal radiation. Examples of thermal radiation are the visible light and infrared light emitted by an incandescent light bulb, the infrared radiation emitted by animals and detectable with an infrared camera. Thus, thermal radiation can be seen as a conversion of thermal energy into electromagnetic energy.
+
+If a radiation-emitting object meets the physical characteristics of a black body in thermodynamic equilibrium, the radiation is called \lingo{black body radiation}. Planck's law describes the \lingo{spectrum of black-body radiation}, which depends only on the object's temperature. Wien's displacement law  determines the most likely \lingo{frequency of the emitted radiation} and Stephan-Boltzmann law given the \lingo{radiation intensity}.
+
+Heat transfer by thermal radiation: all bodies constantly emit energy by a process of em radiation. The intensity of such energy flux depends upon the temperature of the body. Most of the heat that reaches you when you sit in front of a fire is radiant energy. Radiant energy warms you when you walk in the sun.
+
+Objects that are cooler that the fire or the sun emit much less energy because the energy emission varies as the fourth power of absolute temperature. Very often, the emission of energy, or radiant heat transfer, from cooler bodies can be neglected in comparison with convection and conduction -- approximate analyses, order of magnitude analyses and limiting (extreme cases) analyses can be helpful here! But heat transfer processes that occur at high temperature or with conduction or convection suppressed by evacuated insulators normally involve a significant fraction of radiation.
+
+The em spectrum: thermal radiation occurs in a range of the em spectrum of energy emission. Accordingly, it inhabits the same wavelike properties as light or radio waves. Each quantum of radiant energy has a wavelength $\lambda$ and a frequency $\nu$ associated with it. 
+
+The full spectrum includes an enormous range of energy-bearing waves, of which heat is only a small part. Tables list the various forms over a range of wavelengths that spams 17 orders of magnitude. Heat radiation, whose main component is normally the spectrum of infrared radiation, passes through a three-order-of-magnitude window in $\lambda$ or $\nu$.
+
+Black bodies: the model for the perfect thermal radiator is the so-called \lingo{black body}. This is a body that absorbs all energy that reaches it and reflects nothing. The term is a bit confusing, since they \emph{emit} energy. Thus, under infrared vision, a black body would glow with ``color'' appropriate to its temperature. Perfect radiators \emph{are} ``black'' in the sense that they absorb all visible light (and all other radiation) that reaches them.
+
+To model a black body a ``Hohlraum'' is used. What are the important features of a thermally black body? First consider a distinction between heat and infrared radiation: \lingo{infrared radiation} refers o a particular range of wavelengths, while \lingo{heat} refers to the whole range of radiant energy flowing from one body to another. Suppose that a radiant heat flux $\flux$ falls upon a translucent plate that's not black. A fraction $\alpha$ of the total incident energy, called the \lingo{absorptance}, is absorbed by the body; a fraction $\rho$, called \lingo{reflectance}, is reflected from it and a fraction $\tau$, called \lingo{transmittance}, passes through. Thus,
+\beq
+1 = \alpha + \rho + \tau\,.
+\eeq
+This relation can also be written for the energy carried by each wavelength in the distribution of wavelengths that makes up \lingo{heat} from a source at any temperature
+\beq
+1 = \alpha_{\lambda} + \rho_{\lambda} + \tau_{\lambda}\,.
+\eeq
+
+All radiant energy incident on a black body is absorbed, so that $\alpha\txt b$ or $\alpha_{\lambda\txt b} = 1$ and $\rho\txt b = \tau\txt b = 0$. Furthermore, the energy emitted by a black body reaches a theoretical maximum given by Stephan-Boltzmann law.
+
+Stephan-Boltzmann law: the energy flux radiating from a body is commonly designated by $e\vat t$, $\dim e = E/L^2T$. The symbol $e_\lambda\vat{\lambda, T}$ designates the distribution function of radiative flux in $\lambda$, or the \lingo{monochromatic emission power}:
+\beq
+e_\lambda\vat{\lambda, T} = \xod{e}{t}\vat{\lambda, T}\qquad\text{or}\qquad
+e\vat{\lambda, T} = \int_{0}^{\lambda}e_\lambda\vat{\lambda, T}\,\dx\lambda\,.
+\eeq
+Thus,
+\beq
+e\vat T = E\vat{\infty, T} = \int_{0}^{\infty}e_\lambda\vat{\lambda, T}\,\dx\lambda\,.
+\eeq
+
+The dependence of $e\vat T$ on $T$ for a black body was found experimentally by Stefan... The Stephan-Boltzmann law is
+\beq
+e\txt b = \sigma T^4\,,
+\eeq
+where the Stephan-Boltzmann constant $\sigma$ is \SI{5.670373(21)e-8}{W/m^2K^4}:
+\beq
+\sigma = \dfrac{2\pi^5}{15}\dfrac{\boltz^4}{h^3 c^2}\qquad\text{and}\qquad
+\dim\sigma = \dfrac{E}{TL^2\Theta^4}\,,
+\eeq
+or, in terms of the gas constant $r$,
+\beq
+\sigma = \dfrac{2\pi^5}{15}\dfrac{r^4}{h^3c^2\avog^2}\,,
+\eeq
+where $\avog$ is the Avogadro's number.
+
+A useful mnemonic for $\sigma$ is 5-6-7-8: $\sigma \sim \SI{5.67e-8}{W/m^2K^4}$.
+
+$e_\lambda$ \vs $\lambda$: nature requires that, at a given temperature, a body will emit a unique distribution of energy in wavelength. Thus, when you heat a poker in the fire, it first glows a dull red -- emitting most of its energy at long wavelengths and just a bit in the visible regime. When it's white-hot, the energy distribution has been both greatly increased and shifted towards he shorter-wavelength visible range. At each temperature, a black body yields the highest value of $e_\lambda$ that a black body can attain.
+
+Measurements of the black body systems are shown... The locus of maxima of the curves is plotted. It obys a relation called Wien's law:
+\beq
+(\lambda T)_{e_\lambda = max} = \SI{2989}{\micro mK}\,.
+\eeq
+
+About 3/4 of the radiant energy of a black body lies to the right of this line. Notice that, while the locus of maxima leans towards the visible range at higher temperatures, only is a small fraction of the radiation visible at the highest temperature.
+
+Predicting how the monochromatic emission power of a black body depends on $\lambda$ was solved by Planck. He made the prediction and set the basis for quantum mechanics. He found that
+\beq
+e_{\lambda\txt b} = 2\pi\dfrac{hc_0^2}{\lambda^5\left(\exp\vat{hc_0/\boltz T\lambda} - 1\right)}\,,
+\eeq
+where $c_0$ is the speed of light in vacuum, $h$ is the Planck's constant, $\boltz$ is Boltzmann constant.
+
+Radiant heat exchange: suppose that a heated object (1) radiates only to some other object (2) and that both objects are thermally black. All heat leaving object (1) arrives at object (2) and all heat arriving at object (1) comes from object (2). Thus, the net heat transferred from object (1) to object (2), $q\txt{net}$, is the difference. Let now $q\txt{1 to 2} = a_1e\txt b\vat{T_1}$ and $q\txt{2 to 1} = a_1e\txt b\vat{T_2}$:
+\beq
+q\txt{net} = a_1\sigma\left(T_1^4 - T_2^4\right)\,.
+\eeq
+
+We have seen that non-black bodies absorb less radiation than black bodies, which are perfect absorbers. Likewise, non-black bodies emit less radiation that black bodies, which also happens to be perfect emitters. We can characterize the emissive power of a non-black body using a property known as \lingo{emittance} $\epsilon$:
+\beq
+e\txt{non-black} = \epsilon e\txt b = \epsilon\sigma T^4\,,
+\eeq
+where $0 < \epsilon\leq 1$. When radiation is exchanged between two bodies that are not-black, we have
+\beq
+q\txt{net} = a_1 f\txt{1-2}\sigma\left(T_1^4 - T_2^4\right)\,,
+\eeq
+wherein the \lingo{transfer factor} $f\txt{1-2}$ depends on the emittance of both bodies as well as the geometrical ``view''.
+
+
+\subsection{A look ahead}
+To solve actual problems, three tasks must be completed:
+\begin{enumerate}
+\item heat diffusion equation must be solved subject to appropriate boundary and initial conditions;
+\item the convective heat transfer coefficient $h$ must be determined if convection is relevant;
+\item the factor $f\txt{1-2}$ must be determined to calculate radiative heat transfer.
+\end{enumerate}
+
+There are three types of heat transfer problems:
+\begin{enumerate}
+\item theoretical: a systematic statement of principles; a formulation of apparent relationships or underlying principles of certain observed phenomena;
+\item analysis: the solving by means of equations; the breaking up of any whole into its parts so as to find out their nature, function, relationship and so forth;
+\item practice: the doing of something as an application of knowledge.
+\end{enumerate}

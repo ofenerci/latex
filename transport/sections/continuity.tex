@@ -1,0 +1,542 @@
+\section{Energy continuity equation}
+
+\subsection{Derivation}
+Consider a body being heated from one side while being cooled from the other, opposite, side. Consider also that no work is performed. Experience shows that the body internal energy varies with time $t$ and position $\pos$ due to the external energy difference; \ie, external energy flowing through the body external surface gets temporally and spatially distributed within the body. To model such a distribution, we will make use of the energy conservation principle.
+
+Let $\ien = \ien\vat{t, \pos}$ be the internal energy density field of a non-moving control volume $\dx\vol$ inside the body of volume $\vol$. Then, the internal energy in the whole body is $\int_\vol \ien\,\dx\vol$. Therefore, the body internal energy changes, accumulates, at a rate 
+\beq
+\iod t\int_\vol \ien\,\dx\vol = \int_\vol\ipd t\ien\,\dx\vol
+                              = \int_\vol\rate\ien\,\dx\vol\,.
+\eeq
+
+On the other hand, let $\bound\vol$ be the body outer surface, boundary, and, accordingly, let $n\,\dx\surf$ be the directed control surface. Then, the thermal energy flowing \emph{out} of the control surface is $-\flux\then\iprod n\,\dx\surf$. And, thus, the total thermal energy flowing out of the body through $\bound\vol$ equals
+\beq
+-\int_{\bound\vol}\flux\then\iprod n\,\dx\surf = -\int_{\vol}\gder\iprod\flux\then\,\dx\vol
+                                               = -\int_{\vol}\div\flux\then\,\dx\vol\,.
+\eeq
+
+By the energy conservation principle, the internal energy change rate and the thermal flow must balance one another:
+\beq
+\int_\vol\rate\ien\,\dx\vol = -\int_{\vol}\div\flux\then\,\dx\vol\,.
+\eeq
+
+The last equation must be equal regardless of any control volume choice:
+\beq
+\rate\ien + \div\flux\then = 0\,.
+\eeq
+
+The next step is to relate the internal energy density with the thermal flux. This relation comes from two phenomenological laws, \aka \lingo{constitutive equations}:
+\begin{enumerate}
+\item As mentioned in the above sections, a body internal energy is related to the body temperature $\temp$ by 
+\beq
+\ien = \dens\kshcap\temp\,,
+\eeq
+where $\dens$ and $\kshcap$ are two body (material) properties, \lingo{mass density}, mass per unit volume, and \lingo{specific heat capacity}, the capacity that the body material has to store energy per unit mass and per unit temperature. Thus,
+\beq
+\rate\ien = \rate{\left(\dens\kshcap\temp\right)}
+          = \ipd t\left(\dens\kshcap\temp\right)
+          = \ipd t\dens\kshcap\temp\,.
+\eeq
+%
+\item Fourier's law of thermal energy conduction states that the thermal energy flux is proportional to the temperature gradient: 
+\beq
+\flux\then = -\kthcond\grad\temp\,.
+\eeq
+The minus sign in this equation accounts for the second law of thermodynamics: thermal energy flows in the direction of falling temperature. The constant of proportionality $\kthcond$ is a body (material) property, \lingo{thermal conductivity}, $\dim\kthcond = E/LT\Theta$. It is dependent on both the temperature and pressure -- in mixtures also on the composition.
+\end{enumerate}
+
+Using the empirical laws, find that
+\beq
+\ipd t\dens\kshcap\temp = \div\kthcond\grad\temp\,.
+\eeq
+
+Consider, finally, the body to be composed of an homogeneous, isotropic material. Then, the mass density, the specific heat capacity and the thermal conductivity are constant. Therefore, write the last equation as
+\beq
+\ipd t\temp = \kthdiff\lap\temp \qquad\text{or as}\qquad
+\rate\temp = \kthdiff\lap\temp\,,
+\eeq
+where $\kthdiff$ is the \lingo{thermal diffusivity}, $\dim\kthdiff = L^2/T$, and $\lap$ Laplace operator. Refer to the last equation as the \lingo{thermal transfer equation}, the \lingo{thermal diffusion equation}, or, more commonly, as \lingo{heat equation}.
+
+Note the definition of thermal diffusivity: $\kthdiff = \kthcond/\dens\kshcap$; \ie, thermal diffusivity is the ratio of thermal energy conduction, $\dim\kthcond = E/LT\Theta$, to the volumetric thermal capacity, $\dim\dens\kshcap = E/L^3\Theta$. Thus, in a sense, thermal diffusivity is the measure of thermal inertia. In a substance with high thermal diffusivity, thermal energy moves rapidly through it because the substance conducts energy quickly relative to its volumetric thermal capacity or ``thermal bulk''.
+
+
+\subsection{Technical notes}
+Some explanations on the maths involved during the derivation.
+
+\begin{technote}
+It is assumed that, during the thermal energy transfer, the body material is not affected by it; \ie, the body material does not undergo thermal decomposition.
+\end{technote}
+
+\begin{mathnote}
+For modeling the phenomenon, energy density was assumed to be a smooth scalar field and the body to be bounded by a smooth outer surface.
+\end{mathnote}
+
+\begin{notation}
+The symbol $\iod t$ defined by $\iod t \defby \dx/\dx t$ denotes the \emph{ordinary} derivative with respect to time and $\ipd t \defby \partial/\partial t$ denotes the \emph{partial} derivative with respect to time.
+\end{notation}
+
+\begin{mathnote}
+In going from the surface integral to the volume integral,
+\beq
+-\int_{\bound\vol}\flux\then\iprod n\,\dx\surf = -\int_{\vol}\gder\iprod\flux\then\,\dx\vol
+                                               = -\int_{\vol}\div\flux\then\,\dx\vol\,,
+\eeq
+the divergence theorem was used.
+\end{mathnote}
+
+\begin{dimensional}
+The accumulation in the body must balance energy outflow:
+\beq
+\int_\vol\rate\ien\,\dx\vol = \int_\vol\ipd t\ien\,\dx\vol 
+                            = -\int_{\vol}\div\flux\then\,\dx\vol\,.
+\eeq
+This equation satisfies a fundamental physics law: the energy conservation principle. It also satisfies another fundamental physics principle: dimensional homogeneity principle for physics law.
+
+The dimensions of the terms in the left-hand-side, LHS, of the last equation are $\dim\ipd t = 1/T$, $\dim\ien = E/L^3$, \ie, internal energy \emph{density}, $\dim\dx\vol = L^3$. Then, the whole LHS integral has dimensions of energy change rate, or energy flow, $E/T$.
+
+The dimensions of the terms in the right-hand-side, RHS, are $\dim\div = \dim\gder\iprod = 1/L$, $\dim\flux\then = E/L^2T$, $\dim\dx\vol = L^3$. Then, the whole RHS integral has dimensions of energy flow, $E/T$.
+
+Since the LHS and the RHS of the equation have the same dimensions, thus, the principle of dimensional homogeneity is satisfied.
+\end{dimensional}
+
+\begin{mathnote}
+During the derivation, we went from
+\beq
+\int_\vol \left( \rate\ien + \div\flux\then \right)\dx\vol = 0\qquad\text{to}\qquad
+\rate\ien + \div\flux\then = 0\,;
+\eeq
+or, in other words, we made the integrand to vanish. To explain this ``math move'', making the integrand equal to zero, we need to analyze how the derivation was done, mathematically -- the math framework behind the deduction. 
+
+To find the energy distribution inside our given body, we have followed Riemann's ideas on integration. He would have said: 
+\begin{quote}
+To find the energy distribution within the body, follow the process:
+\begin{itemize}
+\item first, divide the body volume $\vol$ into $n$ smaller control volumes $\dx\vol_i$, where $i$ runs from 1 to $n$. Note that the number and sizes of the control volumes are up to you. There is neither a fixed number nor a fixed size. In fact, they not even need be all of the same size! Nevertheless, do make sure that $n$ is large enough to cover the whole body volume.
+%
+\item Then, find the energy distribution in each control volume and
+%
+\item finally, find the total energy distribution inside of the whole of the body by adding the energy distribution of the $n$ control volumes together by means of integration.
+\end{itemize}
+Note that the result has to be \emph{independent} on the number of control volumes and on their sizes. 
+
+To explain this better. Say, for instance, that you take $n$ control volumes of equal size $\dx\vol_1$ and, say, I take $m$ smaller control volumes of size $\dx\vol_2$; or, $n < m$ since $\dx\vol_1 > \dx\vol_2$. Say both choices cover the whole body. Then, you calculate the energy distribution of your control volumes and so do I. To find the total energy distribution, you next add the energy distribution of every of your control volumes and so do I. Finally, we compare results. Good maths requires both results, your total energy distribution and mine, be the same!
+\end{quote}
+This explanation implies, mathematically, the vanishing integrand.
+\end{mathnote}
+
+\begin{notation}
+Another common form of writing the heat equation is by using the geometric derivative: $\ipd t\temp = \kthdiff\lder\temp$.
+\end{notation}
+
+\begin{technote}
+As it stands, the heat equation, $\rate\temp = \kthdiff\lap\temp$, is written in vector notation; thus, it is valid in \emph{any} coordinate system. However, once a particular coordinate system is selected, then, the appropriate form of Laplace operator must be found. For instance, in a Cartesian coordinate system, $\tuple{x,y,z}$, the heat equation becomes
+\beq
+   \rate\temp = \ipd t\temp = \kthdiff\ipd k\ipd l\rmet kl\temp\qquad\text{or}\qquad
+\cder \temp t = \kthdiff\cder\temp{\pos\pos}
+              = \kthdiff\left(\cder\temp{xx} + \cder\temp{yy} + \cder\temp{zz}\right)\,,
+\eeq
+The second equation follows from two facts of Cartesian coordinate systems: the metric $\met$ does not depend on position, thus $\ipd k\ipd l\rmet kl\temp = \rmet kl\ipd k\ipd l\temp$ and $\met = \diag\tuple{1,1,1}$.
+
+For non-Cartesian coordinate systems, however, $\met$ does depends on position, so $\ipd k\ipd l\rmet kl\temp \neq \rmet kl\ipd k\ipd l\temp$ and therefore the derivatives of the metric with respect to the coordinates and the metric coefficients $\rmet kl$ must be found.
+\end{technote}
+
+\begin{notation}
+Consider a smooth scalar field $\phi = \phi\vat{x,y,z}$. Then, the comma derivative notation is defined as
+\beq
+  \cder \phi x = \xpd{\phi}{x}\,,\quad
+  \cder \phi y = \xpd{\phi}{y}\,,\quad
+  \cder \phi z = \xpd{\phi}{z}\,,\quad
+\cder \phi{xy} = \xpd{}{x}\xpd{}{y}\phi\quad\text{and so on}\,.
+\eeq
+\end{notation}
+
+\begin{geometry}
+Remember that, in vector calculus, divergence is an operator that measures the magnitude of a vector field's source or sink at a given point, in terms of a signed scalar. Or, more technically, the divergence represents the volume density of the outward flux of a vector field from an infinitesimal volume around a given point.
+
+Then, recall the equation:
+\beq
+\rate\ien = -\div\flux\then\,.
+\eeq
+This equation models the phenomenon of a body being heated up from one side while being cooled down from another side or the phenomenon of a body releasing energy from its center while it cools down. Take the second phenomenon. The LHS of the model equation represents the rate at which a body internal energy changes with respect to time: the rate at which energy is released from the center to the outer portions of the body and finally to the environment surrounding the body.
+
+The RHS, on the other hand, because of the divergence, represents how the central energy diffuses from the center throughout the body to the environment. It has a minus sign because energy is being dissipated instead of being accumulated.
+
+The equality holds, physically, because energy is conserved: if it is being released and not accumulated within the body, energy has no other place to go but to its surrounding environment.
+\end{geometry}
+
+\begin{geometry}
+Recall that Laplace operator $\lap f\vat\pos$ of a function $f$ at a point $\pos$, up to a constant depending on the dimension, is the rate at which the average value of $f$, over spheres centered at $\pos$, deviates from $f\vat\pos$ as the radius of the sphere grows; \ie, Laplace operator of a function represents the difference between the value of the function at a point and the average of the values at surrounding points. Another way of looking at Laplace operator is by writing it in a Cartesian coordinate system $\tuple{x,y,z}$:
+\beq
+\lap = \lder = \igder{xx}{} + \igder{yy}{} + \igder{zz}{}\,.
+\eeq
+See that, then, this operator finds the \emph{change in the change} of the function (if you make a graph, the change in the slope) in all directions from the point of interest. That may not seem very interesting, until you consider that acceleration is the change in the change of position with time or that the maxima and minima of functions (peaks and valleys) are regions in which the slope changes significantly.
+
+Now, recall the thermal diffusion equation:
+\beq
+\rate\temp = -\kthdiff\lap\temp\,.
+\eeq
+This equation models the phenomenon of a body being heated up from one side while being cooled down from another side or the phenomenon of a body releasing energy from its center while it cools down. Take the second phenomenon. The LHS of the model equation represents the rate at which a body temperature changes with respect to time: the rate at which temperature diffuses from the center to the outer portions of the body and finally to the environment surrounding the body. In an analogous way as internal energy in the $\rate\ien = -\div\flux\then$ equation. Something unsurprising, since energy and temperature are related via the equipartition theorem.
+
+The RHS, on the other hand, because of Laplace operator, represents how the central temperature diverges from the center to the surrounding points. It has a minus sign because temperature is being dissipated instead of being gathered. The coefficient $\kthdiff$, thermal diffusion, is a body material property that acts as both a dimensional conversion factor between temporal temperature changes and spatial temperature changes ($\dim\rate\temp = \Theta/T$ and $\dim\lap\temp = \Theta/L^2$) or as representing how a material diffuses or infuses temperature (internal energy). Thermal conductors diffuse (infuse) temperature (internal energy) at a greater rate than thermal insulators.
+\end{geometry}
+
+
+\subsection{Another derivation}
+[John H. Lienhard IV, John H. Lienhard V, a heat transfer book] In this reference, the energy continuity equation is called heat diffusion equation, \aka heat conduction equation in other sources.
+
+
+\subsubsection{Objective}
+We must now develop some ideas that will be needed for the design of thermal (heat) exchangers. The most important of these is the notion of an overall \lingo{thermal energy transfer coefficient}, \aka heat transfer coefficient. This is a measure of the general resistance of a thermal (heat) exchanger to the flow of energy (heat), and usually it must be built up from analyses of component resistances. Although we shall count radiation among these resistances, this overall energy transfer coefficient is most often dominated by \emph{convection and conduction}.
+
+We need to know values of the film coefficient $\kavthconv$ to handle convection. Calculating $\kavthconv$ becomes sufficiently complex that we defer it to later chapters. For the moment, we shall take the appropriate value of $\kavthconv$ as known information and concentrate upon its use in the overall heat transfer coefficient.
+
+The thermal (heat) conduction component also becomes more complex than the planar analyses we did in earlier chapters. But its calculation is within our present scope. Therefore we devote this section to deriving the full thermal conduction equation, \aka heat conduction or heat diffusion equation, solving it in some fairly straightforward cases, and using our results in the overall coefficient. We undertake that task next.
+
+Consider the general temperature distribution in a three-dimensional body as depicted in Fig. 2.1 (a body being heated by a candle). For some reason, say heating from one side, the temperature of the body varies with time and space. This field $\temp = \temp\vat{\pos, t} = \temp\vat{x,y,z,t}$, defines instantaneous \lingo{isothermal surfaces}, $\temp_1$, $\temp_2$ and so on.
+
+We next consider a very important vector associated with the scalar, $\temp$. The vector that has both the magnitude and direction of the maximum increase of temperature at each point is called the \lingo{temperature gradient}, $\grad\temp$:
+\beq
+\grad\temp = \gder\temp 
+           = \rbvec i\igder i\temp 
+           = \uvec x\igder x\temp + \uvec y\igder y\temp + \uvec z\igder z\temp\,.
+\eeq
+
+
+\subsubsection{Fourier's law}
+``Experience'' -- that is, physical observation -- suggests two things about the thermal flow that results from temperature nonuniformities in a body. These are:
+\begin{enumerate}
+\item $\flux\then$ and $\grad\temp$ are exactly opposite one another in direction~\footnote{~This is a consequence of the second law of thermostatics: thermal energy flows in the direction of falling temperature.}:
+\beq
+\dfrac{\flux\then}{\magn{\flux\then}} \propto -\dfrac{\gder\temp}{\magn{\gder\temp}}
+\eeq
+and
+\item the magnitude of the thermal flux is directly proportional to the temperature gradient:
+\beq
+\magn{\flux\then} \propto \magn{\gder\temp}\,.
+\eeq
+\end{enumerate}
+
+Notice that the thermal flux is now written as a quantity that has a specified direction as well as a specified magnitude. Fourier's law summarizes this physical experience succinctly as
+\beq
+\flux\then = -\kthcond\gder\temp
+           = -\kthcond\grad\temp\,.
+\eeq
+
+The coefficient $\kthcond$ -- the thermal conductivity -- also depends on position and temperature in the most general case:
+\beq
+\kthcond = \kthcond\vat{\pos, \temp\vat{\pos,t}}\,.
+\eeq
+
+Fortunately, most materials (though not all of them) are very nearly \lingo{homogeneous}. Thus we can usually write $\kthcond = \kthcond\vat\temp$. The assumption that we really want to make is that $\kthcond$ is constant. Whether or not that is legitimate must be determined in each case. As is apparent from Fig. 2.2 and Fig. 2.3, $\kthcond$ almost always varies with temperature. It always rises with $\temp$ in gases at low pressures, but it may rise or fall in metals or liquids. The problem is that of assessing whether or not $\kthcond$ is approximately constant in the range of interest. We could safely take $\kthcond$ to be a constant for iron between \SIrange{0}{40}{\celsius} (see Fig. 2.2), but we would incur error between \SIrange{-100}{800}{\celsius}. Thus, if $\Dx\temp$ is not large, one can still make a reasonably accurate approximation using a constant average value of $\kthcond$.
+
+We must now write the thermal energy conduction equation in three dimensions. We begin with the energy conservation principle -- thermal energy flow equals energy accumulation within the body:
+\beq
+\flow\then = \accu\ien\,.
+\eeq
+
+This time we apply the last equation to a three-dimensional control volume, as shown in Fig. 2.4.1. The control volume is a finite region of a conducting body, which we set aside for analysis. The surface is denoted as $\surf$ and the volume and the region as $\vol$; both are at rest. An element of the surface, $\dx\surf$, is identified and two vectors are shown on $\dx\surf$: one is the unit normal vector, $\uvec n$ (with $\magn{\uvec n} = 1$), and the other is the thermal energy flux vector, $\flux\then = -k\grad\temp = -k\gder\temp$, at that point on the surface.
+
+We also allow the possibility that a volumetric thermal energy release flow equal to $\flow\chthen$, $\dim\flow\chthen = E/TL^3$, is distributed through the region. This might be the result of chemical or nuclear reaction, of electrical resistance heating (Joule heating), of external radiation into the region or of still other causes.
+
+With reference to Fig. 2.4, we can write the thermal energy flow conducted \emph{out} of $\dx\surf$, in dimensions of $E/T$, as
+\beq
+\left(-\kthcond\gder\temp\right)\iprod\left(\uvec n\,\dx\surf\right)\,.
+\eeq
+
+The thermal energy released (or accumulated) within the region $\vol$ must be added to the total energy flow into $\surf$ to get the overall rate of thermal energy addition to $\vol$:
+\beq
+\flow\then = -\int_{\surf}\left(-\kthcond\gder\temp\right)\iprod\left(\uvec n\,\dx\surf\right)
+             + \int_{\vol}\flow\chthen\,\dx\vol\,.
+\eeq
+
+The rate of energy increase (accumulation) of the region $\vol$ is
+\beq
+\accu\ien = \int_{\vol}\left(\ipd t\dens\kshcap\temp\right)\,\dx\vol\,,
+\eeq
+where the derivative of $\temp$ is in partial form because $\temp$ is a function of both position, $\pos$, and time, $t$.
+
+Finally, we combine $\flow\then$ and $\accu\ien$ using the energy conservation principle. After rearranging the terms, we obtain
+\beq
+\int_{\surf}\left(-\kthcond\gder\temp\right)\iprod\left(\uvec n\,\dx\surf\right)
+    =
+\int_{\vol}\left(\ipd t\dens\kshcap\temp + \flow\chthen\right)\,\dx\vol\,.
+\eeq
+
+To get the left-hand side into a convenient form, we introduce Gauss's theorem, which converts a surface integral into a volume integral. This reduces the last equation into
+\beq
+\int_{\vol}\left(\gder\iprod\kthcond\gder\temp 
+                    - \ipd t\dens\kshcap\temp 
+                    + \flow\chthen
+            \right)\,\dx\vol\,.
+\eeq
+
+Next, since the region $\vol$ is arbitrary, the integrand must vanish identically. We therefore get the \lingo{thermal energy diffusion equation} in three dimensions:
+\beq
+\gder\iprod\kthcond\gder\temp + \flow\chthen = \ipd t\dens\kshcap\temp\,.
+\eeq
+
+The limitations on this equation are:
+\begin{itemize}
+\item Incompressible medium. (This was implied when no expansion work term was included.)
+%
+\item No convection. (The medium cannot undergo any relative motion. However, it can be a liquid or gas as long as it sits still.)
+\end{itemize}
+
+If the variation of $\kthcond$ with $\temp$ is small and if the medium is homogeneous, then $\kthcond$ and $\dens\kshcap$ can be factored out of the last equation to get:
+\beq
+\lder\temp + \dfrac{1}{\kthcond}\flow\chthen = \dfrac{1}{\kthdiff}\ipd t\temp\,,
+\eeq
+where $\kthdiff = \kthcond/\dens\kshcap$ is the body thermal diffusivity. In a sense, thermal diffusivity is the measure of thermal inertia. In a substance with high thermal diffusivity, thermal energy moves rapidly through it because the substance conducts energy quickly relative to its volumetric thermal capacity or ``thermal bulk''.
+
+\begin{geometry}
+As seen in the thermal energy diffusion equation, \aka heat equation, when there are no volumetric thermal energy releases, \ie, $\flow\chthen = 0$, then we have
+\beq
+\cder\temp t = \kthdiff\cder\temp{\pos\pos}\,.
+\eeq
+Here thermal diffusivity can be geometrically interpreted as the ratio of the time derivative of temperature to its \lingo{curvature}, quantifying thus the rate at which temperature concavity is ``smoothed out''.
+\end{geometry}
+
+\begin{technote}
+Notice the reactive term $\flow\chthen/\kthcond$. It has the dimensions of
+\beq
+\dim\dfrac{\flow\chthen}{\kthcond} = \dfrac{E/TL^3}{E/TL\Theta}
+    = \dfrac{\text{flow of chemical energy release}}{\text{thermal energy conduction}}\,.
+\eeq
+Thus, if thermal conduction is high, then thermal energy coming from the reaction flows quickly through the body, being then released to the environment. Otherwise, then thermal energy coming from the reaction is stored within the body, this, in turns, enhances the reaction rate, since $\chthen = f\vat\temp$.
+\end{technote}
+
+
+\subsection{Yet another derivation}
+[Evans M. Harrell II and James V. Herod, Linear Methods of Applied Mathematics. \url{http://www.mathphysics.com/pde/HEderiv.html}]
+
+Newton articulated some principles of thermal flow through solids, but it was Fourier who created the correct systematic theory. Inside a solid there is no convective transfer of thermal energy and little radiative transfer, so temperature changes only by conduction, as the energy we now recognize as molecular kinetic energy flows from hotter regions to cooler regions. 
+
+\begin{enumerate}
+\item The first basic principle of thermal energy is that
+\begin{quote}
+the thermal energy contained in a material (internal energy) is proportional to the temperature, the density of the material and a physical characteristic of the material called the \lingo{specific thermal capacity}. In mathematical terms,
+\beq
+\ien = \int_\vol\dens\kshcap\temp\vat{t,\pos}\,\dx\vol\,.
+\eeq
+\end{quote}
+
+%
+\item For the other principles of thermal transfer, let us do some experiments with the following materials: a hot stove, some iron rods of different, relatively short lengths and various widths and various ceramic rods of different lengths and widths. Since these will be thought experiments only, it will be safe to use a finger as the probe. Putting your finger right on the stove will convince you that the energy transfer is proportional to the difference in temperature between your finger and the stove. Using, if necessary, a different, undamaged finger, you will also find that the rate of thermal transfer is inversely proportional to the length of an iron rod intervening between your finger to the stove (fixing the cross-sectional area). In other words, the rate of thermal flow from one region to another is proportional to the temperature gradient between the two regions. You will probably also agree that the rate of thermal flow will be proportional to the area of the contact; for example, a short pin with one end on a hot stove and the other touching your hand is preferable to putting the palm of your hand on a frying pan. Finally, a ceramic material on the stove being usually more pleasant to the touch than hot iron, we see that the rate of thermal transfer depends on the material, as measured with a physical constant known as the \lingo{thermal conductivity}. The second basic principle is thus that
+\begin{quote}
+the thermal transfer (thermal flow, thermal power) through the boundary of a region is proportional to the thermal conductivity, to the gradient of the temperature across the region and to the area of contact, so if the boundary of the region $\vol$ is written as $\bound\vol$, with outward normal vector $n$, then
+\beq
+\flow\then = \int_{\bound\vol}\kthcond n\iprod\grad\temp\vat{t,\pos}\,\dx\surf\,.
+\eeq
+\end{quote}
+\end{enumerate}
+
+If we differentiate the internal energy equation with respect to time, applying the differentiation under the integral sign, and apply divergence theorem to the thermal transfer integral, then we find that
+\beq
+\int_\vol\ipd t\dens\kshcap\temp\vat{t,\pos}\,\dx\vol
+=
+\int_\vol\div\kthcond\grad\temp\vat{t,\pos}\,\dx\vol\,.
+\eeq
+
+Since the region $\vol$ can be an arbitrary piece of the material under study, the integrands must be equal at almost every point. If the material under study is made out of an homogeneous, isotropic substance and if temperature gradients are not so big, then $\dens$, $\kshcap$ and $\kthcond$ are independent of the position $\pos$. Thus, we obtain the thermal diffusion equation
+\beq
+\ipd t\temp\vat{t,\pos}
+= \kthdiff\lap\temp\vat{t,\pos}\,,
+\eeq
+where $\kthdiff = \kthcond/\dens\kshcap$ is called \lingo{thermal diffusivity}. Ordinary substances have values of $\kthdiff$ ranging from about \SIrange{5}{9000}{cm^2/g}.
+
+The one-dimensional thermal diffusion equation in Cartesian coordinates
+\beq
+\cder\temp t = \kthdiff\cder\temp{xx}
+\eeq
+would apply, for instance, to the case of a long, thin metal rod wrapped with insulation, since the temperature of any cross-section will be constant, due to the rapid equilibration to be expected over short distances.
+
+
+\subsection{Solutions to the thermal diffusion equation}
+We are now in position to calculate the temperature distribution or thermal flux in bodies with the help of the heat diffusion equation. In every case, we first calculate $\temp\vat{\pos, t}$. Then, if we want the thermal flux as well, we differentiate $\temp$ to get $\flux\then$ from Fourier's law.
+
+The thermal diffusion equation is a partial differential equation (p.d.e.) and the task of solving it may seem difficult, but we can actually do a lot with fairly elementary mathematical tools. For one thing, in one- dimensional steady-state situations the heat diffusion equation becomes an ordinary differential equation (o.d.e.); for another, the equation is linear and therefore not too formidable, in any case. Our procedure can be laid out, step by step:
+\begin{enumerate}
+%
+\item Play with geometrical analysis -- make sketches, pics and drawings, physical analysis, dimensional analysis and approximate methods. Guess the solution beforehand. Even if you are proven wrong by the formal analysis, guessimations enhance physical intuition!
+
+\begin{note}
+In the analysis of thermal transfer, the dimensionaly independent system $\elset{E, L, T, \Theta}$ is generally the most adequate. However, the SI system, based on $\elset{M,L,T,\Theta}$, should not be overlooked.
+\end{note}
+%
+\item Pick the coordinate scheme (coordinate system) that best fits the problem and identify the independent variables that determine $\temp$.
+%
+\item Write the appropriate d.e., starting with one of the forms of the thermal diffusion equation.
+
+\begin{note}
+Non-dimensionalization of the d.e. prior to obtain its solution provides a deeper physical understanding of the phenomenon regardless if it results in an ``easier'' equation to solve. Use and interpret physically the resulting non-dim. equation as well as any characteristic physical quantities and dimensionless numbers.
+\end{note}
+
+\begin{remark}
+If non-dimensionalization is considered, then do not forget to include all of the physical quantities: quantities that appear in the diffusion equation, in the initial conditions and in the boundary conditions.
+\end{remark}
+%
+\item Obtain the general solution of the d.e. (This is usually the easiest step.)
+%
+\item Write the ``side conditions'' on the d.e. -- the initial and boundary conditions. This is the trickiest part and the one that most seriously tests our physical or ``practical'' understanding any heat conduction problem.
+Normally, we have to make two specifications of temperature on each position coordinate and one on the time coordinate to get rid of the constants of integration in the general solution.
+
+\begin{warning}
+\emph{Very Important}: Never, never introduce inaccessible information in a boundary or initial condition. Always stop and ask yourself, ``Would I have access to a numerical value of the temperature (or other data) that I specify at a given position or time?'' If the answer is no, then your result will be useless.
+\end{warning}
+
+\item Substitute the general solution in the boundary and initial conditions and solve for the constants. This process gets very complicated in the transient and multidimensional cases. Numerical methods are often needed to solve the problem.
+%
+\item Put the calculated constants back in the general solution to get the particular solution to the problem.
+
+\begin{note}
+Non-dimensionalization of the solution can also be helpful at this stage. Not only, non-dim. reduces the number of physical quantities to analyze, so does become useful when plotting equations.
+\end{note}
+
+\item Play with the solution -- look it over-- see what it has to tell you. Make any checks you can think of to be sure it is correct. Again dimensional analysis is the first tool to apply! Approximate methods and the use of characteristic quantities are also valuable.
+%
+\item If the temperature field is now correctly established, we can, if we wish, calculate the thermal flux at any point in the body by substituting $\temp\vat{\pos, t}$ back into Fourier's law.
+%
+\end{enumerate}
+
+
+\subsection{Examples}
+Some examples on using the proposed method for solving the thermal diffusion equation.
+
+\begin{example}
+A large, thin concrete slab of thickness $l$ is ``setting''. Setting is an exothermic process that releases $\flow\chthen$, $\dim\flow\chthen = E/TL^3$, $\unit\flow\chthen = \si{W/m^3}$. The outside surfaces are kept at the ambient temperature, so $\temp\txt w = \temp_\infty$. What is the maximum internal temperature?
+\end{example}
+
+\begin{guess}
+Thermal energy is being released from the slab center to its walls. If its assumed that the center temperature is greater than the wall (ambient) temperature, then temperature attains its maximum at the center and decreases to ambient temperature. Additionally, since the outer surfaces are kept at constant temperature, then the process is to be steady, but ranging spatially throughout the slab thickness. If one measures the spatially variation as $x$, then the slab temperature must satisfy $\temp = \temp\vat x$.
+
+Another important point is given by the symmetry of the problem. The center temperature is maximum at the center, $l/2$, and minimum at the walls, $x = 0$ and $x = l$, with a smooth decay. This gives a room to think about the temperature distribution inside the slab as a parabola with its vertex at $\temp\txt{max}$ and with its directrix greater than the horizontal line formed by the wall temperatures, $\temp\txt w$, at $x = 0$ and $x = l$.
+\end{guess}
+
+\begin{dimensional}
+Place a Cartesian coordinate axis that runs from one wall to the other covering the slab thickness; let $x$ measure distances within the thickness: $0\leq x\leq l$. Since temperature distribution is independent on time (steady process), then $\temp = \temp\vat x$ and thus $x$ is the independent quantity and $\temp$ the dependent quantity. Finally, the slab geometry provides two parameters, $x$ and $l$, and the slab material, concrete, provides the thermal property, $\kthcond$, thermal conductivity.
+
+Choose the set $\elset{E, L, T, \Theta}$ as the dimensionally independent set of dimensions. Within this system, the quantities dimensions are:
+\beq
+\dim x = \dim l = L                    \,,\quad
+\dim \temp = \dim \temp\txt w = \Theta \,,\quad
+\dim \flow\chthen = E/TL^3             \quad\text{and}\qquad
+\dim \kthcond = E/LT\Theta\,.
+\eeq
+
+According to Buckingham's theorem, the model can be described by $6 - 4 = 2$ dimensionless quantities. The first dimensionless quantity, $\kdim_1$, must include, as an advice, the sought quantity, $\temp$. Form this group by~\footnote{~A dimensionless quantity that includes $\temp$ is readily available: $\temp/\temp\txt w$. However, in thermal transfer, temperature differences are more important than temperatures alone, since differences are the driving force behind the transfer.}
+\beq
+\kdim_1 = \dfrac{\kthcond\left(\temp - \temp\txt w\right)}{\flow\chthen l^2}
+        = \dfrac{\text{conduction energy flow gradient}}{\text{released energy flow gradient}}
+        = \dfrac{\text{conduction gradient}}{\text{``production'' gradient}}\,.
+\eeq
+
+The second dimensionless quantity, $\kdim_2$, can be formed by the geometrical parameters:
+\beq
+\kdim_2 = x/l\,.
+\eeq
+
+Then, according to the dimensionally homogeneity principle for physics laws, the model can be written as
+\beq
+f\vat{\kdim_1, \kdim_2} = 0 \implies
+\kdim_1 = f\vat{\kdim_1, \kdim_2} \implies
+\kthcond\left(\temp - \temp\txt w\right)/\flow\chthen l^2 = f\vat{x/l} \,.
+\eeq
+The last equation is the final result of dimensional analysis. The actual form of the function $f$ has to be determined by experiment or by analytic considerations.
+\end{dimensional}
+
+\begin{approximation}
+After dimensional analysis was carried away, we arrived to
+\beq
+\kthcond\left(\temp - \temp\txt w\right)/\flow\chthen l^2 = f\vat{x/l} \,.
+\eeq
+
+When guessing the solution, on the other hand, we established that a parabola can express the temperature dependence on the thickness distance. Accordingly, the function $f$ can be then hypothesize to satisfy
+\beq
+\kthcond\left(\temp - \temp\txt w\right)/\flow\chthen l^2 = a\left(x/l\right)^2 + b\left(x/l\right) + c\,,
+\eeq 
+where the coefficients $\elset{a,b,c}$ must be determined.
+
+These coefficients can be calculated using the theorem that states that three points uniquely determine a parabola. These points are
+\beq
+\begin{cases}
+\tuple{x/l = 0, \kthcond\left(\temp - \temp\txt w\right)/\flow\chthen l^2 = 0}\,,\\
+\tuple{x/l = 1/2, \kthcond\left(\temp - \temp\txt w\right)/\flow\chthen l^2 = \kdim}\,,\\
+\tuple{x/l = 1, \kthcond\left(\temp - \temp\txt w\right)/\flow\chthen l^2 = 0}\,,
+\end{cases}
+\eeq
+where $\kdim$ is an unknown dimensionless quantity that, geometrically, shows the parabola height, its distance from the horizontal line formed by the $x$-axis to the parabola vertex and, physically, the maximum value of temperature, $\temp\txt{max} = \temp\vat{1/2}$, attained at $x/l = 1/2$, or,
+\beq
+\kdim = \kthcond\left(\temp\txt{max} - \temp\txt w\right)/\flow\chthen l^2\,.
+\eeq
+
+Using the points in the hypothetical equation for $f$, one finds that
+\beq
+a = -4\kdim\,,\quad
+b = 4\kdim\quad\text{and}\quad
+c = 0\,,
+\eeq
+and, thus, one arrives at
+\beq
+\dfrac{\kthcond\left(\temp - \temp\txt w\right)}{\flow\chthen l^2} = 
+4\kdim\dfrac{x}{l}\left(1 - \left(\dfrac{x}{l}\right)\right)\,.
+\eeq
+
+Doing honest physics (\ie, solving the differential equation), one finds that $4\kdim = 1/2$ or $\kdim = 1/8$, thus the model becomes
+\beq
+\dfrac{\kthcond\left(\temp - \temp\txt w\right)}{\flow\chthen l^2} = 
+\dfrac{1}{2}\dfrac{x}{l}\left(1 - \left(\dfrac{x}{l}\right)\right)
+\eeq
+and, finally, the maximum temperature, $\temp\txt{max}$, is attained at
+\beq
+\kdim = \dfrac{\kthcond\left(\temp\txt{max} - \temp\txt w\right)}{\flow\chthen l^2} 
+      = \dfrac{1}{8}\,.\mqed
+\eeq
+\end{approximation}
+
+\begin{solution}
+This solution is based in the general procedure to solve the thermal diffusion equation.
+
+Choose a Cartesian coordinate system with $\pos$ varying only in one-dimension, so that
+\beq
+0\leq x \leq l\qquad\text{and}\qquad
+\temp = \temp\vat x\,.
+\eeq
+
+Write the model equation for a one-dimensional, steady state case:
+\beq
+\cder\temp{xx} = -\flow\chthen/\kthcond\,.
+\eeq
+
+Obtain the general solution to the model equation by integration to have
+\beq
+\temp = -\dfrac{\flow\chthen}{\kthcond}x^2 + c_1 x + c_2\,,
+\eeq
+where $c_1$ and $c_2$ are integration constants.
+
+Apply, next, the boundary conditions
+\beq
+\temp\vat{x = 0} = \temp\txt w\qquad\text{and}\qquad
+\temp\vat{x = l} = \temp\txt w\,.
+\eeq
+
+Substitute the boundary conditions into the general solution to have
+\beq
+c_1 = \dfrac{\flow\chthen l}{2\kthcond}\qquad\text{and}\qquad
+c_2 = \temp\txt w\,.
+\eeq
+
+Replace the values of the constants into the general solution to find the particular solution
+\beq
+\temp = -\dfrac{1}{2}\dfrac{\flow\chthen}{\kthcond} x^2 
+        + \dfrac{1}{2}\dfrac{\flow\chthen}{\kthcond} x 
+        + \temp\txt w\,,
+\eeq
+which can be written in the dimensionless form:
+\beq
+\dfrac{\kthcond\left(\temp - \temp\txt w\right)}{\flow\chthen l^2} = 
+\dfrac{1}{2}\dfrac{x}{l}\left(1 - \left(\dfrac{x}{l}\right)\right)\,.
+\eeq
+
+Finally, as a verifying step, note that the resulting temperature distribution is parabolic and, as expected, symmetrical. It satisfies the boundary conditions at the wall and maximizes in the center. By nondimensionalizing the result, a simple curve can represent all situations. That is highly desirable when the calculations are not simple, as they are here. (Even here $\temp$ actually depends on five different quantities and its solution is a single curve on a two-coordinate graph.)\txtqed
+\end{solution}
+

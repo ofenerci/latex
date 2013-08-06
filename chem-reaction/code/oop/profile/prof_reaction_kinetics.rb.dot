@@ -1,0 +1,118 @@
+digraph "Profile" {
+labelloc=t;
+labeljust=l;
+subgraph "Thread 70251039819480" {
+70251045372900 [label="[No method]\n(99%)"];
+70251045372900 -> 70251045372660 [label="1/6" fontsize=10 fontcolor="#666666"];
+70251045372900 -> 70251045372760 [label="1/2" fontsize=10 fontcolor="#666666"];
+70251045372900 -> 70251045372880 [label="1/2" fontsize=10 fontcolor="#666666"];
+70251045372900 -> 70251045372780 [label="1/2" fontsize=10 fontcolor="#666666"];
+70251045372900 -> 70251045372300 [label="1/23" fontsize=10 fontcolor="#666666"];
+70251045372660 [label="require\n(97%)"];
+70251045372660 -> 70251045372420 [label="6/6" fontsize=10 fontcolor="#666666"];
+70251045372660 -> 70251045372640 [label="6/6" fontsize=10 fontcolor="#666666"];
+70251045372660 -> 70251045372440 [label="6/6" fontsize=10 fontcolor="#666666"];
+70251045372420 [label="gem_original_require\n(96%)"];
+70251045372420 -> 70251045372320 [label="9/9" fontsize=10 fontcolor="#666666"];
+70251045372420 -> 70251045373000 [label="8/10" fontsize=10 fontcolor="#666666"];
+70251045372420 -> 70251045372280 [label="1/1" fontsize=10 fontcolor="#666666"];
+70251045372420 -> 70251045372260 [label="1/1" fontsize=10 fontcolor="#666666"];
+70251045372420 -> 70251045372780 [label="1/2" fontsize=10 fontcolor="#666666"];
+70251045372420 -> 70251045372760 [label="1/2" fontsize=10 fontcolor="#666666"];
+70251045372420 -> 70251045372340 [label="2/3" fontsize=10 fontcolor="#666666"];
+70251045372420 -> 70251045372880 [label="1/2" fontsize=10 fontcolor="#666666"];
+70251045372420 -> 70251045372300 [label="11/23" fontsize=10 fontcolor="#666666"];
+70251045372420 -> 70251045372660 [label="5/6" fontsize=10 fontcolor="#666666"];
+70251045372640 [label="find_unresolved_default_spec\n(3%)"];
+70251045372640 -> 70251045372520 [label="6/6" fontsize=10 fontcolor="#666666"];
+70251045372640 -> 70251045372540 [label="6/6" fontsize=10 fontcolor="#666666"];
+70251045373000 [label="set_encoding\n(2%)"];
+70251045372520 [label="each\n(2%)"];
+70251045372320 [label="attr_reader\n(2%)"];
+70251045372320 -> 70251045372300 [label="9/23" fontsize=10 fontcolor="#666666"];
+70251045372300 [label="method_added\n(1%)"];
+70251045372440 [label="unresolved_deps\n(1%)"];
+70251045372760 [label="expand_path\n(0%)"];
+70251045372780 [label="join\n(0%)"];
+70251045372280 [label="attr_accessor\n(0%)"];
+70251045372280 -> 70251045372300 [label="2/23" fontsize=10 fontcolor="#666666"];
+70251045372540 [label="suffixes\n(0%)"];
+70251045372880 [label="__dir__\n(0%)"];
+70251045372260 [label="new\n(0%)"];
+70251045372260 -> 70251045372240 [label="1/1" fontsize=10 fontcolor="#666666"];
+70251045372240 [label="initialize\n(0%)"];
+70251045372240 -> 70251045372340 [label="1/3" fontsize=10 fontcolor="#666666"];
+70251045372340 [label="inherited\n(0%)"];
+}
+subgraph cluster_70251045325780 {
+label = "IO";
+fontcolor = "#666666";
+fontsize = 16;
+color = "#666666";
+70251045373000;
+}
+subgraph cluster_70251045325680 {
+label = "Global";
+fontcolor = "#666666";
+fontsize = 16;
+color = "#666666";
+70251045372900;
+}
+subgraph cluster_70251045325560 {
+label = "Kernel";
+fontcolor = "#666666";
+fontsize = 16;
+color = "#666666";
+70251045372880;
+70251045372660;
+70251045372420;
+}
+subgraph cluster_70251045325380 {
+label = "<Class::File>";
+fontcolor = "#666666";
+fontsize = 16;
+color = "#666666";
+70251045372780;
+70251045372760;
+}
+subgraph cluster_70251045324960 {
+label = "<Module::Gem>";
+fontcolor = "#666666";
+fontsize = 16;
+color = "#666666";
+70251045372640;
+70251045372540;
+}
+subgraph cluster_70251045324700 {
+label = "Array";
+fontcolor = "#666666";
+fontsize = 16;
+color = "#666666";
+70251045372520;
+}
+subgraph cluster_70251045324560 {
+label = "<Class::Gem::Specification>";
+fontcolor = "#666666";
+fontsize = 16;
+color = "#666666";
+70251045372440;
+}
+subgraph cluster_70251045324320 {
+label = "Class";
+fontcolor = "#666666";
+fontsize = 16;
+color = "#666666";
+70251045372340;
+70251045372260;
+70251045372240;
+}
+subgraph cluster_70251045324180 {
+label = "Module";
+fontcolor = "#666666";
+fontsize = 16;
+color = "#666666";
+70251045372320;
+70251045372300;
+70251045372280;
+}
+}

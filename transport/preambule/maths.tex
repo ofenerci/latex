@@ -1,0 +1,126 @@
+%%% MATHS
+%
+%%% GENERAL COMMANDS
+%
+\newcommand{\mqed}{\tag*{\qedsymbol}}             % math qed
+\newcommand*{\txtqed}{\hfill\ensuremath{\square}} % text qed
+%
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+%
+\newcommand{\defby}{\doteq} % defined by
+%
+\newcommand{\txt}[1]{_\text{#1}} % subscript text
+%
+%%% SETS
+%
+\newcommand{\set}[1]{\mathcal{#1}}
+\newcommand{\nset}[2]{\set{#2}^{#1}}  % n dim set
+\newcommand{\espace}[1]{\nset{#1}{E}} % n dim. Euclidean space
+\newcommand{\region}[1]{\set{#1}}
+%
+\newcommand{\elset}[1]{\left\lbrace{#1}\right\rbrace} % elements of a set
+\newcommand{\tuple}[1]{\left[{#1}\right]}
+%
+%%% FUNCTIONS
+%
+\newcommand{\vat}[1]{\left[{#1}\right]} % function value at
+%
+%%% GEOMETRIC OBJECTS
+%
+\newcommand{\bound}{\partial} % boundary
+\newcommand{\surf}{s}         % surface
+\newcommand{\vol}{v}          % volume
+%
+%%% GEOMETRIC ALGEBRA
+%
+\newcommand{\magn}[1]{\vert{#1}\vert} % magnitude
+%
+\newcommand{\iprod}{\cdot}  % inner product
+\newcommand{\oprod}{\wedge} % outer product
+%
+\newcommand{\inv}[1]{{#1}^{-1}} % inverse
+%
+\newcommand{\uvec}[1]{\hat{#1}} % unit vector
+%
+%%% GEOMETRIC CALCULUS
+%
+\newcommand{\gder}{\nabla}   % geometric derivative
+\newcommand{\lder}{\nabla^2} % laplace derivative
+%
+\DeclareMathOperator{\Div}{div} % divergence
+\renewcommand{\div}{\Div}
+\DeclareMathOperator{\grad}{grad} % gradient
+\DeclareMathOperator{\lap}{lap}   % Laplace operator
+%
+%%% CALCULUS
+%
+\newcommand{\dx}{\text{d}} % differential operator
+\newcommand{\Dx}{\Delta}   % difference operator
+%
+% derivatives
+\newcommand{\dt}[1]{\dot{#1}}       % dot derivative
+\newcommand{\ddt}[1]{\ddot{#1}}     % ddot derivative
+\newcommand{\iod}[1]{\dx_{#1}}      % indexed ordinary derivative
+\newcommand{\ipd}[1]{\partial_{#1}} % indexed partial derivative
+\newcommand{\igder}[1]{\ipd{#1}}    % indexed geometric derivative
+\newcommand{\cder}[2]{{#1}_{,#2}}   % comma derivative
+%
+\newcommand{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}}           % expanded ordinary derivative
+\newcommand{\xpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}} % expanded partial derivative
+%
+%%% INDEX NOTATION
+%
+\newcommand{\bvec}{\gamma}         % basis vector
+\newcommand{\fbvec}[1]{\bvec_{#1}} % frame (basis) element
+\newcommand{\rbvec}[1]{\bvec^{#1}} % reciprocal frame (basis) element
+\newcommand{\met}{g}               % metric
+%
+\newcommand{\frm}[1]{\elset{\fbvec{#1}}}  % frame
+\newcommand{\rfrm}[1]{\elset{\rbvec{#1}}} % reciprocal frame
+%
+\newcommand{\fmet}[2]{\met_{{#1}{#2}}}% metric in frame
+\newcommand{\rmet}[2]{\met^{{#1}{#2}}}% metric in reciprocal frame
+%
+\newcommand{\upipd}[1]{\partial^{#1}} % up indexed partial derivative
+\newcommand{\dnipd}[1]{\partial_{#1}} % down indexed partial derivative
+%
+\newcommand{\fvec}[2]{{#1}^{#2}} % frame (contravariant) components
+\newcommand{\rvec}[2]{{#1}_{#2}} % reciprocal frame (covariant) components
+%
+%%% MATRICES
+%
+\DeclareMathOperator{\diag}{diag} % diagonal
+\DeclareMathOperator{\sig}{sig}   % signature
+%
+%%% BRACKETS
+%
+\newcommand{\iverson}[1]{\left[{#1}\right]\txt{Iv}} % Iverson brackets
+%
+%%% MATH ENVIRONMENTS
+%
+\newenvironment{axiom}{\medskip\noindent{\it Axiom.}}{}
+\newenvironment{definition}{\medskip\noindent{\it Definition.}\it}{\rm}
+\newenvironment{theorem}{\medskip\noindent{\it Theorem.}}{}
+%
+\newenvironment{example}{\medskip\noindent{\it Example.}}{}
+\newenvironment{exercise}{\medskip\noindent{\it Exercise.}}{}
+%
+\newenvironment{approximation}{\smallskip\small\noindent{\it Approx. Solution.}}{\normalsize\smallskip}
+\newenvironment{caution}{\smallskip\small\noindent{\it Caution.}}{\normalsize\smallskip}
+\newenvironment{dimensional}{\smallskip\small\noindent{\it Dim. Analysis.}}{\normalsize\smallskip}
+\newenvironment{discussion}{\smallskip\small\noindent{\it Discussion.}}{\normalsize\smallskip}
+\newenvironment{guess}{\smallskip\small\noindent{\it Guess.}}{\normalsize\smallskip}
+\newenvironment{geometry}{\smallskip\small\noindent{\it Geometry.}}{\normalsize\smallskip}
+\newenvironment{mathnote}{\smallskip\small\noindent{\it Math note.}}{\normalsize\smallskip}
+\newenvironment{motivation}{\smallskip\small\noindent{\it Motivation.}}{\normalsize\smallskip}
+\newenvironment{notation}{\smallskip\small\noindent{\it Notation.}}{\normalsize\smallskip}
+\newenvironment{note}{\smallskip\small\noindent{\it Note.}}{\normalsize\smallskip}
+\newenvironment{remark}{\smallskip\small\noindent{\it Remark.}}{\normalsize\smallskip}
+\newenvironment{technote}{\smallskip\small\noindent{\it Technical note.}}{\normalsize\smallskip}
+\newenvironment{warning}{\smallskip\small\noindent{\it Warning.}}{\normalsize\smallskip}
+%
+\renewenvironment{proof}{\newline\small\noindent{\it Proof.}}{\normalsize}
+\newenvironment{solution}{\smallskip\small\noindent{\it Solution.}}{\normalsize}
+\newenvironment{verification}{\small\noindent{\it Verification.}}{\normalsize}
+%

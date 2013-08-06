@@ -1,0 +1,581 @@
+\section{Basic Tools}
+
+
+\subsection{Iverson Bracket}
+
+\subsubsection{Definition}
+The \lingo{Iverson bracket}, named after Kenneth E. Iverson, is a notation that denotes a number that is 1 if the condition in square brackets is satisfied, and 0 otherwise. More exactly,
+\beq
+\iverson P = \begin{cases}
+                1\qquad\text{if $P$ is true;}\\
+                0\qquad\text{otherwise.}
+             \end{cases}
+\eeq
+where $P$ is a logical statement; \ie, a statement that can be either true or false.
+
+
+\subsubsection{Examples}
+The notation allows moving boundary conditions of summations (or integrals) as a separate factor into the summand, freeing up space around the summation operator, but more importantly allowing it to be manipulated algebraically. For example
+\beq
+\sum_{1\leq i\leq 10} i^2 = \sum_i i^2 \iverson{1\leq i\leq 10}\,.
+\eeq
+In the first sum, the index $i$ is limited to be in the range 1 to 10. The second sum is allowed to range \emph{over all} integers, but where $i$ is strictly less than 1 or strictly greater than 10, the summand is 0, contributing nothing to the sum. Such use of the Iverson bracket can permit easier manipulation of these expressions.
+
+Another use of the Iverson bracket is to simplify equations with special cases. For example, the formula
+\beq
+\sum_{\substack{1\leq k\leq n\\ \gcd(k,n) = 1}} k 
+    = \dfrac{1}{2} n\varphi\vat n\,,
+\eeq
+which is valid for $n > 1$ but which is off by $1/2$ for $n = 1$. To get an identity valid for all positive integers $n$ (\ie, all values for which  is defined), a correction term involving the Iverson bracket may be added:
+\beq
+\sum_{\substack{1\leq k\leq n\\ \gcd(k,n) = 1}} k 
+    = \dfrac{1}{2} n\left( \varphi\vat n + \iverson{n = 1}\right)\,,
+\eeq
+
+The Kronecker delta notation is a specific case of Iverson notation when the condition is equality. That is,
+\beq
+\ikron ij = \iverson{i = j}\,.
+\eeq
+
+The trichotomy of the reals can be expressed:
+\beq
+\iverson{a < b} + \iverson{a = b} + \iverson{a > b} = 1\,.
+\eeq
+
+
+\subsection{Tau Number}
+Define a \lingo{circle} as the set of points a fixed distance from a given point. Refer to the fixed distance as the \lingo{radius of the circle}, denoted $r$, and to the given point as the \lingo{center of the circle}, denoted $\point O$. 
+
+Then, define the \lingo{diameter of the circle}, denoted $d$, by $d = 2r$ and define the \lingo{circumference of the circle}, denoted $c$, as the linear distance around the outside of the circle.
+
+Next, define the \lingo{circle constant}, denoted $\pi$, as the ratio of the circumference of the circle to its diameter:
+\beq
+\pi \defby \dfrac{c}{d}\,.
+\eeq
+The numerical value~\footnote{Mnemonic: ``How I want a drink, alcoholic of course, after the heavy lectures involving quantum mechanics.'' --- James Jeans.} of $\pi$ is
+\beq
+\pi = \num{3.14159 26535 89793 23846 26433}\dotsc\,.
+\eeq
+
+Finally, define the tau number:
+
+\begin{definition}
+define the \lingo{tau number}, denoted $\tau$, as the ratio of the circumference of the circle to its radius:
+\beq
+\tau \defby \dfrac{c}{r}\,.
+\eeq
+\end{definition}
+
+The numerical value of $\tau$ is
+\beq
+\tau = \num{6.28318 53071 79586 47692 52866}\dotsc\,.
+\eeq
+
+\begin{note}
+The transformations between $\pi$ and $\tau$ are given by $\tau = 2\pi$ and $\pi = \tau/2$.
+\end{note}
+
+
+\subsection{Approximation to Earth's gravity}
+Gravitational acceleration can be approximated by
+\beq
+g \sim \pi^2 = 9.86960\dotsc \,.
+\eeq
+This value is a useful approximation when working with circular or periodic motion.
+
+
+\subsection{Stirling's Approximation}
+\lingo{Stirling's approximation} (or Stirling's formula) is an approximation for large factorials. 
+
+\subsubsection{Formula}
+The formula as typically used in applications is
+\beq
+\ln\vat{n!} = n\ln\vat n - n + O\vat{\ln\vat n}\,,
+\eeq
+a more precise variant of the formula is often written
+\beq
+n!\sim \sqrt{2\pi n}\left(\dfrac{n}{e}\right)^n\,. 
+\eeq
+
+Sometimes, bounds for $n$! rather than asymptotics are required: one has, for all $x\in\set N^+$
+\beq
+\sqrt{2\pi}\,n^{n + 1/2}\,e^{-n}\leq n!\leq e\,n^{n+1/2}\,e^{-n}\,,
+\eeq
+so for all $n \geq 1$ the ratio $n!/(n^{n+1/2}\,e^{-n})$ is always, \eg, between 2.5 and 2.8.
+
+
+\subsection{Transformation of Graphs -- Shifts, Scales and Reflections}
+Shifting, Scaling and Reflecting graphs can be represented algebraically via the following transformations:
+\begin{itemize}
+%
+\item $g\vat x = f\vat{x + a}$: The $g$-graph is determined by a \lingo{horizontal shift} of the $f$-graph $\magn a$ units to the \emph{left} if $a > 0$, or $\magn a$ units to the \emph{right} if $a < 0$.
+%
+\item $h\vat x = f\vat x + a$: The $h$-graph is determined by a \lingo{vertical shift} of the $f$-graph $\magn a$ units \emph{up} if $a > 0$, or $\magn a$ units \emph{down} if $a < 0$.
+%
+\item $k\vat x = f\vat{ax}$: The $k$-graph is determined by a \lingo{horizontal compression} of the $f$-graph if $a > 1$, or \lingo{horizontal stretch} of the $f$-graph if $0 < a < 1$.
+%
+\item $j\vat x = af\vat x$: The $j$-graph is determined by a \lingo{vertical stretch} of the $f$-graph if $a > 1$, or \lingo{vertical compression} of the $f$-graph if $0 < a < 1$.
+%
+\item $r\vat x = f\vat{-x}$: The $r$-graph is determined by \lingo{reflecting} the $f$-graph across the $y$-axis.
+%
+\item $s\vat x = -f\vat x$: The $s$-graph is determined by \lingo{reflecting} the $f$-graph across the $x$-axis.
+\end{itemize}
+
+\begin{remark}
+If $f\vat{-x} = f\vat x$ for all $x$ in the domain of $f$, then $f$ is said to be \lingo{even} and its graph is \emph{symmetric with respect to the $y$-axis}. If $g\vat{-x} = -g\vat x$ for all $x$ in the domain of $g$, then $g$ is said to be \lingo{odd} and its graph is \emph{symmetric with respect to the origin}.
+\end{remark}
+
+
+\subsection{Cartesian Product}
+A \lingo{Cartesian product} is a mathematical operation which returns a set (or product set) from multiple sets. The Cartesian product is the result of crossing members of each set with one another.
+
+The simplest case of a Cartesian product is the \lingo{Cartesian square}, which returns a set from two sets. A table can be created by taking the Cartesian product of a set of rows and a set of columns. If the Cartesian product rows times columns is taken, the cells of the table contain ordered pairs of the form (row value, column value). If the Cartesian product is columns times rows is taken, the cells of the table contain the ordered pairs of the form (column value, row value).
+
+A Cartesian product of $n$ sets can be represented by an array of $n$ dimensions, where each element is an $n$-tuple. An ordered pair is a 2-tuple.
+
+
+\subsubsection{Cartesian square and Cartesian power}
+The Cartesian square (or binary Cartesian product) of a set $\set X$ is the Cartesian product $\nset X2 = \set X\sprod\set X$. An example is the 2-dimensional plane $\nset Rn = \set R\sprod\set R$, where $\set R$ is the set of real numbers -- all points $\tuple{x,y}$, where $x$ and $y$ are real numbers.
+
+
+\subsubsection{Higher powers of a set}
+The \lingo{Cartesian Power} of a set $\set X$ can be defined as:
+\beq
+\nset Xn = \set X\sprod\set X\dotsb\set X 
+         = \setprop{\tuple{x_1,\dotsc,x_n}}{x_i\in\set X, \text{for all $1\leq i\leq n$}}\,,
+\eeq
+\ie, $\nset Xn$ is the collection of all $n$-tuples $\tuple{x_1,\dotsc,x_n}$. Call the $\elset{x_i}$ the \lingo{components of the tuple}.
+
+An example of this is $\nset R3 = \set R\sprod\set R\sprod\set R$, with $\set R$ again the set of real numbers and more generally $\nset Rn$.
+
+
+\subsection{Function}
+In mathematics, a \lingo{function} is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output. An example is the function that relates each real number $x$ to its square $x^2$. The output of a function $f$ corresponding to an input $x$ is denoted by $f\vat x$ (read ``$f$ of $x$'' or ``$f$ value at the point $x$). In this example, if the input is $-3$, then the output is 9, and we may write $f\vat{-3} = 9$. The input variable(s) are sometimes referred to as the \lingo{argument(s) of the function}.
+
+Functions are ``the central objects of investigation'' in most fields of modern mathematics. There are many ways to describe or represent a function. Some functions may be defined by a formula or algorithm that tells how to compute the output for a given input. Others are given by a picture, called the graph of the function. In science, functions are sometimes defined by a table that gives the outputs for selected inputs. A function can be described through its relationship with other functions, for example as an inverse function or as a solution of a differential equation.
+
+The input and output of a function can be expressed as an \lingo{ordered pair}, ordered so that the first element is the input (or tuple of inputs, if the function takes more than one input), and the second is the output. In the example above, $f\vat x = x^2$, we have the ordered pair $\tuple{-3,9}$. If both input and output are real numbers, this ordered pair can be viewed as the Cartesian coordinates of a point on the graph of the function. But no picture can exactly define every point in an infinite set. In modern mathematics, a function is defined by its set of inputs, called the \lingo{domain}, a set containing the outputs, called its \lingo{codomain}, and the set of all paired input and outputs, called the \lingo{graph}. For example, we could define a function using the rule $f\vat x = x^2$ by saying that the domain and codomain are the real numbers, and that the ordered pairs are all pairs of real numbers $\tuple{x,x^2}$. Collections of functions with the same domain and the same codomain are called \lingo{function spaces}, the properties of which are studied in such mathematical disciplines as \lingo{real analysis} and complex analysis.
+
+In analogy with arithmetic, it is possible to define addition, subtraction, multiplication, and division of functions, in those cases where the output is a number. Another important operation defined on functions is \lingo{function composition}, where the output from one function becomes the input to another function.
+
+
+\subsubsection{Definition}
+In order to avoid the use of the not rigorously defined words ``rule'' and ``associates'', the above intuitive explanation of functions is completed with a formal definition. This definition relies on the notion of the Cartesian product. The Cartesian product of two sets $\set X$ and $\set Y$ is the set of all ordered pairs, written $\tuple{x,y}$, where $x$ is an element of $\set X$ and $y$ is an element of $\set Y$. The $x$ and the $y$ are called the \lingo{components of the ordered pair}. The Cartesian product of $\set X$ and $\set Y$ is denoted by $\set X\sprod\set Y$.
+
+
+\subsubsection{Definition}
+\begin{quote}
+A function $f$ from $\set X$ to $\set Y$ is a subset of the Cartesian product $\set X\sprod\set Y$ subject to the following condition: every element of $\set X$ is the first component of one and only one ordered pair in the subset. In other words, for every $x$ in $\set X$ there is exactly one element $y$ such that the ordered pair $\tuple{x,y}$ is contained in the subset defining the function $f$. 
+\end{quote}
+
+This formal definition is a precise rendition of the idea that to each $x$ is associated an element $y$ of $\set Y$, namely the uniquely specified element $y$ with the property just mentioned.
+
+
+\subsubsection{Notation}
+A function $f$ with domain $\set X$ and codomain $\set Y$ is commonly denoted by $\fdef f{\set X}{\set Y}$. In this context, the elements of $\set X$ are called \lingo{arguments of $f$}. For each argument $x$, the corresponding unique $y$ in the codomain is called the \lingo{function value at $x$} or the \lingo{image of $x$ under $f$}. It is written as $f\vat x$. One says that $f$ associates $y$ with $x$ or maps $x$ to $y$. This is abbreviated by $y = f\vat x$.
+
+In order to specify a concrete function, the notation $\mapsto$ (an arrow with a bar at its tail) is used. For example, \beq
+\fdef f{\set N}{\set Z}, x\mapsto 4 - x\,.
+\eeq
+The first part is read ``$f$ is a function from $\set N$ (the set of natural numbers) to $\set Z$ (the set of integers)'' or ``$f$ is an $\set Z$-valued function of an $\set N$-valued variable''.
+
+The second part is read ``$x$ maps to $4 - x$''. In other words, this function has the natural numbers as domain, the integers as codomain. A function is properly defined only when the domain and codomain are specified. For example, the formula $f\vat x = 4 - x$ alone (without specifying the codomain and domain) is not a properly defined function. Moreover, the function $\fdef{g}{\set Z}{\set Z}$, such that $x\mapsto 4 - x$ (with different domain) is \emph{not} considered the same function, even though the formulas defining $f$ and $g$ agree, and similarly with a different codomain. Despite that, many authors drop the specification of the domain and codomain, especially if these are clear from the context. So in this example many just write $f\vat x = 4 - x$. Sometimes, the maximal possible domain is also understood implicitly: a formula such as $f\vat x = \sqrt{x^2 - 5x + 6}$ may mean that the domain of $f$ is the set of real numbers $x$ where the square root is defined (in this case $x\leq 2$ or $x\geq 3$).
+
+
+\subsubsection{Specifying a Function}
+A function can be defined by any mathematical condition relating each argument (input value) to the corresponding output value. If the domain is finite, a function $f$ may be defined by simply tabulating all the arguments $x$ and their corresponding function values $f\vat x$. More commonly, a function is defined by a formula, or (more generally) an algorithm -- a recipe that tells how to compute the value of $f\vat x$ given any $x$ in the domain.
+
+There are many other ways of defining functions. Examples include piecewise definitions, induction or recursion, algebraic or analytic closure, limits, analytic continuation, infinite series, and as solutions to integral and differential equations. The lambda calculus provides a powerful and flexible syntax for defining and combining functions of several variables. In advanced mathematics, some functions exist because of an axiom, such as the Axiom of Choice.
+
+
+\subsubsection{Basic Properties}
+Image and preimage: If $\set A$ is any subset of the domain $\set X$, then $f\vat{\set A}$ is the subset of the codomain $\set Y$ consisting of all images of elements of $\set A$. We say the $f\vat{\set A}$ is the image of $\set A$ under $f$. The \lingo{image} of $f$ is given by $f\vat{\set X}$. On the other hand, the \lingo{inverse} image (or preimage, complete inverse image) of a subset $\set B$ of the codomain $\set Y$ under a function $f$ is the subset of the domain $\set X$ defined by
+\beq
+\inv f\vat{\set B} = \setprop{x\in\set X}{f\vat x\in\set B}\,.
+\eeq
+
+So, for example, the preimage of $\elset{4,9}$ under the squaring function is the set $\elset{-3,-2,2,3}$. The term \lingo{range} usually refers to the image, but sometimes it refers to the codomain.
+
+By definition of a function, the image of an element $x$ of the domain is always a single element $y$ of the codomain. Conversely, though, the preimage of a singleton set (a set with exactly one element) may in general contain any number of elements. For example, if $f\vat x = 7$ (the constant function taking value 7), then the preimage of $\elset{5}$ is the empty set but the preimage of $\elset 7$ is the entire domain. It is customary to write $\inv f\vat b$ instead of $\inv f\vat{\elset b}$, \ie,
+\beq
+\inv f\vat b = \setprop{x\in\set X}{f\vat x = b}\,.
+\eeq
+This set is sometimes called the \lingo{fiber} of $b$ under $f$.
+
+Use of $f\vat{\set A}$ to denote the image of a subset $\set A\subset\set X$ is consistent so long as no subset of the domain is also an element of the domain.
+
+Injective and surjective functions: A function is called \lingo{injective} (or one-to-one or an injection) 
+\begin{quote}
+if $f\vat a\neq f\vat b$ for any two different elements $a$ and $b$ of the domain. 
+\end{quote}
+It is called \lingo{surjective} (or onto) if $f\vat{\set X} = \set Y$. That is, it is surjective 
+\begin{quote}
+if for every element $y$ in the codomain there is an $x$ in the domain such that $f\vat x = y$. 
+\end{quote}
+Finally $f$ is called \lingo{bijective} if it is \emph{both} injective and surjective.
+
+Function composition: The \lingo{function composition} of two functions takes the output of one function as the input of a second one. More specifically, the composition of $f$ with a function $\fdef{g}{\set Y}{\set Z}$ is the function $\fdef{g\fcomp f}{\set X}{\set Z}$ defined by
+\beq
+(g\fcomp f)\vat x = g\vat{f\vat x}\,.
+\eeq
+That is, the value of $x$ is obtained by first applying $f$ to $x$ to obtain $y = f\vat x$ and then applying $g$ to $y$ to obtain $z = g\vat y$. In the notation $g\fcomp f$, the function on the right, $f$, acts first and the function on the left, $g$ acts second, reversing English reading order. The notation can be memorized by reading the notation as ``$g$ of $f$'' or ``$g$ after $f$''. The composition $g\fcomp f$ is only defined when the codomain of $f$ is the domain of $g$. Assuming that, the composition in the opposite order $f\fcomp g$ need not be defined. Even if it is, \ie, if the codomain of $f$ is the codomain of $g$, it is not in general true that $g\fcomp f = f\fcomp g$. That is, \emph{the order of the composition is important}. For example, suppose $f\vat x = x^2$ and $g\vat x = x+1$. Then, $g\vat{f\vat x} = x^2 + 1$, while $f\vat{g\vat x} = (x+1)^2$, which is $x^2 + 2x + 1$, a different function.
+
+Identity function: The unique function over a set $\set X$ that maps each element to itself is called the \lingo{identity function for $\set X$}, and typically denoted by $\text{id}_{\set X}$. Each set has its own identity function, so the subscript cannot be omitted unless the set can be inferred from context. Under composition, an identity function is ``neutral'': if $f$ is any function from $\set X$ to $\set Y$, then
+\beq
+f\fcomp \text{id}_{\set X} = f\,,\qquad \text{id}_{\set Y}\fcomp f = f \,.
+\eeq
+
+Restrictions and extensions: Informally, a \lingo{restriction} of a function $f$ is the result of trimming its domain. More precisely, if $\set S$ is any subset of $\set X$, the restriction of $f$ to $\set S$ is the function $f|_{\set S}$ from $\set S$ to $\set Y$ such that $f|_{\set S}\vat s = f\vat s$ for all $s$ in $\set S$. If $g$ is a restriction of $f$, then it is said that $f$ is an \lingo{extension} of $g$.
+
+The \lingo{overriding} of $\fdef f{\set X}{\set Y}$ by $\fdef g{\set W}{\set Y}$ (also called overriding union) is an extension of $g$ denoted as $\fdef{(f\oplus g)}{\set X\cup\set W}{\set Y}$. Its graph is the set-theoretical union of the graphs of $g$ and $f|_{\set X \setminus \set W}$. Thus, it relates any element of the domain of $g$ to its image under $g$, and any other element of the domain of $f$ to its image under $f$. Overriding is an associative operation; it has the empty function as an identity element. If $f|_{\set X\cap\set W}$ and $g|_{\set X\cap\set W}$ are pointwise equal (\eg, the domains of $f$ and $g$ are disjoint), then the union of $f$ and $g$ is defined and is equal to their overriding union. This definition agrees with the definition of union for binary relations.
+
+Inverse function: An inverse function for $f$, denoted by $\inv f$, is a function in the opposite direction, from $\set Y$ to $\set X$, satisfying
+\beq
+f\fcomp\inv f = \text{id}_{\set Y}\,,\qquad \inv f\fcomp f = \text{id}_{\set X} \,.
+\eeq
+That is, the two possible compositions of $f$ and $\inv f$ need to be the respective identity maps of $\set X$ and $\set Y$. 
+
+As a simple example, if $f$ converts a temperature in degrees Celsius $C$ to degrees Fahrenheit $F$, then the function converting degrees Fahrenheit to degrees Celsius would be a suitable $\inv f$:
+\beq
+f\vat C = \dfrac{9}{5}C + 32\,,\qquad \inv f\vat F = \dfrac{5}{9}(F - 32)\,.
+\eeq
+
+Such an inverse function exists if and only if $f$ is \emph{bijective}. In this case, $f$ is called \lingo{invertible}. 
+
+
+\subsubsection{Types of Functions}
+Real-valued functions: A \lingo{real-valued function} $f$ is one whose codomain is the set of real numbers or a subset thereof. If, in addition, the domain is also a subset of the reals, $f$ is a real valued function of a real variable. The study of such functions is called \lingo{real analysis}.
+
+Real-valued functions enjoy so-called \lingo{pointwise operations}. That is, given two functions $\fdef{f,g}{\set X}{\set Y}$, where $\set Y$ is a subset of the reals (and $\set X$ is an arbitrary set), their (pointwise) sum $f+g$ and product $f\odot g$ are functions with the same domain and codomain. They are defined by the formulas:
+\beq
+(f + g)\vat x = f\vat x + g\vat x\qquad\text{and}\qquad (fg)\vat x = f\vat x g\vat x\,.
+\eeq
+
+Partial and multi-valued functions: In some parts of mathematics, including recursion theory and functional analysis, it is convenient to study partial functions in which some values of the domain have no association in the graph; \ie, single-valued relations. For example, the function $f$ such that $f\vat x = 1/x$ does not define a value for $x = 0$, since division by zero is not defined. Hence $f$ is only a \lingo{partial function} from the real line to the real line. The \lingo{term total} function can be used to stress the fact that every element of the domain does appear as the first element of an ordered pair in the graph. In other parts of mathematics, non-single-valued relations are similarly conflated with functions: these are called \lingo{multivalued functions}, with the corresponding term single-valued function for ordinary functions. For instance, $f\vat x = \pm\sqrt{x}$ is not a function in the proper sense, but a multi-valued function: it assigns to each positive real number $x$ two values: the (positive) square root of $x$, and $-\sqrt{x}$.
+
+Functions with multiple inputs and outputs: The concept of function can be extended to an object that takes a combination of two (or more) argument values to a single result. This intuitive concept is formalized by a function whose domain is the Cartesian product of two or more sets.
+
+For example, consider the function that associates two integers to their product: $f\vat{x,y} = xy$. This function can be defined formally as having domain $\set Z\sprod\set Z$, the set of all integer pairs; codomain $\set Z$; and, for graph, the set of all pairs $\tuple{\tuple{x,y},xy}$. Note that the first component of any such pair is itself a pair (of integers), while the second component is a single integer.
+
+The function value of the pair $\tuple{x,y}$ is $f\vat{\tuple{x,y}}$. However, it is customary to drop one set of parentheses and consider $f\vat{x,y}$ a function of two variables, $x$ and $y$. Functions of two variables may be plotted on the three-dimensional Cartesian as ordered triples of the form $\tuple{x,y,f\vat{x,y}}$.
+
+The concept can still further be extended by considering a function that also produces output that is expressed as several variables. For example, consider the integer divide function, with domain $\set Z\sprod\set N$ and codomain $\set Z\sprod\set N$. The resultant (quotient, remainder) pair is a single value in the codomain seen as a Cartesian product.
+
+
+\subsubsection{Functional Equation}
+In mathematics, and particularly in functional analysis, a \lingo{functional} is a map from a vector space into its underlying scalar field. In other words, it is a function that takes a vector as its input argument, and returns a scalar. Commonly the vector space is a space of functions, thus 
+\begin{quote}
+the functional takes a function for its input argument, then it is sometimes considered a function of a function. 
+\end{quote}
+Its use originates in the calculus of variations where one searches for a function that minimizes a certain functional. A particularly important application in physics is searching for a state of a system that minimizes the energy functional.
+
+Functional equation: The traditional usage also applies when one talks about a functional equation, meaning an equation between functionals: an equation between functionals can be read as an ``equation to solve'', with solutions being themselves functions. In such equations there may be several sets of variable unknowns, like when it is said that an additive function $f$ is one \lingo{satisfying the functional equation}
+\beq
+f\vat{x + y} = f\vat x + f\vat y\,.
+\eeq
+
+
+\subsection{Periodicity}
+
+\subsubsection{Definition}
+In mathematics, a \lingo{periodic function} is a function that repeats its values in regular intervals or periods. The most important examples are the \lingo{trigonometric functions}, which repeat over intervals of length \SI{\tau}{rad}. Periodic functions are used throughout science to describe oscillations, waves and other phenomena that exhibit periodicity. Any function which is not periodic is called \lingo{aperiodic}.
+
+\begin{definition}
+Consider a function $f\vat x$ and a nonzero, constant real number $p$. Then, refer to $f$ as a \lingo{periodic function with period $p$} if $f$ satisfies
+\beq
+f\vat{x + p} = f\vat x\,,
+\eeq
+for all values of $x$ in the domain of $f$. Call a function that is not periodic \lingo{aperiodic}.
+\end{definition}
+
+If there exists a least positive constant $p$ with this property, it is called the \lingo{prime period}. A function with period $p$ will repeat on intervals of length $p$ and these intervals are referred to as \lingo{periods}.
+
+Geometrically, a periodic function can be defined as a function whose graph exhibits \lingo{translational symmetry}. Specifically, a function $f$ is periodic with period $p$ if the graph of $f$ is invariant under translation in the $x$-direction by a distance of $p$.
+
+
+\subsubsection{Properties}
+If a function $f$ is periodic with period $p$, then for all $x$ in the domain of $f$ and all integers $n$, we have
+\beq
+f\vat{x + np} = f\vat x\,.
+\eeq
+
+If $f\vat x$ is a function with period $p$, then $f\vat{ax + b}$, where $a$ is a positive constant, is periodic with period $p/a$. For example, $f\vat x = \sin\vat x$ has period $\tau$, therefore $\sin\vat{5x}$ will have period $\tau/5$.
+
+
+\subsection{Parity}
+\subsubsection{Definition}
+\lingo{Even functions} and \lingo{odd functions} are functions which satisfy particular symmetry relations, with respect to taking additive inverses. They are important in many areas of mathematical analysis, especially the theory of power series and Fourier series. They are named for the parity of the powers of the power functions which satisfy each condition: the function $f\vat x = x^n$ is an even function if $n$ is an even integer and it is an odd function if $n$ is an odd integer.
+
+\begin{definition}
+Consider $f\vat x$ to be a real-valued function of a real variable. Then, refer to $f$ as \lingo{even} if it satisfies 
+\beq
+f\vat x = f\vat{-x}\,,
+\eeq
+for all $x$ in the domain of $f$.
+\end{definition}
+
+Geometrically speaking, the graph face of an even function is \emph{symmetric with respect to the $y$-axis}, meaning that its graph remains \emph{unchanged after reflection about the $y$-axis}.
+
+\begin{definition}
+Let $g\vat x$ be a real-valued function of a real variable. Then, refer to $g$ as \lingo{odd} if it satisfies 
+\beq
+-g\vat x = g\vat{-x}\,,
+\eeq
+for all $x$ in the domain of $g$.
+
+Equivalently, an odd function $g$ satisfies
+\beq
+g\vat x + g\vat{-x} = 0\,.
+\eeq
+\end{definition}
+Geometrically, the graph of an odd function has \emph{rotational symmetry with respect to the origin}, meaning that its graph remains \emph{unchanged after rotation of \SI{\tau}{rad} about the origin}.
+
+
+\subsubsection{Properties}
+A function's being odd or even does \emph{not} imply differentiability, or even continuity. For example, the Dirichlet function is even, but is nowhere continuous. Properties involving Fourier series, Taylor series, derivatives and so on may only be used when they can be assumed to exist.
+
+\begin{multicols}{2}
+\begin{itemize}
+\item The only function whose domain is all real numbers which is both even and odd is the constant function which is identically zero; \ie, $f\vat x = 0$, for all $x$.
+\item The sum of two even functions is even, and any constant multiple of an even function is even.
+\item The sum of two odd functions is odd, and any constant multiple of an odd function is odd.
+\item The difference between two odd functions is odd.
+\item The difference between two even functions is even.
+\item The product of two even functions is an even function.
+\item The product of two odd functions is an even function.
+\item The product of an even function and an odd function is an odd function.
+\item The quotient of two even functions is an even function.
+\item The quotient of two odd functions is an even function.
+\item The quotient of an even function and an odd function is an odd function.
+\item The derivative of an even function is odd.
+\item The derivative of an odd function is even.
+\item The composition of two even functions is even, and the composition of two odd functions is odd.
+\item The composition of an even function and an odd function is even.
+\item The composition of any function with an even function is even, but not \vis.
+\item The integral of an odd function from $-A$ to $+A$ is zero, where $A$ is finite and the function has no vertical asymptotes between $-A$ and $A$.
+\item The integral of an even function from $-A$ to $+A$ is twice the integral from 0 to $+A$, where $A$ is finite and the function has no vertical asymptotes between $-A$ and $A$. This also holds true when $A$ is infinite, but only if the integral converges.
+\item Every function can be expressed as the sum of an even and an odd function.
+\item The sum of an even and odd function is neither even nor odd, unless one of the functions is equal to zero over the given domain.
+\item The Maclaurin series of an even function includes only even powers.
+\item The Maclaurin series of an odd function includes only odd powers.
+\item The Fourier series of a periodic even function includes only cosine terms.
+\item The Fourier series of a periodic odd function includes only sine terms.
+\end{itemize}
+\end{multicols}
+
+
+\subsubsection{The Sum of Odd and Even Functions}
+Two theorems: Every function can be expressed as the sum of an even and an odd function. The sum of an even and odd function is neither even nor odd, unless one of the functions is equal to zero over the given domain.
+
+Uniquely write every function $f\vat x$ as the \lingo{sum of an even function and an odd function}:
+\beq
+f\vat x = f\txt{even}\vat x + f\txt{odd}\vat x\,,
+\eeq
+where
+\beq
+f\txt{even}\vat x = \tfrac{1}{2}\left(f\vat x + f\vat{-x}\right)
+\eeq
+and
+\beq
+f\txt{odd}\vat x = \tfrac{1}{2}\left(f\vat x - f\vat{-x}\right)\,.\mqed
+\eeq
+
+For example, if $f\vat x$ is $\exp\vat x$, then $f\txt{even}\vat x = \exp\vat x = \cosh\vat x$ and $f\txt{odd}\vat x = \exp\vat x = \sinh\vat x$.
+
+
+\subsection{Linear Map}
+In mathematics, a \lingo{linear map}, \aka linear mapping, linear transformation, or linear operator (in some contexts also called linear function), is a function between two modules (including vector spaces) that preserves the operations of module (or vector) addition and scalar multiplication.
+
+As a result, it always maps linear subspaces in linear subspaces, like straight lines to straight lines or to a single point. The expression ``linear operator'' is commonly used for linear maps from a vector space to itself (\ie, endomorphisms). Sometimes the definition of a linear function coincides with that of a linear map, while in analytic geometry it does not.
+
+In the language of abstract algebra, a linear map is a homomorphism of modules. In the language of category theory it is a morphism in the category of modules over a given ring.
+
+
+\subsubsection{Definition}
+Let $\set V$ and $\set W$ be vector spaces over the same field $\set K$. A function $\fdef{f}{\set V}{\set W}$ is said to be a \lingo{linear map} if for any two vectors $x$ and $y$ in $\set V$ and any scalar $\alpha$ in $\set K$, the following two conditions are satisfied:
+\begin{enumerate}
+\item additivity: $f\vat{x + y} = f\vat x + f\vat y$\,;
+\item homogeneity of degree 1: $f\vat{\alpha x} = \alpha f\vat x$\,.
+\end{enumerate}
+This is equivalent to requiring the same for any linear combination of vectors, \ie, that for any vectors $x1,\dotsc,x_m\in\set V$ and scalars $a_1,\dotsc, a_m\in\set K$, the following equality holds:
+\beq
+f\vat{a_1 x_1 + \dotsb + a_m x_m} = a_1 f\vat{x_1} + \dotsb + a_m f\vat{x_m}\,.
+\eeq
+
+A linear map from $\set V$ to $\set K$ (with $\set K$ viewed as a vector space over itself) is called a \lingo{linear functional}.
+
+In linear algebra, a \lingo{linear functional} or \lingo{linear form} (also called a \lingo{one-form} or \lingo{covector}) is a linear map from a vector space to its field of scalars. In $\nset Rn$, if vectors are represented as column vectors, then linear functionals are represented as row vectors, and their action on vectors is given by the dot product, or the matrix product with the row vector on the left and the column vector on the right.
+
+\subsubsection{Example}
+Suppose that vectors in the real coordinate space $\nset Rn$ are represented as column vectors
+\beq
+x = \begin{bmatrix}
+        x_1\\ \vdots \\ x_n
+    \end{bmatrix}\,.
+\eeq
+Then any linear functional can be written in these coordinates as a sum of the form:
+\beq
+f\vat x = a_1 x_1 + \dotsb + a_n x_n\,.
+\eeq
+This is just the matrix product of the row vector $[a_1\,\dotsc\,a_n]$ and the column vector $x$:
+\beq
+f\vat x = \begin{bmatrix} a_1 & \dotsc & a_n \end{bmatrix}
+          \begin{bmatrix}
+            x_1\\ \vdots \\ x_n
+          \end{bmatrix}\,.
+\eeq
+
+
+\subsection{Curve Sketching}
+
+\subsubsection{Increasing and Decreasing Functions}
+Let $f$ be a function defined on an interval and let $x_1$ and $x_2$ be points in that interval.
+%
+\begin{itemize}
+\item $f$ is \lingo{increasing} on the interval if $f\vat{x_1} < f\vat{x_2}$ whenever $x_1 < x_2$ for all points $x_1$ and $x_2$.
+%
+\item $f$ is \lingo{decreasing} on the interval if $f\vat{x_1} > f\vat{x_2}$ whenever $x_1 < x_2$ for all points $x_1$ and $x_2$.
+%
+\item $f$ is \lingo{constant} on the interval if $f\vat{x_1} = f\vat{x_2}$ for all points $x_1$ and $x_2$.
+%
+\end{itemize}
+
+If tangents were drawn to the graph above you would notice that when $f$, the function, is \lingo{increasing} its tangent has a \emph{positive slope} and when $f$ is \lingo{decreasing} its tangent has a \emph{negative slope}. When $f$ is \lingo{constant} its tangent has \emph{zero slope}. From this it is possible to arrive at the following result.
+
+\begin{note}
+Let $f$ be a function that is continuous on an interval $[a,b]$ and differentiable on the open interval $]a, b[$.
+\end{note}
+
+\begin{itemize}
+\item If $f'\vat x > 0$ for every value of $x$ in $]a,b[$, then $f$ is increasing on $]a,b[$.
+%
+\item If $f'\vat x < 0$ for every value of $x$ in $]a,b[$, then $f$ is decreasing on $]a,b[$. 
+%
+\item If $f'\vat x = 0$ for every value of $x$ in $]a,b[$, then $f$ is constant on $]a,b[$.
+%
+\end{itemize}
+
+
+\subsubsection{Concavity} 
+Although the sign of the first derivative of $f$ reveals where the graph of $f$ is increasing or decreasing, it does \emph{not} reveal the direction of curvature. The direction of curvature can be either \lingo{concave up} (upward curvature) or \lingo{concave down} (downward curvature). The following are two suggested ways to characterize the concavity of a differentiable function $f$ on an open interval:
+\begin{itemize}
+\item $f$ is \lingo{concave up} on an open interval if its \lingo{tangent lines} have \emph{increasing} slopes on that interval and is \lingo{concave down} if they have \emph{decreasing} slopes.
+%
+\item $f$ is concave up on an open interval if its graph lies \emph{above} its tangent line on that interval and is concave down if its graph lies \emph{below} its tangent lines.
+\end{itemize}
+
+Since the slope of the tangent lines to the graph of a differential function $f$ are the values of its derivative $f'$, the above requirements are the same as saying that $f'$ will be increasing on intervals where $f''$ is positive and $f'$ will be decreasing on intervals where $f''$ is negative.
+
+\begin{note}
+Let $f$ be twice differentiable on an open interval $]a, b[$,
+\end{note}
+
+\begin{itemize}
+\item If $f''\vat x > 0$ for every value $x$ in $]a,b[$, then $f$ is concave up on $]a,b[$,
+\item If $f''\vat x < 0$ for every value $x$ in $]a,b[$, then $f$ is concave down on $]a,b[$.
+\end{itemize}
+
+
+\subsubsection{Inflection Points} 
+Points where a curve changes from concave up to concave down or \vis are of special interest. These points are called \lingo{points of inflection} and the following is a more formal definition of what they are.
+
+Definition: If $f$ is continuous on an open interval containing a value $x$ and if $f$ changes the direction of its concavity at the point $\tuple{x,f\vat x}$, then we say that $f$ has an inflection point at $x$.
+
+\begin{note}
+To find the points of inflection of a function $f$, simply solve $f'' = 0$.
+\end{note}
+
+
+\subsubsection{Relative Maxima and Minima} Imagine the graph of a function $f$ to be a two-dimensional mountain range with hills and valleys, then the tops of the hills are called \lingo{relative maxima} and the bottoms of the valleys are called \lingo{relative minima}. A relative maximum need not be the highest point in the entire mountain range, and a relative minimum need not be the lowest -- they are just high and low points relative to the nearby terrain.
+
+The relative maxima or minima for all functions occur at points where the graphs of the functions have horizontal tangent lines (slopes equal to zero). A \lingo{critical point} of a function $f$ can be defined as a point in the domain of $f$ at which the graph of $f$ has a horizontal tangent line.
+
+\begin{note}
+To find the critical points of a function $f$, simply solve $f' = 0$.
+\end{note}
+
+
+\subsubsection{First Derivative Test} 
+A function $f$ has a relative maximum or minimum at those critical points where $f'$ changes sign.
+
+Suppose that $f$ is continuous at the critical point $x_0$.
+%
+\begin{itemize}
+\item If $f'\vat x > 0$ on an open interval extending left from $x_0$ and $f'\vat x < 0$ on an open interval extending right from $x_0$, then $f$ has a \lingo{relative maximum} at $x_0$.
+%
+\item If $f'\vat x < 0$ on an open interval extending left from $x_0$ and $f'\vat x > 0$ on an open interval extending right from $x_0$, then $f$ has a \lingo{relative minimum} at $x_0$.
+%
+\item If $f'\vat x$ has the same sign on an open interval extending left from $x_0$ as it does on an open interval extending right from $x_0$, then $f$ does \emph{not} have a relative maximum or minimum at $x_0$.
+\end{itemize}
+
+
+\subsubsection{Second Derivative Test}
+This is another way (and perhaps an easier way) of classifying critical points that relies on the second derivative of the function $f$.
+
+Suppose that $f$ is twice differentiable at $x_0$.
+\begin{itemize}
+\item If $f'\vat{x_0} = 0$ and $f''\vat{x_0} > 0$, then $f$ has a relative minimum at $x_0$. 
+%
+\item If $f'\vat{x_0} = 0$ and $f''\vat{x_0} < 0$ then $f$ has a relative maximum at $x_0$. 
+%
+\item If $f'\vat{x_0} = 0$ and $f''\vat{x_0}$, then the test is inconclusive.
+%
+\end{itemize}
+
+
+\subsubsection{Guidelines}
+Remember you don't always need all these steps -- calculate as much as you need to get an idea of the shape. If a step is very difficult or laborious, leave it out.
+%
+\begin{itemize}
+%
+\item Domain: use sign charts for polynomials, rational functions, inequalities and so on.
+%
+\item Roots: find the roots of the function, using num. analysis if necessary.
+%
+\item Intercepts: $x$- and $y$-intercepts, using num. analysis if necessary.
+%
+\item Symmetry: even ($f\vat{-x} = f\vat x$) or odd ($f\vat{-x} = -f\vat x$) function or neither, periodic function ($f\vat{x + p} = f\vat x$ with period $p$ and $f\vat{x + np} = f\vat x$ for all integers $n$).
+%
+\item Asymptotes: horizontal $\left(\lim_{x\to\pm\infty}f\vat x = L \right)$ and vertical $\left(\lim_{x\to a^{\pm}}f\vat x = \pm\infty \right)$
+%
+\item Intervals of Increase or Decrease: Use the I/D Test (first derivative).
+%
+\item Local Maximum and Minimum Values: Use critical numbers.
+%
+\item Concavity and Points of Inflection: Compute $f''\vat x$ and use the Concavity Test. 
+%
+\item Alternative representation: change the coordinates of the function to see if the tests are easier to perform using polar, cylindrical, \etc. coordinates instead of Cartesians.
+%
+\item Sketch the Curve: Using the information in previous items, draw the graph.
+%
+\end{itemize}
+
+
+\subsubsection{Domain}
+Consider the function $p\vat x = (x+4)(x+2)^2(x-2)(x-4)^2$. Find its zeroes (using num. analysis if necessary). Note that $p\vat x$ is already in \lingo{factored form}, so the zeros of a polynomial in factored form can be read off without trouble. We have $\elset{-4,-2,2,4}$. The multiplicities of $-2$ and 4 are two. Thus we have four branch points as shown on the chart below.
+
+Note that the four branch points divide the number line into five test intervals, $]-\infty, -4[$, $]-4,-2[$, $]-2,2[$, $]2,4[$, $]4,\infty$. Select a test point from each interval. Let's take $\elset{-5,-3,0,3,5}$.
+
+To determine the sign of the function at each test point, build a matrix with test points listed down the side and factors listed along the top. In the current case...
+
+The power of the technique shows up here. It does not matter which point in the interval is selected as the test point. The sign of the function does not change over a test interval. You can see from the sign chart that $p\vat x$ changes sign at $-4$ from positive to negative and at 2 from negative to positive. If the problem we are given is to solve the inequality $p\vat x \geq 0$, we could do this easily at this stage. The solution to $p\vat x > 0$ is just $]-\infty, -4[ \cup ]2,4[ \cup ]4,\infty[$. There are four zeros of $p$ to add to this set, so we get $]-\infty, -4]\cup \elset{2}\cup [2,\infty[$.
+
+
+\subsection{Examples}
+
+\subsubsection{Transformations}
+Calculate the values of the cosine function in terms of the sine function.
+
+\begin{solution}
+Graph transformation can be used to calculate the values of functions. For instance, the graph of the cosine function is the same as the graph of the sine function but shifted horizontally $\tau/4$ units to the left; \ie,
+\beq
+\cos\vat x = \sin\vat{x + \tau/4}\,.
+\eeq
+To numerically verify this, set $x = 0$ to find, by direct calculation, $\cos\vat 0 = 1$ or, indirectly, 
+\beq
+\cos\vat 0 = \sin\vat{0 + \tau/4} = \sin\vat{\pi/2} = 1\,,
+\eeq
+which agrees with the direct calculation.
+\end{solution}
+
+With this little trick, we need only memorize the values of the sine function and apply the shift to find those for the cosine function.

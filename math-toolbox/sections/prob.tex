@@ -1,0 +1,730 @@
+\section{Probability}
+
+\epigraph{The probable is what usually happens.}{Aristotle}{}
+
+
+\subsection{Wiki}
+Probability is a measure or estimation of how likely it is that something will happen or that a statement is true. Probabilities are given a value between 0 (0\% chance or \emph{will not happen}) and 1 (100\% chance or \emph{will happen}). The higher the degree of probability, the more likely the event is to happen, or, in a longer series of samples, the greater the number of times such event is \emph{expected} to happen.
+
+These concepts have been given an axiomatic mathematical derivation in probability theory, which is used widely in such areas of study as mathematics, statistics, finance, gambling, science, artificial intelligence/machine learning and philosophy to, for example, draw inferences about the expected frequency of events. Probability theory is also used to describe the underlying mechanics and regularities of complex systems.
+
+
+\subsubsection{Interpretations}
+When dealing with experiments that are random and well-defined in a purely theoretical setting (like tossing a fair coin), probabilities describe the statistical number of outcomes considered divided by the number of all outcomes (tossing a fair coin twice will yield HH with probability 1/4, because the four outcomes HH, HT, TH and TT are possible). When it comes to practical application, however, the word probability does not have a singular direct definition. In fact, there are two major categories of probability interpretations, whose adherents possess conflicting views about the fundamental nature of probability:
+\begin{itemize}
+\item Objectivists assign numbers to describe some objective or physical state of affairs. The most popular version of objective probability is frequentist probability, which claims that the probability of a random event denotes the relative frequency of occurrence of an experiment's outcome, when repeating the experiment. This interpretation considers probability to be the relative frequency ``in the long run'' of outcomes. A modification of this is propensity probability, which interprets probability as the tendency of some experiment to yield a certain outcome, even if it is performed only once.
+%
+\item Subjectivists assign numbers per subjective probability, \ie, as a degree of belief. The most popular version of subjective probability is Bayesian probability, which includes expert knowledge as well as experimental data to produce probabilities. The expert knowledge is represented by some (subjective) prior probability distribution. The data is incorporated in a likelihood function. The product of the prior and the likelihood, normalized, results in a posterior probability distribution that incorporates all the information known to date.[6] Starting from arbitrary, subjective probabilities for a group of agents, some Bayesians claim that all agents will eventually have sufficiently similar assessments of probabilities, given enough evidence.
+\end{itemize}
+
+
+\subsubsection{Etymology}
+The modern meaning of probability: probability is a measure of the weight of empirical evidence that is arrived at from inductive reasoning and statistical inference.
+
+
+\subsection{Theory}
+Like other theories, the theory of probability is a representation of probabilistic concepts in formal terms -- that is, in terms that can be considered separately from their meaning. These formal terms are manipulated by the rules of mathematics and logic and any results are interpreted or translated back into the problem domain.
+
+There have been at least two successful attempts to formalize probability, namely the Kolmogorov formulation and the Cox formulation. In Kolmogorov's formulation (see probability space), sets are interpreted as events and probability itself as a measure on a class of sets. In Cox's theorem, probability is taken as a primitive (that is, not further analyzed) and the emphasis is on constructing a consistent assignment of probability values to propositions. In both cases, the laws of probability are the same, except for technical details.
+
+There are other methods for quantifying uncertainty, such as the Dempster-Shafer theory or possibility theory, but those are essentially different and not compatible with the laws of probability as usually understood.
+
+
+\subsection{Mathematical treatment}
+Consider an \lingo{experiment} that can produce a number of \lingo{results}. The collection of all results is called the \lingo{sample space} of the experiment. The power set of the sample space is formed by considering all different collections of possible results. For example, rolling a die can produce six possible results. One collection of possible results gives an odd number on the die. Thus, the subset $\elset{1,3,5}$ is an element of the power set of the sample space of die rolls. These collections are called \lingo{events}. In this case, $\elset{1,3,5}$ is the event that the die falls on some odd number. If the results that actually occur fall in a given event, the event is said to have occurred.
+
+A probability is a way of assigning every event a value between zero and one, with the requirement that the event made up of all possible results (in our example, the event $\elset{1,2,3,4,5,6}$) is assigned a value of one. To qualify as a probability, the assignment of values must satisfy the requirement that if you look at a collection of \lingo{mutually exclusive events} (events with no common results, \eg, the events $\elset{1,6}$, $\elset{3}$ and $\elset{2,4}$ are all mutually exclusive), the probability that at least one of the events will occur is given by the sum of the probabilities of all the individual events.
+
+The probability of an event $A$ is written as $P\vat A$, $p\vat A$ or $Pr\vat A$. This mathematical definition of probability can extend to infinite sample spaces, and even uncountable sample spaces, using the concept of a measure.
+
+The \lingo{opposite or complement of an event $A$}is the event [not $A$] (that is, the event of $A$ not occurring); its probability is given by $p\vat{\lnot A} = 1 - p\vat A$. As an example, the chance of not rolling a six on a six-sided die is 1: $p\vat{\text{change of rolling a six}} = 1 - 1/6 = 1/5$.
+
+If both events $A$ and $B$ occur on a single performance of an experiment, this is called the \lingo{intersection} or \lingo{joint probability of $A$ and $B$}, denoted as $p\vat{A\inter B}$.
+
+
+
+\subsection{Independent probability}
+If two events, $A$ and $B$ are \emph{independent}, then the joint probability is
+\beq
+p\vat{A\land B} = p\vat{A\inter B} = p\vat A p\vat B\,,
+\eeq
+for example, if two coins are flipped the chance of both being heads is $1/2\times 1/2 = 1/4$.
+
+
+\subsection{Mutually exclusive}
+If either event $A$ or event $B$ or both events occur on a single performance of an experiment this is called the \lingo{union of the events $A$ and $B$} denoted as $p\vat{A\union B}$. If two events are mutually exclusive then the probability of either occurring is
+\beq
+p\vat{A\lor B} = p\vat{A\union B} = p\vat A + p\vat B\,.
+\eeq
+For example, the chance of rolling a 1 or 2 on a six-sided die is $1/6 + 1/6 = 1/3$.
+
+
+\subsection{Not mutually exclusive}
+If the events are \emph{not} mutually exclusive then
+\beq
+p\vat{A\lor B} = p\vat A + p\vat B - p\vat{A\land B}\,.
+\eeq
+For example, when drawing a single card at random from a regular deck of cards, the chance of getting a heart or a face card (J,Q,K) (or one that is both) is $13/52 + 12/52 - 3/52 = 11/26$, because of the 52 cards of a deck 13 are hearts, 12 are face cards, and 3 are both: here the possibilities included in the ``3 that are both'' are included in each of the ``13 hearts'' and the ``12 face cards'' but should only be counted once.
+
+
+\subsubsection{Conditional probability}
+Conditional probability is the probability of some event $A$, given the occurrence of some other event $B$. Conditional probability is written $A\given B$, and is read ``the probability of A, given B''. It is defined by
+\beq
+p\vat{A\given B} = \dfrac{p\vat{A\inter B}}{p\vat B}\,.
+\eeq
+If $p\vat B = 0$, then $p\vat{A\given B}$ is formally undefined by this expression.
+
+For example, in a bag of 2 red balls and 2 blue balls (4 balls in total), the probability of taking a red ball is $1/2$; however, when taking a second ball, the probability of it being either a red ball or a blue ball depends on the ball previously taken, such as, if a red ball was taken, the probability of picking a red ball again would be  since only 1 red and 2 blue balls would have been remaining.
+
+
+\subsubsection{Summary of Probabilities}
+\begin{itemize}
+\item event: probability
+\item $A$: $p\vat A\in[0,1]$.
+\item not $A$: $p\vat{\lnot A} = 1-p\vat A$.
+\item $A$ or $B$: $p\vat{A\lor B} = p\vat{A\union B} = p\vat A + p\vat B - p\vat{A\inter B}$.
+\item $A$ or $B$ (mutually exclusive): $p\vat{A\lor B} = p\vat{A\union B} = p\vat A + p\vat B$.
+\item $A$ and $B$: $p\vat{A\land B} = p\vat{A\inter B} = p\vat{A\given B}p\vat B = p\vat{B\given A}p\vat A$.
+\item $A$ and $B$ (independent): $p\vat{A\land B} = p\vat{A\inter B} = p\vat A p\vat B$.
+\item $A$ given $B$ (conditional prob.): $p\vat{A\given B} = p\vat{A\inter B}/p\vat B$.
+\end{itemize}
+
+
+\subsection{Probability and Probability Experiments}
+[Probability demystified -- Allan G. Bluman]
+
+\lingo{Probability} can be defined as the mathematics of chance.
+
+A \lingo{probability experiment} is a chance process that leads to well-defined outcomes or results. For example, tossing a coin can be considered a probability experiment since there are two well-defined outcomes: heads and tails.
+
+An \lingo{outcome} of a probability experiment is the result of a \emph{single} trial of a probability experiment. A \lingo{trial} means flipping a coin once or drawing a single card from a deck. A trial could also mean rolling two dice at once, tossing three coins at once or drawing five cards from a deck at once. \emph{A single trial of a probability experiment means to perform the experiment one time}.
+
+The set of all outcomes of a probability experiment is called a \lingo{sample space}. Some sample spaces for various probability experiments are
+\begin{itemize}
+\item experiment: sample space;
+\item toss a coin: $\elset{H, T}$: head, tail;
+\item roll a die: $\elset{1,2,3,4,5,6}$;
+\item Toss two coins: $\elset{HH, HT, TH, TT}$.
+\end{itemize}
+
+It should be mentioned that each outcome of a probability experiment occurs \emph{at random}. This means you cannot predict with certainty which outcome will occur when the experiment is conducted. Also, 
+\begin{quote}
+each outcome of the experiment is equally likely unless otherwise stated.
+\end{quote}
+That means that each outcome has the same probability of occurring.
+
+When finding probabilities, it is often necessary to consider several outcomes of the experiment. For example, when a single die is rolled, you may want to consider obtaining an even number; that is, a two, four, or six. This is called an event. An event then usually consists of one or more outcomes of the sample space. (Note: It is sometimes necessary to consider an event which has no outcomes. More later.)
+
+An event with one outcome is called a \lingo{simple event}. For example, a die is rolled and the event of getting a four is a simple event since there is only one way to get a four. When an event consists of two or more outcomes, it is called a \lingo{compound event}. For example, if a die is rolled and the event is getting an odd number, the event is a compound event since there are three ways to get an odd number, namely, 1, 3, or 5.
+
+Simple and compound events should \emph{not} be confused with the number of times the experiment is repeated. For example, if two coins are tossed, the event of getting two heads is a simple event since there is only one way to get two heads, whereas the event of getting a head and a tail in either order is a compound event since it consists of two outcomes, namely head, tail and tail, head.
+
+
+\subsubsection{Classical Probability}
+Sample spaces are used in classical probability to determine the numerical probability that an event will occur. The formula for determining the probability of an event $E$ is
+\beq
+p\vat E = \dfrac{\text{number of outcomes contained in the event $E$}}{\text{total number of outcomes in the sample space}}\,.
+\eeq
+
+Example: Two coins are tossed; find the probability that both coins land
+heads up.
+
+Solution: The sample space for tossing two coins is HH, HT, TH, and TT. Since there are 4 events in the sample space, and only one way to get two heads (HH), the answer is $p\vat{HH} = 1/4$.
+
+Probabilities can be expressed as reduced fractions, decimals, or percents. For example, if a coin is tossed, the probability of getting heads up is $1/2$ or 0.5 or 50\%. (Note: Some mathematicians feel that probabilities should be expressed only as fractions or decimals. However, probabilities are often given as percents in everyday life. For example, one often hears, ``There is a 50\% chance that it will rain tomorrow''.)
+
+Probability problems use a certain language. For example, suppose a die is tossed. An event that is specified as ``getting at least a 3'' means getting a 3, 4, 5, or 6. An event that is specified as ``getting at most a 3'' means getting a 1, 2, or 3.
+
+
+\subsubsection{Probability Rules}
+There are certain rules that apply to classical probability theory. They are presented next.
+
+\begin{enumerate}
+\item Rule 1: The probability of any event will always be a number from zero to one.
+
+This can be denoted mathematically as $0\leq p\vat E\leq 1$. What this means is that all answers to probability problems will be numbers ranging from zero to one. Probabilities cannot be negative nor can they be greater than one.
+
+Also, when the probability of an event is close to zero, the occurrence of the event is relatively \lingo{unlikely}. For example, if the chances that you will win a certain lottery are 0.001 or one in one thousand, you probably won't win, unless of course, you are very ``lucky''. When the probability of an event is 0.5 or 12, there is a 50-50 chance that the event will happen -- the same probability of the two outcomes when flipping a coin. When the probability of an event is close to one, the event is \lingo{almost sure to occur}. For example, if the chance of it snowing tomorrow is 90\%, more than likely, you'll see some snow.
+%
+\item Rule 2: When an event cannot occur, the probability will be zero.
+%
+\item Rule 3: When an event is certain to occur, the probability is 1.
+%
+\item Rule 4: The sum of the probabilities of all of the outcomes in the sample space is 1.
+%
+\item Rule 5: The probability that an event will not occur is equal to 1 minus the probability that the event will occur.
+
+If an event $E$ consists of certain outcomes, then event $\bar E$ is called the \lingo{complement of event $E$} and consists of the outcomes in the sample space which are not outcomes of event $E$.
+
+Now rule five can be stated mathematically as
+\beq
+p\vat{\bar E} = 1 - E\,.
+\eeq
+\end{enumerate}
+
+
+\subsubsection{Empirical Probability}
+Probabilities can be computed for situations that do not use sample spaces. In such cases, \lingo{frequency distributions} are used and the probability is called \lingo{empirical probability}. For example, suppose a class of students consists of 4 freshmen, 8 sophomores, 6 juniors, and 7 seniors. The information can be summarized in a frequency distribution in a table.
+
+From a frequency distribution, probabilities can be computed using the following formula:
+\beq
+p\vat{E} = \dfrac{\text{frequency of E}}{\text{sum of the frequencies}}\,.
+\eeq
+Empirical probability is sometimes called relative frequency probability.
+
+
+Example: Using the frequency distribution shown previously, find the probability of selecting a junior student at random.
+Solution: Since there are 6 juniors and a total of 25 students, $p\vat{\text{junior}} = 6/25$.
+
+Another aspect of empirical probability is that if a large number of subjects (called a \lingo{sample}) is selected from a particular group (called a \lingo{population}), and the probability of a specific attribute is computed, then when another subject is selected, we can say that the probability that this subject has the same attribute is the same as the original probability computed for the group. For example, a Gallup Poll of 1004 adults surveyed found that 17\% of the subjects stated that they considered Abraham Lincoln to be the greatest President of the United States. Now if a subject is selected, the probability that he or she will say that Abraham Lincoln was the greatest president is also 17\%.
+
+Several things should be explained here. First of all, the 1004 people constituted a sample selected from a larger group called the population. Second, the exact probability for the population can never be known unless every single member of the group is surveyed. This does not happen in these kinds of surveys since the population is usually very large. Hence, the 17\% is only an estimate of the probability. However, if the sample is \lingo{representative} of the population, the estimate will usually be fairly close to the exact probability. Statisticians have a way of computing the accuracy (called the \lingo{margin of error}) for these situations. For the present, we shall just concentrate on the probability.
+
+Also, by a representative sample, we mean the subjects of the sample have similar characteristics as those in the population. There are statistical methods to help the statisticians obtain a representative sample. These methods are called sampling methods and can be found in many statistics books.
+
+
+\subsubsection{Law of Large Numbers}
+We know from classical probability that if a coin is tossed one time, we cannot predict the outcome, but the probability of getting a head is 12 and the probability of getting a tail is 12 if everything is fair. But what happens if we toss the coin 100 times? Will we get 50 heads? Common sense tells us that most of the time, we will not get exactly 50 heads, but we should get close to 50 heads. What will happen if we toss a coin 1000 times? Will we get exactly 500 heads? Probably not. However, as the number of tosses increases, the ratio of the number of heads to the total number of tosses will get closer to 12. This phenomenon is known as the law of large numbers. This law holds for any type of gambling game such as rolling dice, playing roulette, etc.
+
+
+\subsubsection{Subjective Probability}
+A third type of probability is called subjective probability. Subjective probability is based upon an educated guess, estimate, opinion, or inexact information. For example, a sports writer may say that there is a 30\% probability that the Pittsburgh Steelers will be in the Super Bowl next year. Here the sports writer is basing his opinion on subjective information such as the relative strength of the Steelers, their opponents, their coach, etc. Subjective probabilities are used in everyday life; however, they are beyond the scope of this book.
+
+
+\subsubsection{Summary}
+Probability is the mathematics of chance. There are three types of probability: classical probability, empirical probability, and subjective probability. Classical probability uses sample spaces. A sample space is the set of outcomes of a probability experiment. The range of probability is from 0 to 1. If an event cannot occur, its probability is 0. If an event is certain to occur, its probability is 1. Classical probability is defined as the number of ways (outcomes) the event can occur divided by the total number of outcomes in the sample space.
+
+Empirical probability uses frequency distributions, and it is defined as the frequency of an event divided by the total number of frequencies.
+
+Subjective probability is made by a person's knowledge of the situation and is basically an educated guess as to the chances of an event occurring.
+
+
+\subsection{Sample Spaces}
+\subsubsection{Introduction} 
+In order to compute classical probabilities, you need to find the sample space for a probability experiment. In the previous chapter, sample spaces were found by using common sense. In this chapter two specific devices will be used to find sample spaces for probability experiments. They are tree diagrams and tables.
+
+
+\subsubsection{Tree Diagrams}
+A tree diagram consists of branches corresponding to the outcomes of two or more probability experiments that are done in sequence.
+
+In order to construct a tree diagram, use branches corresponding to the outcomes of the first experiment. These branches will emanate from a single point. Then from each branch of the first experiment draw branches that represent the outcomes of the second experiment. You can continue the process for further experiments of the sequence if necessary.
+
+Example: Three coins are tossed. Draw a tree diagram and find the sample space.
+
+Solution: Each coin can land either heads up (H) or tails up (T); therefore, the tree diagram will consist of three parts and each part will have two branches. See Figure. Hence the sample space is HHH, HHT, HTH, HTT, THH, THT, TTH, TTT.
+
+Once the sample space is found, probabilities can be computed. 
+
+Example: Three coins are tossed. Find the probability of getting
+\begin{enumerate}
+\item Two heads and a tail in any order.
+\item Three heads.
+\item No heads.
+\item At least two tails.
+\item At most two tails.
+\end{enumerate}
+
+Solution:
+\begin{enumerate}
+\item There are eight outcomes in the sample space, and there are three ways to get two heads and a tail in any order. They are HHT, HTH, and THH; hence,
+\beq
+p\vat{\text{2 heads and a tail}} = 3/8\,.
+\eeq
+%
+\item Three heads can occur in only one way; hence
+\beq
+p\vat{\text{HHH}} = 1/8\,.
+\eeq
+%
+\item The event of getting no heads can occur in only one way -- namely, TTT; hence, 
+\beq
+p\vat{\text{TTT}} = 1/8\,.
+\eeq
+%
+\item The event of at least two tails means two tails and one head or three tails. There are four outcomes in this event -- namely, TTH, THT, HTT, and TTT; hence,
+\beq
+p\vat{\text{at least two tails}} = 4/8 = 1/2 \,.
+\eeq
+%
+\item The event of getting at most two tails means zero tails, one tail, or two tails. There are seven outcomes in this event -- HHH, THH, HTH, HHT, TTH, THT, and HTT; hence,
+\beq
+p\vat{\text{at most two tails}} = 7/8\,.
+\eeq
+\end{enumerate}
+
+When selecting more than one object from a group of objects, it is important to know whether or not the object selected is replaced before drawing the second object. Consider the next two examples.
+
+Example: A box contains a red ball (R), a blue ball (B), and a yellow ball (Y). Two balls are selected at random in succession. Draw a tree diagram and find the sample space if the first ball is replaced before the second ball is selected.
+
+Solution: There are three ways to select the first ball. They are a red ball, a blue ball, or a yellow ball. Since the first ball is replaced before the second one is selected, there are three ways to select the second ball. They are a red ball, a blue ball, or a yellow ball. The tree diagram is shown in figure.
+
+The sample space consists of nine outcomes. They are RR, RB, RY, BR, BB, BY, YR, YB, YY. Each outcome has a probability of $1/9$.
+
+Now what happens if the first ball is not replaced before the second ball is selected?
+
+Example: A box contains a red ball (R), a blue ball (B), and a yellow ball (Y). Two balls are selected at random in succession. Draw a tree diagram and find the sample space if the first ball is not replaced before the second ball is selected.
+
+Solution: There are three outcomes for the first ball. They are a red ball, a blue ball, or a yellow ball. Since the first ball is not replaced before the second ball is drawn, there are only two outcomes for the second ball, and these outcomes depend on the color of the first ball selected. If the first ball selected is blue, then the second ball can be either red or yellow, \etc. The tree diagram is shown in Figure.
+
+The sample space consists of six outcomes, which are RB, RY, BR, BY, YR, YB. Each outcome has a probability of $1/6$.
+
+
+\subsubsection{Tables}
+Another way to find a sample space is to use a table.
+
+
+\subsubsection{Summary}
+Two devices can be used to represent sample spaces. They are tree diagrams and tables.
+
+A tree diagram can be used to determine the outcome of a probability experiment. A tree diagram consists of branches corresponding to the outcomes of two or more probability experiments that are done in sequence.
+
+Sample spaces can also be represented by using tables. For example, the outcomes when selecting a card from an ordinary deck can be represented by a table. When two dice are rolled, the 36 outcomes can be represented by using a table. Once a sample space is found, probabilities can be computed for specific events.
+
+
+\subsection{The Addition Rules} 
+
+
+\subsubsection{Introduction}
+In this chapter, the theory of probability is extended by using what are called the addition rules. Here one is interested in finding the probability of one event or another event occurring. In these situations, one must consider whether or not both events have common outcomes. For example, if you are asked to find the probability that you will get three oranges or three cherries on a slot machine, you know that these two events cannot occur at the same time if the machine has only three windows. In another situation you may be asked to find the probability of getting an odd number or a number less than 500 on a daily three-digit lottery drawing. Here the events have common outcomes. For example, the number 451 is an odd number and a number less than 500. The two addition rules will enable you to solve these kinds of problems as well as many other probability problems.
+
+
+\subsubsection{Mutually Exclusive Events}
+Many problems in probability involve finding the probability of two or more events. For example, when a card is selected at random from a deck, what is the probability that the card is a king or a queen? In this case, there are two situations to consider. They are: 1. The card selected is a king and 2. The card selected is a queen.
+
+Now consider another example. When a card is selected from a deck, find the probability that the card is a king or a diamond.
+In this case, there are three situations to consider: 1. The card is a king, 2. The card is a diamond, 3. The card is a king and a diamond. That is, the card is the king of diamonds.
+
+The difference is that in the first example, a card cannot be both a king and a queen at the same time, whereas in the second example, it is possible for the card selected to be a king and a diamond at the same time. In the first example, we say the two events are \lingo{mutually exclusive}. In the second example, we say the two events are \lingo{not mutually exclusive}. Two events then are mutually exclusive if they cannot occur at the same time. In other words, 
+\begin{quote}
+mutually exclusive events have \emph{no} common outcomes.
+\end{quote}
+
+
+\subsubsection{Addition Rule I}
+The probability of two or more events occurring can be determined by using the addition rules. The first rule is used when the events are mutually exclusive.
+
+\begin{quote}
+Addition Rule I: When two events are mutually exclusive, 
+\beq
+p\vat{A\lor B} = p\vat A + p\vat B \,.
+\eeq
+\end{quote}
+
+Example: In a committee meeting, there were 5 freshmen, 6 sophomores, 3 juniors, and 2 seniors. If a student is selected at random to be the chairperson, find the probability that the chairperson is a sophomore or a junior.
+
+Solution: There are 6 sophomores and 3 juniors and a total of 16 students.
+\beq
+p\vat{\text{sophomore}\lor\text{junior}} = p\vat{\text{sophomore}} + p\vat{\text{junior}} = 6/16 + 3/16 = 9/16 \,.
+\eeq
+
+
+\subsubsection{Addition Rule II}
+When two events are not mutually exclusive, you need to add the probabilities of each of the two events and subtract the probability of the outcomes that are common to both events. In this case, addition rule II can be used.
+
+\begin{quote}
+Addition Rule II: If $A$ and $B$ are two events that are not mutually exclusive, then 
+\beq
+p\vat{A\lor B} = p\vat A + p\vat B - p\vat{A\land B} \,,
+\eeq
+where $p\vat{A\land B}$ means the number of outcomes that event $A$ and event $B$ have in common.
+\end{quote}
+
+Example: A card is selected at random from a deck of 52 cards. Find the probability that it is a 6 or a diamond.
+
+Solution: Let $A$ the event of getting a 6; then $p\vat a = 4/52$, since there are four 6s. Let $B$ the event of getting a diamond; then $p\vat B = 13/52$, since there are 13 diamonds. Since there is one card that is both a 6 and a diamond (\ie, the 6 of diamonds), $p\vat{A\land B} = 1/52$. Hence,
+\beq
+p\vat{A\lor B} = p\vat A + p\vat B - p\vat{A\land B} = 4/52 + 13/52 - 1/52 = 16/52 = 4/13 \,.
+\eeq
+
+The key word for addition is \emph{or}, and it means that one event or the other occurs. If the events are not mutually exclusive, the probability of the outcomes that the two events have in common must be subtracted from the sum of the probabilities of the two events. For the mathematical purist, only one addition rule is necessary, and that is
+\beq
+p\vat{A\lor B} = p\vat A + p\vat B - p\vat{A\land B}\,.
+\eeq
+The reason is that when the events are mutually exclusive, $p\vat{A\land B}$ is equal to zero because mutually exclusive events have no outcomes in common.
+
+\subsubsection{Summary}
+Many times in probability, it is necessary to find the probability of two or more events occurring. In these cases, the addition rules are used. When the events are mutually exclusive, addition rule I is used, and when the events are not mutually exclusive, addition rule II is used. If the events are mutually exclusive, they have no outcomes in common. When the two events are not mutually exclusive, they have some common outcomes. The key word in these problems is \emph{or}, and it means to \emph{add}.
+
+
+\subsection{The Multiplication Rules}
+
+
+\subsubsection{Introduction}
+The previous chapter showed how the addition rules could be used to solve problems in probability. This chapter will show you how to use the multiplication rules to solve many problems in probability. In addition, the concept of independent and dependent events will be introduced.
+
+
+\subsubsection{Independent and Dependent Events}
+The multiplication rules can be used to find the probability of two or more events that occur in sequence. For example, we can find the probability of selecting three jacks from a deck of cards on three sequential draws. Before explaining the rules, it is necessary to differentiate between \lingo{independent} and \lingo{dependent events}.
+
+Two events, $A$ and $B$, are said to be \lingo{independent} if the fact that event $A$ occurs does \emph{not} affect the probability that event $B$ occurs. For example, if a coin is tossed and then a die is rolled, the outcome of the coin in no way affects or changes the probability of the outcome of the die. Another example would be selecting a card from a deck, replacing it, and then selecting a second card from a deck. The outcome of the first card, as long as it is replaced, has no effect on the probability of the outcome of the second card.
+
+On the other hand, when the occurrence of the first event in some way changes the probability of the occurrence of the second event, the two events are said to be \lingo{dependent}. For example, suppose a card is selected from a deck and not replaced, and a second card is selected. In this case, the probability of selecting any specific card on the first draw is $1/52$, but since this card is not replaced, the probability of selecting any other specific card on the second draw is $1/52$, since there are only 51 cards left.
+
+Another example would be parking in a no parking zone and getting a parking ticket. Again, if you are legally parked, the chances of getting a parking ticket are pretty close to zero (as long as the meter does not run out). However, if you are illegally parked, your chances of getting a parking ticket dramatically increase.
+
+
+\subsubsection{Multiplication Rule I}
+Before explaining the first multiplication rule, consider the example of tossing two coins. The sample space is HH, HT, TH, TT. From classical probability theory, it can be determined that the probability of getting two heads is $1/4$, since there is only one way to get two heads and there are four outcomes in the sample space. However, there is another way to determine the probability of getting two heads. In this case, the probability of getting a head on the first toss is $1/2$, and the probability of getting a head on the second toss is also $1/2$. So the probability of getting two heads can be determined by multiplying $1/2\times 1/2 = 1/4$. This example illustrates the first multiplication rule.
+
+\begin{quote}
+Multiplication Rule I: For two independent events $A$ and $B$, 
+\beq
+p\vat{A\land B} = p\vat A p\vat B\,.
+\eeq
+In other words, when two independent events occur in sequence, the probability that both events will occur can be found by multiplying the probabilities of each individual event.
+\end{quote}
+The word \emph{and} is the key word and means that both events occur in sequence and to multiply.
+
+Example: A coin is tossed and a die is rolled. Find the probability of getting a tail on the coin and a 5 on the die.
+
+Solution: Since $p\vat{\text{tail}} = 1/2$ and $p\vat{\text{5}} = 1/6$, then $p\vat{\text{tail}\land\text{5}} = 1/2 1/6 = 1/12$. Note that the events are independent.
+
+
+\subsubsection{Multiplication Rule II}
+When two sequential events are dependent, a slight variation of the multiplication rule is used to find the probability of both events occurring. For example, when a card is selected from an ordinary deck of 52 cards the probability of getting a specific card is $1/52$, but the probability of getting a specific card on the second draw is $1/51$, since 51 cards remain.
+
+When the two events $A$ and $B$ are dependent, the probability that the second event $B$ occurs after the first event $A$ has already occurred is written as $p\vat{B\given A}$. This does not mean that $B$ is divided by $A$; rather, it means \lingo{and} is read as ``the probability that event $B$ occurs given that event $A$ has already occurred''. $p\vat{B\given A}$ also means the conditional probability that event $B$ occurs given event $A$ has occurred. The second multiplication rule follows.
+
+\begin{quote}
+Multiplication Rule II: When two events are dependent, the probability of both events occurring is 
+\beq
+p\vat{A\land B} = p\vat A p\vat{B\given A}\,.
+\eeq
+\end{quote}
+
+Example: A box contains 24 toasters, 3 of which are defective. If two toasters are selected and tested, find the probability that both are defective.
+
+Solution: Since there are 3 defective toasters out of 24, the probability that the first toaster is defective is $3/24 = 1/8$. Since the second toaster is selected from the remaining 23 and there are two defective toasters left, the probability that it is defective is $2/23$. Hence, the probability that both toasters are defective is
+\beq
+p\vat{D_1\land D_2} = p\vat{D_1}p\vat{D_2\given D_1} = 3/24\times 2/23 = 1/92\,.
+\eeq
+
+Remember that the key word for the multiplication rule is \emph{and}. It means to \emph{multiply}.
+
+When two events are dependent, the probability that the second event occurs must be adjusted for the occurrence of the first event. For the mathematical purist, only one multiplication rule is necessary for two events, and that is
+\beq
+p\vat{A\land B} = p\vat A p\vat{B\given A}\,.
+\eeq
+The reason is that when the events are independent $p\vat{B\given A} = p\vat B$, since the occurrence of the first event $A$ has no effect on the occurrence of the second event $B$.
+
+
+\subsubsection{Conditional Probability}
+Previously, conditional probability was used to find the probability of sequential events occurring when they were dependent. Recall that $p\vat{B\given A}$ means the probability of event $B$ occurring given that event $A$ has already occurred. Another situation where conditional probability can be used is when additional information about an event is known. Sometimes it might be known that some outcomes in the sample space have occurred or that some outcomes cannot occur. When conditions are imposed or known on events, there is a possibility that the probability of the certain event occurring may change. For example, suppose you want to determine the probability that a house will be destroyed by a hurricane. If you used all houses in the United States as the sample space, the probability would be very small. However, if you used only the houses in the states that border the Atlantic Ocean as the sample space, the probability would be much higher. Consider the following examples.
+
+Example: A die is rolled; find the probability of getting a 4 if it is known that an even number occurred when the die was rolled.
+
+Solution: If it is known that an even number has occurred, the sample space is reduced to 2, 4, or 6. Hence the probability of getting a 4 is 13 since there is one chance in three of getting a 4 if it is known that the result was an even number.
+
+The previou examples of conditional probability was solved using classical probability and reduced sample spaces; however, they can be solved by using the following formula for conditional probability.
+
+The conditional probability of two events $A$ and $B$ is
+\beq
+p\vat{A\given B} = \dfrac{p\vat{A\land B}}{p\vat B} \,.
+\eeq
+$p\vat{A\land B}$ means the probability of the outcomes that events $A$ and $B$ have in common.
+
+
+\subsubsection{Summary}
+When two events occur in sequence, the probability that both events occur can be found by using one of the multiplication rules. When two events are independent, the probability that the first event occurs does not affect or change the probability of the second event occurring. If the events are independent, multiplication rule I is used. When the two events are dependent, the probability of the second event occurring is changed after the first event occurs. If the events are dependent, multiplication rule II is used. The key word for using the multiplication rule is \emph{and}. Conditional probability is used when additional information is known about the probability of an event.
+
+
+\subsection{Expectation}
+When a person plays a slot machine, sometimes the person wins and other times -- most often -- the person loses. The question is, ``How much will the person win or lose in the long run?'' In other words, what is the person's expected gain or loss? Although an individual's exact gain or exact loss cannot be computed, the overall gain or loss of all people playing the slot machine can be computed using the concept of mathematical expectation.
+
+Expectation or \lingo{expected value} is a long run average. The expected value is also called the \lingo{mean}, and it is used in games of chance, insurance, and in other areas such as decision theory. The outcomes must be numerical in nature. The expected value of the outcome of a probability experiment can be found by multiplying each outcome by its corresponding probability and adding the results.
+
+Formally defined, the expected value for the outcomes of a probability experiment is 
+\beq
+e\vat{x} = x_1 p\vat{x_1} + x_2 p\vat{x_2} + \dotsb + x_n p\vat{x_n} \,,
+\eeq
+where the $x$ corresponds to an outcome and the $p\vat x$ to the corresponding probability of the outcome.
+
+
+\subsection{The Counting Rules} 
+
+\subsubsection{Introduction}
+Since probability problems require knowing the total number of ways one or more events can occur, it is necessary to have a way to compute the number of outcomes in the sample spaces for a probability experiment. This is especially true when the number of outcomes is large. For example, when finding the probability of a specific poker hand, it is necessary to know the number of different possible ways five cards can be dealt from a 52-card deck. (This computation will be shown later in this chapter.)
+
+In order to do the computation, we use the fundamental counting rule, the permutation rules, and the combination rule. The rules then can be used to compute the probability for events such as winning lotteries, getting a specific hand in poker, \etc.
+
+
+\subsubsection{The Fundamental Counting Rule}
+The first rule is called the Fundamental Counting Rule.
+
+For a sequence of $n$ events in which the first event can occur in $k_1$ ways and the second event can occur in $k_2$ ways and the third event can occur in $k_3$ ways, and so on, the total number of ways the sequence can occur is $k_1 k_2 k_3\dotsb k_n$.
+
+Example: In order to paint a room, a person has a choice of four colors: white, light blue, yellow, and light green; two types of paint: oil or latex; and three types of texture: flat, semi-glass, or satin. How many different selections can be made?
+
+Solution: There are four colors, two types of paint, and three textures, so the total number of ways a paint can be selected is $4\times 2\times 3 = 24$ ways.
+
+When determining the number of different ways a sequence of events can occur, it is necessary to know whether or not repetitions are permitted. The next two examples show the difference between the two situations.
+
+Example: The employees of a company are given a 4-digit identification number. How many different numbers are available if repetitions are permitted?
+
+Solution: There are 10 digits (zero through nine), so each of the four digits can be selected in ten different ways since repetitions are permitted. Hence the total number of identification numbers is $10\times 10\times 10\times 10 = \num{10000}$.
+
+Example: The employees of a company are given 4-digit identification numbers; however, repetitions are not allowed. How many different numbers are available?
+
+Solution: In this case, there are 10 ways to select the first digit, 9 ways to select the second digit, 8 ways to select the third digit, and 7 ways to select the fourth digit, so the total number of ways is $10\times 9\times 8\times 7 = 5040$.
+
+
+\subsubsection{Factorials}
+In mathematics there is a notation called \lingo{factorial notation}, which uses the exclamation point. Some examples of factorial notation are
+$6! = 6 \times 5 \times 4 \times 3 \times 2 \times 1$.
+
+Notice that factorial notation means to start with the number and find its product with all of the whole numbers less than the number and stopping at one. Formally defined,
+\beq
+n! = n\times(n-1)\times(n-2)\dotsb 3\times 2\times 1\,.
+\eeq
+
+Factorial notation can be stopped at any time. For example, $6! = 6\times 5! = 6\times 5\times 4\times 3!$
+
+In order to use the formulas in the rest of the chapter, it is necessary to know how to multiply and divide factorials. In order to multiply factorials, it is necessary to multiply them out and then multiply the products. For example,
+\beq
+3!\times 4! = 3\times 2\times 1\times 4\times 3\times 2\times 1 = 144\,.
+\eeq
+Notice that $3!\times 4! \neq 12!$, since $12! = \num{479001600}$.
+
+Division of factorials is somewhat tricky. You can always multiply them out and then divide the top number by the bottom number. For example,
+\beq
+\dfrac{8!}{6!} = \dfrac{8\times 7\times 6\times 5\times 4\times 3\times 2\times 1}{6\times 5\times 4\times 3\times 2\times 1}\,.
+\eeq
+or you can cancel out, as shown:
+\beq
+\dfrac{8!}{6!} = \dfrac{8\times 7\times 6!}{6!} = 8\times 7 = 56\,.
+\eeq
+You cannot divide factorials directly.
+
+Also $0! = 1$ by definition.
+
+
+\subsubsection{The Permutation Rules}
+The second way to determine the number of outcomes of an event is to use the \lingo{permutation rules}. An arrangement of $n$ distinct objects in a specific order is called a \lingo{permutation}. For example, if an art dealer had 3 paintings, say A, B, and C, to arrange in a row on a wall, there would be 6 distinct ways to display the paintings. They are ABC, BAC, CAB, ACB, BCA and CBA.
+
+The total number of different ways can be found using the fundamental counting rule. There are 3 ways to select the first object, 2 ways to select the second object, and 1 way to select the third object. Hence, there are $3\times 2\times 1 = 6$ different ways to arrange three objects in a row on a shelf.
+Another way to solve this kind of problem is to use permutations. 
+\begin{quote}
+The number of permutations of $n$ objects using all the objects is $n!$.
+\end{quote}
+
+Example: In how many different ways can 6 people be arranged in a row for a photograph?
+
+Solution: This is a permutation of 6 objects. Hence $6! = 720$ ways.
+
+In the previous example, all the objects were used; however, in many situations only some of the objects are used. In this case, the \lingo{permutation rule} can be used.
+
+The arrangement of $n$ objects in a specific order using $r$ objects at a time is called a permutation of $n$ objects taking $r$ objects at a time. It is written as $pr\vat{n,k}$nPr and the formula is
+\beq
+pr\vat{n,k} = \dfrac{n!}{(n - k)!}\,.
+\eeq
+
+Example: In how many different ways can 3 people be arranged in a row for a photograph if they are selected from a group of 5 people?
+
+Solution: Since 3 people are being selected from 5 people and arranged in a specific order, $n = 5$, $r = 3$. Hence, there are
+\beq
+pr\vat{5,3} = \dfrac{5!}{(5 - 3)!} = \dfrac{5\times 4\times 3\times 2!}{2!} = 5\times 4\times 3 = \SI{60}{ways}\,.
+\eeq
+
+Example: How many different signals can be made from seven different flags if four flags are displayed in a row?
+
+Solution: Hence, $n = 7$ and $r = 4$, so $pr\vat{7,4} = 840$.
+
+In the preceding examples, all the objects were different, but when some of the objects are identical, the second permutation rule can be used.
+\begin{quote}
+The number of permutations of $n$ objects when $r_1$ objects are identical, $r_2$ objects are identical, \etc. is
+\beq
+\dfrac{n!}{r_1!r_2!\dotsb r_p!}\,,
+\eeq
+where $r_1 + r_2 + \dotsb + r_p = n$.
+\end{quote}
+
+Example: How many different permutations can be made from the letters of the word Mississippi? 
+
+Solution: There are 4s, 4i, 2p, and 1m; hence, $n = 11$, $r_1 = 4$, $r_2 = 4$, $r_3 = 2$ and $r_4 = 1$. Then,
+\beq
+\dfrac{11!}{4!\times 4!\times 2!\times 1} = \num{34 650} \,.
+\eeq
+
+
+\subsubsection{Combinations}
+Sometimes when selecting objects, the order in which the objects are selected is \emph{not} important. For example, when five cards are dealt in a poker game, the order in which you receive the cards is not important. When 5 balls are selected in a lottery, the order in which they are selected is not important. These situations differ from permutations in which order is important and are called combinations. A \lingo{combination} is a selection of objects without regard to the order in which they are selected.
+
+The combination rule is used to find the number of ways to select objects without regard to order.
+\begin{quote}
+The number of ways of selecting $r$ objects from $n$ objects without regard to order is
+\beq
+c\vat{n,r} = \binom nr = \dfrac{n!}{(n-r)!r!}\,,
+\eeq
+where $\binom nr$ is the binomial coefficient.
+\end{quote}
+
+Example: In a classroom, there are 8 women and 5 men. A committee of 3 women and 2 men is to be formed for a project. How many different possibilities are there?
+
+Solution: In this case, you must select 3 women from 8 women and 2 men from 5 men. Since the word \emph{and} is used, multiply the answers:
+\beq
+\binom 8 3\binom 5 2 = 56\times 10 = 560\,.
+\eeq
+
+
+\subsubsection{Probability and the Counting Rules}
+A wide variety of probability problems can be solved using the counting rules and the probability rule.
+
+Example: Find the probability of getting a flush (including a straight flush) when 5 cards are dealt from a deck of 52 cards.
+
+Solution: A flush consists of 5 cards of the same suit. That is, either 5 clubs or 5 spades or 5 hearts or 5 diamonds, and includes straight flushes. Since there are 13 cards in a suit, there are $\binom{13}{5}$ ways to get a flush in one suit, and there are 4 suits, so the number of ways to get a flush is
+\beq
+4\binom{13}{5} = 5148\,.
+\eeq
+There are $\binom{52}{5}$ ways to select 5 cards.
+\beq
+\binom{52}{5} = 2 598 960 \,.
+\eeq
+Therefore, the probability of getting a flush is
+\beq
+p\vat{\text{flush}} = \dfrac{5148}{2 598 960}\sim 0.00198\,,
+\eeq
+which is about one chance in 500.
+
+
+\subsubsection{Summary}
+In order to determine the number of outcomes of events, the fundamental counting rule, the permutation rules, and the combination rule can be used. The difference between a permutation and a combination is that for a permutation, the order or arrangement of the objects is important. For example, order is important in phone numbers, identification tags, social security numbers, license plates, \etc. Order is not important when selecting objects from a group. Many probability problems can be solved by using the counting rules to determine the number of outcomes of the events that are used in the problems.
+
+
+\subsection{The Binomial Distribution}
+
+\subsubsection{Introduction}
+Many probability problems involve assigning probabilities to the outcomes of a probability experiment. These probabilities and the corresponding outcomes make up a \lingo{probability distribution}. There are many different probability distributions. One special probability distribution is called the \lingo{binomial distribution}. The binomial distribution has many uses such as in gambling, in inspecting parts, and in other areas.
+
+
+\subsubsection{Discrete Probability Distributions}
+In mathematics, a \lingo{variable} can assume different values. For example, if one records the temperature outside every hour for a 24-hour period, temperature is considered a variable since it assumes different values. Variables whose values are due to chance are called random variables. When a die is rolled, the value of the spots on the face up occurs by chance; hence, the number of spots on the face up on the die is considered to be a \lingo{random variable}. The outcomes of a die are 1, 2, 3, 4, 5, and 6, and the probability of each outcome occurring is 1/6. The outcomes and their corresponding probabilities can be written in a table, as shown, and make up what is called a \lingo{probability distribution}.
+\begin{itemize}
+\item value, $x$: 1, 2, 3, 4, 5, 6.
+\item probability, $p\vat x$: 1/6, 1/6, 1/6, 1/6, 1/6, 1/6.
+\end{itemize}
+
+A \lingo{probability distribution} consists of the values of a random variable and their corresponding probabilities.
+
+There are two kinds of probability distributions. They are \lingo{discrete} and \lingo{continuous}. A \emph{discrete} variable has a countable number of values (countable means values of zero, one, two, three, \etc.). For example, when four coins are tossed, the outcomes for the number of heads obtained are zero, one, two, three, and four. When a single die is rolled, the outcomes are one, two, three, four, five, and six. These are examples of discrete variables.
+
+A \emph{continuous} variable has an infinite number of values between any two values. Continuous variables are measured. For example, temperature is a continuous variable since the variable can assume any value between 108 and 208 or any other two temperatures or values for that matter. Height and weight are continuous variables. Of course, we are limited by our measuring devices and values of continuous variables are usually ``rounded off''.
+
+Example: Construct a discrete probability distribution for the number of heads when three coins are tossed.
+
+Solution: Recall that the sample space for tossing three coins is TTT, TTH, THT, HTT, HHT, HTH, THH, and HHH.
+
+The outcomes can be arranged according to the number of heads, as shown.
+\begin{itemize}
+\item 0 heads TTT
+\item 1 head TTH, THT, HTT
+\item 2 heads THH, HTH, HHT
+\item 3 heads HHH
+\end{itemize}
+
+Finally, the outcomes and corresponding probabilities can be written in a table, as shown.
+\begin{itemize}
+\item Outcome, $x$: 0, 1, 2, 3;
+\item Probability, $p\vat x$: 1/8, 3/8, 3/8, 1/8
+\end{itemize}
+The sum of the probabilities of a probability distribution must be 1.
+
+A discrete probability distribution can also be shown graphically by labeling the $x$ axis with the values of the outcomes and letting the values on the $y$ axis represent the probabilities for the outcomes. The graph for the discrete probability distribution of the number of heads occurring when three coins are tossed is shown in Figure.
+
+There are many kinds of discrete probability distributions; however, the distribution of the number of heads when three coins are tossed is a special kind of distribution called a \lingo{binomial distribution}.
+
+A binomial distribution is obtained from a probability experiment called a \lingo{binomial experiment}. The experiment must satisfy these conditions:
+\begin{enumerate}
+\item Each trial can have only two outcomes or outcomes that can be reduced to two outcomes. The outcomes are usually considered as a success or a failure.
+\item There is a fixed number of trials.
+\item The outcomes of each trial are independent of each other.
+\item The probability of a success must remain the same for each trial.
+\end{enumerate}
+
+Now consider rolling a die. Since there are six outcomes, it cannot be considered a binomial experiment. However, it can be made into a binomial experiment by considering the outcome of getting five spots (for example) a success and every other outcome a failure.
+
+In order to determine the probability of a success for a single trial of a probability experiment, the following formula can be used.
+\beq
+c\vat{n, x}p^x(1-p)^{n - x}\,,
+\eeq
+where $n$ are the total number of trials, $x$ the number of successes ($1,2,3,\dotsc,n$), $p$ the probability of a success.
+
+The formula has three parts: $c\vat{n,x}$ determines the number of ways a success can occur, $(p)^x$ is the probability of getting $x$ successes and $(1 - p)^{n - x}$ is the probability of getting $n - x$ failures.
+
+Example: A coin is tossed 3 times. Find the probability of getting two heads and a tail in any given order.
+
+Solution: Since the coin is tossed 3 times, $n = 3$. The probability of getting a head (success) is 1/2, so $p = 1/2$ and the probability of getting a tail (failure) is $1 - 1/2 = 1/2$; $x = 2$ since the problem asks for 2 heads. $(n - x) = 3 - 2 = 1$.
+
+Hence,
+\beq
+p\vat{\text{2 heads}} = c\vat{3,2}(1/2)^2(1/2) = 3(1/4)(1/2) = 3/8 \,.
+\eeq
+
+Notice that there were $c\vat{3,2}$ or 3 ways to get two heads and a tail. The answer 3/8 is also the same as the answer obtained using classical probability that was shown in the first example in this chapter.
+
+In order to construct a probability distribution, the following formula is used:
+\beq
+c\vat{n, x}p^x(1-p)^{n - x}\,,
+\eeq
+where $x = 1,2,3,\dotsc,n$. 
+
+The next example shows how to use the formula.
+
+Example: A die is rolled 3 times. Construct a probability distribution for the number of fives that will occur.
+
+Solution: In this case, the die is tossed 3 times, so $n = 3$. The probability of getting a 5 on a die is 1/6, and one can get $x = 0,1,2\text{ or }3$ fives.
+\begin{itemize}
+\item For $x = 0$, $c\vat{3,0}(1/6)^0(5/6)^3 = 0.5787$.
+\item For $x = 1$, $c\vat{3,1}(1/6)^1(5/6)^2 = 0.3472$.
+\item For $x = 2$, $c\vat{3,2}(1/6)^2(5/6)^1 = 0.0694$.
+\item For $x = 3$, $c\vat{3,3}(1/6)^3(5/6)^0 = 0.0046$.
+\end{itemize}
+
+Hence, the probability distribution is
+\begin{itemize}
+\item Number of fives, $x$: 0, 1, 2, 3.
+\item Probability, $p\vat x$: 0.5787, 0.3472, 0.0694, 0.0046.
+\end{itemize}
+
+Note: Most statistics books have tables that can be used to compute probabilities for binomial variables.
+
+\subsubsection{The Mean and Standard Deviation for a Binomial Distribution}
+Suppose you roll a die many times and record the number of threes you obtain. Is it possible to predict ahead of time the average number of threes you will obtain? The answer is ``Yes''. It is called \lingo{expected value} or the \lingo{mean} of a binomial distribution. This mean can be found by using the formula mean $\avg\mu = np$, where $n$ is the number of times the experiment is repeated and $p$ is the probability of a success. The symbol for the mean is the Greek letter $\mu$, (mu).
+
+Example: A die is tossed 180 times and the number of threes obtained is recorded. Find the mean or expected number of threes.
+
+Solution: $n = 180$ and $p = 1/6$, since there is one chance in 6 to get a three on each roll. Then, $\mu = np = 180(1/6) = 30$. Hence, one would expect on average 30 threes.
+
+Statisticians are not only interested in the average of the outcomes of a probability experiment but also in how the results of a probability experiment vary from trial to trial. Suppose we roll a die 180 times and record the number of threes obtained. We know that we would expect to get about 30 threes. Now what if the experiment was repeated again and again? In this case, the number of threes obtained each time would not always be 30 but would vary about the mean of 30. For example, we might get 28 threes one time and 34 threes the next time, etc. How can this variability be explained? Statisticians use a measure called the \lingo{standard deviation}. When the standard deviation of a variable is large, the individual values of the variable are spread out from the mean of the distribution. When the standard deviation of a variable is small, the individual values of the variable are close to the mean.
+
+The formula for the standard deviation for a binomial distribution is $\sigma = \sqrt{np(1-p)}$. The symbol for the standard deviation is the Greek letter $\sigma$ (sigma).
+
+Example: A die is rolled 180 times. Find the standard deviation of the number of threes.
+
+Solution: $n = 180$, $p = 1/6$, $1 - p = 1 - 1/6 = 5/6$. Thus, 
+\beq
+\sigma = \sqrt{np(1-p)} = \sqrt{(180)(1/6)(5/6)} = 5\,.
+\eeq
+
+The standard deviation is 5. Now what does this tell us?
+
+Roughly speaking, most of the values fall within two standard deviations of the mean:
+\beq
+\mu - 2\sigma < \text{most values} < \mu + 2\sigma\,.
+\eeq
+In the die example, we can expect most values will fall between $20 < \text{most values} < 40$. In this case, if we did the experiment many times we would expect between 20 and 40 threes most of the time. This is an approximate \lingo{range of values}. Suppose we rolled a die 180 times and we got only 5 threes, what can be said? It can be said that this is an unusually small number of threes. It can happen by chance, but not very often. We might want to consider some other possibilities. Perhaps the die is loaded or perhaps the die has been manipulated by the person rolling it!
+
+
+\subsection{Other Probability Distributions}
+
+\subsubsection{Introduction}
+The last chapter explained the concepts of the binomial distribution. There are many other types of commonly used discrete distributions. A few are the multinomial distribution, the hypergeometric distribution, the Poisson distribution, and the geometric distribution. This chapter briefly explains the basic concepts of these distributions.
+
+\subsubsection{The Multinomial Distribution}
+Recall that for a probability experiment to be binomial, two outcomes are necessary. But if each trial of a probability experiment has more than two outcomes, a distribution that can be used to describe the experiment is called a \lingo{multinomial distribution}. In addition, there must be a fixed number of independent trials, and the probability for each success must remain the same for each trial.
+
+A short version of the multinomial formula for three outcomes is given next. If $X$ consists of events $E_1$, $E_2$ and $E_3$, which have corresponding probabilities of $p_1$, $p_2$ and $p_3$ of occurring, where $x_1$ is the number of times $E_1$ will occur, $x_2$ is the number of times $E_2$ will occur and $x_3$ is the number of times $E_3$ will occur, then the probability of $X$ is
+\beq
+\dfrac{n!}{x_1!x_2!x_3!}p_1^{x_1}p_2^{x_2}p_3^{x_3}\,,
+\eeq
+where $x_1 + x_2 + x_3 = n$ and $p_1 + p_2 + p_3 = 1$.
+

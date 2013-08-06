@@ -1,0 +1,249 @@
+%%% MATHS
+%
+%%% GENERAL COMMANDS
+%
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+%
+%\newcommand{\defby}{\equiv}   % defined by
+\newcommand{\defby}{\coloneqq} % defined by
+%\newcommand{\defby}{\doteq}   % defined by
+\newcommand{\diff}{\Delta}     % difference operator
+%
+\let\oldsqrt\sqrt
+\renewcommand{\sqrt}[1]{\left({#1}\right)^{\tfrac{1}{2}}} % sqrt
+%
+\newcommand{\eqtxt}[1]{\text{[{#1}]}} % text in equations
+\newcommand{\txt}[1]{_\text{#1}}      % text as subscript in variables
+%
+%%% SETS
+%
+\newcommand{\set}[1]{\mathcal{#1}}                    % set
+\newcommand{\elset}[1]{\left\lbrace{#1}\right\rbrace} % elements of a set
+\newcommand{\setprop}[2]{\elset{{#1}:{#2}}}           % set with a property
+\DeclareMathOperator{\sprod}{\otimes}                 % Cartesian (set) product
+\DeclareMathOperator{\setprod}{\otimes}               % Cartesian (set) product
+\newcommand{\nset}[2]{\set{#1}^{#2}}                  % n-dim set: Cartesian power
+%
+\DeclareMathOperator{\union}{\cup}                    % union of sets
+\DeclareMathOperator{\inter}{\cap}                    % intersection of sets
+%
+\newcommand{\dgspace}[3]{{#1}^{#2}_{#3}} % dim-grade space
+%
+\newcommand{\espace}[1]{\nset{E}{#1}}  % n-dim Euclidean space
+\newcommand{\mkspace}[1]{\nset{M}{#1}} % n-dim Minkowski space
+%
+\newcommand{\ga}{\set{G}}            % geometric algebra
+\newcommand{\nga}[1]{\ga^{#1}}       % n-dim geometric algebra
+\newcommand{\dgga}[2]{\ga^{#1}_{#2}} % dimension-grade GA
+%
+\newcommand{\tuple}[1]{\left[{#1}\right]} % tuple
+%
+%%% FUNCTIONS
+%
+\newcommand{\class}[1]{C^{#1}}              % class (differentiability)
+\newcommand{\fdef}[3]{{#1}:{#2}\to{#3}}     % function definition
+\newcommand{\fmap}[3]{{#1}:{#2}\mapsto{#3}} % function mapping
+\newcommand{\vat}[1]{\!\tuple{#1}}          % (function) value at ()
+\DeclareMathOperator{\fcomp}{\circ}         % function composition
+%
+\DeclareMathOperator{\bprod}{\ast} % a binary operator
+%
+\newcommand{\fder}{\mathrm{D}}         % derivative
+\newcommand{\fpder}[1]{\partial_{#1}}  % partial derivative
+%
+%%% SEQUENCES AND SERIES
+%
+\newcommand{\seq}[3]{\elset{{#1}}_{#2}^{#3}} % sequence
+\newcommand{\serie}[3]{\sum_{#1}^{#2}\,{#3}} % serie
+%
+\DeclareMathOperator{\fib}{fib} % fibonacci numbers
+%
+%%% GEOMETRIC OBJECTS
+%
+%%% no decoration! vectors on equal footing than other multivectors!
+%\let\oldvec\vec
+%\renewcommand{\vec}[1]{#1}               % vector (for the doc final version)
+%\renewcommand{\vec}[1]{\bm{\mathrm{#1}}} % vector (for drafts)
+%
+\newcommand{\point}[1]{\mathcal{#1}} % point
+\newcommand{\curve}[1]{\set{#1}}     % curve
+\newcommand{\surf}[1]{\set{#1}}      % surface
+\newcommand{\region}[1]{\set{#1}}    % region in space
+\newcommand{\bound}{\partial}        % boundary of an object
+%
+\newcommand{\nvec}[1]{\hat{#1}}   % normal vector
+\newcommand{\ovec}[1]{\check{#1}} % omitted vector from a product
+\newcommand{\pscl}{i}             % pseudoscalar unit
+%
+\newcommand{\ortho}{\perp}                   % orthogonal or perpendicular
+\newcommand{\perto}[2]{{#1}_{\perp{#2}}}     % to be perpendicular to 
+\newcommand{\parto}[2]{{#1}_{\parallel{#2}}} % to be parallel to 
+\newcommand{\ortto}[2]{{#1}_{\perp{#2}}}     % to be orthogonal to 
+\newcommand{\colto}[2]{{#1}_{\parallel{#2}}} % to be collinear to
+\newcommand{\projon}[2]{\parto{#1}{#2}}      % projection onto
+\newcommand{\rejon}[2]{\ortto{#1}{#2}}       % rejection onto
+%
+\newcommand{\magn}[1]{\lvert{#1}\rvert} % magnitude, norm, length
+\newcommand{\inv}[1]{{#1}^{-1}}         % inverse
+\newcommand{\rev}[1]{{#1}^{\dagger}}    % reversion
+\newcommand{\hdual}[1]{{}^*{#1}}        % Clifford-Hodge dual
+%
+\newcommand{\acom}[2]{\left[{#1},{#2}\right]_{+}} % anticommutator
+\newcommand{\com}[2]{\left[{#1},{#2}\right]_{-}}  % commutator
+%
+\newcommand{\xacom}[2]{{#1}{#2} + {#2}{#1}} % expanded anticommutator
+\newcommand{\xcom}[2]{{#1}{#2} - {#2}{#1}}  % expanded commutator
+%
+\newcommand{\step}[2]{\langle{#1}\rangle_{#2}} % step
+\newcommand{\sstep}[1]{\step{#1}{0}}           % scalar step
+%
+\DeclareMathOperator{\Grade}{grade}   % grade
+\newcommand{\grade}[2]{\step{#1}{#2}} % grade
+\newcommand{\sgrade}[1]{\sstep{#1}}   % scalar grade
+%
+\newcommand{\sclif}[2]{{#1}_{\bar{#2}}} % clif with step
+%
+\newcommand{\even}[1]{{#1}_{+}} % even part
+\newcommand{\odd}[1]{{#1}_{-}}  % odd part
+%
+\DeclareMathOperator{\gorm}{gorm}            % geometric norm ?
+\newcommand{\xgorm}[1]{\sstep{\rev{#1}{#1}}} % expanded gorm
+%
+\newcommand{\metric}{g}    % metric 
+\newcommand{\kron}{\delta} % kronecker delta
+%
+\DeclareMathOperator{\diag}{diag} % diagonal
+\DeclareMathOperator{\sign}{sig}  % signature
+%
+%\DeclareMathOperator{\iprod}{\bm{\cdot}} % inner prod.
+\DeclareMathOperator{\iprod}{\cdot}       % inner prod.
+\DeclareMathOperator{\oprod}{\wedge}      % outer prod.
+\DeclareMathOperator{\cprod}{\times}      % cross prod.
+%
+\newcommand{\cgprod}[2]{{#1}\iprod{#2} + {#1}\oprod{#2}} % cannon. decomp. g.prod.
+%
+%%% CALCULUS
+%
+\newcommand{\dx}{\text{d}}               % ordinary derivative
+\newcommand{\dt}[1]{\dot{#1}}            % ordinary time derivative
+\newcommand{\ddt}[1]{\ddot{#1}}          % ordinary second time derivative
+\newcommand{\cder}[2]{{#1}_{,{#2}}}      % comma derivative
+\newcommand{\coder}[2]{{#1}_{;{#2}}}     % semi-colon or covariant derivative
+\newcommand{\mder}[2]{\text{D}_{#2}{#1}} % material derivative
+\newcommand{\abstder}[1]{\dot{\overline{#1}}} % absolute time derivative
+%
+\newcommand{\chris}[3]{\Gamma^{#1}_{{#2}{#3}}} % Christoffel symbol
+%
+\newcommand{\xpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}} % expanded partial derivative
+\newcommand{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}}           % expanded ordinary derivative
+\newcommand{\xmd}[2]{\dfrac{\text{D}{#1}}{\text{D}{#2}}} % expanded material derivative
+%
+\newcommand{\nxod}[3]{\dfrac{\dx^{#1}{#2}}{\dx{#3}^{#1}}} % expanded n ordinary derivative
+%
+\newcommand{\nxpd}[3]{\dfrac{\partial^{#1}{#2}}{\partial{#3}^{#1}}} % expanded n partial derivative
+%
+%% Shifting a symbol vertically in Math mode
+%% http://tex.stackexchange.com/questions/47016/shifting-a-symbol-vertically-in-math-mode
+%% the command \bigtriangledown takes an optional argument to rise the symbol a given
+%% vertical distance
+%\usepackage{amsfonts}%
+%\let\oldbigtriangledown\bigtriangledown
+%\renewcommand{\bigtriangledown}[1][0pt]{%
+%  \mathrel{\raisebox{#1}{$\oldbigtriangledown$}}%
+%}
+%%
+%\DeclareMathOperator{\gder}{\bigtriangledown[2.0pt]} % geometric derivative
+%\DeclareMathOperator{\lder}{\bigtriangleup}          % laplace (derivative) operator
+%\DeclareMathOperator{\dalder}{\square}               % d'alembert (derivative) operator
+%
+\newcommand{\gder}{\nabla}    % geometric derivative
+\newcommand{\lder}{\nabla^2}  % laplace (derivative) operator
+\newcommand{\dalder}{\square} % d'alembert (derivative) operator
+
+%
+\newcommand{\dder}[2]{\gder_{#2}{#1}}  % directional derivative
+%
+%%% GRAD, DIV, CURL AND ALL THAT ;)
+%
+\DeclareMathOperator{\grad}{grad} % gradient
+\let\olddiv\div
+\DeclareMathOperator{\Div}{div}   % divergence
+\renewcommand{\div}{\Div}
+\DeclareMathOperator{\curl}{curl} % curl
+\DeclareMathOperator{\rot}{rot}   % curl 2
+\DeclareMathOperator{\lap}{lap}   % laplacian or laplace operator
+%
+%%% TENSORS
+%
+\newcommand{\tens}[1]{\mathsf{#1}}    % tensor
+\newcommand{\slot}{-}                 % slot
+\DeclareMathOperator{\tprod}{\otimes} % tensor product
+\DeclareMathOperator{\tcont}{cont}    % contraction
+\newcommand{\itcont}[1]{\tcont_{#1}}  % index contraction
+\newcommand{\lct}{\epsilon}           % levi-civita tensor
+%
+\DeclareMathOperator{\tcomp}{comp}    % tensor components
+\newcommand{\cotens}[2]{{#1}_{#2}}    % covariant tensor
+\newcommand{\cntens}[2]{{#1}^{#2}}    % contravariant tensor
+%
+\newcommand{\dtcotens}[2]{\dt{#1}_{#2}} % covariant tensor time derivative
+\newcommand{\dtcntens}[2]{\dt{#1}^{#2}} % contravariant tensor time derivative
+%
+%%% INDEX NOTATION
+%
+\newcommand{\fvec}{\gamma} % frame element, frame vector
+%
+\newcommand{\frm}[1]{\elset{\fvec_{#1}}}                 % frame
+\newcommand{\ifrm}[3]{\elset{\fvec_{#1};{#2}\dotsc{#3}}} % indexed frame
+%
+\newcommand{\rfrm}[1]{\elset{\fvec^{#1}}} % (indexed) reciprocal frame
+%
+\newcommand{\ifvec}[1]{\fvec_{#1}} % ind. frame vector
+\newcommand{\rfvec}[1]{\fvec^{#1}} % ind. reciprocal frame vector
+%
+\newcommand{\comp}[2]{{#1}^{#2}}   % (ind.) component in frame (contra.)
+\newcommand{\rcomp}[2]{{#1}_{#2}}  % (ind.) component in reciprocal frame (co.)
+%
+\newcommand{\imet}[2]{\metric_{{#1}{#2}}} % metric coefficients in frame
+\newcommand{\rmet}[2]{\metric^{{#1}{#2}}} % metric coefficients in reciprocal frame
+\newcommand{\mmet}[2]{\metric^{#1}_{#2}}  % mixed metric coefficients
+\newcommand{\ikron}[2]{\kron_{{#1}{#2}}}  % kronecker delta coefficients in frame
+\newcommand{\rkron}[2]{\kron^{{#1}{#2}}}  % kronecker delta coefficients in reciprocal frame
+\newcommand{\mkron}[2]{\kron^{#1}_{#2}}   % mixed kronecker coefficients delta
+%
+%%% calculus
+%
+%\newcommand{\igder}[1]{\gder_{#1}}   % indexed geometric derivative in reciprocal frame
+\newcommand{\igder}[1]{\partial_{#1}} % indexed geometric derivative in reciprocal frame
+\newcommand{\rgder}[1]{\partial^{#1}} % indexed geometric derivative in frame
+%
+%%% VARIOUS
+%
+\DeclareMathOperator{\given}{\vert}                     % A given B
+\newcommand{\iverson}[1]{\left[{#1}\right]_{\text{iv}}} % Iverson brackets
+\newcommand{\poisson}[1]{\left[{#1}\right]_{\text{pb}}} % Poisson brackets
+\newcommand{\mtrx}[1]{\left[{#1}\right]}                % matrix representation
+\newcommand{\avg}[1]{\left\langle{#1}\right\rangle}     % average
+%
+%%% TRANSFORMATIONS (TRANSFORMS)
+%
+%%% taylor series and polynomials
+%
+% T_nf(x;a) Taylor polynomial of degree n generated by f at the point a
+\newcommand{\ntpol}[4]{T_{#1}{#2}\vat{{#3}\,;{#4}}}  %
+% Taylor series of degree n generated by f at the point a
+\newcommand{\tseries}[3]{\ntpol{\infty}{#1}{#2}{#3}} %
+%
+%%% fourier series
+%
+% Fourier partial sum of degree n generated by f at the point a
+\newcommand{\nfsum}[3]{F_{#2}{#1}\vat{#3}}
+% Fourier series generated by f
+\newcommand{\fseries}[2]{\nfsum{#1}{\infty}{#2}}
+%
+%%% legendre transform
+%
+\newcommand{\ltrans}[1]{{#1}_{\star}} % legendre transform of a function
+\newcommand{\cvar}[1]{{#1}_{\star}}   % conjugate variable
+%

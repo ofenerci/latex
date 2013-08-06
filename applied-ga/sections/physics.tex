@@ -1,0 +1,63 @@
+\section{Newtonian Physics}
+
+\subsection{A Bit of History}
+Newton placed his theory based on universal space and universal time; \ie, space and time are independent on any external influences and on each other; In Newton's theory the position of a particle is represented by one vector $\pvec$ with three components each of which depends on time; \ie, $\pvec\vat t$.
+
+Einstein, on the other hand, placed time and space on equal footing with his Theory of special relativity by noting that $ct$, where $c$ is the speed of light, has the dimensions of length. Minkowski, finally, united space and time in one single entity, spacetime, both conceptually and mathematically. In spacetime, the position of a particle is represented by one vector with four components; \ie, the partner of $x$, $y$ and $z$ is not $t$, but rather $ct$.
+
+
+\subsection{The Geometric Principle}
+Physics and geometry are deeply related. So physical objects and physical processes can be modeled using geometric objects and geometric transformations. On the other hand, geometric algebra provides an efficient language to deal with geometry via algebra.
+
+Geometric Principle:
+\begin{quote}
+The laws of physics must all be expressible as geometric (coordinate-independent and reference-frame-independent) relationships -- geometric transformations -- between geometric objects, which represent physical entities.
+\end{quote}
+
+There are three different conceptual frameworks for the classical laws of physics and, thus, three different geometric arenas for the laws:
+\begin{enumerate}
+\item \lingo{General Relativity} formulates the laws as geometric relationships between geometric objects in he arena of \lingo{curved 4-dimensional spacetime}.
+\item \lingo{Special Relativity} is the limit of general relativity in the complete absence of gravity; its arena is \lingo{flat, 4-dimensional spacetime}, \aka Minkowski spacetime.
+\item \lingo{Newtonian Physics} is the limit of general relativity when (i) gravity is weak but not necessarily absent, (ii) relative speeds of particles and materials are small compared to the speed of light $c$ and (iii) all stresses (pressures) are small compared to the total density of mass-energy; its arena is \lingo{3-dimensional Euclidean space} with time separated off and made universal -- by contrast with relativity's reference-frame-dependent time.
+\end{enumerate}
+
+The aim is thus to express all physical quantities and laws in a \lingo{geometric form}: a form that is independent of any coordinate system or basis vectors.
+
+We shall insist that the Newtonian laws of physics all obey a \lingo{Geometric Principle}: they are all geometric relationships between geometric objects, expressible without the aid of any coordinates or bases. An example is the Lorentz force law: $m\dx d/\dx t = q(E + v\cprod B)$ -- a (coordinate-free) relationship between the geometric (coordinate-independent) vectors $v$, $E$ and $B$ and the scalars (the particle's) mass $m$ and charge $q$; no coordinates are needed for this law of physics, nor is any description of the geometric objects as matrix-like entities. Components are secondary; they only exist after one has chosen a set of basis vectors. Components are an impediment to a clear and deep understanding of the laws of physics. The coordinate-free, component-free description is deeper and -- once one becomes accustomed to it -- much more clear and understandable.
+
+Besides, coordinate independence and basis independence strongly constrain the laws of physics. This suggests that
+\begin{quote}
+Nature's physical laws \emph{are} geometric and have nothing whatsoever to do with coordinates or components or vector bases.
+\end{quote}
+
+
+\subsection{Foundational Concepts}
+To lay the geometric foundations for the Newtonian laws of physics an flat, Euclidean space, consider some foundational geometric objects: points, scalars, vectors, (geometric product of vectors), inner product of vectors, distance between points.
+
+The arena for the Newtonian laws is a spacetime composed of the 3-dimensional Euclidean space $\espace 3$, called \lingo{3-space}, and a \lingo{universal time $t$}. Denote \lingo{points} (locations) in 3-space by capital script letters, such as $\point P$ and $\point Q$. These points and the 3-space where they live require no coordinates for their definition.
+
+A \lingo{scalar} is a single number associated with a point, say $\point P$, in 3-space. We are interested in scalars that represent physical quantities; \eg, temperature $T$. When a scalar is a function of location $\point P$ in space -- \eg, $T\vat{\point P}$, call it a \lingo{scalar field}.
+
+A \lingo{vector} in 3-space can be thought of as a straight arrow reaching from one point, $\point P$, to another, $\point Q$; \ie, $\diff x$. Equivalently, $\diff\pvec$ can be thought of as a direction at $\point P$ and a number, the \lingo{vector's length}. Sometimes, one point $\point O$ is selected in 3-space as an ``origin'' and other points, $\point P$ and $\point Q$, are identified by their vectorial separations $\pvec{\point P}$ and $\pvec{\point Q}$ from that origin.
+
+The \lingo{Euclidean distance} $\diff\svec^2$ between two points $\point P$ and $\point Q$ is a scalar that requires no coordinate system for its definition. This distance $\diff\svec^2$ is also the magnitude (length) $\magn{\diff\pvec}$ of the vector $\diff\pvec$ that reaches from $\point P$ to $\point Q$ and the square of that length is denoted by
+\beq
+\magn{\diff\pvec}^2 = \diff\pvec\diff\pvec = \diff\pvec^2 \defby \diff\svec^2\,.
+\eeq
+
+Of particular importance is the case when $\point P$ and $\point Q$ are neighboring points and $\diff\pvec$ is a \lingo{differential quantity} $\dx\svec$. By traveling along a sequence of such $\elset{\dx\svec}$, laying them down tail-at-tip, one after another, we can map out a \lingo{curve} to which these $\elset{\dx\svec}$ are tangent. The curve is $\point P\vat\lambda$, with $\lambda$ a \lingo{parameter along the curve}, and the vectors that map it out are 
+\beq
+\dx\svec = \dfrac{\dx\point P}{\dx\lambda}\dx\lambda\,.
+\eeq
+
+The product of a scalar with a vector is still a vector; so if we take the change of location $\dx\svec$ of a particular element of a fluid during a (universal) \lingo{time interval} $\dx t$ and multiply it by $1/\dx t$, then we obtain a new vector, the fluid element's \lingo{velocity} $v = \dt \svec$, at the fluid element's location $\point P$. Performing this operation at every point $\point P$ in the fluid defines the \lingo{velocity field} $v\vat{\point P}$. Similarly, the sum (or difference) of two vectors is also a vector and so taking the difference of two velocity measurements at times separated by $\dx t$ and multiplying by $1/\dx t$ generates the \lingo{acceleration} $a = \dt v$. Multiplying by the fluid element's (scalar) \lingo{mass} $m$ gives the force $f = ma$ that produced the acceleration; dividing by an electrically produced force by the fluid element's charge $q$ gives another vector, the electric field $E = f/q$ and so on. We can define \lingo{inner product of pairs of vectors} (\eg, force and displacement) to obtain a new scalar(\eg, work) and \lingo{cross products of vectors} to obtain a new vector (\eg, torque). By examining how a differentiable scalar field changes from point to point, we can define its \lingo{gradient}. Thus, we can construct all of the standard scalars and vectors of Newtonian physics. What is important is that
+\begin{quote}
+these physical quantities require \emph{no} coordinate system for their definition.
+\end{quote}
+They are geometric (coordinate-independent) objects residing in Euclidean 3-space at a particular time.
+
+We can summarize this by stating that
+\begin{quote}
+the Newtonian physical laws are \emph{all} expressible as geometric relationships between these types of geometric objects and these relationships do \emph{not} depend upon any coordinate system or orientation of axes, nor on any reference frame (on any purported velocity of the Euclidean space in which the measurements are made).
+\end{quote}
+This principle is called the \lingo{Geometric Principle} for the laws of physics. It is the Newtonian analog of Einstein's Principle of Relativity.

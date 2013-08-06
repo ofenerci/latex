@@ -1,0 +1,579 @@
+\section{Modeling -- Applied Mathematics}
+
+
+\subsection{Mathematical Modeling: Introductory Remarks}-
+Applied mathematics deals with problems arising in the sciences, engineering and social sciences. Starting with a \emph{world} problem, the goal is to give it a mathematical structure, mostly in terms of equations, analyze these equations, set them in a computational framework, and come up with quantitative results on the original problem. A \lingo{validation process} should be put in place to evaluate whether the results obtained accurately reflect the original problem.
+
+The task of the applied mathematician may be summarized as follows:
+\begin{itemize}
+\item Consider problems emerging from science, engineering, medicine, social sciences, and, in general, from \emph{real life}.
+%
+\item Give them a mathematical structure as appropriate, for instance, using the laws of physics (such as balance laws, mass, linear momentum, energy, \etc.), or make reasonable assumptions motivated by the experiments in question, or by whatever information is available on the problem. Once the model is built, it is very important to examine how it can be \emph{transported} to problems that have emerged from very different situations.
+%
+\item Apply methods of analysis to study the mathematical model at hand. These methods may relate to differential equations (ordinary, partial, stochastic, and so on), linear algebra, statistics, and so forth. In many occasions, new mathematics have emerged from the process of solving a real life problems. For instance, calculus emerged from the the study of gravity and planetary motion; the Maxwell equations and their analysis resulted from the study of electromagnetic phenomena and its applications.
+%
+\item Cast the mathematical models in a computer amenable form. In problems formulated as systems of differential equations, this process typically involves discretization of space and time. Such discrete models are then analyzed by numerical methods, that are subsequently processed in a computer.
+%
+\item Validation and revision of the computer generated data in terms of the original problem, for instance, comparing the results to experimental measurements.
+\end{itemize}
+
+\subsubsection{Examples: Harmonic Oscillator} The equation of the harmonic oscillator shown in figure is
+\beq
+m\ddt x + kx = 0\,.
+\eeq
+
+The general solution is
+\beq
+x\vat t = A\cos\vat{\sqrt{\dfrac{k}{m}}}t + B\sin\vat{\sqrt{\dfrac{k}{m}}}t \,,
+\eeq
+where $A$ and $B$ are constants that depend on the prescribed initial data.
+
+The equation for the harmonic oscillator can be generalized to include friction ($c > 0$ denotes the friction coefficient), and also the presence of an external force $F = F\vat t$:
+\beq
+m\ddt x + c\dt x + kx = F\,.
+\eeq
+
+
+\subsubsection{Heat Equation}
+Let $D$ be a bounded domain in $\nset R3$, with smooth boundary $\bound D$. The equation giving the distribution of temperature $u = u\vat{\pvec, t}$ in $D$ is~\footnote{In compact notation: $\rho c\cder Tt = k\lder T$.}
+\beq
+\rho c\xpd Tt = k\gder^2 T\,,
+\eeq
+$\rho$ denotes the density of the material, $c$ the specific heat capacity, $k$ the conductivity. The independent variables are space $\pvec\in D$, and time $t\geq 0$. The unknown function $T = T\vat{\pvec, t}$ denotes temperature.
+
+To solve this equation, initial and boundary conditions need to be specified. The latter could be \lingo{isothermal} conditions; \ie, the temperature is prescribed on the boundary, or \lingo{flux} conditions when the amount of heat going through the boundary is given.
+
+Both, the linear oscillator equation and the heat equation are \lingo{linear}. 
+
+Topics on ordinary differential equations that we will study:
+\begin{itemize}
+\item Initial value problems for \lingo{nonlinear}, second order, and also special higher order equations. Analyze the evolution of the solution with time and its meaning. In the former case, we will study energy methods and the \lingo{phase plane}. One of the models that we will analyze is the \lingo{nonlinear pendulum} equation. We will also study some equations of third order, such as the \lingo{Lorenz} system, and \lingo{population models} such as the evolution of HIV.
+%
+\item In many applications, the equations governing phenomena of interest contain one or more parameters. Consequently, solutions will also depend on such parameters. When there is a \lingo{scale} separation among parameters, \lingo{perturbation} methods are called for. We will study \lingo{regular} and \lingo{singular} perturbation methods. Here is a simple example of an ordinary differential equation that can be explicitly solved (rare!!):
+\beq
+\xod yx = 1 + y^2\,,\qquad y\vat 0 = 0\,,
+\eeq
+We can see that the solution of this initial value problem is
+\beq
+y = \tan\vat x\,.
+\eeq
+Can we use this information to solve the modified equations
+\beq
+\xod yx = 1 + (1 + \epsilon)y^2\,,\qquad \magn\epsilon\ll 1\,?
+\eeq
+Again, this latter problem has also an exact solution. How does the solution depend on the parameter $\epsilon$? How do we solve problems for which there is no exact solution? The answer is provided by \lingo{perturbation methods}.
+%
+\item Perturbation methods and stability, such as the normal mode analysis, and eigenvalue problems.
+%
+\item Boundary value problems and bifurcation.
+%
+\end{itemize}
+
+The heat equation is a statement of \lingo{balance of energy}. Balance equations are very important in physics. We will present a derivation of the heat equation in terms of balance of energy.
+
+The heat equation is also associated with \lingo{diffusive processes} (\eg, as when salt is dissolved in water). From this point of view, the equation is associated with \lingo{stochastic} phenomenon. We will also study the heat equation in such a context.
+
+Prior to developing mathematical methods to solve certain problems, we will explore information that can be obtained on a problem from purely common sense.
+
+
+\subsection{Dimensional Analysis and Scaling Laws}
+
+\subsubsection{Drag Force}
+Let us discuss the following example. When we ride a bike, we notice that the \lingo{force of air resistance}, \aka drag force, is positively related to the speed and to the cross-sectional area (skinny versus broad rider). We want to find an equation that relates the force $F\txt d$ with the velocity $v$ and the area $A$.
+
+We could write a prototype equation such as $F\txt d =f\vat{A,v}$. However, since the force involves mass, the equation cannot depend on $v$ and $A$ only. So, let us write a new prototype equation:
+\beq
+F\txt d = f\vat{\rho\txt a, A, v}\,,
+\eeq
+where $\rho\txt a$ denotes air density, and with $f$ the relation to be determined. To find $f$, perform dimensional analysis. 
+
+To begin with, write the dimensions of the quantities in the MLT system:
+\beq
+\dim F\txt d = \phdim{ML/T^2}\,,\quad
+\dim \rho\txt a = \phdim{M/L^3}\,,\quad
+\dim A = \phdim{L^2}\quad\text{and}\quad
+\dim v = \phdim{L/T}\,.
+\eeq
+
+We have a system with four physical quantities and three dimensions. According to the Buckingham theorem, one dimensionless quantity $\kdim$ is enough to find $f$: $\kdim = f\vat{F\txt d, \rho\txt a, A, v}$. 
+
+The simplest dimensionful combination of the four quantities is $F\txt d/\rho\txt a A v^2$. Then, the prototype equation becomes $\kdim = F\txt d/\rho\txt a A v^2$. This, finally, yields the equation of the drag force:
+\beq
+F\txt d = \kdim\rho\txt a A v^2\,.
+\eeq
+
+Remark: Understanding scaling can help us to build small scale models of large phenomenon, such as wind tunnels to model airplanes.
+
+
+\subsubsection{The yield of a nuclear explosion by G.I. Taylor}
+G.I.Taylor (1940’s, Cambridge University) computed the energy yield of the first atomic explosion (New Mexico, 1945) after viewing the photographs of the spread of the fireball. He assumed that there exists a physical law of the form
+\beq
+g\vat{t,r,\rho, E} = 0\,.
+\eeq
+Here
+\begin{itemize}
+\item $r$ denotes the radius of the front at time $t$, 
+\item $\rho$ is the initial air density,
+\item $E$ is the energy released by the explosion.
+\end{itemize}
+
+We first ask how many dimensionless groups we can form with the quantities $\elset{t, r, \rho, E}$? We find that
+\beq
+\dfrac{r^5 \rho}{t^2 E}
+\eeq
+is dimensionless and that there are no other independent dimensionless quantities that we can form with $\elset{t, r, \rho, E}$.
+
+By the Pi-Theorem (\emph{any physical law has a dimensionless form}), we rewrite the original equation as
+\beq
+f\vat{\dfrac{r^5 \rho}{t^2 E}} = 0\,,
+\eeq
+that is, $f$ is a function of a single variable. Note that the solution corresponds to a root $\kdim$ (constant) of the previous equation. So, 
+\beq
+\kdim = \dfrac{r^5 \rho}{t^2 E}\,,
+\eeq
+which implies that
+\beq
+r = \left( \kdim\dfrac{Et^2}{\rho} \right)^{1/5}\,.
+\eeq
+
+This last relation is known as a \lingo{scaling law} and it states how the radius of the fireball grows with time: $r \propto t^{2/5}$. This is confirmed by experiments and photographs.
+
+
+\subsection{Mass Balance}
+A \lingo{mass balance}, also called a material balance, is an application of conservation of mass to the analysis of physical systems. By accounting for material entering and leaving a system, mass flows can be identified which might have been unknown, or difficult to measure without this technique. The exact conservation law used in the analysis of the system depends on the context of the problem but all revolve around mass conservation, i.e. that matter cannot disappear or be created spontaneously.
+
+Therefore, mass balances are used widely in engineering and environmental analyses. For example, mass balance theory is used to design chemical reactors, analyze alternative processes to produce chemicals as well as in pollution dispersion models and other models of physical systems. Closely related and complementary analysis techniques include the population balance, energy balance and the somewhat more complex entropy balance. These techniques are required for thorough design and analysis of systems such as the refrigeration cycle.
+
+In environmental monitoring the term budget calculations is used to describe mass balance equations where they are used to evaluate the monitoring data (comparing input and output, \etc.). In biology the dynamic energy budget theory for metabolic organization makes explicit use of mass and energy balances.
+
+
+\subsubsection{Introduction}
+The general form quoted for a mass balance is 
+\begin{quote}
+the mass that enters a system must, by conservation of mass, either leave the system or accumulate within the system.
+\end{quote}
+
+Mathematically the mass balance for a system \emph{without} a chemical reaction is as follows:
+\begin{quote}
+input = output + accumulation.
+\end{quote}
+
+Strictly speaking the above equation holds also for systems with chemical reactions if the terms in the balance equation are taken to refer to total mass; \ie, the sum of all the chemical species of the system. In the absence of a chemical reaction the amount of any chemical species flowing in and out will be the same. This gives rise to an equation for each species in the system. However, if this is not the case then the mass balance equation must be amended to allow for the generation (formation) or depletion (consumption) of each chemical species. Some use one term in this equation to account for chemical reactions, which will be negative for depletion and positive for generation. However, the conventional form of this equation is written to account for both a positive generation term (\ie, product of reaction) and a negative consumption term (the reactants used to produce the products). Although overall one term will account for the total balance on the system, if this balance equation is to be applied to an individual species and then the entire process, both terms are necessary. This modified equation can be used not only for reactive systems, but for population balances such as occur in particle mechanics problems. The equation is given below -- note that it simplifies to the earlier equation in the case that the generation term is zero:
+\begin{quote}
+input + formation = output + accumulation + consumption.
+\end{quote}
+%
+\begin{itemize}
+\item In the absence of a nuclear reaction the number of atoms flowing in and out are the same, even in the presence of a chemical reaction.
+%
+\item To perform a balance the boundaries of the system must be well defined.
+%
+\item Mass balances can be taken over physical systems at multiple scales.
+%
+\item Mass balances can be simplified with the assumption of \lingo{steady state}, where the accumulation term is zero.
+\end{itemize}
+
+
+\subsubsection{Illustrative example}
+A simple example can illustrate the concept. Consider the situation in which a slurry is flowing into a settling tank to remove the solids in the tank, solids are collected at the bottom by means of a conveyor belt partially submerged in the tank, and water exits via an overflow outlet.
+
+In this example, there are two substances, solids and water. The water-overflow outlet carries an increased concentration of water relative to solids, as compared to the slurry inlet, and the exit of the conveyor belt carries an increased concentration of solids relative to water.
+
+Assumptions
+\begin{itemize}
+\item Steady state.
+\item Non-reactive system.
+\end{itemize}
+Analysis: The slurry inlet composition (by mass) is 50\% solid and 50\% water, with a mass flow of \SI{100}{kg/min}. The tank is assumed to be operating at steady state, and as such accumulation is zero, so input and output must be equal for both the solids and water. If we know that the removal efficiency for the slurry tank is 60\%, then the water outlet will contain \SI{20}{kg/min} of solids (40\% times \SI{100}{kg/min} times 50\% solids). If we measure the flow-rate of the combined solids and water, and the water outlet is shown to be \SI{60}{kg/min}, then the amount of water exiting via the conveyor belt is \SI{10}{kg/min}. This allows us to completely determine how the mass has been distributed in the system with only limited information and using the mass balance relations across the system boundaries.
+
+
+\subsubsection{Mass feedback (recycle)}
+Mass balances can be performed across systems which have cyclic flows. In these systems output streams are fed back into the input of a unit, often for further reprocessing.
+
+Such systems are common in grinding circuits, where materials are crushed then sieved to only allow a particular size of particle out of the circuit and the larger particles are returned to the grinder. However recycle flows are by no means restricted to solid mechanics operations, they are used in liquid and gas flows as well. One such example is in cooling towers, where water is pumped through the cooling tower many times, with only a small quantity of water drawn off at each pass (to prevent solids build up) until it has either evaporated or exited with the drawn off water.
+
+The use of the recycle aids in increasing overall conversion of input products, which is useful for low per-pass conversion processes, for example the Haber process.
+
+
+\subsubsection{Differential mass balances}
+A mass balance can also be taken differentially. The concept is the same as for a large mass balance, however it is performed in the context of a limiting system (\eg, one can consider the limiting case in time or, more commonly, volume). The use of a differential mass balance is to generate differential equations that can be used to provide an understanding and effective modeling tool for the target system.
+
+The differential mass balance is usually solved in two steps, firstly a set of governing differential equations must be obtained, and then these equations must be solved, either analytically or, for less tractable problems, numerically.
+
+A good example of the applications of differential mass balance are shown in the following systems:
+\begin{itemize}
+\item Ideal (stirred) Batch reactor.
+\item Ideal tank reactor, also named Continuous Stirred Tank Reactor (CSTR).
+\item Ideal Plug Flow Reactor (PFR).
+\end{itemize}
+
+\lingo{Ideal batch reactor}: the ideal completely mixed batch reactor is a closed system. Isothermal conditions are assumed, and mixing prevents concentration gradients as reactant concentrations decrease and product concentrations increase over time. Many chemistry textbooks implicitly assume that the studied system can be described as a batch reactor when they write about reaction kinetics and chemical equilibrium. The mass balance for a substance $A$ becomes
+\beq
+\text{in + form. = out + acc.}\implies 
+0 + \rrate A V = 0 + \xod{\amount A}{t}\,,
+\eeq
+where $\rrate A$ denotes the rate at which substance $\subs A$ is produced, $V$ is the volume (which may be constant or not), $\amount A$ the chemical amount ($n$) of substance $\subs A$.
+
+In a fed-batch reactor some reactants/ingredients are added continuously or in pulses (compare making porridge by either first blending all ingredients and the let it boil, which can be described as a batch reactor, or by first mixing only water and salt and making that boil before the other ingredients are added, which can be described as a fed-batch reactor). Mass balances for fed-batch reactors become a bit more complicated.
+
+
+\lingo{Reactive system:} In this example we will use the law of mass action to derive the expression for a chemical equilibrium constant.
+
+Assume we have a closed reactor in which the following liquid phase reversible reaction occurs:
+\beq
+\ce{aA + bB <-> cC + dD}\,.
+\eeq
+
+The mass balance for substance $\subs A$ becomes
+\beq
+\text{in + form. = out + acc.}\implies 
+0 + \rrate A V = 0 + \dtamount A\,.
+\eeq
+
+As we have a liquid phase reaction, then we can (usually) assume a constant volume and, since $\amount A = V\conc A$, where $\conc A$ is the concentration of $\subs A$, therefore we get
+\beq
+\rrate A V = V\dtconc A \implies 
+\rrate A = \dtconc A\,.
+\eeq
+
+\begin{quote}
+In many text books this is given as the ``definition of reaction rate'' without specifying the implicit assumption that we are talking about reaction rate in a closed system with only one reaction. This is an unfortunate mistake that has confused many students over the years.
+\end{quote}
+
+According to the law of mass action the forward reaction rate can be written as
+\beq
+r_{+1} = k_{+1}\bconc Aa\bconc Bb
+\eeq
+and the backward reaction rate as
+\beq
+r_{-1} = k_{-1}\bconc Cc\bconc Dd\,.
+\eeq
+The rate at which substance $\subs A$ is produced is thus
+\beq
+\rrate A = r_{-1} - r_{+1}\,.
+\eeq
+and since, at equilibrium, the concentration of $\subs A$ is constant we get
+\beq
+\rrate A = r_{-1} - r_{+1} = \dtconc A = 0
+\eeq
+or, rearranged
+\beq
+\dfrac{k_{+1}}{k_{-1}} = \dfrac{\bconc Cc\bconc Dd}{\bconc Aa\bconc Bb} = K\txt{eq}\,.
+\eeq
+
+
+\lingo{Ideal tank reactor/continuously stirred tank reactor:} the continuously mixed tank reactor is an open system with an influent stream of reactants and an effluent stream of products. A lake can be regarded as a tank reactor and lakes with long turnover times (\eg, with a low flux to volume ratio) can for many purposes be regarded as continuously stirred (\eg, homogeneous in all respects). The mass balance becomes
+\beq
+\text{in + form. = out + acc.}\implies
+q\vat 0 \conc A\vat 0 + \rrate A V = q\conc A + \dtamount A\,,
+\eeq
+where $q\vat 0$ and $q$ denote the \lingo{volumetric flow} in and out of the system and $\conc A\vat 0$ and $\conc A$ the concentration of $\subs A$ in the inflow and outflow. In an open system we can never reach a chemical equilibrium. We can, however, reach a steady state where all state variables (temperature, concentrations, \etc.) remain constant ($\text{acc. = 0}$).
+
+Example: Consider a bathtub in which there is some bathing salt dissolved. We now fill in more water, keeping the bottom plug in. What happens?
+
+Since there is no reaction, $\text{form.} = 0$, and, since there is no outflow, $q = 0$. The mass balance becomes
+\beq
+\text{in + form. = out + acc.}\implies
+q\vat 0 \conc A\vat 0 + 0 = 0\conc A + \dtamount A
+\eeq
+or
+\beq
+q\vat 0\conc A\vat 0 = \xod{\conc AV}{t} = V\dtconc A + \conc A\dt V\,.
+\eeq
+
+Using a mass balance for total volume, however, it is evident that $\dt V = q\vat 0$ and that $V = V_{t = 0} + q\vat 0t$. Thus we get
+\beq
+\dtconc A = \dfrac{q\vat 0}{V_{t = 0} + q\vat 0 t}\left(\conc A\vat 0 - \conc A\right)\,.
+\eeq
+
+Note that there is no reaction and hence no reaction rate or rate law involved, and yet $\dtconc A\neq 0$. We can thus draw the conclusion that reaction rate can not be defined in a general manner using $\dtconc A$. 
+\begin{quote}
+One \emph{must} first write down a mass balance before a link between $\dtconc A$ and the reaction rate can be found. 
+\end{quote}
+Many textbooks, however, define reaction rate as $v = \dtconc A$, \emph{without} mentioning that this definition implicitly assumes that the system is closed, has a constant volume and that there is only one reaction.
+
+\lingo{Ideal plug flow reactor (PFR):} The idealized plug flow reactor is an open system resembling a tube with no mixing in the direction of flow but perfect mixing perpendicular to the direction of flow. Often used for systems like rivers and water pipes if the flow is turbulent. When a mass balance is made for a tube, one first considers an infinitesimal part of the tube and make a mass balance over that using the ideal tank reactor model. That mass balance is then integrated over the entire reactor volume to obtain:
+\beq
+\xod{(q\conc A)}{V} = \rrate A\,.
+\eeq
+
+In numeric solutions, \eg, when using computers, the ideal tube is often translated to a series of tank reactors, as it can be shown that a PFR is equivalent to an infinite number of stirred tanks in series, but the latter is often easier to analyze, especially at steady state.
+
+
+\subsection{Models Derived from Balance Laws}
+
+\subsubsection{Mass and Energy Conservation}
+The conservation equations are derived using two basic principles: 
+\begin{itemize}
+\item the conservation laws and 
+\item the constitutive relations.
+\end{itemize}
+The conservation laws are based on the law of conservation of mass, which states that mass is conserved, and the Newton's law for the conservation of momentum, which states that the rate of change of momentum is equal to the sum of the applied forces. However, there is a complication when these are applied to flow systems, because fluids are transported with the mean flow, and so it is necessary to apply the conservation principles in a reference frame moving with the fluid. Therefore, the time derivatives used in the conservation equations have to be defined a little more carefully. So we will first consider the concept of `substantial derivatives' before we proceed to deriving the conservation equations. Substantial derivatives will be illustrated using a position dependent concentration field as an example.
+
+Partial derivative: The partial time derivative of the concentration is the rate of change of concentration $c$ at a \emph{fixed} location in space. Fix the location of observation, and determine the change in the concentration with time at this position. If the concentration at the position $\pvec$ at time $t$ is $c\vattpvec$ and the concentration at position $\pvec$ at time $t + \diff t$ is $c\vat{t + \diff t, \pvec\vat t}$, the `partial derivative' is written as
+\beq
+\xpd c t\vattpvec = \lim_{\diff t\to 0}\dfrac{1}{\diff t}c\vat{\pvec\vat t, t + \diff t} - c\vattpvec\,.
+\eeq
+
+
+\subsubsection{Substantial Derivative}
+Though the partial derivative is defined as the change in the value of the concentration at a point in the fluid, this does not reflect the change in the concentration in material volumes, because these material volumes are convected with the flow. Therefore, the volume of fluid which was located at $\tuple{\cnvec \pvec 1, \cnvec \pvec 2, \cnvec \pvec 3}$ at time $t$ would have moved to a new position $\tuple{\cnvec \pvec 1 + \dtcntens\pvec 1\diff t, \cnvec \pvec 2 + \dtcntens\pvec 2\diff t, \cnvec \pvec 3 + \dtcntens\pvec 3\diff t}$ at time $t + \diff t$. 
+\begin{quote}
+The substantial derivative determines the change in concentration on material volumes that are moving with the fluid.
+\end{quote}
+In a three dimensional flow, there are three components of the velocity field $v = \dtcntens\pvec k = \cntens vk$, and the substantial derivative contains terms due to each of these three components $\elset{v_1, v_2, v_3}$:
+\beq
+\mder ct = v\iprod\gder c = v\iprod\grad c\,.
+\eeq
+
+We mentioned that some mathematical models, especially those coming from mechanics, can be formulated in terms of balance laws. The next example presents a statement of balance of energy leading to the heat equation.
+
+
+\subsubsection{Equation of Balance of Energy}
+We derive an equation governing the flow of heat in a homogeneous, isotropic and continuous solid. This picture represents a bounded domain $\region D\subset\nset R3$, with smooth boundary, $\bound\region D$. The vector $n$ denotes the unit outward normal to the boundary, and $q$ represents the heat flux vector. In addition to $q$, we introduce the energy density $E\vat{\pvec,t}$ (energy per unit volume at a point $\pvec$ and at time $t$). This energy is associated with random molecular motion. Recall that $q\iprod n$ represents the amount of energy (heat) going out of the domain across the boundary per unit area and per unit time. (So, $-q\iprod n$ is the influx).
+
+The following equation is the statement of balance of energy~\footnote{~Rate of input energy plus rate of energy release equals rate of output energy plus rate of energy accumulation within the body and plus rate of energy consumption. In the present case, only rate of input energy and of energy accumulation are considered.} in the body $\region D$:
+\beq
+\xod{}t \int_{\region D} E\vat{\pvec, t}\,\dx\region V = -\int_{\bound\region D} q\iprod n\,\dx\region S\,,
+\eeq
+where $\region V\subset\region D$ is the control volume and $\region S$ the outward surface of the control volume.
+
+Differentiating under the integral sign and applying the divergence theorem to the surface integral gives
+\beq
+\xod{}t \int_{\region D} E\vat{\pvec, t}\,\dx\region V + \int_{\region D} \gder\iprod q\,\dx\region V 
+    = \int_{\region D} \left(\xpd Et\vat{\pvec, t} + \gder\iprod q\right)\dx\region V
+    = 0\,.
+\eeq
+
+Note that this statement of balance of energy can be applied to any part of the body $\region D$. It, then, follows that the integrand is identically zero. (Here we assume that the integrand is continuous, in which case, the localization theorem applies). Hence,
+\beq
+\xpd Et\vat{\pvec, t} + \gder\iprod q = 0\,.
+\eeq
+(Note: a bit of dim analysis is in rigor now: $\dim\cder Et = \phdim{E/TV}$, since $\dim E = \phdim{E/V}$, and $\dim\gder\iprod q = \phdim{1/L}\phdim{E/AT} = \phdim{E/TV}$. Hence, the equation is dimensionally homogeneous.)
+
+We observe that this equation has more unknowns than variables. So, we need to specify constitutive equations, that is, relations between $E$ and $q$ so as to get a single unknown field.
+
+Constitutive equations also specify the type of material under consideration. In this case, we assume that
+\beq
+E\vat{\pvec, t} = \rho cT\vat{\pvec, t}\qquad\text{and}\qquad 
+q\vat{\pvec, t} = -k\gder T\vat{\pvec, t}\,.
+\eeq
+
+The first equation gives the energy of the body as function of the absolute temperature. This is consistent with temperature as measure of random molecular motion. The second equation is Fourier Law of heat conduction expressing the fact that heat flows from hot to cold. Here,
+\begin{itemize}
+\item $\rho > 0$ denotes the material mass density, and $c > 0$ the specific heat capacity, the amount of heat required to raise the temperature of unit of mass of the material, at temperature $T$, by one degree,
+%
+\item $k > 0$ represents the heat conductivity.
+\end{itemize}
+
+So, substituting the previous constitutive relations into the equation of balance of energy (local form), we get the heat equation:
+\beq
+\xpd Tt = \gder\iprod(\kappa\gder T)\,, \quad\text{where}\quad \kappa = \dfrac{k}{\rho c}\,.
+\eeq
+(Sanity check: $\dim\cder Tt = \phdim{\Theta/T}$ and $\dim \gder\iprod(\kappa\gder T) = \phdim{1/L}\phdim{L^2/T}\phdim{1/L}\phdim{\Theta} = \phdim{\Theta/T}$.)
+
+(Nomenclature: since $T$ is a function of the position vector and returns a scalar, then it is known as a scalar field or, more specifically, a temperature field; \ie, it's a function that assigns temperature to every point of $\region D$.)
+
+The quantity $\kappa$ is called the \lingo{thermal diffusivity of the material}. Examples of thermal conductivity values in $\si{m^2/s}$:
+\begin{itemize}
+\item water: $\num{1.4e-7}$;
+\item air: $\num{2.2e-5}$;
+\item gold: $\num{1.27e-4}$ (best heat conductor).
+\end{itemize}
+
+Finally, if $\region D$ represents an homogeneous material, then $\kappa$ is constant throughout the body. Thus, the heat equation can be written as
+\beq
+\xpd Tt = \kappa\gder\iprod\gder T = \kappa\gder^2 T = \kappa\lder T\,,
+\eeq
+where $\lder$ is called the Laplace operator.
+
+Note that the appearance of material properties such as $c$, $k$ and $\kappa$ is a sure sign that we have introduced a constitutive relation, and it should be stressed that these relations between $E$, $q$ and $T$ are material-dependent and experimentally determined. There is no \latin{a priori} reason for them to have the nice linear form given above, and indeed for some materials one or other may be strongly nonlinear.
+
+
+\subsection{Yet another derivation of the continuity equation for energy}
+Consider a body whose center temperature is greater than its outer surface temperature. Experience states that the energy in the center must flow to the outer surface. The task is then to find the energy distribution inside the body. We do so by applying the conservation of energy principle.
+
+Let $e$ be the internal energy density of the body and let $\dx v$ be the volume of a non-moving control volume inside the body of volume $v$. Since the energy contained in the control volume is $e\,\dx v$, then the total internal energy of the body is $\int_{v}e\,\dx v$. Now the rate at which the internal energy decreases is thus
+\beq
+-\xod{}{t}\int_{v}e\,\dx v = -\int_{v}\xpd{e}{t}\,\dx v\,,
+\eeq
+where the dimensions of the last equation are those of energy flow~\footnote{~We have chosen the energy, length, time and temperature, $ELT\Theta$, dimensional system.}, $E/T$, \aka thermal power.
+
+On the other hand, the energy flowing out of the control volume through its oriented surface boundary $\bound v$ is $\flux\iprod n\,\dx s$, where $\flux$ is the energy flux, $n$ a normal vector pointing out the control volume of surface $\dx s$. Thus, the total energy flux out of the body is
+\beq
++\int_{\bound v}\flux\iprod n\,\dx s = +\int_{v}\div\flux\,\dx v\,,
+\eeq
+where the dimensions of the last equation are also those of energy flow, $E/T$.
+
+Since according to the conservation of energy principle, the two energy flows must be equal to one another, we find therefore that
+\beq
+-\int_{v}\xpd{e}{t}\,\dx v = +\int_{v}\div\flux\,\dx v\implies
+\int_{v}\left(\xpd{e}{t} + \div\flux \right)\,\dx v = 0\,.
+\eeq
+
+The last equation must hold for the whole of the body, which implies a vanishing integrand, or
+\beq
+\xpd{e}{t} + \div\flux = 0\,,
+\eeq
+whose dimensions are those of energy density flow, $E/L^3T$.
+
+We need next a way to relate the body internal energy to the energy flowing from the body center to its outer surface. We use two experimentally based relationships, \aka constitutive equations. 
+
+On the one hand, experimental evidence suggests that the internal energy of a body is proportional to its temperature: $e\propto T$ or $e = \rho c T$, where $\rho$ is the body mass density, $c$ a thermal property of the body material called \lingo{specific heat capacity}, $\dim c = E/M\Theta$, and $T$ body temperature. The term $\rho c$ is called \lingo{volumetric heat capacity}, $\dim\rho c = E/L^3\Theta$. Introducing $e = \rho c T$, we find
+\beq
+\xpd et = \xpd{\rho c T}{t} = \rho c\xpd Tt\,,
+\eeq
+where, in the last equality, we assumed that the body is homogeneous, so $\rho$ and $c$ are constant.
+
+Fourier, on the other hand, proposed, after experimental analysis, that the energy flux is proportional to the temperature gradient: $\flux\propto\grad T$ or $\flux = -k\grad T$, where the negative sign reflects the fact that the flow occurs in the direction of decreasing temperature and where $k$ is a thermal property of the body material called \lingo{thermal conductivity}, $\dim k = E/LT\Theta$. Introducing this relation, called Fourier's law, in the place of $\gder\iprod\flux$, we have
+\beq
+\div\flux = \div\left(-k\grad T\right)
+                 = -k\lap T\,,
+\eeq
+where, in the last equality, it was assumed that the body is homogeneous and isotropic, so that $k$ is constant throughout the body and independent on the flow direction. Besides, Laplace operator, $\lap T = \div\grad T$, was used.
+
+Equating again both fluxes yields
+\beq
+\rho c\xpd Tt = -k\lap T \implies
+      \xpd Tt = -\lambda\lder T\,,
+\eeq
+where the body thermal property $\lambda = k/\rho c$ is called \lingo{thermal diffusivity}, $\dim\lambda = L^2/T$, and $\lder$ is Laplace operator in terms of the geometric derivative, $\gder$. Last equation is called \lingo{heat equation}.
+
+Finally, the heat equation can be alternatively written using index notation and Einstein summation convention once a coordinate system has been chosen. In the case of Cartesian coordinates: $\igder tT = -\lambda\igder{\pvec\pvec} T$ or using the comma derivative notation as $\cder Tt = -\lambda\cder T{\pvec\pvec}$. In the case of general curvilinear coordinates, say $\tuple{\cntens\xi 1, \cntens\xi 2, \cntens\xi 3}$, one must replace Laplace operator by
+\beq
+\lder = \gder\cntens\xi m\iprod \gder\cntens\xi n\dfrac{\partial^2}{\partial\cntens\xi m\cntens\xi n}
+        + \lder\cntens\xi m\dfrac{\partial}{\partial\cntens\xi m}\,,
+\eeq
+where the summation over repeated indices is implied.
+
+
+\subsection{Mass continuity equation}
+Consider a mass of non-reactive solute placed into the center of a solvent of volume $v_s$, given a solution volume $v$. As the solute dissolves into the solvent, the solute concentration varies spatially and temporally in such a way that its mass flows from more concentrated zones to less concentrated ones. This phenomenon can be mathematically described in the same fashion as the case of a hot-center body, but using the mass conservation principle instead of the energy conservation principle.
+
+Using similar arguments that those used in the energy continuity equation derivation, one finds
+\beq
+\xpd{\conc s}t + \div\flux = 0\,,
+\eeq
+where $\conc s$ is the solute $\ce s$ concentration, solute mass per unit solution volume, $\flux$ the concentration flux. Note that the equation has dimensions of concentration flow, $M/L^3T$. (The dimensions of the divergence are the same as the geometric derivative; \ie, $\dim\div = 1/L$.)
+
+Now, we need a way to relate $\conc s$ and $\flux$; \ie, a constitutive equation. Such a relation is given by Fick's first law of diffusion: experimentation suggests that the concentration flux is proportional to the concentration gradient; that is, $\flux = -d\grad\conc s$, where the minus sign reflects the fact that the flow occurs in the direction of decreasing concentration and where $d$ is a molecular property of the solute called \lingo{diffusivity}. Diffusivity is proportional to the squared velocity of the diffusing particles, which, in turns, depends on solvent temperature, solvent viscosity and particle size. Note that $\dim d = L^2/T$. Then, using Fick's law, we find that
+\beq
+\xpd{\conc s}t = -\div\left(d\grad\conc s\right) = -d\lap\conc s = -d\lder\conc s\,,
+\eeq
+where in the last two equations it was assumed that the body is homogeneous and isotropic; \ie, $d$ is constant and independent on the flow direction.
+
+
+\subsection{Chemical Kinetics}
+
+[A. Cornish-Bowden, Fundamentals of Enzyme Kinetics, Fourth Edition]
+
+\subsubsection{First-order kinetics}
+
+The rate $v$ of a first-order reaction $\ce{A -> P}$ can be expressed as 
+\beq
+v = \dt p = -\dt a = ka = k(a_0 - p)\,,
+\eeq
+in which $a$ and $p$ are the concentrations of $\ce A$ and $\ce P$ respectively at any time $t$, $k$ is a first-order rate constant and $a_0$ is a constant. As we shall see throughout this book, the idea of a \lingo{rate constant}~\footnote{Some authors, especially those with a strong background in physics, object to the term ``rate constant'' (preferring ``rate coefficient'') for quantities like $k$ in the last equation and for many similar quantities that will occur in this book, on the perfectly valid grounds that they are not constant, because they vary with temperature and with many other conditions. However, the use of the word ``constant'' to refer to quantities that are constant only under highly restricted conditions is virtually universal in biochemical kinetics (and far from unknown in chemical kinetics), and it is hardly practical to abandon this usage in this book.}
+% end footnote
+is fundamental in all varieties of chemical kinetics. The first two equality signs in the equation represent alternative definitions of the rate $v$: because every molecule of $\ce A$ that is consumed becomes a molecule of $\ce P$, it makes no difference to the mathematics whether the rate is defined in terms of the appearance of product or disappearance of reactant. It may make a difference experimentally, however, because experiments are not done with perfect accuracy, and in the early stages of a reaction the relative changes in $p$ are much larger than those in $a$ (Figure 1.2). For this reason it will usually be more accurate to measure increases in $p$ than decreases in $a$.
+
+The third equality sign in the equation is the one that specifies that this is a first-order reaction, because it states that the rate is proportional to the concentration of reactant $\ce A$.
+
+Finally, if the time zero is defined in such a way that $a = a_0$ and $p = 0$ when $t = 0$, the stoichiometry allows the values of $a$ and $p$ at any time to be related according to the equation $a + p = a_0$, thereby allowing the last equality in the equation.
+
+The last equation can readily be integrated by separating the two variables $p$ and $t$, bringing all terms in $p$ to the left-hand side and all terms in $t$ to the right-hand side:
+\beq
+\int \dfrac{\dx p}{a_0 - p} = \int k\dx t\,,\implies
+- \ln\vat{a_0 − p} = kt + \alpha\,,
+\eeq
+in which $\alpha$, the constant of integration, can be evaluated by noting that there is no product at the start of the reaction, so $p = 0$ when $t = 0$. Then $\alpha = -\ln\vat{a_0}$ and so
+\beq
+\ln\vat{1 - p/a_0} = -kt\,.
+\eeq
+Taking exponentials of both sides and rearranging terms, we have
+\beq
+p = a_0\left(1 - \exp\vat{-kt}\right)\,.
+\eeq
+
+Notice that the constant of integration $\alpha$ was included in this derivation, evaluated and found to be nonzero. Constants of integration must always be included and evaluated when integrating kinetic equations; they are rarely found to be zero.
+
+Inserting $p = 0.5a$ into the last equation at a time $t = t_{0.5}$ known as the \lingo{half-time} allows us to calculate $kt_{0.5} = ln 2 = 0.693$, so $t_{0.5} = 0.693/k$. This value is independent of the value of $a_0$, so the time required for the concentration of reactant to decrease by half is a constant, for a first-order process, as illustrated in Figure 1.3. The half-time is not a constant for other orders of reaction.
+
+
+\subsubsection{Second-order kinetics}
+The commonest type of bimolecular reaction is one of the form $\ce{A + B -> P + Q}$, in which two different kinds of molecule $\ce A$ and $\ce B$ react to give products. In this example the rate is likely to be given by a second-order expression of the form
+\beq
+v = \dt p = kab = k\left(a_0 - p\right)\left(b_0 - p\right)\,,
+\eeq
+in which $k$ is now a \lingo{second-order rate constant}~\footnote{~Conventional symbolism does not indicate the order of a rate constant. For example, it is common practice to illustrate simple enzyme kinetics with a mechanism in which $k_1$ is a second-order rate constant and $k_2$ is a first-order rate constant: there is no way to know this from the symbols alone, it is important to define each rate constant when it is first used.}. Again, integration is readily achieved by separating the two variables $p$ and $t$, with a solution:
+\beq
+\dfrac{a_0\left(b_0 - p\right)}{b_0\left(a_0 - p\right)} = \exp\vat{\left(b_0 - a_0\right)kt}\,.
+\eeq
+
+A special case of this result is important: if $a_0$ is negligible compared with $b_0$, then $\left(b_0 − a_0\right) \sim b_0$; $p$ can never exceed $a_0$, on account of the stoichiometry of the reaction, and so $\left(b0 − p\right) \sim b_0$. Introducing both approximations, the last equation can be simplified as follows:
+\beq
+p = a_0\left(1 - \exp\vat{-kb_0t}\right)\,,
+\eeq
+which has exactly the same form as the equation for a first-order reaction. This type of reaction is known as a \lingo{pseudo-first-order reaction}, and $kb_0$ is a \lingo{pseudo-first-order rate constant}. Pseudo-first-order conditions occur naturally when one of the reactants is the solvent, as in most hydrolysis reactions, but it is also advantageous to create them deliberately, to simplify evaluation of the rate constant.
+
+\subsubsection{Dimensions of rate constants}
+Dimensional analysis provides a quick and versatile technique for detecting algebraic mistakes and checking results. It depends on the existence of a few simple rules governing the permissible ways of combining quantities of different dimensions, and on the frequency with which algebraic errors result in dimensionally inconsistent expressions. Concentrations can be expressed in \si{M} (or \si{mol/L}), and reaction rates in \si{M/s}. In an equation that expresses a rate $v$ in terms of a concentration $a$ as $v = ka$, therefore, the rate constant $k$ must be expressed in $\si{s^{−1}}$ if the left- and right- hand sides of the equation are to have the same dimensions. All first-order rate constants have the dimensions of $\si{time^{−1}}$, and by a similar argument second-order rate constants have the dimensions of $\si{concentration^{−1}.time^{−1}}$ (Figure 1.7), third-order rate constants have the dimensions of $\si{concentration^{−2}.time^{−1}}$, and zero-order rate constants have the dimensions of $\si{concentration.time^{−1}}$.
+
+\subsubsection{Reversible reactions}
+All chemical reactions are reversible in principle, and for many the reverse reaction is readily observable in practice as well, and must be allowed for in the rate equation:
+\beq
+\ce{A <=>T[$k_1$][$k_{-1}$] P}\,,
+\eeq
+where the concentration of $\ce A = a_0 - p$ and that of $\ce P = p$. In this case,
+\beq
+v = \dt p
+  = k_1 \left(a_0 - p\right) - k_{-1}p
+  = k_1 a_0 - \left(k_1 + k_{-1}\right)p\,.
+\eeq
+This differential equation is of exactly the same form as equation 1.1, and can be solved in the same way:
+\beq
+\int \dfrac{\dx p}{k_1 a_0 - \left(k_1 + k_{-1}\right)p} = \int\dx t\,,\implies
+\dfrac{\ln\vat{k_1 a_0 - \left(k_1 + k_{-1}p\right)}}{-\left(k_1 + k_{-1}\right)} = t + \alpha\,.
+\eeq
+
+Setting $p = 0$ when $t = 0$, gives $\alpha = -\ln\vat{k_1a_0}/\left(k_1 + k_{-1}\right)$. Replacing $\alpha$ in the above equation and, after rearranging, we have that
+\beq
+p = p_\infty\left(1 - \exp\vat{-\left(k_1 + k_{-1}\right)t}\right)\,,
+\eeq
+where $p_\infty = k_1a_0/\left(k_1 + k_{-1}\right)$. This is the value of $p$ after infinite time, because the exponential term approaches zero as $t$ becomes large. The expected behavior is illustrated in Figure 1.9.
+
+
+\subsubsection{Reaction rates}
+For a general chemical reaction
+\beq
+\ce{aA + bB + \dotsb\, -> \, yY + zZ + \dotsb}\,,
+\eeq
+we define \lingo{specific reaction rates} with respect to each reactant or product:
+\beq
+r_\Gamma = \pm \dfrac{1}{\nu}\xod{\Gamma}{t}\,,
+\eeq
+where $\nu$ is the stochiometric coefficient for species $\Gamma$ in the balanced equation. The + sign is used if $\Gamma$ is a product, the − sign if it is a reactant. Thus,
+\beq
+r_{\ce A} = -\dfrac{1}{a}\xod{\conc A}{t}\,.
+\eeq
+
+The rate always has units of concentration/time. For solution reactions the usual units are $\si{\mol/ls}$, while for gas phase reactions the most common unit is $\si{1/cm^{3}s}$.
+
+These specific rates are not necessarily the same for different species. If there are no reaction intermediates of significant concentrations, then
+\beq
+r_{\ce A} = r_{\ce B} = r_{\ce Y} = r_{\ce Z} = v\,,
+\eeq
+the rate of the reaction. For very many systems, intermediates are important, all the specific rates are different, and it is then necessary to specify which specific rate is being discussed.
+
+
+\subsubsection{Rate laws}
+For most reactions, the rate(s) depend on the concentrations of one or more reactants or products. Then we write
+\beq
+r_\Gamma = f\left(\conc A, \conc B, \conc Y, \conc I, \conc C, T, p, \dotsc \right)\,,
+\eeq
+where the list shows explicitly that $r$ might depend on the concentrations of species other than those in the balanced equation, as well as on temperature $T$, pressure $p$, and so on. Often the dependence on variables other than concentrations is suppressed (a set of conditions is implied or specified), so that we write
+\beq
+r_\Gamma = f\left(\conc A, \conc B, \conc Y, \conc I, \conc C, \dotsc \right)\,.
+\eeq
+This kind of expression, giving the rate of the reaction as a function of the concentrations of various chemical species, is called a \lingo{rate law}. Notice that the rate law is a differential equation: it gives the derivative (with respect to time) of one of the concentrations in terms of all the concentrations. The solution to such a differential equation is a function that gives the concentration of species $\Gamma$ as a function of time.
+

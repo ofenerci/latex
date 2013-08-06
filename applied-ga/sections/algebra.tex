@@ -1,0 +1,342 @@
+\section{Geometric Algebra}
+
+****** [blades, k-vectors, reverse, clifs, index notation, einstein convention, metric, gorm]
+
+Denote by $\set R$ the set of real numbers and call the elements of $\set R$ \lingo{scalars}. Next, denote by $\set R^+$ the set of positive real numbers including zero. Finally, denote by $\nset Rn$ the \lingo{$n$-dimensional real space} defined by $\nset Rn \defby \set R\sprod\dotsb\sprod\set R$, where $\set R\sprod\set R$ represents the Cartesian product of $\set R$ with $\set R$.
+
+
+\subsection{Geometric Product}
+
+\subsection{Algebra}
+Let $\nset Ln$ be an $n$-dimensional linear space and let $a,b,c\in\nset Ln$. Then, assume a \lingo{geometric product of $a$ and $b$}, denoted $ab$, satisfying:
+\begin{enumerate}
+\item associativity: $(ab)c = a(bc) = abc$\,;
+\item left-distributivity: $a(b + c) = ab + ac$\,;
+\item right-distributivity: $(b + c)a = ba + ca$\,;
+\item contraction: $aa = a^2 = \magn{a}^2$, where $\magn a\in\set R^+$ and $\magn{a} = 0$ if and only if $a = 0$\,.
+\end{enumerate}
+Note that, since $\magn a\in\set R^+$, thus $a^2\in\set R^+$.
+
+Since $\nset Rn$ is an $n$-dimensional linear space, define then the \lingo{$n$-dimensional Euclidean space}, denoted $\espace n$, as the set $\nset Rn$ equipped with a geometric product and call the elements of $\espace n$ \lingo{vectors}.
+
+Finally, consider hereafter the $n$-dimensional linear space $\nset Vn$ to be a subset of the $n$-dimensional Euclidean space $\espace n$ and also call vectors the elements of $\nset Vn$.
+
+
+\subsection{Geometry}
+Since $n$-dimensional real coordinate spaces are vector spaces, then scalar multiplication and vector addition are granted. The geometric product can thus be used (directly or indirectly, \eg, via decomposition into inner and outer products, see below) to calculate lengths and angles, to represent rotations, reflections and so on. In other words, the geometric product transforms real coordinate spaces into an arena for doing \lingo{Euclidean geometry} -- it transforms real spaces into Euclidean spaces.
+
+
+\subsection{Distance Between Vectors -- Metric}
+
+\subsubsection{Metric Definition}
+
+[Axioms of metric: \url{https://en.wikipedia.org/wiki/Metric_(mathematics)}.]
+
+\begin{definition}
+Consider a set $\set X$ and the elements $a,x,y,z\in\set X$. Then, define a \lingo{metric on the set $\set X$} as a function $\fdef{d}{\set X\sprod\set X}{\set R}$ satisfying
+\begin{enumerate}
+\item non-negativity or separation axiom: $d\vat{x,y}\geq 0$\,.
+%
+\item identity of indiscernibles or coincidence axiom: $d\vat{x,y} = 0$ if and only if $x = y$\,.
+%
+\item symmetry: $d\vat{x,y} = d\vat{y,x}$\,.
+%
+\item subadditivity or triangle inequality: $d\vat{x,z}\leq d\vat{x,y} + d\vat{y,z}$\,.
+\end{enumerate}
+Refer to a metric $d$ on $\set X$ \lingo{intrinsic} if any two points $x$ and $y$ in $\set X$ can be joined by a \lingo{curve} with length arbitrarily close to $d\vat{x,y}$.
+
+Finally, for sets on which an addition $\fdef{+}{\set X\sprod\set X}{\set X}$ is defined, refer to $d$ as a \lingo{translation invariant metric} if it satisfies:
+\beq
+d\vat{x,y} = d\vat{x + a, y + a}\,,
+\eeq
+for all $x$, $y$ and $a$ in $\set X$.
+\end{definition}
+
+
+\subsubsection{Algebra}
+Consider two vectors $x,y\in\espace n$. Then, define the \lingo{distance between $x$ and $y$}, denoted $d$, by
+\beq
+d\vat{x,y} = \sqrt{\magn{x - y}}\,.
+\eeq
+Call the distance herein defined also \lingo{Euclidean metric} or \lingo{Euclidean distance}, since it satisfies the axioms of a metric and it is defined in $\espace n$.
+
+The Euclidean metric here defined satisfies the axioms of a metric and thus turns $\nset Vn$ on a metric space. Additionally, note that the Euclidean metric is intrinsic and translation invariant.
+
+Finally, hereafter, agree on referring to the Euclidean metric simply as metric.
+
+
+\subsubsection{Geometry}
+
+
+\subsection{Magnitude of Vectors}
+
+\subsubsection{Algebra}
+Consider a vector $a\in\nset Vn$. Then, define the \lingo{magnitude of a}, denoted $\magn a$, by $\magn a^2 \defby aa$. 
+
+By the contraction axiom, the magnitude of a vector is a scalar.
+
+Refer to the magnitude of a vector herein defined also as \lingo{Euclidean norm} or \lingo{Euclidean length}.
+
+
+\subsubsection{Geometry -- Length}
+The magnitude of a vector measures its \lingo{length}.
+
+
+\subsubsection{Geometry -- Scalar Multiples}
+Consider a scalar $\alpha\in\set R$ and vector $a\in\nset Vn$. Then, define the \lingo{scalar multiple $\alpha a$} the vector whose magnitude is $\magn\alpha\magn a$ and whose direction is
+\begin{enumerate}
+\item the same as $a$ if $\alpha >0$ (positive)\,;
+\item undefined if $\alpha = 0$\,;
+\item the same as $-a$ if $\alpha < 0$\,.
+\end{enumerate}
+From the last item, it follows that $-(\alpha a) = (-\alpha)a$.
+
+Consider a scalar $\beta\in\set R$. The scalar multiple also satisfies
+\begin{enumerate}
+\item associativity: $\alpha(\beta a) = (\alpha\beta)a$\,; 
+\item distributivity: $\alpha(a + b) = \alpha a + \alpha b$ and $(\alpha + \beta)a = \alpha a + \beta a$\,.
+\end{enumerate}
+
+
+\subsection{Distance \vs. Length}
+Consider two fixed points in $\nset Vn$, say $\point P$ and $\point Q$, and an arbitrary point $\point O$ also in $\nset Vn$. Then, set the position of $\point P$ relative to $\point O$ with a vector $\pvec_{\point P}$ and the position of $\point Q$ relative to $\point O$ with a vector $\pvec_{\point Q}$. Calculate the Euclidean distance between $\point P$ and $\point Q$ by
+\beq
+d\vat{\point P, \point Q} = d\vat{\pvec_{\point P}, \pvec_{\point Q}} = \sqrt{\magn{\pvec_{\point P} - \pvec_{\point Q}}} \,.
+\eeq
+
+On the other hand, set a vector from $\point P$ to $\point Q$: the vector $\pvec_{\point{PQ}}$. The length of such a vector also measures the distance between $\point P$ and $\point Q$ and is given by the vector magnitude
+\beq
+d\vat{\point P, \point Q} = \magn{\pvec_{\point{PQ}}}\,.
+\eeq
+
+Since the distance between both points is the same, then both methods provide the same answer, but the vector magnitude one is efficient. That is, to calculate distances using the Euclidean distance formula three points are needed, while using the vector magnitude requires only two. The advantage of the vector magnitude method reveals itself when dealing with differential distances $\elset{\dx\pvec}$ between neighboring points.
+
+
+\subsection{Normal Vectors}
+Consider a vector $\fvec\in\nset Vn$. Then, call $\fvec$ a \lingo{normal vector} if its magnitude equals unity; \ie, $\magn\fvec = 1$. Call a \lingo{non-normal vector} a vector whose magnitude is not unity.
+
+Normal vectors are also called \lingo{unit vectors}.
+
+Consider next a nonzero, non-normal vector $a\in\nset Vn$. Then, define the \lingo{normalization of $a$} the map $a\mapsto a/\magn a$.
+
+In other words, normalize the vector $a$, denoting the result as $\nvec a$, by
+\beq
+\nvec a \defby \dfrac{a}{\magn a}\,.
+\eeq
+Since $\magn a$ is a scalar, then $\nvec a$ maps vectors to vectors.
+
+By the contraction axiom, note that $a/\magn a$ is a normal vector.
+
+
+\subsection{Inverse of Vectors}
+Consider a non-zero vector $a\in\nset Vn$. Then, define the \lingo{inversion of $a$} the map $a\mapsto a/a^2$. 
+
+In other words, invert $a$, or calculate the inverse of $a$, denoting the result as $\inv a$, by
+\beq
+\inv a = \dfrac{1}{a} \defby \dfrac{a}{a^2}\,.
+\eeq
+Since $a^2$ is a scalar, then $\inv a$ maps vectors to vectors.
+
+Note that, by the contraction axiom, $a\inv a = 1$.
+
+
+\subsection{Commutator and Anti-commutator Products}
+Let $a,b\in\nset Vn$. Then, define the \lingo{anti-commutator product of $a$ and $b$} by $\acom ab\defby\xacom ab$. Similarly, define the \lingo{commutator product of $a$ and $b$} by $\com ab\defby\xcom ab$.
+
+
+\subsection{Symmetric and Anti-symmetric Operators}
+Consider a set $\set S$. For $a, b\in\set S$, let $\bprod$ be a binary operation between $a$ and $b$; \ie, $(a\bprod b)\in\set S$. Call the operation \lingo{symmetric} if it satisfies $a\bprod b = b\bprod a$. Call the operation \lingo{anti-symmetric} if it satisfies $a\bprod b = -b\bprod a$.
+
+
+\subsection{Inner Product of Vectors}
+
+\subsubsection{Algebra}
+Let $a, b\in\nset Vn$. Then, define the \lingo{inner product of $a$ and $b$} by
+\beq
+a\iprod b \defby \acom ab = \xacom ab\,.
+\eeq
+
+For \emph{vectors}, the inner product is symmetric: $a\iprod b = b\iprod a$.
+
+The inner product of two vectors results in a scalar: $(a\iprod b)\in\set R$.
+
+The inner product of a vector by itself equals its squared: $a\iprod a = a^2$.
+
+Consider two scalars $\alpha, \beta\in\set R$ and a vector $c\in\nset Vn$. Then, the inner product also satisfies
+\begin{enumerate}
+\item commutativity (or symmetry): $a\iprod b = b\iprod a$\,;
+\item distributivity over vector addition: $a\iprod(b + c) = a\iprod b + a\iprod c$\,;
+\item associativity with scalar multiplication: $(\alpha a)\iprod b = \alpha(a\iprod b)$\,.
+\end{enumerate}
+
+
+\subsubsection{Geometry}
+Consider two nonzero vectors $a,b\in\nset Vn$. Then, define the \lingo{angle between $a$ and $b$}, denoted $\theta$, by
+\beq
+\magn a\magn b\cos\theta \defby a\iprod b\,.
+\eeq
+
+Call two vectors \lingo{orthogonal}, \aka \lingo{perpendicular}, denoted $a\ortho b$, if $a\iprod b = 0$ and thus their product anti-commutes; \ie, $ab = a\oprod b = -ba$.
+
+
+\subsection{Outer Product of Vectors}
+
+\subsubsection{Algebra}
+Let $a, b\in\nset Vn$. Then, define the \lingo{outer product of $a$ and $b$} by
+\beq
+a\oprod b \defby \com ab = \xcom ab\,.
+\eeq
+
+For \emph{vectors}, the outer product is anti-symmetric. Let $a,b\in\nset Vn$, then $a\iprod b = -b\oprod a$.
+
+The outer product of a vector by itself equals zero. Let $a\in\nset Vn$, then $a\oprod a = 0$.
+
+
+\subsubsection{Geometry}
+Call two vectors $a,b\in\nset Vn$ \lingo{parallel} or \lingo{colinear}, denoted $a\parallel b$, if $a\oprod b = 0$ and thus their product commutes; \ie, $ab = a\iprod b = ba$.
+
+
+\subsection{Canonical Decomposition of the Geometric Product of Vectors}
+Let $a, b\in\nset Vn$. Then, write the geometric product of $a$ and $b$ as the sum of a symmetric and anti-symmetric parts:
+\beq
+ab = \dfrac{1}{2}\acom ab + \dfrac{1}{2}\com ab = a\iprod b + a\oprod b\,.
+\eeq
+Call the last equation the \lingo{canonical decompostion of the geometric product of vectors}.
+
+
+\subsection{Frames}
+The vectors of a set $a_1,a_2,\dotsc,a_r$ are \lingo{linearly independent} if and only if the $r$-blade
+\beq
+\sclif Ar = a_1\oprod a_2\oprod\dotsb\oprod a_r
+\eeq
+is not zero.
+
+Call an ordered set of vectors $\setprop{a_k}{k=1,2,\dotsc,n}$ in an $n$-dimensional linear space $\nset Vn$ a \lingo{frame for $\nset Vn$}, \aka a \lingo{basis for $\nset Vn$}, if and only if the vectors are linearly independent.
+
+Consider an $n$-dimensional linear space $\nset Vn$. Then, call an ordered set of vectors $\ifrm k1n$ in $\nset Vn$ a \lingo{standard frame for $\nset Vn$} if the vectors are linearly independent, mutually orthogonal and normal. Mathematically, standard frame elements $\frm k$ satisfy
+\beq
+\imet kl = \ifvec k\iprod\ifvec l = \dfrac{1}{2}(\xacom{\ifvec k}{\ifvec l})\,,
+\eeq
+where $\imet kl$ represent the \lingo{metric coefficients}.
+
+
+\subsection{Reciprocal Frames}
+Given a standard frame in $\nset Vn$, then define a \lingo{reciprocal frame} $\elset{\rfvec k = \inv{\ifvec k}}$ by 
+\beq
+\ifvec k = \imet kl\rfvec l\qquad\text{or}\qquad\ifvec k\iprod\rfvec l = \mkron lk\,.
+\eeq 
+
+To find the reciprocal frame element $\rfvec k$, apply the expression
+\beq
+\rfvec k = (-1)^{k-1}\ifvec 1\oprod\dotsb\oprod\ovec{\ifvec k}\oprod\dotsc\ifvec n\,\inv i\,,
+\eeq
+where $\ovec{\ifvec k}$ means that $\rfvec k$ must be omitted from the product.
+
+\begin{example}
+Consider a standard frame $\ifrm k13$. Then, construct the reciprocal frame $\rfrm k$.
+\end{example}
+
+\begin{solution}
+In this case, the standard frame elements are $\elset{\ifvec 1, \ifvec 2, \ifvec 3}$. Thus, the unit pseudoscalar is $i = \ifvec{123}$ and its inverse $\inv i = -i$.
+
+To find the reciprocal frame elements, apply the last equation for each $\rfvec k$; \ie,
+\begin{align*}
+\rfvec 1 = (-1)^{1-1}\ifvec 2\oprod\ifvec 3\,(-\ifvec{123}) = \ifvec 1\,,\\
+\rfvec 2 = (-1)^{2-1}\ifvec 1\oprod\ifvec 3\,(-\ifvec{123}) = \ifvec 2\,,\\
+\rfvec 3 = (-1)^{3-1}\ifvec 1\oprod\ifvec 2\,(-\ifvec{123}) = \ifvec 1\,.
+\end{align*}
+In other words, the standard frame elements equal its reciprocal frame elements.
+\end{solution}
+
+
+\subsection{Metric}
+Call $\espace n$ the \lingo{$n$-dimensional flat space}. The \lingo{flat space metric} $\metric$ equals the \lingo{Kronecker delta} $\kron$; that is, $\imet kl = \ikron kl$.
+
+In $\nset Vn$, the \lingo{unit pseudoscalar} $i$ is given by $i = \ifvec 1\ifvec 2\dotsb\ifvec n$.
+
+*** convention $\ifvec 1\ifvec 2 = \ifvec{12}$. Some examples of manipulation of the notation and the anti-symmetric property of outer product.
+*** find i for 3d and inv i for 3d.
+
+
+\subsection{Coordinates}
+Consider a standard frame $\frm k$ for $\nset Vn$ and its reciprocal frame $\rfrm l$ such that $\mmet lk = \ifvec k\iprod\rfvec l$. Then, express any vector $a\in\nset Vn$ as a linear combination of the frame elements by
+\beq
+a \defby \comp ak\ifvec k\,.
+\eeq
+Refer to the $\elset{\comp ak}$ as the \lingo{coordinates of $a$ in the frame $\frm k$}.
+
+Find the coordinates of $a$ by
+\beq
+\comp ak = a\iprod\ifvec k\,.
+\eeq
+
+%Then, for each vector $a\in\nset Vn$, define a set of \lingo{rectangular coordinates} $\elset{\comp ak}$ given by
+%\beq
+%\comp ak \defby \rfvec k\iprod a\qquad\text{and}\qquad a = \comp ak\ifvec k\,.
+%\eeq
+%Also, call the coordinates $\elset{\comp ak}$ the \lingo{components of $a$ onto the frame $\frm k$}.
+%
+%In a similar way, define a set of rectangular coordinates $\elset{\rcomp ak}$ given by
+%\beq
+%\rcomp ak \defby \ifvec k\iprod a\qquad\text{and}\qquad a = \rcomp ak\rfvec k\,.
+%\eeq
+%Also, call the coordinates $\elset{\rcomp ak}$ the \lingo{components of $a$ onto the frame $\rfrm k$}.
+%
+%Note that, since the vector $a$ is a geometric object -- independent on any frame, then both representations of $a$ must be equal:
+%\beq
+%a = \ifvec k\comp ak = \rfvec k\rcomp ak\,.
+%\eeq
+
+
+\subsubsection{Inner Product}
+Consider an $n$-dimensional vector space $\nset Vn$ and consider a standard frame $\frm k$ for $\nset Vn$. Then, write the inner product of $a$ and $b$ as
+\beq
+a\iprod b = \comp ai\ifvec i\iprod \comp bj\ifvec j
+          = \comp ai\ifvec i\iprod \ifvec j\comp bj
+          = \comp ai\imet ij\comp bj
+          = \comp ai\rcomp bj
+          = \rcomp ai\comp bj\,.
+\eeq
+
+
+\subsubsection{Outer Product}
+Consider 3-dimensional vector space $\nset V3$ and consider a standard frame $\frm k$ for $\nset V3$. Then, write the outer product of $\ifvec i$ and $\ifvec j$ as
+\beq
+\ifvec i\oprod\ifvec j = \lct_{ijk}\ifvec k\,,
+\eeq
+where $\lct$ is Levi-Civita's tensor defined by
+\beq
+\lct_{ijk} = 
+    \begin{cases}
+        1 & \text{if $ijk$ is a cyclic permutation of 123}\,,\\
+       -1 & \text{if $ijk$ is an anti-cyclic permutation of 123}\,,\\
+        0 & \text{otherwise}\,.
+    \end{cases}
+\eeq
+
+Consider the standard frame to be $\elset{\ifvec i, \ifvec j, \ifvec k}$ for $\nset V3$. Then, compute the outer product of $\ifvec i$ and $\ifvec j$ as
+\beq
+\ifvec i\oprod\ifvec j = \lct_{ijk}\ifvec k\,.
+\eeq
+
+Consider now two vectors $a,b\in\nset V3$. Then, write the outer product of $a$ and $b$ as
+\beq
+a\oprod b = \lct_{ijk}\comp ai\comp bj\ifvec k\,.
+\eeq
+
+Consider finally a third vector $c\in\nset V3$. Then, write the outer product of $a$, $b$ and $c$ as
+\beq
+a\oprod b\oprod c = \lct_{ijk}\comp ai\comp bj\comp ck\ifvec i\oprod\ifvec j\oprod\ifvec k
+                  = \lct_{ijk}\comp ai\comp bj\comp ck i\,,
+\eeq
+where $i$ is the \lingo{unit pseudo-scalar for $\nset V3$}.
+
+
+
+
+
+\subsection{Clifs}
+Let $C\in\nga n$. Then, define the \lingo{gorm of $C$} by
+\beq
+\gorm C \defby \xgorm C\,.
+\eeq

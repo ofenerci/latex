@@ -1,0 +1,169 @@
+\section{Notation}
+
+\begin{multicols}{2}
+%%%
+%%%
+\subsection{General Commands}
+\begin{itemize}
+\item to be defined by: a defby b: $a\defby b$.
+\item difference operator: diff a: $\diff a$.
+\item text in equations: eqtxt.
+\end{itemize}
+
+
+\subsection{Sets}
+\begin{itemize}
+\item set: set A: $\set A$.
+\item elements of a set: elset(a,b,c): $\elset{a,b,c}$.
+\item set with a property: setprop(x)(x>0): $\setprop{x}{x>0}$.
+\item Cartesian (set) product: set A setprod set B: $\set A\sprod\set B$.
+\item Cartesian power: nset An: $\nset An$.
+\item Dim-grade space (2 is the dimension and 3 is the grade): dgspace V23: $\dgspace V23$.
+\item $n$-dim Euclidean space: espace n: $\espace n$.
+\item $n$-dim Minkowski space: mkspace n: $\mkspace n$.
+\item geometric algebra: ga: $\ga$.
+\item geometric algebra on a $n$-dim. linear space $\nset Vn$: nga n: $\nga n$.
+\item dimension grade geometric algebra (2 is the dimension and 3 is the grade): dgga 23: $\dgga 23$.
+\item tuple: tuple(1,2,3): $\tuple{1,2,3}$.
+\end{itemize}
+
+
+\subsection{Functions}
+\begin{itemize}
+\item function definition: fdef(f)(set A cartprod set B)(set R): $\fdef{f}{\set A\sprod\set B}{\set R}$.
+\item function mapping: fmap(f)(x)(x**2): $\fmap f x{x^2}$.
+\item maps to: x mapsto x**2: $x\mapsto x^2$.
+\item value at: f vat(x): $f\vat x$.
+\item a binary operation: a bprod b: $a\bprod b$.
+\end{itemize}
+
+
+\subsection{Geometric Algebra}
+\begin{itemize}
+\item point: point P: $\point P$.
+\item vector: vec a: $\vec a$.
+\item unit vector: uvec(a): $\uvec{a}$.
+\item omitted vector from a product: ovec(a): $\ovec{a}$.
+\item clifs or multivectors: (use capitals) A: $A$.
+\item pseudoscalar: pscl: $\pscl$.
+\item better, less typing, use lower-case for vectors $a$ and upper-case for other objects (bivectors, trivectors,...): $A$.
+\item use i for the pscl: $i$.
+\item orthogonal: ortho: $a\ortho b$.
+\item parallel: parallel: $a\parallel b$.
+\item to be perpendicular to: perto(a)(b): $\perto{a}{b}$.
+\item to be parallel to: parto(a)(b): $\parto{a}{b}$.
+\item to be orthogonal to: ortto(a)(b): $\ortto{a}{b}$.
+\item to be colinear to: colto(a)(b): $\colto{a}{b}$.
+\item projection of $p$ onto $q$: projon pq: $\projon pq$.
+\item rejection of $p$ onto $q$: rejon pq: $\rejon pq$.
+\item magnitude: magn(a): $\magn{a}$.
+\item inverse: inv(a): $\inv{a}$.
+\item reverse: rev(a): $\rev{a}$.
+\item hodge dual: hdual(a): $\hdual{a}$.
+\item anticommutator: acom(a)(b): $\acom{a}{b}$.
+\item commutator: com(a)(b): $\com{a}{b}$.
+\item expanded anticommutator: xacom(a)(b): $\xacom ab$.
+\item expanded commutator: xcom(a)(b): $\xcom ab$.
+\item step: step(A1): $\step A1$.
+\item scalar step: sstep(A): $\sstep A$.
+\item grade operator: Grade A: $\Grade A$.
+\item grade: grade A2: $\grade A2$.
+\item scalar grade: sgrade A: $\sgrade A$.
+\item clif with step: sclif Ak: $\sclif Ak$.
+\item even part: even(A): $\even A$.
+\item odd part: odd(A): $\odd A$.
+\item gorm (geometric norm?): gorm A: $\gorm A$.
+\item expanded gorm: xgorm A: $\xgorm A$.
+\item metric: metric: $\metric$.
+\item Kronecker delta: kron: $\kron$.
+\item signature: diag a: $\diag a$.
+\item signature: sign a: $\sign a$.
+\item inner product: iprod: $a\iprod b$.
+\item outer product: oprod: $a\oprod b$.
+\item cross product: cprod: $a\cprod b$.
+\item cannonical decomposition of the geometric product: cgprod ab: $\cgprod ab$.
+\end{itemize}
+
+
+\subsection{Geometric Calculus}
+\begin{itemize}
+\item ordinary one-dim. derivative: dx x: $\dx x$.
+\item ordinary time derivative (dot derivative): dt x: $\dt x$.
+\item ordinary second time derivative (dot-dot derivative): ddt x: $\ddt x$.
+\item expanded partial derivative: xpd Hq: $\xpd Hq$.
+\item comma derivative: cder phi k: $\cder\phi k$.
+\item geometric derivative: gder(a): $\gder{a}$.
+\item directional derivative: dder(F)(a): $\dder F{a}$.
+\item Laplace operator: lder(a): $\lder{a}$.
+\item D'Alembert operator: dalder(phi): $\dalder\phi$.
+\item gradient: grad(phi): $\grad\phi$.
+\item divergence: div(phi): $\div\phi$.
+\item curl: curl(phi): $\curl\phi$.
+\end{itemize}
+
+
+\subsection{Tensors}
+\begin{itemize}
+\item tensor: tens T: $\tens T$.
+\item (empty) slot: tuple(slot, a, slot): $\tuple{\slot, a, \slot}$.
+\item tensor product: a tprod b: $a\tprod b$.
+\item tensor contraction: tcont(a tprod b): $\tcont(a \tprod b)$.
+\item indexed tensor contraction: itcont(1,2)(a tprod b tprod c): $\itcont{1,2}(a \tprod b \tprod c)$.
+\item tensor components: tcomp T: $\tcomp T$.
+\item tensor components in frame: itcomp T(ij): $\itcomp T{ij}$.
+\item tensor components in reciprocal frame: rtcomp T(ij): $\rtcomp T{ij}$.
+\item Levi-Civita tensor: lct: $\lct$.
+\end{itemize}
+
+
+\subsection{Index Notation}
+\begin{itemize}
+\item frame element, vector: fvec: $\fvec$.
+\item frame: frm(k): $\frm k$.
+\item indexed frame: ifrm(k)(0)(n): $\ifrm{k}{0}{n}$.
+\item reciprocal frame: rfrm k: $\rfrm k$.
+\item indexed frame vector: ifvec k: $\ifvec k$.
+\item indexed reciprocal frame vector: rfvec k: $\rfvec k$.
+\item components of vector in frame: comp vk: $\comp vk$.
+\item components of vector in reciprocal frame: rcomp vk: $\rcomp vk$.
+\item metric coefficients in frame: imet kl: $\imet kl$.
+\item metric coefficients in reciprocal frame: rmet kl: $\rmet kl$.
+\item mixed metric coefficients: mmet kl: $\mmet kl$.
+\item kronecker delta coefficients in frame: ikron kl: $\ikron kl$.
+\item kronecker delta coefficients in reciprocal frame: rkron kl: $\rkron kl$.
+\item mixed kronecker coefficients: mkron kl: $\mkron kl$.
+\item indexed geometric derivative (in reciprocal frame): igder k: $\igder k$.
+\item indexed geometric derivative (in frame): rgder k: $\rgder k$.
+\end{itemize}
+
+
+\subsection{Various}
+\begin{itemize}
+\item Iverson brackets: iverson(k=l): $\iverson{k=l}$.
+\item Poisson brackets: poisson(f,g): $\poisson{f,g}$.
+\end{itemize}
+
+
+\subsection{Dimensional Analysis}
+\begin{itemize}
+\item dimension: dim k: $\dim k$.
+\item unit: unit k: $\unit k$.
+\item physical dimension: phdim k: $\phdim k$.
+\item dimensionless quantity: kdim: $\kdim$.
+\item 
+\end{itemize}
+
+
+\subsection{Mechanics}
+\begin{itemize}
+\item position vector: pvec vat t: $\pvec\vat t$.
+\item differential position vector: dpvec vat point P $\dpvec\vat{\point P}$.
+\item Euclidean distance between points: edis: $\edis$.
+\item kinetic energy: ken vat t: $\ken\vat t$.
+\item potential energy: pen vat t: $\pen\vat t$.
+\item Lagrange function: lag: $\lag$.
+\item Hamilton function: ham: $\ham$.
+\end{itemize}
+%%%
+%%%
+\end{multicols}

@@ -1,0 +1,83 @@
+\section{Environmental Modeling}
+[environmental modeling - ekkehard holzbecher]
+
+Control volume: a fixed volume that does not change in size in time.
+
+
+\subsection{Continuity Equation for Mass}
+Consider the change of mass during the time $\diff t$ within a control volume with spacing $\diff x$, $\diff y$ and $\diff z$, each for one direction in $\espace 3$. On the one hand, consider the mass within the control volume at the beginning and at the end of the time period and then calculate the difference between the two. On the other hand, balance all fluxes across the boundaries of the volume; \ie, fluxes into the volume have to be taken as positive, while those leaving the volume are negative. In $\espace 3$, six faces of the control volume have to be taken into account.
+
+Mass at the beginning and at the end of the period $[t, t+\diff t]$ is given by~\footnote{~In this derivation, Euler description of motion is implicitly used: the control volume is not only fixed in size, but also fixed in space, while the fluid passes across it.}
+\beq
+\theta c\vat{x,t}\diff x\diff y\diff z \qquad\text{and}\qquad \theta c\vat{x,t+\diff t}\diff x\diff y\diff z\,,
+\eeq
+where $\theta$ denotes the share on the total volume. In case of a saturated porous medium, $\theta$ denotes porosity. In the unsaturated zone, within a soil, for example, $\theta$ is the volumetric water saturation, when the aqueous phase is concerned. In the situation in which two fluids occupy the space (say water and oil), the share of each phase has to be taken into account too. $\diff x\diff y\diff z$ stands for volume and $c$ denotes mass concentration, $\dim c = \phdim{M}/\phdim{V}$ (mass per unit volume). The change of mass per unit time is then
+\beq
+\theta\dfrac{c\vat{x,t+\diff t} - c\vat{x,t}}{\diff t}\diff x\diff y\diff z\,.
+\eeq
+
+Fluxes in $x$-direction are given across faces of the control volume:
+\beq
+\theta j_{x-}\vat{x,t}\diff y\diff z\qquad\text{and}\qquad\theta j_{x+}\vat{x,t}\diff y\diff z\,,
+\eeq
+where $j_{x-}$ denotes mass flux across the left face of the volume, in negative $x$-direction. Analogously, $j_{x+}$ denotes the mass flux in $x$-direction across the right face, in positive $x$-direction. Fluxes may change spatially and temporally which do the brackets indicate. Both fluxes are positive, if they add mass to the control volume and negative otherwise. The physical dimension of mass flux is $\dim j = \phdim{M}/\phdim{A.T}$. The term $\theta\diff y\diff z$ denotes the area through which flow takes place.
+
+The balance between both flux terms is thus given by
+\beq
+\theta\left(j_{x-}\vat{x,t} - j_{x+}\vat{x,t} \right) \diff y\diff z\,.
+\eeq
+
+For the sake of simplicity, the fluxes across the four other faces are neglected during the derivation at this point\ie, assume here that the flux components in the $y$- and $z$-directions are both zero. As previously stated, both formulations measure mass change and thus need be equal:
+\beq
+\theta\dfrac{c\vat{x,t+\diff t} - c\vat{x,t}}{\diff t}\diff x\diff y\diff z
+    = \theta\left(j_{x-}\vat{x,t} - j_{x+}\vat{x,t} \right) \diff y\diff z\,.
+\eeq
+
+Divide the last equation through the volume and porosity to have
+\beq
+\dfrac{c\vat{x,t+\diff t} - c\vat{x,t}}{\diff t}
+    = \dfrac{j_{x-}\vat{x,t} - j_{x+}\vat{x,t}}{\diff x}\,.
+\eeq
+
+From this equation a differential equation can be derived by the transition of the finite grid spacing $\diff x$ and time step $\diff t$ to infinitesimal expressions; \viz., by the limits $\diff x\to 0$ and $\diff t\to 0$. It follows
+\beq
+\xpd ct\vat{x,t} = -\xpd{j_x}x\vat{x,t}\,,
+\eeq
+which is a differential formulation for the principle of mass conservation. The presumption for the differentiation procedure is that the functions $c$ and $j_x$ are smooth, \ie, differentiable. The last equation is valid for one-dimensional transport and s the basis for the mathematical analysis of transport processes. The dimensions of the equation are $\phdim{M}/\phdim{L^3.T}$.
+
+This formulation is also valid if there are no internal mass ``sources'' or ``sinks''. Sources and sinks are here understood in the most general sense: each process, which creates or destroys some species, as measured by $c$, can contribute to such a source or sink.
+
+To extend the formulation so to consider sources and sinks: if these are described by a source- or sink-rate $q\vat{x,t}$ with dimensions $\phdim{M}/\phdim{L^3.T}$, which may vary spatially and temporally, add the integral term
+\beq
+\int_{\diff x}\int_{\diff t} q\vat{x,t}\,\dx t\dx x\,.
+\eeq
+The term is positive if mass as added (source) and negative if mass is removed (sink). In the derivation of the mass conservation equation, the integral term has to be differentiated, this leads to the general transport equation in one space dimension:
+\beq
+\theta\xpd ct = -\xpd{\theta j_x}x + q\,.
+\eeq
+
+Flux components in $y$- and $z$-directions can also be taken into account, based on formulae analogous to the formula for the $x$-direction. The fluxes $j_{y-}$, $j_{y+}$, $j_{z-}$ and $j_{y+}$ have to be introduced, balanced and the balances added to the derivation. Take the limits $\diff y\to 0$ and $\diff z\to 0$ to obtain
+\beq
+\theta\xpd ct = -\gder\iprod\theta j + q
+\eeq
+or, equivalently,
+\beq
+\theta\fpder tc = \theta\cder ct = -\div j + q
+\eeq
+The last equations are geometric objects, so the vector equations are valid in any coordinate system. Besides, they are written in a compact (elegant) form.
+
+The derived equation for mass conservation alone is not yet sufficient for a complete mathematical formulation. There are too many unknown variables, namely concentration and the components of the flux vector $j$. In order to reduce the number of unknowns, use a formulation that connects concentration and flux, resulting in an equation where the concentration is the only unknown variable.
+
+The advective flux is given by the product of the concentration and the fluid velocity:
+\beq
+j = cv = vc\,,
+\eeq
+since $c$ is a scalar-valued function.
+
+
+
+
+
+
+
+

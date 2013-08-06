@@ -1,0 +1,128 @@
+\section{Partial Differential Equations}
+
+[The Princeton Companion to Maths -- Timothy Gowers, June Barrow-Green, Imre Leader]
+
+Partial differential equations are of immense importance in physics, and have inspired a vast amount of mathematical research. Three basic examples will be discussed here, as an introduction to more advanced articles later in the volume.
+
+
+\subsection{Heat Equation}
+The first is the \lingo{heat equation}, which, as its name suggests, describes the way the distribution of heat in a physical medium changes with time:
+\beq
+\xpd Tt = \kappa\left(\nxpd 2Tx + \nxpd 2Ty + \nxpd 2Tz \right) = \kappa\lder T\,.
+\eeq
+Here, $T\vat{x,y,z,t}$ is a function that specifies the temperature at the point $\tuple{x,y,z}$ at time $t$.
+
+It is one thing to read an equation like this and understand the symbols that make it up, but quite another to see what it really means. However, it is important to do so, since of the many expressions one could write down that involve partial derivatives, only a minority are of much significance, and these tend to be the ones that have interesting interpretations. So let us try to interpret the expressions involved in the heat equation.
+
+The left-hand side, $\cder Tt$, is quite simple. It is the rate of change of the temperature $T\vat{x,y,z,t}$, when the spatial coordinates $x$, $y$ and $z$ are \emph{kept fixed} and $t$ \emph{varies}. In other words, it tells us how fast the point $\tuple{x,y,z}$ is heating up or cooling down at time $t$. What would we expect this to depend on? Well, heat takes time to travel through a medium, so although the temperature at some distant point $\tuple{x',y',z'}$ will eventually affect the temperature at $\tuple{x,y,z}$, the way the temperature is changing right now (that is, at time $t$) will be affected only by the temperatures of points very close to $\tuple{x,y,z}$: if points in the immediate neighborhood of $\tuple{x,y,z}$ are hotter, on average, than $\tuple{x,y,z}$ itself, then we expect the temperature at $\tuple{x,y,z}$ to be increasing, and if they are colder then we expect it to be decreasing.
+
+The expression in brackets on the right-hand side appears so often that it has its own shorthand. The symbol $\lder$, defined by
+\beq
+\lder f = \nxpd 2fx + \nxpd 2fy + \nxpd 2fz
+\eeq
+is known as the \lingo{Laplacian}. What information does $\lder f$ give us about a function $f$? The answer is that it captures the idea in the last paragraph: it tells us how the value of $f$ at $\tuple{x,y,z}$ compares with the average value of $f$ in a small neighborhood of $\tuple{x,y,z}$, or, more precisely, with the limit of the average value in a neighborhood of $\tuple{x,y,z}$ as the size of that neighborhood shrinks to zero.
+
+(Note: In Euclidean space $\espace 3$ in Cartesian coordinates $\tuple{x,y,z}$, using index notation and Einstein summation convention, Laplacian can be written as
+\beq
+\lder = \partial^i \partial_j
+      = \rmet ij \igder i\igder j
+      = \nxpd 2{}{x} + \nxpd 2{}{y} + \nxpd 2{}{z} \,.)
+\eeq
+
+This is not immediately obvious from the formula, but the following (not wholly rigorous) argument in one dimension gives a clue about why second derivatives should be involved. Let $f$ be a function that takes real numbers to real numbers. Then to obtain a good approximation to the second derivative of $f$ at a point $x$, one can look at the expression $(f'\vat x - f'\vat{x-h})/h$ for some small $h$. (If one substitutes $-h$ for $h$ in the above expression, one obtains the more usual formula, but this one is more convenient here.) The derivatives $f'\vat x$ and $f'\vat{x-h}$ can themselves be approximated by $(f\vat{x+h} - f\vat x)/h$ and $(f\vat x - f\vat{x-h})/h$, respectively, and if we substitute these approximations into the earlier expression, then we obtain
+\beq
+\dfrac{1}{h}\left( \dfrac{f\vat{x + h} - f\vat x}{h} - \dfrac{f\vat x - f\vat{x - h}}{h} \right)\,,
+\eeq
+which equals $(f\vat{x+h} - 2f\vat x + f\vat{x-h})/h^2$. Dividing the top of this last fraction by 2, we obtain
+$(1/2)(f\vat{x+h} + f\vat{x-h}) - f\vat x$: that is, the difference between the value of $f$ at $x$ and the average value of $f$ at the two surrounding points $x + h$ and $x - h$.
+
+In other words, the second derivative conveys just the idea we want -- a comparison between the value at $x$ and the average value near $x$. It is worth noting that if $f$ is linear, then the average of $f\vat{x-h}$ and $f\vat{x+h}$ will be equal to $f\vat x$, which fits with the familiar fact that the second derivative of a linear function $f$ is zero.
+
+Just as, when defining the first derivative, we have to divide the difference $f\vat{x+h} - f\vat x$ by $h$ so that it is not automatically tiny, so with the second derivative it is appropriate to divide by $h^2$. (This is appropriate, since, whereas the first derivative concerns linear approximations, the second derivative concerns quadratic ones: the best quadratic approximation for a function $f$ near a value $x$ is $f\vat{x+h} = f\vat x + hf'\vat x + (1/2)h^2f''\vat x$, an approximation that one can check is exact if $f$ was a quadratic function to start with.)
+
+It is possible to pursue thoughts of this kind and show that if $f$ is a function of three variables then the value of $\lder f$ at $\tuple{x,y,z}$ does indeed tell us how the value of $f$ at $\tuple{x,y,z}$ compares with the average values of f at points nearby. (There is nothing special about the number 3 here -- the ideas can easily be generalized to functions of any number of variables.) All that is left to discuss in the heat equation is the parameter $\kappa$. This measures the conductivity of the medium. If $\kappa$ is small, then the medium does not conduct heat very well and $\lder T$ has less of an effect on the rate of change of the temperature; if it is large then heat is conducted better and the effect is greater.
+
+
+\subsection{Laplace Equation}
+A second equation of great importance is the Laplace equation~\footnote{~The quantity $\lder f$ has been termed the concentration of $f$ and its value at any point indicates the ``excess'' of the value of $f$ there over its mean value in the neighbourhood of the point.}, $\lder f = 0$. Intuitively speaking, this says of a function $f$ that its value at a point $\tuple{x,y,z}$ is always equal to the average value at the immediately surrounding points. If f is a function of just one variable x, this says that the second derivative of f is zero, which implies that f is of the form ax + b. However, for two or more variables, a function has more flexibility -- it can lie above the tangent lines in some directions and below it in others. As a result, one can impose a variety of boundary conditions on $f$ (that is, specifications of the values $f$ takes on the boundaries of certain regions), and there is a much wider and more interesting class of solutions.
+
+
+\subsection{Wave Equation}
+A third fundamental equation is the wave equation. In its one-dimensional formulation it describes the motion of a vibrating string that connects two points $A$ and $B$. Suppose that the height of the string at distance $x$ from $A$ and at time $t$ is written $h\vat{x,t}$. Then the wave equation says that
+\beq
+\dfrac{1}{v^2}\nxpd 2ht = \nxpd 2hx\,.
+\eeq
+Ignoring the constant $1/v^2$ for a moment, the left-hand side of this equation represents the acceleration (in a vertical direction) of the piece of string at distance $x$ from $A$. This should be proportional to the force acting on it. What will govern this force? Well, suppose for a moment that the portion of string containing $x$ were absolutely straight. Then the pull of the string on the left of $x$ would exactly cancel out the pull on the right and the net force would be zero. So, once again, what matters is how the height at $x$ compares with the average height on either side: if the string lies above the tangent line at $x$, then there will be an upwards force, and if it lies below, then there will be a downwards one. This is why the second derivative appears on the right-hand side once again. How much force results from this second derivative depends on factors such as the density and tautness of the string, which is where the constant comes in. Since $h$ and $x$ are both distances, $v^2$ has dimensions of $\phdim{L^2/T^2}$, which means that $v$ represents a speed, which is, in fact, the speed of propagation of the wave.
+
+Similar considerations yield the three-dimensional wave equation, which is, as one might now expect,
+\beq
+\dfrac{1}{v^2}\nxpd 2ht = \nxpd 2hx + \nxpd 2hy + \nxpd 2hz\,,
+\eeq
+or, more concisely,
+\beq
+\dfrac{1}{v^2}\nxpd 2ht = \lder h\,.
+\eeq
+One can be more concise still and write this equation as $\dalder h = 0$, where $\dalder h$ is shorthand for
+\beq
+\lder h - \dfrac{1}{v^2}\nxpd 2ht\,.
+\eeq
+The operation $\dalder$ is called the \lingo{d'Alembertian}.
+
+In Minkowski spacetime in standard coordinates $\tuple{t,x,y,z}$ with signature $\sign\tuple{+---}$, using index notation and Einstein summation convention, d'Alembertian can be written as
+\beq
+\dalder = \partial^\mu \partial_\nu 
+        = \rmet\mu\nu\igder\mu\igder\nu
+        = \dfrac{1}{c^2}\nxpd 2{}{t} - \nxpd 2{}{x} - \nxpd 2{}{y} - \nxpd 2{}{z} \,.
+\eeq
+
+
+\subsection{Diffusion Equation}
+In the physical theory of diffusion, the Laplace operator (via Laplace's equation) arises naturally in the mathematical description of equilibrium. Specifically, if $u$ is the density at equilibrium of some quantity such as a chemical concentration, then the net flux of $u$ through the boundary of any smooth region $\region V$ is zero, provided there is no source or sink within $\region V$:
+\beq
+\int_{\bound\region V}\grad u\iprod n\,\dx S = 0\,,
+\eeq
+where $n$ is the outward unit normal (vector) to the boundary of $\region V$. By the divergence theorem,
+\beq
+\int_{\region V}\div\grad u\,\dx\region V = \int_{\bound\region V}\grad u\iprod n\,\dx S = 0\,.
+\eeq
+
+Since this holds for all smooth regions $\region V$, it can be shown that this implies
+\beq
+\div\grad u = \lder u = 0\,.
+\eeq
+
+The right-hand side of this equation is the Laplace operator. The Laplace operator itself has a physical interpretation for non-equilibrium diffusion as the extent to which a point represents a source or sink of chemical concentration, in a sense made precise by the diffusion equation.
+
+
+\subsection{Density associated to a potential}
+If $\phi$ denotes the electrostatic potential associated to a charge distribution $q$, then the charge distribution itself is given by the Laplacian of $\phi$:
+\beq
+q = \lder\phi \,.
+\eeq
+This is a consequence of Gauss's law. Indeed, if $\region V$ is any smooth region, then by Gauss's law the flux of the electrostatic field $E$ is equal to the charge enclosed (in appropriate units):
+\beq
+\int_{\bound\region V}E\iprod n\,\dx S = \int_{\bound\region V}\grad\phi\iprod n\,\dx S
+    = \int_{\region V} q\,\dx\region V\,,
+\eeq
+where the first equality uses the fact that the electrostatic field is the gradient of the electrostatic potential. The divergence theorem~\footnote{~The divergence theorem can be put in alternate notation: $\int_{\bound\region V}\grad u\iprod n\,\dx S = \int_{\region V}\div\grad u\,\dx\region V$.} now gives
+\beq
+\int_{\region V}\lder\phi\,\dx\region V = \int_{\region V}q\,\dx\region V
+\eeq
+and, since this holds for all regions $\region V$, then $q = \lder\phi$ follows.
+
+The same approach implies that the Laplacian of the gravitational potential is the mass distribution. Often the charge (or mass) distribution are given, and the associated potential is unknown. Finding the potential function subject to suitable boundary conditions is equivalent to solving Poisson's equation.
+
+
+\subsection{Energy minimization}
+Another motivation for the Laplacian appearing in physics is that solutions to $\lder f = 0$ in a region $\region U$ are functions that make the Dirichlet energy functional stationary:
+\beq
+E\vat f = \dfrac{1}{2}\int_{\region U}\magn{\grad f}^2\,\dx x\,.
+\eeq
+
+To see this, suppose $\fdef{f}{\region U}{\set R}$ is a function, and $\fdef{u}{\region U}{\set R}$ is a function that vanishes on the boundary of $\region U$. Then,
+\beq
+\xod{}{\epsilon}\Bigl\vert_{\epsilon = 0}E\vat{f + \epsilon u} 
+    = \int_{\region U}\grad f\iprod\grad u\,\dx x
+    = - \int_{\region U}u\lder f\,\dx x\,,
+\eeq
+where the last equality follows using Green's first identity. This calculation shows that if $\lder f = 0$, then $E$ is stationary around $f$. Conversely, if $E$ is stationary around $f$, then $\lder f = 0$ by the fundamental lemma of calculus of variations.

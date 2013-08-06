@@ -1,0 +1,162 @@
+\section{Tensor Algebra}
+
+\subsection{Tensor Algebra without a Coordinate System}
+We introduce, in a coordinate-free way, some fundamental concepts of differential geometry: tensors, the inner product, the metric tensor, the tensor product and contraction of tensors.
+
+Because our space is flat, there is a unique way to transport one vector from one location to another while \lingo{keeping its length and direction unchanged}. Thus, vectors are unaffected by such a transport. Therefore, a vector is completely determined by its length and direction.
+
+A \lingo{rank-$n$ tensor} $T$ is, by definition, a real-valued, linear function of $n$ vectors. We can pictorially see a tensor as a machine that has $n$ slots on top, into which $n$ vectors are inserted, and one slot in its end, out of which a scalar is returned: the value that the tensor $T$ has when evaluated as a function of the $n$ inserted vectors. Notationally, denote tensors by $T$
+\beq
+T\vat{\slot,\slot,\slot,\slot}\qquad\eqtxt{$n$ slots in which to put the vectors}\,.
+\eeq
+
+If $T$ is a rank-3 tensor (has 3 slots), this its value on the vectors $a$, $b$, $c$ will be denoted by $T\vat{a,b,c}$. Linearity of this function can be expressed as
+\beq
+T\vat{ea + fb, c, d} = eT\vat{a, c, d} + fT\vat{b, c, d}\,,
+\eeq
+where $e$ and $f$ are real numbers.
+
+Given two vectors $a$ and $b$, the \lingo{inner product of $a$ and $B$}, denoted $a\iprod b$, is defined in terms of the squared magnitude by
+\beq
+a\iprod b \defby \dfrac{1}{4}[(a + b)^2 - (a - b)^2]\,.
+\eeq
+In Euclidean space, this is the standard inner product. 
+
+Because the inner product is a linear function of each of its vectors, regard it as a tensor of rank 2. Then, the inner product is denoted $\metric{\slot,\slot}$ and is called the \lingo{metric tensor}. In other words, the metric tensor $\metric$ is that linear function of two vectors whose value is given by
+\beq
+\metric\vat{a,b}\defby a\iprod b\,.
+\eeq
+Because the inner product is symmetric, then the metric tensor is \lingo{symmetric} in its two slots~\footnote{In slot-naming notation, to be developed afterwards, the components of $\metric$ (in a given frame $\frm k$) are $\imet kl$; this means that $\metric$ is ``waiting'' to accept two vectors -- this explains the notation $\metric\vat{\slot,\slot}$. When a vector, say $a$, is plugged in, then $g\vat{\slot, a}$ and thus $\imet kl\cnvec al = \covec ak$; \ie, the result is the reciprocal component of $a$. When two vectors, say $a$ and $b$, are plugged in, then $\metric\vat{a,b} = \cnvec ak\imet kl\cnvec bl = \cnvec ak\covec bk$. In other words, the $\metric$ ``disapears'', leaving behind the inner product of $a$ and $b$.}; \ie,
+\beq
+\metric\vat{a,b} = \metric\vat{b,a}\,.
+\eeq
+
+With the aid of the inner product, regard any vector $a$ as a tensor of rank one: the real number that is produced when an arbitrary vector $c$ is inserted into $a$'s slot is
+\beq
+a\vat c = a\iprod c\,.
+\eeq
+
+Second-rank tensors appear frequently in the laws of physics -- often in roles where one sticks a single vector into the second slot and leaves the first slot empty, thereby producing a single-slotted entity -- a \emph{vector}. An example is a rigid body's (Newtonian) moment-of-inertia tensor $I\vat{\slot,\slot}$. Insert the body's angular velocity vector $\omega$ into the second slot and you get  the body's angular momentum vector $J\vat\slot = I\vat{\slot, \omega}$. (In slot-naming notation, every slot could be regarded as an index, so the angular momentum vector equation can be written as $\covec Jj = I_{jk}\cnvec\omega k$.)
+
+From three (or any number of) vectors $a,b,c$ we can construct a tensor, their \lingo{tensor product} defined by
+\beq
+a\tprod b\tprod c\vat{e,f,g} \defby a\vat e b\vat f c\vat g = (a\iprod e)(b\iprod f)(c\iprod g)\,.
+\eeq
+Here, the first expression is the notation for the value of the new tensor, $a\tprod b\tprod c$ \emph{evaluated} on the three vectors $e,f,g$; the middle expression is the ordinary product of three real numbers; the value of $a$ on $e$, the value of $b$ on $f$ and the value of $c$ on $g$ and the third expression is that same product with the htree numbers rewritten as scalar products. Similar definitions can be given for the tensor product of any two or more tensors of any rank; \eg, if $T$ has rank 2 (2 slots) and $S$ has rank 3 (3 slots), then
+\beq
+T\tprod S\vat{e,f,g,h,j} \defby T\vat{e,f}S\vat{g,h,j}\,.
+\eeq
+
+One last geometric (frame-independent) concept we need is \lingo{contraction} introduced by example. From two vectors $a$ and $b$ we can construct the tensor product $a\tprod b$ (a second rank tensor) and we can construct the scalar product $a\iprod b$ (a real number, \aka a scalar, \aka a rank-0 tensor). The process of \lingo{contraction is the construction of $a\iprod b$ from $a\tprod b$}:
+\beq
+\tcont(a\tprod b) \defby a\iprod b\,.
+\eeq
+
+It can be shown that any second-rank tensor $T$ can be expressed as a sum of tensor products of vectors; \viz,
+\beq
+T = a\tprod b + c\tprod d + \dotsb\,;
+\eeq
+correspondingly, define the contraction of $T$ to be 
+\beq
+\tcont T = a\iprod b + c\iprod d + \dotsb\,.
+\eeq
+Note that this contraction lowers the rank of the tensor by two, from 2 to 0. Similarly, for a tenor of rank $n$, one can construct a tensor of rank $n-2$ by contraction, but in this case, one must specify which slots are to be contracted. For instance, if $T$ is a third rank tensor, expressible as $T = a\tprod b\tprod c + e\tprod f\tprod g + \dotsb$, then the contraction of $T$ on its first and third slots is the rank-1 tensor (vector)
+\beq
+\itcont{1,3}(a\tprod b\tprod c + e\tprod f\tprod g + \dotsb) = (a\iprod c)b + (e\iprod g)f + \dotsb \,.
+\eeq
+
+Note that the inner product and tensor contraction lower the rank of tensors, while the tensor product increases it.
+
+All the concepts developed in this section (vectors, tensors, metric tensor, inner product, tensor product and contraction of a tensor) can be carried over, with no change whatsoever, into \emph{any} vector space over the real numbers that is endowed with a concept of squared length, even if the squared length is \emph{not} Euclidean; \eg, the four-dimensional spacetime of special relativity.
+
+
+\subsection{Component Representation of Tensor Algebra}
+In space $\espace 3$ of Newtonian physics, there is a unique \lingo{orthonormal frame} whose vectors $\elset{\nbvec x, \nbvec y, \nbvec z} = \elset{\dbvec 1, \dbvec 2, \dbvec 3}$ associated with any \lingo{Cartesian coordinate system} $\elset{x,y,z} = \elset{\cnvec x1, \cnvec x2, \cnvec x3} = \elset{\covec x1, \covec x2, \covec x3}$ (In Cartesian coordinates in Euclidean space~\footnote{~Cartesian coordinates means rectangular coordinates; \ie, the frame elements all measure lengths and are orthonormal to each other. Euclidean space means that the metric is the Euclidean metric; \ie, $\metric = \kron$.}, place indices up or down. It doesn't matter. By definition, in Cartesian coordinates a quantity is the same whether its index is down or up). The frame element $\nbvec k$ has unit length and points along the $\covec xk$ coordinate direction, which is orthogonal to all the other coordinate directions, so this could be summarized by
+\beq
+\nbvec k\iprod\nbvec l = \ikron kl\,.
+\eeq
+
+Any vector $a\in\espace 3$ can be expanded in terms of these frames as
+\beq
+a = \cnvec ak\nbvec k\,.
+\eeq
+
+Adopt Einstein summation convention: repeated indices (in this case $k$) are to be summed (in this $\espace 3$ case over $j=1,2,3$). 
+%By virtue of the orthonormality of the frame, the components $\cnvec ak$ of $a$ can be computed as the scalar products:
+%\beq
+%\cnvec ak = a\iprod\nbvec k \qquad \covec ak = a\iprod\dbvec k\,.
+%\eeq
+%(The proof of this is straightforward: $a\iprod\nbvec j = (\cnvec ak\nbvec k)\iprod\nbvec j = \cnvec ak(\nbvec k\iprod\nbvec j) = \cnvec ak\ikron kj = \covec aj$. Similarly, for $\cnvec ak$.)
+
+Any tensor, say the third-rank tensor $T\vat{\slot, \slot, \slot}$, can be expanded in terms of tensor products of the frame elements:
+\beq
+T = \cntens T{ijk}\nbvec i\tprod\nbvec j\tprod\nbvec k\,.
+\eeq
+
+The components $\cotens T{ijk}$ of $T$ can be computed from $T$ and the frame elements by 
+%the generalization of $\covec ak = a\iprod\nbvec k$:
+\beq
+\cotens T{ijk} = T\vat{\nbvec i, \nbvec j, \nbvec k}\,.
+\eeq
+%\begin{proof}
+%Generalize $\cntens ak = a\iprod\nbvec k$: 
+%\beq
+%\cntens T{ijk} = T\vat{\nbvec i, \nbvec j, \nbvec k} 
+%               = T(\nbvec i)T(\nbvec j)T(\nbvec k) 
+%               = (T\iprod\nbvec i)(T\iprod\nbvec j)(T\iprod\nbvec k)\,.\mqed
+%\eeq
+%\end{proof}
+
+As an important example, the components of the metric are $\imet jk = \metric\vat{\nbvec j,\nbvec k} = \nbvec j\iprod\nbvec k = \ikron jk$:
+\beq
+\imet jk = \ikron jk\qquad\text{in any orthonormal frame in space $\espace 3$.}
+\eeq
+
+The components of a tensor product, \eg, $T\vat{\slot,\slot,\slot}\tprod S\vat{\slot,\slot}$, are deduced by inserting the frame elements into the slots; they are $T\vat{\nbvec i,\nbvec j,\nbvec k}\tprod S\vat{\nbvec l,\nbvec m} = \cotens T{ijk}\cotens S{lm}$. In words, 
+\begin{quote}
+the components of a tensor product are equal to the ordinary arithmetic product of the components of the individual tensors.
+\end{quote}
+
+In components notation, the inner product of two vectors and the value of a tensor when vectors are inserted into its slots are given by
+\beq
+a\iprod b = \cnvec ak\covec bk\qquad\text{and}\qquad T\vat{a,b,c} = \cotens T{ijk}\cnvec ai\cnvec bj\cnvec ck\,,
+\eeq
+as one can show using the previous equations. Finally, the contraction of a tensor, say the fourth rank tensor $R\vat{\slot,\slot,\slot,\slot}$, on two of its slots, say the first and third, has components that are computed from the tensor's own components:
+\beq
+\tcomp(\tcont_{1,3}R) = \cntens R{ijik}\,.
+\eeq
+Note that $\cntens R{ijik}$ is summed on the index $i$, so ti has only two free indices $j$ and $k$ and, thus, is the components of a second rank tensor, as it must be if it is to represent the contraction of a fourth-rank tensor.
+
+
+\subsection{Slot-Naming Notation}
+Consider the rank-2 tensor $F\vat{\slot,\slot}$. Define a new tensor $G\vat{\slot,\slot}$ to be the same as $F$, but with the slots interchanged; \ie, for two vectors $a$ and $b$ it is true that $G\vat{a,b} = F\vat{b,a}$. To simply indicate that $F$ and $G$ are equal but with the slots interchanged is by the notation $G\vat{\slot_a, \slot_b} = F\vat{\slot_b, \slot_a}$ or, in index notation, by $\cotens G{ab} = \cotens F{ba}$. This relationship is valid in a particular frame if and only if $G = F$ with slot interchanged is true. Then, look at any ``index equation'', such as $\cotens G{ab} = \cotens F{ba}$, momentarily as a relationship between components of tensors in a specific frame and then do a quick mind-flip and regard it quite differently: as \emph{a relationship between geometric, frame-independent tensors with the indices playing the roles of names of slots}.
+
+As an example of the power of this \lingo{slot-naming notation}, consider the contraction of the first and third slots of a third-rank tensor $T$. In any frame, the components of $\tcont_{1,3}T$ are $\cntens T{aba}$. Correspondingly, in slot-naming index notation, denote $\tcont_{1,3}T = \cntens T{aba}$. Say that the first and the third slots are ``strangling each other'', leaving free only the second slot (named $b$) and therefore producing a rank-1 tensor (a vector).
+
+
+\subsection{Linear Maps}
+A \lingo{linear map}, \aka \lingo{linear transformation}, is a function between two \emph{vector spaces} that preserves the operations of vector addition and scalar multiplication. Thus, it \emph{always} maps linear subspaces to linear subspaces -- like straight lines to straight lines or to a single point. When a linear map maps from a vector space to itself, it is called \lingo{endomorphism} or ``linear operator''.
+
+\begin{definition}
+Consider two vector spaces $\set V$ and $\set W$ over the reals $\set R$, consider two vectors $x,y\in\set V$ and a scalar $\alpha\in\set R$. Then, define a \lingo{linear map} to be a function $\fmap f{\set V}{\set W}$ if it satisfies:
+\begin{align*}\label{eq:linearfunction}
+f\vat{x + y}    &= f\vat x + f\vat y \,, &\eqtxt{additivity}\\
+f\vat{\alpha x} &= \alpha f\vat x    \,. &\eqtxt{homogeneity of degree 1}
+\end{align*}
+\end{definition}
+
+Equivalently, $f$ is a linear map if it satisfies additivity and homogeneity for any \lingo{linear combination of vectors}; \ie, consider a set of vectors $\elset{\nbvec 1, \dotsc, \nbvec m}$ in $\set V$ and scalars $\elset{\cnvec a1, \dotsc, \cnvec am}$ in $\set R$. Then, if $f$ is a linear map, it satisfies
+\begin{equation}\label{eq:linearfunctioncombination}
+f\vat{\cnvec ak\nbvec k} = \sum_{k = 1}^{m}\cnvec ak f\vat{\nbvec k} \,,
+\end{equation}
+where Einstein summation convention and sigma notation were used~\footnote{~In traditional notation: a linear map $f$ satisfies $f\vat{\cnvec a1\nbvec 1 + \dotsb + \cnvec am\nbvec m} = \cnvec a1 f\vat{\nbvec 1} + \dotsb + \cnvec am f\vat{\nbvec m}$\,. for the set $\elset{\nbvec k}$ of vectors and the set $\elset{\cnvec ak}$ of scalars.}.
+
+
+\subsection{Linear Functionals}
+A \lingo{linear functional}, \aka linear form, one-form or covector, is a linear map from a vector space to its field of scalars.  In $\nset Rn$, if \emph{vectors} are represented as \lingo{column vectors}, then \emph{linear functionals} are represented as \lingo{row vectors} and their action on vectors is given by the \emph{dot product}, or the matrix product with the row vector on the left and the column vector on the right.  In general, if $\set V$ is a vector space over a field $\set K$, then a linear functional $f$ is a function from $\set V$ to $\set K$, which is linear. 
+
+More formally, we have the definition:
+
+\begin{definition}
+Define a \lingo{linear functional} a function $\fmap f{\set V}{\set R}$ if it is a linear map; \ie, if it satisfies \cref{eq:linearfunctioncombination}.
+\end{definition}

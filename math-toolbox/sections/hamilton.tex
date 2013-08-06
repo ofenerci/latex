@@ -1,0 +1,481 @@
+\section{Hamiltonian Mechanics}
+
+\subsection{Covariance and contravariance of vectors}
+
+***[Covariance and contravariance of vectors, wiki]
+
+The terms \lingo{covariance} and \lingo{contravariance} describe how the quantitative description of certain geometric or physical entities changes with a change of basis. For \lingo{holonomic bases}, this is determined by a change from one coordinate system to another. When an \lingo{orthogonal basis} is rotated into another orthogonal basis, the distinction between co- and contra-variance is invisible. However, when considering more general coordinate systems such as skew coordinates, curvilinear coordinates and coordinate systems on differentiable manifolds, the distinction is significant.
+
+\begin{itemize}
+\item For a \lingo{vector} (such as a \lingo{position} or \lingo{velocity}) to be basis-independent, the components of the vector must \emph{contra-vary} with a change of basis to compensate. That is, the components must vary with the inverse transformation to that of the change of basis. The components of vectors (as opposed to those of dual vectors) are said to be \lingo{contravariant}. Examples of vectors with contravariant components include the position of an object relative to an observer or any derivative of position with respect to time, including velocity, acceleration, and jerk. In Einstein notation, contravariant components are denoted with upper indices as in
+\beq
+v = \cnvec vk\nbvec k\,.
+\eeq
+
+\item For a \lingo{dual vector} (also called a \lingo{covector}) to be basis-independent, the components of the dual vector must \emph{co-vary} with a change of basis to remain representing the same covector. That is, the components must vary by the same transformation as the change of basis. The components of dual vectors (as opposed to those of vectors) are said to be \lingo{covariant}. Examples of covariant vectors generally appear when taking a gradient of a function. In Einstein notation, covariant components are denoted with lower indices as in
+\beq
+v = \covec vk\dbvec k\,.
+\eeq
+\end{itemize}
+
+In physics, \emph{vectors often have units of distance or distance times some other unit} (such as the velocity), whereas \emph{covectors have units the inverse of distance or the inverse of distance times some other unit}. The distinction between covariant and contravariant vectors is particularly important for computations with tensors, which can have mixed variance. This means that they have components that are both covariant and contravariant. The valence or type of a tensor gives the number of covariant and contravariant component indices.
+
+\begin{note}
+Determine the position of the index by noting where the dimensions of length are -- up or down. For instance, velocity is a contravariant vector. To determine the position of the index, notice the dimensions of velocity: $\dim v = \phdim{L/T}$. Since $v\sim \phdim L$, then the index goes ``up'': $v = \cnvec vk\nbvec k$. Gradient, on the other hand, is a covariant vector. To determine the position of the index, notice the dimensions of gradient, say on the $x$-direction: $\dim \gder = \partial/\partial x = \phdim{1/L}$. Since $\gder\sim \phdim{1/L}$, the index goes ``down'': $\gder = \covec \gder k\dbvec k$.
+\end{note}
+
+
+\begin{example}
+The components of the \emph{generalized} momentum are covariant.
+\end{example}
+
+\begin{solution}
+By definition of generalized momentum:
+\beq
+\covec pi = \xpd\lag{\cnvec{\dt x}i}\implies \dim\covec pi 
+          = \dim \xpd\lag{\cnvec{\dt x}i} 
+          = \dfrac{\phdim E}{\phdim{L/T}}
+          = \dfrac{\phdim{E.T}}{\phdim L}\,,
+\eeq
+where $\tuple{\phdim E,\phdim L,\phdim T}$ denote dimensions of energy, length and time.
+
+Since the components of the generalized momentum are proportional to the dimensions of \emph{inverse} length, $\covec pi\sim 1/\phdim{L}$, then the generalized momentum is a covariant vector, or covector.
+\end{solution}
+
+\begin{example}
+The components of the \emph{canonical} momentum are contra-variant or covariant.
+\end{example}
+
+\begin{solution}
+Since \emph{canonical} means using Cartesian coordinates, then there is \emph{no} distinction between contra- and co-variant components.
+
+Contravariant: by the definition of momentum in terms of Cartesian coordinates (momentum is mass times velocity)
+\beq
+\cnvec pi = m\cnvec vi \implies \dim \cnvec pi = \dim mv = \phdim{M.L/T}\,.
+\eeq
+Since the components of the canonical momentum are proportional to the dimensions of length, $\cnvec pi\sim \phdim{L}$, then the canonical momentum is a contravariant vector.
+
+Covariant: by definition of canonical momentum in terms of the Lagrangian:
+\beq
+\covec pi = \xpd\lag{\cnvec{\dt x}i}\implies \dim\covec pi 
+          = \dim \xpd\lag{\cnvec{\dt x}i} 
+          = \dfrac{\phdim E}{\phdim{L/T}}
+          = \dfrac{\phdim{E.T}}{\phdim L}\,.
+\eeq
+
+Since the components of the canonical momentum are proportional to the dimensions of \emph{inverse} length, $\covec pi\sim 1/\phdim{L}$, then the canonical momentum is a covariant vector, or covector.
+\end{solution}
+
+\begin{note}
+The ambiguity that coordinate representation brings is one of the reasons why working directly with vectors is preferable than working with their component representation. That is, by definition, momentum (vector) equals mass (scalar) times velocity (vector): $p = mv$. That's all! No indices, no contra-, no co-, no nothing, just vectors.
+\end{note}
+
+
+\subsection{Hamiltonian in Classical Mechanics}
+
+***[To have Hamiltonian mechanics, the trick is to apply the Legendre Transform to the Lagrangian!]
+
+In classical mechanics, we often start with a Lagrangian, defined as a function of $\pvec\vat t$ and $\dt\pvec\vat t$, say. Then we have, in a sense, two variables in $\lag\vat{\pvec,\dt \pvec}$ and we can replace $\dt\pvec$ with an \emph{independent} variable by setting $p = \cder\lag{\dt\pvec}$ and by performing a \lingo{Legendre transform} to $\lag$ to eliminate $\dt\pvec$ in favor of $p$. Thus, define the Hamiltonian $\ham$ by
+\begin{equation}\label{eq:definitionhamiltonian}
+  \begin{cases}
+    \ham\vat{\pvec, p} = p\,\dt\pvec\vat p - \lag\vat{\pvec, p}\,,\\
+                     p = \xpd\lag{\dt\pvec}\,,\\
+    \lag\vat{\pvec, p} = \lag\vat{\pvec, \dt\pvec\vat p}\,.
+  \end{cases}
+\end{equation}
+
+Notice that we have performed the transformation on only \emph{one} of the two variables in the Hamiltonian. In words, we construct the Hamiltonian in \cref{eq:definitionhamiltonian} by using the definition of $p$ to find $\dt\pvec\vat p$ and then writing $p\dt\pvec - \lag\vat{\pvec,\dt\pvec}$ entirely in terms of $p$ and $\pvec$.
+
+Before performing the Legendre transform to any Lagrangian, check \cref{subsubsec:recipelegendretrans}.
+
+Also note that we worked using the geometric principle: no coordinates were required to define the Hamiltonian! Only geometric objects were used: vectors, Lagrangian and so forth.
+
+\begin{example}
+Consider a simple harmonic oscillator potential with the Lagrangian given by
+\beq
+\lag\vat{x,\dt x} = \tfrac{1}{2}m\dt x^2 - \tfrac{1}{2}kx^2\,.
+\eeq
+Find the Hamiltonian for the oscillator.
+\end{example}
+
+\begin{solution}
+Legendre transform the given Lagrangian to replace $\dt x$ in favor of $p$ by following the procedure established in \cref{subsubsec:recipelegendretrans}.
+\begin{enumerate}
+%
+\item Check the existence/uniqueness conditions:
+\begin{align*}
+&\lag\vat{x,\dt x}\,,                &\eqtxt{well behaved function}\\
+&\xpd\lag{\dt x} = m\dt x\,,         &\eqtxt{well behaved function}\\
+&\nxpd 2\lag{\dt x} = m\,.           &\eqtxt{strictly positive, since $m>0$}
+\end{align*}
+All of the conditions are met. Proceed.
+%
+\item Define $p\vat{\dt x} \defby m\dt x$. Invert this to find $\dt x\vat p = p/m$.
+%
+\item Define
+\beq
+\ham \defby p\vat{\dt x}\,\dt x - \lag\vat{x,\dt x}
+     = \tfrac{1}{2} m\,\dt x\,\dt x - \tfrac{1}{2} m\dt x^2 + \tfrac{1}{2} kx^2
+     = \tfrac{1}{2} m\dt x^2 + \tfrac{1}{2} kx^2\,.
+\eeq
+%
+\item Use $\dt x\vat x = p/m$ to write
+\beq
+\ham = \tfrac{1}{2}m\tfrac{p^2}{m} + \tfrac{1}{2}kx^2\,.
+\eeq
+%
+\item Finally, present the Hamiltonian as 
+\beq
+2\ham\vat{x,\dt x} = p^2/m + kx^2\,.
+\eeq
+\end{enumerate}
+We recognize this Hamiltonian as the total energy of the system (numerically).
+\end{solution}
+
+Consider Cartesian coordinates. Then, the usual Lagrangian in three dimensions takes the form, in geometric (vector) notation
+\beq
+\lag = \tfrac{1}{2}mv^2 - \pen\vat x = \tfrac{1}{2}m\,\dt\pvec\iprod\dt\pvec - \pen\vat x
+\eeq
+
+Now, define the \lingo{canonical momentum vector} via~\footnote{~Since we are using \emph{canonical} (Cartesian) coordinates, then the position of the indices as contra- or co-variant does \emph{not} matter. However, we use the covector version because $p$ is being defined by means of the Lagrangian.} 
+\beq
+  \begin{cases}
+      \covec px = \xpd{\lag}{\dt x}\,,\\
+      \covec py = \xpd{\lag}{\dt y}\,,\\
+      \covec pz = \xpd{\lag}{\dt z}\,.
+  \end{cases}
+\eeq
+Find, next, the Hamiltonian -- once again in geometric notation:
+\beq
+\ham\vat{x,p} = \dfrac{p^2}{2m} - \pen\vat x\,,
+\eeq
+where $p^2 = \magn{p}^2$.
+
+This is the starting point for Hamiltonian considerations in classical mechanics. We will begin by looking at some changes that must occur to bring this natural form into usable, tensorial notation.
+
+
+\subsection{Equipartition theorem}
+In classical statistical mechanics,
+\begin{quote}
+the \lingo{equipartition theorem} is a general formula that relates the temperature of a system with its average energies.
+\end{quote}
+The equipartition theorem is also known as the law of equipartition, equipartition of energy, or simply equipartition. The original idea of equipartition was that, in thermal equilibrium, energy is shared equally among all of its various forms; for example, the average kinetic energy per degree of freedom in the translational motion of a molecule should equal that of its rotational motions.
+
+The equipartition theorem makes quantitative predictions. Like the virial theorem, it gives the total average kinetic and potential energies for a system at a given temperature, from which the system's heat capacity can be computed. However, equipartition also gives the average values of individual components of the energy, such as the kinetic energy of a particular particle or the potential energy of a single spring. For example, it predicts that every atom in a monoatomic ideal gas has an average kinetic energy of $(3/2)\boltz T$ in thermal equilibrium, where $\boltz$ is the Boltzmann constant and $T$ is the (thermodynamic) temperature. More generally, it can be applied to any classical system in thermal equilibrium, no matter how complicated. The equipartition theorem can be used to derive the ideal gas law and the Dulong-Petit law for the specific heat capacities of solids. It can also be used to predict the properties of stars, even white dwarfs and neutron stars, since it holds even when relativistic effects are considered.
+
+Although the equipartition theorem makes very accurate predictions in certain conditions, it becomes inaccurate when quantum effects are significant, such as at low temperatures. When the thermal energy $\boltz T$ is smaller than the quantum energy spacing in a particular degree of freedom, the average energy and heat capacity of this degree of freedom are less than the values predicted by equipartition. Such a degree of freedom is said to be ``frozen out'' when the thermal energy is much smaller than this spacing. For example, the heat capacity of a solid decreases at low temperatures as various types of motion become frozen out, rather than remaining constant as predicted by equipartition. Such decreases in heat capacity were among the first signs to physicists of the 19th century that classical physics was incorrect and that a new, more subtle, scientific model was required. Along with other evidence, equipartition's failure to model black-body radiation -- also known as the ultraviolet catastrophe -- led Max Planck to suggest that energy in the oscillators in an object, which emit light, were quantized, a revolutionary hypothesis that spurred the development of quantum mechanics and quantum field theory.
+
+
+\subsubsection{Basic concept and simple examples}
+The name ``equipartition'' means ``equal division''. The original concept of equipartition was that the total kinetic energy of a system is shared equally among all of its independent parts, on the average, once the system has reached thermal equilibrium. Equipartition also makes quantitative predictions for these energies. For example, it predicts that every atom of a noble gas, in thermal equilibrium at temperature $T$, has an average translational kinetic energy of $(3/2)\boltz T$, where $\boltz$ is the Boltzmann constant. As a consequence, since kinetic energy is equal to $1/2(\text{mass})(\text{velocity})^2$, the heavier atoms of xenon have a lower average speed than do the lighter atoms of helium at the same temperature. Figure shows the Maxwell-Boltzmann distribution for the speeds of the atoms in four noble gases.
+
+In this example, the key point is that the kinetic energy is quadratic in the velocity. The equipartition theorem shows that in thermal equilibrium, any degree of freedom (such as a component of the position or velocity of a particle) which appears only quadratically in the energy has an average energy of $(1/2)\boltz T$ and therefore contributes $(3/2)\boltz$ to the system's heat capacity. This has many applications.
+
+
+\subsubsection{Translational energy and ideal gases}
+The (Newtonian) kinetic energy of a particle of mass $m$, velocity $v$ is given by
+\beq
+\hken = \dfrac{1}{2}mv^2 
+      = \dfrac{1}{2}m\left((\ivec vx)^2 + (\ivec vy)^2 + (\ivec vz)^2 \right)\,,
+\eeq
+where $\ivec vx$, $\ivec vy$ and $\ivec vz$ are the Cartesian components of the velocity $v$. Here, $\ham$ is short for Hamiltonian, and used henceforth as a symbol for energy because the Hamiltonian formalism plays a central role in the most general form of the equipartition theorem.
+
+Since the kinetic energy is quadratic in the components of the velocity, by equipartition these three components each contribute $(1/2)\boltz T$ to the average kinetic energy in thermal equilibrium. Thus the average kinetic energy of the particle is $(3/2)\boltz T$, as in the example of noble gases above.
+
+More generally, in an ideal gas, the total energy consists purely of (translational) kinetic energy: by assumption, the particles have no internal degrees of freedom and move independently of one another. Equipartition therefore predicts that the average total energy of an ideal gas of $N$ particles is $(3/2)N\boltz T$.
+
+It follows that the heat capacity of the gas is $(3/2)N\boltz$ and hence, in particular, the heat capacity of a mole of such gas particles is $(3/2)N\txt A\boltz = (3/2)R$, where $N\txt A$ is the Avogadro constant and $R$ is the gas constant. Since $R\sim \SI{2}{cal/(mol.K)}$, equipartition predicts that the molar heat capacity of an ideal gas is roughly \SI{3}{cal/(mol.K)}. This prediction is confirmed by experiment.
+
+The mean kinetic energy also allows the root mean square speed $v\txt{rms}$ of the gas particles to be calculated:
+\beq
+v\txt{rms} = \sqrt{\avg{v^2}} = \sqrt{\dfrac{3\boltz T}{m}} = \sqrt{\dfrac{3RT}{M}}\,,
+\eeq
+where $M = N\txt Am$ is the mass of a mole of gas particles. This result is useful for many applications such as Graham's law of effusion, which provides a method for enriching uranium.
+
+
+\subsubsection{Potential energy and harmonic oscillators}
+Equipartition applies to potential energies as well as kinetic energies: important examples include harmonic oscillators such as a spring, which has a quadratic potential energy
+\beq
+\hpen = \dfrac{1}{2}aq^2\,,
+\eeq
+where the constant $a$ describes the stiffness of the spring and $q$ is the deviation from equilibrium. If such a one dimensional system has mass $m$, then its kinetic energy $\hken$ is
+\beq
+\hken = \dfrac{1}{2}mv^2 = \dfrac{\lmom^2}{2m}\,,
+\eeq
+where $v$ and $p = mv$ denote the velocity and momentum of the oscillator. Combining these terms yields the total energy
+\beq
+\ham = \hken + \hpen = \dfrac{\lmom^2}{2m} + \dfrac{1}{2}aq^2\,.
+\eeq
+
+Equipartition therefore implies that in thermal equilibrium, the oscillator has average energy
+\beq
+\avg{\ham} = \avg{\hken} + \avg{\hpen} = \dfrac{1}{2}\boltz T + \dfrac{1}{2}\boltz T\,,
+\eeq
+where the angular brackets $\avg{\dots}$ denote the average of the enclosed quantity.
+
+This result is valid for any type of harmonic oscillator, such as a pendulum, a vibrating molecule or a passive electronic oscillator. Systems of such oscillators arise in many situations; by equipartition, each such oscillator receives an average total energy $\boltz T$ and hence contributes $\boltz$ to the system's heat capacity. This can be used to derive the formula for Johnson-Nyquist noise and the Dulong-Petit law of solid heat capacities. The latter application was particularly significant in the history of equipartition.
+
+
+\subsubsection{Specific heat capacity of solids}
+An important application of the equipartition theorem is to the specific heat capacity of a crystalline solid. Each atom in such a solid can oscillate in three independent directions, so the solid can be viewed as a system of $3N$ independent simple harmonic oscillators, where $N$ denotes the number of atoms in the lattice. Since each harmonic oscillator has average energy $\boltz T$, the average total energy of the solid is $3N\boltz T$ and its heat capacity is $3N\boltz$.
+
+By taking $N$ to be the Avogadro constant $N\txt A$ and using the relation $R = N\txt A\boltz$ between the gas constant $R$ and the Boltzmann constant $\boltz$, this provides an explanation for the Dulong-Petit law of specific heat capacities of solids, which stated that the specific heat capacity (per unit mass) of a solid element is inversely proportional to its atomic weight. A modern version is that the molar heat capacity of a solid is $3R\sim \SI{6}{cal/(mol.K)}$.
+
+However, this law is inaccurate at lower temperatures, due to quantum effects; it is also inconsistent with the experimentally derived third law of thermodynamics, according to which the molar heat capacity of any substance must go to zero as the temperature goes to absolute zero. A more accurate theory, incorporating quantum effects, was developed by Albert Einstein (1907) and Peter Debye (1911).
+
+Many other physical systems can be modeled as sets of coupled oscillators. The motions of such oscillators can be decomposed into normal modes, like the vibrational modes of a piano string or the resonances of an organ pipe. On the other hand, equipartition often breaks down for such systems, because there is no exchange of energy between the normal modes. In an extreme situation, the modes are independent and so their energies are independently conserved. This shows that some sort of mixing of energies, formally called \lingo{ergodicity}, is important for the law of equipartition to hold.
+
+
+\subsubsection{General formulation of the equipartition theorem}
+The most general form of the equipartition theorem states that under suitable assumptions (discussed below), for a physical system with Hamiltonian energy function $\ham$ and degrees of freedom $x_n$, the following equipartition formula holds in thermal equilibrium for all indices $m$ and $n$:
+\beq
+\avg{x_m \xpd{\ham}{x_m}} = \iverson{m = n}\boltz T = \ikron mn\boltz T
+\eeq
+Here $\ikron mn$ is the Kronecker delta, which is equal to one if $m = n$ and is zero otherwise. The averaging brackets $\avg{\dots}$ is assumed to be an ensemble average over phase space or, under an assumption of ergodicity, a time average of a single system.
+
+The general equipartition theorem holds in both the microcanonical ensemble, when the total energy of the system is constant, and also in the canonical ensemble, when the system is coupled to a heat bath with which it can exchange energy. Derivations of the general formula are given later in the article.
+The general formula is equivalent to the following two:
+\beq
+\begin{cases}
+\avg{x_n \xpd{\ham}{x_n}} = \boltz T & \text{for all $n$}\,\\
+\avg{x_m \xpd{\ham}{x_n}} = 0        & \text{for all $m \neq n$}\,\\
+\end{cases}
+\eeq
+If a degree of freedom $x_n$ appears only as a quadratic term $a_n x_n^2$ in the Hamiltonian $\ham$, then the first of these formulae implies that
+\beq
+\boltz T = \avg{x_n \xpd{\ham}{x_n}} = 2\avg{a_n x_n^2} \,,
+\eeq
+which is twice the contribution that this degree of freedom makes to the average energy $\avg{\ham}$. Thus the equipartition theorem for systems with quadratic energies follows easily from the general formula. A similar argument, with 2 replaced by $s$, applies to energies of the form $a_n x_n^s$.
+
+The degrees of freedom $x_n$ are coordinates on the phase space of the system and are therefore commonly subdivided into generalized position coordinates $\gpos k$ and generalized momentum coordinates $\gmom k$, where $\gmom k$ is the conjugate momentum to $\gpos k$. In this situation, the first equation means that for all $k$,
+\beq
+\avg{\gmom k\xpd{\ham}{\gmom k}} = \avg{\gpos k\xpd{\ham}{\gpos k}} = \boltz T\,.
+\eeq
+Using the equations of Hamiltonian mechanics, these formulae may also be written
+\beq
+\avg{\gmom k\gvel k} = -\avg{\gpos k\dt{\gmom k}} = \boltz T\,.
+\eeq
+
+Similarly, one can show using the second equation that
+\beq
+\avg{\gpos j\xpd{\ham}{\gmom k}} = \avg{\gmom j\xpd{\ham}{\gpos k}} = 0\qquad\text{for all $j,k$}
+\eeq
+and
+\beq
+\avg{\gpos j\xpd{\ham}{\gpos k}} = \avg{\gmom j\xpd{\ham}{\gmom k}} = 0\qquad\text{for all $j\neq k$}
+\eeq
+
+
+\subsection{Equipartition Theorem, Again}
+Degrees of freedom are associated with the kinetic energy of translations, rotation, vibration and the potential energy of vibrations. A result from classical statistical mechanics is the equipartition theorem: 
+\begin{quote}
+when a substance is in equilibrium, there is an average energy of $\boltz T/2$ per molecule or $RT/2$ per mole associated with each degree of freedom.
+\end{quote}
+
+Or, equivalently,
+\begin{quote}
+In equilibrium, each degree of freedom contributes $(1/2)\boltz T$ to the average energy per molecule.
+\end{quote}
+
+\begin{quote}
+At temperature $T$, the average energy of any quadratic degree of freedom is $\boltz T$.
+\end{quote}
+
+
+\subsection{Microcanonical Ensemble}
+
+
+\subsection{Canonical Ensemble}
+
+
+\subsection{Ideal Gas Law}
+
+\subsubsection{Ideal Gas}
+An \lingo{ideal gas} is a theoretical gas composed of a set of randomly moving, non-interacting point particles. The ideal gas concept is useful because it obeys the ideal gas law, a simplified equation of state, and is amenable to analysis under statistical mechanics.
+
+At normal conditions such as standard temperature and pressure, most real gases behave qualitatively like an ideal gas. Many gases such as nitrogen, oxygen, hydrogen, noble gases, and some heavier gases like carbon dioxide can be treated like ideal gases within reasonable tolerances. Generally, a gas behaves more like an ideal gas at higher temperature and lower density (\ie, lower pressure), as the work which is against intermolecular forces becomes less significant compared with the particles' kinetic energy, and the size of the molecules becomes less significant compared to the empty space between them.
+
+The ideal gas model tends to fail at lower temperatures or higher pressures, when intermolecular forces and molecular size become important. It also fails for most heavy gases, such as many refrigerants and for gases with strong intermolecular forces, notably water vapor. At some point of low temperature and high pressure, real gases undergo a phase transition, such as to a liquid or a solid. The model of an ideal gas, however, does not describe or allow phase transitions. These must be modeled by more complex equations of state.
+
+The ideal gas model has been explored in both the Newtonian dynamics (as in ``kinetic theory'') and in quantum mechanics (as a ``gas in a box''). The ideal gas model has also been used to model the behavior of electrons in a metal (in the Drude model and the free electron model), and it is one of the most important models in statistical mechanics.
+
+
+\subsubsection{Derivation}
+Consider statistical mechanics. Let $\gpvec = \tuple{\gpos x, \gpos y, \gpos z}$ and $\lmom = \tuple{\gmom x, \gmom y, \gmom z}$ denote the position vector and momentum vector of a particle of an ideal gas. Let $f$ denote the net force on that particle. Then the time average momentum of the particle~\footnote{~By definition, an ideal gas has only kinetic energy and not potential -- since it doesn't interact and since doesn't vibrate or rotate. Therefore, the time average momentum is given by $\avg{\gpvec\iprod f}$, analogously to the virial: $\gpvec\iprod p$.} is
+\beq
+\avg{\gpvec\iprod f} = \avg{\gpvec\iprod\dt\lmom}
+                     = \avg{\gpos x\dt{\gmom x}} + \avg{\gpos y\dt{\gmom y}} + \avg{\gpos z\dt{\gmom z}}
+                     = -\avg{\gpos x\xpd{\ham}{\gpos x}} 
+                       -\avg{\gpos y\xpd{\ham}{\gpos y}} 
+                       -\avg{\gpos z\xpd{\ham}{\gpos z}}
+                     = 3\boltz T\,,
+\eeq
+where the first equality is Newton's second law, the third one uses Hamilton's equations, the fourth one uses the equipartition theorem and in the last equality $T$ represents the gas thermodynamic temperature. Summing over a system of $N$ particles yields
+\beq
+3N\boltz T = -\avg{\sum_{k = 1}^{N}\gpvec_k\iprod f_k}\,.
+\eeq
+
+By Newton's third law and the ideal gas assumption, the net force on the system is the force applied by the walls of their container, and this force is given by the pressure $P$ of the gas. Hence,
+\beq
+-\avg{\sum_{k = 1}^{N}\gpvec_k\iprod f_k} = P \oint_{\text{surface}}\,\gpvec\iprod\dx S \,,
+\eeq
+where $\dx S$ is the infinitesimal area element along the walls of the container. Since the divergence of the position vector $\gpvec$ is
+\beq
+\div\gpvec = \gder\iprod\gpvec = \xpd{\gpos x}{\gpos x} + \xpd{\gpos y}{\gpos y} + \xpd{\gpos z}{\gpos z} = 3\,,
+\eeq
+the divergence theorem implies that
+\beq
+P \oint_{\text{surface}}\,\gpvec\iprod\dx S = P\int_{\text{volume}}\,(\gder\iprod\gpvec)\,\dx V = 3PV\,,
+\eeq
+where $\dx V$ is an infinitesimal volume within the container and $V$ is the total volume of the container.
+
+Putting these equalities together yields
+\beq
+3N\boltz T = -\avg{\sum_{k = 1}^{N}\gpvec_k\iprod f_k} = 3PV\,,
+\eeq
+which immediately implies the ideal gas law for $N$ particles:
+\beq
+PV = N\boltz T = nRT\,,
+\eeq
+where $n = N/N\txt A$ is chemical amount of the gas, $N\txt A$ Avogadro's constant and $R = N\txt A\boltz$ the gas constant.
+
+
+\subsection{Time Average of a Quantity}
+The time average of a quantity $Q\vat t$ is defined by
+\beq
+\avg{Q\vat t} = \dfrac{1}{\tau}\int_{t = 0}^{\tau}Q\vat t\,\dx t\,.
+\eeq
+
+
+\subsection{The Virial Theorem}
+
+[The Virial Theorem, Christopher Palmer]
+
+\subsubsection{Background}
+The Virial Theorem has a long history. It can be viewed as an application of a celestial mechanics theorem due to Lagrange, but is usually attributed to Clausius in his ``On a Mechanical Theorem Applicable to Heat'' (1870):
+\begin{quote}
+The Mean \lingo{vis viva} of a system is equal to its \lingo{virial}.
+\end{quote}
+
+The vis viva (living force) is the \emph{double} of what we would now call kinetic energy: $\sum_i m_i v_i^2$.
+
+The virial (or Virial of Clausius) is given by
+\beq
+\pen = \sum_i f_i\iprod\pvec_i \,.
+\eeq
+
+Since it involves many interacting particles, the theorem has applications in kinetic theory, celestial mechanics and, as we shall see, atomic physics.
+
+
+\subsubsection{Derivation}
+We consider a system of particles interacting by forces. Define $G = \sum_i \pvec_i\iprod \lmom_i$. Then,
+\beq
+\xod Gt = \sum_i \xod{\pvec_i}{t}\iprod \lmom_i + \sum_i \pvec_i\iprod\xod{\lmom_i}{t} \,,
+\eeq
+where $\pvec_i$ is the position vector of the $i$th particle and $\lmom_i$ its linear momentum (vector).
+
+The first term in the last equation is just the vis viva, being $\sum_i m_i v_i^2$, and the second term, from Newton's second law, is $\pen$.
+
+We now perform a time-average over a duration $\tau$ (integrate over $t$ and divide by $\tau$):
+\beq
+\dfrac{1}{\tau}\left( G\vat\tau - G\vat 0 \right) = 2\avg{\ken} + \avg{\pen}\,.
+\eeq
+
+If the system is periodic we can choose $\tau$ equal to the period, so that $G\vat\tau = G\vat 0$. Alternatively, if the system is bounded (neither $\pvec_i$ nor $\lmom_i$ become infinite) then we can make the left side as small as we choose by taking $\tau$ large enough.
+
+In either case we can take the left side to be zero, giving the Virial Theorem (with a minus sign for this definition of $\pen$):
+\beq
+2\avg{\ken} = -\pen\,.
+\eeq
+
+The periodic case applies to very simple systems like a two-body orbiting system.
+
+The bounded assumption obviously requires that the system does \emph{not} move off as a whole, so that as $\tau$ increases the $\pvec_i$ increase without limit. There are three obvious ways of preventing this:
+\begin{enumerate}
+\item Put the whole system in an effectively infinitely massive box (kinetic theory of gases case).
+%
+\item Introduce a fixed centre of force in addition to the inter-particle forces (solar system, atom with fixed nucleus, galaxy with huge central black hole?). In these cases the `fixed' centre is assumed to be infinitely massive (or at least hugely more massive that the rest of the system).
+%
+\item Use the theorem in the center-of-mass frame, so that the center of mass of the system is at rest. The bounded assumption then only requires that the system does not fall apart.
+\end{enumerate}
+The two last cases refer precisely to the atom with fixed nucleus $H_0$, and the atom with finite mass nucleus $H_0 + H_2$.
+
+
+\subsection{The Virial Theorem, again}
+Consider a collection of particles with masses $m_i$, $i = 1,2,\dotsc,N$. Let the complete system be in a 'steady state'~\footnote{~This is a call for an application to thermodynamics! Or equilibrium statistical mechanics.}, where the individual particles move around but the overall description of the system does not change qualitatively; \ie, its macroscopic parameters remain within certain bounds. Then we can obtain a relation between the kinetic and potential energies of the system.
+
+The equations of motion for the $i$th particle are $\dt{\lmom_i} = F_i$. Define, then, the virial $G = \sum_i\lmom_i\iprod \pvec_i$, where $\pvec_i$ is the position vector of the $i$th particle. Thus, the change of $G$ with respect to time is
+\beq
+\dt G = \sum_i \dt\lmom_i\iprod\pvec_i + \sum_i \lmom_i\iprod\dt\pvec_i 
+      = \sum_i F_i\iprod\pvec_i + 2\ken\,,
+\eeq
+where $\ken$ is the kinetic energy of the system.
+
+Compute the time average of each quantity in the last equation to find
+\beq
+\dfrac{1}{\tau}\int_0^\tau \dt G\,\dx t = \avg{2\ken} + \avg{\sum_i F_i\iprod\pvec_i}\,.
+\eeq
+
+In a steady state, the difference $G\vat\tau - G\vat 0$ will remain finite, so if we take the large $\tau$ limit, then we get
+\beq
+\dfrac{1}{\tau}\int_0^\tau \dt G\,\dx t = \dfrac{1}{\tau}\left(G\vat\tau - G\vat 0\right)\to 0\,.
+\eeq
+
+So we find that in steady state
+\beq
+2\ken = -\avg{\sum_i F_i\iprod\pvec_i} \,,
+\eeq
+where the time averages are now assumed to be taken with the limit $\tau\to\infty$.
+
+The RHS of the above equation does not make much physical sense as it stands, but it has to be evaluated for a specific force law.
+
+
+\subsection{Applications of the Virial Theorem}
+[The Virial Theorem and its applications in the teaching of Modern Physics, Celso L. Ladera, Eduardo Alomá y Pilar León]
+
+
+\subsubsection{Temperature of the interior of a star}
+Finding the temperature at the surface of the Sun is a standard example presented in all Modern Physics courses as an application of Planck Quantum Theory of Radiation. Less known is the calculation of the temperature of the interior of a star, a case that is best and most effectively treated using the Virial Theorem. Assuming that a star is a sphere of radius $R$, and mass $M\txt s$, its total gravitational potential energy $V$ is found using a well-known relation of general physics courses:
+\beq
+\pen = -\dfrac{3}{5}\dfrac{GM\txt s^2}{R}\,.
+\eeq
+
+With the safe assumption that a single atom moving in the interior of the star has a mean kinetic energy $\avg\ken$ given by energy equipartition by
+\beq
+\avg{\ken} = \dfrac{3}{2}\boltz\avg{T\txt s}\,,
+\eeq
+where $\avg{T\txt s}$ is the mean temperature over the interior of the star, and $\boltz$ is Boltzmann Constant.
+
+If $N$ is the total number of atoms in the star then the application of the Virial Theorem gives
+\beq
+-\dfrac{1}{2}\avg\pen \sim -\dfrac{3}{10}\dfrac{GM\txt s^2}{R} = \dfrac{3}{2}N\boltz\avg{T\txt s}\,,
+\eeq
+therefore, we have
+\beq
+\avg{T\txt s} \sim \dfrac{1}{5}\dfrac{GM\txt s^2}{\boltz NR} = \dfrac{1}{5}\dfrac{GM\txt s m}{\boltz R}\,,
+\eeq
+where $m = M\txt s/N$ is the average mass of an atom of the star. Typical stars such as our Sun contain mostly hydrogen atoms ($\sim 61\%$) and helium atoms (38\%), and we may therefore approximate the atom mass $m = \SI{2.2e-27}{kg}$. The mass of the Sun is about $M\txt s = \SI{2e30}{kg}$ and its radius may be taken as $R = \SI{70e6}{km}$. Introducing these constants in the last equation, we get an estimate of our Sun interior temperature: \SI{e7}{K}, which coincides with estimates using other physics phenomena that take place in the star (\eg, nucleo synthesis). As Kittel et al. comment, this is a remarkable result given the simple calculation required, and the small amount of experimental data demanded, all of which is readily available from measurements in our own planet: not necessary to get close to the Sun!
+
+
+\subsubsection{Kinetic theory of gases}
+If we consider a gas confined into a recipient of volume $V$, the interactions between molecules of the gas will be bound by the walls of the recipient. Let us then evaluate the terms in the r.h.s. of the virial theorem.
+
+Taking a force differential on the gas molecules, defined by the pressure $P$ exerted by the wall of the recipient in a differential area $\dx A$ we may write $\dx F = P\,\dx A\,\nvec n$, so the total force will be $F = \int P\,\dx A\,\nvec n$. Then, the term $F\iprod\pvec$ in the virial theorem is, together with the total force,
+\beq
+F\iprod\pvec = P\int \pvec\iprod\dx A\,\nvec n\,.
+\eeq
+By applying to this the well-known Gauss theorem of vector calculus, thus we get
+\beq
+\int \pvec\iprod\dx A\,\nvec n = \int (\gder\iprod\pvec)\,\dx V = 3V\,.
+\eeq
+
+The remaining term of of the virial theorem, that is $mv^2$, is twice the value of kinetic energy. Again from the theorem of energy equipartition the average kinetic energy of an ideal gas is given by $\avg\ken = (3/2)\boltz\avg T$. If we now take $\avg{\dt G}\to 0$, we get $\avg{F\iprod\pvec} + \avg{mv^2} = 0$. Replacing the values of the precedent equations into the virial and eliminating the common factor 3/2, we arrive to the well-known equation of the ideal gases:
+\beq
+\avg PV = N\boltz\avg T\,,
+\eeq
+where $N$ is the number of molecules and $\avg P$ and $\avg T$ the average macroscopic pressure and average macroscopic thermodynamic temperature.
+
+
+
+
+

@@ -1,0 +1,116 @@
+\section{Foundations of Dimensional Analysis}
+[Grigory Isaakovich Barenblatt. Scaling, Self-similarity, and Intermediate Asymptotics: Dimensional Analysis and Intermediate Asymptotics]
+
+\subsection{Measurement of Physical Quantities, Units of Measurement. System of Units}
+In general, we express all physical quantities in terms of numbers. These numbers are attained by \lingo{measuring} the physical quantities.
+
+The process of \lingo{measurement} is the direct or indirect comparison of a certain quantity with an appropriate standard -- a \lingo{unit of measurement}; \eg, if the length of a ruler is \SI{0.25}{m}, it means that the length has been compared with a unit of measurement of length -- the meter.
+
+The units for measuring physical quantities can be classified into \lingo{fundamental} and \lingo{derived}.
+
+When a class of phenomena (mechanics, heat transfer, \etc) is singled out for study, certain quantities are listed and standard references reduces for these quantities -- natural or artificial -- are adopted as fundamental. Once the fundamental units have been chosen, derived units are obtained from the fundamental units \emph{using the definitions of the quantities involved}. These definitions always involve describing at least a conceptual method for measuring the physical quantity in question. For instance, density is by definition the ratio of some mass to the volume occupied by that mass. Thus, the density of an homogeneous body that contains one unit of mass per unit volume -- a cube with a side equal to one unit of length -- can be adopted as a unit of density.
+
+It can be seen, then, that it is precisely the class of phenomena under discussion (the complete set of physical quantities in which we are interested) that ultimately determines whether or not a given set of fundamental units is sufficient for its measurement. A set of fundamental units that is \emph{sufficient} for measuring the properties of the class of phenomena under consideration is called a \lingo{system of units}. The common one in use in science and technology is the SI.
+
+Systems of units depend on the phenomena under consideration. For instance, 
+\begin{itemize}
+\item properties of geometric objects: length (that's why the metric is an important concept!);
+\item kinematic phenomena require one more unit, besides length: time;
+\item dynamic phenomena require one more unit, besides kinematic units: force or mass;
+\item heat and mass transfer require one more unit, besides dynamic units: temperature.
+\end{itemize}
+
+However, the system of units need not be \emph{minimal}. For instance, length could be measured in \si{cm}, \si{m} or even \si{in}.
+
+
+\subsection{Classes of System of Units}
+Consider a system of units, say MKS, and consider a second system, say cgs. These two systems of units share the same property: \emph{standard quantities of the same physical nature (mass, length and time) are used as fundamental units}. To generalize, a system of units that differs only in the magnitude (but not in the physical nature) of the fundamental units is called a \lingo{class of systems of units}. Then, for instance, consider the MKS system, the corresponding units for an arbitrary system in this class are
+\begin{align*}
+\text{unit of length} &= \si{m}/L\,;\\
+\text{unit of mass} &= \si{kg}/M\,;\\
+\text{unit of time} &= \si{s}/T\,,
+\end{align*}
+where $L$, $M$ and $T$ are \lingo{abstract positive numbers} that indicate the factors by which the fundamental units of length, mass and time decrease in passing from the original system (in this case, MKS) to another system in the same class. The call is called the LMT class. Other class frequently used is the FLT class, where force, length and time are chosen as fundamental units.
+
+As an example, consider a class where the units of length, mass and time are chosen as fundamental were given by
+\beq
+\si{m}/L\,,\qquad
+\si{kg}/M\qquad\text{and}\qquad
+\si{hr}/T\,.
+\eeq
+This set is the same as the MKS. The only difference is the representation of the LMT class: in the second representation, we have $L = 1$, $M = 1$ and $T = 3600$.
+
+
+\subsection{Dimensions}
+Upon decreasing the units of mass by a factor $M$ and the unit of length by a factor $L$, we find that the new density is a factor $M/L^3$ smaller than the original unit, so that the numerical values of all densities are thus decreased by a factor of $M/L^3$. The changes in the numerical values of physical quantities upon passage of one system of units to another one within the \emph{same class} are determined by their \lingo{dimension}.
+\begin{quote}
+The function that determines the factor by which the numerical value of a physical quantity changes upon passage from the original system of units to another system of units within a given class is called the \lingo{dimension function} or \lingo{dimension} of that quantity.
+\end{quote}
+We denote the dimension of a given physical quantity $\phi$ by $\dim\phi$. We emphasize that the dimension of a given physical quantity is different in different classes of systems of units. For instance, the dimension of density $\rho$ in the MLT class is $\dim\rho = M/L^3$; in the FLT class, it is $\dim\rho = FT^2/L^4$.
+\begin{quote}
+Quantities whose numerical values are identical in all systems of units within a given class are called \lingo{dimensionless}.
+\end{quote}
+Therefore, always mention the system of units when expressing the dimensions of a physical quantity. Say,
+\begin{quote}
+The dimensions of pressure $p$ in the MLT class is $\dim p = \phdim{M/LT}$.
+\end{quote}
+Analogously,
+\begin{quote}
+the dimensions of pressure $p$ in the FLT class is $\sdim_{FLT} = \phdim{F/L^2}$.
+\end{quote}
+
+The dimension function has two important properties:
+\begin{enumerate}
+\item The dimension function is always a power-law monomial.
+\item All systems with in a given class are equivalent; \ie, there are no distinguished, somehow preferred, systems among them.
+\end{enumerate}
+The first property follows from the second one: [demonstration in the text].
+
+In practice, convenient systems of units have been proposed for use with some special classes of problems. For instance, in classical electrodynamics, Kapitza proposed a natural system of units based on the classical radius of the electron as the unit of length, the rest-mass energy of the electron as the units of energy and the mass of the electron as the unit of mass; \ie, a LEM class. This system is convenient, since it allows one to avoid very large or very small numeric values for all quantities of practical interest. But, it does not mean that this system is preferred over the SI system, for instance.
+
+Example: at the beginning of the 20th century, the physico-chemists E. Bose, D. Rauert and M. Bose published a series of experimental studies on the internal turbulent friction of various fluids. The experiments were carried out in the following way: various fluids (water, chloroform, bromoform, \etc) were allowed to flow through a pipe in a regime of steady turbulence. The time $t$ required to fill a vessel with a certain fixed volume $v$ and the pressure drop $p$ between the ends of the pipe were measured. As was customary, the results of the measurements were presented in the form of a series of tables and curves showing the pressure drop as a function of the filling time.
+
+T. von Karman was attracted by the work of Bose and Rauert and he subjected their results to a processing procedure using dimensional analysis. von Karman analysis can be presented as this: the pressure drop between the ends of the pipe $p$ depends on the time required for the vessel to be filled $t$ and its volume $v$, as well as on the properties of the fluid, its dynamic viscosity $\mu$ and mass density $\rho$. The dimensions of the quantities are as follows:
+\beq
+\dim p = \phdim{M/LT}\,,\;
+\dim t = \phdim{T}\,,\;
+\dim v = \phdim{L^2}\,,\;
+\dim\mu  = \phdim{M/LT}\;\text{and}\;
+\dim\rho = \phdim{M/L^3}\,,
+\eeq
+where the MLT system of units was chosen.
+
+According to the Pi-theorem, the number of required dimensionless parameters is $5 - 3 = 2$. Thus, 
+\beq
+\kdim_1 = \dfrac{pt}{\mu}\qquad\text{and}\qquad 
+\kdim_2 = \dfrac{\rho v^{2/3}}{\mu t}\,.
+\eeq
+The parameters were found in Wolfram Alpha with the inputs:
+\begin{itemize}
+\item for $\kdim_1$: pressure, time, volume, dynamic viscosity and mass density and
+%
+\item for $\kdim_2$: time, volume, dynamic viscosity and mass density. However, in this case, some processing was needed. The raw output was $\kdim_2 = \mu^2 t^3/\rho^3 v^2$. Then, the cubic root was taken and the final expression was inversed, since $p$ depends directly on $\rho$ (denser fluid, then greater pressure lost), so $\rho$ must live ``upstairs''.
+\end{itemize}
+
+After finding the dimensionless parameters, the model can be found by applying the principle of dimensionally homogeneity of physical laws:
+\beq
+f\vat{\kdim_1, \kdim_2} = 0\implies
+\kdim_1 = f\vat{\kdim_2}\implies 
+\dfrac{pt}{\mu} = f\vat{\dfrac{\rho v^{2/3}}{\mu t}}\implies
+\dfrac{pt}{\mu} = \kdim\dfrac{\rho v^{2/3}}{\mu t}\,,
+\eeq
+where $kdim$ is a dimensionless parameter that must be obtained by experimentation.
+
+
+\subsection{Approach to Problem Solving}
+
+[dim analysis with case studies in mechanics]
+
+A series of physical quantities can describe natural phenomena and engineering problems such that the physical laws governing those phenomena and problems can be understood. Revealing those physical laws involves three steps:
+\begin{enumerate}
+\item Classifying physical quantities of a given phenomenon or problem according to the natures of these physical quantities.
+\item Finding correlations that connect the physical quantities.
+\item Finding causality that connects the physical quantities.
+\end{enumerate}
+To determine causality, it is necessary to understand physical links and relations in a phenomenon or problem. Fundamental principles of physics may then be used to find parameters of cause and effect governing the phenomenon or problem. Parameters must be ranked according to importance, and only parameters in the same class can be compared in terms of magnitude. Deeper analysis means better results, so the analyst needs rich experience and resourcefulness in order to succeed. Trial and error is the usual way to achieve satisfactory results.
+

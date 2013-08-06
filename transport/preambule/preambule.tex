@@ -1,0 +1,174 @@
+%%% CONFIG FILE
+%
+%%% PACKAGES
+%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+%\usepackage{booktabs}
+%\usepackage{bm}
+%\usepackage{comment}
+\usepackage{fixltx2e}
+%\usepackage{geometry}
+%\geometry{a4paper}
+%\usepackage{graphicx}       % graphs and figures
+\usepackage[utf8x]{inputenc} % utf8 encoding in source file
+%\usepackage{lscape}         % landscape environment
+\usepackage{mathtools}
+%\usepackage{marginnote}      % \marginnote
+\usepackage[version=3]{mhchem}
+\usepackage{microtype}
+%\usepackage{multicol}
+%\usepackage{multirow}
+%\usepackage[numbers]{natbib}
+%\usepackage[parfill]{parskip}            % paragraphs without indent
+\RequirePackage[draft, scrtime]{prelim2e} % Final and draft versions
+\usepackage{siunitx}
+%\usepackage{tabularx}
+%\usepackage{textcase}       % \MakeTextUppercase
+%\usepackage[normalem]{ulem} % underlines
+\usepackage{xspace}
+%
+%%% FONTS
+% sc: true small caps. osf: old style figures
+%\usepackage[sc,osf]{mathpazo}     % add possibly `sc` and `osf` options
+%\usepackage{eulervm}              % euler math
+%\usepackage[scaled=0.7]{beramono} % beramono for tt
+%
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[pdfusetitle]{hyperref} % at the end of packages
+\usepackage{hypcap}                % \capstart in floats
+\usepackage{cleveref}              % autoref replacement (load at last)
+%
+%%% siunitx setup
+\sisetup{
+%separate-uncertainty = true, % true: (...\pm...). false: ...(...)
+input-symbols = \pi\tau
+}%
+%%%
+%
+%%% LINGO
+%
+\newcommand{\latin}[1]{\textit{#1}\xspace} % latin lingo
+\newcommand{\lingo}[1]{\textsl{#1}\xspace} % scitech lingo
+\newcommand{\aka}{\latin{aka}}             % also known as
+\newcommand{\apriori}{\latin{a priori}}    % a priori
+\newcommand{\conf}{\latin{cf.}}            % confer 'compare'
+\newcommand{\ca}{\latin{ca.}}              % circa
+\newcommand{\ie}{\latin{i.e.}}             % id est
+\newcommand{\eg}{\latin{e.g.}}             % exempli gratia
+\newcommand{\etc}{\latin{etc}}             % et cetera
+\newcommand{\sic}{[\,\latin{sic}\,]}       % sic
+\newcommand{\vs}{\latin{vs}}               % versus
+\newcommand{\vis}{\latin{vice versa}}      % viceversa
+\newcommand{\viz}{\latin{viz.}}            % videlicet, in other words
+%
+%%% AUTOREF
+%
+%  abbreviations for \autoref macros
+%\renewcommand{\chapterautorefname}{Chap.}
+\renewcommand{\equationautorefname}{Eq.}
+\renewcommand{\figureautorefname}{Fig.}
+%\renewcommand{\noteautorefname}{Note}
+%\renewcommand{\partautorefname}{Part}
+%\renewcommand{\sectionautorefname}{Sec.}
+%\renewcommand{\subsectionautorefname}{Sec.}
+%\renewcommand{\subsubsectionautorefname}{Sec.}
+%
+%\renewcommand{\chapterautorefname}{\S}
+\renewcommand{\sectionautorefname}{\S}
+\renewcommand{\subsectionautorefname}{\S}
+\renewcommand{\subsubsectionautorefname}{\S}
+%
+%%% AXIOMS, THEOREMS, EXAMPLES, ...
+%
+%\newtheorem{axiom}{Axiom}[section]
+%\newtheorem{definition}{Definition}[section]
+%\newtheorem{example}{Example}[section]
+%\newtheorem{exercise}{Exercise}[section]
+%\newtheorem{note}{Note}[section]
+%\newtheorem{remark}{Remark}[section]
+%\newtheorem{theorem}{Theorem}[section]
+%
+%%% ITEMIZE
+% bullets in itemize
+%\renewcommand{\labelitemi}{$\diamond$}
+%
+%%% EQUATIONS
+%
+\numberwithin{equation}{section} % equation with section numbers
+%
+%%% TABLES
+%
+% ------------------------------------------------------------- PreTable
+% \docpretable{position}{size}{cols}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+% use: \docfloatwidth whenever possible!
+% NOTE: does not include \toprule
+\newcommand{\docpretable}[3]{
+  \begin{table}[#1]%
+    \capstart
+    \center\small%\footnotesize%
+    \begin{tabularx}{#2}{#3}%
+}%
+% ------------------------------------------------------------ PostTable
+% \end{tabularx}
+% \docposttable{caption}{caption}{label}
+% include: \end{tabularx}%
+\newcommand{\docposttable}[3]{%
+  % \end{tabularx}%
+  \normalsize
+  \caption[#1]{#2}\label{#3}%
+    \end{table}%
+}
+% ------------------------------------------------------------- EndTable
+%
+%%% EPIGRAPH
+%
+%% \epigraph{Text}{Author}{Source}
+\newcommand{\epigraph}[3]
+{
+\makeatletter
+  \begingroup\vspace{0.5cm}
+    \begin{flushright}
+      \begin{minipage}[H]{0.9\linewidth}
+        \small\textsf{#1}% text...quote
+        \begin{flushright}
+          % author, reference
+          {--- \sc\MakeLowercase{#2}}, {\small{#3}}
+        \end{flushright}
+      \end{minipage}
+    \end{flushright}
+  \endgroup\vspace{0.5cm}
+\makeatother
+}
+%
+%%% HYPERREF CONFIGURATION (PDF INFO)
+%
+\makeatletter
+\hypersetup{
+  colorlinks=true,
+  linktocpage=true,
+  pdfstartpage=1,
+  pdfstartview=FitPage,% FitH=fit height, default=FitV=fit Vertical
+  breaklinks=true, 
+  pdfpagemode=UseNone, 
+  pageanchor=true,
+  pdfpagemode=UseOutlines,
+  plainpages=false, 
+  bookmarksnumbered, 
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  hypertexnames=true, 
+  pdfhighlight=/O,
+  urlcolor= black,
+  linkcolor= black,
+  citecolor= black,
+  % -------------------------------------------------------
+  pdfcreator={XeLaTeX with hyperref},
+  pdfproducer={XeLaTeX with hyperref}
+}
+\makeatother
+%

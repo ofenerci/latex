@@ -1,0 +1,118 @@
+\section{Kinetic Theory}
+The \lingo{kinetic theory of gases} describes a gas as a large number of small particles (atoms or molecules), all of which are in constant, random motion. The rapidly moving particles constantly collide with each other and with the walls of the container. Kinetic theory explains macroscopic properties of gases, such as pressure, temperature, and volume, by considering their molecular composition and motion. Essentially, the theory posits that pressure is due not to static repulsion between molecules, as was Isaac Newton's conjecture, but due to collisions between molecules moving at different velocities through Brownian motion.
+
+While the particles making up a gas are too small to be visible, the jittering motion of pollen grains or dust particles which can be seen under a microscope, known as Brownian motion, results directly from collisions between the particle and gas molecules. As pointed out by Albert Einstein in 1905, this experimental evidence for kinetic theory is generally seen as having confirmed the existence of atoms and molecules.
+
+
+\subsection{Postulates}
+The theory for ideal gases makes the following assumptions:
+\begin{itemize}
+\item The gas consists of very small particles known as molecules. This smallness of their size is such that the total volume of the individual gas molecules added up is negligible compared to the volume of the smallest open ball containing all the molecules. This is equivalent to stating that the average distance separating the gas particles is large compared to their size.
+%
+\item These particles have the same mass.
+\item The number of molecules is so large that statistical treatment can be applied.
+\item These molecules are in constant, random, and rapid motion.
+\item The rapidly moving particles constantly collide among themselves and with the walls of the container. All these collisions are perfectly elastic. This means, the molecules are considered to be perfectly spherical in shape, and elastic in nature.
+%
+\item Except during collisions, the interactions among molecules are negligible. (That is, they exert no forces on one another.)
+%
+\item This implies:
+\begin{enumerate}
+\item Relativistic effects are negligible.
+%
+\item Quantum-mechanical effects are negligible. This means that the inter-particle distance is much larger than the thermal de Broglie wavelength and the molecules are treated as classical objects.
+%
+\item Because of the above two, their dynamics can be treated classically. This means, the equations of motion of the molecules are time-reversible.
+\end{enumerate}
+%
+\item The average kinetic energy of the gas particles depends only on the temperature of the system.
+%
+\item The time during collision of molecule with the container's wall is negligible as compared to the time between successive collisions.
+%
+\item Because they have mass, the gas molecules will be affected by gravity.
+\end{itemize}
+More modern developments relax these assumptions and are based on the Boltzmann equation. These can accurately describe the properties of dense gases, because they include the volume of the molecules. The necessary assumptions are the absence of quantum effects, molecular chaos and small gradients in bulk properties. Expansions to higher orders in the density are known as virial expansions. The definitive work is the book by Chapman and Enskog but there have been many modern developments and there is an alternative approach developed by Grad based on moment expansions. In the other limit, for extremely rarefied gases, the gradients in bulk properties are not small compared to the mean free paths. This is known as the Knudsen regime and expansions can be performed in the Knudsen number.
+
+
+\subsection{Properties}
+
+
+\subsubsection{Pressure and Kinetic Energy}
+Pressure is explained by kinetic theory as arising from the force exerted by molecules or atoms impacting on the walls of a container. Consider a gas of $N$ molecules, each of mass $m$, enclosed in a cuboidal container of volume $V = L^3$. When a gas molecule collides with the wall of the container perpendicular to the $x$ coordinate axis and bounces off in the opposite direction with the same speed (an elastic collision), then the momentum lost by the particle and gained by the wall is:
+\beq
+\diff p = p_{\text{i},x} - p_{\text{f},x} = p_{\text{i},x} - (-p_{\text{i},x}) = 2p_{\text{i},x} = 2mv_x\,.
+\eeq
+where $v_x$ is the $x$-component of the initial velocity of the particle. 
+
+The particle impacts \emph{one specific side wall} once every $\diff t = 2L/v_x$, where $L$ is the distance between opposite walls. Then, the force due to this particle is $f = \diff p/\diff t = mv_x^2/L$. Therefore, the total force on the wall is $F = Nm\avg{v_x^2}/L$, where $\avg{\dots}$ denotes an average over the $N$ particles. Since the assumption is that the particles move in random directions, we will have to conclude that if we divide the velocity vectors of all particles in three mutually perpendicular directions, the average value along each direction must be same~\footnote{~This does not mean that each particle always travel in 45 degrees to the coordinate axes.}: $\avg{v_x^2} = \avg{v^2}/3$. 
+
+We can thus rewrite the force as $F = Nm\avg{v^2}/3L$. This force is exerted on an area $L^2$. Therefore, the pressure of the gas is $P = f/L^2$ or
+\begin{equation}\label{eq:pressureofgas}
+P = \dfrac{1}{3}N\dfrac{m\avg{v^2}}{V}\,, 
+\end{equation}
+where $V = L^3$ is the volume of the box. The fraction $n = N/V$ is the number density of the gas (the mass density $\rho = nm$ is less convenient for theoretical derivations on atomic level). (Note that $\dim n = \phdim{molecule/L^3}$.) Using $n$, we can rewrite the pressure as
+\beq
+P = \dfrac{1}{3}nm\avg{v^2}\,.
+\eeq
+This is a first non-trivial result of the kinetic theory because it relates pressure, a macroscopic property, to the average (translational) kinetic energy~\footnote{~Since $\dim n = \phdim{molecule/L^3}$, then $m\avg{v^2}$ must have dimensions of $\phdim{E/molecule}$, if the product $nm\avg{v^2}$ is to have dimensions of pressure.} per molecule $m\avg{v^2}/2$, which is a microscopic property.
+
+
+\subsubsection{Temperature and Kinetic Energy}
+From the ideal gas law 
+\begin{equation}\label{eq:idealgaslawboltz}
+PV = N\boltz T\,,
+\end{equation}
+where $\boltz$ is the Boltzmann constant and $T$ the absolute (thermodynamic) temperature, and from \cref{eq:pressureofgas}, we have $PV = Nm\avg{v^2}/3$, and thus $N\boltz T = Nm\avg{v^2}/3$. Therefore, the temperature takes the form
+\begin{equation}\label{eq:tempboltz}
+T = \dfrac{1}{3}\dfrac{m\avg{v^2}}{\boltz}\,,
+\end{equation}
+which leads to the expression of the kinetic energy of a molecule: $(1/2)m\avg{v^2} = (3/2)\boltz T$. Then, the kinetic energy of the system is $N$ times that of a molecule: $2\ken = Nm\avg{v^2}$. Temperature thus becomes
+\begin{equation}\label{eq:kinenergyofsystem}
+T = \dfrac{2}{3}\dfrac{\ken}{N\boltz}\,.
+\end{equation}
+\Cref{eq:kinenergyofsystem} is one important result of the kinetic theory: 
+\begin{quote}
+The average molecular kinetic energy is proportional to the absolute temperature. 
+\end{quote}
+
+From \cref{eq:idealgaslawboltz} and \cref{eq:kinenergyofsystem}, we have
+\begin{equation}\label{eq:pressurevolproptoken}
+PV = \dfrac{2}{3}\ken\,.
+\end{equation}
+Thus, the product of pressure and volume per mole is proportional to the average (translational) molecular kinetic energy.
+
+\Cref{eq:idealgaslawboltz} and \cref{eq:pressurevolproptoken} are called the \lingo{classical results}, which could also be derived from statistical mechanics.
+
+Since there are $3N$ degrees of freedom in a monoatomic-gas system with $N$ particles, the kinetic energy per degree of freedom per molecule is $\ken/3N = \boltz T/2$.
+
+In the kinetic energy per degree of freedom, the constant of proportionality of temperature is 1/2 times Boltzmann constant. In addition to this, the temperature will decrease when the pressure drops to a certain point. This result is related to the equipartition theorem.
+
+As noted in the article on heat capacity, diatomic gases should have 7 degrees of freedom, but the lighter gases act as if they have only 5. Thus the kinetic energy per kelvin (monatomic ideal gas) is per mole: \SI{12.47}{J} and per molecule: $\SI{20.7}{\yocto J} = \SI{129}{\micro eV}$.
+
+At standard temperature (\SI{273.15}{K}), we get that per mole: \SI{3406}{J} and per molecule: $\SI{5.65}{\zepto J} = \SI{35.2}{\milli eV}$.
+
+
+\subsubsection{Collisions with container}
+One can calculate the number of atomic or molecular collisions with a wall of a container per unit area per unit time.
+
+Assuming an ideal gas, a derivation results in an equation for total number of collisions per unit time per area:
+\beq
+A = \dfrac{1}{4}\dfrac{N}{V}v\txt{avg} = \dfrac{n}{4}\sqrt{\dfrac{8\boltz T}{\pi m}}\,.
+\eeq
+This quantity is also known as the ``impingement rate'' in vacuum physics.
+
+
+\subsubsection{Speed of molecules}
+From the kinetic energy formula it can be shown that
+\beq
+v^2\txt{rms} = \dfrac{3RT}{\text{molar mass}}\,,
+\eeq
+with $v$ in \si{m/s}, $T$ in kelvins and $R$ is the gas constant. The molar mass is given as \si{kg/mol}. The most probable speed is 81.6\% of the rms speed and the mean speeds 92.1\% (isotropic distribution of speeds).
+
+
+\subsubsection{Numeric Values of the Constants}
+\begin{itemize}
+\item Avogadro constant: \SI{6.022 141 29e23}{mol^{-1}};
+\item Boltzmann constant: \SI{1.380 6488e-23}{J/K};
+\item molar gas constant: \SI{8.314 4621}{J/mol.K}.
+\end{itemize}

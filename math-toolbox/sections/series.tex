@@ -1,0 +1,174 @@
+\section{Sequences and Series}
+
+\subsection{Sequence}
+In mathematics, informally speaking, a \lingo{sequence} is an ordered list of objects (or events). Like a set, it contains members (also called elements, or terms). The number of ordered elements (possibly infinite) is called the length of the sequence. Unlike a set, order matters, and exactly the same elements can appear multiple times at different positions in the sequence. Most precisely, a sequence can be defined as a function whose domain is a countable totally ordered set, such as the natural numbers.
+
+\subsubsection{Indexing} 
+Indexing notation is used to refer to a sequence in the abstract. It is also a natural notation for sequences whose elements are related to the index $n$ (the element's position) in a simple way. For instance, the sequence of the first 10 square numbers could be written as $\elset{a_1, a_2, \dotsc, a_n}$ such that $a_k = k^2$ for all $k$. This represents the sequence $\elset{1,4,9,\dotsc, 100}$. This notation is often simplified further as $\seq{a_k}{k=1}{10}$ with $a_k = k^2$. Here the subscript $(k=1)$ and superscript 10 together tell us that the elements of this sequence are the $a_k$ such that $k=1,2,\dotsc,10$.
+
+Sequences can be indexed beginning and ending from any integer. The infinity symbol $\infty$ is often used as the superscript to indicate the sequence including all integer $k$-values starting with a certain one. The sequence of all positive squares is then denoted $\seq {a_k}{k=1}{\infty}$ with $a_k = k^2$.
+
+In some cases the elements of the sequence are related naturally to a sequence of integers whose pattern can be easily inferred. In these cases the index set may be implied by a listing of the first few abstract elements. For instance, the sequence of squares of odd numbers could be denoted $\seq{(2k-1)^2}{k=1}{\infty}$.
+
+
+\subsubsection{Specifying a Sequence by Recursion}
+Sequences whose elements are related to the previous elements in a straightforward way are often specified using \lingo{recursion}. This is in contrast to the specification of sequence elements in terms of their position.
+
+To specify a sequence by recursion requires a \emph{rule to construct each consecutive element in terms of the ones before it}. In addition, \emph{enough initial elements must be specified} so that new elements of the sequence can be specified by the rule. The \lingo{principle of mathematical induction} can be used to prove that a sequence is well-defined, which is to say that that every element of the sequence is specified at least once and has a single, unambiguous value. Induction can also be used to prove properties about a sequence, especially for sequences whose most natural specification is by recursion.
+
+The Fibonacci sequence can be defined using a recursive rule along with two initial elements. The rule is that each element is the sum of the previous two elements, and the first two elements are 0 and 1.
+\beq
+a_n = a_{n-1} + a_{n-2}\,,\qquad\text{with}\qquad a_0 = 0\text{ and } a_1 = 1\,.
+\eeq
+The first ten terms of this sequence are 0, 1, 1, 2, 3, 5, 8, 13, 21 and 34.
+
+\emph{Not} all sequences can be specified by a rule in the form of an equation, recursive or not, and some can be quite complicated. For example, the sequence of prime numbers is the set of prime numbers in their natural order. This gives the sequence $\elset{2,3,5,7,11,13,17,\dotsc}$.
+
+
+\subsubsection{Definition}
+A sequence is usually defined as a function whose domain is a countable totally ordered set, although in many disciplines the domain is restricted, such as to the natural numbers. In real analysis a sequence is a function from a subset of the natural numbers to the real numbers. In other words, a sequence is a map $\fmap{f\vat n}{\set N}{\set R}$. To recover our earlier notation we might identify $a_k = f\vat n$ $\forall n$ or just write $\fmap{a_n}{\set N}{\set R}$.
+
+
+\subsubsection{Finite and Infinite}
+The \lingo{length} of a sequence is defined as the number of terms in the sequence.
+
+A sequence of a finite length $n$ is also called an $n$-tuple. Finite sequences include the empty sequence $\elset{}$ that has no elements.
+
+Normally, the term \lingo{infinite sequence} refers to a sequence which is infinite in one direction, and finite in the other -- the sequence has a first element, but no final element (a \lingo{singly infinite sequence}). A sequence that is infinite in both directions -- it has neither a first nor a final element-is called a \lingo{bi-infinite sequence}, two-way infinite sequence, or doubly infinite sequence. For instance, a function from all integers into a set, such as the sequence of all even integers $\elset{\dotsc, -4,-2,0,2,4,\dotsc}$ is bi-infinite. This sequence could be denoted $\seq{2n}{n=\infty}{\infty}$.
+
+
+\subsubsection{Increasing and Decreasing}
+A sequence is said to be \lingo{monotonically increasing} if each term is greater than or equal to the one before it. For a sequence  this can be written as $a_k \leq a_{}$ $\forall n\geq 1$. If each consecutive term is strictly greater than the previous term then the sequence is called \lingo{strictly monotonically increasing}. A sequence is \lingo{monotonically decreasing} if each consecutive term is less than or equal to the previous one and \lingo{strictly monotonically decreasing} if each is strictly less than the previous. If a sequence is either increasing or decreasing it is called a \lingo{monotone sequence}. This is a special case of the more general notion of a monotonic function.
+
+
+\subsubsection{Bounded}
+If the sequence of real numbers $\seq{a_n}{}{}$ is such that all the terms, after a certain one, are less than some real number $M$, then the sequence is said to be \lingo{bounded from above}. In less words, this means $a_n\leq M$ $\forall n > N$ for some pair $M$ and $N$. Any such $M$ is called an \lingo{upper bound}. Likewise, if, for some real $m$ $a_n \geq m$ for all $n$ greater than some $N$, then the sequence is \lingo{bounded from below} and any such $m$ is called a \lingo{lower bound}. If a sequence is both bounded from above and bounded from below then the sequence is said to be \lingo{bounded}.
+
+
+\subsubsection{Convergence}
+One of the most important properties of a sequence is \lingo{convergence}. Informally, a sequence converges if it has a limit. Continuing informally, a (singly-infinite) sequence has a limit if it approaches some value $L$, called the limit, as $n$ becomes very large. That is, for an abstract sequence $\seq{a_k}{k=1}{\infty}$ (with $n$ running from 1 to infinity understood) the value of the $a_n$'s approaches $L$ as $n$ approaches infinity, denoted
+\beq
+\lim_{n\to\infty} a_n = L\,.
+\eeq
+
+More precisely, the 
+\begin{quote}
+sequence converges if there exists a limit, $L$, such that the remaining $a_n$'s are arbitrarily close to $L$ for some $n$ large enough.
+\end{quote}
+
+If a sequence converges to some limit, then it is \lingo{convergent}; otherwise it is \lingo{divergent}.
+
+If the $a_n$'s get arbitrarily large as $n$ approaches infinity then we write $\lim_{n\to\infty} a_n = \infty$. In this case the sequence  diverges, or that it converges to infinity. If the $a_n$'s become arbitrarily ``small'' negative numbers (large in magnitude) as $n$ goes to positive infinity then we write $\lim_{n\to\infty} a_n = -\infty$ and say that the sequence diverges or converges to minus infinity.
+
+
+\subsubsection{Applications and Important Results}
+Important results for convergence and limits of (one-sided) sequences of real numbers include the following. These equalities are all true at least when both sides exist. For a discussion of when the existence of the limit on one side implies the existence of the other see a real analysis text such as can be found in the references.
+
+\begin{itemize}
+\item The limit of a sequence is unique.
+%
+\item $\lim_{n\to\infty}(a_n \pm b_n) = \lim_{n\to\infty} a_n \pm \lim_{n\to\infty} b_n$.
+%
+\item $\lim_{n\to\infty} c a_n = c\lim_{n\to\infty} a_n$.
+%
+\item $\lim_{n\to\infty} a_n b_n = \left(\lim_{n\to\infty} a_n\right) \left(\lim_{n\to\infty} b_n\right) $.
+%
+\item $\lim_{n\to\infty}\left(a_n / b_n \right) = \lim_{n\to\infty} a_n / \lim_{n\to\infty} b_n$ provided $\lim_{n\to\infty} b_n \neq 0$.
+%
+\item $\lim_{n\to\infty} a_n^p = \left(\lim_{n\to\infty} a_n\right)^p$.
+%
+\item If $a_n\leq b_n$ for all $n$ greater than some $N$, then $\lim_{n\to\infty} a_n \leq \lim_{n\to\infty} b_n$.
+%
+\item (Squeeze Theorem) If $a_n\leq c_n\leq b_n$ for all $n > N$ and $\lim_{n\to\infty} a_n = \lim_{n\to\infty} b_n= L$,   then $\lim_{n\to\infty} c_n = L$.
+%
+\item If a sequence is bounded and monotonic then it is convergent.
+%
+\item A sequence is convergent if and only if every subsequence is convergent.
+\end{itemize}
+
+
+\subsection{Series}
+A \lingo{series} is, informally speaking, the sum of the terms of a sequence. Finite sequences and series have defined first and last terms, whereas infinite sequences and series continue indefinitely.
+
+In mathematics, given an infinite sequence of numbers $\seq{a_n}{}{}$, a series is informally the result of adding all those terms together: $a_1 + a_2 + a_3 + \dotsb$. These can be written more compactly using the summation symbol $\sum$. An example is the famous series from Zeno's dichotomy and its mathematical representation:
+\beq
+\serie{n = 1}{\infty}{\dfrac{1}{2^n}} = \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} + \dotsb\,.
+\eeq
+
+The \lingo{terms of the series} are often produced according to a certain rule, such as by a formula, or by an algorithm. As there are an infinite number of terms, this notion is often called an \lingo{infinite series}. Unlike finite summations, infinite series need tools from mathematical analysis, and specifically the notion of limits, to be fully understood and manipulated. In addition to their ubiquity in mathematics, infinite series are also widely used in other quantitative disciplines such as physics, computer science, and finance.
+
+
+\subsubsection{Definition}
+For any sequence  of rational numbers, real numbers, complex numbers, functions thereof, \etc., the \lingo{associated series} is defined as the ordered formal sum 
+\beq
+\serie{n = 0}{\infty}{a_n} = a_0 + a_1 + a_2 + \dotsc\,.
+\eeq
+
+The \lingo{sequence of partial sums} $\elset{S_k}$ associated to a series $\serie{n = 0}{\infty}{a_n}$ is defined for each $k$ as the sum of the sequence $\seq{a_k}{}{}$ from $a_0$ to $a_k$
+\beq
+S_k = \serie{n = 0}{k}{a_n} = a_0 + a_1 + \dotsb + a_k\,.
+\eeq
+
+By definition the series $\serie{n=0}{\infty}{a_n}$ \lingo{converges} to a limit $L$ if and only if the associated sequence of partial sums $\elset{S_k}$ converges to $L$. This definition is usually written as
+\beq
+L = \serie{n = 0}{\infty}{a_n}\iff L = \lim_{k\to\infty} S_k\,.
+\eeq
+
+\subsubsection{Convergent Series}
+A series $\serie{a_n}{}{}$ is said to \lingo{converge} or to \lingo{be convergent} when the sequence $S_N$ of partial sums has a finite limit. If the limit of $S_N$ is infinite or does not exist, the series is said to \lingo{diverge}. When the limit of partial sums exists, it is called the \lingo{sum of the series}
+\beq
+\serie{n=0}{\infty}{a_n} = \lim_{N\to\infty} S_N = \lim_{N\to\infty}\serie{n = 0}{N}{a_n}\,.
+\eeq
+
+An easy way that an infinite series can converge is if all the $a_n$ are zero for $n$ sufficiently large. Such a series can be identified with a finite sum, so it is only infinite in a trivial sense.
+
+
+\subsection{Recursion}
+\lingo{Recursion} is the process of repeating items in a self-similar way. For instance, when the surfaces of two mirrors are exactly parallel with each other the nested images that occur are a form of infinite recursion. The term has a variety of meanings specific to a variety of disciplines ranging from linguistics to logic. The most common application of recursion is in mathematics and computer science, in which it refers to a method of defining functions in which the function being defined is applied within its own definition. Specifically this defines an infinite number of instances (function values), using a finite expression that for some instances may refer to other instances, but in such a way that no loop or infinite chain of references can occur. The term is also used more generally to describe a process of repeating objects in a self-similar way.
+
+
+\subsubsection{Definition}
+A class of objects or methods exhibit recursive behavior when they can be defined by two properties:
+\begin{enumerate}
+\item A simple base case (or cases).
+\item A set of rules that reduce all other cases toward the base case.
+\end{enumerate} 
+
+The Fibonacci sequence is a classic example of recursion:
+\begin{itemize}
+\item $\fib\vat 0$ is 0 [base case];
+\item $\fib\vat 1$ is 1 [base case];
+\item For all integers $n > 1$: $\fib\vat n$ is $(\fib\vat{n-1} + \fib\vat{n-2})$ [recursive definition].
+\end{itemize}
+
+Many mathematical axioms are based upon recursive rules. For example, the formal definition of the natural numbers by the Peano axioms can be described as: 0 is a natural number, and each natural number has a successor, which is also a natural number. By this base case and recursive rule, one can generate the set of all natural numbers.
+
+Recursively defined mathematical objects include functions, sets and especially fractals.
+
+
+\subsubsection{Recursive definition}
+A \lingo{recursive definition} (or inductive definition) is used to define an object in terms of itself.
+
+A recursive definition of a function defines values of the functions for some inputs in terms of the values of the same function for other inputs. For example, the factorial function $n!$ is defined by the rules
+\beq
+0! = 1\qquad\text{and}\qquad
+(n+1)! = (n+1)n!\,.
+\eeq
+This definition is valid for all $n$, because the recursion eventually reaches the \lingo{base case} of 0. The definition may also be thought of as giving a procedure describing how to construct the function $n!$, starting from $n = 0$ and proceeding onward with $n = 1$, $n = 2$, $n = 3$, \etc. That such a definition indeed defines a function can be proved by induction.
+
+An inductive definition of a set describes the elements in a set in terms of other elements in the set. For example, one definition of the set $\set N$ of natural numbers is:
+\begin{itemize}
+\item 1 is in $\set N$.
+\item If an element $n$ is in $\set N$ then $n+1$ is in $\set N$.
+\item $\set N$ is the smallest set satisfying the previous conditions.
+\end{itemize}
+There are many sets that satisfy the two first conditions; \eg, the set $\elset{1, 1.649, 2, 2.649, 3, 3.649, \dotsc}$ satisfies the definition. However, the last condition specifies the set of natural numbers by removing the sets with extraneous members.
+
+Properties of recursively defined functions and sets can often be proved by an induction principle that follows the recursive definition. For example, the definition of the natural numbers presented here directly implies the \lingo{principle of mathematical induction} for natural numbers: if a property holds of the natural number 0, and the property holds of $n+1$ whenever it holds of $n$, then the property holds of all natural numbers.
+
+
+\subsubsection{Form of recursive definitions}
+Most recursive definition have three foundations: a base case (basis), an inductive clause, and an extremal clause.
+
+The difference between a circular definition and a recursive definition is that a recursive definition must always have base cases, cases that satisfy the definition \emph{without} being defined in terms of the definition itself, and all other cases comprising the definition must be ``smaller'' (closer to those base cases that terminate the recursion) in some sense. In contrast, a circular definition may have no base case, and define the value of a function in terms of that value itself, rather than on other values of the function. Such a situation would lead to an infinite regress.
+

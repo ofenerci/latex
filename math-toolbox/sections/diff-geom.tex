@@ -1,0 +1,142 @@
+\section{Differential Geometry}
+
+
+\subsection{Comma and Semi-colon Derivatives}
+Comma-derivative: The components of the gradient of the one-form $\dx A$ are denoted $\cder Ak$, or sometimes $\igder kA$, and are given by
+\beq
+\cder Ak = \igder kA = \xpd A{\scoord k} \,.
+\eeq
+
+Semi-colon or covariant derivative: The covariant derivative of a \emph{contravariant} tensor $\cntens Aa$ (also called the ``semicolon derivative'' since its symbol is a semicolon) is given by
+\beq
+\coder{\cntens Aa}{b} = \xpd{\cntens Aa}{\scoord b} + \chris abk\cntens Ak 
+                      = \cder{\cntens Aa}{b} + \chris abk\cntens Ak \,,
+\eeq
+where $\chris kij$ is a Christoffel symbol, Einstein summation has been used in the last term, and $\cder{\cntens Aa}{b}$ is a comma derivative. The notation $\gder\iprod A$, which is a generalization of the symbol commonly used to denote the divergence of a vector function in three dimensions, is sometimes also used.
+
+The covariant derivative of a \emph{covariant tensor} $\cotens Aa$ is
+\beq
+\coder{\cotens Aa}{b} = \xpd{\cotens Aa}{\scoord b} - \chris abk\cotens Ak \,,
+\eeq
+
+
+\subsection{Some Derivatives}
+Consider a scalar field $f = f\vat{t, \scoord i}$ (a scalar-valued function of the position vector). Then, the total time derivative of the scalar field, denoted $\dt f$, is defined by 
+\beq
+\dt f = \igder tf + \igder if\dtcntens\pvec i\,.
+\eeq
+
+Partial time derivative operator:
+\beq
+\igder t = \xpd{}{t}\,.
+\eeq
+
+Partial spatial (coordinate) derivative operator:
+\beq
+\igder k = \igder{\scoord k} = \xpd{}{\scoord k}.
+\eeq
+
+Absolute derivative of a tensor field $T$ upon the parameter $t$:
+\beq
+\mder Tt = \abstder{T} = \dfrac{\fder T}{\dx t} = \dfrac{\gder T}{\dx t}\,.
+\eeq
+
+
+\subsection{Continuity Equation}
+Recall that the most important equation in fluid dynamics, as well as in general continuum mechanics, is the celebrated equation of continuity, (we explain the symbols in the following text)
+\beq
+\igder t\rho + \div(\rho u) = 0\,.
+\eeq
+
+As a warm-up for turbulence, we will derive the continuity equation, starting from the mass conservation principle. Let $\dx m$ denote an infinitesimal mass of a fluid particle. Then, using the absolute time derivative operator $\abstder{} = \mder t{}$, the mass conservation principle reads
+\beq
+\abstder{\dx m} = 0\,.
+\eeq
+
+If we further introduce the fluid density $\rho = \dx m/\dx v$, where $\dx v$ is an infinitesimal volume of a fluid particle, then the mass conservation principle can be rewritten as
+\beq
+\abstder{\rho\dx v} = 0\,,
+\eeq
+which is the absolute derivative of a product, and therefore expands into
+\beq
+\dt\rho \dx v + \rho\abstder{\dx v} = 0\,.
+\eeq
+
+Now, as the fluid density $\rho = \rho\vat{\scoord k, t}$ is a function of both time $t$ and spatial coordinates $\scoord k$, for $k = 1,2,3$, that is, a scalar-field, its total time derivative $\dt\rho$ is defined by
+\beq
+\dt\rho = \igder t\rho + \igder{\scoord k}\rho\igder t\scoord k 
+        = \igder t\rho + \coder\rho k \cntens uk\,,
+\eeq
+or, in vector form,
+\beq
+\dt\rho = \igder t\rho + \grad\rho\iprod u\,,
+\eeq
+where $u = \cntens uk = \cntens uk\vat{\scoord k, t}$ is the velocity vector-field of the fluid.
+
+Regarding $\abstder{\dx v}$, the other term figuring in the absolute derivative of a product, we start by expanding an elementary volume $\dx v$ along the sides $\elset{\dx\scoord i_{(p)}, \dx\scoord j_{(q)}, \dx\scoord k_{(r)}}$ of an elementary parallelepiped, as
+\beq
+\dx v = \dfrac{1}{3!}\mkron{pqr}{ijk}\,\dx\scoord i_{(p)} \dx\scoord j_{(q)} \dx\scoord k_{(r)}\,,\qquad
+    [i,j,k,p,q,r = 1,2,3]
+\eeq
+so that its absolute derivative becomes [maths here :)] which finally simplifies into
+\beq
+\abstder{\dx v} = \coder{\cntens uk}k\dx v = \div{(u)}\dx v\,,
+\eeq
+Substituting the products into the continuity equation gives
+\beq
+\abstder{\rho \dx v} = \left(\igder t\rho + \coder\rho k\cntens uk\right)\,\dx v 
+                        + \rho\coder{\cntens uk}k\dx v 
+                     = 0
+\eeq
+
+As we are dealing with arbitrary fluid particles, then $\dx v \neq 0$, so from the last equation follows
+\beq
+\igder t\rho + \coder\rho k\cntens uk + \rho\coder{\cntens uk}k =
+    \igder t\rho + \coder{\left(\rho\cntens uk\right)}k = 0\,,
+\eeq
+
+The last equation is the covariant form of the continuity equation, which in standard vector notation becomes
+\beq
+\igder t\rho + \div(\rho u) = 0\,.
+\eeq
+
+
+\subsection{Differential Forms}
+Consider a set of coordinates $\elset{\cnvec x1,\dotsc,\cnvec xn}$ on a manifold $\region M$ and consider the set
+\beq
+\tuple{\nbvec 1, \dotsc, \nbvec n} = \tuple{\xpd{}{\cnvec x1},\dotsc,\xpd{}{\cnvec xn}}
+\eeq
+be the basis for $T_m\region M$.
+
+Consider the set
+\beq
+\tuple{\dbvec 1, \dotsc, \dbvec n} = \tuple{\dx\cnvec x1, \dotsc, \dx\cnvec xn}
+\eeq
+be the dual basis for $T_m^*\region M$.
+
+At each point $m\in\region M$, we can write a 2-form as
+\beq
+\Omega_m\vat{v,w} = \Omega_{ij}\vat m\cnvec vi\cnvec wj\,,
+\eeq
+where
+\beq
+\Omega_{ij}\vat m = \tuple{\xpd{}{\cnvec xi}, \xpd{}{\cnvec xj}}\,.
+\eeq
+
+
+\subsection{Algebra of Differential Forms}
+Consider the forms $\elset{\dx\cnvec xi, \dx\cnvec xj}$ and the scalar $\alpha\in\set R$, then
+\begin{itemize}
+\item addition is commutative: $\dx\cnvec xi + \dx\cnvec xj = \dx\cnvec xj + \dx\cnvec xi$;
+\item multiplication by a scalar is commutative: $\alpha\dx\cnvec xi = \dx\cnvec xi\alpha$;
+\item subtraction: $\dx\cnvec xi - \dx\cnvec xj = \dx\cnvec xi + (-1)\dx\cnvec xj$;
+\item multiplication: $\dx\cnvec xi\dx\cnvec xj = 0$, when $i=j$, and $\dx\cnvec xi\dx\cnvec xj = -\dx\cnvec xj\dx\cnvec xi$, when $i\neq j$. Both conditions can be summarized by
+\beq
+\acom{\dx\cnvec xi}{\dx\cnvec xj} = 0\,;
+\eeq
+or, expanding the anti-commutator brackets:
+\beq
+\xacom{\dx\cnvec xi}{\dx\cnvec xj} = 0\,.
+\eeq
+\end{itemize}
+

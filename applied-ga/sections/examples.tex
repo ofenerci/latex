@@ -1,0 +1,61 @@
+\section{Examples}
+
+\subsection{Geometric Algebra}
+Some examples on the usage of geometric algebra applied to physics.
+
+\begin{example}
+Write Lorentz force law using the geometric algebra formalism.
+\end{example}
+
+Two changes are needed for Lorentz force law to agree with geometric algebra: change in notation and the replacement of the cross product with the outer product. We solve the replacement of the cross product in two ways.
+
+\begin{solution}
+Notation change: using IUPAC recommendations, the Lorentz force can be written as
+\beq
+\vec F = Q(\vec E + \vec v\cprod \vec B)\,,
+\eeq
+where the force $\vec F$, the electric field $\vec E$, the particle velocity $\vec v$ and the magnetic induction $\vec B$, \aka magnetic field, are modeled by vectors in $\nset R3$ and the electric charge $Q$ by a scalar in $\set R$. 
+
+Then, since geometric algebra puts all of its members on equal footing, it is common to denote scalars and vectors by undecorated lower case variables, so $\vec F\to f$, $\vec E\to e$, $\vec B\to b$ and $Q\to q$. With these associations, Lorentz force law, therefore, becomes
+\begin{equation}\label{eq:lorentztrad}
+f = q(e + v\cprod b)\,.
+\end{equation}
+Not only does this rewritten equation look more elegant -- at least to the writer's eyes, it is actually easier to work with it.
+\end{solution}
+
+\begin{solution}
+Cross product replacement: Consider \cref{eq:lorentztrad}. Using the geometric algebra of space $\nga 3$, replace the cross product by its definition in terms of the outer product:
+\begin{equation}\label{eq:crosstoouterlorentz}
+v\cprod b = -i(v\oprod b) = i(b\oprod v) = (b\oprod v)i\,,
+\end{equation}
+where $i$ is the unit pseudoscalar in $\nga 3$. See that the anti-commutative property of the outer product and the commutativity property~\footnote{~In $\nga 3$, $i$ commutes with every other member of the algebra.} of $i$ were used.
+
+Then, plug in the last equalities of \cref{eq:crosstoouterlorentz} in Lorentz force law to find,
+\beq
+f = q(e + i(b\oprod v)) = q(e + (b\oprod v)i)\,.\mqed
+\eeq
+\end{solution}
+
+\begin{note} The cross product $v\cprod b$ was replaced with the outer product $(b\oprod v)i$, via $i$. Algebraically, in $\nga 3$, $b\oprod v$ is a bivector and $i$ a trivector, thus their product $(b\oprod v)i$ yields a vector, which agrees with the result of $v\cprod b$. Geometrically, on the other hand, $v\cprod b$ \emph{yields} a vector perpendicular to the plane formed by $v$ and $b$, whereas $b\oprod v$ \emph{represents} the plane formed by $b$ and $v$ and thus $(b\oprod v)i$ yields the \emph{dual} of $b\oprod v$; that is, a vector perpendicular to the $b\oprod v$ plane. Therefore, the result, $(b\oprod v)i$, is algebraically and geometrically equivalent to $v\cprod b$; \ie, no information was lost during the conversion.
+
+The reason for the replacement is that the outer product is more fundamental than the cross product. The cross product exists only in 3-space $\nset V3$, while the outer product can be defined in $n$-dimensions. Additionally, the cross product yields a vector perpendicular to its operands, whereas the outer product represents the plane itself formed by its operands; in other words, while the cross product uses local geometrical information to \emph{yield} non-local geometrical information -- non-local geometry, the outer product \emph{uses} local geometrical information to \emph{represent} local geometrical information -- local geometry.
+\end{note}
+
+The next solution refines the replacement of the cross product by using the duality property between vectors and bivectors in $\nga 3$.
+
+\begin{solution}
+Considering the identity $v\cprod b = -(v\oprod b)i$, use $i$ to interchange the outer product with the inner product, via the identity $(x\oprod y)i = x\iprod(yi)$, for vectors $x,y\in\nga 3$:
+\beq
+v\cprod b = -v\iprod(bi)\,.
+\eeq
+
+Next, since $b$ is a vector in $\nga 3$, then $bi$ is its dual -- a bivector. Thus, the product $v\iprod(bi)$ anti-commutes:
+\beq
+v\cprod b = (bi)\iprod v\,.
+\eeq
+
+Next, replace the last result in Lorentz force law:
+\beq
+f = q(e + (bi)\iprod v)\,.\mqed
+\eeq
+\end{solution}

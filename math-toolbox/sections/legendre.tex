@@ -1,0 +1,145 @@
+\section{Legendre Transform}
+The \lingo{Legendre transform}, \aka Legendre transformation, is an involutive transformation on the real-valued convex functions of one real variable. Its generalisation to convex functions of affine spaces is sometimes called the Legendre-Fenchel transformation. It is commonly used in thermodynamics and to derive the Hamiltonian formalism of classical mechanics out of the Lagrangian formulation.
+
+The Legendre transform exploits the equivalence between lines and points.
+
+The Legendre transform is invertible by its own inverse: \ie, apply the Legendre transform to $f$ to find $\ltrans f$; then, apply the Legendre transform to $\ltrans f$ to arrive back to $f$.
+
+[a graphical derivation of the legendre transform, Sam Kennerly]
+
+The Legendre transform is a trick for representing a function in terms of its first derivative.
+
+While mathematically rigorous descriptions are arguably unnecessary for many applications, some caution is necessary to avoid serious errors in practice. A few common sources of confusion are:
+\begin{itemize}
+\item failing to clearly state the necessary existence/uniqueness conditions, 
+\item using notation which confuses numbers with functions and
+\item misinterpreting the somewhat-ambiguous formula $px - f\vat x$.
+\end{itemize}
+
+The second error is especially popular with physicists. The symbol $y\vat x$ is often used to represent both ``the function $y\vat{}$'' and ``the value of $y$ at $x$''. This \emph{abuse of notation} is usually harmless, but it can be dangerous when \emph{change-of-variable techniques} are used. Here we will use $y$ to mean a number, $y\vat{}$ to mean a function, and $y\vat x$ to mean ``the output of $y\vat{}$ when given $x$ as an input''.
+
+
+\subsection{Existence/uniqueness conditions for a Legendre transform}
+Suppose all of the following statements are true:
+\begin{enumerate}
+\item A well-behaved function $f\vat{}$ is defined over some chunk $\set D$ of the real line.
+\item For any $x\in\set D$, you know how to find $f\vat x$ and $f'\vat x$.
+\item The graph of $f\vat x$ always curves upward: for any $x\in\set D$, then $f''\vat x > 0$.
+\end{enumerate}
+
+Condition 1 is deliberately vague; what do ``well-behaved'' and ``chunk'' mean? The point is: when using functions that fail common tests (\eg, continuity, non-singularity, smoothness), then be careful. A more rigorous treatment than the one provided here may be necessary.
+
+Condition 2 simply requires that an explicit formula for $f\vat x$, its derivative can be found either by hand or by computer and that derivative is also well-behaved.
+
+Condition 3 is \emph{not always} stated explicitly, but it should be. Legendre transformations behave very badly if the curvature of $f\vat{}$ changes sign as $x$ changes. (If $f''\vat x$ fails to exist at some points, see the subsection ``Convex functions and convex sets.'')
+
+Suppose that instead of using $x$ as a variable, you would prefer a new variable $p$ such that $p\vat x = f'\vat x$. The Legendre transform produces a formula, in terms of $p$, for a new function $g\vat{}$. The transform is \lingo{invertible}, so knowing $g\vat p$ tells you everything about $f\vat x$.
+
+
+\subsection{Geometric interpretation of the Legendre transform}
+Plot $f\vat x$. At each point, imagine a line tangent to the plot. This line intersects $\tuple{x,f\vat x}$ and has slope $p = f'\vat x$. Any straight line with slope $p$ must look like this for some $g\in\set R$:
+\beq
+y\vat x = px - g\,.
+\eeq
+Here $g$ means ``the \emph{negative} $y$-intercept of the line tangent to $f\vat{}$ at the point $\tuple{x,f\vat x}$\,''. (We could have defined $g$ to be the positive $y$-intercept, but that's not the usual convention.)
+
+Since $f''\vat x > 0$ everywhere, there is \emph{only one} tangent line for each possible slope $p$. Draw pictures to convince yourself that if a function always curves upward, it can't have two tangent lines with the same slope.
+
+For each possible slope $p$, there is \emph{exactly one} tangent line. That tangent line has its $y$-intercept at $y = -g\vat p$. We want to find the function $g\vat{}$ that maps $p$'s to $g$'s.
+
+The really useful thing about $g\vat{}$ is this: 
+\begin{quote}
+each point $\tuple{x,f\vat x}$ has exactly one ``evil twin'' point $\tuple{p,g\vat p}$. Knowing $g\vat{}$ then gives us complete information about the $f\vat{}$ and \vis.
+\end{quote}
+
+
+\subsection{Recipe to Find the Legendre Transform}\label{subsubsec:recipelegendretrans}
+The recipe for the Legendre transform is:
+\begin{enumerate}
+\item Check that $f\vat{}$ satisfies the existence/uniqueness conditions.
+%
+\item Define a new function $p\vat{}$ such that $p\vat x\defby f'\vat x$. Then, invert $p\vat{}$ and call the result $x\vat{}$. 
+%
+\item Define $g$ to be the negative of the $y$-intercept of the line tangent to $f\vat{}$ at $x$:
+\beq
+g = p\vat x\,x - f\vat x\,.
+\eeq
+%
+\item Use the formula for $x\vat p$ to write the $x$'s as functions of $p$. Call the result $g\vat p$:
+\beq
+g\vat p = p\,x\vat p - f\vat{x\vat p}\,.
+\eeq
+\end{enumerate}
+Just be careful to remember what $x\vat p$ means: it is the value of $x$ at which the slope of $f'\vat{}$ is $f'\vat x = p$. Otherwise this equation won't make any sense.
+
+Additionally, change the notation~\footnote{~The usage of $g$ and $p$ hides the transformation of $f$ and $x$. That's why, we prefer more explicit notation: $\ltrans f$ and $\cvar x$, respectively.} and wording to agree with more ``standard'' sources:
+\begin{itemize}
+\item Notation: denote the transformed function $f$ by $\ltrans f$ and denote the transformed variable $p$ by $\cvar x$.
+\item Wording: consider a function $f$ with domain $\set D$ and consider $x\in\set D$. Then, call $\ltrans f$ the \lingo{Legendre transform of $f$} and call $\cvar x$ the \lingo{conjugate variable of $x$}.
+\end{itemize}
+
+
+\subsection{Examples}
+Find the Legendre transform of $\fmap f{x}{x^2}$ with $x\in\set R$.
+
+\begin{solution}
+Follow the steps in \cref{subsubsec:recipelegendretrans} to find the solution:
+\begin{itemize}
+\item $f$ is well behaved, $f'$ is also well behaved and $f'' > 0$.
+\item Define $p\vat x \defby f'\vat x = 2x$. Invert this to find $x\vat p$: $p\vat x = 2x\implies x\vat p = p/2$.
+\item Define $g\vat x \defby p\vat x x - f\vat x$: $g\vat x = (2x)x - x^2 = x^2$.
+\item Use $x\vat p = p/2$ to write the $x$'s as functions of $p$: $g\vat p = (p/2)^2 = p^2/4$.
+\item The Legendre transform is finally: $\ltrans f\vat{\cvar p} = \cvar p^2/4$.
+\end{itemize}
+Notice how we have changed the function $f$ for its equivalent $\ltrans f$: analytically, the derivative $\cvar x$ has replaced the independent variable $x$. Geometrically, the slope (tangent) $\cvar x$ has replaced the $x$-coordinate; \ie, a line has replaced a point.
+\end{solution}
+
+
+\begin{example}
+Invert the last Legendre transform.
+\end{example}
+
+\begin{solution}
+To invert a Legendre transform means to apply the Legendre transform to an already transformed function. In the present case, transform the function $\fmap f{x}{x^2/4}$ with $x\in\set R$.
+
+\begin{itemize}
+\item $f$ is well behaved, $f'$ is also well behaved and $f'' > 0$.
+\item Define $p\vat x \defby f'\vat x = x/2$. Invert this to find $x\vat p$: $p\vat x = x/2\implies x\vat p = 2p$.
+\item Define $g\vat x \defby p\vat x x - f\vat x$: $g\vat x = (x/2)x - (x^2/4) = x^2/4$.
+\item Use $x\vat p = 2p$ to write the $x$'s as functions of $p$: $g\vat p = (2p)^2/4 = p^2$.
+\item The Legendre transform is finally: $\ltrans f\vat{\cvar p} = \cvar p^2$, which is the original function we started with in the last example!
+\end{itemize}
+\end{solution}
+
+
+\begin{example}
+Imagine a pendulum made of a very light, rigid rod of length $r$ with a dense, point-like blob of mass $m$ on one end. The other end is attached to a ball bearing which allows the pendulum to rotate \ang{360} in a vertical plane. Define $\theta$ to be the angle between the rod and a vertical line and set $\theta = 0$, when the blob is at maximum height. Choose positive $\theta$ to be clockwise or counter-clockwise. Ignore friction but don't ignore gravity. Find the Lagrangian of the system and, then, its Legrendre transform: the Hamiltonian of the system.
+\end{example}
+
+\begin{solution}
+The (approximate) gravitational potential energy of this object is $V = mgy = mgr\cos\theta$. The (approximate) rotational kinetic energy is $K = i\omega^2/2 = mr^2\omega^2/2$, where $\omega$ is the pendulum's angular velocity. The Lagrangian describing the system is $L = K - V$; \ie,
+\beq
+L\vat{\theta, \omega} = K - V = \dfrac{mr^2\omega^2}{2} - mgr\cos\theta\,.
+\eeq
+
+The Hamiltonian of this system is found by Legendre-transforming $L$ to remove the variable $\omega$. (The variable $\theta$ comes along for the ride. For our purposes, $\theta$ can be thought of as a constant during the Legendre-transform process.) First, define $p\vat\omega = L'\vat\omega$:
+\beq
+p\vat\omega = L'\vat\omega = mr^2\omega\,.
+\eeq
+Is $L''\vat\omega > 0$ for all $\omega$? Since $L''\vat\omega = mr^2$ and $m > 0$, then it is. Note that $p$ has a physical interpretation as the pendulum's angular momentum $mr^2\omega = i\omega$.
+
+Now invert $p\vat\omega$ to find $\omega\vat p = p/mr^2$. Define $g = p\vat\omega - L\vat\omega$ as usual, use $\omega\vat p$ to write everything in terms of $p$'s, and call the result $g\vat p$:
+\beq
+g\vat p = \dfrac{p^2}{2mr^2} + mgr\cos\theta\,.
+\eeq
+
+Remembering that $\theta$ is not really a constant, we should call it $g\vat{\theta,p}$. Also, traditional notation uses $H$ and $L$ instead of $g$ and $p$ for ``Hamiltonian'' and ``angular momentum''.
+\beq
+H\vat{\theta, L} = \dfrac{L^2}{2mr^2} + mgr\cos\theta\,.
+\eeq
+This is the pendulum's Hamiltonian function. It has a physical interpretation as the total (kinetic plus potential) energy of the pendulum in terms of angular position and momentum.
+
+In most simple physical systems like this one, using a Legendre transform to find the particle's Hamiltonian seems like extra work for no clear benefit; why not just write $H = K + V$ in the first place? For many practical calculations, this is an excellent criticism. The method is primarily important for providing a theoretical motivation for quantum mechanics.
+\end{solution}
+
+

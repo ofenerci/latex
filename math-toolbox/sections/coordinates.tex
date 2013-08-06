@@ -1,0 +1,755 @@
+\section{Coordinate Systems}
+
+
+\subsection{Polar Coordinates}
+In mathematics, the \lingo{polar coordinate system} is a two-dimensional coordinate system in which each point on a plane is determined by a distance from a fixed point and an angle from a fixed direction.
+
+The fixed point (analogous to the origin of a Cartesian system) is called the \lingo{pole}, and the ray from the pole in the fixed direction is the polar axis. The distance from the pole is called the \lingo{radial coordinate} or \lingo{radius}, and the angle is the \lingo{angular coordinate}, \lingo{polar angle}, or azimuth.
+
+
+\subsubsection{Conventions}
+The radial coordinate is often denoted by $r$, and the angular coordinate by $\theta$ or $t$.
+
+Angles in polar notation are generally expressed in either degrees or radians ($2\pi$ \si{rad} being equal to \ang{360}). Degrees are traditionally used in navigation, surveying, and many applied disciplines, while radians are more common in mathematics and mathematical physics.
+
+In many contexts, a positive angular coordinate means that the angle $\theta$ is measured counterclockwise from the axis.
+
+In mathematical literature, the polar axis is often drawn horizontal and pointing to the right.
+
+
+\subsubsection{Converting between polar and Cartesian coordinates}
+The polar coordinates $r$ and $\theta$ can be converted to the Cartesian coordinates $x$ and $y$ by using the trigonometric functions sine and cosine:
+\beq
+x = r\cos\vat\theta\qquad\text{and}\qquad
+y = r\sin\vat\theta\,.
+\eeq
+The Cartesian coordinates $x$ and $y$ can be converted to polar coordinates $r$ and $\theta$ with $r \geq 0$ and $\theta$ in the interval $]-\pi, \pi]$ by:
+\begin{align*}
+   r^2 &= x^2 + y^2\implies r = \sqrt{x^2 + y^2}&\eqtxt{as in the Pythagorean theorem or the Euclidean norm}\\
+\theta &= \text{atan2\,}\vat{y,x}\,,
+\end{align*}
+where $\text{atan2\,}\vat{y,x}$ is defined in \url{http://en.wikipedia.org/wiki/Polar_coordinate_system}.
+
+
+\subsubsection{Calculus}
+Calculus can be applied to equations expressed in polar coordinates.
+
+The angular coordinate $\theta$ is expressed in radians throughout this section, which is the conventional choice when doing calculus.
+
+
+\paragraph{Differential calculus}
+Using $x = r \cos\vat\theta$ and $y = r \sin\vat\theta$, one can derive a relationship between derivatives in Cartesian and polar coordinates.
+
+We have the following formulae:
+\beq
+    r\xpd{}{r} =  x\xpd{}{x} + y\xpd{}{y}\qquad\text{and}\qquad
+\xpd{}{\theta} = -y\xpd{}{x} + x\xpd{}{y}\,.
+\eeq
+
+Using the inverse coordinates transformation, an analogous reciprocal relationship can be derived between the derivatives:
+\beq
+\xpd{}{x} = \cos\vat\theta\xpd{}{r} - \dfrac{1}{r}\sin\vat\theta\xpd{}{\theta}\qquad\text{and}\qquad
+\xpd{}{y} = \sin\vat\theta\xpd{}{r} + \dfrac{1}{r}\cos\vat\theta\xpd{}{\theta}\,.
+\eeq
+
+
+\paragraph{Integral calculus (arc length)}
+The arc length (length of a line segment) defined by a polar function is found by the integration over the curve $r\vat\theta$. Let $L$ denote this length along the curve starting from points $A$ through to point $B$, where these points correspond to $\theta = a$ and $\theta = b$ such that $0 < b - a < 2\pi$. The length of $L$ is given by the following integral
+\beq
+L = \int_a^b\sqrt{\left(r\vat\theta\right)^2 
+    + \left(\xod{r}{\theta}\vat\theta\right)^2}\;\dx\theta\,.
+\eeq
+
+
+\paragraph{Integral calculus (area)}
+Let $\region R$ denote the region enclosed by a curve $r\vat\theta$ and the rays $\theta = a$ and $\theta = b$, where $0 < b - a ≤ 2\pi$. Then, the area of $\region R$ is
+\beq
+\dfrac{1}{2}\int_a^b\left(r\vat\theta\right)^2\;\dx\theta\,.
+\eeq
+
+Using Cartesian coordinates, an infinitesimal area element can be calculated as $\dx A = \dx x \dx y$. The substitution rule for multiple integrals states that, when using other coordinates, the Jacobian determinant of the coordinate conversion formula has to be considered:
+\beq
+J = \det\xpd{\tuple{x,y}}{\tuple{r,\theta}}
+  = \begin{bmatrix}
+      \cder xr & \cder x\theta \\
+      \cder yr & \cder y\theta
+    \end{bmatrix}
+  = \begin{bmatrix}
+      \cos\vat\theta & -r\sin\vat\theta \\
+      \sin\vat\theta &  r\cos\vat\theta
+    \end{bmatrix}
+  = r\cos^2\vat\theta + r\sin^2\vat\theta
+  = r\,.
+\eeq
+Hence, an area element in polar coordinates can be written as
+\beq
+\dx A = \dx x\dx y = J\dx r\dx\theta = r\dx r\dx\theta\,.
+\eeq
+Now, a function that is given in polar coordinates can be integrated as follows:
+\beq
+\iint_{\region R}f\vat{x,y}\,\dx A 
+    = \int_a^b\int_a^{r\vat\theta}f\vat{r,\theta}r\,\dx r\dx\theta\,.
+\eeq
+Here, $\region R$ is the same region as above, namely, the region enclosed by a curve $r\vat\theta$ and the rays $\theta = a$ and $\theta = b$.
+
+The formula for the area of $\region R$ mentioned above is retrieved by taking $f$ identically equal to 1. A more surprising application of this result yields the Gaussian integral
+\beq
+\int_{-\infty}^{\infty} e^{-x^2}\,\dx x = \sqrt{\pi}\,.
+\eeq
+
+
+\paragraph{Vector calculus}
+Vector calculus can also be applied to polar coordinates. For a planar motion, let $\pvec$ be the position vector $\tuple{r\cos\vat\theta, r\sin\vat\theta}$, with $r$ and $\theta$ depending on time $t$.
+
+We define the unit vectors
+\beq
+\nvec r = \tuple{\cos\vat\theta, \sin\vat\theta}
+\eeq
+in the direction of $r$ and
+\beq
+\nvec\theta = \tuple{-\sin\vat\theta, \cos\vat\theta} = \nvec k\cprod\nvec r
+\eeq
+in the plane of the motion perpendicular to the radial direction, where $\nvec k$ is a unit vector normal to the plane of the motion.
+
+Then,
+\begin{align*}
+r &= \tuple{x,y} = r\tuple{\cos\vat\theta, \sin\vat\theta} = r\nvec r\,,\\
+%%%
+\dt r &= \tuple{\dt x, \dt y} 
+       = \dt r\tuple{\cos\vat\theta, \sin\vat\theta} + r\dt\theta\tuple{-\sin\vat\theta, \cos\vat\theta}
+       = \dt r\nvec r + r\dt\theta\nvec\theta\,.\\
+%%%
+\ddt r &= \tuple{\ddt x, \ddt y}
+        = \tuple{\dots}
+        = \left(\ddt r - r\dt\theta^2 \right)\nvec r 
+           + \left(r\ddt\theta + 2\dt r\dt\theta \right)\nvec\theta\,.
+\end{align*}
+
+
+\subsection{Spherical Coordinate System}
+In mathematics, a \lingo{spherical coordinate system} is a coordinate system for three-dimensional space where the position of a point is specified by three numbers: the \lingo{radial distance} of that point from a fixed origin, its \lingo{polar angle} measured from a fixed zenith direction, and the \lingo{azimuth angle} of its orthogonal projection on a reference plane that passes through the origin and is orthogonal to the zenith, measured from a fixed reference direction on that plane.
+
+The radial distance is also called the radius or radial coordinate. The polar angle may be called colatitude, zenith angle, normal angle, or inclination angle.
+
+
+\subsubsection{Coordinate system conversions}
+As the spherical coordinate system is only one of many three-dimensional coordinate systems, there exist equations for converting coordinates between the spherical coordinate system and others.
+
+Cartesian coordinates: The spherical coordinates (radius $r$, inclination $\theta$, azimuth $\phi$) of a point can be obtained from its Cartesian coordinates $\tuple{x,y,z}$ by the formulae
+\beq
+r^2 = x^2 + y^2 + z^2\,,\qquad 
+\theta = \arccos\vat{z/r}\qquad\text{and}\qquad 
+\phi = \arctan\vat{y/x}\,.
+\eeq
+The inverse tangent denoted in $\phi = \arctan\vat{y/x}$ must be suitably defined, taking into account the correct quadrant of $\tuple{x,y}$. See article $\text{atan2}$.
+
+
+\subsubsection{Kinematics}
+In spherical coordinates the position of a point is written,
+\beq
+r = r\,\nvec r\,,
+\eeq
+its velocity is then,
+\beq
+v = \dt r = \dt r\,\nvec r + r\dt\theta\,\nvec\theta + r\dt\phi\sin\vat\theta\,\nvec\phi
+\eeq
+and its acceleration is,
+\begin{align*}
+a = \dt v 
+  = & + \left(\ddt r - r\dt\theta^2 - r\dt\phi^2\sin^2\vat\theta \right)\nvec r\\
+    & + \left(r\ddt\theta + 2\dt r\dt\theta - r\dt\phi^2\sin\vat\theta\cos\vat\theta\right)\nvec\theta\\
+    & + \left(r\ddt\phi\sin\vat\theta 
+        + 2\dt r\dt\phi\sin\vat\theta 
+        + 2r\dt\theta\dt\phi\cos\vat\theta\right)\nvec\phi\\
+\end{align*}
+In the case of a constant $\phi$ or $\theta = \pi/2$ this reduces to vector calculus in polar coordinates.
+
+
+\subsection{Generalization}
+[James Foster, David Nightingale, A short course in general relativity]
+
+In Cartesian coordinates, a point's position $\pvec$ in $\espace 3$ is determined by three coordinates $\tuple{x,y,z}$. These three coordinates are associated with three orthonormal vectors: $\tuple{\nvec\imath, \nvec\jmath, \nvec k}$. Since these vectors form a basis, then the point's position can be expressed as a linear combination of them
+\beq
+\pvec = \ifvec k\comp\pvec k = x\nvec\imath + y\nvec\jmath + k\nvec k \,.
+\eeq
+
+Say, we want to express the position of a vector using another coordinate system: $\tuple{u,v,w}$ whose relationships with the Cartesian coordinates are given by
+\beq
+x = f\vat{u,v,w}\,,\qquad 
+y = g\vat{u,v,w}\qquad\text{and}\qquad 
+z = h\vat{u,v,w}\,.
+\eeq
+
+It is possible, now, to express the Cartesian basis in the alternative coordinate system by using the \lingo{tangent vectors} $\tuple{\fvec_u, \fvec_v, \fvec_w}$ \emph{defined} by
+\beq
+\ifvec u = \cder\pvec u = \xpd{\pvec}{u}\,,\qquad
+\ifvec v = \cder\pvec v = \xpd{\pvec}{v}\qquad\text{and}\qquad
+\ifvec w = \cder\pvec w = \xpd{\pvec}{w}\,.
+\eeq
+These tangent vectors need \emph{not} be orthogonal nor have unit length.
+
+The metric coefficients $\imet ij$ are found by
+\beq
+\imet ij = \ifvec i\iprod\ifvec j\,.
+\eeq
+
+Onto this basis, $\pvec$ can be expressed as a liner combination of the basis elements
+\beq
+\pvec = \comp\pvec k\ifvec k\,,
+\eeq
+where the components $\comp\pvec k$ are found via
+\beq
+\comp\pvec k = \pvec\iprod\ifvec k\,.
+\eeq
+
+Using the inverse transformation, on the other hand,
+\beq
+u = f\vat{x,y,z}\,,\qquad 
+v = g\vat{x,y,z}\qquad\text{and}\qquad 
+w = h\vat{x,y,z}\,,
+\eeq
+it's possible to define a \lingo{normal basis} whose elements are defined by
+\beq
+\rfvec u = \grad u\,,\qquad
+\rfvec v = \grad v\qquad\text{and}\qquad 
+\rfvec w = \grad w\,.
+\eeq
+
+Onto this basis, the position of a particle can be expanded as
+\beq
+\pvec = \rcomp\pvec k\rfvec k
+\eeq
+and the components $\rcomp\pvec k$ can be found via
+\beq
+\rcomp\pvec k = \pvec\iprod\rfvec k\,.
+\eeq
+
+The metric coefficients $\rmet ij$ are found by
+\beq
+\rmet ij = \rfvec i\iprod\rfvec j\,.
+\eeq
+
+Finally, if everything went OK, the following condition must hold
+\beq
+\imet ij\rmet ij = \mkron ij\,.
+\eeq
+
+
+\begin{example}
+Consider $\espace 2$. Express the position vector $\pvec$ in polar coordinates and then find $\dt\pvec$.
+\end{example}
+
+\begin{solution}
+In Cartesian coordinates, the position vector is written as
+\beq
+\pvec = \tuple{x,y}\,.
+\eeq
+
+The transformation from Cartesian coordinates to polar coordinates is given by
+\beq
+x = r\cos\vat\theta\qquad\text{and}\qquad
+y = y\sin\vat\theta\,.
+\eeq
+Then, the position vector becomes
+\beq
+\pvec = \tuple{x,y} = \tuple{r\cos\vat\theta, r\sin\vat\theta} = r\tuple{\cos\vat\theta, \sin\vat\theta}\,.
+\eeq
+
+The basis vectors, thus, in polar coordinates can be calculated by their definitions
+\beq
+\ifvec r = \xpd\pvec r = \tuple{\cos\vat\theta, \sin\vat\theta}\implies 
+\magn{\ifvec r} = 1\implies 
+\nvec r = \ifvec r
+\eeq
+in the $r$ direction and
+\beq
+\ifvec\theta = \xpd\pvec\theta = \tuple{-r\sin\vat\theta, r\cos\vat\theta}\implies 
+\magn{\ifvec\theta} = r\implies 
+\nvec\theta = \dfrac{\ifvec\theta}{r} = \tuple{-\sin\vat\theta, \cos\vat\theta}
+\eeq
+in the $\theta$ direction.
+
+Therefore, the position vector can be rewritten as
+\beq
+\pvec = \tuple{x,y} = r\tuple{\cos\vat\theta, \sin\vat\theta} = r\ifvec r\,.
+\eeq
+
+The velocity vector, next, can be calculated as
+\beq
+\dt\pvec = \xod{(r\ifvec r)}{t} = \dt r\ifvec r + r\dt{\ifvec r}\,,
+\eeq
+where $\dt{\ifvec r}$ is given by
+\beq
+\dt{\ifvec r} = \xod{}{t}\tuple{\cos\vat\theta, \sin\vat\theta} 
+              = \tuple{-\sin\vat\theta\dt\theta, \cos\vat\theta\dt\theta}
+              = \dt\theta\tuple{-\sin\vat\theta, \cos\vat\theta}
+              = \dt\theta\nvec\theta\,.
+\eeq
+Finally, the velocity vector is
+\beq
+\dt\pvec = \dt r\ifvec r + r\dt{\ifvec r} = \dt r\nvec r + r\dt\theta\nvec\theta\,.\mqed
+\eeq
+\end{solution}
+
+\begin{solution}
+An alternative form to represent the position vector is by using the definition of components
+\beq
+\comp\pvec u = \pvec\iprod\ifvec u\,.
+\eeq
+Using this, the components of the position vector in polar coordinates are
+\beq
+\comp\pvec r = \pvec\iprod\ifvec r 
+             = \tuple{r\cos\vat\theta, r\sin\vat\theta}\iprod\tuple{\cos\vat\theta, \sin\vat\theta}
+             = r\cos^2\vat\theta + r\sin^2\vat\theta
+             = r
+\eeq
+and
+\beq
+\comp\pvec\theta = \pvec\iprod\ifvec\theta
+                 = \tuple{r\cos\vat\theta, r\sin\vat\theta}\iprod\tuple{-r\sin\vat\theta, r\cos\vat\theta}
+                 = -r^2 \sin\vat\theta\cos\vat\theta + r^2\sin\vat\theta\cos\vat\theta
+                 = 0\,.
+\eeq
+With this, the position vector becomes
+\beq
+\pvec = \comp\pvec r\ifvec r + \comp\pvec\theta\ifvec\theta 
+      = r\ifvec r + 0
+      = r\ifvec r\,.
+\eeq
+\end{solution}
+
+
+\subsection{Finally Formulas!}
+Given a frame $\frm k$, any vector, say $\pvec$, can be expressed as a linear combination of the frame elements
+\beq
+\pvec = \comp\pvec k\ifvec k\,.
+\eeq
+
+The components $\comp\pvec k$ can be found via
+\beq
+\comp\pvec k = x\iprod\ifvec k\,.
+\eeq
+
+The reciprocal frame $\rfrm k$ is given by
+\beq
+\rfvec k = \inv{\ifvec k}\,.
+\eeq
+
+Thus, $\pvec$ can be expressed as
+\beq
+\pvec = \rcomp\pvec k\rfvec k\,.
+\eeq
+
+The components $\rcomp\pvec k$ can be found via
+\beq
+\rcomp\pvec k = \pvec\iprod\rfvec k\,.
+\eeq
+
+
+\subsection{Polar Coordinates Revisited!}
+Polar coordinates $\tuple{r,\theta}$ are related to Cartesian coordinates via
+\beq
+x = r\cos\vat\theta\qquad\text{and}\qquad
+y = r\sin\vat\theta\,.
+\eeq
+Then, the position of a particle $\pvec$ can be written as
+\beq
+\pvec = \tuple{x,y} = \tuple{r\cos\vat\theta, r\sin\vat\theta}\,.
+\eeq
+
+The natural basis elements for polar coordinates become
+\beq
+    \ifvec r = \xpd\pvec r = \tuple{\cos\vat\theta, \sin\vat\theta}\qquad\text{and}\qquad
+\ifvec\theta = \xpd\pvec\theta = \tuple{-r\sin\vat\theta, r\cos\vat\theta}\,.
+\eeq
+Note that $\magn{\ifvec r} = 1$, thus it is a unit vector, whereas $\magn{\ifvec\theta} = r^2 \neq 1$, thus it is not a unit vector.
+
+The components of $\pvec$ onto the natural basis are
+\beq
+\begin{cases}
+&\comp\pvec r = \pvec\iprod\ifvec r 
+              = \tuple{r\cos\vat\theta, r\sin\vat\theta}\iprod\tuple{\cos\vat\theta, \sin\vat\theta}
+              = r\cos^2\vat\theta + r\sin^2\vat\theta
+              = r\,,\\
+%%%
+&\comp\pvec\theta = \pvec\iprod\ifvec\theta
+                  = \tuple{r\cos\vat\theta, r\sin\vat\theta}\iprod\tuple{-r\sin\vat\theta, r\cos\vat\theta}
+                  = -r^2\sin\vat\theta\cos\vat\theta + r^2\sin\vat\theta\cos\vat\theta
+                  = 0\,.
+\end{cases}
+\eeq
+Thus, $\pvec$ becomes
+\beq
+\pvec = \comp\pvec k\ifvec k = \comp\pvec r\ifvec r + \comp\pvec\theta\ifvec\theta = r\ifvec r + 0 = r\ifvec r\,.
+\eeq
+
+The components of the metric $\metric$ are
+\beq
+\begin{cases}
+&\imet rr = \ifvec r\iprod\ifvec r 
+          = \tuple{\cos\vat\theta, \sin\vat\theta}\iprod\tuple{\cos\vat\theta, \sin\vat\theta} 
+          = \cos^2\vat\theta + \sin^2\vat\theta 
+          = 1\,,\\
+%%%
+&\imet\theta\theta = \ifvec\theta\iprod\ifvec\theta
+                   = \tuple{-r\sin\vat\theta, r\cos\vat\theta}\iprod\tuple{-r\sin\vat\theta, r\cos\vat\theta}
+                   = r^2\sin^2\vat\theta + r^2\cos^2\vat\theta
+                   = r^2\,,\\
+%%%
+&\imet r\theta = \imet\theta r 
+               = \ifvec r\iprod\ifvec\theta
+               = \tuple{\cos\vat\theta, \sin\vat\theta}\iprod\tuple{-r\sin\vat\theta, r\cos\vat\theta}
+               = -r\sin\vat\theta\cos\vat\theta + r\sin\vat\theta\cos\vat\theta
+               = 0\,.
+
+\end{cases}
+\eeq
+Note that, since $\imet r\theta = \imet\theta r = 0$, then the natural basis vectors are orthogonal.
+
+The matrix representation of the metric is given by
+\beq
+\metric = \begin{bmatrix}
+            1 & 0   \\
+            0 & r^2 \\
+          \end{bmatrix}\,.
+\eeq
+
+With the metric elements $\imet ij$, we can find the square of the separation vector between two neighboring points
+\beq
+\dx\svec^2 = \dx\pvec\dx\pvec 
+           = \dx\pvec\iprod\dx\pvec 
+           = \imet ij\dx\comp\pvec i\dx\comp\pvec j 
+           = \dx r^2 + r^2 \dx\theta^2\,,
+\eeq
+and then the Lagrangian $\lag$ for a free particle as
+\beq
+\lag = \dfrac{1}{2}m\,\dx{\dt\pvec}\dx{\dt\pvec}
+     = \dfrac{1}{2}m\,\imet ij\dx \dt{\comp\pvec i}\dx \dt{\comp\pvec j}
+     = \dfrac{1}{2}m\left( \dx\dt r^2 + r^2 \dx\dt\theta^2 \right)\,.
+\eeq
+
+
+\subsection{Procedure}
+Consider that the position of a particle can be determined by a position vector $\pvec\in\espace 3$. Then, to change the coordinate system follow the next procedure:
+%%%
+\begin{enumerate}
+\item Express $\pvec$ in Cartesian coordinates: $\pvec = \tuple{x,y,z}$.
+%
+\item Find the transformation between Cartesian coord. to the alternate coordinate system:
+\beq
+x = f\vat{u,v,w}\,,\qquad
+y = g\vat{u,v,w}\qquad\text{and}\qquad
+z = h\vat{u,v,w}
+\eeq
+and the inverse transformation
+\beq
+u = f\vat{x,y,z}\,,\qquad
+v = g\vat{x,y,z}\qquad\text{and}\qquad
+w = h\vat{x,y,z}\,.
+\eeq
+%
+\item Calculate the elements of the natural (tangent) basis
+\beq
+\ifvec u = \xpd\pvec u\,,\qquad
+\ifvec v = \xpd\pvec v\qquad\text{and}\qquad
+\ifvec w = \xpd\pvec w\,.
+\eeq
+%
+\item Calculate the metric coefficients for the natural basis
+\beq
+\imet ij = \ifvec i\iprod\ifvec j\,.
+\eeq
+%
+\item Express $\pvec$ as a linear combination of the natural basis elements
+\beq
+\pvec = \comp\pvec k\ifvec k\,,
+\eeq
+where the components $\comp\pvec k$ are given by
+\beq
+\comp\pvec k = \pvec\iprod\ifvec k\,.
+\eeq
+%
+\item Using the inverse transformation, find the elements of the dual (normal) basis
+\beq
+\rfvec u = \grad u\,,\qquad
+\rfvec v = \grad v\qquad\text{and}\qquad
+\rfvec w = \grad w\,.
+\eeq
+%
+\item Calculate the metric coefficients for the dual basis
+\beq
+\rmet ij = \rfvec i\iprod\rfvec j\,.
+\eeq
+%
+\item Express $\pvec$ as a linear combination of the natural basis elements
+\beq
+\pvec = \rcomp\pvec k\rfvec k\,,
+\eeq
+where the components $\rcomp\pvec k$ are given by
+\beq
+\rcomp\pvec k = \pvec\iprod\rfvec k\,.
+\eeq
+%
+\item Finally, to verify results, the following condition must hold:
+\beq
+\imet ij\rmet ij = \mkron ij\,.
+\eeq
+\end{enumerate}
+%%%
+
+
+\subsection{Tangents and gradients}
+By dropping the requirement that our coordinate systems be orthogonal, we have found ourselves in the position of having two different, but related, bases at each point of space. Is this one two many? To avoid confusion, should we reject one of them and retain the other? If so, which one? As we shall see, each has its uses, and there are situations where it is appropriate to use the natural basis $\elset{\ifvec i}$ defined by the tangents to the coordinate curves, while in other situations it is appropriate to use the dual basis $\elset{\rfvec i}$ defined by the normals to the coordinate surfaces. Let us start by looking at the tangent vector to a curve in space.
+
+
+\subsubsection{Tangents}
+Suppose we put
+\beq
+u = u\vat t\,,\qquad
+v = v\vat t\qquad\text{and}\qquad
+w = w\vat t\,,
+\eeq
+where $u\vat t$, $v\vat t$ and $w\vat t$ are differentiable functions of $t$ for $t$ belonging to some interval $I$. Then the points with coordinates given by the last equation will lie on a curve $\curve C$ parameterized by $t$. The position vector of these points is
+\beq
+\pvec = x\vat{u\vat t, v\vat t, w\vat t}\nvec\imath 
+        + y\vat{u\vat t, v\vat t, w\vat t}\nvec\jmath
+        + z\vat{u\vat t, v\vat t, w\vat t}\nvec k\,.
+\eeq
+and for each $t$ in $I$ the derivative $\dt\pvec\vat t = \dx\pvec/\dx t$ gives a tangent vector to the
+curve (provided $\dt\pvec\vat t \neq 0$). Using the chain rule we have
+\beq
+\xod\pvec t =   \xpd\pvec u\xod ut 
+              + \xpd\pvec v\xod vt
+              + \xpd\pvec u\xod wt\,,
+\eeq
+which can be written as
+\beq
+\dt\pvec\vat t = \dt u\vat t\ifvec u + \dt v\vat t\ifvec v + \dt w\vat t\ifvec w\,.
+\eeq
+
+The suffix notation version of this last equation is
+\beq
+\dt\pvec\vat t = \dt{\comp ui}\vat t\ifvec i \,,
+\eeq
+showing that the derivatives $\dt{\comp ui}\vat t$ are the components of the tangent vector to the curve $\curve C$ relative to the natural basis $\ifvec i$. So 
+\begin{quote}
+for tangents to curves, it is appropriate to use the natural basis.
+\end{quote}
+
+The length of the curve $\curve C$ is obtained by integrating $\magn{\dt\pvec}$ with respect to $t$ over the interval $I$. Now
+\beq
+\magn{\dt\pvec}^2 = \dt\pvec\dt\pvec 
+                  = \dt\pvec\iprod\dt\pvec 
+                  = \dt{\comp ui}\ifvec i\iprod\dt{\comp uj}\ifvec j
+                  = \imet ij\dt{\comp ui}\dt{\comp uj}\,,
+\eeq
+on using equation the definition of the quantities $\imet ij$. So if $I$ is given by $a\leq t\leq b$, then the length of $\curve C$ is given by
+\beq
+L = \int_a^b\left(\imet ij\dt{\comp ui}\dt{\comp uj}\right)^{1/2}\,\dx t\,.
+\eeq
+
+The infinitesimal version of the equation $\dt\pvec\vat t = \dt{\comp ui}\vat t\ifvec i$ is $\dx\pvec = \dx\comp ui\ifvec i$, which gives
+\beq
+\dx\svec^2 = \dx\pvec\dx\pvec = \dx\comp ui\ifvec i\iprod\dx\comp uj\ifvec j
+\eeq
+for the distance between points whose coordinates differ by $\dx\comp ui$. We thus arrive at the formula
+\beq
+\dx\svec^2 = \imet ij\dx\comp ui\dx\comp uj\,.
+\eeq
+
+
+\subsubsection{Gradients}
+Suppose now that we take a differentiable function $\phi\vat{u,v,w}$ of the coordinates $u$, $v$, $w$. This will give us a function of position and therefore a scalar field. Its gradient is
+\beq
+\grad\phi = \gder\phi 
+          =   \xpd\phi x\nvec\imath
+            + \xpd\phi y\nvec\jmath
+            + \xpd\phi z\nvec k\,,
+\eeq
+where, in calculating these partial derivatives, we are regarding $\phi$ as a function of $x$, $y$, $z$ got by substituting the expressions for $u$, $v$, $w$ in terms of $x$, $y$, $z$ (the inverse transformation):
+\beq
+\phi = \phi\vat{u\vat{x,y,z}, v\vat{x,y,z}, w\vat{x,y,z}}\,.
+\eeq
+
+The chain rule gives
+\beq
+\xpd\phi x = \xpd\phi u\xpd ux + \xpd\phi v\xpd vx + \xpd\phi w\xpd wx
+\eeq
+with similar expressions for $\cder\phi y$ and $\cder\phi z$. Hence we can say that
+\beq
+\grad\phi = \dots = \xpd\phi u\gder u + \xpd\phi v\gder v + \xpd\phi w\gder w\,.
+\eeq
+
+That is,
+\beq
+\grad\phi = \xpd\phi u\rfvec u + \xpd\phi v\rfvec v + \xpd\phi w\rfvec w\,,
+\eeq
+on using the definitions of the dual basis elements. The suffix notation version of this is
+\beq
+\grad\phi = \gder\phi = \xpd\phi{\comp ui}\rfvec i\,,
+\eeq
+showing that the partial derivatives $\partial\phi/\partial\comp ui$ are the components of $\grad\phi$ relative to the dual basis. Note that, in letting the repeated suffix imply summation in the last equation, we are regarding the suffix $i$ on $\partial\phi/\partial\comp ui$ as a subscript. We can make this point more clearly by shortening the partial differential operator $\partial/\partial\comp ui$ to $\igder i$, so that $\partial\phi/\partial\comp ui = \igder i\phi$. The notation $\cder\phi i$ is also used to mean the same thing. We can then rewrite the last equation as
+\beq
+\gder\phi = \igder i\phi\rfvec i = \cder\phi i\rfvec i\,,
+\eeq
+with the suffix correctly occupying the subscript position.
+
+
+\subsubsection{Conclusion}
+Thus, we see that when dealing with tangents to curves it is appropriate to use the natural basis $\frm i$ defined by the coordinate system, but when dealing with gradients of scalar fields it is appropriate to use the dual basis $\rfrm i$. This conclusion is not surprising, given the way in which the two bases are defined.
+
+
+\subsection{Yet Another Way of Calculating Basis Elements}
+A particle position $\pvec$ in Cartesian coordinates is given by $\pvec = \tuple{x,y}$. 
+
+Transform the position components to polar coordinates by
+\beq
+x = r\cos\vat\theta\qquad\text{and}\qquad
+y = r\sin\vat\theta\,,
+\eeq
+where $\dim r = \phdim L$ and $\dim\theta = \phdim 1$. 
+
+Express the position in polar coordinates:
+\beq
+\pvec = \tuple{r\cos\vat\theta, r\sin\vat\theta}\,.
+\eeq
+
+Then, find the basis elements for polar coordinates
+\beq
+\ifvec r = \xpd\pvec r 
+         = \tuple{\cos\vat\theta, \sin\vat\theta}\quad\text{and}\quad
+%
+\ifvec \theta = \xpd\pvec\theta 
+              = \tuple{-r\sin\vat\theta, r\cos\vat\theta}
+              = r\tuple{-\sin\vat\theta, \cos\vat\theta}\,,
+\eeq
+where $\dim{\ifvec r} = \phdim 1$, but $\dim{\ifvec\theta} = \phdim{L} $.
+
+Next, rewrite $\pvec$ as a linear combination of the basis elements
+\beq
+\pvec = \tuple{x,y}
+      = \tuple{r\cos\vat\theta, r\sin\vat\theta}
+      = r\tuple{\cos\vat\theta, \sin\vat\theta}
+      = r\ifvec r\,.
+\eeq
+
+Consider now that $\theta = \theta\vat t$. Then, the differential of the particle position becomes
+\beq
+\dx\pvec = \dx\left(r\cos\vat\theta, r\sin\vat\theta\right)
+         = \left(\dx r\cos\vat\theta - r\sin\vat\theta\dx\theta,
+            \dx r\sin\vat\theta + r\cos\vat\theta\dx\theta\right)\,,
+\eeq
+where the product and chain rules were used.
+
+Separate the components of the vector in the last equation to
+\beq
+\dx\pvec = \left(\dx r\cos\vat\theta, \dx r\sin\vat\theta\right) 
+           + \left(- r\sin\vat\theta\dx\theta, r\cos\vat\theta\dx\theta\right)\,.
+\eeq
+
+Factor out the common terms in the vectors components to have
+\beq
+\dx\pvec = \dx r\left(\cos\vat\theta, \sin\vat\theta\right) 
+           + r\dx\theta\left(-\sin\vat\theta, \cos\vat\theta\right)\,.
+\eeq
+
+Use the definition of the basis elements in the last equation
+\beq
+\dx\pvec = \dx r\,\ifvec r + \dx\theta\,\ifvec\theta\,.
+\eeq
+Note that this expression is dimensionally homogeneous: $\dim{\dx\pvec} = \phdim L$, $\dim{\dx r\ifvec r} = \phdim L\phdim 1$ and $\dim{\dx\theta\ifvec\theta} = \phdim 1\phdim L$.
+
+To find the particle velocity, divide the last equation by the time differential $\dx t$ and use the dot notation to represent time derivatives:
+\beq
+\dt\pvec = \dt r\,\ifvec r + \dt\theta\,\ifvec\theta\,.
+\eeq
+
+Refer to $\dt r$ as the \lingo{radial velocity} and to $\dt\theta$ as the \lingo{angular velocity} whose dimensions are $\dim{\dt r} = \phdim{L/T}$ and $\dim{\dt\theta} = \phdim{1/T}$.
+
+Normalize the basis elements, so to have unit length and dimensionless basis elements
+\beq
+\nvec r = \ifvec r/\magn{\ifvec r} = \ifvec r\quad\text{and}\quad
+\nvec \theta = \ifvec\theta/\magn{\ifvec\theta} = \ifvec\theta/r\,,
+\eeq
+which implies that $\ifvec\theta = r\nvec\theta$.
+
+Then, the equation for the particle position becomes
+\beq
+\pvec = r\ifvec r = r\nvec r\,.
+\eeq
+
+Therefore, the equation for the particle velocity turns into
+\beq
+\dt\pvec = \dt r\ifvec r + \dt\theta\ifvec\theta 
+         = \dt r\nvec r + \dt\theta(r\nvec\theta)
+         = \dt r\nvec r + r\dt\theta\nvec\theta\,.
+\eeq
+
+Refer to $r\dt\theta$ as the \lingo{tangencial velocity}. Note that $\dim{r\dt\theta} = \phdim{L/T}$; \ie, the last equation is dimensionally homogeneous. Additionally, see that the normalized (normal) basis elements are dimensionless and thus $r$ in $r\dt\theta$ acts as a \emph{conversion factor} between polar and Cartesian coordinates -- $r$ links linear and circular motions.
+
+\begin{note}
+Remember that the components of the particle position in Cartesian coordinates all measure lengths. But in polar coordinates one component measure lengths, while the other one angles. Then, when using non-normalized basis elements, the basis elements themselves provide a measure for lengths. On the other hand, when using normalized basis elements, $r$ provides the conversion factor mentioned above, so that the components of the position also measure lengths, leaving, thus, the normal basis elements dimensionless.
+\end{note}
+
+As an example of the last note, consider cylindrical coordinates $\elset{\rho, \phi, z}$ and the related normal basis $\elset{\nvec\rho, \nvec\phi, \nvec z}$. 
+
+According to their definitions, find that
+\beq
+\dim\rho = \phdim L\,,\quad
+\dim\phi = \phdim 1\quad\text{and}\quad
+\dim z = \phdim L\,.
+\eeq
+
+Then, consider Laplace operator in such a coordinate system:
+\beq
+\gder = \xpd{}{\rho}\nvec\rho + \dfrac{1}{\rho}\xpd{}{\phi}\nvec\phi + \xpd{}{z}\,.
+\eeq
+
+Note that $\dim\gder = \phdim{1/L}$ in the LHS and, since normal, the basis elements are dimensionless in the RHS. Thus, $\rho$ in $(1/\rho)\igder\phi$ provides the ``missing'' dimensional factor of length, so to render the operator dimensionally homogeneous.
+
+
+\subsection{Coordinates and Langrangian}
+Consider $\espace n$ and consider a system of curvilinear coordinates $\setprop{\gpos i}{i: 1,\dotsc,n}$. Then, express the position vector $\pvec$ as a tuple of the curvilinear coordinates
+\beq
+\pvec = \tuple{\gpos 1, \dotsc, \gpos n}\,.
+\eeq
+
+Find a tangent frame to the system of curvilinear coordinates with elements defined by
+\beq
+\ifvec i = \xpd\pvec{\gpos i}\,;
+\eeq
+note that the frame need not be orthonormal.
+
+Then, find the metric coefficients $\imet ij$ by
+\beq
+\imet ij = \ifvec i\iprod\ifvec j\,.
+\eeq
+
+Next, write the position vector as $\pvec = \ifvec i\gpos i$. Then, the position vector differential becomes
+\beq
+\dx\pvec = \ifvec i\dx\gpos i\,.
+\eeq
+
+Thus, the differential distance turns into
+\beq
+\dx\svec^2 = \dx\pvec\dx\pvec
+           = \dx\pvec\iprod\dx\pvec
+           = \ifvec i\gpos i\iprod\ifvec j\gpos j
+           = \ifvec i\iprod\ifvec j\gpos i\gpos j
+           = \imet ij\gpos i\gpos j\,.
+\eeq
+
+Calculate the velocity by $\dt\pvec = \dx\pvec/\dx t = \ifvec i\gvel i$. Then, compute the kinetic energy by 
+\beq
+\ken = \dfrac{1}{2}m\dt\pvec^2
+     = \dfrac{1}{2}m\ifvec i\gvel i\iprod\ifvec j\gvel j
+     = \dfrac{1}{2}m\ifvec i\iprod\ifvec j\gvel i\gvel j
+     = \dfrac{1}{2}m\imet ij\gvel i\gvel j\,.
+\eeq
+
+Finally, the Lagrangian becomes
+\beq
+\lag = \ken 
+     = \dfrac{1}{2}m\imet ij\gvel i\gvel j\,.
+\eeq
+

@@ -1,0 +1,97 @@
+\section{Tensor Calculus}
+
+\subsection{Directional Derivatives, Gradients, Levi-Civita Tensor, Cross Product and Curl}
+Consider a tensor field $t\vat{\point P}$ in $\espace 3$ and a vector $a$. Then, define the \lingo{directional derivative of $t$ along $a$} by
+\beq
+\dder ta \defby \lim_{\epsilon\to 0}\dfrac{1}{\epsilon}
+                \left( t\vat{\pvec_{\point P} + \epsilon a} - t\vat{\pvec_{\point P}} \right)
+\eeq
+and similarly for the directional derivative of a vector field $v\vat{\point P}$ and a scalar field $\phi\vat{\point P}$. In this definition, the quantity in parenthesis is the difference between two linear functions of vectors and we have denoted points, say $\point P$, by the vector $\pvec_{\point P}$ that reaches from some arbitrary origin to the point.
+
+The directional derivative of any tensor field $t$ is linear in the vector $a$ along which one differentiates. Correspondingly, if $t$ has rank $n$ ($n$ slots), then there is another tensor field, denoted $\gder t$, with rank $n+1$, such that
+\beq
+\dder ta = \gder t\vat{\slot,\slot,\slot, a}\,.
+\eeq
+Here on the right hand side, the first $n$ slots (three in the case shown) are left empty and $a$ is put into the last slot (the ``differentiation slot''). The quantity $\gder t$ is called the \lingo{gradient of $t$}. In slot-naming index notation, it is conventional to denote this gradient by $\cotens t{abc;d}$, where in general the number of indices preceding the semicolon is the rank of $t$. Using this notation, the directional derivative of $t$ along $a$ reads $\cotens t{abc;j}\cnvec aj$.
+
+In any Cartesian coordinate system, the \lingo{components of the gradient} are nothing but the partial derivatives of the components of the original tensor,
+\beq
+\cotens t{abc;j} = \xpd{\cotens t{abc}}{\cnvec xj} \defby \cotens t{abc,j}\,.
+\eeq
+
+In a non-Cartesian basis (\eg, spherical or cylindrical bases), the components of the gradient are \emph{not} obtained by simple partial differentiation, because of turning or length changes of the basis vectors as we go from one location to another. Later, we shall learn how to deal with this by using objects called \lingo{connection coefficients}. Thus, when dealing with Cartesian coordinates, subscripts semicolons and subscripts commas can be used interchangeably.
+
+Because of their definition, the gradient and the directional derivative obey the standard Leibniz rule for differentiating products:
+\begin{align*}
+                      \dder{(s\tprod t)}{A} &= (\dder sA)\tprod t + s\tprod\dder tA\,;\text{\ie,}\\
+(\cotens s{ab}\cotens t{cde})_{;j}\cnvec Aj &= (\cotens s{ab;j}\cnvec Aj)\cotens t{cde} 
+    + \cotens s{ab}(\cotens t{cde;j}\cnvec Aj)\,;
+\end{align*}
+and
+\begin{align*}
+                   \dder{(ft)}{A} &= (\dder fA)T + f\dder tA\,;\text{\ie,}\\
+(f\cotens{t}{abc})_{;j}\cntens Aj &= (\cotens f{;j}\cntens Aj)\cotens t{abc} + f\cotens t{abc;j}\cntens Aj\,,
+\end{align*}
+where $f$ is a scalar-valued function, $s$ and $t$ tensors and $A$ a vector.
+
+The components $\imet ab$ of the metric tensor are constant in any Cartesian system, thus it is guaranteed that $\cotens g{ab;j} = 0$; \ie, the metric has vanishing gradient
+\beq
+\dder\metric = 0,\qquad\text{\ie,}\quad \cotens g{ab;j} = 0
+\eeq
+
+From the gradient of any vector or tensor, we can construct several other important derivatives by contracting on slots:
+\begin{enumerate}
+\item since the gradient $\gder A$ of a vector field $A$ has two slots, $\gder A\vat{\slot,\slot}$, we can contract its slots on each other to obtain a scalar field. That scalar field is the \lingo{divergence of $A$} and is denoted
+\beq
+\gder\iprod A = (\tcont{\gder A}) = \cotens A{a;a}\,.
+\eeq
+%
+\item Similarly, if $t$ is a tensor field of rank three, then $\cotens t{abc;c}$ is its divergence on its third slot and $\cotens t{abc;b}$ is its divergence on its second slot.
+%
+\item By taking the double gradient and then contracting on the two gradient slots we obtain, from any tensor field $t$, a new tensor field with the same rank
+\beq
+\lder t \defby (\gder\iprod\gder)t\,,\quad\text{or, in index notation, }\cotens t{abc;jj}\,.
+\eeq
+Here and henceforth, all indices following a semicolon or comma represent gradients (or partial derivatives):
+\beq
+\cotens t{abc;jj} = \cotens t{abc;j;j} 
+                  = \cotens t{abc,jk} 
+                  = \dfrac{\partial^2 \cotens t{abc}}{\partial\cntens xj\partial\cntens xk}\,.
+\eeq
+The operator $\lder$ is called the \lingo{Laplacian}.
+\end{enumerate}
+
+The metric tensor is a fundamental property of the space in which it lives; it embodies the inner product and thence the space's notion of distance or interval and thus the space's geometry. In addition to the metric, there is one (and only one) other fundamental tensor that embodies a piece of Euclidean (or Minkowski) geometry: the \lingo{Levi-Civita tensor} $\lct$.
+
+The Levi-Civita tensor has a number of slots equal to the dimensionality of the space in which it lives: three slots in the Euclidean 3-space and four slots in the Minkowski 4-spacetime. It is anti-symmetric in each and every pair of its slots. These properties determine $\lct$ up to multiplicative constant. That constant is fixed by a compatibility relation between $\lct$ and the metric $\metric$ plus the concept of ``headedness'': if $\elset{\nbvec j}$ is a Cartesian basis and if this basis is right-handed in the usual sense, then
+\beq
+\lct\vat{\nbvec 1, \nbvec 2, \nbvec 3} = + 1\,.
+\eeq
+The last equation and the antisymmetry of $\lct$ imply that in an orthonormal, right-handed basis, the only nonzero components of $\lct$ are
+\beq
+\begin{cases}
+\lct_{123} &= +1\,,\\
+\lct_{abc} &= +1\,, \quad\text{if $a,b,c$ is an \emph{even} permutation of $1,2,3$\,,}\\
+\lct_{abc} &= -1\,, \quad\text{if $a,b,c$ is an \emph{odd} permutation of $1,2,3$\,,}\\
+\lct_{abc} &= 0 \,, \quad\text{if $a,b,c$ are not all different.}
+\end{cases}
+\eeq
+
+The Levi-Civita tensor is used to define the cross product and the curl:
+\begin{itemize}
+\item $A\cprod B = \lct\vat{\slot, A, B}$; \ie, in slot-naming index notation, $\lct^{i}_{jk}\cntens Aj\cntens Bk$\,;
+\item $\gder\cprod A = \text{the vector field whose slotnaming index form is }\lct^{i}_{jk}\cntens A{k;j}$\,.
+\end{itemize}
+
+\begin{note}
+The last equation is an example of an expression that is complicated if written in index-free notation; it says that $\gder\cprod A$ is the double contraction of the rank-5 tensor $\lct\tprod\gder A$ on its second and fifth slots and on its third and fourth slots.
+\end{note}
+
+The Levi-Civita tensor in $\espace 3$ has the following property:
+\beq
+\cotens{\lct}{ijm}\cotens{\lct}{klm} = \delta^{ij}_{kl} 
+    \defby \delta^{i}_{k}\delta^{j}_{l} - \delta^{i}_{l}\delta^{j}_{k}\,.
+\eeq
+Here $\delta^{i}_{k}$ is the Kronecker delta. The 4-index delta function $\delta^{ij}_{kl}$ says that either the indices above and below each other must be the same ($i=k$ and $j=l$) with a $+$ sign or the diagonally related indices must be the same ($i=l$ and $j=k$) with a $-$ sign. With the last equation and the index-notation expressions for the cross product and curl, one can quickly and easily derive a wide variety of useful vector identities.
+
+

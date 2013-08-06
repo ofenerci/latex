@@ -1,0 +1,265 @@
+\section{Examples}
+
+\subsection{Tensors}
+\subsubsection{Particle Kinetics and Lorentz Force in Geometric Language}
+In Newtonian physics, a classical particle of mass $m$ moves through space $\espace 3$ as universal time $t$ passes. At time $t$, it is located at some point $x\vat t$ (its \lingo{position}). The function $x\vat t$ represents a curve in space, the particle's \lingo{trajectory}. The particle's \lingo{velocity} $v\vat t$ is the derivative of its position, its \lingo{momentum} $p\vat t$ is the product of its mass and velocity, its \lingo{acceleration} $a\vat t$ is the time derivative of its velocity and its \lingo{energy} is half its mass times velocity squared:
+\beq
+x\vat t\,,\quad 
+v\vat t = \dt x\vat t\,,\quad 
+p\vat t = mv\vat t\,,\quad
+a\vat t = \dt v\vat t = \ddt x\vat t\quad\text{and}\quad
+E\vat t = \tfrac{1}{2}mv^2\vat t\,.
+\eeq
+
+Since points in space $\espace 3$ are geometric objects (defined independently of any coordinate system), so are the trajectory, velocity, momentum, acceleration and energy. (Physically, velocity has an ambiguity: it depends on one's standard of rest.)
+
+Newton's second law of motion states that the particle's momentum can change only if a force $f$ acts on the particle and such a change is given by
+\beq
+\dt p = ma = f\,.
+\eeq
+If the force is produced by an electric field $E$ and magnetic field $B$, then this law of motion takes the familiar Lorentz-force form:
+\beq
+\dt p = q(E + v\cprod B)\,.
+\eeq
+
+Note that these laws of motion are geometric relationships between geometric objects, thus independent of any coordinate system.
+
+\subsubsection{Particle Kinetics in Index Notation}
+As an example of slot-naming index notation, we can rewrite the equations of particle kinetics as follows:
+\beq
+     \cnvec vi = \cnvec{\dt x}i \,,\quad
+     \cnvec{\dt p}i = m\cnvec vi\,,\quad
+     \cnvec ai = \cnvec{\dt v}i = \cnvec{\ddt x}i\,,\quad
+            E = \dfrac{1}{2}m\cnvec vj\covec vj\,,\quad
+\cnvec{\dt p}i = q(\cnvec Ei + \lct^i_{jk}\cnvec vj\cnvec Bk)\,.
+\eeq
+In the last equation, $\lct^i_{jk}$ is the so-called \lingo{Levi-Civita tensor}, which is used to produce the cross product.
+
+These equations could be viewed in either of two ways: (i) as the frame-independent geometric laws $v = \dt x$, $p = mv$, $a = \dt v = \ddt x$, $2E = mv^2$ and $\dt p = q(E + v\cprod B)$ written in slot-naming notation or ii) as equations for the components of $\elset{v,p,a,E,B}$ in some particular Cartesian coordinate system.
+
+
+\subsubsection{Meaning of Slot-Naming Index Notation}
+
+\begin{example}
+Find the components of the tensor $S\vat{a,b,\slot}$, where $a$ and $b$ are vectors.
+\end{example}
+
+\begin{solution}
+In slot-naming notation, $S$ is rank-3, so it has 3 slots, or indices, say $i$, $j$ and $k$. Then, $\covec S{ijk}$. The vectors $a$ and $b$ occupy the first and the second slots of $S$, respectively; so $a\to\cnvec ai$ and $b\to\cnvec bj$. 
+
+Next, since there is only one empty slot in $S$, then its result, say $c$, must be a rank-1 tensor -- a vector, with the index equal to the remaining slot of $S$; \viz, $k$. Finally, write the product in slot-index notation as 
+\beq
+\cnvec ck = \cnvec S{ijk}\cnvec ai\cnvec bj\,.
+\eeq
+
+In the last expression, since the indices are written using Latin letters, then they all run from 1 to 3. The index $k$ is a free index, whereas $i$ and $j$ are repeated, \aka dummy, indices; \ie, the (one) tensor equation represents three equations with nine terms.
+\end{solution}
+
+
+\begin{example}
+Find the components of the tensor $d = S\vat{a,\slot, b}$.
+\end{example}
+
+\begin{solution}
+Assign the indices $\elset{i,j,k}$ to $S$. Then, $\covec S{ijk}$. The vectors $a$ and $b$ will take the first and third slots of $S$, respectively, while leaving the second slot to $e$:
+\beq
+\covec S{ijk}\cnvec ai\cnvec bk = \cnvec dj\,.
+\eeq
+
+Again, the indices are Latin letters, so they all run from 1 to 3. The index $j$ is a free index and $i$ and $k$ are  repeated indices.
+\end{solution}
+
+
+\begin{example}
+Find the components of the tensor $e = T\vat{\slot,\slot, a}$.
+\end{example}
+
+\begin{solution}
+Assign the indices $\elset{i,j,k}$ to $T$. Then, $\cotens T{ijk}$. The vector $a$ will take the last slot of $T$, while leaving the two first slots to the second-rank tensor $e$:
+\beq
+\cotens T{ijk}\cnvec ak = \covec e{ij}\,.
+\eeq
+
+The indices are Latin letters, so they all run from 1 to 3. The index $k$ is a repeated index and $i$ and $j$ are both free indices.
+\end{solution}
+
+
+\begin{example}
+Convert the expression $\cnvec ai\cnvec b{ij}$ to geometric, index-free notation.
+\end{example}
+
+\begin{solution}
+The product $\cnvec ai\cnvec b{ij}$ has two variables and three indices, so it comes from the product of a rank-1 tensor, a vector, $a$, and a rank-2 tensor, $b$; \ie, $a\tprod b\vat{\slot, \slot}$. But, by definition $a\tprod b\vat{\slot, \slot} = b\vat{a, \slot}$, which gives the result.
+\end{solution}
+
+
+\begin{example}
+Convert the expression $\cnvec ai\cnvec b{ij}$ to geometric, index-free notation.
+\end{example}
+
+\begin{solution}
+The term $\cnvec b{ij}$ is a rank-2 tensor, so $b\vat{\slot, \slot}$ or, in slot naming notation, $b\vat{\slot_i, \slot_j}$. Then, $\cnvec ai\cnvec b{ij}$ represents $a$ taking the first slot, $i$, of $b$; \ie, $\cnvec ai\cnvec b{ij} = \cnvec b{ij}\cnvec ai = b\vat{a,\slot}$.
+\end{solution}
+
+
+\begin{example}
+Convert the equation $\cnvec s{ijk} = \cnvec s{kji}$ to geometric, index-free notation.
+\end{example}
+
+\begin{solution}
+This equation represents the same tensor, but with slots interchanged. Then, 
+\beq
+\cnvec s{ijk} = \cnvec s{kji} \implies 
+             s\vat{\slot_i, \slot_j, \slot_k} = s\vat{\slot_k, \slot_j, \slot_i}\,.\mqed
+\eeq
+\end{solution}
+
+
+\begin{example}
+Convert the equation $\cnvec ai\covec bi = \cnvec ai\cnvec bj\imet ij$ to geometric, index-free notation.
+\end{example}
+
+\begin{solution}
+This equation is the definition of the inner product for two vectors, $\cnvec ai$ and $\cnvec bj$, via the metric tensor $\metric\vat{\slot,\slot}$; \ie, $\cnvec ai\cnvec bj\imet ij  = \metric\vat{a,b}$.
+\end{solution}
+
+
+\subsubsection{Numerics of Component Manipulations}
+
+\begin{example}
+The third rank tensor $S\vat{\slot,\slot,\slot}$ and vectors $a$ and $b$ have as their only nonzero components $\cnvec S{123} = \cnvec S{231} = \cnvec S{312} = +1$, $\cnvec a1 = 3$, $\cnvec b1 = 4$, $\cnvec b2 = 5$. What are the components of the vector $c = S\vat{a,b,\slot}$, the vector $d = S\vat{a,\slot,b}$ and the tensor $W = a\tprod b$?
+\end{example}
+
+\begin{solution}
+In component notation, $\cnvec ck = \cnvec T{ijk}\cnvec ai\cnvec bj$
+\end{solution}
+
+
+\subsubsection{Product of Scalars and Tensors}
+
+\begin{example}
+Consider $\espace 3$ and consider a scalar $s\in\set R$. Then, compute the product $s\metric$ in slot-naming notation.
+\end{example}
+
+\begin{solution}
+Denote by $\metric$ the metric of $\espace 3$ and consider a standard frame $\frm k$ in $\espace 3$. Then, calculate the components of the metric as $\imet ij = \ikron ij$. Therefore, the product $s\metric = s\ikron ij$, in index notation. 
+
+Write the product $s\ikron ij$ as $\cotens s{ij}$, since the diagonal components of $\ikron ij$ all equal $s$. See this in matrix notation
+\beq
+\cotens s{ij} = \begin{bmatrix}
+                    s & 0 & 0 \\
+                    0 & s & 0 \\
+                    0 & 0 & s
+                \end{bmatrix}\,.\mqed
+\eeq
+\end{solution}
+
+
+\subsection{Tensor Product -- Again!}
+Consider two vectors $a,b$ in $\espace n$. Consider $a$ to be a rank-one tensor; \ie, a tensor with one slot: $a\vat{\slot}$. Then, the value of the tensor $a$ when $b$ is inserted in its slot is defined by
+\beq
+a\vat{b}\defby a\iprod b\,,
+\eeq
+where the result is a real number -- by the definition of tensor.
+
+Consider the vectors $a,b,c,e,f,g\in\espace n$. Then, construct a tensor by using the \lingo{tensor product} of the vectors, defined by
+\beq
+a\tprod b\tprod c\vat{e,f,g}\defby a\vat{e}b\vat{f}c\vat{g}
+                            \defby (a\iprod e)(b\iprod f)(c\iprod g)\,.
+\eeq
+
+\begin{remark}
+Similar definitions can be given for the tensor product of any two or more tensors of any rank; for instance, if $t$ has rank 2 and $s$ rank 3, then
+\beq
+t\tprod s\vat{e,f,g,h,j}\defby t\vat{e,f}s\vat{g,h,j}\,,
+\eeq
+where the elements of the set $\elset{e,f,g,h,j}$ are vectors in $\espace n$.
+\end{remark}
+
+
+\subsection{Component Representation of Tensor Algebra}
+Consider the geometric arena for Newtonian physics to be the 3-dimensional (Euclidean) space, $\espace 3$, and universal time $t\in\set R$. In this space, there is a unique \lingo{standard frame}, \aka ordered set of \lingo{orthonormal basis vectors}, $\ifrm k 13\defby\elset{\nbvec x, \nbvec y, \nbvec z}$ associated with any \lingo{Cartesian coordinate system} $\elset{\cnvec xk}\defby\elset{x,y,z}$. The frame element $\nbvec k$ has unit \lingo{length} and points along the $\cnvec xk$ \lingo{coordinate direction}, which is \emph{orthogonal} to all the other coordinate directions. Summarize these frame elements properties by
+\beq
+\tfrac{1}{2}(\xacom{\nbvec k}{\nbvec l}) = \nbvec k\iprod\nbvec l \defby \ikron kl\,.
+\eeq
+
+Expand any vector $u\in\espace 3$ as a \lingo{linear combination} of the frame elements:
+\begin{equation}\label{eq:vectorexpansioninthreedim}
+u = \cnvec u1\nbvec 1 + \cnvec u2\nbvec 2 + \cnvec u3\nbvec 3 
+  = \sum_{k = 1}^{3}\,\cnvec uk\nbvec k\,.
+\end{equation}
+
+Agree with \lingo{Einstein summation convention} to shorten \cref{eq:vectorexpansioninthreedim} as
+\beq
+u \defby \cnvec uk\nbvec k\,.
+\eeq
+
+By virtue of the orthonormality of the frame, compute the components $\cnvec uk$ of $u$ as the \lingo{inner product}
+\begin{equation}\label{eq:compofvector}
+\cnvec uk = u\iprod\nbvec k\,.
+\end{equation}
+
+\begin{note}
+Check this last definition: it is the problematic one in index manipulation! So everything fits, I think $\cnvec ak\defby a\iprod\dbvec k$, so ``up'' agrees with ``up''. The problem: it needs the introduction of reciprocal frames and the definition of the mixed metric $\ikron jk$! However, with this, we would have: 
+\beq
+\cnvec aj = (\cnvec ak\nbvec k)\iprod\nbvec j 
+         = \cnvec ak(\nbvec k\iprod\nbvec j)
+         = \cnvec ak\mkron jk
+         = \cnvec aj\,.\mqed
+\eeq
+\end{note}
+
+\begin{note}
+I think the correct definition would be $\covec uk = u\iprod\nbvec k$. In this case, analogous to the up-up case, it would be the down agrees with down. The problem: it needs the introduction of reciprocal frames and the decomposition of $u$ onto such a frame. However, with this, we would have:
+\beq
+\covec uk = \cnvec uj\nbvec j\iprod\nbvec k
+          = \cnvec uj\ikron jk
+          = \covec uk\,.
+\eeq
+One advantage over the last note is that no mixed metric is needed. Only the one already defined! Besides, another advantage is the generalization of this definition to tensors (see below). Using $\covec uk = u\iprod\nbvec k$ fits everything!
+\end{note}
+
+Expand any tensor, say the rank-3 tensor $t\vat{\slot,\slot,\slot}$ as the \lingo{tensor product} of frame elements (analogous to \cref{eq:vectorexpansioninthreedim}):
+\beq
+t = t\vat{\nbvec i, \nbvec j, \nbvec k} 
+  = \cntens t{ijk}\,\nbvec i\tprod\nbvec j\tprod\nbvec k\,.
+\eeq
+
+Compute the \lingo{components} $\cotens t{ijk}$ of $t$ on the frame by generalizing of \cref{eq:compofvector}:
+\begin{equation}\label{eq:comptensoronframe}
+\cotens t{ijk} = t\vat{\nbvec i, \nbvec j, \nbvec k}\,.
+\end{equation}
+\begin{proof}
+\end{proof}
+
+\begin{remark}
+Careful with index position: when the tensor $t$ multiplies the tensor product of the frame elements, then its components go ``up'' $\cntens t{ijk}$. However, when the tensor components have to be calculated or used, then its components go ``down'' $\cotens t{ijk}$.
+\end{remark}
+
+Calculate the \lingo{components of the metric}~\footnote{~This is the paramount example of index manipulations with tensors, because it \emph{is} a tensor.} tensor $\metric$ as
+\beq
+\imet jk = g\vat{\nbvec j, \nbvec k} = \nbvec j\iprod\nbvec k = \ikron jk \,.
+\eeq
+The last equality only holds for any standard frame, \aka orthonormal basis, in $\espace 3$.
+
+Using \cref{eq:comptensoronframe}, calculate the \lingo{components of a tensor product}, \eg. $t\vat{\slot,\slot,\slot}\tprod s\vat{\slot,\slot}$ by inserting the frame elements into the slots; \ie,
+\beq
+t\vat{\nbvec i, \nbvec j, \nbvec k}\tprod s\vat{\nbvec l,\nbvec m} 
+    = \cotens t{ijk}\cotens s{lm}\,.
+\eeq
+In words, 
+\begin{quote}
+the components of a tensor product equal the ordinary arithmetic product of the components of the individual tensors. The position of the indices follows that of the frame elements.
+\end{quote}
+
+In component notation, compute the \lingo{inner product} of two vectors, say $a,b\in\espace 3$, and the \lingo{value of a tensor} $t$ when vectors, say three vectors $d,e,f\in\espace 3$, are inserted into its slots by
+\beq
+   a\iprod b = \imet ij\cnvec ai\cnvec bj \qquad 
+t\vat{d,e,f} = \cotens t{ijk}\cnvec di\cnvec ej\cnvec fk \,.
+\eeq
+
+Calculate the \lingo{components of the contraction of a tensor}, say $r\vat{\slot,\slot,\slot,\slot}$, on two of its slots, say the first and the third, by
+\beq
+\tcomp{\tcont{1,3}{r}} = \cotens r{ijik}\,.
+\eeq
+Note that $\cotens r{ijik}$ is summed on the $i$ index, so it has only two free indices: $j$ and $k$. Thus, $\cotens r{ijik}$ are the components of a second rank tensor, as it must be if it is to represent the contraction of a fourth-rank tensor.

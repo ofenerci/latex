@@ -1,0 +1,244 @@
+\section{Curve Fitting}
+
+\subsection{Outliers}
+
+\subsubsection{Chauvenet's criterion}
+In statistical theory, Chauvenet's criterion (named for William Chauvenet) is a means of assessing whether one piece of experimental data -- an outlier -- from a set of observations, is likely to be spurious.
+
+To apply Chauvenet's criterion, first calculate the mean and standard deviation of the observed data. Based on how much the suspect datum differs from the mean, use the normal distribution function (or a table thereof) to determine the probability that a given data point will be at the value of the suspect data point. Multiply this probability by the number of data points taken. If the result is less than 0.5, the suspicious data point may be discarded, \ie, a reading may be rejected if the probability of obtaining the particular deviation from the mean is less than $1/(2n)$.
+
+Example: For instance, suppose a value is measured experimentally in several trials as 9, 10, 10, 10, 11, and 50. The mean is 16.7 and the standard deviation 14.92. 50 differs from 16.7 by 33.3, slightly more than two standard deviations. The probability of taking data more than two standard deviations from the mean is roughly 0.05. Six measurements were taken, so the statistic value (data size multiplied by the probability) is $(0.05)(6) = 0.3$. Because $0.3 < 0.5$, according to Chauvenet's criterion, the measured value of 50 should be discarded (leaving a new mean of 10, with standard deviation 0.7).
+
+Criticism: Deletion of outlier data is a controversial practice frowned on by many scientists and science instructors; while Chauvenet's criterion provides an objective and quantitative method for data rejection, it does not make the practice more scientifically or methodologically sound, especially in small sets or where a normal distribution cannot be assumed. Rejection of outliers is more acceptable in areas of practice where the underlying model of the process being measured and the usual distribution of measurement error are confidently known.
+
+
+\subsection{Data Normalization}
+Given a set of $n$ data points $\elset{x_i}$, called the \lingo{raw scores}, define the \lingo{sample mean}, denoted $\avg x$, by
+\beq
+\avg x = \dfrac{1}{n}\sum_{i = 1}^n x_i\,,
+\eeq
+which is the arithmetic mean of the $\elset{x_i}$.
+
+Then, define the \lingo{sample standard deviation}, denoted $s_x$, by
+\beq
+s_x = \sqrt{\dfrac{1}{n - 1}\sum_{i = 1}^n\left(x_i - \avg x\right)^2}\,.
+\eeq
+
+Finally, transform the raw scores into \lingo{standard scores}, denoted $z_{x_i}$, for every $x_i$ by applying
+\beq
+z_{x_i} = \dfrac{x_i - \avg x}{s_x}\,.
+\eeq
+
+
+\subsection{Least Square Fitting}
+
+\subsubsection{Theory}
+A mathematical procedure for finding the best-fitting curve to a given set of points by minimizing the sum of the squares of the offsets (``the residuals'') of the points from the curve. The sum of the squares of the offsets is used instead of the offset absolute values because this allows the residuals to be treated as a continuous differentiable quantity. However, because squares of the offsets are used, outlying points can have a disproportionate effect on the fit, a property which may or may not be desirable depending on the problem at hand.
+
+In practice, the vertical offsets from a line (polynomial, surface, hyperplane, \etc.) are almost always minimized instead of the perpendicular offsets. This provides a fitting function for the independent variable  that estimates  for a given  (most often what an experimenter wants), allows uncertainties of the data points along the $x$- and $y$-axes to be incorporated simply, and also provides a much simpler analytic form for the fitting parameters than would be obtained using a fit based on perpendicular offsets. In addition, the fitting technique can be easily generalized from a best-fit line to a best-fit polynomial when sums of vertical distances are used. In any case, for a reasonable number of noisy data points, the difference between vertical and perpendicular fits is quite small.
+
+The linear least squares fitting technique is the simplest and most commonly applied form of linear regression and provides a solution to the problem of finding the best fitting straight line through a set of points. In fact, if the functional relationship between the two quantities being graphed is known to within additive or multiplicative constants, it is common practice to transform the data in such a way that the resulting line is a straight line, say by plotting $T$ \vs. $\sqrt{l}$ instead of $T$ \vs. $l$ in the case of analyzing the period $T$ of a pendulum as a function of its length $l$. For this reason, standard forms for exponential, logarithmic, and power laws are often explicitly computed. The formulas for linear least squares fitting were independently derived by Gauss and Legendre.
+
+Vertical least squares fitting proceeds by finding the sum of the squares of the vertical deviations $r^2$ of a set of $n$ data points $\tuple{x_i, y_i}$
+\begin{equation}\label{eq:squaresverticaldeviations}
+r^2 = \sum\left(y_i - f\vat{x_i, a_i}\right)^2
+\end{equation}
+from a function $f$. Note that this procedure does not minimize the actual deviations from the line (which would be measured perpendicular to the given function). In addition, although the unsquared sum of distances might seem a more appropriate quantity to minimize, use of the absolute value results in discontinuous derivatives which cannot be treated analytically. The square deviations from each point are therefore summed, and the resulting residual is then minimized to find the best fit line. This procedure results in outlying points being given disproportionately large weighting.
+
+The condition for $r^2$ to be a minimum is that
+\begin{equation}\label{eq:conditiontobemin}
+\xpd{(r^2)}{a_i} = \cder{(r^2)}{a_i} = \igder{i}{(r^2)} = 0\,,
+\end{equation}
+for $i = 1,\dotsc,n$.
+
+
+\subsubsection{Procedure}
+To fit a curve to a set of $n$ data points $\elset{\tuple{x_i, y_i}}$:
+\begin{itemize}
+\item Plot data in a Cartesian coordinate system to help choosing the curve to be used to fit data. Then, choose the formula of the curve: $y_i = f\vat{x_i, a_i}$, where the $\elset{x_i, y_i}$ are the data points and the $\elset{a_i}$ the parameters to be found.
+%
+\item Find the sum of the squares of the vertical deviations $r^2$: $r^2 = \sum\left(y_i - f\vat{x_i, a_i}\right)^2$.
+%
+\item Apply the condition for $r^2$ to be a minimum, $\cder{(r^2)}{a_i} = 0$. This yields $n$ equations with $n$ unknowns ($\elset{a_i}$).
+%
+\item Replace the actual data $\tuple{x_i, y_i}$ to find the numerical values of the $\elset{a_i}$.
+%
+\item Finally, find the parameters $\elset{a_i}$ by solving the system of equations and replace the parameters in the formula of the curve.
+%
+\end{itemize}
+
+\begin{note}
+Additionally, the data points can be normalized before fitting the curve. In this case, the $\elset{x_i}$, $\elset{y_i}$ or both maybe normalize to $z_x$ or $z_y$. To have the fitting function, then, transform the $z$ to $x$ and $y$.
+\end{note}
+
+
+\subsection{Examples}
+
+\subsubsection{Linear Fit Without Normalization}
+For a linear fit, $f\vat{a_1,a_2} = a_1 + a_2 x$. Thus, \cref{eq:squaresverticaldeviations} becomes
+\beq
+r^2\vat{a_1,a_2} = \sum_{i=1}^{n}\left(y_i - (a_1 + a_2 x_i)\right)^2\,.
+\eeq
+
+Applying \cref{eq:conditiontobemin}, find
+\beq
+\begin{cases}
+\cder{r^2}{a_1} = -2\sum_{i=1}^{n}\left(y_i - (a_1 + a_2 x_i)\right) = 0\,,\\
+\cder{r^2}{a_2} = -2\sum_{i=1}^{n}\left(y_i - (a_1 + a_2 x_i)\right)x_i = 0\,,
+\end{cases}
+\eeq
+which leads to the system of equations
+\beq
+\begin{cases}
+na_1 + a_2 \sum_i x_i = \sum_i y_i\,,\\
+a_1\sum_i x_i + a_2\sum_i x_i^2 = \sum_i x_i y_i\,.
+\end{cases}
+\eeq
+
+Finally, use actual data to replace in the system and then find $\elset{a_1, a_2}$.
+
+
+\subsubsection{Numerical Linear Fit Without Normalization}
+Consider the set of 10 data points shown in the three first columns of \cref{tab:numlinfitwonorm}.
+%%%
+\docpretable{bt}{0.36\textwidth}{ccccc}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+%
+\toprule
+$i$ & $x_i$ & $y_i$ & $x_i^2$ & $x_iy_i$ \\
+\midrule
+1 & 0.1 & 9.9 & 0.01 & 0.99 \\
+2 & 0.2 & 9.2 & 0.04 & 1.84 \\
+3 & 0.3 & 8.4 & 0.09 & 2.52 \\
+4 & 0.4 & 6.6 & 0.16 & 2.64 \\
+5 & 0.5 & 5.9 & 0.25 & 2.95 \\
+6 & 0.6 & 5.0 & 0.36 & 3.00 \\
+7 & 0.7 & 4.1 & 0.49 & 2.87 \\
+8 & 0.8 & 3.1 & 0.64 & 2.48 \\
+9 & 0.9 & 1.9 & 0.81 & 1.71 \\
+10 & 1.0 & 1.1 & 1.00 & 1.10 \\
+\midrule
+Sum & 5.5 & 55.2 & 3.85 & 22.10 \\
+\bottomrule
+%
+\end{tabularx}
+\docposttable{Numerical Fitting}{Numerical linear fit without normalization}{tab:numlinfitwonorm}
+%%%
+
+The equations for the linear fit require to find $\elset{n, \sum x, \sum x^2, \sum y, \sum xy}$. This is done with the aid of \cref{tab:numlinfitwonorm}: $n = 10$, $\sum x = 5.50$, $\sum x^2 = 3.85$, $\sum y = 55.2$ and $\sum xy = 22.1$.
+
+Replace the numerical values in the equations for linear fit to have
+\beq
+\begin{cases}
+10 a_1 + 5.50 a_2 = 55.2\,,\\
+5.50 a_1 + 3.85 a_2 = 22.10\,.
+\end{cases}
+\eeq
+
+Solving the last system of equations yields $a_0 \sim 11.0$ and $a_1 \sim -10.0$, which, in turn, gives the fitting curve:
+\beq
+f\vat x = 11.0 x - 10.0\,.
+\eeq
+
+
+\subsubsection{Numerical Linear Fit With Normalization}
+Consider the data presented in \cref{tab:numlinfitwonorm}. Normalize both the $\elset{x_i}$ and the $\elset{y_i}$.
+
+To begin the normalization, find the average values of the variables:
+\beq
+\avg x = \dfrac{1}{10}5.5 = 0.55 \qquad\text{and}\qquad 
+\avg y = \dfrac{1}{10}55.2 = 5.52\,.
+\eeq
+
+Then, calculate their standard deviations:
+\beq
+s_x = \sqrt{\dfrac{1}{9}\sum_i\left(x_i - 0.55\right)^2} = 0.303 \qquad\text{and}\qquad
+s_y = \sqrt{\dfrac{1}{9}\sum_i\left(x_i - 5.52\right)^2} = 3.04 \,.
+\eeq
+
+With the average values and the standard deviations, find the standard scores:
+\beq
+z_{x_i} = \dfrac{x_i - 0.55}{0.303} \qquad\text{and}\qquad
+z_{y_i} = \dfrac{y_i - 5.52}{3.04}\,.
+\eeq
+The results of normalization are presented in \cref{tab:numlinfitwnorm}.
+%%%
+\docpretable{bt}{0.40\textwidth}{ccccc}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+%
+\toprule
+$i$ & $z_{x_i}$ & $z_{y_i}$ & $z_{x_i}^2$ & $z_{x_i}z_{y_i}$ \\
+\midrule
+1 & -1.49 & 1.44 & 2.21 & -2.14 \\
+2 & -1.16 & 1.21 & 1.34 & -1.40 \\
+3 & -0.83 & 0.95 & 0.68 & -0.78 \\
+4 & -0.50 & 0.36 & 0.25 & -0.18 \\
+5 & -0.17 & 0.13 & 0.03 & -0.02 \\
+6 & 0.17  & -0.17 & 0.03 & -0.03 \\
+7 & 0.50  & -0.47 & 0.25 & -0.23 \\
+8 & 0.83  & -0.80 & 0.68 & -0.66 \\
+9 & 1.16  & -1.19 & 1.34 & -1.38 \\
+10 & 1.49 & -1.45 & 2.21 & -2.16 \\
+\midrule
+Sum & 0.0 & 0.0 & 9.00 & -8.98 \\
+\bottomrule
+%
+\end{tabularx}
+\docposttable{Numerical Fitting}{Numerical linear fit with normalization}{tab:numlinfitwnorm}
+%%%
+
+Then, apply the linear fit method to the data presented in \cref{tab:numlinfitwnorm}. The result of such a procedure is the equation for the linear fit:
+\beq
+z_y = -0.9975 z_x\,.
+\eeq
+
+Transform next the standard scores into the raw scores:
+\beq
+z_y = -0.9975 z_x\implies
+\dfrac{y - \avg y}{s_y} = -0.9975 \dfrac{x - \avg x}{s_x}\implies
+\dfrac{y - 5.52}{3.04} = -0.9975 \dfrac{x - 0.55}{0.303}\,,
+\eeq
+which finally leads to the linear fit function
+\beq
+f\vat x = 11.0 x - 10.0\,.
+\eeq
+This result agrees with the one found with non-normalized data.
+
+
+\subsection{Problem Statement in Vector Notation}
+Given a set of $m$ empirical datum pairs of independent and dependent variables, $\tuple{x_i, y_i}$, optimize the parameters $\elset{\beta}$ of the model curve $f\vat{x_i,\beta_i}$ so that the sum of the squares of the deviations
+\beq
+S\vat{\beta_i} = \sum_{i = 1}^{m}\left(y_i - f\vat{x_i, \beta_i}\right)^2
+\eeq
+becomes minimal.
+
+The condition to be minimal is
+\beq
+\xpd{S\vat{\beta_i}}{\beta_i} = 0\,.
+\eeq
+
+In vector notation, the problem statement can be changed into vector notation as
+\beq
+S\vat{\beta} = \sum_{i = 1}^{m}\left(y - f\vat{x, \beta}\right)^2\,,
+\eeq
+where $\beta$ represents the vector of the parameters, $x$ the vector of the independent variables and $y$ the vector of the dependent variables.
+
+The solution of the problem is then
+\beq
+\xpd{S}{\beta}\vat{\beta} = 0\,.
+\eeq
+
+In index notation, the solution of the problem can be written as
+\beq
+\xpd{S}{\beta_i}\vat{\beta_i} = 0\,,
+\eeq
+which becomes into
+\beq
+\xpd{}{\beta_i}\sum_i\left( y_i - f\vat{x_i, \beta_i} \right)^2 
+    = 2 \sum_i\left(y_i - f\vat{x_i, \beta_i}\right)\xpd{f}{\beta_i}\vat{x_i, \beta_i} = 0\,.
+\eeq
+
+The last equation leads to the system of equations:
+\beq
+\sum_i\left(y_i - f\vat{x_i, \beta_i}\right)\xpd{f}{\beta_i}\vat{x_i, \beta_i} = 0\,.
+\eeq

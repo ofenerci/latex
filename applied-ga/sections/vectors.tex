@@ -1,0 +1,35 @@
+\section{Vector Analysis Summary}
+
+\subsection{Basic Concepts}
+Call a \lingo{vector quantity} $q$ a quantity that has a \lingo{magnitude} and a \lingo{direction} associated with it. 
+
+Here, magnitude means a positive real number and direction is specified relative to some underlying reference frame~\lingo{~To be defined below.} that we regard as fixed.
+
+Call a \lingo{vector} an abstract quantity characterized by the two properties magnitude and direction. Thus, two vectors are equal if they have the same magnitude and the same direction.
+
+
+\subsection{Vector Space}
+A \lingo{vector space over a field $\set F$} is a set $\set V$ together with two binary operations that satisfy the eight axioms listed below. Elements of $\set V$ are called \lingo{vectors}. Elements of $\set F$ are called \lingo{scalars}. The first operation, \lingo{vector addition}, takes any two vectors $v$ and $w$ and assigns to them a third vector commonly written as $v + w$; call this operation the \lingo{sum of $v$ and $w$}. The second operation takes any scalar $a$ and any vector $v$ and gives another vector $av$; call this operation the \lingo{scalar multiplication of $v$ by $a$}.
+
+
+\subsection{Inner Product Algebra}
+Consider three vectors $a,b,c\in\espace n$ and a scalar $\lambda\in\set R$. Then, the inner product between $a$ and $b$ satisfies:
+\begin{itemize}
+\item commutativity: $a\iprod b = b\iprod a$\,;
+\item distributivity: $a\iprod (b + c) = a\iprod b + a\iprod c$\,.
+\item associativity with scalar multiplication: $(\lambda a)\iprod b = \lambda (a\iprod b)$\,.
+\end{itemize}
+
+
+\subsection{Cross Product Algebra}
+Consider three vectors $a,b,c\in\espace 3$ and a scalar $\lambda\in\set R$. Then, the cross product between $a$ and $b$ satisfies:
+\begin{itemize}
+\item anti-commutativity: $a\cprod b = -b\cprod a$\,;
+\item distributivity: $a\cprod(b + c) = a\cprod b + a\cprod c$\,;
+\item associativity with scalars: $(\lambda a)\cprod b = \lambda(a\cprod b)$;
+\item $a\cprod a = 0$\,;
+\item the vector $a\cprod b$ equals zero if and only if $a$ and $b$ are parallel.
+\end{itemize}
+
+
+

@@ -1,0 +1,849 @@
+\section{Classical Dynamics}
+
+[Classical Dynamics, Dr David Tong, 2004-2005]
+
+\subsection{Newtonian Mechanics: A Single Particle}
+Basic concepts: a particle is defined to be an object of insignificant size; \eg, an electron, a tennis ball or a planet. Obviously the validity of this statement depends on the context: to first approximation, the earth can be treated as a particle when computing its orbit around the sun. But if you want to understand its spin, it must be treated as an extended object.
+
+The motion of a particle of mass $m$ at the position $\pvec$ is governed by Newton's Second Law $f=ma$ or, more precisely,
+\beq
+f\vat{\pvec,\dt\pvec} = \dt\lmom\,,
+\eeq
+where $f$ is the force which, in general, can depend on both the position $\pvec$ as well as the velocity $\dt\pvec$, (for example, friction forces depend on $\dt\pvec$) and $\lmom = m\dt\pvec$ is the momentum. Both $f$ and $\lmom$ are 3-vectors. The last equation reduces to $f = ma$ if $\dt m = 0$. But if $m = m\vat t$ (\eg, in rocket science), then the form with $\dt\lmom$ is correct.
+
+General theorems governing differential equations guarantee that if we are given $\pvec$ and $\dt\pvec$ at an initial time $t = t_0$, we can integrate the last equation to determine $\pvec\vat t$ for all $t$ (as long as $f$ remains finite). This is the \emph{goal of classical dynamics}.
+
+The last is not quite correct as stated: we must add the caveat that it holds \emph{only} in an \lingo{inertial frame}. This is defined to be a frame in which a free particle with $\dt m = 0$ travels in a straight line,
+\beq
+\pvec = \pvec_0 + \dt\pvec t\,,
+\eeq
+Newton's first law is the statement that such frames exist.
+
+Angular momentum: we define the angular momentum $l$ of a particle and the torque $\tau$ acting upon it as
+\beq
+l = \pvec\cprod\lmom\qquad\text{and}\qquad\tau = \pvec\cprod f\,.
+\eeq
+Note that, unlike linear momentum $\lmom$, both $l$ and $\tau$ depend on where we take the origin: \emph{we measure angular momentum with respect to a particular point}. Let us cross both sides of the last equation with $\pvec$. Using the fact that $\dt\pvec$ is parallel to $\lmom$, we can write
+\beq
+\xod{(\pvec\cprod\lmom)}{t} = \pvec\cprod\dt\lmom\,.
+\eeq
+Then we get a version of Newton's second law that holds for angular momentum:
+\beq
+\tau = \dt l\,.
+\eeq
+
+Conservation Laws: From the last equations, two important conservation laws follow immediately. 
+\begin{itemize}
+\item If $f = 0$, then $\lmom$ is constant throughout the motion;
+\item If $\tau = 0$, then $l$ is constant throughout the motion.
+\end{itemize}
+Notice that $\tau = 0$ does not require $f = 0$, but only $\pvec\cprod f = 0$. This means that $f$ \emph{must} be parallel to $\pvec$. This is the definition of a \lingo{central force}. An example is given by the gravitational force between the earth and the sun: the earth's angular momentum about the sun is constant. As written above in terms of forces and torques, these conservation laws appear trivial.
+
+Energy: Let's now recall the definitions of energy. We firstly define the kinetic energy $\ken$ as
+\beq
+\ken = \dfrac{1}{2}m\dt\pvec\iprod\dt\pvec\,.
+\eeq
+Suppose from now on that the mass is constant. We can compute the change of kinetic energy with time: $\dt\ken = \dt\lmom\iprod\dt\pvec = f\iprod\dt\pvec$. If the particle travels from position $\pvec_1$ at time $t_1$ to position $\pvec_2$ at time $t_2$ then this change in kinetic energy is given by
+\beq
+\ken\vat{t_2} - \ken\vat{t_1} = \int_{t_1}^{t_2}\dt\ken\,\dx t
+                              = \int_{t_1}^{t_2}f\iprod\dt\pvec\,\dx t
+                              = \int_{\pvec_1}^{\pvec_2}f\iprod\dx\pvec\,,
+\eeq
+where the final expression involving the integral of the force over the path is called the \lingo{work done by the force}. So we see that 
+\begin{quote}
+the work done is equal to the change in kinetic energy. 
+\end{quote}
+From now on we will mostly focus on a very special type of force known as a \lingo{conservative force}. Such a force depends only on position $\pvec$ rather than velocity $\dt\pvec$ and is such that the work done is \emph{independent of the path taken}. In particular, for a closed path, the work done vanishes:
+\beq
+\oint f\iprod\dx\pvec \iff \gder\cprod f = 0\,.
+\eeq
+
+It is a deep property of flat space $\espace 3$ that this property implies we may write the force as
+\beq
+f = -\gder\pen\vat\pvec
+\eeq
+for some potential $\pen\vat\pvec$. Systems which admit a potential of this form include gravitational, electrostatic and interatomic forces. When we have a conservative force, we necessarily have a conservation law for energy. To see this, return to the change of kinetic energy equation which now reads
+\beq
+\ken\vat{t_2} - \ken\vat{t_1} = \int_{\pvec_1}^{\pvec_2}f\iprod\dx\pvec
+                              = -\int_{\pvec_1}^{\pvec_2}\gder\pen\iprod\dx\pvec
+                              = -\pen\vat{t_2} + \pen\vat{t_1}\,,
+\eeq
+or, rearranging things,
+\beq
+\ken\vat{t_1} + \pen\vat{t_1} = \ken\vat{t_2} + \pen\vat{t_2} = e\,.
+\eeq
+So $e = \ken + \pen$ is also a \lingo{constant of motion}. It is the energy. When the energy is considered to be a function of position $\pvec$ and momentum $\lmom$ it is referred to as the \lingo{Hamiltonian} $\ham$.
+
+Example 1: The Simple Harmonic Oscillator. This is a one-dimensional system with a force proportional to the distance $\pvec$ to the origin: $f\vat x = -k\pvec$. This force arises from a potential $2\pen = k\pvec^2$. Since $f\neq 0$,  momentum is \emph{not} conserved (the object oscillates backwards and forwards) and, since the system lives in only one dimension, angular momentum is \emph{not defined}. But energy
+\beq
+e = \dfrac{1}{2}m\dt\pvec^2 + \dfrac{1}{2}k\pvec^2
+\eeq
+is conserved.
+
+Example 2: The Damped Simple Harmonic Oscillator. We now include a friction term so that $f\vat{\pvec,\dt\pvec} = -k\pvec - \gamma\dt\pvec$. Since $f$ is not conservative, energy is \emph{not} conserved. This system loses energy until it comes to rest. (The last statement is not entirely true. Mechanical energy is not conserved, but total energy is, because mechanical energy transforms into heating and then the system comes to rest.)
+
+Example 3: Particle Moving Under Gravity. Consider a particle of mass $m$ moving in three dimensions under the gravitational pull of a much larger particle of mass $M$. The force is $f = -(GmM/\pvec^2)\nvec\pvec$ which arises from the potential $\pen = -GmM/\pvec$. Again, the linear momentum $\lmom$ of the smaller particle is \emph{not} conserved, but the force is both central and conservative, ensuring the particle's total energy $e$ and the angular momentum $l$ are conserved.
+
+
+\subsection{The Principle of Least Action - The Lagrangian Formalism}
+Firstly, let's get our notation right. Part of the power of the Lagrangian formulation over the Newtonian approach is that 
+\begin{quote}
+the Lagrangian formulation does away with vectors in favor of more general coordinates. 
+\end{quote}
+We start by doing this trivially. Let's rewrite the positions of $N$ particles with coordinates $\pvec_i$ as $\gpos i$ where $i=1,\dotsc,3N$. Then Newton's equations read
+\begin{equation}\label{eq:newtonslawofmotion}
+\dt{\gmom i} = -\xpd{\pen}{\gpos i}\,,
+\end{equation}
+where $\gmom i = m_i\gvel i$. The number of degrees of freedom of the system is said to be $3$N. These parameterize a $3N$-dimensional space known as the \lingo{configuration space} $C$. Each point in $C$ specifies a configuration of the system (\ie, the positions of all $N$ particles). Time evolution gives rise to a curve in $C$.
+
+Define the \lingo{Lagrangian} to be a function of the positions $\gpos i$ and the velocities $\gvel i$ of all the particles, given by~\footnote{~The Lagrangian is defined as the difference of two energies, therefore it has the dimensions of energy $\phdim E$; \ie, $\dim\lag = \phdim E$.}
+\beq
+\lag\vat{\gpos i,\gvel i} = \ken\vat{\gvel i} - \pen\vat{\gpos i}\,,
+\eeq
+where $2\ken = \sum_i m_i (\gvel i)^2$ is the kinetic energy and $\pen\vat{\gpos i}$ is the potential energy. Note the minus sign between $\ken$ and $\pen$! To describe the principle of least action, we consider all smooth paths $\gpos i\vat t$ in $C$ with fixed end points so that
+\beq
+\gpos i\vat{t\txt i} = \gpos i\txt{initial}\qquad\text{and}\qquad\gpos i\vat{t\txt f} = \gpos i\txt{final}\,.
+\eeq
+Of all these possible paths, only one is the true path taken by the system. Which one? To each path, let us assign a number called the action $\action$ defined as
+\beq
+\action\vat{\gpos i\vat t} = \int_{t\txt{initial}}^{t\txt{final}}\lag\vat{\gpos i,\gvel i}\,\dx t\,.
+\eeq
+The action is a \lingo{functional} (\ie, a function of the path which is itself a function). The principle of least action is the following result:
+
+Theorem (Principle of Least Action): The actual path taken by the system is an \lingo{extremum} of $\action$.
+
+[proof: omitted]
+
+This requirement holds if and only if
+\begin{equation}\label{eq:eulerlagrangeequations}
+\eleqn{\gpvec}{i} = 0\qquad\text{for each $i=1,\dotsc,3N$}\,.
+\end{equation}
+These are known as \lingo{Lagrange's equations} (or sometimes as the \lingo{Euler-Lagrange equations}). 
+
+Lagrange's equations are equivalent to Newton's. From the definition of the Lagrangian, we have $\partial\lag/\partial\gpos i = -\partial\pen/\gpos i$, while $\partial\lag/\partial\gvel i = \gmom i$. It's then easy to see that \cref{eq:eulerlagrangeequations} are indeed equivalent to \cref{eq:newtonslawofmotion}.
+
+\begin{note}
+The $\gpos i$ are called \lingo{generalized coordinates}, while the $\gvel i$ are called \lingo{generalized velocities}. Both have \lingo{contravariant} components:
+\begin{align*}
+\dim \gpos i = \phdim{L}   &\implies\text{contravariant components}\,,\\
+\dim \gvel i = \phdim{L/T} &\implies\text{contravariant components}\,.
+\end{align*}
+
+The first terms in \cref{eq:eulerlagrangeequations} are called \lingo{generalized forces}, $\gfor i$,
+\beq
+\gfor i = \xpd{\lag}{\gpos i}\,,
+\eeq
+while the second terms are called \lingo{generalized momenta}, $\gmom i$,
+\beq
+\gmom i = \xpd{\lag}{\gvel i}\,.
+\eeq
+Thus, Euler-Lagrange equations, \cref{eq:eulerlagrangeequations}, can be written in a form analogous to Newton's second law of motion:
+\beq
+\gfor i = \dt{\gmom i}\,,
+\eeq
+this is, generalized forces equal the time change of generalized momenta.
+
+Additionally, notice that both generalized forces and momenta have \lingo{covariant components}:
+\begin{align*}
+\dim \gfor i = \xpd{\lag}{\gpos i} = \phdim{E/L}             &\implies\text{covariant components}\,,\\
+\dim \gmom i = \xpd{\lag}{\gvel i} = \phdim{E.T/L} &\implies\text{covariant components}\,,
+\end{align*}
+where $\phdim{E}$ stands for the dimension of energy.
+
+Finally, note that generalized momenta are the \lingo{conjugate} of generalized coordinates:
+\beq
+\gmom i = \xpd{\lag}{\gvel i}\,.
+\eeq
+\end{note}
+
+Some remarks on this important result:
+\begin{itemize}
+\item This is an example of a variational principle.
+%
+\item The principle of least action is a slight misnomer. The proof only requires that $\delta\action = 0$ and does not specify whether it is a maxima or minima of $\action$. Since $\lag = \ken - \pen$, we can always increase $\action$ by taking a very fast, wiggly path with $\ken\gg 0$, so the true path is never a maximum. However, it may be either a minimum or a saddle point. So \lingo{Principle of stationary action} would be a more accurate, but less catchy, name. It is sometimes called \lingo{Hamilton's principle}.
+%
+\item All the fundamental laws of physics can be written in terms of an action principle. This includes electromagnetism, general relativity, the standard model of particle physics and attempts to go beyond the known laws of physics such as string theory.
+%
+\item There is a beautiful generalization of the action principle to quantum mechanics due to Feynman in which the particle takes all paths with some probability determined by $\action$.
+%
+\item Back to classical mechanics, there are two very important reasons for working with Lagrange's equations rather than with Newton's. The first is that Lagrange's equations hold in any coordinate system, while Newton's are restricted to an inertial frame. The second is the ease with which we can deal with constraints in the Lagrangian system.
+\end{itemize}
+
+
+\subsection{Changing Coordinate Systems}
+Lagrange's equations hold in \emph{any} coordinate system. This follows immediately from the action principle, which is a statement about paths and not about coordinates. So the \lingo{form} of Lagrange's equations holds in any coordinate system. This is in contrast to Newton's equations which are only valid in an inertial frame. Let's illustrate the power of this fact with an example.
+
+Example: Rotating Coordinate Systems: Consider a free particle with Lagrangian given by
+\beq
+\lag = \dfrac{1}{2}m\dt\pvec^2\,,
+\eeq
+with $\pvec = \tuple{x,y,z}$. Now measure the motion of the particle with respect to a coordinate system which is rotating with angular velocity $\omega = \tuple{0,0,\omega}$ about the $z$ axis. If $\pvec' = \tuple{x',y',z'}$ are the coordinates in the rotating system, we have the relationship
+\begin{align*}
+x' &= x\cos\vat{\omega t} + y\sin\vat{\omega t}\,,\\
+y' &= y\cos\vat{\omega t} - x\sin\vat{\omega t}\,,\\
+z' &= z\,.
+\end{align*}
+
+Then we can substitute these expressions into the Lagrangian to find $\lag$ in terms of the rotating coordinates,
+\beq
+\lag = \dfrac{1}{2}m \left( (\dt x' - \omega y')^2 + (\dt y' + \omega x')^2 + \dt z^2 \right)
+     = \dfrac{1}{2}m(\dt\pvec' + \omega\cprod\pvec')^2\,.
+\eeq
+In this rotating frame, we can use Lagrange's equations to derive the equations of motion. Taking derivatives, we have
+\begin{align*}
+\xpd{\lag}{\pvec'}             &= m\left(\dt\pvec'\cprod\omega - \omega\cprod(\omega\cprod\pvec') \right) \,,\\
+\xod{}{t}\xpd{\lag}{\dt\pvec'} &= m\left(\ddt\pvec' + \omega\cprod\dt\pvec' \right)\,,
+\end{align*}
+so Lagrange's equation reads
+\beq
+\xod{}{t}\xpd{\lag}{\dt\pvec'} - \xpd{\lag}{\pvec'} 
+    = m\left(\ddt\pvec' 
+      + \omega\cprod(\omega\cprod\pvec') 
+      + 2\omega\cprod\dt\pvec'\right) = 0\,.
+\eeq
+The second and third terms in this expression are the \lingo{centrifugal} and \lingo{coriolis forces}. These are examples of the \lingo{fictitious forces}. They're called fictitious because they're a consequence of the reference frame, rather than any interaction. But don't underestimate their importance just because they're ``fictitious''! According to Einstein's theory of general relativity, the force of gravity is on the same footing as these fictitious forces.
+
+
+\subsection{Constraints and Generalized Coordinates}
+Define the operator $\igder i = \partial/\partial\gpos i$.
+
+Now we turn to the second advantage of the Lagrangian formulation. In writing $\gfor i = \dt{\gmom i} = -\igder i\pen$, we implicitly assume that each particle can happily roam anywhere in space $\espace 3$. What if there are constraints? In Newtonian mechanics, we introduce \lingo{constraint forces}. These are things like the tension of ropes and normal forces applied by surfaces. In the Lagrangian formulation, we don't have to worry about such things. 
+
+An Example: The Pendulum. The simple pendulum has a single dynamical degree of freedom $\theta$, the angle the pendulum makes with the vertical. The position of the mass $m$ in the plane is described by two Cartesian coordinates $x$ and $y$ subject to a constraint $x^2 + y^2 = l^2$. We can parameterize this as $x = l\sin\vat\theta$ and $y = l\cos\vat\theta$. Employing the Newtonian method to solve this system, we introduce the tension $T$ and resolve the force vectors to find
+\beq
+m\ddt x = -Tx/l\qquad\text{and}\qquad m\ddt y = mg - Ty/l\,.
+\eeq
+To determine the motion of the system, we impose the constraints at the level of the equation of motion, and then easily find
+\beq
+\ddt\theta = -(g/l)\sin\vat\theta\qquad\text{and}\qquad T = ml\dt\theta^2 + mg\cos\vat\theta\,.
+\eeq
+
+While this example was pretty straightforward to solve using Newtonian methods, things get rapidly harder when we consider more complicated constraints (and we'll see plenty presently). Moreover, you may have noticed that half of the work of the calculation went into computing the tension $T$. On occasion we'll be interested in this. (For example, we might want to know how fast we can spin the pendulum before it breaks). But often we won't care about these constraint forces, but will only want to know the motion of the pendulum itself. In this case it seems like a waste of effort to go through the motions of computing $T$. We'll now see how we can avoid this extra work in the Lagrangian formulation. Firstly, let's define what we mean by constraints more rigorously.
+
+\subsubsection{Holonomic Constraints} \lingo{Holonomic Constraints}~\footnote{~Introduced by H. Hertz in 1894, the term \lingo{holonomic} comes from the Greek and means whole law.} are relationships between the coordinates of the form
+\beq
+\gfor\alpha\vat{\pvec^i, t} = 0\qquad\alpha = 1,\dotsc, 3N-n\,.
+\eeq
+In general the constraints can be time dependent and our notation above allows for this. Holonomic constraints can be solved in terms of $n$ \lingo{generalised coordinates} $\setprop{\gpos i}{i = 1,\dotsc,n}$. So 
+\beq
+\pvec^i = \pvec^i\vat{\gpos 1, \dotsc, \gpos n}\,.
+\eeq
+The system is said to have $n$ degrees of freedom. For the pendulum example above, the system has a single degree of freedom, $\gpos 1 = \gpos{} = \theta$. 
+
+One method to use the Lagrangian formulation is to introduce constraints of this form: introduce $3N-n$ new variables $\lambda_\alpha$, called \lingo{Lagrange multipliers} and define a new Lagrangian. So we can incorporate constraint forces into the Lagrangian setup using Lagrange multipliers. But the big news is that we don't have to! Often we don't care about constraint forces, but only want to know what the generalized coordinates $\gpos i$ are doing. In this case we have the following useful theorem:
+
+Theorem: For constrained systems, we may derive the equations of motion directly in generalized coordinates $\gpos i$
+\beq
+\lag\vat{\gpos i, \gvel i, t} = \lag\vat{\pvec^i\vat{\gpos i,t}, \dt\pvec^i\vat{\gpos i,t}} \,.
+\eeq
+
+If we are only interested in the dynamics of the generalized coordinates $\gpos i$, we may ignore the Lagrange multipliers and work entirely with the unconstrained Lagrangian $\lag\vat{\gpos i, \gvel i, t}$ defined in the last equation where we just substitute in $\pvec^i = \pvec^i\vat{\gpos i,t}$.
+
+Let's see how this works in the simple example of the pendulum. We can parameterize the constraints in terms of the generalized coordinate $\theta$ so that $x = l\sin\vat\theta$ and $y = l\cos\vat\theta$. We now substitute this directly into the Lagrangian for a particle moving in the plane under the effect of gravity, to get
+\beq
+\lag = \dfrac{1}{2}m\left(\dt x^2 + \dt y^2\right) + mgy = \dfrac{1}{2}ml^2\dt\theta^2 + mgl\cos\vat\theta\,.
+\eeq
+From which we may derive Lagrange's equations using the coordinate $\theta$ directly
+\beq
+\eleqn{\theta}{} = ml^2\ddt\theta + mgl\sin\vat\theta = 0\,,
+\eeq
+which indeed reproduces the equation of motion for the pendulum; \viz, $\ddt\theta = -(g/l)\sin\vat\theta$. Note that, as promised, we haven't calculated the tension $T$ using this method. This has the advantage that we've needed to do less work. If we need to figure out the tension, we have to go back to the more laborious Lagrange multiplier or Newton methods.
+
+\subsubsection{Non-Holonomic Constraints} 
+For completeness, let's quickly review a couple of non-holonomic constraints. There's no general theory to solve systems of this type, although it turns out that both of the examples we describe here can be solved with relative ease using different methods.
+
+Inequalities: Consider a particle moving under gravity on the outside of a sphere of radius $r$. It is constrained to satisfy $z^2 + y^2 + z^2 \geq r^2$. This type of constraint, involving an inequality, is non-holonomic. When the particle lies close to the top of the sphere, we know that it will remain in contact with the surface and we can treat the constraint effectively as holonomic. But at some point the particle will fall off. To determine when this happens requires different methods from those above (although it is not particularly difficult).
+
+Velocity Dependent Constraints: Constraints of the form $g\vat{\pvec^i, \dt{\pvec^i}, t} = 0$ which cannot be integrated to give $f\vat{\pvec^2,t} = 0$ are non-holonomic. For example, consider a coin of radius $r$ rolling down a slope. The coordinates $\tuple{x,y}$ fix the coin's position on the slope. But the coin has other degrees of freedom as well: the angle $\theta$ it makes with the path of steepest descent, and the angle $\phi$ that a marked point on the rim of the coin makes with the vertical. If the coin rolls without slipping, then there are constraints on the evolution of these coordinates. We must have that the velocity of the rim is $v\txt{rim} = r\phi$. So, in terms of our four coordinates, we have the constraint
+\beq
+x = r\dt\phi\sin\vat\theta\qquad\text{and}\qquad y = r\dt\phi\cos\vat\theta\,. 
+\eeq
+But these cannot be integrated to give constraints of the form $f\vat{x,y,\theta,\phi} = 0$. They are non-holonomic.
+
+\subsection{Summary}
+Let's review what we've learnt so far. A system is described by $n$ generalized coordinates $\gpos i$ which define a point in an $n$-dimensional configuration space $C$. Time evolution is a curve in $C$ governed by the Lagrangian 
+\beq
+\lag\vat{\gpos i,\gvel i, t}
+\eeq
+such that the $\gpos i$ obey
+\beq
+\eleqn{\gpvec}{i} = 0\,.
+\eeq
+These are $n$ coupled 2nd order (usually) non-linear differential equations. 
+
+Before we move on, let's take this opportunity to give an important definition. The quantity
+\beq
+\gmom i = \xpd{\lag}{\gvel i}
+\eeq
+is called the \lingo{generalised momentum conjugate to $\gpos i$}. (It only coincides with the real momentum in Cartesian coordinates). We can now rewrite Lagrange's equations as
+\beq
+\dt{\gmom i} = \xpd{\lag}{\gpos i}\,.
+\eeq
+
+
+\subsection{Noether's Theorem and Symmetries}
+In this subsection we shall discuss the appearance of conservation laws in the Lagrangian formulation and, in particular, a beautiful and important theorem due to Noether relating conserved quantities to symmetries.
+
+Let's start with a definition. A function $f\vat{\gpos i, \gvel i, t}$ of the coordinates, their time derivatives and (possibly) time $t$ is called a \lingo{constant of motion} (or a \lingo{conserved quantity}) if the total time derivative vanishes (an application of the chain rule!)
+\beq
+\xod{f}{t} = \sum_{j = 1}^{n}\left( \xpd{f}{\gpos j}\gvel j + \xpd{f}{\gvel j}\gacc j \right) + \xpd{f}{t}\,,
+\eeq
+whenever $\gpos i\vat t$ satisfy Lagrange's equations. This means that $f$ remains constant along the path followed by the system. Here's a couple of examples:
+
+Claim: If $\lag$ does not depend explicitly on time $t$ (\ie, $\partial\lag/\partial t = 0$), then
+\beq
+\ham = \sum_j \gvel j\xpd{\lag}{\gvel j} - \lag
+\eeq
+is constant. When $\ham$ is written as a function of $\gpos i$ and $\gmom i$, it is known as the \lingo{Hamiltonian}. It is usually identified with the total energy of the system.
+
+Claim: Suppose $\partial\lag/\partial\gpos j = 0$ for some $\gpos j$. Then, $\gpos j$ is said to be \lingo{ignorable} (or \lingo{cyclic}). We have the conserved quantity
+\beq
+\gmom j = \xpd{\lag}{\gvel j}\,.
+\eeq
+
+\subsubsection{Noether's Theorem}
+Consider a one-parameter family of maps
+\beq
+\gpos i\vat t\to\cnvec Qi\vat{s,t}\qquad\text{with}\qquad s\in\set R
+\eeq
+such that $\cnvec Qi\vat{0,t} = \gpos i\vat t$. Then, this transformation is said to be a \lingo{continuous symmetry of the Lagrangian} $\lag$ if
+\beq
+\xpd{}{s}\lag\vat{\cnvec Qi\vat{s,t}, \dt{\cnvec Qi}\vat{s,t}, t} = 0\,.
+\eeq
+Noether's theorem states that 
+\begin{quote}
+for each such symmetry there exists a conserved quantity.
+\end{quote}
+
+Homogeneity of Space: 
+\begin{quote}
+Homogeneity of Space implies Translation Invariance of $\lag$ implies Conservation of Total Linear Momentum.
+\end{quote}
+This statement should be intuitively clear. One point in space is much the same as any other. So why would a system of particles speed up to get over there, when here is just as good? This manifests itself as conservation of linear momentum.
+
+Isotropy of Space:
+\begin{quote}
+Isotropy of Space implies Rotational Invariance of $\lag$ implies Conservation of Total Angular Momentum.
+\end{quote}
+
+Homogeneity of Time: What about homogeneity of time? In mathematical language, this means $\lag$ is invariant under $t\to t + s$ or, in other words, $\partial\lag/\partial t = 0$. But we already saw earlier in this section that this implies 
+\beq
+\ham = \sum_i \gvel i\left( \xpd{\lag}{\gvel i} \right) - \lag 
+\eeq
+is conserved. In the systems we’re considering, this is simply the total energy. We see that the existence of a conserved quantity which we call energy can be traced to the homogeneous passage of time. Or
+\begin{quote}
+Time is to Energy as Space is to Momentum.
+\end{quote}
+Recall from your course on special relativity that energy and 3-momentum fit together to form a 4-vector which rotates under spacetime transformations. Here we see that the link between energy-momentum and time-space exists even in the non-relativistic framework of Newtonian physics. You don't have to be Einstein to see it. You just have to be Emmy Noether.
+
+\begin{note}
+It turns out that \emph{all} conservation laws in nature are related to symmetries through Noether's theorem. This includes the conservation of electric charge and the conservation of particles such as protons and neutrons (known as baryons).
+\end{note}
+
+
+\subsection{Applications}
+
+\subsubsection{Bead on a Rotating Hoop}
+This is an example of a system with a time dependent holonomic constraint. The hoop is of radius a and rotates with frequency $\omega$. The bead, of mass $m$, is threaded on the hoop and moves without friction. We want to determine its motion. There is a single degree of freedom $\phi$, the angle the bead makes with the vertical. In terms of Cartesian coordinates $\tuple{x,y,z}$ the position of the bead is
+\beq
+x = a\sin\vat\phi\cos\vat{\omega t}\,,\quad y = a\sin\vat\phi\sin\vat{\omega t}\quad\text{and}\quad z = a - a\cos\vat\phi\,.
+\eeq
+To determine the Lagrangian in terms of the generalized coordinate $\phi$ we must substitute these expressions into the Lagrangian for the free particle. For the kinetic energy $\ken$ we have
+\beq
+\ken = \dfrac{1}{2}m\left(x^2 + y^2 + z^2\right) = \dfrac{1}{2}ma\left(\dt\phi^2 + \omega^2\sin^2\vat{\phi}\right)\,,
+\eeq
+while the potential energy $\pen$ is given by (ignoring an overall constant)
+\beq
+\pen = mgz = -mga\cos\vat\phi\,.
+\eeq
+So, replacing $x$, $y$ and $z$ by $\phi$, we have the Lagrangian
+\beq
+\lag = ma^2\left(\dfrac{1}{2}\dt\phi^2 - \pen\txt{eff}\right)
+\eeq
+where the effective potential is
+\beq
+\pen\txt{eff} = \dfrac{1}{ma^2}\left(-mga\cos\vat\phi - \dfrac{1}{2} ma^2\omega^2\sin^2\vat\phi\right)\,.
+\eeq
+
+We can now derive the equations of motion for the bead simply from Lagrange's equations which read
+\beq
+\ddt\phi = -\xpd{\pen\txt{eff}}{\phi}\,.
+\eeq
+
+Let's look for stationary solutions of these equations in which the bead doesn't move (\ie, solutions of the form $\ddt\phi = \dt\phi = 0$). From the equation of motion, we must solve $\partial\pen\txt{eff}/\partial\phi = 0$ to find that the bead can remain stationary at points satisfying
+\beq
+g\sin\vat\phi = a\omega^2\sin\vat\phi\cos\vat\phi\,.
+\eeq
+
+There are at most three such points: $\phi = 0$, $\phi = \pi$ or $\cos\vat\phi = g/a\omega^2$. Note that the first two solutions always exist, while the third stationary point is only there if the hoop is spinning fast enough so that $\omega^2\geq g/a$. Which of these stationary points is stable depends on whether $\pen\txt{eff}\vat\phi$ has a local minimum (stable) or maximum (unstable). This in turn depends on the value of $\omega$.
+
+
+\subsubsection{Spherical Pendulum}
+The spherical pendulum is allowed to rotate in three dimensions. The system has two degrees of freedom which cover the range $0\leq\theta < \pi$ and $0\leq\phi < 2\pi$. In terms of cartesian coordinates, we have
+\beq
+x = l\cos\vat\phi\sin\vat\theta\,,\quad y = l\sin\vat\phi\sin\vat\theta\quad\text{and}\quad z = -l\cos\vat\theta\,.
+\eeq
+
+We substitute these constraints into the Lagrangian for a free particle to get
+\beq
+\lag = \dfrac{1}{2}m\left(\dt x^2 + \dt y^2 + \dt z^2\right) 
+     = \dfrac{1}{2}ml^2\left(\dt\theta^2 + \dt\phi^2\sin^2\vat\theta\right) + mgl\cos\vat\theta\,.
+\eeq
+
+Notice that the coordinate $\phi$ is ignorable (it does not appear explicitly in the Lagrangian). From Noether's theorem, we know that the quantity
+\beq
+J = \xpd{\lag}{\dt\phi} = ml^2\dt\phi\sin^2\vat\theta\,.
+\eeq
+is constant. This is the component of angular momentum in the $\phi$ direction. The equation of motion for $\theta$ follows from Lagrange's equations and is
+\beq
+ml^2\ddt\theta = ml^2\dt\phi^2\sin\vat\theta\cos\vat\theta - mgl\sin\vat\theta\,.
+\eeq
+
+We can substitute $\dt\phi$ for the constant $J$ in this expression to get an equation entirely in terms of $\theta$ which we chose to write as
+\beq
+\ddt\theta = -\xpd{\pen\txt{eff}}{\theta}\,,
+\eeq
+where the effective potential is defined to be 
+\beq
+\pen\txt{eff} = -\dfrac{g}{l}\cos\vat\theta + \dfrac{J^2}{2m^2l^4}\dfrac{1}{\sin^2\vat\theta}\,.
+\eeq
+
+An important point here: we must substitute for $J$ into the equations of motion. If you substitute $J$ for $\dt\phi$ directly into the Lagrangian, you will derive an equation that looks like the one above, but you'll get a minus sign wrong! This is because Lagrange's equations are derived under the assumption that $\theta$ and $\phi$ are independent.
+
+As well as the conservation of angular momentum $J$, we also have $\partial\lag/\partial t = 0$ so energy is conserved. This is given by
+\beq
+e = \dfrac{1}{2}\dt\theta^2 + \pen\txt{eff}\vat\theta\,,
+\eeq
+where $e$ is a constant. In fact we can invert this equation for $e$ to solve for $\theta$ in terms of an integral
+\beq
+t - t_0 = \dfrac{1}{\sqrt{2}}\int\dfrac{\dx\theta}{\sqrt{e - \pen\vat\theta}}\,.
+\eeq
+
+If we succeed in writing the solution to a problem in terms of an integral like this then we say we've ``reduced the problem to quadrature''. It's kind of a cute way of saying we can't do the integral. But at least we have an expression for the solution that we can play with or, if all else fails, we can simply plot on a computer.
+
+Once we have an expression for $\theta\vat t$ we can solve for $\phi\vat t$ using the expression for $J$,
+\beq
+\phi = \int\dfrac{J}{ml^2}\dfrac{\dx t}{\sin^2\vat\theta} 
+     = \dfrac{J}{\sqrt{2}ml^2}\int\dfrac{1}{\sqrt{e - \pen\txt{eff}}}\,\dx\theta\,,
+\eeq
+which gives us $\phi = \phi\vat\theta = \phi\vat t$.
+
+
+\subsubsection{Purely Kinetics Lagrangians}
+Often in physics, one is interested in systems with only kinetic energy and no potential energy. For a system with $n$ dynamical degrees of freedom $\gpos a$, $a = 1,\dotsc, n$, the most general form of the Lagrangian with just a kinetic term is
+\begin{equation}\label{eq:mostgenerallagrangianform}
+\lag = \dfrac{1}{2}\imet ab\vat{\covec qc}\gvel a\gvel b\,.
+\end{equation}
+The functions $\imet ab = \imet ba$ depend on all the generalized coordinates. Assume that $\det{\imet ab} \neq 0$ so that the inverse matrix $\rmet ab$ exists ($\rmet ab\imet bc = \mkron ac$). It is a short exercise to show that Lagrange's equation for this system are given by
+\begin{equation}\label{eq:geodesicequationslagrangeform}
+\gacc a + \Gamma^a_{bc}\gvel b\gvel c = 0\,,
+\end{equation}
+where
+\beq
+\Gamma^a_{bc} = \dfrac{1}{2}\imet ad\left( 
+                \xpd{\imet bd}{\gpos c} 
+                + \xpd{\imet cd}{\gpos b} 
+                - \xpd{\imet bc}{\gpos d} 
+                \right)\,.
+\eeq
+The functions $\imet ab$ define a \lingo{metric} on the configuration space and the equations \cref{eq:geodesicequationslagrangeform} are known as the \lingo{geodesic equations}. They appear naturally in general relativity where they describe a particle moving in curved spacetime. Lagrangians of the form \cref{eq:mostgenerallagrangianform} also appear in many other areas of physics, including the condensed matter physics, the theory of nuclear forces and string theory. In these contexts, the systems are referred to as \lingo{sigma models}.
+
+
+\subsubsection{Particles in Electromagnetic Fields}
+We saw from the beginning that the Lagrangian formulation works with conservative forces which can be written in terms of a potential. It is no good at dealing with friction forces which are often of the type $f = -k\dt\pvec$. But there are other velocity dependent forces which arise in the fundamental laws of Nature. It's a crucial fact about Nature that all of these can be written in Lagrangian form. Let's illustrate this in an important example.
+
+Recall that the electric field $E$ and the magnetic field (magnetic induction!) $B$ can be written in terms of a vector potential $A\vat{\pvec,t}$ and a scalar potential $\phi\vat{\pvec,t}$
+\beq
+B = \gder\cprod A\qquad\text{and}\qquad E = -\gder\phi - \dfrac{1}{c}\xpd{A}{t}\,,
+\eeq
+where $c$ is the speed of light. Let's study the Lagrangian for a particle of electric charge $e$ of the form,
+\beq
+\lag = \dfrac{1}{2}m\dt\pvec^2 - e\left( \phi - \dfrac{1}{c}\dt\pvec\iprod A \right)\,.
+\eeq
+
+The momentum conjugate to $\pvec$ is
+\beq
+\lmom = \xpd{\lag}{\dt\pvec} = m\dt\pvec + \dfrac{e}{c}A\,.
+\eeq
+Notice that the momentum is not simply $m\dt\pvec$; it's modified in the presence of electric and magnetic fields. Now we can calculate Lagrange's equations
+\beq
+\xod{}{t}\xpd{\lag}{\dt\pvec} - \xpd{\lag}{\pvec} = \xod{}{t}\left( m\dt\pvec + \dfrac{e}{c}A \right)
+    + e\gder\phi - \dfrac{e}{c}\gder\left(\dt\pvec\iprod A\right) = 0\,.
+\eeq
+
+To disentangle this, let's work with indices $a, b = 1, 2, 3$ on the Cartesian coordinates and rewrite the equation of motion as
+\beq
+m\ivec{\ddt\pvec} a = - e\left( \xpd{\phi}{\ivec\pvec a} + \dfrac{1}{c}\xpd{\covec Aa}{t} \right) 
+                      + \dfrac{e}{c}\left( \xpd{\covec Ab}{\ivec\pvec a} - \xpd{\covec Aa}{\ivec\pvec b} \right)\ivec{\dt\pvec} b\,.
+\eeq
+
+Now we use our definitions of the $E$ and $B$ fields which, in terms of indices, read
+\beq
+\covec Ea = -\xpd{\phi}{\ivec\pvec a} - \dfrac{1}{c}\xpd{\covec Aa}{t}\qquad \covec Bc = \lct_{cab}\xpd{\covec Aa}{\ivec\pvec b}\,,
+\eeq
+so the equation of motion can be written as
+\beq
+m\ivec{\ddt\pvec}a = e\covec Ea + \dfrac{e}{c}\,\lct_{cab}\covec Bc\ivec{\dt\pvec}{b}\,,
+\eeq
+or, reverting to vector notation,
+\beq
+m\ddt\pvec = e\left(E + \dfrac{1}{c}\,\dt\pvec\cprod B\right)\,,
+\eeq
+which is the \lingo{Lorentz force law}.
+
+Gauge Invariance: The scalar and vector potentials are not unique. We may make a change of the form
+\beq
+\phi\to\phi - \xpd{\Lambda}{t}\qquad\text{and}\qquad A\to A + c\gder\Lambda\,.
+\eeq
+These give the same $E$ and $B$ fields for any function $\Lambda$. This is known as a \lingo{gauge transformation}. Under this change, we have
+\beq
+\lag\to\lag + e\xpd{\Lambda}{t} + e\dt\pvec\iprod\gder\Lambda = \lag + e\xod{\Lambda}{t}\,,
+\eeq
+but we know that the equations of motion remain invariant under the addition of a total derivative to the Lagrangian. This concept of gauge invariance underpins much of modern physics.
+
+
+\subsection{The Hamiltonian Formalism}
+We'll now move onto the next level in the formalism of classical mechanics, due initially to Hamilton around 1830. While we won't use Hamilton's approach to solve any further complicated problems, we will use it to reveal much more of the structure underlying classical dynamics. If you like, it will help us understands what questions we should ask.
+
+
+\subsubsection{Hamilton's Equations}
+Recall that in the Lagrangian formulation, we have the function $\lag\vat{\gpos i,\gvel i, t}$ where $\gpos i$ ($i = 1,\dotsc, n$) are $n$ generalized coordinates. The equations of motion are
+\beq
+\eleqn{\gpvec}{i} = 0\,.
+\eeq
+These are $n$ 2nd order differential equations which require $2n$ initial conditions, say $\gpos i\vat{t = 0}$ and $\gvel i\vat{t = 0}$. The basic idea of 
+\begin{quote}
+Hamilton's approach is to try and place $\gpos i$ and $\gvel i$ on a more symmetric footing. 
+\end{quote}
+
+More precisely, we'll work with the $n$ generalized momenta that we introduced earlier,
+\beq
+\gmom i = \xpd{\lag}{\gvel i}\qquad\text{where}\qquad i = 1,\dotsc, n\,,
+\eeq
+so $\gmom i = \gmom i\vat{\gpos i, \gvel i, t}$. \emph{This coincides with what we usually call momentum \emph{only if} we work in Cartesian coordinates} [so the kinetic term is $1/2\,m_i(\gvel i)^2$]. If we rewrite Lagrange's equations using the definition of the momentum (the last equation~\footnote{~Note that $\dim \gmom i = \phdim{E.T}/\phdim L \sim 1/\phdim L$. For this reason, generalized momentum is a covector.}), they become
+\beq
+\dt{\gmom i} = \xpd{\lag}{\gpos i}\,.
+\eeq
+The plan will be to eliminate $\gvel i$ in favor of the momenta $\gmom i$ and then to place $\gpos i$ and $\gmom i$ on equal footing.
+
+Let's start by thinking pictorially. Recall that $\elset{\gpos i}$ defines a point in $n$-dimensional configuration space $C$. Time evolution is a path in $C$. However, the state of the system is defined by $\elset{\gpos i}$ and $\elset{\gmom i}$ in the sense that this information will allow us to determine the state at all times in the future. The pair $\tuple{\gpos i, \gmom i}$ defines a point in $2n$-dimensional \lingo{phase space}. Note that since a point in phase space is sufficient to determine the future evolution of the system, paths in phase space can never cross. We say that evolution is governed by a \emph{flow} in phase space.
+
+
+\subsubsection{The Legendre Transform}
+We want to find a function on phase space that will determine the unique evolution of $\gpos i$ and $\gmom i$. This means it should be a function of $\gpos i$ and $\gmom i$ (and not of $\gvel i$), but must contain the same information as the Lagrangian $\lag\vat{\gpos i,\gvel i, t}$. There is a mathematical trick to do this, known as the \lingo{Legendre transform}.
+
+To describe this, consider an arbitrary function $f\vat{x,y}$ so that the total derivative is 
+\beq
+\dx f = \xpd fx \dx x + \xpd fy \dx y\,.
+\eeq
+Now define a function $g\vat{x,y,u} = ux - f\vat{x,y}$, which depends on three variables, $x$, $y$ and also $u$. If we look at the total derivative of $g$, we have
+\beq
+\dx g = \dx(ux) - \dx f = u\dx x + x\dx u - \xpd fx \dx x - \xpd fy \dx y\,.
+\eeq
+At this point $u$ is an independent variable. But suppose we choose it to be a specific function of $x$ and $y$, defined by
+\beq
+u\vat{x,y} = \xpd fx\,.
+\eeq
+Then the term proportional to $\dx x$ in $\dx g$ vanishes and we have 
+\beq
+\dx g = x\dx u - \xpd fy\dx y\,.
+\eeq
+Or, in other words, $g$ is to be thought of as a function of $u$ and $y$: $g = g\vat{u,y}$. If we want an explicit expression for $g\vat{u,y}$, we must first invert $u\vat{x,y}$ to get $x = x\vat{u,y}$ and then insert this into the definition of $g$ so that
+\beq
+g\vat{u,y} = ux\vat{u,y} - f\vat{x\vat{u,y},y}\,.
+\eeq
+This is the Legendre transform. It takes us from one function $f\vat{x,y}$ to a different function $g\vat{u,y}$ where $u = \cder fx$. The key point is that we haven't lost any information. Indeed, we can always recover $f\vat{x,y}$ from $g\vat{u,y}$ by noting that
+\beq
+\xpd gu\vert_y = -x\vat{u,y}\qquad\text{and}\qquad \xpd gy\vert_u = -v\vat{u,y}\,,
+\eeq
+which assures us that the inverse Legendre transform $f = -\cder gu u - g$ takes us back to the original function.
+
+The geometrical meaning of the Legendre transform is captured in the diagram [:)]. For fixed $y$, we draw the two curves $f\vat{x,y}$ and $ux$. For each slope $u$, the value of $g\vat u$ is the maximal distance between the two curves. To see this, note that extremising this distance means
+\beq
+\xod{}{x}\left( ux - f\vat x \right) = 0 \implies u = \xpd fx\,.
+\eeq
+This picture also tells us that we can \emph{only apply the Legendre transform to convex functions for which this maximum exists}. Now, armed with this tool, let's return to dynamics
+
+
+\subsubsection{Hamilton's Equations}
+The Lagrangian $\lag\vat{\gpos i, \gvel i, t}$ is a function of the coordinates $\gpos i$, their time derivatives $\gvel i$ and (possibly) time. We define the Hamiltonian to be the Legendre transform of the Lagrangian with respect to the $\gvel i$ variables
+\beq
+\ham\vat{\gpos i,\gmom i,t} = \sum_{i = 1}^{n}\gmom i\gvel i - \lag\vat{\gpos i, \gvel i, t}\,,
+\eeq
+where $\gvel i$ is eliminated from the right hand side in favor of $\gmom i$ by using
+\beq
+\gmom i = \xpd{\lag}{\gvel i} = \gmom i\vat{\gpos j, \gvel j, t}
+\eeq
+and inverting to get $\gvel i = \gvel i\vat{\gpos j, \gvel j, t}$. Now look at the variation of $\ham$:
+\begin{align*}
+\dx\ham &= \left( \dx\gmom i\,\gvel i + \gmom i\,\dx\gvel i \right) 
+          - \left(\xpd{\lag}{\gpos i}\,\dx\gpos i 
+                  + \xpd{\lag}{\gvel i}\,\dx\gvel i
+                  + \xpd{\lag}{t}\,\dx t
+            \right)\,,\\
+        &= \dx\gmom i\,\gvel i - \xpd{\lag}{\gpos i}\,\dx\gpos i - \xpd{\lag}{t}\,\dx t\,.
+\end{align*}
+but we know that this can be rewritten as
+\beq
+\dx\ham = \xpd{\ham}{\gpos i}\,\dx\gpos i + \xpd{\ham}{\gmom i}\,\dx\gmom i + \xpd{\ham}{t}\,\dx t\,.
+\eeq
+So we can equate terms. So far this is repeating the steps of the Legendre transform. The new ingredient that we now add is Lagrange's equation which reads $\dt{\gmom i} = \partial\lag/\partial\gpos i$. We find
+\beq
+\dt{\gmom i} = -\xpd{\ham}{\gpos i}\,,\qquad \gvel i = \xpd{\ham}{\gmom i}\qquad\text{and}\qquad -\xpd{\lag}{t} = \xpd{\ham}{t}\,.
+\eeq
+These are \lingo{Hamilton's equations}. We have replaced $n$ 2nd order differential equations by $2n$ 1st order differential equations for $\gpos i$ and $\gmom i$. In practice, for solving problems, this isn't particularly helpful. But, as we shall see, conceptually it's very useful!
+
+
+\subsubsection{Examples}
+A Particle in a Potential: Let's start with a simple example: a particle moving in a potential in 3-dimensional space. The Lagrangian is simply
+\beq
+\lag = \dfrac{1}{2}m\dt\gpvec^2 - \pen\vat\gpvec\,,
+\eeq
+where $\gpvec$ is the generalized position vector.
+
+We calculate the momentum by taking the derivative with respect to $\dt\gpvec$:
+\beq
+p = \xpd{\lag}{\dt\gpvec} = m\dt\gpvec\,,
+\eeq
+which, in this case, coincides with what we usually call momentum. The Hamiltonian is then given by
+\beq
+\ham = \lmom\iprod\dt\gpvec - \lag = \dfrac{1}{2m}\lmom^2 + \pen\vat\gpvec\,,
+\eeq
+where, in the end, we've eliminated $\dt\gpvec$ in favor of $\lmom$ and written the Hamiltonian as a function of $\lmom$ and $\gpvec$. Hamilton's equations are simply
+\beq
+\dt\gpvec = \xpd{\ham}{\lmom} = \dfrac{1}{m}\lmom\quad\text{and}\quad \dt\lmom = -\xpd{\ham}{\gpvec} = -\gder\pen\,,
+\eeq
+which are familiar: the first is the definition of momentum in terms of velocity; the second is Newton's equation for this system.
+
+
+\begin{note}
+The process for calculating the equations of motion using Hamilton's formalism can be summarized as follows. 
+
+Given a Lagrangian in terms of the generalized coordinates $\gpos i$ and generalized velocities $\gvel i$ and time:
+\begin{itemize}
+\item The momenta are calculated by differentiating the Lagrangian with respect to the (generalized) velocities: 
+\beq
+\gmom i\vat{\gpos i, \gvel i, t} = \xpd{\lag}{\gvel i}\,.
+\eeq
+%
+\item The velocities $\gvel i$ are expressed in terms of the momenta $\gmom i$ by inverting the expressions in the previous step.
+%
+\item The Hamiltonian is calculated using the usual definition of $\ham$ as the Legendre transformation of $\lag$:
+\beq
+\ham = \sum_i \gvel i\xpd{\lag}{\gvel i} - \lag 
+     = \sum_i \gvel i\gmom i - \lag\,.
+\eeq
+Then the velocities are substituted for using the previous results.
+%
+\item Hamilton's equations are applied, to obtain the equations of motion of the system.
+\beq
+\dt{\gmom i} = -\xpd{\ham}{\gpos i} \qquad\text{and}\qquad \gvel i = \xpd{\ham}{\gmom i}\,.
+\eeq
+(Note the symmetry between $\lmom$ and $\gpvec$; they are the conjugate to the other.)
+\end{itemize}
+\end{note}
+
+
+A Particle in an Electromagnetic Field: We saw earlier that the Lagrangian for a charged particle moving in an electromagnetic field is
+\beq
+\lag = \dfrac{1}{2}m\dt\gpvec^2 - e\left(\phi - \dfrac{1}{c}\dt\gpvec\iprod A\right)\,.
+\eeq
+From this we compute the momentum conjugate to the position
+\beq
+\lmom = \xpd{\lag}{\dt\gpvec} = m\dt\gpvec + \dfrac{e}{c}A\,,
+\eeq
+which now differs from what we usually call momentum by the addition of the vector potential $A$. Inverting, we have
+\beq
+\dt\gpvec = \dfrac{1}{m}\left( \lmom - \dfrac{e}{c}A \right)\,.
+\eeq
+
+So we calculate the Hamiltonian to be
+\beq
+\ham\vat{\lmom,\gpvec} = \lmom\iprod\dt\gpvec - \lag 
+                       = \dfrac{1}{2m}\left( \lmom - \dfrac{e}{c}A \right)^2 + e\phi\,.
+\eeq
+Now Hamilton's equations read
+\beq
+\dt\gpvec = \xpd{\ham}{\lmom} = \dfrac{1}{m}\left( \lmom - \dfrac{e}{c} A\right)\,,
+\eeq
+while the $\dt\lmom = -\partial\ham/\partial\pvec$ equation is best expressed in terms of components
+\beq
+\dt{\gmom a} = -\xpd{\ham}{\gpos a} 
+        = -e\xpd{\phi}{\gpos a} 
+          + \dfrac{e}{2m}\left( \gmom b - \dfrac{e}{c}\covec Ab \right)\xpd{\covec Ab}{\gpos a}\,.
+\eeq
+To show that this is equivalent to the Lorentz force law requires some rearranging of the indices, but it's not too hard.
+
+
+An Example of the Example: Let's illustrate the dynamics of a particle moving in a magnetic field by looking at a particular case. Imagine a uniform magnetic field pointing in the $z$-direction: $B = \tuple{0,0,B}$. We can get this from a vector potential $B = \gder\cprod A$ with
+\beq
+A = \tuple{-By,0,0}\,.
+\eeq
+This vector potential isn't unique: we could choose others related by a gauge transform as described earlier. But this one will do for our purposes. Consider a particle moving in the $\tuple{x,y}$-plane. Then the Hamiltonian for this system is
+\beq
+\ham = \dfrac{1}{2m}\left( \gmom x + \dfrac{eB}{c}y \right)^2 + \dfrac{1}{2m}\gmom y^2\,.
+\eeq
+From which we have four, first order differential equations which are Hamilton's equations
+\begin{align*}
+&\dt{\gmom x} = 0\,,\\
+&\dt x = \dfrac{1}{m}\left( \dt{\gmom x} + \dfrac{eB}{c} y \right)\,,\\
+&\dt{\gmom y} = -\dfrac{eB}{cm}\left( \dt{\gmom x} + \dfrac{eB}{c} y \right)\quad\text{and}\quad\\
+&\dt y = \dfrac{\gmom y}{m}\,.
+\end{align*}
+If we add these together in the right way, we find that
+\begin{align*}
+\gmom y + \dfrac{eB}{c}x &= a = \text{const.}\,,\\
+\gmom x &= m\dt x - \dfrac{eB}{c}y = b = \text{const.}\,,
+\end{align*}
+which is easy to solve: we have
+\begin{align*}
+x &=  \dfrac{ac}{eB} + R\sin\vat{\omega(t - t_0)}\,,\\
+y &= -\dfrac{bc}{eB} + R\cos\vat{\omega(t - t_0)}\,,
+\end{align*}
+with $a$, $b$, $R$ and $t_0$ integration constants. So we see that the particle makes circles in the $\tuple{x, y}$-plane with frequency
+\beq
+\omega = \dfrac{eB}{cm}\,.
+\eeq
+This is known as the \lingo{Larmor frequency}.
+
+
+\subsubsection{Some Conservation Laws}
+Previously, we saw the importance of conservation laws in solving a given problem. The conservation laws are often simple to see in the Hamiltonian formalism. For example,
+
+Claim: If $\cder\ham t = 0$ (\ie, $\ham$ does not depend on time explicitly), then $\ham$ itself is a constant of motion.
+
+Claim: If an ignorable coordinate $\gpvec$ doesn't appear in the Lagrangian, then, by construction, it also doesn't appear in the Hamiltonian. The conjugate momentum $\gmom\gpvec$ is then conserved.
+
+
+\subsubsection{The Principle of Least Action}
+Recall that earlier we saw the principle of least action from the Lagrangian perspective. This followed from defining the action
+\beq
+\action = \int_{t_1}^{t_2}\lag\vat{\gpos i, \gvel i, t}\,\dx t\,.
+\eeq
+Then we could derive Lagrange's equations by insisting that $\delta\action = 0$ for all paths with fixed end points so that $\delta\gpos i\vat{t_1} = \delta\gpos i\vat{t_2} = 0$. How does this work in the Hamiltonian formalism? It's quite simple! We define the action
+\beq
+\action = \int_{t_1}^{t_2}\left( \gmom i\gvel i - \ham \right)\,\dx t\,.
+\eeq
+where, of course, $\gvel i = \gvel i\vat{\gpos i, \gmom i}$. Now we consider varying $\gpos i$ and $\gmom i$ \emph{independently}. Notice that this is different from the Lagrangian set-up, where a variation of $\gpos i$ automatically leads to a variation of $\gvel i$. But remember that the whole point of the Hamiltonian formalism is that we treat $\gpos i$ and $\gmom i$ on equal footing. So we vary both. We have
+\begin{align*}
+\delta\action &= \int_{t_1}^{t_2}
+                    \left\lbrace 
+                        \delta\gmom i\gvel i 
+                        + \gmom i \delta\gvel i
+                        - \xpd{\ham}{\gmom i}\delta\gmom i
+                        - \xpd{\ham}{\gpos i}\delta\gpos i
+                    \right\rbrace \,\dx t\,,\\
+              &= \int_{t_1}^{t_2}
+                    \left\lbrace 
+                        \left[ \gvel i - \xpd{\ham}{\gmom i}\right] \delta\gmom i
+                        + \left[ -\dt{\gmom i} - \xpd{\ham}{\gpos i}\right] \delta\gpos i
+                    \right\rbrace \,\dx t
+                  + \left[\gmom i\delta\gpos i \right]_{t_1}^{t_2} \,.
+\end{align*}
+and there are Hamilton's equations waiting for us in the square brackets. If we look for extrema $\delta\action = 0$ for all $\delta\gmom i$ and $\delta\gpos i$ we get Hamilton's equations
+\beq
+\gvel i = \xpd{\ham}{\gmom i}\qquad\text{and}\qquad \gpos i = -\xpd{\ham}{\gpos i}\,.
+\eeq
+Except there's a very slight subtlety with the boundary conditions. We need the last term in the action, $\left[\gmom i\delta\gpos i \right]_{t_1}^{t_2}$, to vanish, and so require only that
+\beq
+\delta\gpos i\vat{t_1} = \delta\gpos i\vat{t_2} = 0\,,
+\eeq
+while $\delta\gmom i$ can be free at the end points $t = t_1$ and $t = t_2$. So, despite our best efforts, $\gpos i$ and $\gmom i$ are not quite symmetric in this formalism.
+
+Note that we could simply impose $\delta\gmom i\vat{t_1} = \delta\gmom i\vat{t_2} = 0$ if we really wanted to and the above derivation still holds. It would mean we were being more restrictive on the types of paths we considered. But it does have the advantage that it keeps $\gpos i$ and $\gmom i$ on a symmetric footing. It also means that we have the freedom to add a function to consider actions of the form
+\beq
+\action = \int_{t_1}^{t_2}
+            \left( 
+                \gmom i\gvel i 
+                - \ham\vat{\gpvec, \lmom} 
+                + \dfrac{\dx F\vat{\gpvec, \lmom}}{\dx t} 
+            \right)\,,
+\eeq
+so that what sits in the integrand differs from the Lagrangian. For some situations this may be useful.
+
+
+\subsubsection{Poisson Brackets}
+In this section, we'll present a rather formal, algebraic description of classical dynamics which makes it look almost identical to quantum mechanics!
+
+We start with a definition. Let $f\vat{\gpvec, \lmom}$ and $f\vat{\gpvec, \lmom}$ be two functions on phase space. Then, the \lingo{Poisson bracket} is defined to be
+\beq
+\poisson{f,g} = \xpd{f}{\gpos i}\xpd{g}{\gmom i} - \xpd{f}{\gmom i}\xpd{g}{\gpos i}\,.
+\eeq
+Since this is a kind of weird definition, let’s look at some of the properties of the Poisson bracket to get a feel for it. We have
+\begin{itemize}
+\item anti-commutativity: $\poisson{f,g} = -\poisson{g,f}$\,.
+%
+\item linearity: $\poisson{\alpha f + \beta g, h} = \alpha\poisson{f,h} + \beta\poisson{g,h}$ for all $\alpha,\beta\in\set R$\,.
+%
+\item Leibniz rule: $\poisson{fg,h} = f\poisson{g,h} + \poisson{f,h}g$ which follows from the chain rule in differentiation.
+%
+\item Jacobi identity:
+\beq
+\poisson{f,\poisson{g,h}} + \poisson{g,\poisson{h,f}} + \poisson{h,\poisson{f,g}} = 0\,.
+\eeq
+To prove this you need a large piece of paper and a hot cup of coffee. Expand out all 24 terms and watch them cancel one by one.
+\end{itemize}
+
+What we've seen above is that the Poisson bracket $\poisson{,}$ satisfies the same algebraic structure as matrix commutators $[,]$ and the differentiation operator $\dx{}$. This is related to Heisenberg's and Schrödinger's viewpoints of quantum mechanics respectively. (You may be confused about what the Jacobi identity means for the derivative operator $\dx{}$. Strictly speaking, the Poisson bracket is like a ``Lie derivative'' found in differential geometry, for which there is a corresponding Jacobi identity).
+
+The relationship to quantum mechanics is emphasized even more if we calculate
+\beq
+\poisson{\gpos i, \gpos j} = 0\,,\qquad
+\poisson{\gmom i, \gmom j} = 0\,,\qquad
+\poisson{\gpos i, \gmom j} = \mkron ij\,.
+\eeq
+
+Claim: For any function $f\vat{\gpvec, \lmom, t}$,
+\beq
+\xod ft = \poisson{f,\ham} + \xpd ft\,.
+\eeq
+\begin{proof}
+\begin{align*}
+\xod ft &= \xpd{f}{\gmom i}\dt{\gmom i} 
+            + \xpd{f}{\gpos i}\gvel i
+            + \xpd ft\,,\\
+        &= - \xpd{f}{\gmom i}\xpd{\ham}{\gpos i}
+           + \xpd{f}{\gpos i}\xpd{\ham}{\gmom i}
+           + \xpd ft\,,\\
+        &= \poisson{f,\ham} + \xpd ft\,.
+\end{align*}
+\end{proof}
+
+Isn't this a lovely equation! One consequence is that if we can find a function $i\vat{\lmom,\gpvec}$ which satisfy
+\beq
+\poisson{i,\ham} = 0\,,
+\eeq
+then $i$ is a constant of motion. We say that $i$ and $\ham$ \lingo{Poisson commute}. As an example of this, suppose that $\gpos i$ is ignorable (\ie, it does not appear in $\ham$), then
+\beq
+\poisson{\gmom i, \ham} = 0\,,
+\eeq
+which is the way to see the relationship between ignorable coordinates and conserved quantities in the Poisson bracket language.
+
+Note that if $I$ and $J$ are constants of motion, then 
+\beq
+\poisson{\poisson{I,J}, H} = \poisson{I,\poisson{J,H}} + \poisson{\poisson{I,H},J} = 0\,,
+\eeq
+which means that $\poisson{I,J}$ is also a constant of motion. We say that the constants of motion form a closed algebra under the Poisson bracket.
+
+
+An Example: Angular Momentum and Runge-Lenz: Consider the angular momentum $l = \gpvec\cprod\lmom$ which, in component form, reads
+\beq
+\covec l1 = \gpos 2\gmom 3 - \gpos 3\gmom 2\,,\qquad
+\covec l2 = \gpos 3\gmom 1 - \gpos 1\gmom 3\qquad\text{and}\qquad
+\covec l3 = \gpos 1\gmom 2 - \gpos 2\gmom 1
+\eeq
+and let's look at the Poisson bracket structure. We have
+\beq
+\poisson{\covec l1,\covec l2} 
+    = \poisson{\gpos 2\gmom 3 - \gpos 3\gmom 2, \gpos 3\gmom 1 - \gpos 1\gmom 3}
+    = \poisson{\gpos 2\gmom 3, \gpos 3\gmom 1} + \poisson{\gpos 3\gmom 2, \gpos 1\gmom 3}
+    = \gpos 1\gmom 2 - \gpos 2\gmom 1
+    = \covec l3\,.
+\eeq
+So if $\covec l1$ and $\covec l2$ are conserved, we see that $\covec l3$ must also be conserved. Or, in other words, the whole vector $l$ is conserved if any two components are. Similarly, one can show that 
+\beq
+\poisson{l^2, \covec li} = 0\,,
+\eeq
+where $l^2 = \sum_i\covec li^2$. This should all be looking familiar from quantum mechanics.
+
+

@@ -1,0 +1,95 @@
+\section{Coordinate systems and index notation}
+
+\subsection{Cartesian coordinate system}
+Consider a region $\region V$ to be a part of an $n$ dimensional Euclidean space, $\espace n$. Consider, next, a Cartesian coordinate system; \ie, a coordinate system equipped with a frame $\frm k$ whose elements satisfy
+\beq
+\fbvec k\iprod\fbvec l = \fmet kl = \iverson{k = l}\,.
+\eeq
+If frame elements satisfy the last equation, then they are \lingo{orthogonal} to each other and \lingo{normal} (have unit length); thus, the frame $\frm k$ is said to be \lingo{othornormal}.
+
+Express now the position of any point $\pos$ in $\region V$ as an $n$-tuple
+\beq
+\pos = \tuple{\fvec\pos 1, \dots, \fvec\pos n}\,,
+\eeq
+or as a linear combination of the frame elements
+\beq
+\pos = \fvec\pos k\fbvec k\,,
+\eeq
+where the elements of $\elset{\fvec\pos k}$ are called the \lingo{components of $\pos$ onto the $\frm k$ frame}. (Einstein summation convention in force!)
+
+To find the components of $\pos$ on $\frm k$, apply
+\beq
+\fvec\pos k = \pos\iprod\fbvec k\,.
+\eeq
+
+
+\subsubsection{Reciprocal Cartesian coordinate system}
+Consider now a reciprocal Cartesian coordinate system $\rfrm k$ whose elements are the inverse~\footnote{~The square of a vector $a$ is defined as $a^2 = aa$, which, by axiom, $a^2\in\espace 1$. The inverse of a nonzero vector $a$ is then defined as $\inv a = a/a^2$.} of the $\frm k$ elements:
+\beq
+\rbvec k = \inv{\fbvec k} = \fbvec k\,,
+\eeq
+since the frame elements are orthonormal; \viz, $\inv{\fbvec k} = \fbvec k/\fbvec k^2$, but $\fbvec k^2 = 1$.
+
+
+\subsubsection{Geometric derivative, gradient, divergence, Laplacian}
+Define the geometric derivative (operator) $\gder$ by its components as~\footnote{~In traditional notation, 
+\beq
+\gder = \rbvec k\xpd{}{\fvec\pos k} 
+      = \uvec x\xpd{}{x} + \uvec y\xpd{}{y} + \uvec z\xpd{}{z}\,.
+\eeq}
+% end footnote
+\beq
+\gder = \rbvec k\ipd k\,.
+\eeq
+This means, treat the geometric derivative as another vector.
+
+Consider a scalar field $\phi = \phi\vat\pos$. Then, define the gradient of $\phi$ by
+\beq
+\grad\phi = \gder\phi 
+          = \rbvec k\igder k\phi\,.
+\eeq
+
+Consider next a vector field $\psi = \psi\vat\pos$. Then, define the divergence of $\psi$ by
+\beq
+\div\psi = \gder\iprod\psi 
+         = \rbvec k\igder k\iprod\rbvec l\rvec\psi l 
+         = \ipd k\rmet kl\rvec\psi l\,,
+\eeq
+where $\rmet kl = \rbvec k\iprod\rbvec l$.
+
+Finally, define Laplace operator on a scalar field $\phi$ by
+\beq
+\lap\phi = \div\grad\phi 
+         = \gder\iprod\gder\phi
+         = \rbvec k\igder k\iprod\rbvec l\igder l\phi
+         = \igder k\igder l\rmet kl\phi\,.
+\eeq
+
+
+\subsection{Alternative coordinate systems}
+Consider next another, alternative, coordinate system $\frm{k'}$, related to the Cartesian coordinate by
+\beq
+\fvec\pos k = f\vat{\fvec{\pos}{k'}}\,.
+\eeq
+
+It is possible now to express the Cartesian frame $\frm k$ in the alternative coordinate system by using the \lingo{tangent vectors} $\frm{k'}$ \emph{defined} by~\footnote{~In traditional notation:
+\beq
+\fbvec{k'} = \ipd{k'}{\pos} = \xpd{\pos}{\fvec{\pos}{k'}}\,.
+\eeq}
+% end footnote
+\beq
+\fbvec{k'} = \ipd{k'}\pos\,.
+\eeq
+These tangent vectors need \emph{not} be orthogonal nor normal.
+
+Onto this alternative frame $\frm{k'}$, any point position $\pos$ can be expressed as a linear combination of the alternative frame elements:
+\beq
+\pos = \fvec\pos{k'}\fbvec{k'}\,,
+\eeq
+where $\fvec\pos{k'} = \pos\iprod\fbvec{k'}$.
+
+The metric coefficients for the alternative frame are found by
+\beq
+\fmet{k'}{l'} = \fbvec{k'}\iprod\fbvec{l'}\,.
+\eeq
+
