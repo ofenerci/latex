@@ -2,8 +2,13 @@
 %
 %%% MECHANICS
 %
-\newcommand{\pos}{\xi}   % position
+\newcommand{\pos}{\xi} % position
 \newcommand{\press}{p} % pressure
+\newcommand{\vel}{v}   % velocity
+\newcommand{\grav}{g}  % acceleration due to gravity
+\newcommand{\force}{f} % force
+%
+\newcommand{\drag}{\force\txt{d}} % drag force
 %
 %\newcommand{\vattpos}{\vat{t, \pos}} % value at t and position
 %
@@ -60,6 +65,11 @@
 \newcommand{\dens}{\rho} % mass density
 \newcommand{\chthen}{r}  % chemical reaction thermal energy
 %
+%%% MOMENTUM TRANSPORT
+%
+\newcommand{\dynvis}{\mu} % dynamic viscosity
+\newcommand{\kinvis}{\nu} % kinematic viscosity
+%
 %%% WAVES
 %
 \newcommand{\wlen}{\lambda} % wavelength
@@ -78,5 +88,18 @@
 %
 \DeclareMathOperator{\unit}{unit}
 \newcommand{\kdim}{\Pi}          % dimless quantity
-\newcommand{\kbiot}{\Pi\txt{bi}} % biot number
+%
+\newcommand{\phdim}[1]{\text{#1}} % physical dimension
+\newcommand{\phdimtemp}{\Theta}   % physical dimension of temperature
+%
+%%% DIMENSIONLESS QUANTITIES
+%
+\newcommand{\kbiot}{\kdim\txt{bi}}     % biot number
+\newcommand{\kreynolds}{\kdim\txt{re}} % reynolds number
+%
+%%% GEOMETRY
+%
+\newcommand{\diam}{d} % diameter
+\newcommand{\length}{l}
+\newcommand{\radius}{r}
 %
