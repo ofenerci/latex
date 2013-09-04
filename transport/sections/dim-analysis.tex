@@ -33,7 +33,7 @@ Consider the case of a sphere of diameter $\diam$ and mass $\mass$ falling verti
 \eeq
 where $\grav$ represents the acceleration due to gravity and $\drag$ the drag force. 
 
-When the sphere attains its terminal velocity, $\vel\txt{t}$, then the drag is exactly balanced by the gravitational force. The task is then to obtain an expression for the drag as a function of the sphere and fluid properties.
+When the sphere attains its terminal velocity, $\vel\txt{t}$, then the drag is exactly balanced by the gravitational force. The task is thus to obtain an expression for the drag as a function of the sphere and fluid properties.
 \end{example}
 
 \begin{solution}
@@ -88,7 +88,7 @@ g\vat{\kdim_\force, \kreynolds} = 0\implies
 \eeq
 where $h$ is a function of the Reynolds number; \ie, $\kreynolds$.
 
-In the last equation, the force has been non-dimensionalized by the `viscous force scale', ($\dynvis\radius\vel$). Instead of using the viscosity, radius and velocity to non-dimensionalize the force, we could have chosen to use the density, radius and velocity instead. This would have led to the dimensionless group $\kdim_{\force I} = \force / \dens\vel^2\radius^2$, where ($\dens\vel^2\radius^2$), the `inertial force scale', is a suitable combination of density, velocity and radius with dimensions of force. It is easily verified that the dimensionless forces scaled in these two different ways are related by,
+In the last equation, the force has been non-dimensionalized by the `viscous force scale', ($\dynvis\radius\vel$). Instead of using the viscosity, radius and velocity to non-dimensionalize the force, we could have chosen to use the density, radius and velocity instead. This would have led to the dimensionless group $\kdim_{\force I} = \force / \dens\vel^2\radius^2$, where ($\dens\vel^2\radius^2$), the `inertial force scale', is a suitable combination of density, velocity and radius with dimensions of force. It is easily verified that the dimensionless forces scaled in these two different ways are related by
 \beq
 \kdim_\force = \kreynolds\kdim_{\force I}\,.
 \eeq
@@ -109,4 +109,3 @@ The Reynolds number can be physically interpreted as the ratio of inertial and v
 
 This type of analysis could be extended to more complicated problems. For instance, if the particle falling is not a sphere but a more complicated object, such as a spheroid, then there are two length scales, the major and minor axes of the spheroid, $\radius_1$ and $\radius_2$. In this case, the number of variables increases to 6 and there are three dimensional groups. One of these could be assumed to be the ratio of the lengths (aspect ratio) ($\radius_1/\radius_2$).
 \end{solution}
-
