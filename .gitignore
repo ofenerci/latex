@@ -25,5 +25,6 @@
 *.maf
 *.mtc
 *.mtc0
+.DS_Store
 
 resume
