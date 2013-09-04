@@ -27,7 +27,7 @@ where the index $i$ runs from 1 to $n$.
 \end{enumerate}
 
 \begin{example}
-Consider the case of a sphere of diameter $\diam$ and mass $\mass$ falling vertically in a tank of side $\length$ containing a fluid of density $\dens\txt{fl}$. The equation of motion for the sphere velocity $\vel$ reads as
+Consider the case of a sphere of diameter $\diam$ and mass $\mass$ falling vertically in a tank of side $\length$ containing a fluid of density $\dens\txt{fl}$. The equation of motion for the sphere velocity $\vel$ reads~\footnote{~The complete model takes into account buoyancy; \ie, $\mass \dt\vel = \mass\grav - \drag - \buoy$, where $\buoy$ represents the buoyancy force. In this example, however, in order to stress the exposition of the dimensional analysis principles, buoyancy is ignored.}
 \beq
 \mass \dt\vel = \mass\grav - \drag\,,
 \eeq
@@ -109,4 +109,3 @@ The Reynolds number can be physically interpreted as the ratio of inertial and v
 
 This type of analysis could be extended to more complicated problems. For instance, if the particle falling is not a sphere but a more complicated object, such as a spheroid, then there are two length scales, the major and minor axes of the spheroid, $\radius_1$ and $\radius_2$. In this case, the number of variables increases to 6 and there are three dimensional groups. One of these could be assumed to be the ratio of the lengths (aspect ratio) ($\radius_1/\radius_2$).
 \end{solution}
-

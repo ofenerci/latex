@@ -7,8 +7,11 @@
 \newcommand{\vel}{u}   % velocity
 \newcommand{\grav}{g}  % acceleration due to gravity
 \newcommand{\force}{f} % force
+\newcommand{\shear}{\tau}      % shear stress
+\newcommand{\surftens}{\gamma} % surface tension
 %
 \newcommand{\drag}{\force\txt{d}} % drag force
+\newcommand{\buoy}{\force\txt{b}} % buoyancy force
 %
 %\newcommand{\vattpos}{\vat{t, \pos}} % value at t and position
 %
@@ -43,6 +46,7 @@
 \newcommand{\kshcap}{c}        % specific heat capacity
 \newcommand{\kthcond}{k}       % thermal conductivity
 \newcommand{\kthdiff}{\alpha}  % thermal diffusivity
+\newcommand{\kthexp}{\beta}    % thermal expansion
 %
 \newcommand{\kthconv}{f}               % film coefficient
 \newcommand{\kavthconv}{\bar{\kthconv}} % average film coefficient
@@ -64,6 +68,8 @@
 \newcommand{\mass}{m}
 \newcommand{\dens}{\rho} % mass density
 \newcommand{\chthen}{r}  % chemical reaction thermal energy
+\newcommand{\conc}{c}    % mass concentration
+\newcommand{\kdiff}{d}   % diffusion coefficient
 %
 %%% MOMENTUM TRANSPORT
 %
@@ -91,15 +97,28 @@
 %
 \newcommand{\phdim}[1]{\text{#1}} % physical dimension
 \newcommand{\phdimtemp}{\Theta}   % physical dimension of temperature
+\newcommand{\chpq}[1]{{#1}_{c}}   % characteristic physical quantity
+\newcommand{\scpq}[1]{\bar{#1}}   % scaled physical quantity
+
 %
 %%% DIMENSIONLESS QUANTITIES
 %
 \newcommand{\kbiot}{\kdim\txt{bi}}     % biot number
 \newcommand{\kreynolds}{\kdim\txt{re}} % reynolds number
+\newcommand{\kprandtl}{\kdim\txt{pr}}  % prandtl number
+\newcommand{\kschmidt}{\kdim\txt{sc}}  % schmidt number
+\newcommand{\kpeclet}{\kdim\txt{pe}}   % peclet number
+\newcommand{\kgrashof}{\kdim\txt{gr}}  % grashof number
+\newcommand{\krayleigh}{\kdim\txt{ra}} % rayleigh number
+\newcommand{\kweber}{\kdim\txt{we}}    % weber number
+\newcommand{\kcapillar}{\kdim\txt{ca}} % capillar number
+\newcommand{\kbond}{\kdim\txt{bo}}     % bond number
+\newcommand{\kfroud}{\kdim\txt{fr}}    % froud number
 %
 %%% GEOMETRY
 %
 \newcommand{\diam}{d} % diameter
 \newcommand{\length}{l}
 \newcommand{\radius}{r}
+\newcommand{\area}{a}
 %
