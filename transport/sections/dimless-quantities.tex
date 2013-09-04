@@ -1,0 +1,155 @@
+\section{Dimensionless Quantities}
+Dimensionless groups can be classified into three broad categories, the dimensionless fluxes, the ratios of convection and diffusion and the ratios of different types of diffusion. Before proceeding to define dimensionless groups, we first define the diffusion coefficients for mass, momentum and energy, in order to provide a definite basis for the discussion. Here, we restrict ourselves to the macroscopic definition.
+
+
+\subsection{Mass, momentum and energy diffusivities}
+The fundamental constitutive relations in transport processes are the Fick's law for mass diffusion, Fourier's law for heat conduction and Newton's law for viscosity. The respective diffusion coefficients can be defined as follows.
+%
+\begin{itemize}
+\item When there is a concentration difference maintained across a slab of fluid, then there is transfer of mass from the surface at higher concentration to the surface at lower concentration. The mass flux (mass per unit area per unit time) is inversely proportional to the length and directly proportional to the difference in concentration or temperature across the material. If a concentration difference $\Dx\conc$, $\dim\conc = \phdim M/\phdim L^3$, is maintained between two ends of a slab of length $\length$, the mass flux $\flux\mass$, $\dim\flux\mass = \phdim M/\phdim L^2\phdim T$, is given by Fick's law:
+\beq
+\flux\mass = -\kdiff \dfrac{\Dx\conc}{\length}\,.
+\eeq
+Here, the negative sign indicates that mass is transferred from the region of higher concentration to the region of lower concentration.
+%
+\item For the transport of thermal energy, the energy flux is related to the temperature difference by Fourier's law. For a slab of material of length $\length$ with a temperature difference $\Dx\temp$ across the material, the energy flux $\flux\then$ is given by
+\beq
+\flux\then = -\kthcond\dfrac{\Dx\temp}{\length}\,,
+\eeq
+where $\kthcond$ is the thermal conductivity, and the negative sign indicates that thermal energy is transferred from the region of higher to the region of lower temperature.
+%
+\item The Newton's law of viscosity relates the shear stress $\shear$ (force per unit area at the wall) to the strain rate (change in velocity per unit length across the flow) for the simple shear flow of a fluid as shown in figure 1.1.2.
+\beq
+\shear_{xy} = \kinvis\dfrac{\Dx\vel_x}{\length}.
+\eeq
+It should be noted that there is no negative sign in Newton's law, in contrast to Fick's law and Fourier's law. This is due to the difference in convention with regard to the definition of stress in fluid mechanics and the definition of fluxes in transport phenomena. The shear stress $\shear_{xy}$ in Newton's law is defined as the force per unit area at a surface in the $x$ direction whose outward unit normal is in the $y$ direction. In contrast, the fluxes are defined as positive if they are directed into the volume. Therefore, the shear stress is actually the negative of the momentum flux. If the stress is defined to the the force per unit area acting at a surface whose inward unit normal is in the $x$ direction, then this would introduce a negative sign in Newton's equation. However, it is conventional in fluid mechanics to define the stress with reference to the outward unit normal to the surface. As we will see later, this difference in convention will not affect the balance equations that are finally obtained for the rate of change of momentum.
+
+In this course, we will adopt the convention of defining the stress $\shear_{xy}$ as the force per unit area in the $x$ direction acting along a surface whose outward unit normal is in the $y$ direction and use the last equation for Newton's law of viscosity.
+\end{itemize}
+
+The diffusion coefficients are the proportionality constants in the relationship between the flux of a quantity (mass, thermal energy, momentum) and the driving force. The flux of a quantity (mass, thermal energy, momentum) is the amount of that quantity transferred per unit area per unit time. The driving force for a quantity (mass, thermal energy, momentum) is the gradient (change per unit distance) in the density (quantity per unit volume) of that quantity. So the transport equations can be written in the general form
+\beq
+\begin{pmatrix}
+\text{transport of quantity} \\
+\text{per unit area} \\
+\text{per unit time}
+\end{pmatrix} = 
+\begin{pmatrix}
+\text{diffusion} \\
+\text{coefficient}
+\end{pmatrix}
+\dfrac{
+    \begin{pmatrix}
+    \text{change in density (per unit volume)} \\
+    \text{of the quantity} \\
+    \text{across the material}
+    \end{pmatrix}
+    }
+    {\text{thickness of the material}}
+\eeq
+From dimensional analysis of the above equation, it is easy to see that the diffusion coefficients of all quantities have dimensions of $\phdim L^2/T$. These diffusion coefficients are defined from Fick's law, Fourier's law and Newton's law as follows.
+
+\begin{enumerate}
+\item From Fick's law, the diffusion coefficient D is the ratio of mass flux (mass transported per unit area per unit time) and the gradient in the concentration (mass per unit volume). Therefore, the diffusivity of mass is just the diffusion coefficient $\kdiff$.
+
+\item It is possible to define a diffusion coefficient for heat transfer as follows. The difference in temperature $\Dx\temp$ can be expressed in terms of the difference in the specific energy between the two sides as $\Dx\temp = \Dx\then/\dens\kshcap_v$, where $\Dx\then$ is the specific thermal energy (per unit volume) and $\kshcap_v$ the volumetric thermal capacity. With this, the equation for the thermal flux can be written as
+\beq
+\flux\then = \dfrac{\kthcond}{\dens\kshcap_v}\dfrac{\Dx\then}{\length}\,.
+\eeq
+It is obvious that the above equation has the same form as the mass flux equation, with a thermal diffusivity $\kdiff_h = \kthcond/\dens\kshcap_v$, which has $\dim\kdiff_h = \phdim L^2/\phdim T$.
+
+\item The \lingo{momentum diffusivity} is the relation between the flux of momentum (rate of transport of momentum per unit area per unit time) and the difference in the momentum density (momentum per unit volume). Consider the layer of fluid shown in figure 1.1.2. Since the momentum of a parcel of fluid is the mass of that parcel multiplied by its velocity, the momentum density is the product of the mass density $\dens$ and velocity $\vel_x$. Therefore, the equation for the flux, expressed in terms of the momentum density, is
+\beq
+\shear_{xy} = \kinvis\dfrac{\Dx(\dens\vel_x)}{\length}\,,
+\eeq
+where $\kinvis$ is the momentum diffusivity. For an incompressible fluid with constant density, the momentum diffusivity is $\kinvis = \dynvis/\dens$. The momentum diffusivity, which has dimensions $\dim\kinvis = \phdim L^2/\phdim T$, is also referred to as the \lingo{kinematic viscosity}.
+\end{enumerate}
+
+The dimensionless quantities which are ratios of diffusivities are summarized in \autoref{tab:rationofdiffusivities}.
+% ------------------------------------------------------------- PreTable
+\docpretable{bt}{0.9\textwidth}{ccl}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+% use: \docfloatwidth whenever possible!
+% NOTE: does not include \toprule
+\toprule
+Dimensionless quantity & Definition & Ratio \\
+\midrule
+Reynolds number & $\kreynolds = \dens\vel\length/\dynvis$ & momentum convection to momentum diffusion \\
+Prandtl number  & $\kprandtl = \kinvis/\kdiff_h$          & momentum diffusion to thermal diffusion   \\
+Schmidt number  & $\kschmidt = \kinvis/\kdiff$            & momentum diffusion to mass diffusion      \\
+Peclet number   & $\kpeclet = \vel\length/\kdiff_h$       & thermal convection to thermal diffusion \\
+\bottomrule
+% ------------------------------------------------------------ PostTable
+\end{tabularx}
+\docposttable{Dimensionless diffusivities ratios}{Dimensionless quantities that are ratios of diffusivities. The Prandtl number $\kprandtl = \kinvis/\kdiff_h = \kshcap_\press\dynvis/\kthcond$ is the ratio of momentum and thermal diffusivity and the Schmidt number $\kschmidt = \dynvis/\dens\kdiff = \kinvis/\kdiff$ the ratio of momentum and mass diffusivity.}{tab:rationofdiffusivities}
+% include: \end{tabularx}%
+% ------------------------------------------------------------ EndTable
+
+
+\subsection{Ratio of convection and diffusion}
+Convective transport takes place due to the mean flow of a fluid, even in the absence of a concentration difference. For example, if a fluid with concentration $\conc$ travels with velocity $\vel$ in a pipe, the total amount of mass transported per unit time is ($\conc\vel\area_p$), where $\area_p$ is the cross-sectional area of the tube. Therefore, the flux (mass transported by the fluid, per unit area perpendicular to the flow per unit time) is ($\conc\vel$). Consequently, the ratio between the rate of transport due to convective and diffusive effects is ($\vel\length/\kdiff$), where $\length$ is the length scale across which there is a change in the density of this quantity.
+
+The dimensionless numbers which are ratios of convective and diffusive transport rates (\autoref{tab:rationofdiffusivities}) 
+%
+\begin{itemize}
+\item the Reynolds number, $\kreynolds = \dens\vel\length/\dynvis = \vel\length/\kinvis$, the ratio of momentum convection and diffusion,
+
+\item the Peclet number for mass transfer, $\kpeclet = \vel\length/\kdiff$, the ratio of mass convection and diffusion, and
+
+\item the Peclet number for thermal transfer, $\kpeclet = \vel\length/\kdiff_h = \dens\kshcap_\press\vel\length/\kthcond$, where $\kshcap_\press$ is the specific thermal capacity at constant pressure.
+\end{itemize}
+
+
+\subsection{Dimensionless numbers in natural convection}
+In natural convection, the driving force for convection is the body force caused by a variation in the density of the fluid, which is in turn caused by variation in temperature. In contrast to natural convection, the characteristic flow velocity is not known \apriori, but has to be determined from the driving force due to the density difference. If we assume there is a balance between the driving force and the viscous stresses in the fluid, dimensional analysis can be used to infer that the characteristic velocity should scale as $\chpq\vel\approx\force\diam/\dynvis$, where $\force$ is the driving force for convection per unit volume of fluid, $\diam$ is the diameter of the body or the characteristic length and $\dynvis$ is the dynamic viscosity.
+
+The driving force for convection, per unit volume of the fluid, is proportional to the product of the density variation $\Dx\dens$ and the acceleration due to gravity $\grav$. The density variation is is proportional to $\dens\kthexp\Dx\temp$, where $\Dx\temp$ is the variation in temperature and $\kthexp$ is the coefficient of thermal expansion. Therefore, the force per unit area is proportional to $\dens\grav\kthexp\Dx\temp$. With this, the characteristic velocity for the flow is $\chpq\vel\approx\dens\diam^2\grav\kthexp\Dx\temp/\dynvis$. The \lingo{Grashof number} is the Reynolds number based upon this convection velocity,
+\beq
+\kgrashof = \dfrac{\dens\chpq\vel\diam}{\dynvis} 
+          = \dfrac{\dens^2\diam^3\grav\kthexp\Dx\temp}{\dynvis^2}\,.
+\eeq
+
+In defining the Grashof number, we used the momentum diffusivity and the body force to obtain the characteristic velocity scale. An alternative definition is the \lingo{Rayleigh number}, where the thermal diffusivity, $\kthcond/\dens\kshcap_\press$, is used to determine the characteristic velocity. The characteristic velocity is then given by $\chpq\vel\approx\force\diam^2\kshcap_\press/\kthcond$, where $\force = \dens\kthexp\Dx\temp$ is the driving force for convection per unit volume of fluid. The Reynolds number based on this convection velocity and momentum diffusivity is the Rayleigh number,
+\beq
+\krayleigh = \dfrac{\dens^2\kshcap_\press\diam^3\grav\kthexp\Dx\temp}{\dynvis\kthcond}\,.
+\eeq
+The \lingo{Rayleigh-Benard} instability of a fluid layer heated from below occurs when the Rayleigh number increases beyond a critical value.
+
+
+\subsection{Other dimensionless groups}
+There are two important dimensionless groups involving surface tension, which are the \lingo{Weber number} and the \lingo{capillary number}. The Weber number is the ratio of inertial and surface tension forces,
+\beq
+\kweber = \dfrac{\dens\vel^2\length}{\surftens}\,,
+\eeq
+while the capillary number is the ratio of viscous and surface tension forces,
+\beq
+\kcapillar = \dfrac{\dynvis\vel}{\surftens}\,,
+\eeq
+where $\surftens$ is the surface tension, $\dim\surftens = \phdim F/\phdim L$.
+
+In problems involving free interfaces, if the Reynolds number is low, inertial forces are negligible compared to viscous forces, and the capillary number has to be determined in order to assess the ratio of viscous and surface tension forces. At high Reynolds number, it is appropriate to determine the Weber number in order to examine the ratio of inertial and surface tension forces. In addition to the Weber and capillary numbers, the \lingo{Bond number} is a dimensionless group appropriate for situations where a free interface is under the influence of a gravitational field. This dimensionless group is defined as the ratio of gravitational and surface tension forces,
+\beq
+\kbond = \dfrac{\dens\grav\length^2}{\surftens}\,.
+\eeq
+
+
+\subsection{Dimensionless groups involving gravity}
+The ratio of inertial and gravitational forces is given by the \lingo{Froud number},
+\beq
+\kfroud = \dfrac{\vel^2}{\grav\length}\,,
+\eeq
+In applications involving rotation of fluids, the Froud number is also the ratio of centrifugal and gravitational forces.
+
+
+\subsection{Examples}
+Some examples on the use of dimensional analysis and dimensionless quantities.
+
+\begin{example}
+A fluid is flowing through a pipe, which is heated from outside. The temperature of the wall of the pipe is higher than the average temperature of the fluid by a constant value $\Dx\temp$. The change in temperature of the fluid is due to the heat transfer from the walls and not due to frictional heating generated by the flow. One would like to predict the rate of thermal transfer, per unit area of the wall of the pipe, so that the length of pipe required for the heat exchanger can be designed.
+\end{example}
+
+\begin{solution}
+The first step is to collect the set of variables on which the thermal flux $\flux\then$ can depend. This can depend on the thermal properties of the fluid, the conductivity $\kthcond$ and the specific heat $\kshcap_\press$, the difference in temperature between the fluid and the wall $\Dx\temp$, the flow properties of the fluid, the density $\dens$, dynamic viscosity $\dynvis$, the average fluid velocity $\vel$, the diameter of the pipe $\diam$ and the length of pipe $\length$. The fundamental dimensions that we can classify these into are $\elset{\phdim M, \phdim L, \phdim T, \phdimtemp}$.
+
+There are nine dimensionless groups and four dimensions in table 1.3, ap- parently necesitating five dimensionless groups. However, a further reduction is possible when there is no interconversion between heat energy (which is being transferred) and mechanical energy (which is driving the flow). In this case, it is possible to consider heat energy as a dimension H which is different from mechanical energy. There are now five dimensions, H, M, L, T and Υ, and a total of nine dimensional quantities in table 1.3. Therefore, there are only four dimensionless groups.
+\end{solution}

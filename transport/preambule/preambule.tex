@@ -6,7 +6,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
-%\usepackage{booktabs}
+\usepackage{booktabs}
 %\usepackage{bm}
 %\usepackage{comment}
 \usepackage{fixltx2e}
@@ -25,7 +25,7 @@
 %\usepackage[parfill]{parskip}            % paragraphs without indent
 \RequirePackage[draft, scrtime]{prelim2e} % Final and draft versions
 \usepackage{siunitx}
-%\usepackage{tabularx}
+\usepackage{tabularx}
 %\usepackage{textcase}       % \MakeTextUppercase
 %\usepackage[normalem]{ulem} % underlines
 \usepackage{xspace}
@@ -109,6 +109,7 @@ input-symbols = \pi\tau
 % NOTE: does not include \toprule
 \newcommand{\docpretable}[3]{
   \begin{table}[#1]%
+    \centering
     \capstart
     \center\small%\footnotesize%
     \begin{tabularx}{#2}{#3}%
