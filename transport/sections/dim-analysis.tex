@@ -1,29 +1,29 @@
 \section{Dimensional Analysis}
 %
-Dimensional analysis is an invaluable tool when dealing with complex phenomena, since it helps to simplify them and to stress the important physical relationships of their parts instead of diffusion physics into complex mathematical relationships. 
+Dimensional analysis is an invaluable tool when dealing with physical phenomena, specially complex phenomena, since it helps to simplify complexity by stressing the important physical relationships of their parts instead of diffusing physics into complex maths.
 
 In transport processes, a useful guide to perform dimensional analysis is the following:
 \begin{enumerate}
 \item identify relevant transport properties, like fluid velocity, thermal energy flux, mass flux and so on;
-\item identify relevant material properties, such as viscosity, thermal conduction, specific heat, density and so forth;
+\item identify relevant material properties, such as viscosity, thermal conduction, specific thermal capacity, density and so forth;
 \item choose an independently dimensional set according to the phenomenon class; \ie, mechanics, $\elset{\phdim M, \phdim L, \phdim T}$ or alternatively $\elset{\phdim F, \phdim L, \phdim T}$, thermal transport $\elset{\phdim E, \phdim L, \phdim T, \phdimtemp}$;
 \item find the number of dimensionless quantities using the $\kdim$-theorem:
 \beq
 n = p - r\,,
 \eeq
-where $n$ is the number of dimensionless quantities, $p$ the number of physical quantities given by the model and $r$ the number of elements of the dimensional set;
-\item choose the first $\kdim$ quantity using the physical quantity being seek;
-\item choose the rest of the $\kdim$ quantities using the dimensions of the set;
-\item form the model equation of the form:
+where $n$ is the number of dimensionless quantities, $p$ the number of physical quantities to be modeled and $r$ the number of elements of the dimensional set;
+\item form the first $\kdim$ quantity using the physical quantity being seek as the base;
+\item form the rest of the $\kdim$ quantities using the rest of the physical quantities and their correspondent dimensions;
+\item find the model general equation:
 \beq
 f\vat{\kdim_i} = 0\,,
 \eeq
 where the index $i$ runs from 1 to $n$.
-\item form the final model equation by isolating the first $\kdim$ quantity, which contains the quantity being seek; \ie,
+\item propose the final model equation by isolating the first $\kdim$ quantity, the one containing the quantity being seek; \ie,
 \beq
 \kdim_1 = f\vat{\kdim_{i - 1}}\,;
 \eeq
-\item finally, seek the final form of the function $f$ by using guessing, approximations, extreme cases, and so forth.
+\item finally, seek the particular mathematical form of the function $f$ by guessing, using approximations, extreme cases and so forth.
 \end{enumerate}
 
 \begin{example}
@@ -37,46 +37,46 @@ When the sphere attains its terminal velocity, $\vel\txt{t}$, then the drag is e
 \end{example}
 
 \begin{solution}
-The motion of the sphere disturbs the fluid around it and causes fluid flow. This fluid flow results in friction causing a frictional drag that exerts a force on the sphere. Since the frictional resistance to flow is due to viscous stresses, it is expected that the fluid dynamic viscosity $\dynvis$ will be important in determining the frictional force. In addition, the force is expected to depend on the velocity of the sphere $\vel$, since a higher speed would result in a larger force. The length scales that could affect the flow are the width of the tank $\length$ and the radius of the sphere $\radius$. The density of the fluid $\dens\txt{fl}$ could also be important, since a higher force is required for accelerating a fluid with a higher density.
+The motion of the sphere disturbs the fluid around it and causes fluid flow. This fluid flow results in friction causing a frictional drag that exerts a force on the sphere. Since the frictional resistance to flow is due to viscous stresses, it is expected that the fluid dynamic viscosity $\dynvis$ will be important in determining the frictional force. In addition, the force is expected to depend on the sphere velocity $\vel$, since a higher speed would result in a larger force. The length scales that could affect the flow are the tank width $\length$ and the sphere radius $\radius$. The fluid density $\dens\txt{fl}$ could also be important, since a higher force is required for accelerating a fluid with a higher density.
 
-It is important to note that the mass of the sphere or its density should not be relevant determining the flow, once the sphere velocity is specified. This is because the fluid velocity around the sphere, which results in the frictional force, is determined by the velocity with which the sphere is moving, and the mass or density of the sphere does not affect the fluid velocity. Similarly, the acceleration due to gravity determines the gravitational force on the sphere, but does not directly affect the fluid velocity around the sphere, once the sphere velocity is specified. Therefore, it is necessary to apply some judgment at the start of dimensional analysis to distinguish the material and dynamical properties that influence in the desired quantity. It is essential to ensure that no irrelevant quantity is included in the analysis.
+It is important to note that the sphere mass or its density should not be relevant determining the flow, once the sphere velocity is specified. This is because the fluid velocity around the sphere, which results in the frictional force, is determined by the velocity with which the sphere is moving, and the sphere mass or density does not affect the fluid velocity. Similarly, the acceleration due to gravity determines the gravitational force on the sphere, but does not directly affect the fluid velocity around the sphere, once the sphere velocity is specified. Therefore, it is necessary to apply some judgment at the start of dimensional analysis to distinguish the material and dynamical properties that influence in the desired quantity. It is essential to ensure not to include irrelevant quantity in the analysis.
 
-Now that all the relevant dimensional quantities for the drag force have been determined, it is necessary to examine which are the \emph{important} ones. This is a skill, and can be developed only by practice. In this particular case, let us look at the length scales that are likely to be important. If the width and height of the container are large compared to the radius of the sphere, it is likely that only the radius of the sphere is a relevant length scale. On the other hand, if the sphere is very close to one of the walls of the container, say within a few radii, then the distance from the wall as well as the radius of the sphere could be important. For definiteness, let us proceed with the assumption that only the radius of the sphere is important in this case. This results in a set of important variables:
+Now that all the relevant dimensional quantities for the drag force have been determined, it is necessary to isolate the \emph{important} ones. This is a skill that can be developed by practice. In this particular case, let us look at the length scales that are likely to be important. If the tank width and height are large compared to the sphere radius, it is likely that only the sphere radius is a relevant length scale. On the other hand, if the sphere is very close to one of the walls of the container, say within a few radii, then the distance from the wall as well as the sphere radius could be important. For definiteness, let us proceed with the assumption that only the sphere radius is important in this case. This results in a set of important quantities:
 \begin{enumerate}
-\item radius of sphere, $\radius$; 
-\item velocity of sphere, $\vel$;
-\item dynamic viscosity of fluid, $\dynvis$; and 
-\item density of fluid, $\dens\txt{fl}$.
+\item sphere radius, $\radius$; 
+\item sphere velocity, $\vel$;
+\item fluid dynamic viscosity, $\dynvis$; and 
+\item fluid density, $\dens\txt{fl}$.
 \end{enumerate}
 So an equation for the force has to have the form
 \beq
 \drag = f\vat{\radius, \vel, \dynvis, \dens\txt{fl}}\,.
 \eeq
 
-Since this is a dynamical problem and a force is being sought, then the set of dimensional quantities chosen is $\elset{\phdim F, \phdim L, \phdim T}$. In such a system, the chosen variables have the dimensions:
+Since this is a dynamical problem and a force is being sought, then the chosen set of dimensional quantities is $\elset{\phdim F, \phdim L, \phdim T}$. In such a system, the chosen quantities have the dimensions:
 \begin{itemize}
-\item radius of sphere, $\dim\radius = \phdim L$; 
-\item velocity of sphere, $\dim\vel = \phdim L / \phdim T$;
-\item dynamic viscosity of fluid, $\dynvis = \phdim F / \phdim T \phdim L^2$; and 
-\item density of fluid, $\dens\txt{fl} = \phdim F \phdim T^2 / \phdim L^4$.
+\item sphere radius, $\dim\radius = \phdim L$; 
+\item sphere velocity, $\dim\vel = \phdim L/\phdim T$;
+\item fluid dynamic viscosity, $\dynvis = \phdim F\phdim T/\phdim L^2$; and 
+\item fluid density, $\dens\txt{fl} = \phdim F\phdim T^2/\phdim L^4$.
 \end{itemize}
 
-Since there are five dimensional quantities and three dimensions involved in the above relationship, there are two dimensionless groups. One of these groups has to involve the drag, while the other is a combination of the sphere diameter, velocity, and fluid properties (density and viscosity).
+Since there are five dimensional quantities and three dimensions involved in the above relationship, there are two dimensionless groups, according to the $\kdim$-theorem. One of these quantities has to involve the drag, while the other is a combination of the sphere diameter and velocity and of the fluid properties (density and viscosity).
 
-Let us construct the first dimensionless quantity, which we call a scaled force $\kdim_\force$, as a combination of the drag, viscosity, velocity and the sphere radius:
+Let us construct the first dimensionless quantity, called a scaled force $\kdim_\force$, as a combination of the drag, viscosity, velocity and radius:
 \beq
 \kdim_\force = \drag\dynvis^a\vel^b\radius^c\,,
 \eeq
-where $a$, $b$ and $c$ are the desired indices which render $\kdim_\force$ dimensionless. The dimensions of the left and right sides of the equation are to be equal, thus they form a linear system that have to be solved simultaneously. The solution results in the coefficients $a = b = c = -1$. Therefore, the first dimensionless quantity is equal to
+where $a$, $b$ and $c$ are the desired indices that render $\kdim_\force$ dimensionless. If the dimensions of the left and right sides of the equation are to be equal, then they form a linear system that have to be solved simultaneously. The solution results in the coefficients $a = b = c = -1$. Therefore, the first dimensionless quantity is equal to
 \beq
 \kdim_\force = \dfrac{\drag}{\dynvis\vel\radius}\,.
 \eeq
 
-The second dimensionless quantity, which we call $\kreynolds$, is a combination of the density, diameter, sphere velocity and viscosity. We write this as,
+The second dimensionless quantity, noted $\kreynolds$, is a combination of the density, diameter, velocity and viscosity. We write this as
 \beq
 \kreynolds = \dens\vel^a\radius^b\dynvis^c\,.
 \eeq
-In defining the dimensionless group, the exponent of any one of the quantities can be set equal to 1 without loss of generality. In the last equation, we have chosen to set the exponent of the density equal to 1, to bring it in accordance with the conventional definition of the Reynolds number defined a little later. The dimensions of the quantities on the right side of such an equation are, after having solved a similar system of equations, $a = b = 1$ and $c = -1$. Therefore, the dimensionless number
+In defining the dimensionless group, the exponent of any one of the quantities can be set equal to 1 without loss of generality. In the last equation, we have chosen to set the exponent of the density equal to 1, to bring it in accordance with the conventional definition of the Reynolds number, formally defined a little later. The dimensions of the quantities on the right side of such an equation are, after solving a similar system of equations, $a = b = 1$ and $c = -1$. Therefore, the dimensionless number
 \beq
 \kreynolds = \dfrac{\dens\vel\radius}{\dynvis}\,.
 \eeq
@@ -88,24 +88,24 @@ g\vat{\kdim_\force, \kreynolds} = 0\implies
 \eeq
 where $h$ is a function of the Reynolds number; \ie, $\kreynolds$.
 
-In the last equation, the force has been non-dimensionalized by the `viscous force scale', ($\dynvis\radius\vel$). Instead of using the viscosity, radius and velocity to non-dimensionalize the force, we could have chosen to use the density, radius and velocity instead. This would have led to the dimensionless group $\kdim_{\force I} = \force / \dens\vel^2\radius^2$, where ($\dens\vel^2\radius^2$), the `inertial force scale', is a suitable combination of density, velocity and radius with dimensions of force. It is easily verified that the dimensionless forces scaled in these two different ways are related by
+In the last equation, the force has been non-dimensionalized by the \lingo{viscous force scale}, $\dynvis\radius\vel$. Instead of using the viscosity, radius and velocity to non-dimensionalize the force, we could have chosen to use the density, radius and velocity instead. This would have led to the dimensionless quantity $\kdim_{\force i} = \force / \dens\vel^2\radius^2$, where $\dens\vel^2\radius^2$, the \lingo{inertial force scale}, is a suitable combination of density, velocity and radius with dimensions of force. It is possible to verify that the dimensionless forces scaled in these two different ways are related by
 \beq
-\kdim_\force = \kreynolds\kdim_{\force I}\,.
+\kdim_\force = \kreynolds\kdim_{\force i}\,.
 \eeq
 The Reynolds number is then a ratio of the inertial and viscous force scales, 
 \beq
 \kreynolds = \dfrac{\dens\vel^2\radius^2}{\dynvis\radius\vel}\,.
 \eeq
-That is why the Reynolds number is often referred to as the balance between the viscous and inertial forces.
+For this reason, the Reynolds number is often referred to as the balance between the viscous and inertial forces.
 
 Further simplifications can be made in some limiting cases. When the group $\dens\vel\radius/\dynvis$ is very small, then the fluid flow is dominated by viscous effects, thus, the drag should not determine on the inertial force scale. Therefore, the drag has the form $\kdim_\force = \kdim = \text{constant}$ or
 \beq
 \drag = \kdim\dynvis\vel\radius\,.
 \eeq
 
-The limitation of dimensional analysis is that the value of the constant cannot be determined, and more detailed calculations reveal that the exact value of the constant is $6\pi$. This leads to `Stokes drag law' for the force on a sphere in the limit of small Reynolds number, $\drag = 6\pi\dynvis\vel\radius$.
+The limitation of dimensional analysis is that the value of the constant cannot be determined, and more detailed calculations reveal that the exact value of the constant is $6\pi$. This leads to \lingo{Stokes drag law} for the force on a sphere in the limit of small Reynolds number, $\drag = 6\pi\dynvis\vel\radius$.
 
-The Reynolds number can be physically interpreted as the ratio of inertial and viscous forces or as the ratio of convection and diffusion. The latter interpretation is more useful, since it has analogies in mass and thermal transfer processes. It can be proven that the diffusion coefficient for momentum, is the `kinematic viscosity', $\kinvis = \dynvis / \dens$, where $\dens$ is the mass density. It is easy to verify that the kinematic viscosity has the same dimensions as the mass diffusion coefficient, $\phdim L^2/\phdim T$. The Reynolds number can be written as $\kreynolds = \vel\radius/\kinvis$, which is the ratio of convective transport of momentum (due to the fluid velocity) and diffusive transport due to momentum diffusivity.
+The Reynolds number can be physically interpreted as the ratio of inertial and viscous forces or as the ratio of convection and diffusion. The latter interpretation is more useful, since it has analogies in mass and thermal transfer processes. It can be proven that the diffusion coefficient for momentum is the \lingo{kinematic viscosity}, $\kinvis = \dynvis / \dens$, where $\dens$ is the mass density. It is possible to verify that the kinematic viscosity has the same dimensions as the mass diffusion coefficient; \ie, $\phdim L^2/\phdim T$. The Reynolds number can be written as $\kreynolds = \vel\radius/\kinvis$; \ie, the ratio of convective transport of momentum, due to the fluid velocity, and diffusive transport, due to momentum diffusivity.
 
-This type of analysis could be extended to more complicated problems. For instance, if the particle falling is not a sphere but a more complicated object, such as a spheroid, then there are two length scales, the major and minor axes of the spheroid, $\radius_1$ and $\radius_2$. In this case, the number of variables increases to 6 and there are three dimensional groups. One of these could be assumed to be the ratio of the lengths (aspect ratio) ($\radius_1/\radius_2$).
+This type of analysis could be extended to more complicated problems. For instance, if the particle falling is not a sphere but a more complicated object, such as a spheroid, then there are two length scales, the major and minor axes of the spheroid, $\radius_1$ and $\radius_2$. In this case, the number of quantities increases to 6 and there are three dimensional groups. One of these could be assumed to be the ratio of the lengths (aspect ratio): $\radius_1/\radius_2$.
 \end{solution}
