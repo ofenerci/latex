@@ -9,6 +9,8 @@
 \newcommand{\force}{f} % force
 \newcommand{\shear}{\tau}      % shear stress
 \newcommand{\surftens}{\gamma} % surface tension
+\newcommand{\freq}{f}          % frequency
+\newcommand{\power}{p}         % 
 %
 \newcommand{\drag}{\force\txt{d}} % drag force
 \newcommand{\buoy}{\force\txt{b}} % buoyancy force
@@ -19,29 +21,14 @@
 %
 \newcommand{\temp}{\theta}       % temperature
 \newcommand{\then}{e}            % thermal energy (heat)
+\newcommand{\thendens}{\epsilon} % thermal energy density (E/L^3)
 \newcommand{\work}{w}
-%
-%\newcommand{\ien}{u}             % internal energy
-%\newcommand{\rate}[1]{\dt{#1}}   % change rate
-%\newcommand{\flow}[1]{\dot{#1}}
-%\newcommand{\flux}[1]{\tilde{#1}}
-%
-%%% TEST
 %
 \newcommand{\ien}{i}                   % internal energy
 \newcommand{\rate}[1]{{#1}^{\prime}}   % change rate
 \newcommand{\accu}[1]{\rate{#1}}       % accumulation
 \newcommand{\flow}[1]{{#1}^{\prime}}
 \newcommand{\flux}[1]{{#1}^{\prime\prime}}
-%
-%%% ANOTHER TEST
-%
-%\newcommand{\ien}{u}              % internal energy
-%\newcommand{\rate}[1]{\dot{#1}}   % change rate
-%\newcommand{\flow}[1]{\dot{#1}}
-%\newcommand{\flux}[1]{\dot{#1}^{\prime}}
-%
-%%%
 %
 \newcommand{\kshcap}{c}        % specific heat capacity
 \newcommand{\kthcond}{k}       % thermal conductivity
@@ -64,12 +51,12 @@
 %
 %%% MASS TRANSPORT
 %
-\newcommand{\npart}{n}   % n (number of) particles
+\newcommand{\npart}{n}    % n (number of) particles
 \newcommand{\mass}{m}
-\newcommand{\dens}{\rho} % mass density
-\newcommand{\chthen}{r}  % chemical reaction thermal energy
-\newcommand{\conc}{c}    % mass concentration
-\newcommand{\kdiff}{d}   % diffusion coefficient
+\newcommand{\dens}{\rho}  % mass density
+\newcommand{\chthen}{r}   % chemical reaction thermal energy
+\newcommand{\conc}{c}     % mass concentration
+\newcommand{\kdiff}{\phi} % diffusion coefficient
 %
 %%% MOMENTUM TRANSPORT
 %
@@ -114,6 +101,9 @@
 \newcommand{\kcapillar}{\kdim\txt{ca}} % capillar number
 \newcommand{\kbond}{\kdim\txt{bo}}     % bond number
 \newcommand{\kfroud}{\kdim\txt{fr}}    % froud number
+\newcommand{\knusselt}{\kdim\txt{nu}}  % nusselt number
+\newcommand{\ksherwood}{\kdim\txt{sh}} % sherwood number
+\newcommand{\kpower}{\kdim\txt{po}}    % power number
 %
 %%% GEOMETRY
 %
