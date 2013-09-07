@@ -73,7 +73,7 @@ Summarizing:
 \begin{itemize}
 \item mass transport: $\flux\mass = -\kdiff\grad\conc$, where mass flux $\dim\flux\mass = \phdim M/\phdim L^2\phdim T$, mass diffusion coefficient $\dim\kdiff = \phdim L^2/\phdim T$ and concentration gradient $\dim\grad\conc = \phdim M/L^4$.
 %
-\item thermal energy transport: $\flux\then = -\kthcond/\dens\kshcap\times$, where thermal energy flux $\dim\flux\then = \phdim E/\phdim L^2\phdim T$, thermal conductivity $\dim\kthcond = \phdim E/\phdim L\phdim T\phdimtemp$, mass density $\dim\dens = \phdim E\phdim T^2/\phdim L^5$, specific thermal capacity $\dim\kshcap = \phdim L^2/\phdim T^2\phdimtemp$ and energy density gradient $\dim\grad\thendens = \phdim E/\phdim L^4$.
+\item thermal energy transport: $\flux\then = -\kthcond/\dens\kshcap\grad\thendens$, where thermal energy flux $\dim\flux\then = \phdim E/\phdim L^2\phdim T$, thermal conductivity $\dim\kthcond = \phdim E/\phdim L\phdim T\phdimtemp$, mass density $\dim\dens = \phdim E\phdim T^2/\phdim L^5$, specific thermal capacity $\dim\kshcap = \phdim L^2/\phdim T^2\phdimtemp$ and energy density gradient $\dim\grad\thendens = \phdim E/\phdim L^4$.
 %
 \item momentum transport: $\shear = \kinvis\grad\dens\vel = \dynvis/\dens\grad\dens\vel$, where shear stress $\dim\shear = \phdim F/\phdim L^2$, kinematic viscosity $\dim\kinvis = \dynvis/\dens = \phdim L^2/\phdim T$, mass density $\dim\dens = \phdim F\phdim T^2/\phdim L^4$, velocity $\dim\vel = \phdim L/\phdim T$.
 \end{itemize}
