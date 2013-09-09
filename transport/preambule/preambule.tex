@@ -69,8 +69,8 @@ input-symbols = \pi\tau
 %
 %  abbreviations for \autoref macros
 %\renewcommand{\chapterautorefname}{Chap.}
-\renewcommand{\equationautorefname}{Eq.}
-\renewcommand{\figureautorefname}{Fig.}
+%\renewcommand{\equationautorefname}{Eq.}
+%\renewcommand{\figureautorefname}{Fig.}
 %\renewcommand{\noteautorefname}{Note}
 %\renewcommand{\partautorefname}{Part}
 %\renewcommand{\sectionautorefname}{Sec.}
@@ -78,9 +78,9 @@ input-symbols = \pi\tau
 %\renewcommand{\subsubsectionautorefname}{Sec.}
 %
 %\renewcommand{\chapterautorefname}{\S}
-\renewcommand{\sectionautorefname}{\S}
-\renewcommand{\subsectionautorefname}{\S}
-\renewcommand{\subsubsectionautorefname}{\S}
+%\renewcommand{\sectionautorefname}{\S}
+%\renewcommand{\subsectionautorefname}{\S}
+%\renewcommand{\subsubsectionautorefname}{\S}
 %
 %%% AXIOMS, THEOREMS, EXAMPLES, ...
 %
@@ -91,6 +91,33 @@ input-symbols = \pi\tau
 %\newtheorem{note}{Note}[section]
 %\newtheorem{remark}{Remark}[section]
 %\newtheorem{theorem}{Theorem}[section]
+%
+%%% MATH ENVIRONMENTS
+%
+\newenvironment{axiom}{\medskip\noindent{\it Axiom.}}{}
+\newenvironment{definition}{\medskip\noindent{\it Definition.}\it}{\rm}
+\newenvironment{theorem}{\medskip\noindent{\it Theorem.}}{}
+%
+\newenvironment{example}{\medskip\noindent{\it Example.}}{}
+\newenvironment{exercise}{\medskip\noindent{\it Exercise.}}{}
+%
+\newenvironment{approximation}{\smallskip\small\noindent{\it Approx. Solution.}}{\normalsize\smallskip}
+\newenvironment{caution}{\smallskip\small\noindent{\it Caution.}}{\normalsize\smallskip}
+\newenvironment{dimensional}{\smallskip\small\noindent{\it Dim. Analysis.}}{\normalsize\smallskip}
+\newenvironment{discussion}{\smallskip\small\noindent{\it Discussion.}}{\normalsize\smallskip}
+\newenvironment{guess}{\smallskip\small\noindent{\it Guess.}}{\normalsize\smallskip}
+\newenvironment{geometry}{\smallskip\small\noindent{\it Geometry.}}{\normalsize\smallskip}
+\newenvironment{mathnote}{\smallskip\small\noindent{\it Math note.}}{\normalsize\smallskip}
+\newenvironment{motivation}{\smallskip\small\noindent{\it Motivation.}}{\normalsize\smallskip}
+\newenvironment{notation}{\smallskip\small\noindent{\it Notation.}}{\normalsize\smallskip}
+\newenvironment{note}{\smallskip\small\noindent{\it Note.}}{\normalsize\smallskip}
+\newenvironment{remark}{\smallskip\small\noindent{\it Remark.}}{\normalsize\smallskip}
+\newenvironment{technote}{\smallskip\small\noindent{\it Technical note.}}{\normalsize\smallskip}
+\newenvironment{warning}{\smallskip\small\noindent{\it Warning.}}{\normalsize\smallskip}
+%
+\renewenvironment{proof}{\newline\small\noindent{\it Proof.}}{\normalsize}
+\newenvironment{solution}{\smallskip\small\noindent{\it Solution.}}{\normalsize}
+\newenvironment{verification}{\small\noindent{\it Verification.}}{\normalsize}
 %
 %%% ITEMIZE
 % bullets in itemize
@@ -138,7 +165,8 @@ input-symbols = \pi\tau
         \small\textsf{#1}% text...quote
         \begin{flushright}
           % author, reference
-          {--- \sc\MakeLowercase{#2}}, {\sc\MakeLowercase{#3}}
+          {--- \sc\MakeLowercase{#2}}, \\
+          {\sc\MakeLowercase{#3}}
         \end{flushright}
       \end{minipage}
     \end{flushright}

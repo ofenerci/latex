@@ -1,29 +1,44 @@
 \section{Dimensional Analysis}
 %
+\epigraph{No investigator should allow himself to proceed to the detailed solution of a problem until he has made a dimensional analysis of the nature of the solution which will be obtained, and convinced himself by appeal to experiment that the points of view embodied in the underlying equations are sound.}
+{Percy Williams Bridgman}{Dimensional Analysis [Yale University Press, 1922]}
+%
 Dimensional analysis is an invaluable tool when dealing with physical phenomena, specially complex phenomena, since it helps to simplify complexity by stressing the important physical relationships of their parts instead of diffusing physics into complex maths.
 
 In transport processes, a useful guide to perform dimensional analysis is the following:
 \begin{enumerate}
 \item identify relevant transport properties, like fluid velocity, thermal energy flux, mass flux and so on;
+%
 \item identify relevant material properties, such as viscosity, thermal conduction, specific thermal capacity, density and so forth;
+%
 \item choose an independently dimensional set according to the phenomenon class; \ie, mechanics, $\elset{\phdim M, \phdim L, \phdim T}$ or alternatively $\elset{\phdim F, \phdim L, \phdim T}$, thermal transport $\elset{\phdim E, \phdim L, \phdim T, \phdimtemp}$;
+%
+\item express the quantities using their dimensions in the chosen set;
+%
 \item find the number of dimensionless quantities using the $\kdim$-theorem:
 \beq
 n = p - r\,,
 \eeq
 where $n$ is the number of dimensionless quantities, $p$ the number of physical quantities to be modeled and $r$ the number of elements of the dimensional set;
+%
 \item form the first $\kdim$ quantity using the physical quantity being seek as the base;
+%
 \item form the rest of the $\kdim$ quantities using the rest of the physical quantities and their correspondent dimensions;
+%
 \item find the model general equation:
 \beq
-f\vat{\kdim_i} = 0\,,
+\dimfunc\vat{\kdim_i} = 0\,,
 \eeq
 where the index $i$ runs from 1 to $n$.
+%
 \item propose the final model equation by isolating the first $\kdim$ quantity, the one containing the quantity being seek; \ie,
 \beq
-\kdim_1 = f\vat{\kdim_{i - 1}}\,;
+\kdim_1 = \dimfunc\vat{\kdim_{i - 1}}\,;
 \eeq
-\item finally, seek the particular mathematical form of the function $f$ by guessing, using approximations, extreme cases and so forth.
+%
+\item replace the dimensionless quantities, $\elset{\kdim_i}$, with known dimensionless numbers, like the Reynolds number, if possible;
+%
+\item finally, seek the particular mathematical form of the function $\dimfunc$ by guessing, using approximations, extreme cases and so forth.
 \end{enumerate}
 
 \begin{example}
@@ -50,7 +65,7 @@ Now that all the relevant dimensional quantities for the drag force have been de
 \end{enumerate}
 So an equation for the force has to have the form
 \beq
-\drag = f\vat{\radius, \vel, \dynvis, \dens\txt{fl}}\,.
+\drag = \dimfunc\vat{\radius, \vel, \dynvis, \dens\txt{fl}}\,.
 \eeq
 
 Since this is a dynamical problem and a force is being sought, then the chosen set of dimensional quantities is $\elset{\phdim F, \phdim L, \phdim T}$. In such a system, the chosen quantities have the dimensions:
@@ -83,10 +98,10 @@ In defining the dimensionless group, the exponent of any one of the quantities c
 
 The relationship between the two dimensionless quantities can finally be written as
 \beq
-g\vat{\kdim_\force, \kreynolds} = 0\implies
-\kdim_\force = \dfrac{\drag}{\dynvis\vel\radius} = h\vat{\kreynolds}\,,
+\dimfunc\vat{\kdim_\force, \kreynolds} = 0\implies
+\kdim_\force = \dfrac{\drag}{\dynvis\vel\radius} = \dimfunc\vat{\kreynolds}\,,
 \eeq
-where $h$ is a function of the Reynolds number; \ie, $\kreynolds$.
+where $\dimfunc$ is a function of the Reynolds number; \ie, $\kreynolds$.
 
 In the last equation, the force has been non-dimensionalized by the \lingo{viscous force scale}, $\dynvis\radius\vel$. Instead of using the viscosity, radius and velocity to non-dimensionalize the force, we could have chosen to use the density, radius and velocity instead. This would have led to the dimensionless quantity $\kdim_{\force i} = \force / \dens\vel^2\radius^2$, where $\dens\vel^2\radius^2$, the \lingo{inertial force scale}, is a suitable combination of density, velocity and radius with dimensions of force. It is possible to verify that the dimensionless forces scaled in these two different ways are related by
 \beq
