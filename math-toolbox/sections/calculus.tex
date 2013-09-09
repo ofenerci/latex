@@ -684,3 +684,33 @@ D = \dfrac{3}{2n\sigma}\sqrt{\dfrac{\boltz T}{\pi M}}\,,
 where the second factor is the mean free path and the square root (with Boltzmann's constant $\boltz$) is the mean velocity of the particles.
 
 In turbulent flows, the transport by eddy motion can be expressed as a grossly increased diffusion coefficient.
+
+
+\subsection{Mean Value Theorem for Integrals}
+Let $f\vat x$ be continuous on $\left[a,b\right]$. Set
+\beq
+F\vat x = \int_a^x f\vat t\,\dx t\,.
+\eeq
+The Fundamental Theorem of Calculus implies $F'\vat x = f\vat x$. The Mean Value Theorem implies the existence of $c\in\left(a, b\right)$ such that
+\beq
+\dfrac{F\vat b - F\vat a}{b - a} = F'\vat c\qquad\text{or, equivalently,}\qquad
+F\vat b - F\vat a = F'\vat c\left(b - a\right)\,,
+\eeq
+which implies
+\beq
+\int_a^b f\vat t\,\dx t = f\vat c\left(b - a\right)\,.
+\eeq
+This is known as the First Mean Value Theorem for Integrals. The point $f\vat c$ is called the average value of $f\vat x$ on $\left[a,b\right]$.
+
+\begin{example}
+Find the average value of $f\vat x = \sqrt{x}$ for $x\in\left[0,4\right]$.
+\end{example}
+
+\begin{solution}
+\beq
+\avg f = \dfrac{1}{4}\int_0^4\sqrt{x}\,\dx x 
+       = \dfrac{1}{4}\dfrac{16}{3} 
+       = \dfrac{4}{3}\,,
+\eeq
+where $\avg f$ indicates the average value of $f$.
+\end{solution}
