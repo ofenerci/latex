@@ -136,9 +136,169 @@ The limits $\Dx t\to 0$ and $\Dx z\to 0$ are taken to obtain a partial different
 \beq
 \xpd\conc t = \xpd{}{z}\left(\kdiff\xpd\conc z\right)\,.
 \eeq
-If the diffusion coefficient is independent of the spatial position, the differential equation reduces to
+If the diffusion coefficient is independent of the spatial position, then the differential equation reduces to
 \beq
 \xpd\conc t = \kdiff\nxpd\conc z 2
 \implies
-\cder\conc t = \kdiff\cder\conc{zz}\,.
+\ipd t\conc = \kdiff\ipd{zz}\conc\,.
+\eeq
+The last equation can be scaled by using $\scpq\conc$:
+\beq
+\ipd t\scpq\conc = \kdiff\ipd{zz}\scpq\conc\,.
+\eeq
+
+A similar shell balance procedure can be carried out for thermal transfer. The equation for the temperature field is
+\beq
+\xpd{\scpq\temp} t = \xpd{}{z}\left(\kdiff\xpd{\scpq\temp}z\right)
+\implies
+\ipd t\scpq\temp = \ipd z\left(\ipd z\scpq\temp\right)\,.
+\eeq
+
+Though the final result for the momentum transfer process is exactly analogous to those of mass and thermal transport, the procedure is slightly different. We provide a brief outline of the calculation. First, note that there are now two directions in the problem. Since momentum is a vector, there is a direction associated with the momentum itself, which is the $x$ direction. The second is the direction of diffusion, which is the $z$ direction. The fundamental balance relation is
+\beq
+\begin{pmatrix}
+\text{rate of change of}\\
+\text{$x$ momentum} \\
+\text{in the shell}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\text{sum of forces} \\
+\text{in the $x$ direction}
+\end{pmatrix}\,.
+\eeq
+The rate of change of momentum in the differential volume of thickness $\Dx z$ about $z$ in a time interval $\Dx t$ is given by
+\beq
+\begin{pmatrix}
+\text{rate of change of}\\
+\text{$x$ momentum} \\
+\text{in the shell}
+\end{pmatrix}
+=
+\dfrac{\dens\Dx\vel_x\Dx x\Dx y\Dx z}{\Dx t}\,.
+\eeq
+The forces acting on the two surfaces at $z$ and $z + \Dx z$ are the products of the shear stress $\shear_{xz}$ and the surface area $\Dx x\Dx y$. It is important to keep track of the directions of the forces in this case, since the force is a vector. The shear stress $\shear_{xz}$ is defined as the force per unit area in the $x$ direction acting at a surface whose outward unit normal is in the positive $z$ direction. For the surface at $z + \Dx z$, the outward unit normal is in the $+z$ direction and, therefore, the force per unit area at this surface is $+\shear_{xz}|_{z + \Dx z}$. For the surface at $z$, the outward unit normal is in the $-z$ direction, and therefore the force per unit area at this surface is $-\shear_{xz}|_{z}$. Finally, the rate of change of momentum, which is the change in momentum per unit time, is given by $(\dens\Dx\vel_x)(\surf\Dx z)/\Dx t$. Therefore, the momentum balance equation is
+\beq
+\surf\Dx z\dfrac{\dens\Dx\vel_x}{\Dx t} =
+\surf\left(\shear_{xz}\biggr\rvert_{z + \Dx z} - \shear_{xz}\biggr\rvert_{z}\right)\,.
+\eeq
+Dividing through by $\surf\Dx z$, we obtain
+\beq
+\dens\dfrac{\Dx\vel_x}{\Dx t} =
+\dfrac{\shear_{xz}\biggr\rvert_{z + \Dx z} - \shear_{xz}\biggr\rvert_{z}}{\Dx z}\,.
+\eeq
+Taking the limit $\Dx t\to 0$ and $\Dx z\to 0$, we obtain the partial differential equation
+\beq
+\dens\ipd t\vel_x = \ipd z\shear_{xz}\,.
+\eeq
+The shear stress is given by the product of the viscosity and the gradient of the velocity
+\beq
+\shear_{xz} = \dynvis\lim_{\Dx z\to 0}\dfrac{\Dx\vel_x}{\Dx z} 
+            = \dynvis\xpd{\vel_x}{z}
+\implies
+\shear_{xz} = \dynvis\ipd z\vel_x\,.
+\eeq
+With this, the governing equation for the velocity field becomes
+\beq
+\dens\ipd t\vel_x = \ipd z\dynvis\ipd z\vel_x\,.
+\eeq
+Note that the differential equation derived above has the same form as the concentration and energy diffusion equations, although it was derived from a force balance. This indicates that the diffusion process is the same for mass, momentum and energy. However, it should be noted that momentum could be transmitted by pressure forces in addition to viscous forces, and there is no analogue of pressure in mass and energy transport.
+
+When the velocity $\vel_x$ is scaled by $\vel$, the velocity of the bottom surface, the momentum equation becomes
+\beq
+\ipd t\scpq\vel_x = \ipd z\kinvis\ipd z\scpq\vel_x\,,
+\eeq
+where $\kinvis = \dynvis/\dens$ is the momentum diffusivity (kinematic viscosity).
+
+
+\paragraph{Solution}
+The conservation equations for mass, thermal energy and momentum are summarized as
+\begin{align*}
+\ipd t\scpq\conc  &= \kdiff\ipd{zz}\scpq\conc\,,\\
+\ipd t\scpq\temp  &= \kdiff\ipd{zz}\scpq\temp\,,\\
+\ipd t\scpq\vel_x &= \kinvis\ipd{zz}\scpq\vel_x\,,
+\end{align*}
+with boundary conditions:
+\beq
+\scpq\conc = \scpq\temp = \scpq\vel_x =
+\begin{cases*}
+    0    & for all $t$ as $z\to\infty$;\\
+    1    & for all $t > 0$ at $z = 0$;\\
+    0    & for all $z> 0$ at $t = 0$\,.
+\end{cases*}
+\eeq
+Since such conservation equations are identical in form and the boundary conditions are also identical, then the same solution procedure can be used for all these and the solutions for the concentration, velocity and temperature fields, expressed in terms of the dimensionless variables $\scpq\conc$, $\scpq\temp$ and $\scpq\vel_x$, turn out to be identical.
+
+In order to solve the concentration equation with its boundary conditions, it is first important to realize that there no intrinsic length scale in the problem, because the fluid and the flat plate are of infinite extent. Since the concentration $\scpq\conc$ is dimensionless, there are only three dimensional variables $z$, $t$ and $\kdiff$ in the problem. These contain two dimensions, $\elset{\phdim L, \phdim T}$, and it is possible to construct only one dimensionless number, $\kdim = z/\kdiff t$. Therefore, just from dimensional analysis, it can be concluded that the concentration field does not vary independently with $z$ and $t$, but only on the combination $\kdim$. If this inference is correct, it should be possible to express the conservation equation in terms of the variable $\kdim$ alone. When $z$ and $t$ are expressed in terms of $\kdim$, the concentration equation becomes
+\beq
+-\left( \dfrac{z}{2\kdiff^{1/2}t^{3/2}} \right)\xpd{\scpq\conc}{\kdim} = 
+\xod{}{t}\nxpd{\scpq\conc}{\kdim}{2}\,.
+\eeq
+After multiplying throughout by $t$, the equation for the concentration field reduces to
+\beq
+\dfrac{\kdim}{2}\xpd{\scpq\conc}{\kdim} + \nxpd{\scpq\conc}{\kdim}{2} = 0
+\implies
+\kdim\ipd\kdim\scpq\conc + 2\ipd{\kdim\kdim}\scpq\conc = 0\,.
+\eeq
+The last equation validates the inference that the non-dimensionalized concentration field is only a function of $\kdim$. It is also necessary to transform the boundary conditions into conditions for the $\kdim$ coordinate. The transformed boundary conditions are
+\beq
+\scpq\conc =
+\begin{cases*}
+    0    & as $\kdim\to\infty$;\\
+    1    & at $\kdim = 0$;\\
+    0    & as $\kdim\to\infty$\,.
+\end{cases*}
+\eeq
+It is useful to note that the original conservation equation is a second order differential equation in $z$ and a first order differential equation in $t$, so it requires two boundary conditions in the $z$ coordinate and one initial condition. The conservation equation expressed in terms of $\kdim$ is a second order differential equation, which requires just two boundary conditions for $\kdim$. The last equation shows that one of the boundary conditions for $z\to\infty$ and the initial condition $t = 0$ turn out to be identical conditions for $\kdim\to\infty$ and, therefore, the transformation form $\tuple{z,t}$ produces no inconsistency in the boundary and initial conditions.
+
+The equation $\kdim\ipd\kdim\scpq\conc + 2\ipd{\kdim\kdim}\scpq\conc = 0$ can be solved to obtain
+\beq
+\scpq\conc\vat\kdim = \psi_1 + \psi_2\int_{\kdim}^{\infty}\dx\kdim'\,\exp\vat{-\dfrac{\kdim^2}{2}}\,.
+\eeq
+The constants $\psi_1$ and $\psi_2$ are determined from the conditions $\scpq\conc = 1$ at $\kdim = 0$ and $\scpq\conc = 0$ for $\kdim = \infty$, to obtain
+\beq
+\scpq\conc\vat\kdim = \sqrt{\dfrac{2}{\pi}}\int_{\kdim}^{\infty}\dx\kdim'\,\exp\vat{-\dfrac{\kdim^2}{2}}\,,
+\eeq
+where $\pi$ is the geometrical constant.
+
+From the solution, the last equation, it can be inferred that there is no intrinsic length scale in the system, but the length scale for the $z$ coordinate is a function of time and proportional to $\sqrt{\kdiff t}$ at time $t$. Thus, the length scale over which diffusion has taken place increases proportional to $t^{1/2}$. Thus, this equation will be a solution for the concentration diffusion in a configuration bounded by two plates, so long as the distance between the two plates, say $\length$, is large compared to $\sqrt{\kdiff t}$.
+
+
+\subsubsection{Steady diffusion into a falling film}
+This problem is a simplification of the actual diffusion in a falling film, which involves a combination of convection and diffusion. A thin film of fluid flows down a vertical surface. One side of the film is in contact with a gas which is soluble in the liquid, and as the liquid flows down, the gas is dissolved in the liquid. The concentration of gas in the liquid at the entrance is $\conc_\infty$, while the concentration of gas at the liquid-gas interface is $\conc_0$. The difference in concentration between the initial concentration in the liquid and the concentration at the interface acts as a driving force for diffusion. The $z$ coordinate is perpendicular to the gas-liquid interface, which is located at $z = 0$. We also assume that the penetration depth for the gas into the liquid (to be determined a little later) is small compared to the thickness of the liquid film, so that the boundary conditions in the $z$ coordinate given by
+\beq
+\scpq\conc\vat\kdim = \sqrt{\dfrac{2}{\pi}}\int_{\kdim}^{\infty}\dx\kdim'\,\exp\vat{-\dfrac{\kdim^2}{2}}
+\eeq
+are applicable. In addition, the boundary condition in the $x$ coordinate is $\conc = \conc_\infty$ at $x = 0$.
+
+
+\subsubsection{Diffusion in bounded channels}
+Next we consider the problem of diffusion in a channel bounded by two walls separated by a distance $\length$. Initially, the concentration of the fluid in the channel is equal to $\conc_\infty$. At initial time, the concentration of the solute on the wall at $z = 0$ is instantaneously increased to $\conc_0$, while the concentration on the surface at $z = \length$ remains equal to $\conc_\infty$. The problem is to find the concentration field as a function of time. Similar problems can be formulated for thermal energy and momentum transfer.
+
+The concentration field is first expressed in terms of the scaled concentration field $\scpq\conc$ by 
+\beq
+\scpq\conc = \dfrac{\conc - \conc_\infty}{\conc_0 - \conc_\infty}\,.
+\eeq
+The diffusion equation, obtained by a shell balance as before, is given by 
+\beq
+\ipd t\scpq\conc = \kdiff\ipd{zz}\scpq\conc\,.
+\eeq
+However, there is a modification in the boundary conditions:
+\beq
+\scpq\conc =
+\begin{cases*}
+    0    & for all $t$ at $z = \length$;\\
+    1    & for all $t > 0$ at $z = 0$;\\
+    0    & for all $z> 0$ at $t = 0$\,.
+\end{cases*}
+\eeq
+In this case, it is not possible to effect a reduction to a similarity form, because there is an additional length scale $\length$ in the problem and so the $z$ coordinate can be scaled by $\length$. A scaled $z$ coordinate is defined as $\scpq z = z/\length$ and the diffusion equation in terms of this coordinate is
+\beq
+\xpd{\scpq\conc} t = \dfrac{\kdiff}{\length^2}\nxpd{\scpq\conc}{\scpq z}{2}\,.
+\eeq
+The above equation suggests that it is appropriate to define a scaled time coordinate $\scpq t = \kdiff t/\length^2$ and the conservation equation in terms of this scaled time coordinate is
+\beq
+\xpd{\scpq\conc}{\scpq t} = \nxpd{\scpq\conc}{\scpq z}{2}
+\implies
+\ipd{\scpq t}{\scpq\conc} = \ipd{\scpq z\scpq z}{\scpq\conc}\,.
 \eeq
