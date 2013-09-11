@@ -1,0 +1,144 @@
+\section{Unidirectional transport}
+In this chapter, we consider transport in which there is a variation in the mass, momentum and temperature fields in only one dimension. The analysis is considerably simplified in this case, since there is only one spatial coordinate to be considered. However, the examples solved here illustrate the basic principles of the solution of more complex problems in multiple dimensions, which involve shell balances to derive differential equations for the concentration, velocity and temperature fields, and then an integration procedure for determining the variations in the concentration, velocity and temperature.
+
+
+\subsection{Solutions to the diffusion equation}
+
+\subsubsection{Unsteady transport into an infinite fluid}
+
+\paragraph{Mass transfer} 
+Consider a flat surface in the $xy$ plane located at $z = 0$ through which a solvent diffuses into the fluid. The plane surface is assumed to be of infinite extent in the $xy$ plane, and the height of the fluid supported by the plane is also considered to be of infinite extent. Initially, the concentration of the solute in the solvent at the surface~\footnote{~$\conc_\infty$ does not mean infinite concentration, but it refers to the concentration at a very long distance. This is analogous to the case of a hot body being cooled by a fluid stream. The body temperature can be denoted by $\temp\txt b$ and the fluid temperature constant at a long distance can be denoted by $\temp_\infty$.} is $\conc_\infty$. At time $t = 0$, the solute concentration at the surface is instantaneously increased to $\conc_0$, and there is diffusion of the solute into the solvent. We would like to determine the variation of the concentration of the solute with time.
+
+As the diffusion proceeds, there is transport of solute from the surface to the solvent, resulting in an increase in the concentration near the surface. However, the concentration far from the surface $z\to\infty$ remains unchanged at $\conc = \conc_\infty$. The conditions for the concentration field at the spatial boundaries and at the initial time are
+\beq
+\conc = \begin{cases*}
+            \conc_\infty    & for all $t$ as $z\to\infty$;\\
+            \conc_0         & for all $t > 0$ at $z = 0$;\\
+            \conc_\infty    & for all $z> 0$ at $t = 0$\,.
+        \end{cases*}
+\eeq
+The solution is simplified by non-dimensionalizing (scaling) the concentration:
+\beq
+\scpq\conc = \dfrac{\conc - \conc_\infty}{\conc_0 - \conc_\infty}\,.
+\eeq
+Note that, as in thermal transport, the driving force is not bare $\conc$, but a change thereof, $\Dx\conc$. Using such a non-dim, the conditions for $\scpq\conc$ become
+\beq
+\scpq\conc = \begin{cases*}
+                0    & for all $t$ as $z\to\infty$;\\
+                1    & for all $t > 0$ at $z = 0$;\\
+                0    & for all $z> 0$ at $t = 0$\,.
+             \end{cases*}
+\eeq
+
+
+\paragraph{Thermal transfer} 
+The configuration consists of a flat surface in the $xy$ plane of infinite extent and a fluid of thermal conductivity $\kthcond$ and specific thermal capacity $\kshcap_\press$ in the half space $z > 0$. Initially, the temperature of the fluid and the surface is $\temp_\infty$. At time $t = 0$, the temperature of the surface is instantaneously increased to $\temp_0$. Determine the temperature as a function of time.
+
+As conduction proceeds, there is a transport of energy from the surface to the fluid, resulting in an increase in the temperature of the fluid. However, the temperature at a large distance from the surface, $z\to\infty$, remains at $\temp = \temp_\infty$. Therefore, the conditions for the temperature at the spatial boundaries of the fluid and at initial time are
+\beq
+\temp = \begin{cases*}
+            \temp_\infty    & for all $t$ as $z\to\infty$;\\
+            \temp_0         & for all $t > 0$ at $z = 0$;\\
+            \temp_\infty    & for all $z> 0$ at $t = 0$\,.
+        \end{cases*}
+\eeq
+The solution is simplified by non-dimensionalizing (scaling) the temperature:
+\beq
+\scpq\temp = \dfrac{\temp - \temp_\infty}{\temp_0 - \temp_\infty}\,.
+\eeq
+The conditions for $\scpq\conc$ become
+\beq
+\scpq\temp = \begin{cases*}
+                0    & for all $t$ as $z\to\infty$;\\
+                1    & for all $t > 0$ at $z = 0$;\\
+                0    & for all $z> 0$ at $t = 0$\,.
+             \end{cases*}
+\eeq
+
+\paragraph{Momentum transfer}
+The configuration consists of an infinite fluid in the $z > 0$ half space bounded by an infinite flat surface in the $xz$ plane. The fluid and the surface are initially at rest. At time $t = 0$, the plane is instantaneously moved with a constant velocity $\vel$ in the $x$ direction. Determine the fluid velocity as a function of time.
+
+As time proceeds, the momentum that is transported from the surface diffuses through the fluid, resulting in fluid motion. However, the fluid at a large distance from the surface $z\to\infty$ remains at rest. If $\vel_x$ is the fluid velocity in the $x$ direction, it is convenient to define a non-dimensional fluid velocity $\scpq\vel_x = \vel_x/\vel$. The conditions for the non-dimensional fluid velocity at the spatial boundaries of the flow and at initial time are
+\beq
+\scpq\vel_x = \begin{cases*}
+                0    & for all $t$ as $z\to\infty$;\\
+                1    & for all $t > 0$ at $z = 0$;\\
+                0    & for all $z> 0$ at $t = 0$\,.
+             \end{cases*}
+\eeq
+
+
+\paragraph{Shell balance}
+In all three cases, mass, thermal and momentum transfer, the boundary and initial conditions are identical in form. Since the transport in all three cases involves diffusion in the direction perpendicular to the surface, and no variation along the surface, it is anticipated that the differential equation governing the transport will also be identical in form. The differential equation for the concentration field is first derived using a shell balance, and the analogous equations for heat and momentum transfer are provided.
+
+Consider a non-moving shell of thickness $\Dx z$ in the $z$ coordinate and of thickness $\Dx x$ and $\Dx y$ in the $xy$ plane. There is a transport of mass across the surfaces of the shell due to diffusion, which results in a change in the concentration in the shell. We consider the variation in the concentration within this control volume over a time interval $\Dx t$. Mass conservation requires that
+\beq
+\begin{pmatrix}
+\text{accumulation of mass} \\
+\text{in the shell}
+\end{pmatrix}
+= 
+\begin{pmatrix}
+\text{input of mass} \\
+\text{into the shell}
+\end{pmatrix}
+-
+\begin{pmatrix}
+\text{output of mass} \\
+\text{from the shell}
+\end{pmatrix}
+\eeq
+
+The accumulation of mass in a time $\Dx t$ is given by
+\beq
+\begin{pmatrix}
+\text{accumulation of mass} \\
+\text{in the shell}
+\end{pmatrix}
+= 
+\left(\conc\vat{\pos, t + \Dx t} - \conc\vat{\pos, t}\right)\Dx x\Dx y\Dx z\,.
+\eeq
+
+The mass flux at the surface at $z$ is given by
+\beq
+\flux\mass_z = -\kdiff\xpd\conc z\biggr\rvert_z
+\eeq
+and the mass entering the shell through the surface at $z$ in a time interval $\Dx t$ is given by the product of the mass flux, the area of transfer and the time interval $\Dx t$:
+\beq
+\begin{pmatrix}
+\text{input of mass} \\
+\text{into the shell}
+\end{pmatrix}
+=
+- \Dx t\Dx x\Dx y\left(\kdiff\xpd\conc z\biggr\rvert_z\right)\,.
+\eeq
+
+In a similar manner, the mass leaving the surface at $z + \Dx z$ is given by
+\beq
+\begin{pmatrix}
+\text{output of mass} \\
+\text{from the shell}
+\end{pmatrix}
+=
+- \Dx t\Dx x\Dx y\left(\kdiff\xpd\conc z\biggr\rvert_{z + \Dx z}\right)\,.
+\eeq
+Substituting the last equations in the mass balance equation and dividing by $\Dx t\Dx x\Dx y\Dx z$, we have
+\beq
+\dfrac{\conc\vat{\pos, t + \Dx t} - \conc\vat{\pos, t}}{\Dx t}
+=
+\dfrac{1}{\Dx z}
+\left(
+    \kdiff\xpd\conc z\biggr\rvert_{z + \Dx z} - 
+    \kdiff\xpd\conc z\biggr\rvert_{z}
+\right)\,.
+\eeq
+The limits $\Dx t\to 0$ and $\Dx z\to 0$ are taken to obtain a partial differential equation for the concentration field:
+\beq
+\xpd\conc t = \xpd{}{z}\left(\kdiff\xpd\conc z\right)\,.
+\eeq
+If the diffusion coefficient is independent of the spatial position, the differential equation reduces to
+\beq
+\xpd\conc t = \kdiff\nxpd\conc z 2
+\implies
+\cder\conc t = \kdiff\cder\conc{zz}\,.
+\eeq

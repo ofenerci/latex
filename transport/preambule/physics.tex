@@ -2,6 +2,8 @@
 %
 %%% MECHANICS
 %
+%\newcommand{\vattpos}{\vat{t, \pos}} % value at t and position
+%
 \newcommand{\pos}{\xi} % position
 \newcommand{\press}{p} % pressure
 \newcommand{\vel}{u}   % velocity
@@ -17,7 +19,9 @@
 %
 \newcommand{\kspring}{\kappa} % spring constant
 %
-%\newcommand{\vattpos}{\vat{t, \pos}} % value at t and position
+\newcommand{\energy}{e}             % energy
+\newcommand{\ken}{\energy\txt{kin}} % kinetic energy
+\newcommand{\pen}{\energy\txt{pot}} % potential energy
 %
 %%% ENERGY TRANSPORT
 %
@@ -53,12 +57,14 @@
 %
 %%% MASS TRANSPORT
 %
-\newcommand{\npart}{n}    % n (number of) particles
+\newcommand{\npart}{n}        % n (number of) particles
+\newcommand{\npartdens}{\eta} % number of particles density
 \newcommand{\mass}{m}
 \newcommand{\dens}{\rho}  % mass density
 \newcommand{\chthen}{r}   % chemical reaction thermal energy
 \newcommand{\conc}{c}     % mass concentration
 \newcommand{\kdiff}{\phi} % diffusion coefficient
+\newcommand{\mfpath}{\lambda} % mean free path
 %
 %%% MOMENTUM TRANSPORT
 %

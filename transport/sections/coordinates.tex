@@ -93,3 +93,85 @@ The metric coefficients for the alternative frame are found by
 \fmet{k'}{l'} = \fbvec{k'}\iprod\fbvec{l'}\,.
 \eeq
 
+
+\subsection{Examples}
+Examples of this section:
+
+\begin{example}
+In Cartesian coordinates, a particle position is given by $\pos = \tuple{x,y}$, where $x$ and $y$ are the coordinates of the particle. Express the position in polar coordinates.
+\end{example}
+
+\begin{solution}
+Polar coordinates, $\rho$ and $\varphi$, are defined by
+\beq
+x = \rho\cos\vat\varphi\qquad\text{and}\qquad
+y = \rho\sin\vat\varphi\,,
+\eeq
+where $\rho^2 = x^2 + y^2$ and $\varphi = \arctan2\vat{y,x}$, see \url{https://en.wikipedia.org/wiki/Polar_coordinates#Converting_between_polar_and_Cartesian_coordinates}.
+
+Then, $\pos$ can be written as
+\beq
+\pos = \tuple{x,y} = \rho\tuple{\cos\vat\varphi, \sin\vat\varphi}\,.
+\eeq
+
+The tangent vectors are thus
+\beq
+\fbvec\rho = \xpd{\pos}{\rho} 
+           = \tuple{\cos\vat\varphi, \sin\vat\varphi}
+\implies
+\ufbvec\rho = \dfrac{\fbvec\rho}{\magn{\fbvec\rho}} 
+            = \tuple{\cos\vat\varphi, \sin\vat\varphi}
+\eeq
+in the $\rho$ direction and
+\beq
+\fbvec\varphi = \xpd{\pos}{\varphi} 
+              = \rho\tuple{-\sin\vat\varphi, \cos\vat\varphi}
+\implies
+\ufbvec\varphi = \dfrac{\fbvec\varphi}{\magn{\fbvec\varphi}} 
+               = \dfrac{\fbvec\varphi}{\rho}
+               = \tuple{-\sin\vat\varphi, \cos\vat\varphi}
+\eeq
+in the $\varphi$ direction.
+
+In Cartesian coordinates, unit vectors are constant in direction and in magnitude. However, in polar coordinates, neither unit vector is constant.
+
+With the unit tangent vectors, $\pos$ can be written as
+\beq
+\pos = \tuple{x,y} 
+     = \tuple{\rho\cos\vat\varphi, \rho\sin\vat\varphi}
+     = \rho\tuple{\cos\vat\varphi, \sin\vat\varphi}
+     = \rho\ufbvec\rho\,.\mqed
+\eeq
+\end{solution}
+
+
+\begin{example}
+Express a particle velocity in polar coordinates.
+\end{example}
+
+\begin{solution}
+Since the particle position in polar coordinates can be written as $\pos = \rho\ufbvec\rho$, the particle velocity, $\dt\pos$, can be calculated by calculating the change of the particle position
+\beq
+\dx\pos = \dx\left(\rho\ufbvec\rho\right)
+        = \dx\rho\ufbvec\rho + \rho\dx\ufbvec\rho\,.
+\eeq
+The change of $\ufbvec\rho$ is given by
+\beq
+\dx\ufbvec\rho = \tuple{-\sin\vat\varphi\,\dx\varphi, \cos\vat\varphi\,\dx\varphi}
+               = \dx\varphi\tuple{-\sin\vat\varphi, \cos\vat\varphi}
+               = \dx\varphi\ufbvec\varphi\,.
+\eeq
+Thus, the change of the particle position becomes
+\beq
+\dx\pos = \dx\left(\rho\ufbvec\rho\right)
+        = \dx\rho\ufbvec\rho + \rho\dx\varphi\ufbvec\varphi\,.
+\eeq
+
+Finally, the change of the particle position per unit time, \ie, velocity, is
+\beq
+\dt\pos = \xod{\pos}{t} 
+        = \xod\rho t\ufbvec\rho + \rho\xod\varphi t\ufbvec\varphi
+        = \dt\rho\ufbvec\rho + \rho\dt\varphi\ufbvec\varphi\,,
+\eeq
+where $\dt\rho$ is the \lingo{radial velocity}, rate at which $\rho$ changes magnitude or stretches' and $\rho\dt\varphi$ the \lingo{circumferential velocity}, rate at which $\rho$ changes direction or swings.
+\end{solution}

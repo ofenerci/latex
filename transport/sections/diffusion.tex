@@ -1,0 +1,149 @@
+\section{Diffusion}
+Transport of thermal energy, mass or momentum takes place by two mechanisms: convection and diffusion. Convection is the process by which material or thermal energy is transported due to the mean motion of the fluid in which it is carried. Diffusion, on the other hand, is the process by which material is transported by the thermal motion of the molecules within the fluid, even in the absence of any mean flow. The random thermal motion takes place on the microscopic length scale in the fluid, which is the molecular size in the liquid and the mean free path in a gas. Examples of convection and diffusion are as follows.
+
+\begin{itemize}
+\item A mixed flow reactor with an impeller, in which a reaction catalyzed by a solid catalyst takes place. The pipes at the inlet and outlet of the reactor transport material by convection into and out of the reactor. Within the reactor, transport takes place by convection due to the motion of the impeller, and the flow patterns generated therein. However, if we closely examine the surface of a catalyst, the fluid flow takes place tangential to the catalyst surface, and there is no flow perpendicular to the surface of the catalyst. Therefore, the transport of the reactant from the fluid to the solid surface, and the transport of product from the solid surface to the fluid, can take place only by diffusion.
+%
+\item A shell and tube thermal exchanger, in which a hot fluid flows through the tube and a cold fluid flows on the shell side. The thermal energy is transported into the exchanger by convection by the fluid at the inlet of the shell side, and by convection by the fluid at the outlet on the tube side. However, the transport from the shell side to the tube side cannot take place by convection, since the fluid flow is tangential to the wall of the tube, and there is no convective transport perpendicular to the wall of the tube. The transport across the tube wall takes place due to diffusion in the fluids and the wall of the tube.
+%
+\item Fluid flowing through a pipe which is pumped using a pump at the inlet. The action of the pump results in a pressure gradient down the tube, with a higher pressure at the inlet and a lower pressure at the outlet. The net flux of momentum (momentum transported per unit area per unit time) into the tube is the product of the pressure difference and the average velocity of the fluid. (There is a contribution to the flux due to the force exerted by the fluid velocity at the interface, but this contribution is equal at the inlet and outlet, and so there is no net flux due to this). The transport of momentum at the inlet is due to convection, and is absent when there is no fluid flow. The total rate of input of momentum into the tube due to the pump is balanced by the viscous (frictional) force exerted by the walls of the tube on the fluid. This frictional transfer at the wall cannot take place by convection, since there is no fluid flow perpendicular to the walls of the tube. Therefore, this takes place by the diffusion of momentum.
+\end{itemize}
+
+It can be seen thus that the convection is directional, and takes place only along the direction of flow. However, the random velocity fluctuations of the molecules that cause diffusion are isotropic, and therefore have no preferred direction. Therefore, diffusion takes place in the direction in which there is a gradient in the concentration, temperature or mean velocity. Transport takes place by a combination of convection and diffusion in the bulk flow, but can take place only diffusion at bounding surfaces, since there is no mean flow perpendicular to the surface. The mechanisms of mass, momentum and thermal diffusion are discussed in further detail in the following sections.
+
+
+\subsection{Mass diffusion}
+
+\subsubsection{Mass diffusion in gases}
+Diffusive transport takes place due to the random motion of the molecules, in the absence of any mean motion of the center of mass. This concept is easiest to understand by using a gas mixture in two bulbs separated by a tube. One of the bulbs contains the pure solvent \ce A, while the other contains a mixture of \ce A and a small amount of the solute \ce B. It will be assumed, for simplicity, that \ce A and \ce B have equal molecular mass and diameter, and the initial pressures and temperatures in the two bulbs are equal. When the stop cork between the two is opened, there is no net transfer of mass between the two bulbs, since the pressures and temperatures are equal. However, there will be a transfer of the solute \ce B from one bulb to the other until the concentrations in the two bulbs are equal. Consider a surface across which there is a variation in the concentration. There is a constant transport of molecules across this surface due to the thermal motion of the molecules. The flux of molecules at the surface, $\flux\npart$, is defined as the number of molecules passing through the surface per unit area per unit time. If the solute concentration and temperature are constant, the total flux of molecules passing downward from above to below the surface is equal to the flux passing through in the upward direction. However, if there is a variation of concentration across the surface, then there is a net transport of solute molecules downward. This is because the molecules that travel downward through the surface are transported from a distance of the order of one mean free path above the surface, where the concentration is higher, whereas the molecules which travel upward are transported from a distance of the order of one mean free path below the surface, where the concentration is lower. The flux of molecules, which is the number of molecules transported downward through the surface per unit area per unit time is the number of particles per unit volume, $\npartdens$, times the average downward velocity of the particles. The \lingo{root mean square velocity} of the molecules in a gas can be estimated as
+\beq
+\vel\txt{rms} = \sqrt{\dfrac{3\kboltz\temp}{\mass}}\,,
+\eeq
+where $\temp$ is the thermodynamic temperature, $\kboltz$ the Boltzmann constant and $\mass$ the mass of the molecule. The \lingo{mean velocity} is defined slightly differently, as the average of the magnitude of the velocity of all the particles. This turns out to be
+\beq
+\vel\txt{mean} = \sqrt{\dfrac{8\kboltz\temp}{\pi\mass}}\,.
+\eeq
+
+The flux of molecules crossing a surface is from one side to the other is proportional to the mean molecular velocity and the number density of the molecules. The flux is given by
+\beq
+\flux\npart = \dfrac{1}{4}\npartdens\vel\txt{mean}\,.
+\eeq
+The molecules reaching a plane have had their last collision, on average, a distance $2\mfpath/3$ above the plane, where the mean free path, $\mfpath$, is
+\beq
+\mfpath = \dfrac{1}{\sqrt{2}\pi\diam^2\npart}\,,
+\eeq
+where $\diam$ is the particle diameter and $\npart$ the particle number.
+
+The total flux of molecules is then
+\begin{equation}\label{eq:totaldownfluxofmolecules}
+\flux\npart_{z-} = \dfrac{1}{4}\vel\txt{rms}
+                    \left(\npartdens_0 + \dfrac{2}{3}\mfpath\xod\npartdens z\biggr\rvert_{z = 0}\right)\,,
+\end{equation}
+where $\npartdens_0$ is the particle density at the surface $z = 0$ and $(\npartdens_s - a^2\mfpath(\dx\npartdens/\dx z)|z = 0)$ is the average concentration of the molecules traveling downward through the surface. The constant $a^2$ is a constant of $\orderof\vat{1}$, since the molecules that travel downward are transported from a location which is of the order of one mean free path $\mfpath$ above the surface. This constant can be evaluated exactly using kinetic theory of gases, but this is not necessary since we are only interested in obtaining the order of magnitude of the diffusion coefficient. In \cref{eq:totaldownfluxofmolecules}, a Taylor series expansion has been used for the average density of the molecules that are transported through the surface, and this expansion has been truncated at the second term. This is a good approximation if the mean free path is small compared to the length over which the density varies.
+
+The flux of molecules in the upward direction is
+\begin{equation}\label{eq:totalupfluxofmolecules}
+\flux\npart_{z+} = \dfrac{1}{4}\vel\txt{rms}
+                    \left(\npartdens_0 - \dfrac{2}{3}\mfpath\xod\npartdens z\biggr\rvert_{z = 0}\right)\,,
+\end{equation}
+since the molecules are transported from a distance of the order of one mean free path below the surface $z = 0$. The total flux of molecules is given by
+\begin{equation}\label{eq:totalfluxofmolecules}
+\flux\npart_{z} = \flux\npart_{z+} - \flux\npart_{z-}
+                = \dfrac{1}{3} - \dfrac{\mfpath}{\diam^2}\xod\npartdens z\biggr\rvert_{z = 0}
+                = -\kdiff\xod\npartdens z\biggr\rvert_{z = 0}\,,
+\end{equation}
+where $\kdiff$, the diffusion coefficient, has dimensions of $\phdim L^2/\phdim T$. A more exact expression for the diffusion coefficient is obtained using the kinetic theory of gases, which provides the value of $a$, but the functional dependence of the flux on the temperature, molecular diameter and the concentration gradient is captured by the simple explanation leading to \cref{eq:totalfluxofmolecules}. For a mixture of two components, with masses $\mass_1$ and $\mass_2$ and diameters $\diam_1$ and $\diam_2$, exact expressions for the diffusion coefficient can be obtained using methods from the kinetic theory of gases. For spherical molecules, the coefficient of diffusion is
+\begin{equation}\label{eq:diffcoefficientformixtures}
+\kdiff_{12} = \dfrac{3}{8\npart\diam_{12}^2}
+                \left(
+                    \dfrac{\kboltz\temp(\mass_1 + \mass_2)}{2\pi\mass_1\mass_2}
+                \right)^{1/2}\,,
+\end{equation}
+where $\diam_{12} = (\diam_1 + \diam_2)/2$. The coefficient of \lingo{self diffusion}, the diffusion of a molecule in a gas composed of molecules of the same type, can be obtained by setting $\diam_1 = \diam_2 = \diam$ and $\mass_1 = \mass_2 = \mass$ in the last equation
+\beq
+\kdiff_{11} = \dfrac{3}{8\npart\diam^2}
+                \left(
+                    \dfrac{\kboltz\temp}{\pi\mass}
+                \right)^{1/2}\,.
+\eeq
+
+The magnitude of the diffusion coefficient in a gas can be estimated as follows. The root mean square fluctuating velocity in a gas at $\temp = \SI{300}{K}$ is $(3\kboltz\temp/\mass)^{1/2}$, which is about $\SI{2000}{m/s}$ for hydrogen, and about $\SI{500}{m/s}$ for oxygen. The mean free path of the molecules in a gas, the distance that a gas molecule travels between collisions, is proportional to $(\npartdens\diam^2)^{-1}$, where $\npartdens$ is the number of molecules per unit volume and $\diam$ is the molecular diameter. The number of gas molecules per unit volume, from the ideal gas law, is $(\press/\kboltz\temp)$, where $\press$ is the pressure. For a gas at STP, $\press = \SI{1.013e5}{N/m^2}$, $\temp = \SI{300}{K}$ and $\kboltz = \SI{1.3087e-23}{J/K}$, and the number of molecules per unit volume is $\SI{2.5e25}{m^{-3}}$. The diameter of a hydrogen molecule is $\SI{1.372e-10}{m}$, and therefore the mean free path of a hydrogen molecule at STP is approximately $\SI{2e-6}{m}$, or $\SI{2}{microns}$. The diameter of larger molecules is also of the same order, though somewhat larger; \eg, the diameter of a nitrogen molecule is $\SI{3.8e-10}{m}$, and that of oxygen is $\SI{3.7e-10}{m}$. Therefore, the mean free paths are correspondingly lower, and an upper limit on the mean free path of a gas at STP is about $\SI{2}{\micro m}$. The product of the mean free path and the $\vel\txt{rms}$ is estimated as a constant times $\SI{4e-3}{m^2/s}$ for hydrogen and about $\SI{2.5e-4}{m^2/s}$ for nitrogen and oxygen. These are approximately in agreement with values reported in literature; for small molecules \ce{H2} and \ce{He}, Cussler reports the diffusion coefficient to be $\SI{1.132e-4}{m^2/s}$, while for large molecules such as nitrogen and oxygen the diffusion coefficient is about 10 times less, $\SI{1.81e-5}{m^2/s}$. These vary from the diffusion coefficient predicted by \cref{eq:diffcoefficientformixtures} are in agreement with those reported in experiments to within about $\SI{2}{\%}$.
+
+It is useful to examine the assumptions that were used to derive the expression for the diffusion coefficient in \cref{eq:totalfluxofmolecules}. The first assumption was that the mean free path is small compared to the length scale for diffusion, which is the distance between the two bulbs in this case, so that the expression for the concentration above the surface in \cref{eq:totalupfluxofmolecules} can be truncated at the first term. The truncation of the Taylor series expansion for the concentration in equation \cref{eq:totalupfluxofmolecules}, valid if the length scale of the flow is large compared to the mean free path, is applicable for all applications at STP except those in microfluidics where the channel and tube sizes are of the order of microns.
+
+
+\subsubsection{Mass diffusion in liquids}
+The estimate of the diffusion coefficient for liquids calculated in a similar manner as in gases is not accurate. Since the mean molecular velocity in liquids and gases are about equal at the same temperature, whereas the mean free path is of the order of one molecular diameter, it would be expected that the diffusion coefficients in liquids is only about ten times less than that in gases. However, the diffusion coefficients of small molecules in liquids are about four orders of magnitude lower than that in gases. For example, the diffusion coefficient of nitrogen in water is $\SI{1.88e-9}{m^2/s}$, while that of hydrogen in water is $\SI{4.5e-9}{m^2/s}$. The diffusion coefficient of larger molecules, such as polymers, in water is smaller still. The diffusion coefficient of hemoglobin in water is $\SI{6.9e-11}{m^2/s}$.
+
+Equation 2.7 [equation for diffusion of gases] cannot be used for an accurate prediction of the diffusion coefficients in liquids because \lingo{cooperative motion} is necessary for the diffusion of molecules within a liquid. The molecules in a liquid are closely packed, and so the translation of one molecules requires the cooperative motion of many other molecules. This is in contrast to a gas, where the molecules translate freely between successive collisions. An estimate for the diffusion coefficient can be obtained using the Stokes-Einstein equation for the diffusivity
+\begin{equation}\label{eq:stokeseinsteinequationformassdiffusion}
+\kdiff\sim\dfrac{\kboltz\temp}{3\pi\dynvis\diam}\,,
+\end{equation}
+where $\kdiff$ is the diffusivity coefficient, $\kboltz$ Boltzmann constant, $\temp$ thermodynamic temperature, $\diam$ the diameter of the molecule that is diffusing and $\dynvis$ the dynamic viscosity of the suspending fluid. This formula is strictly applicable only for colloidal particles in a fluid when the particle diameter is large compared to the diameter of the fluid, but is also used as a model equation for predicting the diffusivity of small molecules in a liquid. For nitrogen in water of viscosity $\SI{1e-3}{kg/m.s}$, this gives $\kdiff = \SI{1.15e-9}{m^2/s}$, whereas for hydrogen in water the diffusivity is $\kdiff = \SI{3.4e-9}{m^2/s}$. Though the order of magnitude of this prediction is in agreement with the experimentally measured diffusion coefficient, the numerical values are not exact. This is because the formula is strictly applicable only for large colloidal particles in a fluid and not for small molecules.
+
+The diffusion coefficients in liquids and gases increase with temperature. In gases, the diffusion coefficient increases proportional to $\temp^{1/2}$, due to an increase in the root mean square velocity. \Cref{eq:stokeseinsteinequationformassdiffusion} indicates that the diffusion coefficient increases proportional to $\temp$ if the viscosity is a constant, due to an increase in the energy of the fluctuations. However, the viscosity of liquids decreases with temperature and so the diffusion coefficient increases faster than $\temp$ with an increase in the temperature.
+
+
+\subsubsection{Diffusion in multicomponent systems}
+So far, we have restricted attention to the diffusion of a solute in a solvent, and assumed that the solute concentration is small compared to that of the solvent. In this case, the motion of the solute does not cause a movement in the center of mass, and so there is no convective motion. However, when the solute and solvent concentrations are comparable, as well as in multicomponent systems, the motion of the solute could result in the motion of the center of mass. In this case, the constituents in the mixture have mean motion, which is the motion of the center of mass, as well as diffusive motion, which is motion relative to the center of mass.
+
+
+\subsection{Momentum diffusion}
+Using arguments similar to those used to estimate mass diffusivity in gases, the end result are the molecular definitions of dynamic and kinematic viscosities for gases:
+\begin{subequations}\label{eq:dynandkinviscositiesforgases}
+\begin{align}
+\dynvis &= \dfrac{5}{16\diam^2}\left(\dfrac{\mass\kboltz\temp}{\pi}\right)^{1/2}\quad\text{and}\\
+\kinvis &= \dfrac{5}{16\npart\diam^2}\left(\dfrac{\kboltz\temp}{\pi\mass}\right)^{1/2}\,,
+\end{align}
+\end{subequations}
+where $\kinvis = \dynvis/\dens$ is the \lingo{kinematic viscosity} or the \lingo{momentum diffusivity}.
+
+From \cref{eq:diffcoefficientformixtures} and \cref{eq:dynandkinviscositiesforgases}, it can be seen that the self diffusivity $\kdiff_{11}$ and the kinematic viscosity $\kinvis$ are proportional to each other and the Schmidt number $\kschmidt = \kdiff_{11}/\kinvis = 6/5$ for monoatomic gases of spherical molecules. In real gases, the Schmidt number varies between 1.32 and 1.4 for most polyatomic gases, but has a lower value between 1.25 and 1.3 for monoatomic gases. This discrepancy is because the actual pair potential between the gas molecules is not the hard sphere potential, but resembles the Lennard-Jones potential, which has an attractive component. Values between 1.32 and 1.36 are obtained for gases which interact by the Lennard-Jones potential. However, in all cases, the momentum and mass diffusivity in gases are of the same order of magnitude. The momentum diffusivity also increases with temperature, because the root mean square velocity increases as $\sqrt{\temp}$, whereas the mean free path is independent of temperature and depends only on the density. The momentum diffusivity decreases as the density is increased, because the mean free path decreases.
+
+The momentum diffusivity for liquids turns out to be much higher than the mass diffusivity of liquids, because the transport of momentum does not require the physical motion of individual molecules, and is therefore not restricted by the collective rearrengement required for the translation of a molecule. Consequently, the momentum diffusivity in liquids is only about one order of magnitude smaller than the mass diffusivity; for example, the kinematic viscosity of water is $\SI{1e-6}{m^2/s}$ at $\SI{20}{\celsius}$ and atmospheric pressure, whereas that for air is $\SI{1.5e-5}{m^2/s}$ under the same conditions. Therefore, the Schmidt number for liquids of small molecules is about $\SI{e-3}{m^2/s}$. The momentum diffusivity in liquids also decreases with an increase in temperature, in contrast to gases where it increases with an increase in pressure. This is due to the difference in the structure of gases and liquids. Since the molecules in a liquid are densely packed, neighboring molecules are located at the position corresponding to the potential energy minimum of the central molecule. In this case, the relative motion of the molecules is an activated process which has an energy barrier, and transport across this barrier is easier as the temperature is increased. This results in a lower stress requirement for a given strain rate, and consequently a lower kinematic viscosity.
+
+
+\subsection{Thermal diffusion}
+Thermal diffusion is the process of transfer of energy due to the random motion of molecules when there is a variation in the temperature in the system. In a gas, thermal diffusion takes place due to the physical motion of molecules across a surface in the gas when there is a temperature variation across the surface. In this case, the energy density $\thendens$ is defined as the average energy per unit volume, in a manner analogous to the particle density, $\npartdens$, the mass of solute per unit volume. Consider a surface at $z = 0$ across which there is a variation in the temperature, and therefore a variation in $\thendens$. The flux of energy, which is the rate of transfer of energy per unit area downward through the surface, analogous to \cref{eq:totaldownfluxofmolecules}, is given by
+\beq
+\flux\then_{z-} = a_1^\then\vel\txt{rms}\left(\thendens_0 + a_2^\then\mfpath\xod\thendens z\right)\,,
+\eeq
+where $a_1^\then$ and $a_2^\then$ are $\orderof\vat 1$ numbers. The average rate of transport of energy per unit area upward through the surface, analogous to \cref{eq:totalupfluxofmolecules}, is
+\beq
+\flux\then_{z+} = a_1^\then\vel\txt{rms}\left(\thendens_0 - a_2^\then\mfpath\xod\thendens z\right)\,.
+\eeq
+Using these, the total energy flux is
+\beq
+\flux\then_z = -\kdiff\xod\thendens z\,,
+\eeq
+where $\kdiff$ is the \lingo{thermal diffusivity}, with dimensions of $\phdim L^2/\phdim T$. The thermal conductivity is obtained by expressing the energy in terms of the temperature, $\thendens = \mass\npart\kshcap_\vol\temp$, where $\kshcap_\vol$ is the specific thermal at constant volume, defined as the energy per unit mass, to obtain
+\beq
+\flux\then_z = -\kthcond\xod\temp z\,,
+\eeq
+where
+\beq
+\kthcond = 2a^\then\vel\txt{rms}\mfpath\mass\npart\kshcap_\vol\,.
+\eeq
+The thermal conductivity has units of $\phdim M\phdim L/\phdim T\phdimtemp$. A more exact calculation can be carried out using kinetic theory in order to remove the uncertainty in the value of $a^\then$, and the result for a
+monoatomic gas of spherical molecules is
+\begin{subequations}
+\begin{align}\label{eq:thermalconductivitygases}
+\kthcond &= \dfrac{5}{2}\kshcap_\vol\dynvis \\
+         &= \dfrac{75}{64\diam^2}
+              \left(
+                  \dfrac{\kboltz^3\temp}{\pi\mass}
+              \right)^{3/2}\,.\label{eq:finalthermalconductivitygases}
+\end{align}
+\end{subequations}
+In deriving the above thermal conductivity, the value $\kshcap_\vol = 3\kboltz/2m$ has been used. The diffusivity and thermal conductivity are related by
+\beq
+\kdiff = \dfrac{\kthcond}{\npart\mass\kshcap_\vol}
+       = \dfrac{\kthcond}{\dens\kshcap_\vol}\,,
+\eeq
+where $\dens$ is the mass density.
+
+\Cref{eq:finalthermalconductivitygases} for the thermal conductivity is in agreement with experimental results for monoatomic gases to within $\SI{1}{\%}$ at STP. \Cref{eq:finalthermalconductivitygases} is not applicable for diatomic and polyatomic gases, especially for gases of polar molecules, since there is an exchange between the translational and internal energy modes. The ratio of the momentum and thermal diffusivity, $\kshcap_\press\dynvis/\kthcond$, is known as the Prandtl number, $\kprandtl$. This ratio is predicted to be (2/3) for monoatomic gases of spherical molecules, and experimentally observed values vary between 0.66 for unimolecular gases such as neon and argon, to a maximum of about 0.95 for water at boiling point at atmospheric pressure. For polyatomic molecules, there is a transfer of energy between the translational and internal modes, and a correlation of the type 
+\beq
+\kprandtl = \dfrac{\kshcap_\press}{\kshcap_\press + 1.25\kgas}
+\eeq
+is found to provide good predictions.
