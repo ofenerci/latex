@@ -11,11 +11,11 @@
 Be careful with notation:
 
 \begin{caution}
-We use the prime notation (Lagrange's notation for derivatives) to express time rate changes; \eg, when expressing a body internal energy time rate change: $\rate\ien$, or, equivalently, $\rate\ien = \ipd t\ien$. Note that $\dim\rate\ien = E/T$.
+We use the prime notation (Lagrange's notation for derivatives) to express time rate changes; \eg, when expressing a body internal energy time rate change: $\rate\ien$, or, equivalently, $\rate\ien = \ipd t\ien$. Note that $\dim\rate\ien = \phdim E/\phdim T$.
 
-Under the same dimensional basis, we also use the prime notation to express energy flows; \eg, when expressing thermal flow, \aka thermal power, $\flow\then$; since $\dim\flow\then = E/T$. The same applies for other flows, like work change rate, \aka mechanical power, $\flow\work$.
+Under the same dimensional basis, we also use the prime notation to express energy flows; \eg, when expressing thermal flow, \aka thermal power, $\flow\then$; since $\dim\flow\then = \phdim E/\phdim T$. The same applies for other flows, like work change rate, \aka mechanical power, $\flow\work$.
 
-On the other hand, however, in order to preserve undecorated variables and similarly looking equations, we use an analogous notation for fluxes: the double prime notation; \eg, when expressing thermal energy flux: $\flux\then$. Note that now $\dim\flux\then = E/L^2T$, which is \emph{not} the second derivative of thermal energy with respect to time; \ie, $\flux\then \neq \ddt\then = \iod t{\iod t\then}$.
+On the other hand, however, in order to preserve undecorated variables and similarly looking equations, we use an analogous notation for fluxes: the double prime notation; \eg, when expressing thermal energy flux: $\flux\then$. Note that now $\dim\flux\then = \phdim E/\phdim L^2\phdim T$, which is \emph{not} the second derivative of thermal energy with respect to time; \ie, $\flux\then \neq \ddt\then = \iod t{\iod t\then}$.
 
 Therefore, in the case of any doubt, use the physicist's best allies: mathematical interpretation, physical reasoning and dimensional analysis.
 \end{caution}
@@ -34,7 +34,7 @@ The body internal energy is related to the body \lingo{thermodynamic temperature
 \beq
 \ien = \kshcap\mass\temp\,,
 \eeq
-where $\kshcap$ is a property of the body material called \lingo{specific thermal capacity}~\footnote{~This property is called in literature \lingo{specific energy capacity}.}, defined as the capacity that a body has to store or release thermal energy, $\dim\kshcap = E/M\Theta$, and $\temp$ is the body thermodynamic temperature.
+where $\kshcap$ is a property of the body material called \lingo{specific thermal capacity}~\footnote{~This property is called in literature \lingo{specific energy capacity}.}, defined as the capacity that a body has to store or release thermal energy, $\dim\kshcap = \phdim E/\phdim M\phdimtemp$, and $\temp$ is the body thermodynamic temperature.
 
 If $\press\,\dx\vol$ is the only work that occurs, then,
 \beq
@@ -94,11 +94,11 @@ In other words, since every degree of freedom that a particle has carries energy
 \end{note}
 
 \begin{dimensional}
-When analyzing thermal energy transfer, the most suitable \lingo{dimensional system} is the $ELT\Theta$ system -- a \lingo{dimensionally independent system}. Within this framework, the dimensions of energy transfer, \aka heat, of work and of internal energy are $\dim\then = \dim\work = \dim\ien = E$ and of energy flow, \aka thermal power or thermal flow, of work rate, \aka mechanical power, and of internal energy change rate, \aka accumulation, are $\dim\flow\then = \dim\rate\work = \dim\rate\ien = E/T$.
+When analyzing thermal energy transfer, the most suitable \lingo{dimensional system} is the $ELT\Theta$ system -- a \lingo{dimensionally independent system}. Within this framework, the dimensions of energy transfer, \aka heat, of work and of internal energy are $\dim\then = \dim\work = \dim\ien = \phdim E$ and of energy flow, \aka thermal power or thermal flow, of work rate, \aka mechanical power, and of internal energy change rate, \aka accumulation, are $\dim\flow\then = \dim\rate\work = \dim\rate\ien = \phdim E/\phdim T$.
 \end{dimensional}
 
 \begin{technote}
-In giving the dimensions of the specific heat capacity $\kshcap$ as $E/M\Theta$, we are abusing of the $ELT\Theta$ system by adding mass, $M$, to it. This addition extends the dimensionally \emph{independent} $ELT\Theta$ system to the dimensionally \emph{dependent}, redundant, $EMLT\Theta$ system. We do so consciously, so to stress physics instead of mathematical purity; for, in the ``pure'' $ELT\Theta$ system, the dimensions of mass are $ET^2/L^2$ and then the dimensions of the $\kshcap$ are $L^2/T^2\Theta$; disguising therefore its physical meaning. In other words, we prefer to interpret specific heat capacity as the capacity that a body has to store energy at a given temperature per unit mass or $\dim\kshcap = E/M\Theta$, rather than the less informative $L^2/T^2\Theta$.
+In giving the dimensions of the specific heat capacity $\kshcap$ as $\phdim E/\phdim M\phdimtemp$, we are abusing of the $ELT\Theta$ system by adding mass, $M$, to it. This addition extends the dimensionally \emph{independent} $ELT\Theta$ system to the dimensionally \emph{dependent}, redundant, $EMLT\Theta$ system. We do so consciously, so to stress physics instead of mathematical purity; for, in the ``pure'' $ELT\Theta$ system, the dimensions of mass are $\phdim E\phdim T^2/\phdim L^2$ and then the dimensions of the $\kshcap$ are $\phdim L^2/\phdim T^2\phdimtemp$; disguising therefore its physical meaning. In other words, we prefer to interpret specific heat capacity as the capacity that a body has to store energy at a given temperature per unit mass or $\dim\kshcap = \phdim E/\phdim M\phdimtemp$, rather than the less informative $\phdim L^2/\phdim T^2\phdimtemp$.
 \end{technote}
 
 

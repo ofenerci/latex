@@ -1,0 +1,201 @@
+\section{Conservation equations}
+Conservation equations are based on two principles: conservation laws and constitutive laws. The foundation of conservation laws are the mass conservation principle, the energy conservation principle and Newton's law for the conservation of momentum: the rate of change of momentum is equal to the sum of the applied forces.
+
+There is a complication, however, when applying conservation laws to flow systems: fluids are transported with the mean flow, thus it's necessary to apply the principles in a reference frame moving with the fluid. Therefore, the time derivatives in the laws must be more carefully defined. There is a key concept to develop on a first instance: the \lingo{substantial derivative}.
+
+
+\subsection{Cartesian coordinates}
+
+\subsubsection{Partial derivatives}
+The partial time derivative of the concentration is the rate of change of concentration at a \emph{fixed} location in space; \ie, take a stationary, non-moving, control volume. Fixed the location of observation, determine then the change of concentration with time at this position. If the concentration at the position $\pos$ at time $t$ is $\conc\vat{\pos, t}$ and the concentration at the position $\pos$ at time $t + \Dx t$ is $\conc\vat{\pos, t + \Dx t}$, then the partial derivative is written as
+\beq
+\xpd{\conc}{t} = \ipd t\conc 
+               = \lim_{\Dx t\to 0} \dfrac{\conc\vat{\pos, t + \Dx t} - \conc\vat{\pos, t}}{\Dx t}\,.
+\eeq
+Note that, since the position is fixed in space, then $\pos$ is not a function of time.
+
+
+\subsubsection{Substantial derivative}
+Although the partial derivative is defined as the change in the value of the concentration at a point in the fluid, this does not reflect the change in the concentration in material volumes, because such volumes are convected with the flow. Therefore, the fluid volume which was located at $\pos$ at time $t$ would have moved to a new position $\pos + \vel\Dx t$ at time $t + \Dx t$, where $\vel$ is the fluid velocity. The substantial derivative determines the change in concentration on material volumes moving with the fluid. If the fluid is moving in space, then the substantial derivative is defined as
+%\begin{align*}
+%\xod\conc t &= \lim_{\Dx t\to 0}\dfrac{\conc\vat{\pos + \vel\Dx t, t + \Dx t} - \conc\vat{\pos, t}}{\Dx t} \\
+%            &= \xpd\conc t + \xpd{\conc}{\fvec\pos 1}\xod{\fvec\pos 1}{t}
+%                           + \xpd{\conc}{\fvec\pos 2}\xod{\fvec\pos 2}{t}
+%                           + \xpd{\conc}{\fvec\pos 3}\xod{\fvec\pos 3}{t} \\
+%            &= \xpd\conc t + \xpd{\conc}{\fvec\pos 1}\fvec\vel 1
+%                           + \xpd{\conc}{\fvec\pos 2}\fvec\vel 2
+%                           + \xpd{\conc}{\fvec\pos 3}\fvec\vel 3 \\
+%            &= \xpd\conc t + \xpd{\conc}{\fvec\pos i}\fvec\vel i\qquad\text{[summation convention in force!]} \\
+%            &= \xpd\conc t + \vel\iprod\gder\conc\,,
+%\end{align*}
+\beq
+\xod\conc t = \lim_{\Dx t\to 0}\dfrac{\conc\vat{\pos + \vel\Dx t, t + \Dx t} - \conc\vat{\pos, t}}{\Dx t}
+            = \xpd{\conc}{t} + \xpd{\conc}{\fvec\pos i}\fvec\vel i
+            = \ipd t\conc + \fvec\vel i\ipd i\conc\,,
+\eeq
+where Einstein summation convention was used.
+
+The last equation can be written more compactly using the directional derivative notation:
+\beq
+\iod t\conc = \ipd t\conc + \dirdev\vel\conc\,.
+\eeq
+where $\dirdev\vel\conc = \vel\iprod\gder\conc$. Note that the time derivatives are different; \ie, $\iod t\conc \not =\ipd t\conc$, that the last equation is written as a vectorial relationship, so it's independent of the underlying coordinate system, that the position is a function of $t$ ($\pos\vat t$) and that the scalar concentration field is a function of both position and time, $\conc = \conc\vat{\pos\vat t, t}$.
+
+
+\subsubsection{Conservation of mass}
+The mass conservation equation simply states tha mass cannot be created or destroyed. Therefore, for any fluid volume,
+\beq
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{accumulation} \\
+\end{pmatrix}
+= 
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{in}           \\
+\end{pmatrix}
+-
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{out}          \\
+\end{pmatrix}\,.
+\eeq
+
+Consider now a control volume with size $\prod_{i = 1}^3\Dx\fvec\pos i$ and six faces. The rate of mass through the face at $\fvec\pos 1$ is $(\dens\fvec\vel 1)|_{\fvec\pos 1}\Dx\fvec\pos 2\Dx\fvec\pos 3$, while the rate of mass out at $\fvec\pos 1 + \Dx\fvec\pos 1$ is $(\dens\fvec\vel 1)|_{\fvec\pos 1 + \Dx\fvec\pos 1}\Dx\fvec\pos 2\Dx\fvec\pos 3$. Similar expressions can be written for the rates of mass flow through the other four faces. The total increase in mass for this volume is $\ipd t\dens\Dx\fvec\pos 1\Dx\fvec\pos 2\Dx\fvec\pos 3$. Therefore, the mass conservation equation states that
+\begin{align*}
+\Dx\fvec\pos 1\Dx\fvec\pos 2\Dx\fvec\pos 3 \xpd\dens t =
+    &+ \Dx\fvec\pos 2\Dx\fvec\pos 3
+      \left(
+          \left(\dens\fvec\vel 1\right)\biggr\rvert_{\fvec\pos 1} -
+          \left(\dens\fvec\vel 1\right)\biggr\rvert_{\fvec\pos 1 + \Dx\fvec\pos 1} 
+      \right) \\
+    &+ \Dx\fvec\pos 1\Dx\fvec\pos 3
+      \left(
+          \left(\dens\fvec\vel 2\right)\biggr\rvert_{\fvec\pos 2} -
+          \left(\dens\fvec\vel 2\right)\biggr\rvert_{\fvec\pos 2 + \Dx\fvec\pos 2} 
+      \right) \\
+    &+ \Dx\fvec\pos 1\Dx\fvec\pos 2
+      \left(
+          \left(\dens\fvec\vel 3\right)\biggr\rvert_{\fvec\pos 3} -
+          \left(\dens\fvec\vel 3\right)\biggr\rvert_{\fvec\pos 3 + \Dx\fvec\pos 3} 
+      \right)\,.
+\end{align*}
+%Dividing by $\Dx\fvec\pos 1\Dx\fvec\pos 2\Dx\fvec\pos 3$ and taking the limit as these approach zero, we get
+Dividing by the volume $\prod_i\Dx\fvec\pos i$ and taking the limit as these approach zero, we get
+%\beq
+%\xpd\dens t = -\left(
+%                \xpd{\dens\fvec\vel 1}{\fvec\pos 1} + 
+%                \xpd{\dens\fvec\vel 2}{\fvec\pos 2} +
+%                \xpd{\dens\fvec\vel 3}{\fvec\pos 3}
+%               \right)\,.
+%\eeq
+\beq
+\ipd t\dens = -\ipd i\dens\fvec\vel i\,.
+\eeq
+The above equation can often be written using the substantial derivative
+%\beq
+%\xpd\dens t + \left(
+%                \fvec\vel 1\xpd{\dens}{\fvec\pos 1} +
+%                \fvec\vel 2\xpd{\dens}{\fvec\pos 2} +
+%                \fvec\vel 3\xpd{\dens}{\fvec\pos 3}
+%              \right) = 
+%-\dens\left(
+%        \xpd{\fvec\vel 1}{\fvec\pos 1} +
+%        \xpd{\fvec\vel 2}{\fvec\pos 2} +
+%        \xpd{\fvec\vel 3}{\fvec\pos 3}
+%      \right)\,.
+%\eeq
+\beq
+\ipd t\dens + \fvec\vel i\ipd i\dens = -\dens\ipd i\fvec\vel i\,.
+\eeq
+The left side of the above equation is the substantial derivative, while the right side can be written as
+%\beq
+%\xod{\dens}{t} = -\dens\left(\gder\iprod\vel\right)\,.
+%\eeq
+\beq
+\ipd t\dens = -\dens\left(\gder\iprod\vel\right) = -\dens\div\vel\,,
+\eeq
+where the dot product has the usual connotation, $\div$ is the divergence operator and the geometric derivative $\gder$ is defined as $\gder = \rbvec i\ipd i$, where the elements of the frame $\elset{\fvec\pos i}$ are the unit vectors in the direction of the coordinate axes.
+%\beq
+%\gder = \rbvec 1\xpd{}{\fvec\pos 1} + \rbvec 2\xpd{}{\fvec\pos 2} + \rbvec 3\xpd{}{\fvec\pos 3}\,.
+%\eeq
+
+The above equation describes the change in density for a material element of fluid which is moving along with the mean flow. A special case is when the density does not change, so that $\ipd t\dens$ is identically zero. In this case, the continuity equation reduces to
+%\beq
+%\xpd{\fvec\vel 1}{\fvec\pos 1} + \xpd{\fvec\vel 2}{\fvec\pos 2} + \xpd{\fvec\vel 3}{\fvec\pos 3} = 0\,.
+%\eeq
+\beq
+\div\vel = \ipd i\fvec\vel i = 0\,.
+\eeq
+This is just the symmetric part of the rate of deformation tensor. As we had seen in the previous lecture, this symmetric part corresponds to volumetric compression or expansion. Therefore, if this is zero, it implies that there is no volumetric expansion or compression, and if mass is conserved then the density has to be a constant. Fluids which obey this condition are called \lingo{incompressible} fluids. Most fluids that we use in practical applications are incompressible fluids; in fact all liquids can be considered incompressible for practical purposes. Compressibility effects only become important in gases when the speed of the gas approaches the speed of sound, $\SI{332}{m/s}$.
+
+
+\subsubsection{Diffusion equation for the concentration field}
+The diffusion equation for the concentration field, $\conc$, can be determined in a manner similar to that for the density. However, in this case, the transport across the cubic faces takes place due to mean convection as well as due to the diffusion flux across the surfaces:
+\beq
+\ipd t\conc + \ipd i\conc\fvec\vel i = -\left( \div\flux\mass \right) \,.
+\eeq
+This equation can also be written as
+\beq
+\ipd t\conc + \gder\iprod\conc\vel = -\left( \div\flux\mass \right) \,,
+\eeq
+where the vector flux $\flux\mass$ is defined as $\fbvec i\fvec{\flux\mass}{i}$.
+
+The flux is expressed in terms of the concentration field as $\flux\mass = \kdiff\grad\conc$. Using this, the equation for the concentration field is
+\beq
+\ipd t\conc + \gder\iprod\conc\vel = \gder\iprod\kdiff\gder\conc \,.
+\eeq
+If the diffusion coefficient is a constant, the equation for the concentration field becomes
+\beq
+\ipd t\conc + \gder\iprod\conc\vel = \kdiff\lder\conc = \kdiff\lap\conc \,,
+\eeq
+where $\lder = \lap = \ipd{ii}$ is the Laplace operator in Cartesian coordinates.
+
+Using the definition of substantial derivative:
+\beq
+\iod t\conc = \kdiff\lap\conc \,,
+\eeq
+
+The concentration equation assumes a slightly different form if it is expressed in terms of the mass fraction (mass per unit solution mass), instead of the concentration (mass per unit solution volume) of the component in a solution. The concentration is related to the mass fraction $\mfrac$ by $\conc = \dens\mfrac$, so the equation for the mass fraction is
+\beq
+\ipd t\dens\mfrac + \gder\iprod\dens\mfrac\conc = \kdiff\lap\dens\mfrac\,.
+\eeq
+From this, if we subtract $\mfrac$ times the mass conservation equation, we get thus
+\beq
+\dens\left( \ipd t\mfrac + \vel\iprod\gder\mfrac \right) = \kdiff\lap\dens\mfrac
+\eeq
+or, using the definition of substantial derivative,
+\beq
+\dens\iod t\mfrac = \kdiff\lap\dens\mfrac\,,
+\eeq
+
+
+\subsubsection{Energy conservation equation}
+The conservation equation for the energy density, $\thendens$, derived using procedures similar to that for the concentration equation, is
+\beq
+\ipd t\thendens + \gder\iprod\thendens\vel = \gder\iprod\kthcond\grad\temp\,,
+\eeq
+where $\kthcond$ and $\kthcond\grad\temp$ is the energy flux due to temperature gradients. The energy density is given by $\dens\kshcap_\press\temp$, where $\temp$ is the thermodynamic temperature. With this, the energy equation becomes
+\beq
+\ipd t\dens\kshcap_\press\temp + \gder\iprod\dens\kshcap_\press\temp\vel = \gder\iprod\kthcond\grad\temp\,.
+\eeq
+From this, we can subtract $\kshcap_\press\temp$ times the mass conservation equation, to obtain
+\beq
+\dens\kshcap_\press\left( \ipd t\temp + \vel\iprod\gder\temp \right)
+=
+\gder\iprod\kdiff\gder\temp
+\eeq
+or, using the definition of substantial derivative and assuming $\kthcond$ to be constant,
+\beq
+\dens\kshcap_\press\iod t\temp = \kdiff\lap\temp\,.
+\eeq
+
+
+\subsection{Elements of vector calculus}
+div, grad, curl and all that :).
+
+
+\subsection{Diffusion equation in polar, cylindrical and spherical coordinates}
+:(, super long without GA, GC and index notation :).
+
+Note: since the derived equations are in vector form, they don't change. What changes is the form of the Laplacian :). Once this is found for the different coordinate systems, everything is downhill. One key piece in finding the Laplacian is to define tangent unit vectors as $\fbvec i = \ipd i\fvec\pos i$ and to define normal unit vectors as $\rbvec i = \grad\pos$.
