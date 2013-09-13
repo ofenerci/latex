@@ -37,7 +37,9 @@ where Einstein summation convention was used.
 
 The last equation can be written more compactly using the directional derivative notation:
 \beq
-\iod t\conc = \ipd t\conc + \dirdev\vel\conc\,.
+\iod t\conc = \ipd t\conc + \fvec\vel i\ipd i\conc
+            = \vel\iprod\gder\conc
+            = \ipd t\conc + \dirdev\vel\conc\,.
 \eeq
 where $\dirdev\vel\conc = \vel\iprod\gder\conc$. Note that the time derivatives are different; \ie, $\iod t\conc \not =\ipd t\conc$, that the last equation is written as a vectorial relationship, so it's independent of the underlying coordinate system, that the position is a function of $t$ ($\pos\vat t$) and that the scalar concentration field is a function of both position and time, $\conc = \conc\vat{\pos\vat t, t}$.
 
