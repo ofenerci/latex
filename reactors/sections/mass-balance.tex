@@ -1,0 +1,193 @@
+\section{Mass balance}
+Mass is a conservative quantity, hence given a control volume $\vol$ the sum of mass flows entering the system will equal the sum exiting minus (plus) the consumed (generated) or accumulated fractions:
+\beq
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{in}
+\end{pmatrix}
++
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{out}
+\end{pmatrix}
++
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{produced}
+\end{pmatrix}
+-
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{consumed}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{accumulated}
+\end{pmatrix}\,.
+\eeq
+
+The last statement represents the key point in \lingo{mass transfer}: analogously to the force balance in statics, the mass balance allows us to quantify and verify mass flows in our system.
+
+Let us now apply this fundamental balance to some ideal examples.
+
+
+\subsection{Ideal chemical reactors}
+
+\subsubsection{Batch reactors}
+A \lingo{batch reactor} is a non-continuous, perfectly mixed and closed vessel where a reaction takes place, see \cref{fig:bathreactor}.
+%
+% ------------------------------------------------------------- Figure
+% position: bthH. size:width=0.5\textwidth. file:location+filename
+ \docfigure{bt}{width=0.5\textwidth}{./figures/batch-reactor.pdf}%
+   {Batch reactor}
+   {Schema of a batch reactor}%
+   {fig:bathreactor}%
+% ------------------------------------------------------------- EndFigure
+
+Given its volume $\vol$ and the initial internal concentration of a species $\ce A$, $\conc{A,0}$, the total mass will be $\mass = \vol\conc{A,0}$. In the unit time, the concentration will be able to change only in virtue of a chemical reaction. The mass balance quantifies this change, in this case:
+\beq
+\flow\vol\conc{A,in} - \flow\vol\conc{A,out} \pm \int_\vol\rrate\dx\vol = \iod t\mass\,,
+\eeq
+where $\rrate$ is the rate of generation ($+$) or depletion ($-$). Since the assumptions of no flow in or out of the reactor volume, $\flow\vol = 0$, and constant reactor volume $\vol$,
+\beq
+\iod t\mass = \iod t\conc A\vol = \vol\iod t\conc A = \vol\rrate\,,
+\eeq
+where $\conc A = \conc A\vat t$ is the concentration of $\ce A$ at any time $t$ inside the reactor. Then,
+\beq
+\iod t\conc A = \rrate\,,
+\eeq
+
+The last differential equation is the \lingo{characteristic equation of a batch reactor}. Considering a \lingo{first-order reaction} ($\rrate = -\krcoeff\conc A$), then
+\beq
+\iod t\conc A = -\krcoeff\conc A\,,
+\eeq
+whose solution is
+\beq
+\dfrac{\conc A}{\conc{A,0}} = \exp\vat{-\krcoeff t}\,,
+\eeq
+or, in alternative forms,
+\begin{align*}
+\kdim_{\conc A} &= \exp\vat{-\kdim_t}    & \text{[dimensionless form]} \\
+ \scpq{\conc A} &= \exp\vat{-\scpq t}\,. & \text{[scaled quantities form]}
+\end{align*}
+The last equations offer ways to relate concentration and time. At any $t$, we can know the concentration of $\ce A$ in the reactor, given the reaction constant and the initial concentration.
+
+For a \lingo{second-order reaction}~\footnote{~The algebraic passages will hereafter be omitted.} ($\rrate = -\krcoeff\conc A^2$),
+\beq
+\dfrac{\conc A}{\conc{A,0}} = \dfrac{1}{1 + \krcoeff\conc{A,0}t}\,.
+\eeq
+
+This procedure may be repeated for any order of reaction by substituting the expression for $\rrate$ in the
+characteristic equation. 
+
+
+\subsubsection{Continuous-stirred tank reactor}
+A \lingo{continuous-stirred tank reactor}, CSTR, is a well-mixed vessel that operates at \lingo{steady-state}; \ie, no mass accumulation in the reactor. The main assumption is that the concentration of the incoming fluid will become \lingo{instantaneously} equal to the outgoing upon entering the vessel, see \cref{fig:cstreactor}.
+%
+% ------------------------------------------------------------- Figure
+% position: bthH. size:width=0.5\textwidth. file:location+filename
+ \docfigure{bt}{width=0.5\textwidth}{./figures/cst-reactor.pdf}%
+   {CSTR}
+   {Schema of a continuous-stirred tank reactor}%
+   {fig:cstreactor}%
+% ------------------------------------------------------------- EndFigure
+
+A CSTR differs from a batch only in the fact that it is not closed. Thus, the mass flowing in and flowing out of the reactor, terms in the mass balance, will not cancel:
+\beq
+\iod t\mass = \flow\vol\left(\conc{A,in} - \conc{A,out}\right) + \int_\vol\rrate\dx\vol = 0\,.
+\eeq
+Note, however, that the volumetric inflow and outflow are equal $\flow{\vol\txt{in}} = \flow{\vol\txt{out}} = \flow\vol$ and that the term that does cancel is the accumulation, due to the steady state hypothesis. Solving the differential equation, one finds that
+\beq
+\conc{A,in} - \conc{A,out} + \rtime\txt h\rrate = 0\,,
+\eeq
+where $\rtime\txt h = \vol/\flow\vol$ is the average \lingo{hydraulic residence time}. The last equation represents the \lingo{characteristic equation for a CSTR}. Assuming a \lingo{first-order reaction}, the model then becomes
+\beq
+\dfrac{\conc{A,out}}{\conc{A,in}} = \dfrac{1}{1 + \rtime\txt h}\,.
+\eeq
+
+
+\subsubsection{Plug flow reactor}
+A \lingo{plug flow reactor}, PFR, consists in a long, straight pipe in which the reactive fluid transits at steady- state (no accumulation). The main assumptions of this model are that the fluid is completely mixed in any cross- section at any point, but it experiences no axial mixing; \ie, contiguous cross-sections cannot exchange mass with each other, see \cref{fig:pfreactor}.
+%
+% ------------------------------------------------------------- Figure
+% position: bthH. size:width=0.5\textwidth. file:location+filename
+ \docfigure{bt}{width=0.9\textwidth}{./figures/pf-reactor.pdf}%
+   {PFR}
+   {Schema of a plug flow reactor}%
+   {fig:pfreactor}%
+% ------------------------------------------------------------- EndFigure
+
+Operating a mass balance on the selected volume $\Dx\vol = \surf\Dx\length$, and assuming steady-state conditions, we obtain
+\beq
+\iod t\mass = \flow\vol\conc A\vat{t} - \flow\vol\conc A\vat{t + \Dx t} + \int_{\Dx\vol}\rrate\,\dx\vol = 0\,,
+\eeq
+hence,
+\beq
+\flow\vol\conc A\vat{t} - \flow\vol\conc A\vat{t + \Dx t} + \rrate\Dx\vol = 
+\flow\vol\conc A\vat{t} - \flow\vol\conc A\vat{t + \Dx t} + \rrate\flow\vol\Dx t = 0
+\implies
+\dfrac{\Dx\conc A}{\Dx t} = \rrate\,.
+\eeq
+Considering an infinitesimally thin cross-sectional volume, its thickness will reduce to $\dx\length$, therefore:
+\beq
+\iod t\conc A = \rrate\,,
+\eeq
+which is the \lingo{characteristic equation of the plug flow reactor}. Considering a \lingo{first-order reaction}, $-\rrate = \krcoeff\conc A$, the concentration equation will be
+\beq
+\scpq{\conc A} = \exp\vat{-\scpq t}\,.
+\eeq
+
+
+\subsection{Non-ideal chemical reactors - Segregated flow analysis}
+The non-ideality of industrial and natural processes led engineers to develop corrections to the ideal models, in order to use them with less restrictions. For this reason, it is defined a residence time distribution, which is a function that describes the evolution of the average instantaneous concentration versus the elapsed time. It is very convenient to express the \lingo{residence time distribution} as the normalized function $\eadist$, called the \lingo{exit age distribution},
+\beq
+\eadist\vat t = \dfrac{\conc A\vat t}{\int_0^\infty\conc A\vat t\,\dx t}\,,
+\eeq
+which, due to its definition, has its total area under the curve equal to unity:
+\beq
+\int_0^\infty\eadist\vat t\,\dx t = 0\,.
+\eeq
+
+\Cref{fig:eadistcurve} shows the evolution of $\eadist$ \vs $t$. The $\eadist$ curve is the distribution needed to account for non-ideal flow.
+%
+% ------------------------------------------------------------- Figure
+% position: bthH. size:width=0.5\textwidth. file:location+filename
+ \docfigure{bt}{width=0.5\textwidth}{./figures/eadist-curve.pdf}%
+   {E curve}
+   {Residence time distribution: exit age distribution curve}%
+   {fig:eadistcurve}%
+% ------------------------------------------------------------- EndFigure
+
+Considering the definition of $\eadist$, the average residence time becomes
+\beq
+\rtime\txt h = \int_0^\infty t\eadist\vat t\,\dx t\,.
+\eeq
+
+A useful tool used in this field is the \lingo{cumulative residence time fraction} (or cumulative frequency) curve $\crtfrac$, defined as
+\beq
+\crtfrac\vat t = \int_0^\infty t\eadist\vat t\,\dx t 
+               = \dfrac{\int_0^{t_i}\conc A\vat t\,\dx t}{\int_0^\infty\conc A\vat t\,\dx t}\,.
+\eeq
+The last equation shows that the $\crtfrac$ curve at $t = t_i$ is defined as the cumulative area under the $\eadist$ curve from 0 to $t_i$. This means that $\crtfrac$ represents the fraction of flow with a residence time less or equal than $t_i$. Combining the two last equations, we have
+\beq
+\rtime\txt h = \int_0^1 t\,\dx\crtfrac\,,
+\eeq
+which is the highlighted area in \cref{fig:flowcharcurves}. Note that the boundaries of the last integral must be 0 to 1, since the area under the $\eadist$ curve equals unity.
+
+The reason why we introduce the use of these functions is to quantify the non-ideality of reactors. A classic example is the evaluation of the average residence time. According to the ideal reactor theory, $\rtime\txt h = \vol/\flow\vol$, where $\vol$ is the total volume of the reactor. In case dead zones are present in the vessel, the residence time distribution will not account for them, showing a decreased reactor volume. Hence, $\rtime\txt h$ calculated in both ways will give an estimate of the dead zone volume.
+
+\Cref{fig:flowcharcurves} illustrates the characteristic curves for various flows.
+%
+% ------------------------------------------------------------- Figure
+% position: bthH. size:width=0.5\textwidth. file:location+filename
+ \docfigure{bt}{width=0.7\textwidth}{./figures/flow-char-curves.pdf}%
+   {Distribution curves}
+   {Characteristic curves for various flow types}%
+   {fig:flowcharcurves}%
+% ------------------------------------------------------------- EndFigure
+
+
+
+
+
