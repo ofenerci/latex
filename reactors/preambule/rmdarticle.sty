@@ -8,7 +8,7 @@
 \RequirePackage{amsthm}
 \RequirePackage{booktabs}
 \RequirePackage{fixltx2e}
-%\RequirePackage{graphicx}       % graphs and figures
+\RequirePackage{graphicx}        % graphs and figures
 \RequirePackage[utf8x]{inputenc} % utf8 encoding in source file
 \RequirePackage{mathtools}
 \RequirePackage[version=3]{mhchem}
@@ -89,7 +89,7 @@ input-symbols = \pi\tau
 \newenvironment{definition}{\medskip\noindent{\it Definition.}\it}{\rm}
 \newenvironment{theorem}{\medskip\noindent{\it Theorem.}}{}
 %
-\newenvironment{example}{\medskip\noindent{\it Example.}}{}
+\newenvironment{example}{\noindent\\\noindent{\it Example.}}{}
 \newenvironment{exercise}{\medskip\noindent{\it Exercise.}}{}
 %
 \newenvironment{approximation}{\smallskip\small\noindent{\it Approx. Solution.}}{\normalsize\smallskip}
@@ -107,7 +107,7 @@ input-symbols = \pi\tau
 \newenvironment{warning}{\smallskip\small\noindent{\it Warning.}}{\normalsize\smallskip}
 %
 \renewenvironment{proof}{\newline\small\noindent{\it Proof.}}{\normalsize}
-\newenvironment{solution}{\smallskip\small\noindent{\it Solution.}}{\normalsize}
+\newenvironment{solution}{\smallskip\small\noindent{\it Solution.}}{\normalsize\\}
 \newenvironment{verification}{\small\noindent{\it Verification.}}{\normalsize}
 
 %%% Equations
@@ -138,6 +138,23 @@ input-symbols = \pi\tau
 % \end{tabularx}
 % \docposttable{caption}{caption}{label}
 % ------------------------------------------------------------- EndTable
+
+%%% Figures
+% ------------------------------------------------------------- Figure
+% position: bthH. size:width=0.5\textwidth. file:location+filename
+% \docfigure{position}{size}{file}%
+%   {short-caption}
+%   {caption}%
+%   {label}%
+% ------------------------------------------------------------- EndFigure
+\newcommand{\docfigure}[6]{
+  \begin{figure}[#1]\capstart\center
+    \includegraphics[#2]{#3}
+    \caption[#4]{#5}
+    \label{#6}
+  \end{figure}
+}
+% ------------------------------------------------------------- EndFigure
 
 %%% Epigraph
 %% \epigraph{Text}{Author}{Source}

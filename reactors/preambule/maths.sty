@@ -12,23 +12,27 @@
 %%% Sets
 \newcommand{\set}[1]{\mathcal{#1}}
 \newcommand{\elset}[1]{\left\lbrace{#1}\right\rbrace} % elements of a set
+\newcommand{\setbuild}[2]{\elset{{#1}\,|\,{#2}}}      % set-builder notation
 \newcommand{\nset}[2]{\set{#1}^{#2}}                  % n-dim set
 \newcommand{\espace}{\set{E}}                         % Euclidean space
 \newcommand{\nespace}[1]{\nset{\espace}{#1}}          % n-dim Euclidean space
 \newcommand{\tuple}[1]{\left[{#1}\right]}
 
 %%% Functions
-\newcommand{\vat}[1]{\tuple{#1}} % function value at
+\newcommand{\vat}[1]{\!\tuple{#1}} % function value at
 
 %%% Geometry
 \newcommand{\vol}{v}          % volume
 \newcommand{\bound}{\partial} % boundary
 \newcommand{\surf}{s}         % surface
+\newcommand{\length}{l}       % length
 
 %%% Geometric algebra
+\newcommand{\inv}[1]{{#1}^{-1}} % inverse
 \newcommand{\uvec}[1]{\hat{#1}} % unit vector
 \newcommand{\iprod}{\cdot}      % inner product
 \newcommand{\oprod}{\wedge}     % outer product
+\newcommand{\metric}{g}
 
 %%% Geometric calculus
 \newcommand{\gder}{\nabla} % geometric derivative
@@ -45,6 +49,9 @@
 \newcommand{\ipd}[1]{\partial_{#1}} % indexed partial derivative
 \newcommand{\igd}[1]{\partial_{#1}} % indexed geometric derivative
 \newcommand{\trate}{\iod{t}}        % time rate
+%
+\newcommand{\xpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}} % expanded partial derivative
+\newcommand{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}}           % expanded ordinary derivative
 
 %%% Index notation
 \newcommand{\bvec}{\gamma}                 % basis vector
@@ -58,3 +65,4 @@
 \newcommand{\fvec}[2]{{#1}^{#2}}           % frame (contravariant) components
 \newcommand{\rvec}[2]{{#1}_{#2}}           % reciprocal frame (covariant) components
 \newcommand{\ufbvec}[1]{\uvec{\bvec}_{#1}} % unit frame basis vector
+\DeclareMathOperator{\diag}{diag}          % diagonal of a matrix
