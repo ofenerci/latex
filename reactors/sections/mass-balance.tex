@@ -1,0 +1,95 @@
+\section{Mass balance}
+Mass is a conservative quantity, hence given a control volume $\vol$ the sum of mass flows entering the system will equal the sum exiting minus (plus) the consumed (generated) or accumulated fractions:
+\beq
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{in}
+\end{pmatrix}
++
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{out}
+\end{pmatrix}
++
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{produced}
+\end{pmatrix}
+-
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{consumed}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\text{rate of mass} \\
+\text{accumulated}
+\end{pmatrix}\,.
+\eeq
+
+The last statement represents the key point in \lingo{mass transfer}: analogously to the force balance in statics, the mass balance allows us to quantify and verify mass flows in our system.
+
+Let us now apply this fundamental balance to some ideal examples.
+
+
+\subsection{Ideal Chemical Reactors}
+
+\subsubsection{Batch reactors}
+A \lingo{batch reactor} is a non-continuous, perfectly mixed and closed vessel where a reaction takes place. 
+
+Given its volume $\vol$ and the initial internal concentration of a species $\ce A$, $\conc{A,0}$, the total mass will be $\mass = \vol\conc{A,0}$. In the unit time, the concentration will be able to change only in virtue of a chemical reaction. The mass balance quantifies this change, in this case:
+\beq
+\flow\vol\conc{A,in} - \flow\vol\conc{A,out} \pm \int_\vol\rrate\dx\vol = \iod t\mass\,,
+\eeq
+where $\rrate$ is the rate of generation (+) or depletion (-). Since the assumptions of no flow in or out of the reactor volume, $\flow\vol = 0$, and constant reactor volume $\vol$,
+\beq
+\iod t\mass = \iod t\conc A\vol = \vol\iod t\conc A = \vol\rrate\,,
+\eeq
+where $\conc A = \conc A\vat t$ is the concentration at any time inside the reactor. Then,
+\beq
+\iod t\conc A = \rrate\,,
+\eeq
+
+The last differential equation is the \lingo{characteristic equation} of a batch reactor. Considering a \lingo{first-order reaction}; \ie, ($\rrate = -\krcoeff\conc A$):
+\beq
+\iod t\conc A = -\krcoeff\conc A\,,
+\eeq
+whose solution is
+\beq
+\dfrac{\conc A}{\conc{A,0}} = \exp\vat{-\krcoeff t}\,.
+\eeq
+The last equation offers a relationship between concentration and time. At any point in time, then, we can know the inner concentration, known the reaction constant and the initial concentration.
+
+For a \lingo{second-order reaction} ($\rrate = -\krcoeff\conc A^2$),
+\beq
+\dfrac{\conc A}{\conc{A,0}} = \dfrac{1}{1 + \krcoeff\conc{A,0}t}\,.
+\eeq
+
+This procedure may be repeated for any order of reaction, just substituting the expression for $\rrate$ in the
+characteristic equation [9]. 
+
+\begin{note}
+The algebraic passages will heretofore be omitted.
+\end{note}
+
+
+\subsubsection{Continuous-stirred tank reactor}
+A Continuous-Stirred Tank Reactor (CSTR) is a well-mixed vessel that operates at steady-state ($\flow{\vol\txt{in}} = \flow{\vol\txt{out}} = \flow\vol$). The main assumption in this case is that the concentration of the incoming fluid will become \lingo{instantaneously} equal to the outgoing upon entering the vessel.
+
+A CSTR differs from a batch only in the fact that it is not closed. Thus, the mass flows in and out of the reactor in the mass balance will not cancel:
+\beq
+\iod t\mass = \flow\vol\left(\conc{A,in} - \conc{A,out}\right) + \int_\vol\rrate\dx\vol = 0\,.
+\eeq
+The mass balance in the last equation equals to 0, due to the \lingo{steady state hypothesis}; \ie, no mass accumulation in the reactor. Solving,
+\beq
+\conc{A,in} - \conc{A,out} + \rtime\txt h\rrate = 0\,,
+\eeq
+where $\rtime\txt h = \vol/\flow\vol$ is the average \lingo{hydraulic residence time}. The last equation represents the \lingo{characteristic equation} for a CSTR. Assuming a first-order reaction,
+\beq
+\dfrac{\conc{A,out}}{\conc{A,in}} = \dfrac{1}{1 + \rtime\txt h}\,.
+\eeq
+
+
+
+
+

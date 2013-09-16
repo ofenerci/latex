@@ -1,0 +1,69 @@
+%%% Physics
+\ProvidesPackage{rmbdphysics}[2013/09/14 rmbdphysics - physics commands (rimbaudcode)]
+
+%%% Space
+\newcommand{\pos}{\xi} % position
+
+%%% Mechanics
+\newcommand{\force}{f} % force
+\newcommand{\press}{p} % pressure
+
+%%% Energy and mass transport
+\newcommand{\ener}{e}               % energy
+\newcommand{\mass}{m}               % mass
+\newcommand{\pnum}{n}               % particle number
+\newcommand{\density}[1]{\rho_{#1}} % density
+\newcommand{\conc}[1]{c_{\ce{#1}}}  % species concentration
+\newcommand{\flow}[1]{\phi_{#1}}    % flow
+\newcommand{\flux}[1]{j_{#1}}       % flux
+\newcommand{\kdiff}[1]{\psi_{#1}}   % diffusion coefficient
+
+%%% Thermochem
+\newcommand{\temp}{\theta}% thermodynamic temperature
+\newcommand{\thcap}{C}    % thermal capacity
+\newcommand{\sthcap}{c}   % specific thermal capacity
+\newcommand{\kthcond}{k}  % thermal conductivity coefficient
+
+%%% Momentum
+\newcommand{\dynvis}{\mu} % dynamic viscosity
+\newcommand{\kinvis}{\nu} % kinematic viscosity
+
+%%% Chemical Reactors
+\newcommand{\rrate}{r}        % reaction rate
+\newcommand{\krcoeff}{\kappa} % reaction coefficient
+\newcommand{\rorder}{n}       % reaction order
+\newcommand{\freqfact}{A}     % prexponential or frequency factor (Arrhenius)
+\newcommand{\rtime}{\tau}     % residence time
+
+%%% Physical constants
+\newcommand{\kboltz}{k\txt{bol}}    % Boltzmann constant
+\newcommand{\kstef}{\sigma\txt{sb}} % Stefan-Boltzmann constant
+\newcommand{\kplanck}{h\txt{plk}}   % Planck constant
+\newcommand{\klight}{c_0}           % speed of light in vacuum
+\newcommand{\kgas}{r\txt{gas}}      % ideal gas constant
+\newcommand{\kavog}{n\txt{avo}}     % Avogadro's number
+
+%%% Dim. analysis
+\DeclareMathOperator{\unit}{unit}
+\newcommand{\kdim}{\Pi}             % dimless quantity
+\newcommand{\phdim}[1]{\mathsf{#1}} % physical dimension
+\newcommand{\phdimtemp}{\Theta}     % physical dimension of temperature
+\newcommand{\chpq}[1]{{#1}_{c}}     % characteristic physical quantity
+\newcommand{\scpq}[1]{\bar{#1}}     % scaled physical quantity
+\newcommand{\dimfunc}{\psi}         % dimensionless function
+
+%%% Dimless. quantities
+\newcommand{\kbiot}{\kdim\txt{bi}}     % biot number
+\newcommand{\kreynolds}{\kdim\txt{re}} % reynolds number
+\newcommand{\kprandtl}{\kdim\txt{pr}}  % prandtl number
+\newcommand{\kschmidt}{\kdim\txt{sc}}  % schmidt number
+\newcommand{\kpeclet}{\kdim\txt{pe}}   % peclet number
+\newcommand{\kgrashof}{\kdim\txt{gr}}  % grashof number
+\newcommand{\krayleigh}{\kdim\txt{ra}} % rayleigh number
+\newcommand{\kweber}{\kdim\txt{we}}    % weber number
+\newcommand{\kcapillar}{\kdim\txt{ca}} % capillar number
+\newcommand{\kbond}{\kdim\txt{bo}}     % bond number
+\newcommand{\kfroud}{\kdim\txt{fr}}    % froud number
+\newcommand{\knusselt}{\kdim\txt{nu}}  %  nusselt number
+\newcommand{\ksherwood}{\kdim\txt{sh}} % sherwood number
+\newcommand{\kpower}{\kdim\txt{po}}    % power number

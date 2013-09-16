@@ -1,0 +1,20 @@
+\section{Reaction Kinetics}
+Reaction Kinetics is the branch of chemistry that quantifies rates of reaction. We postulate that an \lingo{elementary
+chemical reaction} is a chemical reaction whose rate corresponds to a stoichiometric equation. In symbols: 
+\beq
+\ce{aA + bB -> cC + dD}\,.
+\eeq
+and the \lingo{reaction rate} will be defined as~\footnote{~This is the reaction rate with respect to the reactants, the one with respect to the products being $-\rrate = \krcoeff\conc C^c\conc D^d$.}
+\beq
+-\rrate = \krcoeff\conc A^a\conc B^b\,,
+\eeq
+where $\krcoeff$ is referred as the \lingo{specific [per unit mass?] reaction rate coefficient}. The overall \lingo{order of reaction}, $\rorder$, is defined as
+\beq
+\rorder = a + b\,.
+\eeq
+
+The temperature dependency of $\krcoeff$ is described by the Arrhenius equation:
+\beq
+\krcoeff\vat\temp = \freqfact\exp\vat{-\ener\txt{act}/\kgas\temp}\,,
+\eeq
+where $\freqfact$ is the preexponential or frequency factor, $[\phdim 1]$, $\ener\txt{act}$ the activation energy, $[\phdim E/\phdim N]$, $\kgas$ the gas constant, $[\phdim E/\phdim N\phdimtemp]$, $\SI{8.314}{J/mol.K}$, and $\temp$ the thermodynamic (absolute) temperature, $[\phdimtemp]$.
