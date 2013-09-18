@@ -1,5 +1,5 @@
 \section{Mass balance}
-Mass is a conservative quantity, hence given a control volume $\vol$ the sum of mass flows entering the system will equal the sum exiting minus (plus) the consumed (generated) or accumulated fractions:
+Mass is a conservative quantity, hence, given a control volume $\vol$, the sum of mass flows entering a system will equal the sum exiting minus (plus) the consumed (generated) or accumulated fractions:
 \beq
 \begin{pmatrix}
 \text{rate of mass} \\
@@ -45,15 +45,15 @@ A \lingo{batch reactor} is a non-continuous, perfectly mixed and closed vessel w
    {fig:bathreactor}%
 % ------------------------------------------------------------- EndFigure
 
-Given its volume $\vol$ and the initial internal concentration of a species $\ce A$, $\conc{A,0}$, the total mass will be $\mass = \vol\conc{A,0}$. In the unit time, the concentration will be able to change only in virtue of a chemical reaction. The mass balance quantifies this change, in this case:
+Given the reactor volume $\vol$ and the initial concentration of a chemical species $\ce A$, $\conc{A,0}$, inside the reactor, then the total mass of $\ce A$ inside the vessel will be $\mass_{\ce A} = \vol\conc{A,0}$. In the unit time, the concentration of $\ce A$ will change only by virtue of a chemical reaction. The mass balance quantifies this change in this case:
 \beq
-\flow\vol\conc{A,in} - \flow\vol\conc{A,out} \pm \int_\vol\rrate\dx\vol = \iod t\mass\,,
+\flow\vol\conc{A,in} - \flow\vol\conc{A,out} \pm \int_\vol\rrate\dx\vol = \iod t\mass_{\ce A}\,,
 \eeq
-where $\rrate$ is the rate of generation ($+$) or depletion ($-$). Since the assumptions of no flow in or out of the reactor volume, $\flow\vol = 0$, and constant reactor volume $\vol$,
+where $\rrate$ is the rate of generation ($+$) or depletion ($-$) of $\ce A$. Since the assumptions of no flow in or out of the reactor volume, $\flow\vol = 0$, and of constant reactor volume, $\dx\vol = 0$,
 \beq
-\iod t\mass = \iod t\conc A\vol = \vol\iod t\conc A = \vol\rrate\,,
+\iod t\mass_{\ce A} = \iod t\conc A\vol = \vol\iod t\conc A = \vol\rrate\,,
 \eeq
-where $\conc A = \conc A\vat t$ is the concentration of $\ce A$ at any time $t$ inside the reactor. Then,
+where $\conc A = \conc A\vat t$ is the concentration of $\ce A$, inside the reactor, at any time $t$. Then,
 \beq
 \iod t\conc A = \rrate\,,
 \eeq
@@ -68,10 +68,10 @@ whose solution is
 \eeq
 or, in alternative forms,
 \begin{align*}
-\kdim_{\conc A} &= \exp\vat{-\kdim_t}    & \text{[dimensionless form]} \\
- \scpq{\conc A} &= \exp\vat{-\scpq t}\,. & \text{[scaled quantities form]}
+\kdim_{\conc A} &= \exp\vat{-\kdim_t}    & \text{[using dimensionless quantities]} \\
+ \scpq{\conc A} &= \exp\vat{-\scpq t}\,. & \text{[using scaled quantities]}
 \end{align*}
-The last equations offer ways to relate concentration and time. At any $t$, we can know the concentration of $\ce A$ in the reactor, given the reaction constant and the initial concentration.
+The last equations offer ways to relate concentration and time. At any $t$, we can know the concentration of $\ce A$ in the reactor, given the reaction constant and the initial concentration $\conc{A,0}$.
 
 For a \lingo{second-order reaction}~\footnote{~The algebraic passages will hereafter be omitted.} ($\rrate = -\krcoeff\conc A^2$),
 \beq
@@ -83,7 +83,7 @@ characteristic equation.
 
 
 \subsubsection{Continuous-stirred tank reactor}
-A \lingo{continuous-stirred tank reactor}, CSTR, is a well-mixed vessel that operates at \lingo{steady-state}; \ie, no mass accumulation in the reactor. The main assumption is that the concentration of the incoming fluid will become \lingo{instantaneously} equal to the outgoing upon entering the vessel, see \cref{fig:cstreactor}.
+A \lingo{continuous-stirred tank reactor}, CSTR, is a well-mixed vessel that operates at \lingo{steady-state} -- no mass accumulates in the reactor. The main assumption is that the concentration of the incoming fluid will become \lingo{instantaneously} equal to the outgoing upon entering the vessel, see \cref{fig:cstreactor}.
 %
 % ------------------------------------------------------------- Figure
 % position: bthH. size:width=0.5\textwidth. file:location+filename
@@ -93,17 +93,17 @@ A \lingo{continuous-stirred tank reactor}, CSTR, is a well-mixed vessel that ope
    {fig:cstreactor}%
 % ------------------------------------------------------------- EndFigure
 
-A CSTR differs from a batch only in the fact that it is not closed. Thus, the mass flowing in and flowing out of the reactor, terms in the mass balance, will not cancel:
+A CSTR differs from a batch only in the fact that it is not closed. Thus, the mass of a species $\ce A$ flowing in and flowing out of the reactor, terms in the mass balance, will not cancel:
 \beq
-\iod t\mass = \flow\vol\left(\conc{A,in} - \conc{A,out}\right) + \int_\vol\rrate\dx\vol = 0\,.
+\iod t\mass_{\ce A} = \flow\vol\left(\conc{A,in} - \conc{A,out}\right) + \int_\vol\rrate\dx\vol = 0\,.
 \eeq
-Note, however, that the volumetric inflow and outflow are equal $\flow{\vol\txt{in}} = \flow{\vol\txt{out}} = \flow\vol$ and that the term that does cancel is the accumulation, due to the steady state hypothesis. Solving the differential equation, one finds that
+Note, additionally, that the volumetric inflow and outflow are equal $\flow{\vol\txt{in}} = \flow{\vol\txt{out}} = \flow\vol$ and that the term that does cancel is the accumulation, due to the steady state hypothesis. Solving the differential equation, one finds that
 \beq
-\conc{A,in} - \conc{A,out} + \rtime\txt h\rrate = 0\,,
+\conc{A,in} - \conc{A,out} + \rtime\rrate = 0\,,
 \eeq
-where $\rtime\txt h = \vol/\flow\vol$ is the average \lingo{hydraulic residence time}. The last equation represents the \lingo{characteristic equation for a CSTR}. Assuming a \lingo{first-order reaction}, the model then becomes
+where $\rtime = \vol/\flow\vol$ is the average \lingo{hydraulic residence time}. The last equation represents the \lingo{characteristic equation for a CSTR}. Assuming a \lingo{first-order reaction}, the model then becomes
 \beq
-\dfrac{\conc{A,out}}{\conc{A,in}} = \dfrac{1}{1 + \rtime\txt h}\,.
+\dfrac{\conc{A,out}}{\conc{A,in}} = \dfrac{1}{1 + \rtime}\,.
 \eeq
 
 

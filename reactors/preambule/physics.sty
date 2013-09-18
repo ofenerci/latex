@@ -17,6 +17,7 @@
 \newcommand{\flow}[1]{\phi_{#1}}    % flow
 \newcommand{\flux}[1]{j_{#1}}       % flux
 \newcommand{\kdiff}[1]{\psi_{#1}}   % diffusion coefficient
+\newcommand{\ien}{\ener\txt{int}}   % internal energy
 
 %%% Thermochem
 \newcommand{\temp}{\theta}% thermodynamic temperature
@@ -27,6 +28,13 @@
 %%% Momentum
 \newcommand{\dynvis}{\mu} % dynamic viscosity
 \newcommand{\kinvis}{\nu} % kinematic viscosity
+
+%%% Lagrangian mechanics
+\newcommand{\ken}{\ener\txt{kin}}                            % kinetic energy
+\newcommand{\pen}{\ener\txt{pot}}                            % potential energy
+\newcommand{\lag}{\ener\txt{lag}}                            % lagrangian
+\newcommand{\ham}{\ener\txt{ham}}                            % hamiltonian
+\newcommand{\eleq}[2]{\iod t\ipd{#2}\lag - \ipd{#1}\lag = 0} % euler-lagrange equation
 
 %%% Chemical Reactors
 \newcommand{\rrate}{r}         % reaction rate

@@ -1,13 +1,13 @@
 \section{Notes on notation}
 
 \subsection{Einstein summation convention}
-Consider a vector $v$ living in three dimensional (Euclidean) space, $\nespace 3$, and consider a frame of orthonormal vectors $\elset{\fbvec x, \fbvec y, \fbvec z}$ for $\nespace 3$. Let now $\elset{\fvec vx, \fvec vy, \fvec vz}$ be the components of $v$ onto the frame. Then, $v$ is traditionally written as
+Consider a vector $v$ in three dimensional (Euclidean) space, $\nespace 3$, and consider a frame of orthonormal vectors $\elset{\fbvec x, \fbvec y, \fbvec z}$ for $\nespace 3$. Let $\elset{\fvec vx, \fvec vy, \fvec vz}$ be the components of $v$ onto the frame. Then, $v$ is traditionally written as
 \beq
 v = \fbvec x\fvec vx + \fbvec y\fvec vy + \fbvec z \fvec vz\,,
 \eeq
-or as in other similar fashion~\footnote{~Like the frame elements noted by $e$ instead of $\fbvec{}$. Moreover, in engineering, the frame would be $\elset{\hat\imath, \hat\jmath, \hat k}$ and thus $v$ would be written as $v = \hat{\imath}v_x + \hat{\jmath}v_y + \hat{z}v_z$. Notice the inconsistency of the engineering notation!}.
+or as in other similar fashion; \eg, the frame elements noted by $e$ instead of $\fbvec{}$; or, as in engineering, $\elset{\hat\imath, \hat\jmath, \hat k}$. In engineering notation, $v = \hat{\imath}v_x + \hat{\jmath}v_y + \hat{z}v_z$.
 
-Consider, on the other hand, an alternative, more compact form of writing $v$. Begin by indexing the frame elements to $\setbuild{\fbvec i}{i:1\to 3}$. Then, relabel the components of $v$ to $\setbuild{\fvec vi}{i:1\to 3}$. Finally, use the summation notation to express $v$:
+Consider, on the other hand, an alternative, more compact form of writing $v$. Begin by indexing the frame elements as $\setbuild{\fbvec i}{i:1\to 3}$. Then, relabel the components of $v$ to $\setbuild{\fvec vi}{i:1\to 3}$. Finally, use the summation notation to express $v$:
 \beq
 v = \fbvec 1\fvec v1 + \fbvec 2\fvec v2 + \fbvec 3\fvec v3 
   = \sum_{i = 1}^3 \fbvec i\fvec vi\,.
@@ -26,18 +26,28 @@ where $k$ runs from 1 to $\dim\nespace n = n$.
 
 
 \subsection{Metric}
-Consider $n$-th dimensional Euclidean space, $\nespace n$ and consider a frame $\elset{\fbvec i}$. Then, define the \lingo{metric of $\nespace n$}, denoted $\metric$, by the metric coefficients, $\fmet ij$,
+Consider $n$-th dimensional Euclidean space, $\nespace n$, and consider a frame $\elset{\fbvec i}$. Then, define the \lingo{metric of $\nespace n$}, denoted $\metric$, by the metric coefficients, $\fmet ij$,
 \beq
 \metric = \fmet ij = \fbvec i\iprod\fbvec j\,.
 \eeq
 For an orthonormal frame, \eg, a Cartesian frame, the metric becomes Kronecker delta
 \beq
-\fmet ij = \delta_{ij} = \diag\tuple{1, 1, \cdots, 1}\,.
+\fmet ij = \delta_{ij} = \diag\tuple{1, 1, \cdots, 1} = \iver{i = j}\,,
 \eeq
+where $\iver{i = j}$ are Iverson brackets.
+
+
+\subsection{Partial derivatives}
+Consider an orthonormal frame $\elset{\fbvec i}$ for a $n$-th dimensional Euclidean space, $\nespace n$. Then, denote the \lingo{spatial partial derivatives} by
+\beq
+\xpd{}{\fvec\pos i} = \igd{\pos i} 
+                    = \igd i\,,
+\eeq
+where $\elset{\fvec\pos i}$ are the components of the position vector, $\pos$, on the frame.
 
 
 \subsection{Geometric derivative}
-Consider $n$-th dimensional Euclidean space, $\nespace n$ and consider an orthogonal frame $\elset{\fbvec i}$ whose all of its elements are nonzero. Then, define a reciprocal orthogonal frame $\elset{\rbvec i}$ by
+Consider $n$-th dimensional Euclidean space, $\nespace n$, and consider an orthonormal frame $\elset{\fbvec i}$ whose all of its elements are nonzero. Then, define a reciprocal orthogonal frame $\elset{\rbvec i}$ by
 \beq
 \rbvec i = \inv{\fbvec i} = \dfrac{\fbvec i}{\fbvec i\fbvec i}\,.
 \eeq
@@ -46,15 +56,7 @@ On the other hand, define the \lingo{geometric derivative}, denoted $\gder$, by
 \beq
 \gder = \rbvec i\igd i\,,
 \eeq
-where the summation convention was used.
-
-In traditional notation, the geometric derivative would be written as
-\beq
-\gder = \xpd{}{\fvec\pos i}
-      = \igd{\pos i}
-      = \igd i\,,
-\eeq
-where $\elset{\fvec\pos i}$ are the components of the position vector, $\pos$, on the orthogonal frame.
+where the summation convention was used~\footnote{~In traditional notation, the geometric derivative would be written as $\gder = \rbvec i\igd i = \rbvec i\xpd{}{\fvec\pos i}$.}.
 
 
 \subsection{Gradient}
@@ -81,3 +83,17 @@ The Laplacian: let $\phi = \phi\vat\pos$, then the \lingo{Laplacian of $\phi$} i
 \lap\phi = \igd i\igd j\phi\,.
 \eeq
 
+
+\subsection{Lagrangian mechanics}
+Lagrangian:
+\beq
+\lag = \ken - \pen\,.
+\eeq
+
+Euler-Lagrange equation:
+\beq
+\eleq{\pos}{\dt\pos}\,,
+\eeq
+where the term $\iod t\igd{\dt\pos}\lag$ is called the \lingo{generalized momentum} and the term $\igd{\pos}\lag$ the \lingo{generalized force}.
+
+Hamiltonian: $\ham$.

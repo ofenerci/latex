@@ -43,6 +43,7 @@
 \DeclareMathOperator{\lap}{lap}   % Laplace operator
 
 %%% Derivatives
+\newcommand{\dt}[1]{\dot{#1}}       % dot derivative
 \newcommand{\dx}{\text{d}}          % differential operator
 \newcommand{\Dx}{\Delta}            % difference operator
 \newcommand{\iod}[1]{\dx_{#1}}      % indexed ordinary derivative
@@ -66,3 +67,6 @@
 \newcommand{\rvec}[2]{{#1}_{#2}}           % reciprocal frame (covariant) components
 \newcommand{\ufbvec}[1]{\uvec{\bvec}_{#1}} % unit frame basis vector
 \DeclareMathOperator{\diag}{diag}          % diagonal of a matrix
+
+%%% Iverson brackets
+\newcommand{\iver}[1]{\left[#1\right]\txt{iv}} % iverson :)
