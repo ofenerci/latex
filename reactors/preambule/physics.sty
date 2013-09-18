@@ -3,21 +3,23 @@
 
 %%% Space
 \newcommand{\pos}{\xi} % position
+\newcommand{\vel}{u}   % velocity
 
 %%% Mechanics
 \newcommand{\force}{f} % force
 \newcommand{\press}{p} % pressure
 
 %%% Energy and mass transport
-\newcommand{\ener}{e}               % energy
-\newcommand{\mass}{m}               % mass
-\newcommand{\pnum}{n}               % particle number
-\newcommand{\density}[1]{\rho_{#1}} % density
-\newcommand{\conc}[1]{c_{\ce{#1}}}  % species concentration
-\newcommand{\flow}[1]{\phi_{#1}}    % flow
-\newcommand{\flux}[1]{j_{#1}}       % flux
-\newcommand{\kdiff}[1]{\psi_{#1}}   % diffusion coefficient
-\newcommand{\ien}{\ener\txt{int}}   % internal energy
+\newcommand{\ener}{e}                    % energy
+\newcommand{\mass}{m}                    % mass
+\newcommand{\pnum}{n}                    % particle number
+\newcommand{\density}[1]{\rho_{#1}}      % density
+\newcommand{\conc}[1]{c_{\ce{#1}}}       % species concentration
+\newcommand{\flow}[1]{\phi_{#1}}         % flow
+\newcommand{\flux}[1]{j_{#1}}            % flux
+\newcommand{\kdiff}[1]{\psi_{#1}}        % diffusion coefficient
+\newcommand{\kdisp}[1]{\sigma_{\ce{#1}}} % dispersion coefficient
+\newcommand{\ien}{\ener\txt{int}}        % internal energy
 
 %%% Thermochem
 \newcommand{\temp}{\theta}% thermodynamic temperature
@@ -55,7 +57,7 @@
 \newcommand{\kavog}{n\txt{avo}}     % Avogadro's number
 
 %%% Dim. analysis
-\DeclareMathOperator{\unit}{unit}
+\DeclareMathOperator{\unit}{unit}    % unit of a quantity
 \newcommand{\kdim}{\Gamma}           % dimless quantity
 \newcommand{\phdim}[1]{\mathsf{#1}}  % physical dimension
 \newcommand{\phdimtemp}{\Theta}      % physical dimension of temperature

@@ -1,5 +1,5 @@
 \section{Mass balance}
-Mass is a conservative quantity, hence, given a control volume $\vol$, the sum of mass flows entering a system will equal the sum exiting minus (plus) the consumed (generated) or accumulated fractions:
+Mass is a conservative quantity, hence, given a control volume $\vol$ of a system, the sum of mass flows entering the system will equal the sum exiting minus (plus) the consumed (generated) or accumulated fractions:
 \beq
 \begin{pmatrix}
 \text{rate of mass} \\
@@ -161,7 +161,7 @@ which, due to its definition, has its total area under the curve equal to unity:
 
 Considering the definition of $\eadist$, the average residence time becomes
 \beq
-\rtime\txt h = \int_0^\infty t\eadist\vat t\,\dx t\,.
+\rtime = \int_0^\infty t\eadist\vat t\,\dx t\,.
 \eeq
 
 A useful tool used in this field is the \lingo{cumulative residence time fraction} (or cumulative frequency) curve $\crtfrac$, defined as
@@ -171,11 +171,11 @@ A useful tool used in this field is the \lingo{cumulative residence time fractio
 \eeq
 The last equation shows that the $\crtfrac$ curve at $t = t_i$ is defined as the cumulative area under the $\eadist$ curve from 0 to $t_i$. This means that $\crtfrac$ represents the fraction of flow with a residence time less or equal than $t_i$. Combining the two last equations, we have
 \beq
-\rtime\txt h = \int_0^1 t\,\dx\crtfrac\,,
+\rtime = \int_0^1 t\,\dx\crtfrac\,,
 \eeq
 which is the highlighted area in \cref{fig:flowcharcurves}. Note that the boundaries of the last integral must be 0 to 1, since the area under the $\eadist$ curve equals unity.
 
-The reason why we introduce the use of these functions is to quantify the non-ideality of reactors. A classic example is the evaluation of the average residence time. According to the ideal reactor theory, $\rtime\txt h = \vol/\flow\vol$, where $\vol$ is the total volume of the reactor. In case dead zones are present in the vessel, the residence time distribution will not account for them, showing a decreased reactor volume. Hence, $\rtime\txt h$ calculated in both ways will give an estimate of the dead zone volume.
+The reason why we introduce the use of these functions is to quantify the non-ideality of reactors. A classic example is the evaluation of the average residence time. According to the ideal reactor theory, $\rtime = \vol/\flow\vol$, where $\vol$ is the total volume of the reactor. In case dead zones are present in the vessel, the residence time distribution will not account for them, showing a decreased reactor volume. Hence, $\rtime$ calculated in both ways will give an estimate of the dead zone volume.
 
 \Cref{fig:flowcharcurves} illustrates the characteristic curves for various flows.
 %

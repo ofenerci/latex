@@ -7,9 +7,9 @@ Consider, to begin with, a chemical process where $k$ reactants $\setbuild{\ce R
 \eeq
 where the $\elset{\kstnum}$ are the \lingo{stoichiometric numbers}. Then, define the \lingo{reaction rate}, $\rrate$, by
 \beq
--\rrate = \prod_{i = 1}^{k}\conc{R,i}^{\kstnum_i}\,,
+-\rrate = \prod_{i = 1}^{k}\conc{R,$i$}^{\kstnum_i}\,,
 \eeq
-where $\conc{R,i}$ is the concentration of the $i$-th reactant, and define the overall \lingo{order of reaction}, $\rorder$, by
+where $\conc{R,$i$}$ is the concentration of the $i$-th reactant, and define the overall \lingo{order of reaction}, $\rorder$, by
 \beq
 \rorder = \sum_{i = 1}^{k}\kstnum_i\,.
 \eeq
@@ -29,7 +29,7 @@ The reaction rate depends on many factors:
 \end{itemize}
 
 \begin{example}
-Consider a chemical reaction of $a$ moles of $\ce A$ and $b$ moles of $\ce B$ that yield $c$ moles of $\ce C$ and $d$ moles of $\ce D$ or, symbolically,
+Consider a chemical reaction of $a$ moles of $\ce A$ and $b$ moles of $\ce B$ that yields $c$ moles of $\ce C$ and $d$ moles of $\ce D$ or, symbolically,
 \beq
 \ce{aA + bB -> cC + dD}\,.
 \eeq
@@ -67,4 +67,4 @@ where $\kboltz$ is Boltzmann constant, $[\phdim E/\phdimtemp]$, $\SI{1.3806488(1
 
 The difference between the two equations is the dimensions of $\ener\txt{act}$, because of the usage of either $\kgas$ or $\kboltz$: in the former, mostly used in chemistry, $\dim\ener\txt{act}$ are energy per unit chemical amount; in the latter, mostly used in physics, $\dim\ener\txt{act}$ are energy per molecule.
 
-The dimensions of $\freqfact$ are the same as the dimensions of $\krcoeff$; \ie, $\dim\freqfact$ depend on the order of the reaction.
+The dimensions of $\freqfact$ are the same as the dimensions of $\krcoeff$; \ie, $\dim\freqfact$ depend on the order of the reaction and on the concentration.
