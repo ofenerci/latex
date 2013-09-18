@@ -1,0 +1,71 @@
+\section{Principles of chemical reaction engineering}
+The effort to quantify \lingo{non-ideal} departures in chemical reactors leads to treat two main non-ideal models: the dispersion model and the CSTR in series model. To motivate the treatment, consider the injection of a colored tracer into a flowing reactor: if we inject the tracer, then some of the dye will exit before the expected time (shot-circuiting), while some other will reside longer in the reactor (backmixing).
+
+Dispersive mass flux, $\flux{\ce A}$, $[\phdim M/\phdim L^2\phdim T]$, is analogous to diffusion and can also be described using Fick's first law:
+\beq
+\flux{\ce A} = -\kdisp A\iod x\conc A\,,
+\eeq
+where $\conc A$ is the mass concentration of the species being dispersed, $\ce A$, $\kdisp A$ the dispersion coefficient, $\dim\kdisp A = [\phdim L^2/\phdim T]$, and $x$ is the position in the direction of the concentration gradient. However, dispersion differs from diffusion in that dispersion is caused by non-ideal flow patterns (\ie, deviations from plug flow) -- a macroscopic phenomenon, whereas diffusion is caused by random molecular motions (\ie, Brownian motion) -- a microscopic phenomenon. Dispersion is often more significant than diffusion in convection-diffusion problems.
+
+In the case of a plug flow, the \lingo{dispersion model} accounts for axial (mass) dispersion, say of a species $\ce A$, $\kdisp A$ -- the physical parameter that quantifies axial backmixing and short-circuiting of fluid. In a differential volume of flowing fluid:
+\beq
+\ipd t\conc A = \kdisp A\lap\conc A\,.
+\eeq
+
+Considering the whole flowing fluid moving with velocity $\vel$, the last equation must be corrected for the fluid motion through the introduction of an \lingo{advection} term:
+\beq
+\ipd t\conc A = \kdisp{\ce A}\lap\conc A - \vel\iprod\grad\conc A
+              = \kdisp{\ce A}\lap\conc A - \dirder\vel{\conc A}
+              = \left(\kdisp{\ce A}\lap - \dirder\vel{}\right)\conc A\,,
+\eeq
+where $\dirder\vel{\conc A}$ is the \lingo{directional derivative of $\conc A$ along $\vel$}.
+
+For one dimensional flow in a Cartesian frame, the last equation can be non-dimensionalized to
+\beq
+\ipd t\conc A = \dfrac{\kdisp{\ce A}}{\vel\length}\igd{zz}\conc A^2 - \igd z\conc A
+              = \kpeclet\igd{zz}\conc A^2 - \igd z\conc A\,,
+\eeq
+where $\length$ is the reactor length and the dimensionless quantity, $\kpeclet$, is called \lingo{Peclét number} -- the parameter that quantifies the extent of axial. The limits of the Peclét number are
+\beq
+\kpeclet = 
+    \begin{cases*}
+        \to 0     & for negligible dispersion (plug flow), \\
+        \to\infty & for large dispersion (mixed flow).
+    \end{cases*}
+\eeq
+
+\Cref{fig:concpecletcurves} shows concentration curves in closed vessels for various extents of backmixing quantified through the dispersion model.
+%
+% ------------------------------------------------------------- Figure
+% position: bthH. size:width=0.5\textwidth. file:location+filename
+ \docfigure{bt}{width=0.7\textwidth}{./figures/conc-peclet.pdf}%
+   {Concentration curves}
+   {Concentration curves at different Peclét numbers}%
+   {fig:concpecletcurves}%
+% ------------------------------------------------------------- EndFigure
+
+The \lingo{CSTR-in-series model} considers a sequence of completely mixed tanks as a fit to sequential zones of the non-ideal reactor. In a sense, this is similar to considering the PFR as a sequence of non-interacting differential volumes. Thus, both the $\eadist$ and $\crtfrac$ curves will be the sum of a series:
+\beq
+\eadist_{k} = \dfrac{k}{\rtime}\left(\dfrac{kt}{\rtime}\right)^{k - 1}
+              \dfrac{\exp\vat{-kt/\rtime}}{\left(k - 1\right)!}\,,
+\eeq
+where $k$ is the number of reactors and $\rtime$ the reactor residence time, and
+\beq
+\crtfrac_{k} = 1 - \left(
+                   \exp\vat{-kt/\rtime}\sum_{i = 1}^{k}\left(
+                                                       \dfrac{1}{\left(i + 1\right)!}
+                                                       \left(\dfrac{kt}{\rtime}\right)^{i - 1}
+                                                       \right)
+                   \right)\,.
+\eeq
+
+%
+% ------------------------------------------------------------- Figure
+% position: bthH. size:width=0.5\textwidth. file:location+filename
+ \docfigure{bt}{width=0.7\textwidth}{./figures/cstr-series.pdf}%
+   {Concentration curves for CSTR in series}
+   {Cumulative concentration curves for different numbers of CSTR in series, where $N$ is the number of reactors. A PFR diagram is dashed.}%
+   {fig:conccstrcurves}%
+% ------------------------------------------------------------- EndFigure
+
+\Cref{fig:conccstrcurves} visualizes this concept for the $\crtfrac$ curve.

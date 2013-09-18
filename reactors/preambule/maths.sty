@@ -32,17 +32,18 @@
 \newcommand{\uvec}[1]{\hat{#1}} % unit vector
 \newcommand{\iprod}{\cdot}      % inner product
 \newcommand{\oprod}{\wedge}     % outer product
-\newcommand{\metric}{g}
 
 %%% Geometric calculus
 \newcommand{\gder}{\nabla} % geometric derivative
 %
-\let\div\relax                    % \div already def.
-\DeclareMathOperator{\div}{div}   % divergence
-\DeclareMathOperator{\grad}{grad} % gradient
-\DeclareMathOperator{\lap}{lap}   % Laplace operator
+\let\div\relax                          % \div already def.
+\DeclareMathOperator{\div}{div}         % divergence
+\DeclareMathOperator{\grad}{grad}       % gradient
+\DeclareMathOperator{\lap}{lap}         % Laplace operator
+\newcommand{\dirder}[2]{\gder_{#1}{#2}} % directional derivative
 
 %%% Derivatives
+\newcommand{\dt}[1]{\dot{#1}}       % dot derivative
 \newcommand{\dx}{\text{d}}          % differential operator
 \newcommand{\Dx}{\Delta}            % difference operator
 \newcommand{\iod}[1]{\dx_{#1}}      % indexed ordinary derivative
@@ -62,7 +63,15 @@
 \newcommand{\rfrm}[1]{\elset{\rbvec{#1}}}  % reciprocal frame
 \newcommand{\fmet}[2]{\met_{{#1}{#2}}}     % metric in frame
 \newcommand{\rmet}[2]{\met^{{#1}{#2}}}     % metric in reciprocal frame
+\newcommand{\mmet}[2]{\met^{#1}_{#2}}      % mixed metric
 \newcommand{\fvec}[2]{{#1}^{#2}}           % frame (contravariant) components
 \newcommand{\rvec}[2]{{#1}_{#2}}           % reciprocal frame (covariant) components
 \newcommand{\ufbvec}[1]{\uvec{\bvec}_{#1}} % unit frame basis vector
 \DeclareMathOperator{\diag}{diag}          % diagonal of a matrix
+\newcommand{\kron}{\delta}                 % Kronecker delta (flat metric)
+\newcommand{\fkron}[2]{\kron_{{#1}{#2}}}   % flat metric in frame
+\newcommand{\rkron}[2]{\kron^{{#1}{#2}}}   % flat metric in reciprocal frame
+\newcommand{\mkron}[2]{\kron^{#1}_{#2}}    % mixed flat metric
+
+%%% Iverson brackets
+\newcommand{\iver}[1]{\left[#1\right]\txt{iv}} % iverson :)

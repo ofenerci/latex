@@ -1,25 +1,25 @@
 \section{Reaction Kinetics}
-\lingo{Reaction kinetics} is the branch of chemistry that quantifies rates of reaction. Even though this branch treats all types of chemical reactions, herein, however, we limit the treatment to \lingo{elementary chemical reactions}. An elementary reaction is a chemical reaction whose rate corresponds to a stoichiometric equation.
+\lingo{Reaction kinetics} is the branch of chemistry that quantifies rates of reaction. But, even though this branch treats all types of chemical reactions, we limit herein the discourse to \lingo{elementary reactions} -- reactions whose rates correspond to stoichiometric equations.
 
-Consider, for instance, a chemical process where $k$ reactants $\setbuild{\ce R_i}{i:1\to k}$ yield $l$ products $\setbuild{\ce P_j}{j:1\to l}$; \ie,
+Consider, to begin with, a chemical process where $k$ reactants $\setbuild{\ce R_i}{i:1\to k}$ yield $l$ products $\setbuild{\ce P_j}{j:1\to l}$:
 \beq
-\sum_{i = 1}^{k}\kstnum_i\ce R_i \ce{->} \sum_{j = 1}^l\kstnum_j\ce P_j\,.
+\sum_{i = 1}^{k}\kstnum_i\ce R_i \ce{->} \sum_{j = 1}^l\kstnum_j\ce P_j\,,
 \eeq
-Then, define the \lingo{reaction rate}, $\rrate$, by
+where the $\elset{\kstnum}$ are the \lingo{stoichiometric numbers}. Then, define the \lingo{reaction rate}, $\rrate$, by
 \beq
--\rrate = \prod_{i = 1}^{k}\conc{R,i}^{\kstnum_i}\,,
+-\rrate = \prod_{i = 1}^{k}\conc{R,$i$}^{\kstnum_i}\,,
 \eeq
-where $\conc{R,i}$ is the concentration of the $i$-th reactant, and define the overall \lingo{order of reaction}, $\rorder$, by
+where $\conc{R,$i$}$ is the concentration of the $i$-th reactant, and define the overall \lingo{order of reaction}, $\rorder$, by
 \beq
 \rorder = \sum_{i = 1}^{k}\kstnum_i\,.
 \eeq
-Note that, if $\dim\conc R = [\phdim N/\phdim L^3]$, then $\dim\rrate = [\phdim N/\phdim L^3\phdim T]$ and $\dim\rorder = [1]$.
+Note that $\dim\rorder = [1]$ and that, if $\dim\conc R = [\phdim N/\phdim L^3]$, then $\dim\rrate = [\phdim N/\phdim L^3\phdim T]$.
 
 The reaction rate depends on many factors:
 \begin{itemize}
 \item The nature of the reaction: some reactions are naturally faster than others. The number of reacting species, their physical state (the particles that form solids move much more slowly than those of gases or those in solution), the complexity of the reaction and other factors can greatly influence the rate of a reaction.
 %
-\item Concentration: reaction rate increases with concentration, as described by the rate law and explained by collision theory. As reactant concentration increases, the frequency of collision increases.
+\item Concentration: reaction rate increases with concentration, as described by the rate law and explained by collision theory. As reactant concentration increases, the frequency of collision increases as well.
 %
 \item Pressure: the rate of gaseous reactions increases with pressure, which is, in fact, equivalent to an increase in concentration of the gas.The reaction rate increases in the direction where there are fewer moles of gas and decreases in the reverse direction. For condensed-phase reactions, the pressure dependence is weak.
 %
@@ -29,7 +29,7 @@ The reaction rate depends on many factors:
 \end{itemize}
 
 \begin{example}
-Consider a chemical reaction of $a$ moles of $\ce A$ and $b$ moles of $\ce B$ that yield $c$ moles of $\ce C$ and $d$ moles of $\ce D$ or, symbolically,
+Consider a chemical reaction of $a$ moles of $\ce A$ and $b$ moles of $\ce B$ that yields $c$ moles of $\ce C$ and $d$ moles of $\ce D$ or, symbolically,
 \beq
 \ce{aA + bB -> cC + dD}\,.
 \eeq
@@ -50,7 +50,7 @@ Give the dimensions of the rate coefficient for an order zero reaction and an or
 \end{example}
 
 \begin{solution}
-For an order zero reaction, $\rorder = 0$, the rate coefficient has dimensions of $[\phdim N/\phdim L^3\phdim T]$ and, for an order one reaction, the rate coefficient has units of $[1/\phdim T]$.
+For an order zero reaction, $\rorder = 0$, thus the rate coefficient has dimensions of $[\phdim N/\phdim L^3\phdim T]$ and, for an order one reaction, $\rorder = 1$, then the rate coefficient has units of $[1/\phdim T]$.
 \end{solution}
 
 On the other hand, the rate coefficient depends on temperature. Such a dependency is described by Arrhenius equation:
@@ -67,4 +67,4 @@ where $\kboltz$ is Boltzmann constant, $[\phdim E/\phdimtemp]$, $\SI{1.3806488(1
 
 The difference between the two equations is the dimensions of $\ener\txt{act}$, because of the usage of either $\kgas$ or $\kboltz$: in the former, mostly used in chemistry, $\dim\ener\txt{act}$ are energy per unit chemical amount; in the latter, mostly used in physics, $\dim\ener\txt{act}$ are energy per molecule.
 
-The dimensions of $\freqfact$ are the same as the dimensions of $\krcoeff$; \ie, $\dim\freqfact$ depends on the order of the reaction.
+The dimensions of $\freqfact$ are the same as the dimensions of $\krcoeff$; \ie, $\dim\freqfact$ depend on the order of the reaction and on the concentration.
