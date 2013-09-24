@@ -27,9 +27,7 @@ Mass is a conservative quantity, hence, given a control volume $\vol$ of a syste
 \end{pmatrix}\,.
 \eeq
 
-The last statement represents the key point in \lingo{mass transfer}: analogously to the force balance in statics, the mass balance allows us to quantify and verify mass flows in our system.
-
-Let us now apply this fundamental balance to some ideal examples.
+The last statement represents the key point in \lingo{mass transfer}: analogously to the force balance in statics, the mass balance allows mass flow quantification and verification in chemical systems.
 
 
 \subsection{Ideal chemical reactors}
@@ -45,11 +43,11 @@ A \lingo{batch reactor} is a non-continuous, perfectly mixed and closed vessel w
    {fig:bathreactor}%
 % ------------------------------------------------------------- EndFigure
 
-Given the reactor volume $\vol$ and the initial concentration of a chemical species $\ce A$, $\conc{A,0}$, inside the reactor, then the total mass of $\ce A$ inside the vessel will be $\mass_{\ce A} = \vol\conc{A,0}$. In the unit time, the concentration of $\ce A$ will change only by virtue of a chemical reaction. The mass balance quantifies this change in this case:
+Given the reactor volume $\vol$ and the initial concentration of a chemical species $\ce A$, $\conc{A,0}$, inside the reactor, the total mass of $\ce A$ will be $\mass_{\ce A} = \vol\conc{A,0}$. In the unit time, $\conc A$ will change only by virtue of a chemical reaction. The mass balance quantifies such a change:
 \beq
 \flow\vol\conc{A,in} - \flow\vol\conc{A,out} \pm \int_\vol\rrate\dx\vol = \iod t\mass_{\ce A}\,,
 \eeq
-where $\rrate$ is the rate of generation ($+$) or depletion ($-$) of $\ce A$. Since the assumptions of no flow in or out of the reactor volume, $\flow\vol = 0$, and of constant reactor volume, $\dx\vol = 0$,
+where $\rrate$ is the rate of production ($+$) or consumption ($-$) of $\ce A$. Since the assumptions of no flow in or out of the reactor volume, $\flow\vol = 0$, and of constant reactor volume, $\dx\vol = 0$, then the balance becomes
 \beq
 \iod t\mass_{\ce A} = \iod t\conc A\vol = \vol\iod t\conc A = \vol\rrate\,,
 \eeq
@@ -64,18 +62,18 @@ The last differential equation is the \lingo{characteristic equation of a batch 
 \eeq
 whose solution is
 \beq
-\dfrac{\conc A}{\conc{A,0}} = \exp\vat{-\krcoeff t}\,,
+\conc A/\conc{A,0} = \exp\vat{-\krcoeff t}\,,
 \eeq
 or, in alternative forms,
 \begin{align*}
-\kdim_{\conc A} &= \exp\vat{-\kdim_t}    & \text{[using dimensionless quantities]} \\
+\kdim_{\conc A} &= \exp\vat{-\kdim_t}\,, & \text{[using dimensionless quantities]} \\
  \scpq{\conc A} &= \exp\vat{-\scpq t}\,. & \text{[using scaled quantities]}
 \end{align*}
-The last equations offer ways to relate concentration and time. At any $t$, we can know the concentration of $\ce A$ in the reactor, given the reaction constant and the initial concentration $\conc{A,0}$.
+These expressions offer ways to relate concentration and time; \ie, at any $t$, $\conc A$ can be calculated given $\krcoeff$ and $\conc{A,0}$.
 
 For a \lingo{second-order reaction}~\footnote{~The algebraic passages will hereafter be omitted.} ($\rrate = -\krcoeff\conc A^2$),
 \beq
-\dfrac{\conc A}{\conc{A,0}} = \dfrac{1}{1 + \krcoeff\conc{A,0}t}\,.
+\conc A/\conc{A,0} = 1 /\left(1 + \krcoeff\conc{A,0}t\right)\,.
 \eeq
 
 This procedure may be repeated for any order of reaction by substituting the expression for $\rrate$ in the
@@ -93,26 +91,29 @@ A \lingo{continuous-stirred tank reactor}, CSTR, is a well-mixed vessel that ope
    {fig:cstreactor}%
 % ------------------------------------------------------------- EndFigure
 
-A CSTR differs from a batch only in the fact that it is not closed. Thus, the mass of a species $\ce A$ flowing in and flowing out of the reactor, terms in the mass balance, will not cancel:
+A CSTR differs from a batch only in the fact that the former is not closed. Thus, the terms in the mass balance representing the mass of a species $\ce A$, $\mass_{\ce A}$, flowing in and flowing out will not cancel:
 \beq
 \iod t\mass_{\ce A} = \flow\vol\left(\conc{A,in} - \conc{A,out}\right) + \int_\vol\rrate\dx\vol = 0\,.
 \eeq
-Note, additionally, that the volumetric inflow and outflow are equal $\flow{\vol\txt{in}} = \flow{\vol\txt{out}} = \flow\vol$ and that the term that does cancel is the accumulation, due to the steady state hypothesis. Solving the differential equation, one finds that
+Note that the inflow and outflow are equal $\flow{\vol\txt{in}} = \flow{\vol\txt{out}} = \flow\vol$ and that the non-canceling term is the accumulation -- due to the steady state hypothesis. Solving the differential equation, one finds that
 \beq
 \conc{A,in} - \conc{A,out} + \rtime\rrate = 0\,,
 \eeq
-where $\rtime = \vol/\flow\vol$ is the average \lingo{hydraulic residence time}. The last equation represents the \lingo{characteristic equation for a CSTR}. Assuming a \lingo{first-order reaction}, the model then becomes
+where $\rtime = \vol/\flow\vol$ is the average \lingo{hydraulic residence time}. The last equation represents the \lingo{characteristic equation for a CSTR}. 
+
+Finally, assuming a \lingo{first-order reaction}, the model becomes
 \beq
-\dfrac{\conc{A,out}}{\conc{A,in}} = \dfrac{1}{1 + \rtime}\,.
+\conc{A,out}/\conc{A,in} = 1/\left(1 + \krcoeff\rtime\right)\implies
+\kdim_{\conc A} = 1/\left(1 + \kdim_\rtime\right)\,.
 \eeq
 
 
 \subsubsection{Plug flow reactor}
-A \lingo{plug flow reactor}, PFR, consists in a long, straight pipe in which the reactive fluid transits at steady- state (no accumulation). The main assumptions of this model are that the fluid is completely mixed in any cross- section at any point, but it experiences no axial mixing; \ie, contiguous cross-sections cannot exchange mass with each other, see \cref{fig:pfreactor}.
+A \lingo{plug flow reactor}, PFR, consists in a long, straight pipe in which the reactive fluid transits at steady-state (no accumulation). The main assumptions of this model are that the fluid is completely mixed in any cross-section at any point, but every section experiences no axial mixing; \ie, contiguous cross-sections cannot exchange mass with each other, see \cref{fig:pfreactor}.
 %
 % ------------------------------------------------------------- Figure
 % position: bthH. size:width=0.5\textwidth. file:location+filename
- \docfigure{bt}{width=0.9\textwidth}{./figures/pf-reactor.pdf}%
+ \docfigure{bt}{width=0.7\textwidth}{./figures/pf-reactor.pdf}%
    {PFR}
    {Schema of a plug flow reactor}%
    {fig:pfreactor}%
@@ -146,7 +147,7 @@ The non-ideality of industrial and natural processes led engineers to develop co
 \eeq
 which, due to its definition, has its total area under the curve equal to unity:
 \beq
-\int_0^\infty\eadist\vat t\,\dx t = 0\,.
+\int_0^\infty\eadist\vat t\,\dx t = 1\,.
 \eeq
 
 \Cref{fig:eadistcurve} shows the evolution of $\eadist$ \vs $t$. The $\eadist$ curve is the distribution needed to account for non-ideal flow.
