@@ -1,0 +1,31 @@
+\section{Batch reactor}
+A batch reactor is a vessel characterized by:
+\begin{enumerate}
+\item the absence of flow: there is neither inflow nor outflow through the reactor -- chemical species are placed once inside the reactor and then allowed to react; and
+%
+\item perfect mixing: the reactor is perfectly mixed -- mass inside the reactor is perfectly distributed within it. Equivalently, it implies equal concentration in the \emph{whole} of the reactor at a given time $t$; although it changes every moment under the presence of a reaction.
+\end{enumerate}
+
+Consider a batch reactor of volume $\vol$ hosting a first order elementary reaction by which a reactant $\ce R$ yields a product $\ce P$; \ie, $\ce{R ->[\krcoeff] \ce P}$, where $\krcoeff$ is the reaction kinetic coefficient. Consider also that the reaction happens in a liquid. Measure concentrations on a molar basis -- molar concentrations. The task is to find the reactor characteristic equation.
+
+Write firstly the reaction rate, $\rrate$, as
+\beq
+\rrate = \krcoeff\conc R\,.
+\eeq
+Since concentrations are molar, $\dim\conc R = [\phdim N/\phdim L^3]$, the reaction rate is measured volumetrically, $\dim\rrate = [\phdim N/\phdim T\phdim L^3]$, and thus the reaction coefficient $\dim\krcoeff = [1/\phdim T]$.
+
+Apply next the mass conservation law to the batch reactor -- no mass flow through its boundaries:
+\beq
+\iod t\mass_{\ce R} = -\krcoeff\conc R\vol\,,
+\eeq
+where the negative sign is due to the consumption of $\ce R$.
+
+According to hypothesis, the mass of $\ce R$ is perfectly distributed throughout the reactor, so $\mass_{\ce R} = \conc R\vol$, and thus:
+\beq
+\iod t\conc R\vol = -\krcoeff\conc R\vol\,.
+\eeq
+But, because the reaction happens within a liquid, then $\dx\vol = 0$, that is, the reactor volume does not change (or, equivalently, the liquid is assumed to be incompressible). Then, the mass balance model changes to
+\beq
+\iod t\conc R = -\krcoeff\conc R\,,
+\eeq
+which yields the characteristic equation for a batch reactor.

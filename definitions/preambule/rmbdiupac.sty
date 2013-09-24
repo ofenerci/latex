@@ -1,0 +1,58 @@
+%%% IUPAC nomenclature and symbols
+\ProvidesPackage{rmbdiupac}[2013/09/14 rmbdiupac - iupac commands (rimbaudcode)]
+
+%%% Space
+\newcommand{\pos}{\xi} % position
+\newcommand{\vel}{u}   % velocity
+
+%%% General chemistry
+\newcommand{\spe}[1]{_{\ce{#1}}}              % species
+\newcommand{\nent}{n}                         % number of entities
+\newcommand{\amount}{\eta}                    % chemical amount of substance
+\newcommand{\mass}{m}                         % mass
+\newcommand{\mmass}{\zeta}                    % molar mass
+\newcommand{\fmass}{w}                        % mass fraction
+\newcommand{\famount}{\phi}                   % amount fraction
+\newcommand{\dens}{\rho}                      % density
+\newcommand{\conc}{c}                         % mass concentration
+\newcommand{\aconc}{\gamma}                   % amount concentration
+\newcommand{\stoinum}{\nu}                    % stoichiometric number
+\newcommand{\rext}{\xi}                       % reaction extent
+
+%%% Chem. kinetics
+\newcommand{\rrate}{r}   % reaction rate
+\newcommand{\krcoeff}{k} % reaction rate coefficient
+
+%%% Physical constants
+\newcommand{\kphchem}{k}                 % physico-chemical constant
+\newcommand{\kavog}{\kphchem\txt{avo}}   % Avogadro's number
+\newcommand{\kboltz}{\kphchem\txt{bol}}  % Boltzmann constant
+\newcommand{\kgas}{\kphchem\txt{gas}}    % ideal gas constant
+\newcommand{\kplanck}{\kphchem\txt{plk}} % Planck constant
+\newcommand{\klight}{\kphchem\txt{lig}}  % speed of light in vacuum
+\newcommand{\kstef}{\kphchem\txt{sb}}    % Stefan-Boltzmann constant
+
+%%% Dim. analysis
+\DeclareMathOperator{\unit}{unit}    % unit of a quantity
+\newcommand{\phdim}[1]{\mathsf{#1}}  % physical dimension
+\newcommand{\phdimtemp}{\Theta}      % physical dimension of temperature
+\newcommand{\chpq}[1]{{#1}_{c}}      % characteristic physical quantity
+\newcommand{\scpq}[1]{\overline{#1}} % scaled physical quantity
+\newcommand{\kdim}{\Pi}              % dimless quantity
+\newcommand{\dimfunc}{\psi}          % dimensionless function
+
+%%% Dimless. quantities
+\newcommand{\kbiot}{\kdim\txt{bi}}     % biot number
+\newcommand{\kbond}{\kdim\txt{bo}}     % bond number
+\newcommand{\kcapillar}{\kdim\txt{ca}} % capillar number
+\newcommand{\kfroud}{\kdim\txt{fr}}    % froud number
+\newcommand{\kgrashof}{\kdim\txt{gr}}  % grashof number
+\newcommand{\knusselt}{\kdim\txt{nu}}  % nusselt number
+\newcommand{\kpeclet}{\kdim\txt{pe}}   % peclet number
+\newcommand{\kpower}{\kdim\txt{po}}    % power number
+\newcommand{\kprandtl}{\kdim\txt{pr}}  % prandtl number
+\newcommand{\krayleigh}{\kdim\txt{ra}} % rayleigh number
+\newcommand{\kreynolds}{\kdim\txt{re}} % reynolds number
+\newcommand{\kschmidt}{\kdim\txt{sc}}  % schmidt number
+\newcommand{\ksherwood}{\kdim\txt{sh}} % sherwood number
+\newcommand{\kweber}{\kdim\txt{we}}    % weber number

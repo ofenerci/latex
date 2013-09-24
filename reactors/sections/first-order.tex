@@ -1,0 +1,33 @@
+\section{First-order reaction}
+Consider a batch reactor hosting a first-order-kinetics chemical reaction of the form
+\beq
+\ce{R ->[\krcoeff] P}\,,
+\eeq
+where $\ce R$ represents the reactant and $\ce P$ the product and $\krcoeff$ the reaction kinetic coefficient, $[1/\phdim T]$.
+
+Let $t$ represent the chemical reaction duration, let $\conc r$ be $\ce R$ molar concentration and let $\conc p$ be \ce P molar concentration, $\dim\conc r = \dim\conc p = [\phdim N/\phdim L^3]$. Consider $\conc{r,0}$ to be the reactant concentration when $t = 0$. Then, model the reaction kinetics by applying the mass conservation principle to the reactor:
+\beq
+-\iod t\conc r = \krcoeff\conc r\qquad\text{and}\qquad
+ \conc r\vat 0 = \conc{r0}\,,
+\eeq
+where the term $-\iod t\conc r$ represents the reactant consumption rate, $[\phdim N/\phdim T\phdim L^3]$.
+
+To find the reactant concentration, solve the differential equation by separating variables and applying the initial condition to have
+\beq
+\conc r = \conc{r0}\exp\vat{-\krcoeff t}\,.
+\eeq
+Choose the set $\elset{\phdim N, \phdim L, \phdim T}$ as a dimensional system to non-dimensionalize the model by applying the scaling transformations
+\beq
+\conc r    = \scpq{\conc r}\conc{r0}\,,\qquad
+\conc p    = \scpq{\conc r}\conc{r0}\qquad\text{and}\qquad
+\krcoeff t = \scpq t\,,
+\eeq
+which yield
+\beq
+\scpq{\conc r} = \exp\vat{-\scpq t}\,.
+\eeq
+
+Next, to calculate the product concentration, apply the stoichiometric condition~\footnote{~In dimensional form, the stoichiometric condition is $\conc r + \conc p = \conc{r,0}$.}:
+\beq
+\scpq{\conc p} = 1 - \scpq{\conc r}\,.
+\eeq
