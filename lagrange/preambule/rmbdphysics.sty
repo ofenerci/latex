@@ -1,0 +1,58 @@
+%%% Physics
+\ProvidesPackage{rmbdphysics}[2013/09/14 rmbdphysics - physics commands (rimbaudcode)]
+
+%%% Mechanics
+\newcommand{\pos}{\xi}      % position
+\newcommand{\vel}{\dt\pos}  % velocity
+\newcommand{\acc}{\ddt\pos} % acceleration
+\newcommand{\mass}{m}       % mass
+\newcommand{\kspring}{k}    % spring constant
+
+%%% Indexed mechanics
+\newcommand{\fpos}[1]{\fvec{\pos}{#1}} % indexed position (contravariant)
+\newcommand{\fvel}[1]{\fvec{\vel}{#1}} % indexed velocity (contravariant)
+
+%%% Lagrange and Hamilton mechanics
+\newcommand{\ener}{e}             % energy
+\newcommand{\ken}{\ener\txt{kin}} % kinetic energy
+\newcommand{\pen}{\ener\txt{pot}} % potential energy
+\newcommand{\lag}{\ener\txt{lag}} % lagrangian
+\newcommand{\ham}{\ener\txt{ham}} % hamiltonian
+%
+\newcommand{\eleq}[2]{\ipd{#1}\lag - \iod t\ipd{#2}\lag}             % euler-lagrange equation
+\newcommand{\alteleq}[2]{\left(\ipd{#1} - \iod t\ipd{#2}\right)\lag} % alternative euler-lagrange equation
+%
+\newcommand{\elop}[2]{\square_{{#1}{#2}}} % Euler-Lagrange operator
+
+%%% Physical constants
+%\newcommand{\kavog}{n\txt{avo}}     % Avogadro constant
+%\newcommand{\kboltz}{k\txt{bol}}    % Boltzmann constant
+%\newcommand{\kgas}{r\txt{gas}}      % gas constant
+%\newcommand{\kplanck}{h\txt{plk}}   % Planck constant
+%\newcommand{\klight}{c_0}           % speed of light in vacuum
+%\newcommand{\kstef}{\sigma\txt{sb}} % Stefan-Boltzmann constant
+
+%%% Dim. analysis
+%\DeclareMathOperator{\unit}{unit}    % unit of a quantity
+%\newcommand{\phdim}[1]{\mathsf{#1}}  % physical dimension
+%\newcommand{\phdimtemp}{\Theta}      % physical dimension of temperature
+%\newcommand{\chpq}[1]{{#1}_{c}}      % characteristic physical quantity
+%\newcommand{\scpq}[1]{\overline{#1}} % scaled physical quantity
+%\newcommand{\kdim}{\Pi}              % dimless quantity
+%\newcommand{\dimfunc}{\psi}          % dimensionless function
+
+%%% Dimless. quantities
+%\newcommand{\kbiot}{\kdim\txt{bi}}     % biot number
+%\newcommand{\kreynolds}{\kdim\txt{re}} % reynolds number
+%\newcommand{\kprandtl}{\kdim\txt{pr}}  % prandtl number
+%\newcommand{\kschmidt}{\kdim\txt{sc}}  % schmidt number
+%\newcommand{\kpeclet}{\kdim\txt{pe}}   % peclet number
+%\newcommand{\kgrashof}{\kdim\txt{gr}}  % grashof number
+%\newcommand{\krayleigh}{\kdim\txt{ra}} % rayleigh number
+%\newcommand{\kweber}{\kdim\txt{we}}    % weber number
+%\newcommand{\kcapillar}{\kdim\txt{ca}} % capillar number
+%\newcommand{\kbond}{\kdim\txt{bo}}     % bond number
+%\newcommand{\kfroud}{\kdim\txt{fr}}    % froud number
+%\newcommand{\knusselt}{\kdim\txt{nu}}  %  nusselt number
+%\newcommand{\ksherwood}{\kdim\txt{sh}} % sherwood number
+%\newcommand{\kpower}{\kdim\txt{po}}    % power number
