@@ -1,0 +1,36 @@
+\section{SLAW}
+SLAW is a computer program that derives representative scaling laws of a process from sensitivity analysis experimental data.
+
+The objective of the program algorithm is to determine the characteristic value of a variable $Y\vat X$ (the \lingo{dependent variable}) of some process depending only on $n$ problem parameters, $X_1,\dotsc,X_n$ (the \lingo{independent variables}). The algorithm is based on an integration of dimensional analysis with a multivariate linear regression backward elimination procedure. In addition to the scaling laws, the program provides a set of dimensionless groups ranked by relevance.
+
+\subsection{Assumptions and model}
+The basic assumption is that the characteristic value is given by
+\beq
+Y = a\prod_{j = 1}^{n}X_{j}^{\sum_{i = 0}^{m}a_{ij}}\,.
+\eeq
+SLAW identifies this power law with $m$ dimensionless quantities ranked by their significance to the characteristic value by using the model
+\beq
+Y = a\prod_{j = 1}^{n}X_{j}^{a0j}\prod_{j = 1}{m}\kdim_i\,,
+\eeq
+where $a$ is a numeric constant and the dimensionless quantities $\kdim_i$ are given by
+\beq
+\kdim_i = \prod_{j = 1}^{n}X_{j}^{a_{ij}}
+\eeq
+
+Additionally, the algorithm takes into account uncertainties by considering only $n$ independent variables.
+
+
+\subsection{Multivariate linear regression model}
+Experimental data is fitted by means of a \lingo{multivariate linear regression model}; \ie, a linearization of the power law model
+\beq
+\log\vat Y = \beta_0 + \sum_{j = 1}^{n}\beta_j \log\vat{X_j} + \epsilon\,,
+\eeq
+where $\epsilon$ is the error term and the coefficients $\beta_0$ and $\beta_j$ are given by
+\beq
+\beta_0 = \log\vat a\qquad\text{and}\qquad
+\beta_j = \sum_{i = 0}^{m}a_{ij}\,.
+\eeq
+
+More properly, experimental data is used to find the numerical values of $a$, $\beta_0$ and $\beta_j$ by minimizing the squared sums of errors subject to linear constrains.
+
+The program source code can be downloaded at \url{http://www-bcf.usc.edu/~fordon/SLAW/}.

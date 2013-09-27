@@ -1,0 +1,70 @@
+\section{Example}
+As an example of using SLAW, consider a pendulum swinging through a fluid medium. The characteristic variable is the pendulum period, $\pper$. It is assumed that the problem parameters are the pendulum length, mass, fluid density and so on. \Cref{tab:pendulumquantities} summarizes all the assumptions.
+%
+% ------------------------------------------------------------- PreTable
+\docpretable{bt}{0.9\textwidth}{lcc}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+% use: \docfloatwidth whenever possible!
+% NOTE: does not include \toprule
+\toprule
+Description                            & Symbol    & Dimensions \\
+\midrule
+pendulum period (dependent variable)   & $\pper$   & $\phdim T$ \\
+bob mass                               & $\mass$   & $\phdim M$ \\
+pendulum length                        & $\length$ & $\phdim L$ \\
+initial angle (deviation)              & $\theta$  & $\phdim 1$ \\
+bob characteristic dimension (diameter)& $\diam$   & $\phdim L$ \\
+density of fluid surrounding the bob   & $\dens$   & $\phdim M/\phdim L^3$ \\
+acceleration of free fall              & $\grav$   & $\phdim L/\phdim T^2$ \\
+\bottomrule
+% ------------------------------------------------------------ PostTable
+\end{tabularx}
+\docposttable{Pendulum quantities}{Physical quantities assumed to affect the period of a pendulum swinging through a fluid medium}{tab:pendulumquantities}
+% ------------------------------------------------------------- EndTable
+
+
+\subsection{Program input}
+SLAW has to be fed by two files: one containing the dimensions of the physical quantities affecting the pendulum period in a formatted file, see \cref{app:physicalquantitiesslaw}. The other file must contain the experimental data also in a formatted file, see \cref{app:experimentaldataslaw}.
+
+
+\subsection{Program output}
+SLAW output is the coefficients of the model in two main steps. The first step presents a model of the main effects affecting the phenomenon. In the present case, the first step output can be summarized by
+\beq
+\pper\txt{slaw1} = e^{1.872}\length^{0.500}\grav^{-0.500} 
+                 = e^{1.872}\sqrt{\length/\grav}\,.
+\eeq
+
+The second steps results in a model that refines the first step model by adding the most significant effects. In this case, the second step output is
+\beq
+\pper\txt{slaw2} = e^{0.125}\mass^{-0.016}\diam^{0.048}\dens^{0.016}
+                 = e^{0.125}\dfrac{\diam^{0.048}\dens^{0.016}}{\mass^{0.016}}\,.
+\eeq
+
+Finally, the overall result is found by multiplying the results of both steps
+\begin{equation}\label{eq:slawfinalmodel}
+\pper = \pper\txt{slaw1}\pper\txt{slaw2}
+      = e^{1.997}\sqrt{\dfrac{\length}{\grav}}
+          \left(\dfrac{\dens\diam^3}{\mass}
+          \right)^{0.016}\,.
+\end{equation}
+
+
+\subsection{Interpretation}
+\Cref{eq:slawfinalmodel} presents the complete model for the example. In the first term, it can be seen that the period scales to
+\beq
+\pper \sim \sqrt{\dfrac{\length}{\grav}}\,,
+\eeq
+which coincides with the case of the ideal pendulum; \ie, a pendulum that swings in vacuum.
+
+The second term, on the other hand, represents the effect of the fluid medium on the period:
+\beq
+\pper \sim \left(\dfrac{\dens\diam^3}{\mass}\right)^{0.016}\,.
+\eeq
+One can see that $\dens\diam^3$ is the mass of the fluid displaced by the bob; that is,
+\beq
+\pper \sim \left(\dfrac{\mass\txt{fluid}}{\mass\txt{bob}}\right)^{0.016}\,.
+\eeq
+In other words, this term is important when the mass of the bob and the mass of the fluid it displaces are comparable. Or, in English
+\begin{quote}
+fluid resistance is significant if the bob sweeps out a mass comparable to itself.
+\end{quote}
