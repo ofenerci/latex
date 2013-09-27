@@ -4,6 +4,11 @@
 {Order-of-Magnitude Physics: Understanding the World with Dimensional Analysis, Educated Guesswork, and White Lies}
 {Peter Goldreich, Sanjoy Mahajan and Sterl Phinney, 1999.}
 
+\epigraph{No investigator should allow himself to proceed to the detailed solution of a problem until he has made a dimensional analysis of the nature of the solution which will be obtained, and convinced himself by appeal to experiment that the points of view embodied in the underlying equations are sound.}
+{Percy Williams Bridgman}{Dimensional Analysis [Yale University Press, 1922]}
+
+\epigraph{Wheeler's First Moral Principle says, "Never do a calculation without knowing the answer." He urged his students to make first an estimate before every evaluation and to try a simple physical argument before every derivation. A right guess will reinforce intuition, while a wrong guess will bring new insights. This way of developing intuition should indeed be a guiding principle for all serious students of physics.}{Cheuk-Yin Wong}{Remembering John Wheeler, physicist and teacher}
+
 \epigraph{We believe that technology is at its very best and it's more empowering when it simply disappears}
 {Johny Ives, Industrial Designer}{}
 
@@ -803,6 +808,34 @@ f\vat{\kdim_i} = 0\,.
 \end{itemize}
 
 
+\subsection{Steps of Dimensional Analysis -- Scaling}
+Non-dimensionalization... again :) Given an equation (differential equation or otherwise), follow the procedure:
+\begin{itemize}
+\item establish the problem domain: mechanics, thermal transfer, chemistry.
+%
+\item Choose a dimensionally independent set of dimensions.
+%
+\item Write down the constants (parameters, coefficients) and their dimensions in the chosen system. Don't forget to write down those quantities in initial and boundary conditions as well.
+%
+\item Write down the variables and their dimensions as done in the previous step
+%
+\item Check that the \emph{original} equation is dimensionally consistent. If not, then it is not a physical equation.
+%
+\item Determine a new set of non-dim. quantities base on the quantities present in the problem. For instance, if time $t$ is a quantity, then multiply it by any combination of the constants having the dimensions of $\phdim T$.
+%
+\item Calculate all the required derivatives, if necessary, in terms of non-dim quantities and constants in the equation. Use calculus rules: Leibniz rule, product rule, and so on.
+%
+\item Replace all the dim. quantities in the original equation with their non-dim. equivalents.
+%
+\item Use physical criteria to polish the model. Throw some reference numbers to the parameters and interpret results.
+%
+\end{itemize}
+
+
+\subsection{Dim. Analysis - Scaling}
+Nondimensionalizing a mathematical model is a constructive way to formulate the model in terms of dimensionless quantities only. A big achievement is that dimensional analysis yields insight in the scaling relations of the system without using knowledge of any governing equation. An advantageous corollary is that the total number of variables and/or parameters is minimal. Reduction of the number of parameters is also the purpose of scaling. However, dimensional analysis is more general than scaling in that it is based on a transformation of both variables and parameters on the same footing, whereas in scaling only the variables are transformed. Another difference is that scaling starts from the governing equations, whereas dimensional analysis starts much more basically, namely, from the dimensions involved in the system, and it may even predict from them some quantitative features of the model without knowledge of the model equations.
+
+
 \subsection{Examples}
 
 \subsubsection{Nondimensionalized the equation of motion for a simple pendulum.}
@@ -985,3 +1018,50 @@ To go back to the original, dimensional, physical quantities, the transformation
 x &= \chpq x\scpq x \implies \scpq x = x/\chpq x = x/(v_0^2/g) = gx/v_0^2\,,\\
 t &= \chpq t\scpq t \implies \scpq t = t/\chpq t = t/(v_0/g) = gt/v_0\,. 
 \end{align*}
+
+
+\subsubsection{Nondimensionalized the equation of motion for a vertical projectile -- yet again}
+The equations of motion for the projectile are
+\beq
+\begin{cases}
+     \ddt x = -g\,,\\
+    x\vat 0 = 0\,,\\
+\dt x\vat 0 = v_0\,.
+\end{cases}
+\eeq
+
+\begin{itemize}
+%
+\item Problem domain: kinematics.
+%
+\item Set of dimensions: $\elset{L, T}$.
+%
+\item Parameters: $g$ and $v_0$.
+%
+\item Quantities: $x$ and $t$.
+%
+\item Set of non-dim. quantities: to non-dim $t$, note that $\dim v_0/g = T$; to non-dim $x$, note that $\dim v_0^2/g = L$. Then,
+\beq
+\scpq t = v_0/g  \, t\qquad\text{and}\qquad
+\scpq x = v_0^2/g\, x\,.
+\eeq
+%
+\item Find the derivatives: for $t$:
+\beq
+\dx\scpq t   = v_0/g    \,\dx t \implies
+\dx\scpq t^2 = v_0^2/g^2\,\dx t\,.
+\eeq
+For $x$:
+\beq
+\dx\scpq x    = v_0^2/g  \,\dx x \implies
+\dx\dx\scpq x = v_0^2/g^2\,\dx\dx x\,.
+\eeq
+%
+\item Replace the non-dim. quantities in the original system to find:
+\begin{align*}
+\nxod 2{\scpq x}{\scpq t} &= -1\,,\\
+\scpq x\vat 0 &= 0\,,\\
+\xod{\scpq x}{\scpq t}\vat 0 &= 1\,,
+\end{align*}
+which is the same system found by other methods.
+\end{itemize}
