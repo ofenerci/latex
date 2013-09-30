@@ -7,6 +7,8 @@
 \newcommand{\acc}{\ddt\pos} % acceleration
 \newcommand{\mass}{m}       % mass
 \newcommand{\kspring}{k}    % spring constant
+\newcommand{\mom}{p}        % momentum
+\newcommand{\grav}{g}       % free fall acceleration
 
 %%% Indexed mechanics
 \newcommand{\fpos}[1]{\fvec{\pos}{#1}} % indexed position (contravariant)
@@ -23,6 +25,12 @@
 \newcommand{\alteleq}[2]{\left(\ipd{#1} - \iod t\ipd{#2}\right)\lag} % alternative euler-lagrange equation
 %
 \newcommand{\elop}[2]{\square_{{#1}{#2}}} % Euler-Lagrange operator
+%
+\newcommand{\igpos}[1]{\fvec{\pos}{#1}}      % indexed gen. position
+\newcommand{\igvel}[1]{\fvec{\vel}{#1}}      % indexed gen. velocity
+\newcommand{\igacc}[1]{\fvec{\acc}{#1}}      % indexed gen. acceleration
+\newcommand{\igmom}[1]{\rvec{\mom}{#1}}      % indexed gen. momentum
+\newcommand{\igfor}[1]{\rvec{\dt{\mom}}{#1}} % indexed gen. force
 
 %%% Physical constants
 %\newcommand{\kavog}{n\txt{avo}}     % Avogadro constant
