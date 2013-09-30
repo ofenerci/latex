@@ -1,0 +1,209 @@
+%%% Style and configuration
+\ProvidesPackage{rmbdarticle}[2013/09/14 style file (rimbaudcode)]
+
+%%% Packages
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{booktabs}
+\usepackage{comment}
+\RequirePackage{fixltx2e}
+\RequirePackage{graphicx}                            % graphs and figures
+\RequirePackage{mathtools}
+\RequirePackage[version=3,arrows=pgf-filled]{mhchem}
+\RequirePackage{microtype}
+%\RequirePackage{multicol}
+%\RequirePackage{multirow}
+%\RequirePackage[numbers]{natbib}
+\RequirePackage[draft, scrtime]{prelim2e}            % Final and draft versions
+\RequirePackage{siunitx}
+\RequirePackage{tabularx}
+\RequirePackage{xspace}
+
+%%% Fonts
+% pdflatex - first style
+% sc: true small caps. osf: old style figures
+%\RequirePackage[utf8x]{inputenc}       % utf8 encoding in source file
+%\RequirePackage[T1]{fontenc}
+%\RequirePackage[english]{babel}
+%\RequirePackage[sc,osf]{mathpazo}      % add possibly `sc` and `osf` options
+%\RequirePackage{eulervm}               % euler math
+%\RequirePackage[scaled=0.7]{beramono}  % beramono for tt
+%\RequirePackage[pdfusetitle]{hyperref} % at the end of packages
+%
+% pdflatex - second style
+\RequirePackage[utf8x]{inputenc}       % utf8 encoding in source file
+\RequirePackage[T1]{fontenc}
+\RequirePackage[english]{babel}
+\RequirePackage[pdfusetitle]{hyperref} % at the end of packages
+%
+% xetex - minion pro
+%\RequirePackage[small,euler-hat-accent]{eulervm}
+%\RequirePackage{fontspec}
+%\RequirePackage{xunicode}
+%\RequirePackage{xltxtra}
+%\setsansfont[Mapping=tex-text,Scale=0.9]{Myriad Pro}
+%\setmonofont[Mapping=tex-text,Scale=0.8]{Bitstream Vera Sans Mono}
+%\defaultfontfeatures{Numbers=OldStyle}
+%\setmainfont[Mapping=tex-text]{MinionPro-Regular}
+%\addfontfeature{Kerning=Uppercase}
+%%\RequirePackage{mathpazo}
+%\RequirePackage[xetex]{hyperref}
+
+\RequirePackage{hypcap}   % \capstart in floats
+\RequirePackage{cleveref} % autoref replacement (load at last)
+
+%%% table of contents
+\setcounter{tocdepth}{1} % where n is the level (1 for sections only)
+
+%%% siunitx setup
+\sisetup{
+%separate-uncertainty = true, % true: (...\pm...). false: ...(...)
+input-symbols = \pi\tau
+}%
+%%%
+
+%%% Language and acronyms
+\newcommand{\latin}[1]{\textit{#1}\xspace} % latin lingo
+\newcommand{\lingo}[1]{\textit{#1}\xspace} % scitech lingo
+\newcommand{\aka}{\latin{aka}}             % also known as
+\newcommand{\apriori}{\latin{a priori}}    % a priori
+\newcommand{\conf}{\latin{cf.}}            % confer 'compare'
+\newcommand{\ca}{\latin{ca.}}              % circa
+\newcommand{\ie}{\latin{i.e.}}             % id est
+\newcommand{\eg}{\latin{e.g.}}             % exempli gratia
+\newcommand{\etc}{\latin{etc}}             % et cetera
+\newcommand{\sic}{[\,\latin{sic}\,]}       % sic
+\newcommand{\vs}{\latin{vs}}               % versus
+\newcommand{\vis}{\latin{vice versa}}      % viceversa
+\newcommand{\viz}{\latin{viz.}}            % videlicet, in other words
+
+%%% AMS axioms, definitions and Co.
+%
+%\newtheorem{axiom}{Axiom}[section]
+%\newtheorem{definition}{Definition}[section]
+%\newtheorem{example}{Example}[section]
+%\newtheorem{exercise}{Exercise}[section]
+%\newtheorem{note}{Note}[section]
+%\newtheorem{remark}{Remark}[section]
+%\newtheorem{theorem}{Theorem}[section]
+
+%%% MATH ENVIRONMENTS
+\newenvironment{axiom}{\medskip\noindent{\it Axiom.}}{}
+\newenvironment{definition}{\medskip\noindent{\it Definition.}\it}{\rm}
+\newenvironment{theorem}{\medskip\noindent{\it Theorem.}}{}
+%
+\newenvironment{example}{\noindent\\\noindent{\it Example.}}{}
+\newenvironment{exercise}{\medskip\noindent{\it Exercise.}}{}
+%
+\newenvironment{approximation}{\smallskip\small\noindent{\it Approx. Solution.}}{\normalsize\smallskip}
+\newenvironment{caution}{\smallskip\small\noindent{\it Caution.}}{\normalsize\smallskip}
+\newenvironment{dimensional}{\smallskip\small\noindent{\it Dim. Analysis.}}{\normalsize\smallskip}
+\newenvironment{discussion}{\smallskip\small\noindent{\it Discussion.}}{\normalsize\smallskip}
+\newenvironment{guess}{\smallskip\small\noindent{\it Guess.}}{\normalsize\smallskip}
+\newenvironment{geometry}{\smallskip\small\noindent{\it Geometry.}}{\normalsize\smallskip}
+\newenvironment{mathnote}{\smallskip\small\noindent{\it Math note.}}{\normalsize\smallskip}
+\newenvironment{motivation}{\smallskip\small\noindent{\it Motivation.}}{\normalsize\smallskip}
+\newenvironment{notation}{\smallskip\small\noindent{\it Notation.}}{\normalsize\smallskip}
+\newenvironment{note}{\smallskip\small\noindent{\it Note.}}{\normalsize\smallskip}
+\newenvironment{remark}{\smallskip\small\noindent{\it Remark.}}{\normalsize\smallskip}
+\newenvironment{technote}{\smallskip\small\noindent{\it Technical note.}}{\normalsize\smallskip}
+\newenvironment{warning}{\smallskip\small\noindent{\it Warning.}}{\normalsize\smallskip}
+%
+\renewenvironment{proof}{\newline\small\noindent{\it Proof.}}{\normalsize}
+\newenvironment{solution}{\smallskip\small\noindent{\it Solution.}}{\normalsize\\}
+\newenvironment{verification}{\small\noindent{\it Verification.}}{\normalsize}
+
+%%% Equations
+\numberwithin{equation}{section} % equation with section numbers
+
+%%% Tables
+%
+% ------------------------------------------------------------- PreTable
+% \docpretable{position}{size}{cols}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+% use: \docfloatwidth whenever possible!
+% NOTE: does not include \toprule
+\newcommand{\docpretable}[3]{
+  \begin{table}[#1]%
+    \centering
+    \capstart
+    \center\small%\footnotesize%
+    \begin{tabularx}{#2}{#3}%
+}%
+% ------------------------------------------------------------ PostTable
+\newcommand{\docposttable}[3]{%
+  % \end{tabularx}%
+  \normalsize
+  \caption[#1]{#2}\label{#3}%
+    \end{table}%
+}
+% include: \end{tabularx}%
+% \end{tabularx}
+% \docposttable{caption}{caption}{label}
+% ------------------------------------------------------------- EndTable
+
+%%% Figures
+% ------------------------------------------------------------- Figure
+% position: bthH. size:width=0.5\textwidth. file:location+filename
+% \docfigure{position}{size}{file}%
+%   {short-caption}
+%   {caption}%
+%   {label}%
+% ------------------------------------------------------------- EndFigure
+\newcommand{\docfigure}[6]{
+  \begin{figure}[#1]\capstart\center
+    \includegraphics[#2]{#3}
+    \caption[#4]{#5}
+    \label{#6}
+  \end{figure}
+}
+% ------------------------------------------------------------- EndFigure
+
+%%% Epigraph
+%% \epigraph{Text}{Author}{Source}
+\newcommand{\epigraph}[3]
+{
+\makeatletter
+  \begingroup\vspace{0.5cm}
+    \begin{flushright}
+      \begin{minipage}[H]{0.9\linewidth}
+        \small\textsf{#1}% text...quote
+        \begin{flushright}
+          % author, reference
+          {--- \sc\MakeLowercase{#2}}, \\
+          {\sc\MakeLowercase{#3}}
+        \end{flushright}
+      \end{minipage}
+    \end{flushright}
+  \endgroup\vspace{0.5cm}
+\makeatother
+}
+
+%%% Hyperref package configuration
+%
+\makeatletter
+\hypersetup{
+  colorlinks=true,
+  linktocpage=true,
+  pdfstartpage=1,
+  pdfstartview=FitPage,% FitH=fit height, default=FitV=fit Vertical
+  breaklinks=true, 
+  pdfpagemode=UseNone, 
+  pageanchor=true,
+  pdfpagemode=UseOutlines,
+  plainpages=false, 
+  bookmarksnumbered, 
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  hypertexnames=true, 
+  pdfhighlight=/O,
+  urlcolor= black,
+  linkcolor= black,
+  citecolor= black,
+  % -------------------------------------------------------
+  pdfcreator={XeLaTeX with hyperref},
+  pdfproducer={XeLaTeX with hyperref}
+}
+\makeatother

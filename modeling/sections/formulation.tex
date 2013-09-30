@@ -1,0 +1,111 @@
+\section{Problem formulation}
+Once the phenomenon under study is described, a \lingo{precise formulation} of it should be made. This formulation must be based on sound physical principles expressed expressed in mathematical terms.
+
+The problem formulation aims to:
+\begin{itemize}
+\item identify key physical processes;
+\item interpret these processes mathematically;
+\item establish a mathematical model -- governing equations and suitable initial conditions and boundary conditions;
+\item state clearly the assumptions.
+\end{itemize}
+
+A guide to the formulation is to define the physical framework (geometry, kinematics, dynamics, thermal transfer, and so on), define the physical quantities, constants, parameters, coefficients and their physical dimensions.
+
+Usually, one begins with educated guessing, followed by dimensional analysis, order of magnitude analysis, analysis of extreme cases and ends with simplifications that can make the model less accurate -- given a tolerance --, but less complex. Notice that order of magnitude analysis is preceded by dimensional analysis, since \emph{always} the comparison of \emph{dimensionless} quantities is meaningful! Dimensional quantities are relative.
+
+
+\subsection{Physical processes}
+In the case of a swinging gravitational pendulum, there are two main cases to study:
+\begin{itemize}
+\item free pendulum motion -- where no frictional forces and no drag are taken into account and
+\item damp pendulum motion -- where frictional forces or drag are considered.
+\end{itemize}
+In both cases, however, the interplay between kinetic energy and gravitational potential must be regarded, since it drives motion. It can be seen, finally, that the problem domain is that of dynamics.
+
+
+\subsection{Mathematical interpretation}
+The mathematical model wishes to find a function to predict the pendulum amplitude variation with time: $\theta = \theta\vat t$.
+
+First, one can hypothesize that the pendulum bob hangs by a massless, frictionless and inflexible rod. This implies that the system center of gravity will coincide with the bob center of gravity (massless rod), that no damping due to friction will happen and that the bob will trace a circular orbit of radius equal to the length of the rod (inflexible rod).
+
+Next, let us list of the possible physical quantities that may influence the pendulum motion together with their symbols and dimensions:
+\begin{itemize}
+%
+\item pendulum: amplitude, $\dim\theta = [\phdim 1]$, initial amplitude, $\dim\theta_0 = \dim\theta\vat 0 = [\phdim 1$];
+%
+\item rod: length, $\dim\length = [\phdim L]$;
+%
+\item bob: mass, $\dim\mass\txt{bob} = [\phdim M]$, density, $\dim\dens\txt{bob} = [\phdim M/\phdim L^3]$, diameter, $\dim\diam\txt{bob} = [\phdim L]$;
+%
+\item fluid: density, $\dim\dens\txt{fl} = [\phdim M/\phdim L^3]$, dynamic viscosity, $\dim\dynvis = [\phdim M/\phdim L\phdim T]$;
+%
+\item others: time, $\dim t = [\phdim T]$, free fall acceleration, $\dim\grav = [\phdim L/\phdim T^2]$.
+%
+\end{itemize}
+Since the problem belongs to dynamics, the chosen dimensional set was $\elset{\phdim L, \phdim M, \phdim T}$, with cardinality of three.
+
+Because $\mass\txt{bob}$, $\dens\txt{bob}$ and $\diam\txt{bob}$ are related, we can keep two of the three quantities. We keep the density and the diameter. Then, there are 6 physical quantities and 3 independent dimensions. Thus, according to the Pi-theorem, the number of dimensionless quantities that can be formed is $9 - 3 = 6$. These quantities are
+\beq
+\kdim_1 = \theta\,,\quad
+\kdim_2 = \theta_0\,,\quad
+\kdim_3 = \diam/\length\,,\quad
+\kdim_4 = \dens\txt{fl}/\dens\txt{bob}\,,\quad
+\kdim_5 = t\sqrt{\grav/\length}\,,\quad
+\kdim_6 = \dens\txt{fl}\diam\sqrt{\length\grav}/\dynvis\,.
+\eeq
+Again, according to the Pi-theorem, the mathematical function we seek is of the \emph{form}:
+\beq
+\theta = \kdimf\vat{\theta_0, 
+            \diam/\length, 
+            \dens\txt{fl}/\dens\txt{bob}, 
+            t\sqrt{\grav/\length}, 
+            \dens\txt{fl}\diam\sqrt{\length\grav}/\dynvis}\,.
+\eeq
+
+Now, we use order of magnitude analysis to restrain the physical model and thus to simplify the mathematical model. We restrain the model by assuming:
+\begin{itemize}
+\item $\length\gg\diam$, then $\diam/\length\to 0$. The validity of this assumption depends on one's tolerance; \eg, if the bob diameter is, say, $\SI{5}{cm}$ and the rod length $\SI{1}{m}$, then the ratio $\diam/\length = 0.05$, which might be enough for some purposes.
+%
+\item $\dens\txt{bob}\gg\dens\txt{fl}$, then $\dens\txt{fl}/\dens\txt{bob}\to 0$. Say, for instance, that the bob is made of steel and swings through air at $\SI{15}{\celsius}$ and at sea level, then $\dens\txt{air}/\dens\txt{steel} = \SI{1.225}{kg/m^3}/\SI{7750}{kg/m^3} \sim \num{0.158e-4}$, which can be ignored. However, if the steel bob swings through oil with $\dens\txt{oil} = \SI{850}{kg/m^3}$, then $\dens\txt{oil}/\dens\txt{steel} = \SI{850}{kg/m^3}/\SI{7750}{kg/m^3} \sim \num{0.110}$, which may be important for some applications.
+%
+\item an inviscid fluid. An inviscid fluid is a fluid with no viscosity, then $\dens\txt{fl}\diam\sqrt{\length\grav/\dynvis} = 0$. The validity of this assumption will also depend on the circumstances.
+\end{itemize}
+
+Finally, for mathematical purposes, we define a \lingo{simple gravitational pendulum} as a pendulum composed of a massive bob of mass $\mass$ hanging by a massless, frictionless and inflexible rod of length $\length$ attached to a frictionless pivot. The pendulum swings through an inviscid fluid of negligible density.
+
+The last definition leads to a very restricted physical model. However, this will allow us to find a closed form for the pendulum amplitude.
+
+
+\subsection{Mathematical model}
+Consider a simple pendulum composed of a bob of mass $\mass$ and a rod of length $\length$. Let $\igpos\theta$ be the amplitude of the pendulum for any time $t$. The pendulum begin moving by displacing the bob an initial angle $\igpos\theta_0$ at time $t = 0$ and without applying any force. Motion is kept by gravitational action, with $\grav$ being the free fall acceleration. Find the equation of motion for the pendulum.
+
+%\begin{solution}
+Using $\igpos\theta$ %as the generalized position and $\igvel\theta$ as the generalized velocity, write the Lagrangian for the system:
+\beq
+\lag = \dfrac{1}{2}\mass\igvel\theta\igvel\theta + \mass\grav\length\cos\vat{\igpos\theta}\,.
+\eeq
+Find next the generalized momentum and its temporal change
+\beq
+\ipd{\igvel\theta}{\lag} = \mass\length^2\igvel\theta\implies
+\iod{t}\ipd{\igvel\theta}{\lag} = \mass\length^2\igacc\theta\,.
+\eeq
+Calculate the generalized force:
+\beq
+\ipd{\igpos\theta}{\lag} = -\mass\grav\length\sin\vat{\igpos\theta}\,.
+\eeq
+Replace the generalized force and the temporal change of the generalized momentum in the Euler-Lagrange equation to find:
+\beq
+\elop{\igpos\theta}{\igvel\theta}\lag = \mass\length^2\igacc\theta + \mass\grav\length\sin\vat{\igpos\theta} = 0\,.
+\eeq
+Since the bob mass and the rod length are each not null, divide through $\mass\length^2$ to have
+\beq
+\igacc\theta + \dfrac{\grav}{\length}\sin\vat{\igpos\theta} = 0\,,
+\eeq
+object to the initial conditions $\igpos\theta\vat 0 = \igpos\theta_0$ and $\igvel\theta\vat 0 = 0$.
+%\end{solution}
+
+Note that we deduced the equation by means of Lagrangian mechanics. Writing down the Lagrangian was possible due to the fact that the system was assumed to be conservative; \ie, neither friction nor drag were considered.
+
+
+\subsection{Assumptions}
+The equation of motion for the pendulum was found using the following assumptions:
