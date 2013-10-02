@@ -1,7 +1,5 @@
 \section{Problem formulation}
-Once the phenomenon under study is described, a \lingo{precise formulation} of it should be made. This formulation must be based on sound physical principles expressed expressed in mathematical terms.
-
-The problem formulation aims to:
+The \lingo{problem formulation} aims to:
 \begin{itemize}
 \item identify key physical processes;
 \item interpret these processes mathematically;
@@ -9,9 +7,11 @@ The problem formulation aims to:
 \item state clearly the assumptions.
 \end{itemize}
 
-A guide to the formulation is to define the physical framework (geometry, kinematics, dynamics, thermal transfer, and so on), define the physical quantities, constants, parameters, coefficients and their physical dimensions.
+Additionally, the formulation must be based on sound physical principles, experimental facts or laws expressed in mathematical terms. 
 
-Usually, one begins with educated guessing, followed by dimensional analysis, order of magnitude analysis, analysis of extreme cases and ends with simplifications that can make the model less accurate -- given a tolerance --, but less complex. Notice that order of magnitude analysis is preceded by dimensional analysis, since \emph{always} the comparison of \emph{dimensionless} quantities is meaningful! Dimensional quantities are relative.
+As a guide, define the physical framework (geometry, kinematics, dynamics, thermal transfer and so on), state a dimensional set and then define the physical quantities, constants, parameters, coefficients and state their dimensions.
+
+Usually, one begins with educated guessing, followed by dimensional analysis, order of magnitude analysis, analysis of extreme cases and ends with model restrictions. The end result is a less accurate model, but less complex as well. Notice that order of magnitude analysis is preceded by dimensional analysis, since \emph{only} the comparison of \emph{dimensionless} quantities is meaningful!
 
 
 \subsection{Physical processes}
@@ -56,52 +56,76 @@ Because $\mass\txt{bob}$, $\dens\txt{bob}$ and $\diam\txt{bob}$ are related, we 
 Again, according to the Pi-theorem, the mathematical function we seek is of the \emph{form}:
 \beq
 \theta = \kdimf\vat{\theta_0, 
-            \diam/\length, 
-            \dens\txt{fl}/\dens\txt{bob}, 
-            t\sqrt{\grav/\length}, 
-            \dens\txt{fl}\diam\sqrt{\length\grav}/\dynvis}\,.
+            \dfrac{\diam}{\length}, 
+            \dfrac{\dens\txt{fl}}{\dens\txt{bob}}, 
+            t\sqrt{\dfrac{\grav}{\length}}, 
+            \dens\txt{fl}\diam\dfrac{\sqrt{\length\grav}}{\dynvis}}\,.
 \eeq
 
-Now, we use order of magnitude analysis to restrain the physical model and thus to simplify the mathematical model. We restrain the model by assuming:
+Now, we use order of magnitude analysis to restrain the physical model so to simplify the mathematical model. We assume:
 \begin{itemize}
-\item $\length\gg\diam$, then $\diam/\length\to 0$. The validity of this assumption depends on one's tolerance; \eg, if the bob diameter is, say, $\SI{5}{cm}$ and the rod length $\SI{1}{m}$, then the ratio $\diam/\length = 0.05$, which might be enough for some purposes.
+\item $\length\gg\diam$, then $\diam/\length\to 0$. The validity of this assumption depends on one's tolerance; \eg, if the bob diameter is, say, $\SI{5}{cm}$ and the rod length $\SI{1}{m}$, then the ratio $\diam/\length = 0.05$, which might be discarded for some purposes.
 %
-\item $\dens\txt{bob}\gg\dens\txt{fl}$, then $\dens\txt{fl}/\dens\txt{bob}\to 0$. Say, for instance, that the bob is made of steel and swings through air at $\SI{15}{\celsius}$ and at sea level, then $\dens\txt{air}/\dens\txt{steel} = \SI{1.225}{kg/m^3}/\SI{7750}{kg/m^3} \sim \num{0.158e-4}$, which can be ignored. However, if the steel bob swings through oil with $\dens\txt{oil} = \SI{850}{kg/m^3}$, then $\dens\txt{oil}/\dens\txt{steel} = \SI{850}{kg/m^3}/\SI{7750}{kg/m^3} \sim \num{0.110}$, which may be important for some applications.
+\item $\dens\txt{bob}\gg\dens\txt{fl}$, then $\dens\txt{fl}/\dens\txt{bob}\to 0$. Say, for instance, that the bob is made of steel and swings through air at $\SI{15}{\celsius}$ and at sea level, then 
+\beq
+\dens\txt{air}/\dens\txt{steel} = \SI{1.225}{kg/m^3}/\SI{7750}{kg/m^3} \sim \num{0.158e-4}\,, 
+\eeq
+which can be ignored. However, if the steel bob swings through oil with $\dens\txt{oil} = \SI{850}{kg/m^3}$, then 
+\beq
+\dens\txt{oil}/\dens\txt{steel} = \SI{850}{kg/m^3}/\SI{7750}{kg/m^3} \sim \num{0.110}\,, 
+\eeq
+which may be important for some applications.
 %
-\item an inviscid fluid. An inviscid fluid is a fluid with no viscosity, then $\dens\txt{fl}\diam\sqrt{\length\grav/\dynvis} = 0$. The validity of this assumption will also depend on the circumstances.
+\item an inviscid fluid. An inviscid fluid is a fluid with no viscosity, then 
+\beq
+\dens\txt{fl}\diam\sqrt{\length\grav}/\dynvis = 0\,. 
+\eeq
+The validity of this assumption will also depend on the circumstances.
 \end{itemize}
 
-Finally, for mathematical purposes, we define a \lingo{simple gravitational pendulum} as a pendulum composed of a massive bob of mass $\mass$ hanging by a massless, frictionless and inflexible rod of length $\length$ attached to a frictionless pivot. The pendulum swings through an inviscid fluid of negligible density.
+Then, after having restrained the physical model, we seek for a mathematical function of the form
+\beq
+\theta = \kdimf\vat{
+            \theta_0, 
+            t\sqrt{\dfrac{\grav}{\length}}
+            }\,.
+\eeq
 
-The last definition leads to a very restricted physical model. However, this will allow us to find a closed form for the pendulum amplitude.
+For mathematical purposes, we can combine all the previous assumptions by defining a \lingo{simple gravitational pendulum} as a pendulum composed of a massive bob of mass $\mass$ hanging by a massless, frictionless and inflexible rod of length $\length$ attached to a frictionless pivot. Under the influence of gravitational interactions, the pendulum swings through an inviscid fluid of negligible density.
+
+The last definition leads to a very restricted physical model. However, this will allow us to finally find a closed form for the pendulum amplitude.
+
+\newcommand{\angpos}{\theta}     % angular position
+\newcommand{\angvel}{\dt\theta}  % angular velocity
+\newcommand{\angacc}{\ddt\theta} % angular acceleration
 
 
 \subsection{Mathematical model}
-Consider a simple pendulum composed of a bob of mass $\mass$ and a rod of length $\length$. Let $\igpos\theta$ be the amplitude of the pendulum for any time $t$. The pendulum begin moving by displacing the bob an initial angle $\igpos\theta_0$ at time $t = 0$ and without applying any force. Motion is kept by gravitational action, with $\grav$ being the free fall acceleration. Find the equation of motion for the pendulum.
+Consider a simple gravitational pendulum composed of a bob of mass $\mass$ and a rod of length $\length$. Let $\angpos$ be the amplitude of the pendulum for any time $t$. Let the initial angle be $\angpos_0$ and the initial velocity be $\angvel_0 = 0$. Finally, let $\grav$ be the free fall acceleration. Then, find the equation of motion for the pendulum.
 
 %\begin{solution}
-Using $\igpos\theta$ %as the generalized position and $\igvel\theta$ as the generalized velocity, write the Lagrangian for the system:
+Using $\angpos$ as the generalized position and $\angvel$ as the generalized velocity, write the Lagrangian for the system:
 \beq
-\lag = \dfrac{1}{2}\mass\igvel\theta\igvel\theta + \mass\grav\length\cos\vat{\igpos\theta}\,.
+\lag = \dfrac{1}{2}\mass\length^2\angvel^2 - \mass\grav\length\cos\vat{\angpos}\,.
 \eeq
 Find next the generalized momentum and its temporal change
 \beq
-\ipd{\igvel\theta}{\lag} = \mass\length^2\igvel\theta\implies
-\iod{t}\ipd{\igvel\theta}{\lag} = \mass\length^2\igacc\theta\,.
+\ipd{\angvel}{\lag} = \mass\length^2\angvel\implies
+\iod{t}\ipd{\angvel}{\lag} = \mass\length^2\angacc\,.
 \eeq
 Calculate the generalized force:
 \beq
-\ipd{\igpos\theta}{\lag} = -\mass\grav\length\sin\vat{\igpos\theta}\,.
+\ipd{\angpos}{\lag} = -\mass\grav\length\sin\vat\angpos\,.
 \eeq
 Replace the generalized force and the temporal change of the generalized momentum in the Euler-Lagrange equation to find:
 \beq
-\elop{\igpos\theta}{\igvel\theta}\lag = \mass\length^2\igacc\theta + \mass\grav\length\sin\vat{\igpos\theta} = 0\,.
+\elop{\angpos}{\angvel}\lag = \mass\length^2\angacc + \mass\grav\length\sin\vat\angpos = 0\,.
 \eeq
-Since the bob mass and the rod length are each not null, divide through $\mass\length^2$ to have
+Since $\mass\length > 0$, divide the last equation through $\mass\length^2$ to have
 \beq
-\igacc\theta + \dfrac{\grav}{\length}\sin\vat{\igpos\theta} = 0\,,
+\angacc + \dfrac{\grav}{\length}\sin\vat\angpos = 0\,,
 \eeq
-object to the initial conditions $\igpos\theta\vat 0 = \igpos\theta_0$ and $\igvel\theta\vat 0 = 0$.
+object to the initial conditions $\angpos\vat 0 = \angpos_0$ and $\angvel\vat 0 = 0$.
 %\end{solution}
 
 Note that we deduced the equation by means of Lagrangian mechanics. Writing down the Lagrangian was possible due to the fact that the system was assumed to be conservative; \ie, neither friction nor drag were considered.
