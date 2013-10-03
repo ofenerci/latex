@@ -1,0 +1,81 @@
+%%% Maths
+\ProvidesPackage{rmbdmath}[2013/09/14 rmbdmath - math commands (rimbaudcode)]
+
+%%% General commands
+\newcommand{\mqed}{\tag*{\qedsymbol}}             % math qed
+\newcommand*{\txtqed}{\hfill\ensuremath{\square}} % text qed
+\newcommand{\txt}[1]{_\text{#1}}                  % text subscript
+%
+\newcommand{\beq}{\begin{equation*}}
+\newcommand{\eeq}{\end{equation*}}
+
+%%% Sets
+\newcommand{\set}[1]{\mathcal{#1}}
+\newcommand{\elset}[1]{\left\lbrace{#1}\right\rbrace} % elements of a set
+\newcommand{\setbuild}[2]{\elset{{#1}\,|\,{#2}}}      % set-builder notation
+\newcommand{\nset}[2]{\set{#1}^{#2}}                  % n-dim set
+\newcommand{\espace}{\set{E}}                         % Euclidean space
+\newcommand{\nespace}[1]{\nset{\espace}{#1}}          % n-dim Euclidean space
+\newcommand{\tuple}[1]{\left[{#1}\right]}
+
+%%% Functions
+\newcommand{\vat}[1]{\!\tuple{#1}} % function value at
+
+%%% Geometry
+\newcommand{\vol}{v}          % volume
+\newcommand{\bound}{\partial} % boundary
+\newcommand{\surf}{s}         % surface
+\newcommand{\length}{l}       % length
+\newcommand{\diam}{d}         % diameter
+\newcommand{\radius}{r}       % radius
+
+%%% Geometric algebra
+\newcommand{\inv}[1]{{#1}^{-1}} % inverse
+\newcommand{\uvec}[1]{\hat{#1}} % unit vector
+\newcommand{\iprod}{\cdot}      % inner product
+\newcommand{\oprod}{\wedge}     % outer product
+
+%%% Geometric calculus
+\newcommand{\gder}{\nabla} % geometric derivative
+%
+\let\div\relax                          % \div already def.
+\DeclareMathOperator{\div}{div}         % divergence
+\DeclareMathOperator{\grad}{grad}       % gradient
+\DeclareMathOperator{\lap}{lap}         % Laplace operator
+\newcommand{\dirder}[2]{\gder_{#1}{#2}} % directional derivative
+
+%%% Derivatives
+\newcommand{\dt}[1]{\dot{#1}}       % dot derivative
+\newcommand{\ddt}[1]{\ddot{#1}}     % dot dot derivative
+\newcommand{\dx}{\text{d}}          % differential operator
+\newcommand{\Dx}{\Delta}            % difference operator
+\newcommand{\iod}[1]{\dx_{#1}}      % indexed ordinary derivative
+\newcommand{\ipd}[1]{\partial_{#1}} % indexed partial derivative
+\newcommand{\igd}[1]{\partial_{#1}} % indexed geometric derivative
+\newcommand{\trate}{\iod{t}}        % time rate
+%
+\newcommand{\xpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}}  % expanded partial derivative
+\newcommand{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}}            % expanded ordinary derivative
+\newcommand{\nxod}[3]{\dfrac{\dx^{#1}{#2}}{\dx{#3}^{#1}}} % n-th expanded ordinary derivative
+
+%%% Index notation
+\newcommand{\bvec}{\gamma}                 % basis vector
+\newcommand{\fbvec}[1]{\bvec_{#1}}         % frame (basis) element
+\newcommand{\rbvec}[1]{\bvec^{#1}}         % reciprocal frame (basis) element
+\newcommand{\met}{g}                       % metric
+\newcommand{\frm}[1]{\elset{\fbvec{#1}}}   % frame
+\newcommand{\rfrm}[1]{\elset{\rbvec{#1}}}  % reciprocal frame
+\newcommand{\fmet}[2]{\met_{{#1}{#2}}}     % metric in frame
+\newcommand{\rmet}[2]{\met^{{#1}{#2}}}     % metric in reciprocal frame
+\newcommand{\mmet}[2]{\met^{#1}_{#2}}      % mixed metric
+\newcommand{\fvec}[2]{{#1}^{#2}}           % frame (contravariant) components
+\newcommand{\rvec}[2]{{#1}_{#2}}           % reciprocal frame (covariant) components
+\newcommand{\ufbvec}[1]{\uvec{\bvec}_{#1}} % unit frame basis vector
+\DeclareMathOperator{\diag}{diag}          % diagonal of a matrix
+\newcommand{\kron}{\delta}                 % Kronecker delta (flat metric)
+\newcommand{\fkron}[2]{\kron_{{#1}{#2}}}   % flat metric in frame
+\newcommand{\rkron}[2]{\kron^{{#1}{#2}}}   % flat metric in reciprocal frame
+\newcommand{\mkron}[2]{\kron^{#1}_{#2}}    % mixed flat metric
+
+%%% Iverson brackets
+\newcommand{\iver}[1]{\left[#1\right]\txt{iv}} % iverson :)

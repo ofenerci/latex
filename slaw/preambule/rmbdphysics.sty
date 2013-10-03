@@ -7,8 +7,9 @@
 \newcommand{\acc}{\ddt\pos} % acceleration
 \newcommand{\mass}{m}       % mass
 \newcommand{\kspring}{k}    % spring constant
-\newcommand{\mom}{p}        % momentum
-\newcommand{\grav}{g}       % free fall acceleration
+\newcommand{\pper}{\tau}    % pendulum period
+\newcommand{\grav}{g}       % acceleration of free fall
+\newcommand{\dens}{\rho}    % density
 
 %%% Indexed mechanics
 \newcommand{\fpos}[1]{\fvec{\pos}{#1}} % indexed position (contravariant)
@@ -25,12 +26,6 @@
 \newcommand{\alteleq}[2]{\left(\ipd{#1} - \iod t\ipd{#2}\right)\lag} % alternative euler-lagrange equation
 %
 \newcommand{\elop}[2]{\square_{{#1}{#2}}} % Euler-Lagrange operator
-%
-\newcommand{\igpos}[1]{\fvec{\pos}{#1}}      % indexed gen. position
-\newcommand{\igvel}[1]{\fvec{\vel}{#1}}      % indexed gen. velocity
-\newcommand{\igacc}[1]{\fvec{\acc}{#1}}      % indexed gen. acceleration
-\newcommand{\igmom}[1]{\rvec{\mom}{#1}}      % indexed gen. momentum
-\newcommand{\igfor}[1]{\rvec{\dt{\mom}}{#1}} % indexed gen. force
 
 %%% Physical constants
 %\newcommand{\kavog}{n\txt{avo}}     % Avogadro constant
@@ -41,12 +36,12 @@
 %\newcommand{\kstef}{\sigma\txt{sb}} % Stefan-Boltzmann constant
 
 %%% Dim. analysis
+\newcommand{\kdim}{\Gamma}            % dimless quantity
 %\DeclareMathOperator{\unit}{unit}    % unit of a quantity
-%\newcommand{\phdim}[1]{\mathsf{#1}}  % physical dimension
+\newcommand{\phdim}[1]{\mathsf{#1}}   % physical dimension
 %\newcommand{\phdimtemp}{\Theta}      % physical dimension of temperature
 %\newcommand{\chpq}[1]{{#1}_{c}}      % characteristic physical quantity
 %\newcommand{\scpq}[1]{\overline{#1}} % scaled physical quantity
-%\newcommand{\kdim}{\Pi}              % dimless quantity
 %\newcommand{\dimfunc}{\psi}          % dimensionless function
 
 %%% Dimless. quantities

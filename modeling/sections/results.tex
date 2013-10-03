@@ -1,0 +1,35 @@
+\section{Results}
+\Cref{eq:solsimppendsmallangle} is the final mathematical model to the description of motion of a simple gravitational pendulum. Although restrained both physically and mathematically with respect to the original problem -- a non-simple pendulum, the solution does provide a closed form function to predict the pendulum amplitude variation with time. 
+
+
+\subsection{Discussion}
+\Cref{eq:solsimppendsmallangle} satisfies \cref{eq:mathmodelsimppend}. However, it should also satisfy physical principles: momentum and energy conservation.
+
+
+However, during the solution the small-angle approximation was made. This approximation results in \cref{eq:solsimppendsmallangle} \emph{not} satisfying a physical principle: energy conservation. To see that, remember that a system that preserves energy has a time-independent Hamiltonian; \ie, a Hamiltonian dependent only on constant values. Let us find out.
+
+
+%%% LATEX vars used in the following
+\newcommand{\oscper}{\tau} % oscillation period
+
+The motion described by \cref{eq:solsimppendsmallangle} is \lingo{simple harmonic motion}, where $\angpos_0$ is the semi-amplitude of the oscillation -- the maximum angle between the rod of the pendulum and the vertical. The period of the motion, $\oscper$, the time for a complete oscillation -- outward and return, is then
+\beq
+\oscper_0 = 2\pi\sqrt{\dfrac{\length}{\grav}}\,,
+\eeq
+which is known as \lingo{Christiaan Huygens's law for the period}. Note that under the small-angle approximation, the period is independent of the amplitude $\angpos_0$; this is the property of \lingo{isochronism} that Galileo discovered.
+
+
+\subsection{Experimental data and reference values}
+Experimental data was not specifically gathered for writing the present document. However, some reference values were found in the internet [source!]. Such values together with the model predictions of \cref{eq:solsimppendsmallangle} are presented in \cref{fig:confrontingmodelexpdata}.
+%
+% ------------------------------------------------------------- Figure
+% position: bthH. size:width=0.5\textwidth. file:location+filename
+ \docfigure{bt}{width=0.5\textwidth}{./graphs/pendulum-exp-model.pdf}%
+   {Pendulum: experiment \vs model}
+   {Model values for the simple gravitational pendulum and experimental data gathered from a real gravitational pendulum}%
+   {fig:confrontingmodelexpdata}%
+% ------------------------------------------------------------- EndFigure
+
+Using \cref{fig:confrontingmodelexpdata}, one finds that the \lingo{coefficient of determination}, $R^2$, between model figures and experimental data is $\num{0.9876}$, while the relative error $\SI{2.03}{\%}$. Both figures show agreement between model and experiment, thus \cref{eq:solsimppendsmallangle} is taken to correctly represent real pendula.
+
+Nevertheless, if more accuracy is required or less agreement is found when applying \cref{eq:solsimppendsmallangle} to a real pendulum, then the model can be extended by relaxing the assumptions made in \cref{subsec:assumptions}. For instance, if the pendulum swings through a viscous fluid, such as a liquid, then the dimensionless quantities $\kdim_8$ and $\kdim_9$ should be included. Or, if there is little care in lubricating the pivot, then $\kdim_4$, $\kdim_5$ and $\kdim_6$ should be further studied.

@@ -9,6 +9,8 @@
 \newcommand{\kspring}{k}    % spring constant
 \newcommand{\mom}{p}        % momentum
 \newcommand{\grav}{g}       % free fall acceleration
+\newcommand{\dens}{\rho}    % density
+\newcommand{\dynvis}{\mu}   % dynamic viscosity
 
 %%% Indexed mechanics
 \newcommand{\fpos}[1]{\fvec{\pos}{#1}} % indexed position (contravariant)
@@ -41,17 +43,18 @@
 %\newcommand{\kstef}{\sigma\txt{sb}} % Stefan-Boltzmann constant
 
 %%% Dim. analysis
-%\DeclareMathOperator{\unit}{unit}    % unit of a quantity
-%\newcommand{\phdim}[1]{\mathsf{#1}}  % physical dimension
-%\newcommand{\phdimtemp}{\Theta}      % physical dimension of temperature
-%\newcommand{\chpq}[1]{{#1}_{c}}      % characteristic physical quantity
-%\newcommand{\scpq}[1]{\overline{#1}} % scaled physical quantity
-%\newcommand{\kdim}{\Pi}              % dimless quantity
-%\newcommand{\dimfunc}{\psi}          % dimensionless function
+%\DeclareMathOperator{\unit}{unit}   % unit of a quantity
+\newcommand{\phdim}[1]{\mathsf{#1}}  % physical dimension
+\newcommand{\phdimtemp}{\Theta}      % physical dimension of temperature
+\newcommand{\chpq}[1]{{#1}_{c}}      % characteristic physical quantity
+\newcommand{\scpq}[1]{\overline{#1}} % scaled physical quantity
+\newcommand{\kdim}{\Pi}              % dimless quantity
+\newcommand{\kdimf}{\psi}            % dimensionless function
 
 %%% Dimless. quantities
+\newcommand{\kreynolds}{\kdim\txt{re}} % reynolds number
+%
 %\newcommand{\kbiot}{\kdim\txt{bi}}     % biot number
-%\newcommand{\kreynolds}{\kdim\txt{re}} % reynolds number
 %\newcommand{\kprandtl}{\kdim\txt{pr}}  % prandtl number
 %\newcommand{\kschmidt}{\kdim\txt{sc}}  % schmidt number
 %\newcommand{\kpeclet}{\kdim\txt{pe}}   % peclet number

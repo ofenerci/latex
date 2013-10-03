@@ -1,60 +1,71 @@
-%%% CONFIG FILE
-%
-%%% PACKAGES
-%
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{booktabs}
-%\usepackage{bm}
-%\usepackage{comment}
-\usepackage{fixltx2e}
-%\usepackage{geometry}
-%\geometry{a4paper}
-%\usepackage{graphicx}       % graphs and figures
-\usepackage[utf8x]{inputenc} % utf8 encoding in source file
-%\usepackage{lscape}         % landscape environment
-\usepackage{mathtools}
-%\usepackage{marginnote}      % \marginnote
-\usepackage[version=3]{mhchem}
-\usepackage{microtype}
-%\usepackage{multicol}
-%\usepackage{multirow}
-%\usepackage[numbers]{natbib}
-%\usepackage[parfill]{parskip}            % paragraphs without indent
-\RequirePackage[draft, scrtime]{prelim2e} % Final and draft versions
-\usepackage{siunitx}
-\usepackage{tabularx}
-%\usepackage{textcase}       % \MakeTextUppercase
-%\usepackage[normalem]{ulem} % underlines
-\usepackage{xspace}
-%
-%%% FONTS
+%%% Style and configuration
+\ProvidesPackage{rmbdarticle}[2013/09/14 style file (rimbaudcode)]
+
+%%% Packages
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{booktabs}
+\RequirePackage{fixltx2e}
+\RequirePackage{graphicx}                            % graphs and figures
+\RequirePackage[utf8x]{inputenc}                     % utf8 encoding in source file
+\RequirePackage{listings}                            % source code in latex
+\RequirePackage{mathtools}
+\RequirePackage[version=3,arrows=pgf-filled]{mhchem}
+\RequirePackage{microtype}
+%\RequirePackage{multicol}
+%\RequirePackage{multirow}
+%\RequirePackage[numbers]{natbib}
+\RequirePackage[draft, scrtime]{prelim2e}            % Final and draft versions
+\RequirePackage{siunitx}
+\RequirePackage{tabularx}
+\RequirePackage{xspace}
+
+%%% Fonts
+% pdflatex - first style
 % sc: true small caps. osf: old style figures
-%\usepackage[sc,osf]{mathpazo}     % add possibly `sc` and `osf` options
-%\usepackage{eulervm}              % euler math
-%\usepackage[scaled=0.7]{beramono} % beramono for tt
+%\RequirePackage[T1]{fontenc}
+%\RequirePackage[english]{babel}
+%\RequirePackage[sc,osf]{mathpazo}     % add possibly `sc` and `osf` options
+%\RequirePackage{eulervm}              % euler math
+%\RequirePackage[scaled=0.7]{beramono} % beramono for tt
+%\RequirePackage[pdfusetitle]{hyperref} % at the end of packages
 %
-\usepackage[T1]{fontenc}
-\usepackage[english]{babel}
-\usepackage[pdfusetitle]{hyperref} % at the end of packages
-\usepackage{hypcap}                % \capstart in floats
-\usepackage{cleveref}              % autoref replacement (load at last)
+% pdflatex - second style
+\RequirePackage[T1]{fontenc}
+\RequirePackage[english]{babel}
+\RequirePackage[pdfusetitle]{hyperref} % at the end of packages
 %
+% xetex - minion pro
+%\RequirePackage[small,euler-hat-accent]{eulervm}
+%\RequirePackage{fontspec}
+%\RequirePackage{xunicode}
+%\RequirePackage{xltxtra}
+%\setsansfont[Mapping=tex-text,Scale=0.9]{Myriad Pro}
+%\setmonofont[Mapping=tex-text,Scale=0.8]{Bitstream Vera Sans Mono}
+%\defaultfontfeatures{Numbers=OldStyle}
+%\setmainfont[Mapping=tex-text]{MinionPro-Regular}
+%\addfontfeature{Kerning=Uppercase}
+%%%\RequirePackage{mathpazo}
+%\RequirePackage[xetex]{hyperref}
+
+\RequirePackage{hypcap}   % \capstart in floats
+\RequirePackage{cleveref} % autoref replacement (load at last)
+
+%%% table of contents
+\setcounter{tocdepth}{1} % where n is the level (1 for sections only)
+
 %%% siunitx setup
 \sisetup{
 %separate-uncertainty = true, % true: (...\pm...). false: ...(...)
 input-symbols = \pi\tau
 }%
 %%%
-%%% table of contents
-\setcounter{tocdepth}{1} % where n is the level (1 for sections only)
-%
-%%% LINGO
-%
+
+%%% Language and acronyms
 \newcommand{\latin}[1]{\textit{#1}\xspace} % latin lingo
-\newcommand{\lingo}[1]{\textsl{#1}\xspace} % scitech lingo
+\newcommand{\lingo}[1]{\textit{#1}\xspace} % scitech lingo
 \newcommand{\aka}{\latin{aka}}             % also known as
 \newcommand{\apriori}{\latin{a priori}}    % a priori
 \newcommand{\conf}{\latin{cf.}}            % confer 'compare'
@@ -66,25 +77,8 @@ input-symbols = \pi\tau
 \newcommand{\vs}{\latin{vs}}               % versus
 \newcommand{\vis}{\latin{vice versa}}      % viceversa
 \newcommand{\viz}{\latin{viz.}}            % videlicet, in other words
-%
-%%% AUTOREF
-%
-%  abbreviations for \autoref macros
-%\renewcommand{\chapterautorefname}{Chap.}
-%\renewcommand{\equationautorefname}{Eq.}
-%\renewcommand{\figureautorefname}{Fig.}
-%\renewcommand{\noteautorefname}{Note}
-%\renewcommand{\partautorefname}{Part}
-%\renewcommand{\sectionautorefname}{Sec.}
-%\renewcommand{\subsectionautorefname}{Sec.}
-%\renewcommand{\subsubsectionautorefname}{Sec.}
-%
-%\renewcommand{\chapterautorefname}{\S}
-%\renewcommand{\sectionautorefname}{\S}
-%\renewcommand{\subsectionautorefname}{\S}
-%\renewcommand{\subsubsectionautorefname}{\S}
-%
-%%% AXIOMS, THEOREMS, EXAMPLES, ...
+
+%%% AMS axioms, definitions and Co.
 %
 %\newtheorem{axiom}{Axiom}[section]
 %\newtheorem{definition}{Definition}[section]
@@ -93,14 +87,13 @@ input-symbols = \pi\tau
 %\newtheorem{note}{Note}[section]
 %\newtheorem{remark}{Remark}[section]
 %\newtheorem{theorem}{Theorem}[section]
-%
+
 %%% MATH ENVIRONMENTS
-%
 \newenvironment{axiom}{\medskip\noindent{\it Axiom.}}{}
 \newenvironment{definition}{\medskip\noindent{\it Definition.}\it}{\rm}
 \newenvironment{theorem}{\medskip\noindent{\it Theorem.}}{}
 %
-\newenvironment{example}{\medskip\noindent{\it Example.}}{}
+\newenvironment{example}{\noindent\\\noindent{\it Example.}}{}
 \newenvironment{exercise}{\medskip\noindent{\it Exercise.}}{}
 %
 \newenvironment{approximation}{\smallskip\small\noindent{\it Approx. Solution.}}{\normalsize\smallskip}
@@ -118,18 +111,13 @@ input-symbols = \pi\tau
 \newenvironment{warning}{\smallskip\small\noindent{\it Warning.}}{\normalsize\smallskip}
 %
 \renewenvironment{proof}{\newline\small\noindent{\it Proof.}}{\normalsize}
-\newenvironment{solution}{\smallskip\small\noindent{\it Solution.}}{\normalsize}
+\newenvironment{solution}{\smallskip\small\noindent{\it Solution.}}{\normalsize\\}
 \newenvironment{verification}{\small\noindent{\it Verification.}}{\normalsize}
-%
-%%% ITEMIZE
-% bullets in itemize
-%\renewcommand{\labelitemi}{$\diamond$}
-%
-%%% EQUATIONS
-%
+
+%%% Equations
 \numberwithin{equation}{section} % equation with section numbers
-%
-%%% TABLES
+
+%%% Tables
 %
 % ------------------------------------------------------------- PreTable
 % \docpretable{position}{size}{cols}%
@@ -144,19 +132,35 @@ input-symbols = \pi\tau
     \begin{tabularx}{#2}{#3}%
 }%
 % ------------------------------------------------------------ PostTable
-% \end{tabularx}
-% \docposttable{caption}{caption}{label}
-% include: \end{tabularx}%
 \newcommand{\docposttable}[3]{%
   % \end{tabularx}%
   \normalsize
   \caption[#1]{#2}\label{#3}%
     \end{table}%
 }
+% include: \end{tabularx}%
+% \end{tabularx}
+% \docposttable{caption}{caption}{label}
 % ------------------------------------------------------------- EndTable
-%
-%%% EPIGRAPH
-%
+
+%%% Figures
+% ------------------------------------------------------------- Figure
+% position: bthH. size:width=0.5\textwidth. file:location+filename
+% \docfigure{position}{size}{file}%
+%   {short-caption}
+%   {caption}%
+%   {label}%
+% ------------------------------------------------------------- EndFigure
+\newcommand{\docfigure}[6]{
+  \begin{figure}[#1]\capstart\center
+    \includegraphics[#2]{#3}
+    \caption[#4]{#5}
+    \label{#6}
+  \end{figure}
+}
+% ------------------------------------------------------------- EndFigure
+
+%%% Epigraph
 %% \epigraph{Text}{Author}{Source}
 \newcommand{\epigraph}[3]
 {
@@ -175,8 +179,8 @@ input-symbols = \pi\tau
   \endgroup\vspace{0.5cm}
 \makeatother
 }
-%
-%%% HYPERREF CONFIGURATION (PDF INFO)
+
+%%% Hyperref package configuration
 %
 \makeatletter
 \hypersetup{
@@ -202,4 +206,3 @@ input-symbols = \pi\tau
   pdfproducer={XeLaTeX with hyperref}
 }
 \makeatother
-%
