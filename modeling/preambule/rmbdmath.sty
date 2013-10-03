@@ -27,6 +27,7 @@
 \newcommand{\surf}{s}         % surface
 \newcommand{\length}{l}       % length
 \newcommand{\diam}{d}         % diameter
+\newcommand{\radius}{r}       % radius
 
 %%% Geometric algebra
 \newcommand{\inv}[1]{{#1}^{-1}} % inverse
@@ -53,8 +54,9 @@
 \newcommand{\igd}[1]{\partial_{#1}} % indexed geometric derivative
 \newcommand{\trate}{\iod{t}}        % time rate
 %
-\newcommand{\xpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}} % expanded partial derivative
-\newcommand{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}}           % expanded ordinary derivative
+\newcommand{\xpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}}  % expanded partial derivative
+\newcommand{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}}            % expanded ordinary derivative
+\newcommand{\nxod}[3]{\dfrac{\dx^{#1}{#2}}{\dx{#3}^{#1}}} % n-th expanded ordinary derivative
 
 %%% Index notation
 \newcommand{\bvec}{\gamma}                 % basis vector
