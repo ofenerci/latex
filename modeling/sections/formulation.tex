@@ -1,68 +1,81 @@
-\section{Problem formulation}
-The \lingo{problem formulation} aims to:
-\begin{itemize}
-\item identify key physical processes;
-\item interpret these processes mathematically;
-\item establish a mathematical model -- governing equations and suitable initial conditions and boundary conditions;
-\item state clearly the assumptions.
-\end{itemize}
+\section{Physical processes}
+A swinging gravitational pendulum is an instance of a dynamics process, since a description of motion, based on its causes, is the final aim. 
 
-Additionally, the formulation must be based on sound physical principles, experimental facts or laws expressed in mathematical terms. 
+There are two main cases to consider when studying the motion of a gravitational pendulum: undamped motion, where no frictional forces and no drag are taken into account, and damped motion, where frictional forces or drag are considered. In both cases, however, the interplay between kinetic energy and gravitational potential must be regarded, since it drives motion.
 
-As a guide, define the physical framework (geometry, kinematics, dynamics, thermal transfer and so on), state a dimensional set and then define the physical quantities, constants, parameters, coefficients and state their dimensions.
-
-Usually, one begins with educated guessing, followed by dimensional analysis, order of magnitude analysis, analysis of extreme cases and ends with model restrictions. The end result is a less accurate model, but less complex as well. Notice that order of magnitude analysis is preceded by dimensional analysis, since \emph{only} the comparison of \emph{dimensionless} quantities is meaningful!
+To uncover the relationships between the different physical quantities that affect the pendulum motion, one firstly has to propose them; then, join them as dimensionless quantities and, finally, use physical considerations and order of magnitude analysis to restrain the physical model to thus decrease complexity. The last step will pave the path to a precise mathematical model.
 
 
-\subsection{Physical processes}
-In the case of a swinging gravitational pendulum, there are two main cases to study:
-\begin{itemize}
-\item free pendulum motion -- where no frictional forces and no drag are taken into account and
-\item damp pendulum motion -- where frictional forces or drag are considered.
-\end{itemize}
-In both cases, however, the interplay between kinetic energy and gravitational potential must be regarded, since it drives motion. It can be seen, finally, that the problem domain is that of dynamics.
+%%% LATEX vars used in the following
+\newcommand{\angpos}{\theta}     % angular position
+\newcommand{\angvel}{\dt\theta}  % angular velocity
+\newcommand{\angacc}{\ddt\theta} % angular acceleration
 
 
-\subsection{Mathematical interpretation}
-The mathematical model wishes to find a function to predict the pendulum amplitude variation with time: $\theta = \theta\vat t$.
-
+\subsection{Dimensional and order of magnitude analyses}
 First, one can hypothesize that the pendulum bob hangs by a massless, frictionless and inflexible rod. This implies that the system center of gravity will coincide with the bob center of gravity (massless rod), that no damping due to friction will happen and that the bob will trace a circular orbit of radius equal to the length of the rod (inflexible rod).
 
-Next, let us list of the possible physical quantities that may influence the pendulum motion together with their symbols and dimensions:
-\begin{itemize}
+Since the problem belongs to dynamics, we choose the dimensional set $\elset{\phdim L, \phdim M, \phdim T}$, with a cardinality of three. Next, let us list the possible physical quantities that may influence the pendulum motion together with their symbols and dimensions, see \cref{tab:quantitiesgravpendulum}.
 %
-\item pendulum: amplitude, $\dim\theta = [\phdim 1]$, initial amplitude, $\dim\theta_0 = \dim\theta\vat 0 = [\phdim 1$];
+% ------------------------------------------------------------- PreTable
+\docpretable{bt}{0.5\textwidth}{lcc}%
+% ------------------------------------------------------------ PostTable
+\toprule
+Quantity    & Symbol    & Dimension \\
+\midrule
+pendulum amplitude        & $\angpos$          & $ 1$ \\
+initial amplitude         & $\angpos_0$        & $ 1$ \\
+time                      & $t$                & $\phdim T$ \\
+free fall acceleration    & $\grav$            & $\phdim L/\phdim T^2$ \\
+rod length                & $\length$          & $\phdim L$ \\
+bob mass                  & $\mass\txt{bob}$   & $\phdim M$ \\
+bob density               & $\dens\txt{bob}$   & $\phdim M/\phdim L^3$ \\
+bob diameter              & $\diam\txt{bob}$   & $\phdim L$ \\
+fluid density             & $\dens\txt{fl}$    & $\phdim M\phdim L^3$ \\
+fluid dynamic viscosity   & $\dynvis\txt{fl}$  & $\phdim M/\phdim L\phdim T$ \\
+\bottomrule
 %
-\item rod: length, $\dim\length = [\phdim L]$;
-%
-\item bob: mass, $\dim\mass\txt{bob} = [\phdim M]$, density, $\dim\dens\txt{bob} = [\phdim M/\phdim L^3]$, diameter, $\dim\diam\txt{bob} = [\phdim L]$;
-%
-\item fluid: density, $\dim\dens\txt{fl} = [\phdim M/\phdim L^3]$, dynamic viscosity, $\dim\dynvis = [\phdim M/\phdim L\phdim T]$;
-%
-\item others: time, $\dim t = [\phdim T]$, free fall acceleration, $\dim\grav = [\phdim L/\phdim T^2]$.
-%
-\end{itemize}
-Since the problem belongs to dynamics, the chosen dimensional set was $\elset{\phdim L, \phdim M, \phdim T}$, with cardinality of three.
+\end{tabularx}
+\docposttable{Quantities for pendulum motion}
+    {Physical quantities involved in the motion of a gravitational pendulum}
+    {tab:quantitiesgravpendulum}
+% ------------------------------------------------------------- EndTable
 
-Because $\mass\txt{bob}$, $\dens\txt{bob}$ and $\diam\txt{bob}$ are related, we can keep two of the three quantities. We keep the density and the diameter. Then, there are 6 physical quantities and 3 independent dimensions. Thus, according to the Pi-theorem, the number of dimensionless quantities that can be formed is $9 - 3 = 6$. These quantities are
+A first approach may be to model the pendulum amplitude by a function $f$ of the form
 \beq
-\kdim_1 = \theta\,,\quad
-\kdim_2 = \theta_0\,,\quad
-\kdim_3 = \diam/\length\,,\quad
-\kdim_4 = \dens\txt{fl}/\dens\txt{bob}\,,\quad
-\kdim_5 = t\sqrt{\grav/\length}\,,\quad
-\kdim_6 = \dens\txt{fl}\diam\sqrt{\length\grav}/\dynvis\,.
+\angpos = f\vat{
+            \angpos_0,
+            t,
+            \grav,
+            \length,
+            \mass\txt{bob},
+            \dens\txt{bob},
+            \diam\txt{bob},
+            \dens\txt{fl},
+            \dynvis\txt{fl}
+}\,.
+\eeq
+This complex relationship can be organized by means of using dimensional analysis.
+
+To begin with, since $\dens\txt{bob}$, $\mass\txt{bob}$ and $\diam\txt{bob}$ are related, we can keep two of the three quantities. We keep diameter and density. Then, note that there are 6 physical quantities and 3 independent dimensions. Thus, according to the Pi-theorem, the number of dimensionless quantities that can be formed is $9 - 3 = 6$. These quantities are
+\beq
+\kdim_1 = \angpos\,,\quad
+\kdim_2 = \angpos_0\,,\quad
+\kdim_3 = \dfrac{\diam}{\length}\,,\quad
+\kdim_4 = \dfrac{\dens\txt{fl}}{\dens\txt{bob}}\,,\quad
+\kdim_5 = t\sqrt{\dfrac{\grav}{\length}}\,,\quad
+\kdim_6 = \dfrac{\dens\txt{fl}\diam\sqrt{\length\grav}}{\dynvis}\,.
 \eeq
 Again, according to the Pi-theorem, the mathematical function we seek is of the \emph{form}:
 \beq
-\theta = \kdimf\vat{\theta_0, 
+\angpos = \kdimf\vat{\angpos_0, 
             \dfrac{\diam}{\length}, 
             \dfrac{\dens\txt{fl}}{\dens\txt{bob}}, 
             t\sqrt{\dfrac{\grav}{\length}}, 
-            \dens\txt{fl}\diam\dfrac{\sqrt{\length\grav}}{\dynvis}}\,.
+            \dfrac{\dens\txt{fl}\diam\sqrt{\length\grav}}{\dynvis}}\,.
 \eeq
 
-Now, we use order of magnitude analysis to restrain the physical model so to simplify the mathematical model. We assume:
+Now, we use order of magnitude analysis to further restrain the physical model so to simplify the mathematical model. We assume:
 \begin{itemize}
 \item $\length\gg\diam$, then $\diam/\length\to 0$. The validity of this assumption depends on one's tolerance; \eg, if the bob diameter is, say, $\SI{5}{cm}$ and the rod length $\SI{1}{m}$, then the ratio $\diam/\length = 0.05$, which might be discarded for some purposes.
 %
@@ -85,19 +98,21 @@ The validity of this assumption will also depend on the circumstances.
 
 Then, after having restrained the physical model, we seek for a mathematical function of the form
 \beq
-\theta = \kdimf\vat{
-            \theta_0, 
+\angpos = \kdimf\vat{
+            \angpos_0, 
             t\sqrt{\dfrac{\grav}{\length}}
             }\,.
 \eeq
 
-For mathematical purposes, we can combine all the previous assumptions by defining a \lingo{simple gravitational pendulum} as a pendulum composed of a massive bob of mass $\mass$ hanging by a massless, frictionless and inflexible rod of length $\length$ attached to a frictionless pivot. Under the influence of gravitational interactions, the pendulum swings through an inviscid fluid of negligible density.
+The functional form of $\kdimf$ must be found by a more refined theoretical analysis or by experimentation. However, dimensional analysis reduced the complex model by passing from ten to six dimensionless quantities. Moreover, order of magnitude analysis further limited the model to two dimensionless quantities. The physical model is more restricted, but based on sensible assumptions. At the end, only confrontation of the model with experimental data will provide the accuracy of the reductions made.
+
+
+\subsection{Mathematical interpretation}
+The mathematical model wishes to find a function to predict the pendulum amplitude variation with time: $\angpos = \angpos\vat t$.
+
+Now, based on the previous section, we can combine all the previous assumptions by defining a \lingo{simple gravitational pendulum} as a pendulum composed of a massive bob of mass $\mass$ hanging by a massless, frictionless and inflexible rod of length $\length$ attached to a frictionless pivot. Under the influence of gravitational interactions, the pendulum swings through an inviscid fluid of negligible density.
 
 The last definition leads to a very restricted physical model. However, this will allow us to finally find a closed form for the pendulum amplitude.
-
-\newcommand{\angpos}{\theta}     % angular position
-\newcommand{\angvel}{\dt\theta}  % angular velocity
-\newcommand{\angacc}{\ddt\theta} % angular acceleration
 
 
 \subsection{Mathematical model}
