@@ -8,6 +8,7 @@
 \newcommand{\mass}{m}       % mass
 \newcommand{\kspring}{k}    % spring constant
 \newcommand{\mom}{p}        % momentum
+\newcommand{\force}{f}      % force
 \newcommand{\grav}{g}       % free fall acceleration
 \newcommand{\dens}{\rho}    % density
 \newcommand{\dynvis}{\mu}   % dynamic viscosity
@@ -32,7 +33,8 @@
 \newcommand{\igvel}[1]{\fvec{\vel}{#1}}      % indexed gen. velocity
 \newcommand{\igacc}[1]{\fvec{\acc}{#1}}      % indexed gen. acceleration
 \newcommand{\igmom}[1]{\rvec{\mom}{#1}}      % indexed gen. momentum
-\newcommand{\igfor}[1]{\rvec{\dt{\mom}}{#1}} % indexed gen. force
+\newcommand{\dtigmom}[1]{\rvec{\dt\mom}{#1}} % time derivative of gen. mom.
+\newcommand{\igforce}[1]{\rvec{\force}{#1}}  % indexed gen. force
 
 %%% Physical constants
 %\newcommand{\kavog}{n\txt{avo}}     % Avogadro constant
@@ -49,7 +51,7 @@
 \newcommand{\chpq}[1]{{#1}_{c}}      % characteristic physical quantity
 \newcommand{\scpq}[1]{\overline{#1}} % scaled physical quantity
 \newcommand{\kdim}{\Pi}              % dimless quantity
-\newcommand{\kdimf}{\psi}            % dimensionless function
+\newcommand{\kdimf}{\phi_{\pi}}      % dimensionless function
 
 %%% Dimless. quantities
 \newcommand{\kreynolds}{\kdim\txt{re}} % reynolds number
