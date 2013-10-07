@@ -1,22 +1,61 @@
 \section{Results}
-\Cref{eq:solsimppendsmallangle} is the final mathematical model to the description of motion of a simple gravitational pendulum. Although restrained both physically and mathematically with respect to the original problem -- a non-simple pendulum, the solution does provide a closed form function to predict the pendulum amplitude variation with time. 
+Although physically and mathematically restrained with respect to the original problem, an undamped pendulum,  \cref{eq:solsimppendsmallangle} does provide a closed form function to predict the amplitude variation of a simple gravitational pendulum with respect to time. 
+
+Hereafter, we discuss this equation under physical grounds -- conservation laws -- and confront its predictions with experimental data.
 
 
-\subsection{Discussion}
-\Cref{eq:solsimppendsmallangle} satisfies \cref{eq:mathmodelsimppend}. However, it should also satisfy physical principles: momentum and energy conservation.
+\subsection{Theoretical discussion}
+In this section, we investigate whether \cref{eq:solsimppendsmallangle} satisfies the principles of momentum and energy conservation.
+
+[consistency on the description of motion: when particle moves to the right, the force points to the left (grav. potential energy restores kinetic energy), and \vis.
+
+circular motion: amplitude describes a circle, since inflexible rod]
 
 
-However, during the solution the small-angle approximation was made. This approximation results in \cref{eq:solsimppendsmallangle} \emph{not} satisfying a physical principle: energy conservation. To see that, remember that a system that preserves energy has a time-independent Hamiltonian; \ie, a Hamiltonian dependent only on constant values. Let us find out.
+\subsubsection{Momentum conservation}
+Momentum of a system is conserved if there are no interactions; \ie, $\dx\mom = 0$. Now, since we departed from the hypothesis that gravity acts on the simple gravitational pendulum, \cref{eq:solsimppendsmallangle} should \emph{not} preserve momentum~\footnote{~In the grand scheme of things, momentum \emph{is} conserved, but to see this, we would need to add Earth's momentum as well as the pendulum's.}.
 
-
-%%% LATEX vars used in the following
-\newcommand{\oscper}{\tau} % oscillation period
-
-The motion described by \cref{eq:solsimppendsmallangle} is \lingo{simple harmonic motion}, where $\angpos_0$ is the semi-amplitude of the oscillation -- the maximum angle between the rod of the pendulum and the vertical. The period of the motion, $\oscper$, the time for a complete oscillation -- outward and return, is then
+To begin with, find the pendulum angular velocity by differentiating \cref{eq:dimlesssolsimppendsmallangle}, the dimensionless form of \cref{eq:solsimppendsmallangle}, with respect to $\scpq t$:
+\begin{equation}\label{eq:angposandangvel}
+\angvel = \iod{\scpq t}\angpos = -\angpos_0\sin\vat{\scpq t}\,.
+\end{equation}
+Next, replace the pendulum angular velocity in \cref{eq:genmomentumanditstempchange}, the pendulum momentum:
 \beq
-\oscper_0 = 2\pi\sqrt{\dfrac{\length}{\grav}}\,,
+\igmom\angpos = \mass\length^2\angvel 
+              = - \mass\length^2\angpos_0\sin\vat{\scpq t}\,.
 \eeq
-which is known as \lingo{Christiaan Huygens's law for the period}. Note that under the small-angle approximation, the period is independent of the amplitude $\angpos_0$; this is the property of \lingo{isochronism} that Galileo discovered.
+Finally, find the momentum time derivative:
+\beq
+\dtigmom\angpos = - \mass\length^2\angpos_0\cos\vat{\scpq t}\,.
+\eeq
+Since $\dtigmom\angpos$ is \emph{not} zero, momentum is \emph{not} conserved during motion. Thus, \cref{eq:solsimppendsmallangle} accords with physical principles.
+
+
+\subsubsection{Energy conservation}
+In Hamilton's formulation of mechanics, the Hamiltonian of a system equals the system total energy. Thus, if the total energy is conserved, then the Hamiltonian time derivative must be null. In the case of the simple pendulum, \cref{eq:solsimppendsmallangle} \emph{should} conserve total energy, since we hypothesized an undamped system.
+
+Firstly, write down the Hamiltonian, $\ham$, of the system:
+\beq
+\ham = \ken + \pen 
+     = \dfrac{1}{2}\mass\length^2\angvel^2 + \mass\grav\length\left(1 - \cos\vat{\angpos}\right)\,. 
+\eeq
+Replace $\left(1 - \cos\vat{\angpos}\right)$ by the first term of its Taylor series:
+\beq
+2\ham = \mass\length^2\angvel^2 + \mass\grav\length\angpos^2\,. 
+\eeq
+Plug \cref{eq:dimlesssolsimppendsmallangle} and \cref{eq:angposandangvel} into the last equation to have
+\beq
+2\ham = \mass\length\angpos_0^2\left(\length\sin^2\vat{\scpq t} + \grav\cos^2\vat{\scpq t}\right)\,.
+\eeq
+Finally, derivate the last equation with respect to $\scpq t$:
+\beq
+\iod{\scpq t}\ham = \mass\length\angpos_0^2
+                     \left( 
+                         \length\sin\vat{\scpq t}\cos\vat{\scpq t} 
+                         - \grav\sin\vat{\scpq t}\cos\vat{\scpq t}
+                     \right)\,.
+\eeq
+Since $\iod{\scpq t}\ham$ does \emph{not} equal zero, \cref{eq:solsimppendsmallangle} does \emph{not} satisfy the energy conservation principle. This discrepancy originates due to the small-angle approximation.
 
 
 \subsection{Experimental data and reference values}
@@ -33,3 +72,23 @@ Experimental data was not specifically gathered for writing the present document
 Using \cref{fig:confrontingmodelexpdata}, one finds that the \lingo{coefficient of determination}, $R^2$, between model figures and experimental data is $\num{0.9876}$, while the relative error $\SI{2.03}{\%}$. Both figures show agreement between model and experiment, thus \cref{eq:solsimppendsmallangle} is taken to correctly represent real pendula.
 
 Nevertheless, if more accuracy is required or less agreement is found when applying \cref{eq:solsimppendsmallangle} to a real pendulum, then the model can be extended by relaxing the assumptions made in \cref{subsec:assumptions}. For instance, if the pendulum swings through a viscous fluid, such as a liquid, then the dimensionless quantities $\kdim_8$ and $\kdim_9$ should be included. Or, if there is little care in lubricating the pivot, then $\kdim_4$, $\kdim_5$ and $\kdim_6$ should be further studied.
+
+
+\subsection{Analogies with other phenomena}\label{subsec:analogieswithotherphenomena}
+In classical \lingo{simple harmonic motion}, the period of the motion, $\oscper$, is the time required for a complete oscillation and defined by
+\beq
+\oscper = \dfrac{2\pi}{\natfreq}\,,
+\eeq
+where $\natfreq$ is the motion \lingo{natural frequency}.
+
+The motion of a simple gravitational pendulum, described by \cref{eq:solsimppendsmallangle}, is an instance of simple harmonic motion, where $\angpos_0$ is the semi-amplitude of the oscillation and where the natural frequency is
+\beq
+\natfreq = \sqrt{\dfrac{\grav}{\length}}\,.
+\eeq
+The period of the pendulum motion, for the outward and return, is thus
+\begin{equation}\label{eq:simplependulumperiod}
+\oscper = 2\pi\sqrt{\dfrac{\length}{\grav}}\,.
+\end{equation}
+The last equation is Christiaan Huygens's law for the period.
+
+Note that only under the small-angle approximation, the period is independent of the amplitude $\angpos_0$; \ie, \lingo{isochronism} -- the property Galileo discovered.

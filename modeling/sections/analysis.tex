@@ -1,20 +1,20 @@
 \section{Analysis}
-In this section, we solve the mathematical model proposed in \cref{subsec:mathmodel}; \ie, we solve \cref{eq:mathmodelsimppend}.
+In this section, we solve the mathematical model of the simple gravitational pendulum, \cref{eq:mathmodelsimppend}.
 
 
 \subsection{Non-dimensional analysis}
-First, non-dimensionalize the model. The independent quantity is $t$, the dependent quantity $\angpos$ and the parameters are $\angpos_0$, $\length$ and $\grav$. Since $\angpos$ is already dimensionless, we only have to non-dimensionalize $t$. We can do this by using $\kdim_3$ obtained in \cref{subsec:dimanalysisorderofmag}. Thus,
+The independent quantity is $t$, the dependent quantity $\angpos$ and the parameters are $\angpos_0$, $\length$ and $\grav$. Since $\angpos$ is already dimensionless, non-dimensionalize $t$ to $\scpq t$ by using $\kdim_3$ as scaling factor:
 \beq
 \scpq t = \kdim_3 
         = t\sqrt{\dfrac{\grav}{\length}}\implies
-t = \scpq t\sqrt{\dfrac{\length}{\grav}}
+t = \scpq t\sqrt{\dfrac{\length}{\grav}}\,.
 \eeq
-and 
+Find next the $\scpq t$ differentials
 \beq
 \dx t   = \dx\scpq t \sqrt{\dfrac{\length}{\grav}}\implies
 \dx t^2 = \dx\scpq t^2\dfrac{\length}{\grav}\,.
 \eeq
-Replacing both equations in \cref{eq:mathmodelsimppend} and dividing the result through $\grav/\length$, we have
+Replacing the last expressions in \cref{eq:mathmodelsimppend} and dividing the result through $\grav/\length (> 0)$, find the dimensionless and parameter-free differential equation:
 \begin{equation}\label{eq:nondimmathmodelsimppend}
 \begin{dcases}
   \angacc + \sin\vat{\angpos} = 0\,,\\
@@ -22,24 +22,24 @@ Replacing both equations in \cref{eq:mathmodelsimppend} and dividing the result 
   \angvel\vat 0 = 0\,,
 \end{dcases}
 \end{equation}
-where the derivatives are to be taken with respect to $\scpq t$. Note that the \cref{eq:nondimmathmodelsimppend} is dimensionless and parameter free.
+where the derivatives are to be taken with respect to $\scpq t$.
 
 
 \subsection{Analytic solution}
-\Cref{eq:nondimmathmodelsimppend} is a non-linear, second-order ordinary differential equation. We can linearize it by restraining $\angpos$ to values less than $\SI{1}{rad}$ (\aka, small-angle approximation). With this, $\sin\vat\angpos\sim\angpos$ and therefore
+\Cref{eq:nondimmathmodelsimppend} is a non-linear, second-order ordinary differential equation. Linearize it by means of the \lingo{small-angle approximation}~\footnote{~The \lingo{small-angle approxmation} means to take the first term of the Taylor series for $\sin\vat\angpos$ when $\angpos\ll 1$; \ie, $\sin\vat\angpos\sim\angpos$ for $\angpos\ll 1$. The incurred error is of order $\angpos^3$.}:
 \beq
 \begin{dcases}
   \angacc + \angpos = 0\,,\\
   \angpos\vat 0 = \angpos_0\,,\\
-  \angvel\vat 0 = 0\,,
+  \angvel\vat 0 = 0\,.
 \end{dcases}
 \eeq
-where the error due to the approximation is of order $\angpos^3$. The solution to this equation is
-\beq
+The solution to this equation is
+\begin{equation}\label{eq:dimlesssolsimppendsmallangle}
 \angpos\vat{\scpq t} = \angpos_0\cos\vat{\scpq t}\,,
-\eeq
+\end{equation}
 or, returning to the dimensional quantity $t$,
 \begin{equation}\label{eq:solsimppendsmallangle}
 \angpos\vat t = \angpos_0\cos\vat{t \sqrt{\dfrac{\grav}{\length}}}\,,
 \end{equation}
-which gives the desired result.
+which solves \cref{eq:mathmodelsimppend} for $\angpos\ll 1$.
