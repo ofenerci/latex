@@ -1,7 +1,7 @@
 \section{Results}
 Although physically and mathematically restrained with respect to the original problem, an undamped pendulum,  \cref{eq:solsimppendsmallangle} does provide a closed form function to predict the amplitude variation of a simple gravitational pendulum with respect to time. 
 
-Hereafter, we discuss this equation under physical grounds -- conservation laws -- and confront its predictions with experimental data.
+Hereafter, we discuss this equation under physical grounds and confront its predictions with experimental data.
 
 
 \subsection{Theoretical discussion}
@@ -10,6 +10,26 @@ In this section, we investigate whether \cref{eq:solsimppendsmallangle} satisfie
 [consistency on the description of motion: when particle moves to the right, the force points to the left (grav. potential energy restores kinetic energy), and \vis.
 
 circular motion: amplitude describes a circle, since inflexible rod]
+
+
+\subsubsection{Analogies with other phenomena}\label{subsec:analogieswithotherphenomena}
+In classical \lingo{simple harmonic motion}, the period of the motion, $\oscper$, is the time required for a complete oscillation and defined by
+\beq
+\oscper = \dfrac{2\pi}{\natfreq}\,,
+\eeq
+where $\natfreq$ is the motion \lingo{natural frequency}.
+
+The motion of a simple gravitational pendulum, described by \cref{eq:solsimppendsmallangle}, is an instance of simple harmonic motion, where $\angpos_0$ is the semi-amplitude of the oscillation and where the natural frequency is
+\beq
+\natfreq = \sqrt{\dfrac{\grav}{\length}}\,.
+\eeq
+The period of the pendulum motion, for the outward and return, is thus
+\begin{equation}\label{eq:simplependulumperiod}
+\oscper = 2\pi\sqrt{\dfrac{\length}{\grav}}\,,
+\end{equation}
+which is Christiaan Huygens's law for the period.
+
+Note that only under the small-angle approximation, the period is independent of the amplitude $\angpos_0$; \ie, \lingo{isochronism} -- the property Galileo discovered.
 
 
 \subsubsection{Momentum conservation}
@@ -59,7 +79,13 @@ Since $\iod{\scpq t}\ham$ does \emph{not} equal zero, \cref{eq:solsimppendsmalla
 
 
 \subsection{Experimental data and reference values}
-Experimental data was not specifically gathered for writing the present document. However, some reference values were found in the internet [source!]. Such values together with the model predictions of \cref{eq:solsimppendsmallangle} are presented in \cref{fig:confrontingmodelexpdata}.
+No experimentation was specifically done for writing the present document. However, some reference values were found in the internet [source!]. 
+
+
+\subsubsection{Experiment}\label{sec:experiment}
+In [source!], the experimental set-up consisted of a pendulum with a spherical, stainless-steel-made bob of mass $\mass\txt{bob} = \SI{100.0}{m}$ hanged of a stainless steel rod whose length was varied during experimentation; however, it was assumed to be inflexible and massless. The rod was connected to a well lubricated pivot. The pendulum was set into motion by displacing the bob an initial angle $\angpos_0 = \ang{10.00}$. Finally, the local free fall acceleration was measured to be $\grav = \SI{10.02}{m/s^2}$ and the pendulum surrounded by air at room temperature.
+
+The gathered experimental together with the model predictions of \cref{eq:solsimppendsmallangle} are presented in \cref{fig:confrontingmodelexpdata}.
 %
 % ------------------------------------------------------------- Figure
 % position: bthH. size:width=0.5\textwidth. file:location+filename
@@ -69,26 +95,42 @@ Experimental data was not specifically gathered for writing the present document
    {fig:confrontingmodelexpdata}%
 % ------------------------------------------------------------- EndFigure
 
-Using \cref{fig:confrontingmodelexpdata}, one finds that the \lingo{coefficient of determination}, $R^2$, between model figures and experimental data is $\num{0.9876}$, while the relative error $\SI{2.03}{\%}$. Both figures show agreement between model and experiment, thus \cref{eq:solsimppendsmallangle} is taken to correctly represent real pendula.
 
-Nevertheless, if more accuracy is required or less agreement is found when applying \cref{eq:solsimppendsmallangle} to a real pendulum, then the model can be extended by relaxing the assumptions made in \cref{subsec:assumptions}. For instance, if the pendulum swings through a viscous fluid, such as a liquid, then the dimensionless quantities $\kdim_8$ and $\kdim_9$ should be included. Or, if there is little care in lubricating the pivot, then $\kdim_4$, $\kdim_5$ and $\kdim_6$ should be further studied.
+\subsubsection{Verification of assumptions}
+In this installment, with the data presented in \cref{sec:experiment}, we verify the assumptions made in, which led to \cref{eq:solsimppendsmallangle}.
 
+First, consider the \lingo{frictionless pivot} assumption. Proper lubrication of the pivot reduces friction. With this, the frictional torque term disappears. To support this assumption, consider that a dry and clean joint of steel pivot and steel rod has a friction coefficient of 0.80, while when lubricated 0.16. Thus, we can discard friction.
 
-\subsection{Analogies with other phenomena}\label{subsec:analogieswithotherphenomena}
-In classical \lingo{simple harmonic motion}, the period of the motion, $\oscper$, is the time required for a complete oscillation and defined by
+Next, consider a \lingo{massless, inflexible rod}. The rod may be build of a stainless steel, a very strong material. Although the diameter of the rod was not reported, we can assume that it was strong enough to support the bob without elongating.This implies that the ratio of masses, $\mass\txt{rod}/\mass\txt{bob}$, vanishes.
+
+Again, the diameter of the bob was not reported. But, we can estimate it by considering the stainless steel density equal to $\SI{7750}{kg/m^3}$. Then, since the bob was spherical, the bob diameter would be
 \beq
-\oscper = \dfrac{2\pi}{\natfreq}\,,
+\diam = \sqrt[3]{\dfrac{6\mass\txt{bob}}{\pi\dens\txt{bob}}}
+      = \sqrt[3]{\dfrac{6\times\num{100.00e-3}}{\pi\times\num{7750}}}
+      = \SI{2.2910}{cm}\,.
 \eeq
-where $\natfreq$ is the motion \lingo{natural frequency}.
+With this number, we can calculate the $\diam/length$ ratio for the smaller case of $\length$ analyzed: $\SI{100.00}{cm}$. Then, $\diam/\length = \num{0.02291}$, which can be ignored.
 
-The motion of a simple gravitational pendulum, described by \cref{eq:solsimppendsmallangle}, is an instance of simple harmonic motion, where $\angpos_0$ is the semi-amplitude of the oscillation and where the natural frequency is
+Then, consider the non-buoyant fluid assumption. If the system was at $\SI{15}{\celsius}$, at sea level, then $\dens\txt{air} = \SI{1.225}{kg/m^3}$. Hence, 
 \beq
-\natfreq = \sqrt{\dfrac{\grav}{\length}}\,.
+\dfrac{\dens\txt{air}}{\dens\txt{steel}} = \dfrac{\num{1.225}}{\num{7750}} 
+                                         = \num{0.158e-4}\,, 
 \eeq
-The period of the pendulum motion, for the outward and return, is thus
-\begin{equation}\label{eq:simplependulumperiod}
-\oscper = 2\pi\sqrt{\dfrac{\length}{\grav}}\,.
-\end{equation}
-The last equation is Christiaan Huygens's law for the period.
+which can be ignored.
 
-Note that only under the small-angle approximation, the period is independent of the amplitude $\angpos_0$; \ie, \lingo{isochronism} -- the property Galileo discovered.
+Finally, consider the hypothesis of taken air as an inviscid fluid. Then, plug some typical values into $\kdim_9$:
+\beq
+\dfrac{\dens\txt{air}\diam\txt{bob}\sqrt{\length\grav}}{\dynvis}
+    = \dfrac{1.225\times\num{2.9011e-2}\sqrt{1.00\times 9.80665}}{\num{1.983e-5}}
+    \sim \num{5611} \,,
+\eeq
+See that inertial forces, $\dens\txt{air}\diam\txt{bob}\sqrt{\length\grav}$, are larger than viscous forces, $\dynvis$. Thus, discarding viscosity was allowed.
+
+We can conclude the experimental set up was such that satisfied the model assumptions.
+
+\subsubsection{Analysis of experimental results}
+Using \cref{fig:confrontingmodelexpdata}, one finds that the \lingo{coefficient of determination}, $R^2$, between model figures and experimental data is $\num{0.9876}$, while the relative error $\SI{2.03}{\%}$. Both figures show agreement between model and experiment, thus \cref{eq:solsimppendsmallangle} is taken to correctly represent real pendulums.
+
+
+\subsubsection{Conclusions}
+Nevertheless, if more accuracy is required or less agreement is found when applying \cref{eq:solsimppendsmallangle} to a real pendulum, then the model can be extended by relaxing the assumptions made in \cref{subsec:mathinterpretation}. For instance, if the pendulum swings through a viscous fluid, such as a liquid, then the dimensionless quantities $\kdim_8$ and $\kdim_9$ should be included. Or, if there is little care in lubricating the pivot, then $\kdim_4$, $\kdim_5$ and $\kdim_6$ should be further studied.
