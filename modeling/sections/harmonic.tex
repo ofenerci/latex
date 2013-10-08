@@ -1,0 +1,25 @@
+\section{Simple harmonic motion}
+In this section, we present a little account of the simple harmonic motion of a spring-mass system -- a simple harmonic oscillator.
+
+A \lingo{harmonic oscillator} is a system that, when displaced from its equilibrium position, experiences a restoring force, $\force$, proportional to the displacement, $\disp$:
+\beq
+\force = -\kspring\disp\,,
+\eeq
+where $\kspring$ as a strictly positive constant.
+
+If $\force$ is the only force acting on the system, then the system is called a \lingo{simple harmonic oscillator} and its motion is said to be a \lingo{simple harmonic motion}. Additionally, since there are no other forces present -- such as drag, buoyancy, gravity and so on --, mechanical energy is conserved and the force can be written as the gradient of a \lingo{potential}, $\pen$; \ie, as $\force = -\grad\pen$.
+
+An instance of a harmonic oscillator is a \lingo{spring-mass system}. In such a system, $\force$ is given by \lingo{Hooke's law} and $\kspring$ is a constant factor characteristic of the spring, its \lingo{stiffness}. Regularly, the system is set into motion by stretching or contracting the mass together with the spring a distance $\odisp_0$ from the mass equilibrium position, called the \lingo{amplitude}, the maximum displacement, with null initial velocity, $\ovel = 0$.
+
+
+\subsection{Educated guessing}
+As a first approach to analyze the spring-mass system, we estimate the oscillator~\footnote{~Hereafter, oscillator will refer to the spring-mass system.} period.
+
+Consider an oscillator composed of a mass $\mass$ and a spring of stiffness $\kspring$. After having set into motion by displacing the oscillator a distance $\odisp_0$, it experiences a force $\force\sim\kspring\odisp_0$ by the spring, which tries to restore the oscillator to its equilibrium position. This force accelerates the oscillator at $\oacc\sim\kspring\odisp_0/\mass$. During a time $\oper$, the oscillator travels a distance $\oacc\oper^2\sim\kspring\odisp_0\oper^2/\mass$. On the other hand, to complete a cycle, the oscillator has to travel a distance $\odisp\sim 2\odisp_0\sim\odisp$. Now, equating both distances, one finds that $\kspring\odisp_0\oper^2/\mass\sim\odisp_0$, which leads finally to an estimate of the oscillator period
+\beq
+\oper\sim\sqrt{\dfrac{\mass}{\kspring}}\,.
+\eeq
+
+
+\subsection{Dimensional analysis}
+Now, we would like to find 

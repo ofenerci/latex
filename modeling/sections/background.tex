@@ -11,8 +11,12 @@
 \newcommand{\lvel}{v} % linear velocity
 \newcommand{\lacc}{a} % linear acceleration
 %
-\newcommand{\height}{h} % height
-
+\newcommand{\height}{h}        % height
+\newcommand{\disp}{x}          % displacement
+\newcommand{\odisp}{x}         % oscillator displacement
+\newcommand{\ovel}{\dt\odisp}  % oscillator velocity
+\newcommand{\oacc}{\ddt\odisp} % osc. acceleration
+\newcommand{\oper}{\tau}       % oscillation period
 
 \section{Background}
 In this section, we set the description of a physical phenomenon: the motion of a gravitational pendulum. We focus on answer the questions: what is a pendulum? what is a gravitational pendulum? How the pendulum is set into motion? What keeps the pendulum moving? What forces act on the pendulum that damp its motion? We also provide a bit of some historical information about it.
