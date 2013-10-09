@@ -13,13 +13,13 @@ A \lingo{harmonic oscillator} is a system that, when displaced from its equilibr
 \eeq
 where $\kspring$ as a strictly positive constant.
 
-If $\force$ is the only force acting on the system, then the system is called a \lingo{simple harmonic oscillator} and its motion is said to be a \lingo{simple harmonic motion}. Note that the force depends only on the position, thus itcan be written as the gradient of a \lingo{potential}, $\pen$; \ie, as $\force = -\grad\pen$. Additionally, since there are no other forces present -- such as drag, buoyancy, gravity and so on --, mechanical energy is conserved.
+If $\force$ is the only force acting on the system, then the system is called a \lingo{simple harmonic oscillator} and its motion is said to be a \lingo{simple harmonic motion}. Note that the force depends only on the position, thus it can be written as the gradient of a \lingo{potential}, $\pen$; \ie, as $\force = -\grad\pen$. Additionally, since there are no other forces present -- such as drag, buoyancy, gravity and so on --, mechanical energy is conserved.
 
 An instance of a harmonic oscillator is a \lingo{spring-mass system}. In such a system, $\force$ is given by \lingo{Hooke's law} and $\kspring$ is a constant factor characteristic of the spring, its \lingo{stiffness}. Regularly, the system is set into motion by stretching or contracting the mass together with the spring a distance $\odisp_0$ from the mass equilibrium position, called the \lingo{amplitude}, the maximum displacement, with null initial velocity, $\ovel = 0$.
 
 
 \subsubsection{Objective}
-The goal is to obtain a closed form mathematical function to predict the amplitude for a simple harmonic oscillator.
+The goal is to obtain a closed form mathematical function to predict the amplitude for a simple harmonic oscillator, as well as a formula to predict its period.
 
 
 \subsection{Physical processes}
@@ -27,20 +27,20 @@ We go now into a more physical and mathematical approach to the analysis of the 
 
 
 \subsubsection{Educated guessing}\label{subsubsec:guessingsimpleoscillator}
-As a first approach to analyze the spring-mass system, we estimate the oscillator~\footnote{~Hereafter, oscillator will refer to the spring-mass system.} period.
+As a first approach to analyze the spring-mass system, we estimate the oscillator~\footnote{~Hereafter, oscillator will refer to a spring-mass system.} period.
 
-Consider an oscillator composed of a mass $\mass$ and a spring of stiffness $\kspring$. After having set into motion by displacing the oscillator a distance $\odisp_0$, it experiences a force $\force\sim\kspring\odisp_0$ by the spring, which tries to restore the oscillator to its equilibrium position. This force accelerates the oscillator at $\oacc\sim\kspring\odisp_0/\mass$. During a time $\oper$, the oscillator travels a distance $\oacc\oper^2\sim\kspring\odisp_0\oper^2/\mass$. On the other hand, to complete a cycle, the oscillator has to travel a distance $\odisp\sim 2\odisp_0\sim\odisp$. Now, equating both distances, one finds that $\kspring\odisp_0\oper^2/\mass\sim\odisp_0$, which leads finally to an estimate of the oscillator period
+Consider an oscillator composed of a mass $\mass$ and a spring of stiffness $\kspring$. After having been set into motion by displacing the oscillator a distance $\odisp_0$, $\mass$ experiences a force $\force\sim\kspring\odisp_0$ by the spring, which tries to restore the oscillator to its equilibrium position. This force accelerates the oscillator at $\oacc\sim\kspring\odisp_0/\mass$. During a time $\oper$, the oscillator travels a distance $\oacc\oper^2\sim\kspring\odisp_0\oper^2/\mass$. On the other hand, to complete a cycle, the oscillator has to travel a distance $\odisp\sim 2\odisp_0\sim\odisp_0$. Now, equating both distances, one finds that $\kspring\odisp_0\oper^2/\mass\sim\odisp_0$, which leads finally to an estimate of the oscillator period
 \beq
 \oper\sim\sqrt{\dfrac{\mass}{\kspring}}\,.
 \eeq
 
-It can be seen that $\odisp$ dependency on $\kspring$ and $\mass$ is not linear. Moreover, it depends on the ratio $\kspring/\mass$. Finally, the last equation implies that simple harmonic motion is \lingo{isochronous}; \ie, the period and frequency are independent of the amplitude.
+It can be seen that $\oper$ dependency on $\kspring$ and $\mass$ is not linear. Finally, the last equation implies that simple harmonic motion is \lingo{isochronous}; \ie, the period and frequency are independent on the amplitude.
 
 
 \subsubsection{Dimensional analysis}
 We would like to find the form of a dimensionless function of the physical quantities affecting the oscillator (spring-mass) motion.
 
-The problem belongs to mechanics, so we choose the dimensional set $\elset{\phdim F, \phdim L, \phdim T}$, with cardinality of three. Using this set, consider \cref{tab:quantitiesharmonicscillator} as the list of the hypothesized physical quantities affecting oscillator motion,
+The problem belongs to mechanics, so we choose the dimensional set $\elset{\phdim F, \phdim L, \phdim T}$, with cardinality of three. Using this set, consider \cref{tab:quantitiesharmonicscillator} as a list of hypothesized physical quantities affecting oscillator motion.
 %
 % ------------------------------------------------------------- PreTable
 \docpretable{bt}{0.51\textwidth}{lcc}%
@@ -62,23 +62,23 @@ Time                    & $t$         & $\phdim T$ \\
     {tab:quantitiesharmonicscillator}
 % ------------------------------------------------------------- EndTable
 
-There are three base dimensions and five physical quantities, thus, according to the Pi-theorem, $5 - 3 = 2$ dimensionless quantities can be formed:
+There are five physical quantities and three base dimensions, thus, according to the Pi-theorem, $5 - 3 = 2$ dimensionless quantities can be formed:
 \begin{equation}\label{eq:dimlessquantitiessimpleoscillator}
 \kdim_1 = \dfrac{\odisp}{\odisp_0}\qquad\text{and}\qquad
 \kdim_2 = t\sqrt{\dfrac{\kspring}{\mass}}\,.
 \end{equation}
-Then, again by the Pi-theorem, we seek for a dimensionless function, $\kdimf$, of the form
+Then, again by the Pi-theorem, we seek a dimensionless function, $\kdimf$, of the form
 \beq
 \kdim_1 = \kdimf\vat{\kdim_2}\implies 
 \dfrac{\odisp}{\odisp_0} = \kdimf\vat{t\sqrt{\dfrac{\kspring}{\mass}}}\,.
 \eeq
-The closed form of $\kdimf$ must be found by a more complex theoretical analysis.
+The closed form of $\kdimf$ must be found by theory.
 
 
 \subsubsection{Mathematical model}
 Since the problem involves forces, we use Newton's formulation of mechanics to find the equation of motion for the simple harmonic oscillator.
 
-Consider a simple harmonic oscillator consisting of a mass $\mass$ connected to a spring of stiffness $\kspring$ set into motion by initially displacing the mass a distance $\odisp_0$ with no velocity. Then, find the equation of motion for the oscillator displacement $\odisp$ for any time $t$.
+Consider a simple harmonic oscillator consisting of a mass $\mass$ connected to a spring of stiffness $\kspring$ set into motion by initially displacing the mass a distance $\odisp_0$ from rest. Then, find the equation of motion for the oscillator displacement $\odisp$ for any time $t$.
 
 Apply Newton's second law of motion to the oscillator to find
 \beq
@@ -91,15 +91,19 @@ Since $\mass > 0$, divide the last equation through $\mass$ to have
 \oacc + \dfrac{\kspring}{\mass}\odisp = 0\,.
 \eeq
 
-Lastly, join the initial conditions to the last equation:
+Lastly, join the initial conditions to the last equation to have the equation of motion for the simple harmonic oscillator:
 \begin{equation}\label{eq:eqmotionsimpleharmonicoscillator}
   \begin{cases}
-      \oacc\vat t + \dfrac{\kspring}{\mass}\odisp\vat t = 0\,, \\
+      \oacc\vat t + \natfreq^2\odisp\vat t = 0\,, \\
       \odisp\vat 0 = \odisp_0\,, \\
       \ovel\vat 0 = 0\,,
   \end{cases}
 \end{equation}
-which results in the equation of motion for the simple harmonic oscillator.
+where $\natfreq$ is defined as
+\beq
+\natfreq = \sqrt{\dfrac{\kspring}{\mass}}
+\eeq
+and is called the \lingo{oscillator natural frequency}.
 
 
 \subsection{Analysis}
@@ -109,45 +113,39 @@ Now, we solve \cref{eq:eqmotionsimpleharmonicoscillator} to find a closed form o
 \subsubsection{Non-dimensionalization}
 Consider \cref{eq:eqmotionsimpleharmonicoscillator}. The independent quantity is $t$, the dependent one $\odisp$ and the parameters are $\kspring$ and $\mass$.
 
-Non-dimensionalize $\odisp$ using $\kdim_1$ found in \cref{eq:dimlessquantitiessimpleoscillator}:
+Non-dimensionalize $\odisp$ using $\kdim_1$, found in \cref{eq:dimlessquantitiessimpleoscillator}:
 \beq
 \scpq\odisp = \kdim_1 = \dfrac{\odisp}{\odisp_0}\implies
-\odisp = \odisp_0\scpq\odisp\,. 
+\odisp = \odisp_0\scpq\odisp\,,
 \eeq
-Find the differentials of $\scpq\odisp$:
+with differentials
 \beq
    \dx\odisp = \odisp_0\dx\scpq\odisp\qquad\text{and}\qquad
 \ndx 2\odisp = \odisp_0\ndx 2\scpq\odisp\,.
 \eeq
-
-Then, non-dimensionalize $t$ using $\kdim_2$, also found in \cref{eq:dimlessquantitiessimpleoscillator}:
+Then, non-dimensionalize $t$ using $\kdim_2$ -- see \cref{eq:dimlessquantitiessimpleoscillator}:
 \beq
 \scpq t = \kdim_2 = t\sqrt{\dfrac{\kspring}{\mass}}\implies
-t = \scpq t\sqrt{\dfrac{\mass}{\kspring}}\,.
+t = \scpq t\sqrt{\dfrac{\mass}{\kspring}}\,,
 \eeq
-Calculate the differentials of $\scpq t$:
+with differentials
 \beq
 \dx t = \dx\scpq t\sqrt{\dfrac{\mass}{\kspring}}\qquad\text{and}\qquad
 \dx t^2 = \dx\scpq t^2\dfrac{\mass}{\kspring}\,.
 \eeq
-
-Replacing $\scpq\odisp$, $\scpq t$ and their differentials in the equation of motion and in its initial conditions gives
+Replacing $\scpq\odisp$, $\scpq t$ and their differentials in \cref{eq:eqmotionsimpleharmonicoscillator} gives
 \begin{equation}\label{eq:dimlessequationmotionsimpleoscillator}
 \begin{cases}
-\scoacc\vat{\scpq t} + \natfreq^2\scpq\odisp\vat{\scpq t} = 0\,, \\
+\scoacc\vat{\scpq t} + \scpq\odisp\vat{\scpq t} = 0\,, \\
 \scpq\odisp\vat 0 = 1\,,\\
 \scovel\vat 0 = 0\,.
 \end{cases}
 \end{equation}
-where the derivatives are to be taken with respect to $\scpq t$ and $\natfreq$ is defined as
-\beq
-\natfreq = \sqrt{\dfrac{\kspring}{\mass}}\,.
-\eeq
-The parameter $\natfreq$ is called the \lingo{oscillator natural frequency}.
+where the derivatives are to be taken with respect to $\scpq t$. Note that the equation of motion is dimensionless and parameter free.
 
 
 \subsubsection{Analytic solution}
-\Cref{eq:dimlessequationmotionsimpleoscillator} is a second-order, linear ordinary differential equation with constant coefficient whose solution is given by
+\Cref{eq:dimlessequationmotionsimpleoscillator} is a second-order, linear ordinary differential equation  whose solution is given by
 \beq
 \scpq\odisp = \cos\vat{\scpq t}\,,
 \eeq
@@ -159,14 +157,48 @@ or, in dimensional form,
 
 
 \subsection{Results}
-The oscillator natural frequency is related to the \lingo{temporal frequency} $\cycfreq$, , by
+The oscillator natural frequency is related to the \lingo{temporal frequency}, $\cycfreq$, by
 \beq
 \natfreq = 2\pi\cycfreq\,.
 \eeq
 In turn, $\cycfreq$ is related to the oscillator period, $\oper$, by
 \beq
-\oper = \dfrac{1}{\cycfreq} 
-      = \dfrac{2\pi}{\natfreq} 
+\oper = \dfrac{1}{\cycfreq} \implies
+\oper = \dfrac{2\pi}{\natfreq} 
       = 2\pi\sqrt{\dfrac{\mass}{\kspring}}\,,
 \eeq
-which agrees with what was guessed in \cref{subsubsec:guessingsimpleoscillator}; implying that simple harmonic motion is \lingo{isochronous}.
+which agrees with what was guessed in \cref{subsubsec:guessingsimpleoscillator}; \ie, simple harmonic motion is \lingo{isochronous}.
+
+On the other hand, since no other force but Hooke's law force acts on the system, energy must be conserved. To verify energy conservation, find first $\odisp$ in dimensional form:
+\beq
+\scpq\odisp = \cos\vat{\scpq t}\implies
+\odisp = \odisp_0\cos\vat{t\natfreq}\,.
+\eeq
+Then, calculate the oscillator velocity
+\beq
+\lvel = \ovel = -\odisp_0\natfreq\sin\vat{t\natfreq}\,.
+\eeq
+With this result, compute the oscillator kinetic energy:
+\beq
+2\ken = \mass\lvel^2 = \mass\odisp_0^2\natfreq^2\sin^2\vat{t\natfreq}\,.
+\eeq
+But $\natfreq^2 = \kspring/\mass$, hence
+\beq
+2\ken = \kspring\odisp_0^2\sin^2\vat{t\natfreq}\,.
+\eeq
+
+On the other hand, determine the potential energy by means of Hooke's law force, $\force$. Since $\force$ depends only on $\odisp$, it can be written as the gradient of a potential: $\force = -\grad\pen$. Which, after integration, in one dimension, gives 
+\beq
+2\pen = \kspring\odisp^2\,.
+\eeq
+Replacing $\odisp$ and $\natfreq$ in the last equation results in
+\beq
+2\pen = \kspring\odisp_0^2\cos^2\vat{t\natfreq}\,.
+\eeq
+
+The total energy of the oscillator, $\ener$, is the addition of kinetic and potential energies, thus
+\beq
+2\ener = \kspring\odisp_0^2\left(\sin^2\vat{t\natfreq} + \cos^2\vat{t\natfreq}\right)\implies
+\ener = \dfrac{1}{2}\kspring\odisp_0^2\,,
+\eeq
+which is a constant. Therefore, energy \emph{is} conserved during motion of a simple harmonic oscillator.

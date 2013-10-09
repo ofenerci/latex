@@ -22,13 +22,13 @@
 \newcommand{\scoacc}{\ddt{\scpq{\odisp}}} % scaled osc. acceleration
 
 \section{Background}
-In this section, we set the description of a physical phenomenon: the motion of a gravitational pendulum. We focus on answer the questions: what is a pendulum? what is a gravitational pendulum? How the pendulum is set into motion? What keeps the pendulum moving? What forces act on the pendulum that damp its motion? We also provide a bit of some historical information about it.
+In this section, we set the description of a physical phenomenon: the motion of a gravitational pendulum. We focus on answer the questions: what is a pendulum? what is a gravitational pendulum? How the pendulum is set into motion? What keeps the pendulum moving? What forces act on the pendulum that may damp its motion? We also provide a bit of some historical information about it.
 
 
 \subsection{Description}
-A \lingo{pendulum} is a mechanical system consisting of a bob hanging by a rod attached to a pivot.  A \lingo{gravitational pendulum} is a pendulum object only to gravitational interactions. Finally, a \lingo{simple gravitational pendulum} is a gravitational pendulum consisting of a massive bob hanging by a massless rod attached to a frictionless pivot. \Cref{fig:simplegravpendulum} depics a simple pendulum. 
+A \lingo{pendulum} is a mechanical system consisting of a bob hanging by a rod attached to a pivot.  A \lingo{gravitational pendulum} is a pendulum object only to gravitational interactions. Finally, a \lingo{simple gravitational pendulum} is a gravitational pendulum consisting of a massive bob hanging by a massless rod attached to a frictionless pivot. \Cref{fig:simplegravpendulum} depicts a simple gravitational pendulum. 
 
-For all the pendulums, at any time $t$, the angle made by the rod with respect to the vertical, the pendulum equilibrium position, is called the \lingo{pendulum amplitude}, $\angpos$. The \lingo{pendulum trajectory}, $\angpos\vat t$, is found by joining the different $\angpos$ at their corresponding $t$. Lastly, the \lingo{pendulum angular velocity}, $\angvel$, can be calculated as the time derivative of $\angpos$.
+For all the pendulums, at any time $t$, the angle made by the rod with respect to the vertical, the pendulum equilibrium position, is called the \lingo{pendulum displacement}, $\angpos$; whereas the maximum displacement is referred to as the \lingo{pendulum amplitude}. The \lingo{pendulum trajectory}, $\angpos\vat t$, on the other hand, is found by joining the different $\angpos$ at their corresponding $t$. Lastly, the \lingo{pendulum angular velocity}, $\angvel$, is defined as the time derivative of $\angpos$.
 %
 % ------------------------------------------------------------- Figure
 % position: bthH. size:width=0.5\textwidth. file:location+filename
@@ -40,19 +40,21 @@ For all the pendulums, at any time $t$, the angle made by the rod with respect t
 
 Returning to the physical description, a gravitational pendulum is set into motion by:
 \begin{enumerate}
-\item moving the bob from its equilibrium position to an initial amplitude, $\angpos_0$, at an initial time;
+\item moving the bob from its equilibrium position at rest an amplitude, $\angpos_0$, at an initial time;
 \item applying a force that imprints an angular velocity to the bob at an initial time, $\angvel_0$, or
-\item both at the same initial time.
+\item displacing the bob to $\angpos_0$ and then applying $\angvel_0$ at an initial time.
 \end{enumerate}
 
-Once motion starts, the system acquires \lingo{kinetic energy}, $\ken$, that is then balanced by \lingo{gravitational potential energy}, $\pen$. This restoring energy causes the system to oscillate about the equilibrium position, swinging back and forth. The time for one complete cycle, a left swing and a right swing, is called the \lingo{pendulum period}, $\oscper$. The interplay between both energies continues indefinitely, unless an external force, such as a \lingo{damping force}, stops the pendulum from moving. Friction at the pivot or fluid drag, provided a partial or total pendulum submersion in a viscous fluid, are examples of damping forces. Finally, buoyancy is another force that comes into play by effectively reducing the bob weight.
+Once motion starts, the system acquires \lingo{kinetic energy}, $\ken$, then balanced by \lingo{gravitational potential energy}, $\pen$. This restoring energy causes the system to oscillate about the equilibrium position, swinging back and forth. The time for one complete cycle, a left swing and a right swing, is called the \lingo{pendulum period}, $\oscper$. The interplay between both energies continues indefinitely, unless an external force, such as a \lingo{damping force}, stops the pendulum from moving. Friction at the pivot or fluid drag, provided a partial or total pendulum submersion in a viscous fluid, are examples of damping forces. Finally, buoyancy is another force that comes into play by effectively reducing the bob weight.
 
-A bit of history. Galileo Galilei studied pendulums \ca 1600. He postulated that they are \lingo{isochronos}; \ie, their period is independent of the initial amplitude. Then, by further studies, Christiaan Huygens proposed that the pendulum period depends on the square of its length. More precisely, he found that
-\begin{equation}\label{eq:huygenslawfortheperiod}
-\oscper = 2\pi\sqrt{\dfrac{\length}{\grav}}\,,
-\end{equation}
-where $\length$ is the rod length and $\grav$ the free fall acceleration. This equation is known as \lingo{Huygens' law for the period}. See that Huygens' law is consistent with the Galilei's isochronos result.
+Historically, Galileo Galilei studied pendulums \ca 1600. He postulated that they are \lingo{isochronos} -- period is independent of amplitude. Then, by further studies, Christiaan Huygens proposed that the pendulum period depends on the square of its length, $\length$, and free fall acceleration, $\grav$, by founding that
+%\begin{equation}\label{eq:huygenslawfortheperiod}
+\beq
+\oscper = 2\pi\sqrt{\dfrac{\length}{\grav}}\,.
+\eeq
+%\end{equation}
+This equation is known as \lingo{Huygens' law for the period}. See that Huygens' law is consistent with Galilei's isochronos postulate -- nowadays know to be an approximation for small amplitudes.
 
 
 \subsection{Objective}
-The aim herein is to find a closed form of a mathematical function to predict the trajectory of a gravitational pendulum. A closed form may perhaps not be found when modeling a real gravitational pendulum, thus restrictions based on sound physical arguments would need be made.
+The aim herein is to find a closed form of a mathematical function to predict the trajectory of a gravitational pendulum. A closed form may perhaps not be found when modeling a real gravitational pendulum, thus restrictions based on sound physical arguments would need be made. Moreover, the pendulum period is also set as a goal.
