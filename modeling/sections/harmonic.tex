@@ -3,7 +3,7 @@ In this section, we present a small account of the simple harmonic motion of a s
 
 
 \subsection{Background}
-We present, in the following, a brief description of the harmonic motion, emphasizing in simple harmonic motion. Then, we set the main objectives of the current analysis.
+We give hereafter a brief description of the harmonic motion, emphasizing in simple harmonic motion. Then, we set the main objectives of the current analysis.
 
 
 \subsubsection{Description}
@@ -34,7 +34,7 @@ Consider an oscillator composed of a mass $\mass$ and a spring of stiffness $\ks
 \oper\sim\sqrt{\dfrac{\mass}{\kspring}}\,.
 \eeq
 
-It can be seen that $\oper$ dependency on $\kspring$ and $\mass$ is not linear. Finally, the last equation implies that simple harmonic motion is \lingo{isochronous}; \ie, the period and frequency are independent on the amplitude.
+It can be seen that $\oper$ dependency on $\kspring$ and $\mass$ is not linear. Moreover, the last equation implies that simple harmonic motion is \lingo{isochronous}; \ie, the period and frequency are independent on the amplitude.
 
 
 \subsubsection{Dimensional analysis}
@@ -62,7 +62,7 @@ Time                    & $t$         & $\phdim T$ \\
     {tab:quantitiesharmonicscillator}
 % ------------------------------------------------------------- EndTable
 
-There are five physical quantities and three base dimensions, thus, according to the Pi-theorem, $5 - 3 = 2$ dimensionless quantities can be formed:
+There are five physical quantities and three base dimensions. Thus, according to the Pi-theorem, $5 - 3 = 2$ dimensionless quantities can be formed:
 \begin{equation}\label{eq:dimlessquantitiessimpleoscillator}
 \kdim_1 = \dfrac{\odisp}{\odisp_0}\qquad\text{and}\qquad
 \kdim_2 = t\sqrt{\dfrac{\kspring}{\mass}}\,.
@@ -113,7 +113,7 @@ Now, we solve \cref{eq:eqmotionsimpleharmonicoscillator} to find a closed form o
 \subsubsection{Non-dimensionalization}
 Consider \cref{eq:eqmotionsimpleharmonicoscillator}. The independent quantity is $t$, the dependent one $\odisp$ and the parameters are $\kspring$ and $\mass$.
 
-Non-dimensionalize $\odisp$ using $\kdim_1$, found in \cref{eq:dimlessquantitiessimpleoscillator}:
+Non-dimensionalize $\odisp$ using $\kdim_1$ as a scaling factor or characteristic displacement, found in \cref{eq:dimlessquantitiessimpleoscillator}:
 \beq
 \scpq\odisp = \kdim_1 = \dfrac{\odisp}{\odisp_0}\implies
 \odisp = \odisp_0\scpq\odisp\,,
@@ -123,7 +123,7 @@ with differentials
    \dx\odisp = \odisp_0\dx\scpq\odisp\qquad\text{and}\qquad
 \ndx 2\odisp = \odisp_0\ndx 2\scpq\odisp\,.
 \eeq
-Then, non-dimensionalize $t$ using $\kdim_2$ -- see \cref{eq:dimlessquantitiessimpleoscillator}:
+Then, non-dimensionalize $t$ using $\kdim_2$ as a characteristic time -- see \cref{eq:dimlessquantitiessimpleoscillator}:
 \beq
 \scpq t = \kdim_2 = t\sqrt{\dfrac{\kspring}{\mass}}\implies
 t = \scpq t\sqrt{\dfrac{\mass}{\kspring}}\,,
@@ -150,10 +150,10 @@ where the derivatives are to be taken with respect to $\scpq t$. Note that the e
 \scpq\odisp = \cos\vat{\scpq t}\,,
 \eeq
 or, in dimensional form,
-\beq
+\begin{equation}\label{eq:solsimpleharmonicmotion}
 \odisp = \odisp_0\cos\vat{t\sqrt{\dfrac{\kspring}{\mass}}}
        = \odisp_0\cos\vat{t\natfreq}\,.
-\eeq
+\end{equation}
 
 
 \subsection{Results}
@@ -201,4 +201,4 @@ The total energy of the oscillator, $\ener$, is the addition of kinetic and pote
 2\ener = \kspring\odisp_0^2\left(\sin^2\vat{t\natfreq} + \cos^2\vat{t\natfreq}\right)\implies
 \ener = \dfrac{1}{2}\kspring\odisp_0^2\,,
 \eeq
-which is a constant. Therefore, energy \emph{is} conserved during motion of a simple harmonic oscillator.
+which is a constant. Therefore, energy \emph{is} conserved by \cref{eq:solsimpleharmonicmotion} during motion of a simple harmonic oscillator.
