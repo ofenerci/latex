@@ -2,39 +2,48 @@
 \ProvidesPackage{rmbdphysics}[2013/09/14 rmbdphysics - physics commands (rimbaudcode)]
 
 %%% Mechanics
-\newcommand{\pos}{\xi}      % position
-\newcommand{\vel}{\dt\pos}  % velocity
-\newcommand{\acc}{\ddt\pos} % acceleration
-\newcommand{\mass}{m}       % mass
-\newcommand{\kspring}{k}    % spring constant
-\newcommand{\mom}{p}        % momentum
-\newcommand{\force}{f}      % force
-\newcommand{\grav}{g}       % free fall acceleration
-\newcommand{\dens}{\rho}    % density
-\newcommand{\dynvis}{\mu}   % dynamic viscosity
+\newcommand{\pos}{x}         % position
+\newcommand{\vel}{u}         % velocity
+%\newcommand{\acc}{\ddt\pos} % acceleration
+\newcommand{\mass}{m}        % mass
+%\newcommand{\kspring}{k}    % spring constant
+%\newcommand{\mom}{p}        % momentum
+\newcommand{\force}{f}       % force
+\newcommand{\press}{p}       % pressure
+%\newcommand{\grav}{g}       % free fall acceleration
+%\newcommand{\dens}{\rho}    % density
+%\newcommand{\dynvis}{\mu}   % dynamic viscosity
 
 %%% Indexed mechanics
-\newcommand{\fpos}[1]{\fvec{\pos}{#1}} % indexed position (contravariant)
-\newcommand{\fvel}[1]{\fvec{\vel}{#1}} % indexed velocity (contravariant)
+%\newcommand{\fpos}[1]{\fvec{\pos}{#1}} % indexed position (contravariant)
+%\newcommand{\fvel}[1]{\fvec{\vel}{#1}} % indexed velocity (contravariant)
 
 %%% Lagrange and Hamilton mechanics
-\newcommand{\ener}{e}             % energy
-\newcommand{\ken}{\ener\txt{kin}} % kinetic energy
-\newcommand{\pen}{\ener\txt{pot}} % potential energy
-\newcommand{\lag}{\ener\txt{lag}} % lagrangian
-\newcommand{\ham}{\ener\txt{ham}} % hamiltonian
+\newcommand{\ener}{e}              % energy
+\newcommand{\ken}{\ener\txt{kin}}  % kinetic energy
+%\newcommand{\pen}{\ener\txt{pot}} % potential energy
+%\newcommand{\lag}{\ener\txt{lag}} % lagrangian
+%\newcommand{\ham}{\ener\txt{ham}} % hamiltonian
 %
-\newcommand{\eleq}[2]{\ipd{#1}\lag - \iod t\ipd{#2}\lag}             % euler-lagrange equation
-\newcommand{\alteleq}[2]{\left(\ipd{#1} - \iod t\ipd{#2}\right)\lag} % alternative euler-lagrange equation
+%\newcommand{\eleq}[2]{\ipd{#1}\lag - \iod t\ipd{#2}\lag}             % euler-lagrange equation
+%\newcommand{\alteleq}[2]{\left(\ipd{#1} - \iod t\ipd{#2}\right)\lag} % alternative euler-lagrange equation
 %
-\newcommand{\elop}[2]{\square_{{#1}{#2}}} % Euler-Lagrange operator
+%\newcommand{\elop}[2]{\square_{{#1}{#2}}} % Euler-Lagrange operator
 %
-\newcommand{\igpos}[1]{\fvec{\pos}{#1}}      % indexed gen. position
-\newcommand{\igvel}[1]{\fvec{\vel}{#1}}      % indexed gen. velocity
-\newcommand{\igacc}[1]{\fvec{\acc}{#1}}      % indexed gen. acceleration
-\newcommand{\igmom}[1]{\rvec{\mom}{#1}}      % indexed gen. momentum
-\newcommand{\dtigmom}[1]{\rvec{\dt\mom}{#1}} % time derivative of gen. mom.
-\newcommand{\igforce}[1]{\rvec{\force}{#1}}  % indexed gen. force
+%\newcommand{\igpos}[1]{\fvec{\pos}{#1}}      % indexed gen. position
+%\newcommand{\igvel}[1]{\fvec{\vel}{#1}}      % indexed gen. velocity
+%\newcommand{\igacc}[1]{\fvec{\acc}{#1}}      % indexed gen. acceleration
+%\newcommand{\igmom}[1]{\rvec{\mom}{#1}}      % indexed gen. momentum
+%\newcommand{\dtigmom}[1]{\rvec{\dt\mom}{#1}} % time derivative of gen. mom.
+%\newcommand{\igforce}[1]{\rvec{\force}{#1}}  % indexed gen. force
+
+%%% Mass transport
+\newcommand{\amount}{n} % chemical amount
+
+%%% Energy transport
+\newcommand{\temp}{\theta}          % temperature
+\newcommand{\then}{\ener\txt{th}}   % thermal energy
+\newcommand{\kthcond}{k}            % thermal conduction coefficient
 
 %%% Physical constants
 %\newcommand{\kavog}{n\txt{avo}}     % Avogadro constant
@@ -43,6 +52,9 @@
 %\newcommand{\kplanck}{h\txt{plk}}   % Planck constant
 %\newcommand{\klight}{c_0}           % speed of light in vacuum
 %\newcommand{\kstef}{\sigma\txt{sb}} % Stefan-Boltzmann constant
+%
+\newcommand{\const}{k}               % constant
+\newcommand{\kgas}{\const\txt{gas}}  % gas constant
 
 %%% Dim. analysis
 %\DeclareMathOperator{\unit}{unit}   % unit of a quantity
@@ -54,7 +66,7 @@
 \newcommand{\kdimf}{\phi_{\pi}}      % dimensionless function
 
 %%% Dimless. quantities
-\newcommand{\kreynolds}{\kdim\txt{re}} % reynolds number
+%\newcommand{\kreynolds}{\kdim\txt{re}} % reynolds number
 %
 %\newcommand{\kbiot}{\kdim\txt{bi}}     % biot number
 %\newcommand{\kprandtl}{\kdim\txt{pr}}  % prandtl number

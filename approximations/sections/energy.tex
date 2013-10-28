@@ -1,0 +1,107 @@
+%%%
+%
+\newcommand{\atemp}{\temp\infty}    % ambient temperature
+\newcommand{\wtemp}{\temp\txt{w}}   % wall temperature
+\newcommand{\mtemp}{\temp\txt{max}} % max temperature
+
+\section{Energy}
+Consider a large, thin concrete slab of thickness $\length$ that is \lingo{setting}. Setting is an exothermic process that releases $\then$, where $\dim\then = [\phdim E/\phdim T\phdim L^3]$ -- thermal power density. The outside surfaces are kept at the ambient temperature, so the temperature of the walls, $\wtemp$, equal the ambient temperature: $\wtemp = \atemp$. What is the maximum internal temperature?
+
+
+\begin{guess}
+Since the walls are kept at constant temperature, the process is at steady state. However, temperature ranges spatially through the slab thickness. If one measures the spatial variation by $\pos$, then the slab temperature satisfies $\temp = \temp\vat\pos$.
+
+By symmetry, the center temperature coincides with $\mtemp$ at the slab center, $\pos = 1/2$, and decreases smoothly to a minimum at the walls, $\pos = 0$ and $\pos = \length$. This symmetry gives room to think about an inverted parabolic temperature distribution inside the slab with the parabola vertex at $\mtemp$.
+\end{guess}
+
+
+\begin{dimensional}
+Place a Cartesian coordinate axis running from one wall to the other covering the slab thickness. Let $\pos$ measure position within $0\leq\pos\length$. Thus, since the process is at steady state, $\temp = \temp\vat\pos$.
+
+Choose the dimensional set to be $\elset{\phdim E, \phdim L, \phdim T, \phdimtemp}$. Hypothesize the quantities governing the phenomenon to be those listed in \cref{tab:settingslabquantities}. 
+%%% Tables
+%
+% ------------------------------------------------------------- PreTable
+\docpretable{bt}{0.9\textwidth}{lcc}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+% use: \docfloatwidth whenever possible!
+\toprule
+Quantity    & Symbol    & Dimension \\
+\midrule
+Slab temperature                     & $\temp$     & $\phdimtemp$ \\
+Slab thermal conduction coefficient  & $\kthcond$  & $\phdimtemp$ \\
+Slab thickness                       & $\length$   & $\phdim L$ \\
+Wall temperature                     & $\wtemp$    & $\phdimtemp$ \\
+Setting power density                & $\then$     & $\phdim E/\phdim T\phdim L^3$ \\
+Position within the slab             & $\pos$      & $\phdim L$ \\
+\bottomrule
+% ------------------------------------------------------------ PostTable
+\end{tabularx}
+\docposttable{Quantities: slab problem}{Quantities and dimensions affecting the thermal conduction of the concrete slab setting.}{tab:settingslabquantities}
+% ------------------------------------------------------------- EndTable
+
+As seen in \cref{tab:settingslabquantities}, according to the Pi-theorem, $6 - 4 = 2$ dimensionless quantities can be constructed. The first one:
+\beq
+\kdim_1 = \dfrac{\kthcond\left(\temp - \wtemp\right)}{\then\length^2}\,,
+\eeq
+which measures the relationship between energy conduction and energy production. The second dimensionless quantity:
+\beq
+\kdim_2 = \dfrac{\pos}{\length}\,,
+\eeq
+which is a geometric ratio.
+
+With both dimensionless quantities, one can apply the principle of dimensional homogeneity for physical laws to find
+\beq
+\kdim_1 = \kdimf\vat{\kdim_2}
+\implies
+\dfrac{\kthcond\left(\temp - \wtemp\right)}{\then\length^2} = \kdimf\vat{\dfrac{\pos}{\length}}\,.
+\eeq
+
+Scale temperatures by means of $\kdim_1$ and lengths by $\kdim_2$; \ie,
+\beq
+\scpq\temp = \kdim_1\temp\qquad\text{and}\qquad
+\scpq\pos  = \kdim_2\pos\,.
+\eeq
+
+Hence, finally, the equation governing the phenomenon can be written as
+\begin{equation}\label{eq:slabsettingdimlessequation}
+\scpq\temp = \kdimf\vat{\scpq\pos}\,.
+\end{equation}
+where the function $\kdimf$ cannot be further determined by dimensional analysis.
+\end{dimensional}
+
+
+\begin{approximation}
+Assuming a parabolic distribution of temperatures, $\kdimf$ in \cref{eq:slabsettingdimlessequation} can be hypothesize to satisfy
+\beq
+\scpq\temp = a\scpq\pos^2 + b\scpq\pos + c\,,
+\eeq
+where $\elset{a,b,c}$ are dimensionless quantities to be determined.
+
+Now, we can use a theorem in geometry that states that three points uniquely determine a parabola. Two of these points can be found from the problem statement:
+\beq
+\begin{dcases}
+\tuple{\scpq\pos = 0, \scpq\temp = 0} \\
+\tuple{\scpq\pos = 1, \scpq\temp = 0}\,.
+\end{dcases}
+\eeq
+Setting $a = -1/2$ (an inverted parabola) and solving the previous systems of equations, one finds that
+\beq
+a = -\dfrac{1}{2}\,,\qquad
+b = \dfrac{1}{2}\qquad\text{and}\qquad
+c = 0\,.
+\eeq
+Replacing these values in the hypothesized $\kdimf$, one has
+\beq
+2\scpq\temp = \scpq\pos\left(1 - \scpq\pos\right)\,.
+\eeq
+
+Now, using symmetry, when $\scpq\pos = 1/2$, then $\scpq\temp = \scpq\mtemp$:
+\beq
+\scpq\mtemp = \dfrac{1}{8}
+\eeq
+or, returning to the dimensional quantities, $\mtemp$ can be found by
+\beq
+\dfrac{\kthcond\left(\mtemp - \wtemp\right)}{\then\length^2} = \dfrac{1}{8}\,.\mqed
+\eeq
+\end{approximation}

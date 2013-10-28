@@ -1,3 +1,37 @@
 \section{Pressure}
-Consider
+Consider a piston of volume $\vol$ and sectional area $\area$ holding an amount $\amount$ of an ideal gas and consider a force $\force$ being applied on $\area$ that compresses the fluid. 
+
+Such a force generates a pressure $\press$ on the gas. See now that $\press$ can be viewed as energy density instead of force per unit area. With this view, one finds the external energy applied to the system $\ener\txt{ext}$ by
+\beq
+\ener\txt{ext}\sim\press\vol\,.
+\eeq
+
+This external stimulus makes the gas to perform $\press\vol$ work, the gas internal response $\ener\txt{int}$, given by
+\beq
+\ener\txt{int}\sim\amount\kgas\temp\,,
+\eeq
+where $\kgas$ represents the gas constant and $\temp$ the gas temperature.
+
+Thus, according to the energy conservation principle, the external stimulus must be balanced by the gas internal response:
+\beq
+\ener\txt{ext}\sim\ener\txt{int}
+              \sim\amount\kgas\temp
+\implies
+\kgas\temp\sim\dfrac{\ener\txt{ext}}{\amount}\,.
+\eeq
+That is, $\kgas\temp$ is a measure of the external energy distributed per amount of gas -- molar energy.
+
+On the other hand, since by definition an ideal gas does not interact, its total internal energy equals its kinetic energy alone:
+\beq
+\ener\txt{int}\sim\mass\vel^2\,,
+\eeq
+where $\mass$ represents the gas mass and $\vel$ the average velocity of the gas particles. Thus, one finds
+\beq
+\mass\vel^2\sim\amount\kgas\temp
+\implies
+\temp\sim\dfrac{\mass\vel^2}{\amount\kgas}
+     \propto\vel\,.
+\eeq
+Hence, temperature can also be viewed as a measure of the mean particle velocity of the gas particles.
+
 
