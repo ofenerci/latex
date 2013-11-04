@@ -89,30 +89,30 @@ input-symbols = \pi\tau
 %\newtheorem{theorem}{Theorem}[section]
 
 %%% MATH ENVIRONMENTS
-\newenvironment{axiom}{\medskip\noindent{\it Axiom.}}{}
-\newenvironment{definition}{\medskip\noindent{\it Definition.}\it}{\rm}
-\newenvironment{theorem}{\medskip\noindent{\it Theorem.}}{}
+\newenvironment{axiom}{\medskip\noindent{\itshape Axiom.}}{}
+\newenvironment{definition}{\medskip\noindent{\itshape Definition.}\itshape}{\rm}
+\newenvironment{theorem}{\medskip\noindent{\itshape Theorem.}}{}
 %
-\newenvironment{example}{\noindent\\\noindent{\it Example.}}{}
-\newenvironment{exercise}{\medskip\noindent{\it Exercise.}}{}
+\newenvironment{example}{\noindent\\\noindent{\itshape Example.}}{}
+\newenvironment{exercise}{\medskip\noindent{\itshape Exercise.}}{}
 %
-\newenvironment{approximation}{\smallskip\small\noindent{\it Approx. Solution.}}{\normalsize\smallskip}
-\newenvironment{caution}{\smallskip\small\noindent{\it Caution.}}{\normalsize\smallskip}
-\newenvironment{dimensional}{\smallskip\small\noindent{\it Dim. Analysis.}}{\normalsize\smallskip}
-\newenvironment{discussion}{\smallskip\small\noindent{\it Discussion.}}{\normalsize\smallskip}
-\newenvironment{guess}{\smallskip\small\noindent{\it Guess.}}{\normalsize\smallskip}
-\newenvironment{geometry}{\smallskip\small\noindent{\it Geometry.}}{\normalsize\smallskip}
-\newenvironment{mathnote}{\smallskip\small\noindent{\it Math note.}}{\normalsize\smallskip}
-\newenvironment{motivation}{\smallskip\small\noindent{\it Motivation.}}{\normalsize\smallskip}
-\newenvironment{notation}{\smallskip\small\noindent{\it Notation.}}{\normalsize\smallskip}
-\newenvironment{note}{\smallskip\small\noindent{\it Note.}}{\normalsize\smallskip}
-\newenvironment{remark}{\smallskip\small\noindent{\it Remark.}}{\normalsize\smallskip}
-\newenvironment{technote}{\smallskip\small\noindent{\it Technical note.}}{\normalsize\smallskip}
-\newenvironment{warning}{\smallskip\small\noindent{\it Warning.}}{\normalsize\smallskip}
+\newenvironment{approximation}{\smallskip\small\noindent{\itshape Approx. Solution.}}{\normalsize\smallskip}
+\newenvironment{caution}{\smallskip\small\noindent{\itshape Caution.}}{\normalsize\smallskip}
+\newenvironment{dimensional}{\smallskip\small\noindent{\itshape Dim. Analysis.}}{\normalsize\smallskip}
+\newenvironment{discussion}{\smallskip\small\noindent{\itshape Discussion.}}{\normalsize\smallskip}
+\newenvironment{guess}{\smallskip\small\noindent{\itshape Guess.}}{\normalsize\smallskip}
+\newenvironment{geometry}{\smallskip\small\noindent{\itshape Geometry.}}{\normalsize\smallskip}
+\newenvironment{mathnote}{\smallskip\small\noindent{\itshape Math note.}}{\normalsize\smallskip}
+\newenvironment{motivation}{\smallskip\small\noindent{\itshape Motivation.}}{\normalsize\smallskip}
+\newenvironment{notation}{\smallskip\small\noindent{\itshape Notation.}}{\normalsize\smallskip}
+\newenvironment{note}{\smallskip\small\noindent{\itshape Note.}}{\normalsize\smallskip}
+\newenvironment{remark}{\smallskip\small\noindent{\itshape Remark.}}{\normalsize\smallskip}
+\newenvironment{technote}{\smallskip\small\noindent{\itshape Technical note.}}{\normalsize\smallskip}
+\newenvironment{warning}{\smallskip\small\noindent{\itshape Warning.}}{\normalsize\smallskip}
 %
-\renewenvironment{proof}{\newline\small\noindent{\it Proof.}}{\normalsize}
-\newenvironment{solution}{\smallskip\small\noindent{\it Solution.}}{\normalsize\\}
-\newenvironment{verification}{\small\noindent{\it Verification.}}{\normalsize}
+\renewenvironment{proof}{\newline\small\noindent{\itshape Proof.}}{\normalsize}
+\newenvironment{solution}{\smallskip\small\noindent{\itshape Solution.}}{\normalsize\\}
+\newenvironment{verification}{\small\noindent{\itshape Verification.}}{\normalsize}
 
 %%% Equations
 %\numberwithin{equation}{section} % equation with section numbers
@@ -171,8 +171,8 @@ input-symbols = \pi\tau
         \small\textsf{#1}% text...quote
         \begin{flushright}
           % author, reference
-          {--- \sc\MakeLowercase{#2}}, \\
-          {\sc\MakeLowercase{#3}}
+          {--- \textsc{\MakeLowercase{#2}}}, %\\ \textsc{}
+          {\textsc{\MakeLowercase{#3}}}
         \end{flushright}
       \end{minipage}
     \end{flushright}
