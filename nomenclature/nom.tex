@@ -1,0 +1,33 @@
+% compile as 
+% $ pdflatex test
+% $ makeindex test.nlo -s nomencl.ist -o test.nls
+% $ pdflatex test
+
+\documentclass{article}
+
+\usepackage{nomencl}
+\makenomenclature
+
+%%% latex var definition and document nomenclature
+% \vardefnome{\command}{symbol}{description}{dimension}
+% \vardefnom{\mass}{m}{\dim mass}{M}
+\newcommand{\vardefnom}[4]{%
+  \newcommand{#1}{#2}%
+  \nomenclature{$#1$}{{#3} [$\mathsf{#4}$] \nomrefpage}%
+}%
+
+%%% vars
+\vardefnom{\force}{f}{force}{ML/T^2}%
+\vardefnom{\mass}{m}{mass}{M}%
+\vardefnom{\acc}{a}{acceleration}{L/T^2}%
+
+\begin{document}
+
+Newton's second law of motion reads
+\begin{equation}
+\force = \mass\acc\,,
+\end{equation}%
+ 
+\printnomenclature
+
+\end{document}
