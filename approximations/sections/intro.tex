@@ -3,12 +3,360 @@
 %%%
 \epigraph{[...] the principle known as Occam's Razor: \latin{essentia non sunt multiplicanda praeter necessitatem} (hypotheses are not to be multiplied without necessity).}{attributed to William of Ockham, quoted by R.V. Jones}{\citep[p.95]{gibbings:2011}.}
 %
-\epigraph{Only wimps specialize on the general case. Real scientists pursue examples.}{Beresford Parlett}{\citep{berry:1995}}.
+\epigraph{Only wimps specialize on the general case. Real scientists pursue examples.}{Beresford Parlett}{\citep{berry:1995}.}
 %%%
 
 [The Art of Approximation in Science and Eng. Sanjoy]
 
 An approximate model can be better than an exact model! An approximate answer is all that we can understand because our minds are a small part of the world itself. So when we represent or model the world, we have to throw away aspects of the world in order for our minds to contain the model. Thus, making useful models means discarding less important information so that our minds may grasp the important features that remains.
+
+
+\subsection{Praveen}
+[Analysis of Strategic Knowledge in Back of the Envelope Reasoning. Praveen K. Paritosh and Kenneth D. Forbus]
+
+All estimation problems ask for a quantitative value for some parameter. Our approach breaks down the problem solving into two distinct processes:
+%
+\begin{enumerate}
+\item Strategies: Using strategies to transform the current problem into possibly easier problems.
+\item Estimation: Coming up with a numeric estimate for a parameter. The number could already be known or similar examples might be used to make an estimate.
+\end{enumerate}
+
+With strategies represented as above, there are three syntactic possibilities for a strategy based on what aspect of problem it transforms:
+%
+\begin{enumerate}
+\item Object-based.
+\item Quantity-based.
+\end{enumerate}
+
+Next we look at each of these in turn.
+
+
+\subsubsection{Object-based Strategies}
+%
+\begin{enumerate}
+\item Mereology: The mereology strategy transforms an object into other objects that are its parts. For extensive quantities, for example, the weight of a basket of fruits is the sum of weights of all the fruits and the basket. For intensive quantities, on the other hand, for instance, the density of a mixture is the weighted average of the densities of the constituents.
+%
+\item Similarity: The similarity strategy transforms the object into other object(s) which are similar to it. For example, if asked for the population of Austria, a reasonable guess could be the population of Switzerland, based on the similarity of the two countries. However, if two objects are similar, it doesn't warrant the inference that values of all the quantities for two objects are similar. For example, two similar basketball players might have similar height, but not necessarily two professors.
+%
+\item Ontology: The ontology strategy tries to find other objects from the ontology hierarchy which might be used to guess the quantity in question. In the simplest form, if $O$ is an instance of $O_1$, then we can use the knowledge about the class to guess the value for the instance. For example, if we know that Jason Kidd is a point guard, then we can use the knowledge that point guards are relatively shorter than other players on the team to guess his height. If we didn't have information about point guards, we could even use the fact that Jason Kidd is a basketball player to guess his height.
+\end{enumerate}
+
+
+\subsubsection{Quantity-based Strategies}
+A quantity-based strategy relates a quantity, $Q$, to a set of quantities, $\elset{Qi}$, such that the values of these quantities (for the object $O$) can be combined in a known way to derive the original quantity. 
+%
+\begin{enumerate}
+\item Density: This strategy converts a quantity into a \emph{density quantity} and an \emph{extent quantity}. Here, density is used in a general sense to mean average along any dimension: we talk of electric flux density, population density, \etc. Rates, averages, and even quantities like teachers per student are considered densities. For example, number of K-8 teachers in US can be estimated by multiplying the number of teachers per student by number of students.
+%
+\item Domain Laws: This strategy converts a quantity into other quantities that are related to it via laws of the domain. Domain laws include laws of physics as well as rules of thumb. For example, Newton's second law of motion, $f = ma$, relates the force on an object to its mass and acceleration. The application of domain laws by the problem solver requires formalizing the assumptions and approximations implicit in the laws. Since we are not interested in an exact answer, but an approximate estimate, aggressively applying approximations to simplify the problem solving becomes crucial. Some of the approximations are:
+%
+\begin{itemize}
+\item Geometry: Assume simplest shape, \eg, consider a spherical cow.
+%
+\item Distribution: Assume either a uniform distribution, or a Dirac-delta (point mass).
+%
+\item Calculus: Integrals can be simplified by sums or average multiplied by extent, and differentials by differences.
+%
+\item Algebra: Use simplification heuristics to reduce the number of unknowns.
+\end{itemize}
+\end{enumerate}
+
+
+\subsubsection{System-based Strategies}
+System-based strategies transform both the quantity and the object into other quantities and objects. They represent relationships between quantities of a system as a whole. For example, for a system with no external force, the momentum remains conserved. This translates into a conservation equation that relates the masses and velocities of the parts of the system. It would seem that this effect can be obtained by sequentially applying a quantity- based and an object-based strategy (or \vis) since all the above strategies are compositional. There are two reasons for keeping this a separate type of strategy: 1) it represents a reasoning pattern that is different, 2) sometimes it is much more efficient to apply a system-based strategy; \eg, applying conservation of momentum leads to safely ignoring all the internal forces which need to be made explicit if one is not applying a system-based strategy. The two system-based strategies are:
+%
+\begin{enumerate}
+\item System Laws: This class consists of physical laws that are applicable to a system as a whole. Many physical quantities remain conserved for a system, \eg, energy, mass, momentum, angular momentum, etc. As a result of this, often one can write a balance equation that relates the expressions that denote the value of the quantity in two different states of the system. To write a balance equation, appropriate assumptions about the system in consideration have to be made.
+%
+\item Scale-up: This is often an empirical strategy. A smaller model that works under the same physical laws can be used to estimate the quantity values for a full-scale prototype. To ensure that the scale-up is valid, all the dimensionless groups must be kept the same in the model and the prototype. For example, the Reynolds number is a dimensionless group that corresponds to the nature of flow (laminar, transient or turbulent), and for a flow model to be valid for scaling up, the Reynolds number must be the same in both situations.
+\end{enumerate}
+
+
+\subsection{Quine}
+[Addition: Back of the Envelope (BOTE) Calculations. B. M. Quine]
+
+
+\subsubsection{What and why?}
+%
+\begin{enumerate}
+\item Often -- during brain storming, discussions, out in the field -- engineers need to make rapid estimates to eliminate candidate solutions, to establish feasibility, to sketch out potential paths to a solution.
+%
+\item Although most engineers remember key numbers related to their field, no-one has every detail at their fingertips.
+%
+\item Hence we need to estimate not only the values of numbers we need, but which numbers are appropriate and how to perform the calculation:
+%
+\item the emphasis here is on ``order of magnitude'' estimates; \ie, to the nearest factor of 10;
+%
+\item it is also important to remember that these are rough estimates and to place only appropriate reliance on the results.
+\end{enumerate}
+
+
+\subsubsection{General principles}
+
+\begin{enumerate}
+\item When you use back-of-the-envelope calculations be sure to recall Einstein's famous advice: ``everything should be made as simple as possible, but no simpler''. 
+%
+\item Don't worry about specific factors: round to the nearest sensible value; corollary: don't make numbers more precise than is necessary .
+%
+\item Guess numbers you don't know but try to make your guesses good ones and within the bounds of common sense. Common sense requires some education -- the accuracy of common sense increases with experience.
+%
+\item Adjust geometry to suit you. Assume a human is spherical if it helps. 
+%
+\item Extrapolate from what you do know; \eg, use ratios, assume unknown value is same as a similar known quantity
+%
+\item Use the principle of conservation: what goes in must either come out or stay inside (accumulation). Things are not generally destroyed, so work out where they have gone.
+%
+\item Ensure formulas are dimensionally correct -- \emph{this is a very powerful technique}; \ie, an expression to tell you the length of something must have overall dimensions of meters.
+%
+\item Apply a \emph{plausibility} filter: if an answer seems unbelievable, it probably is. You can usually set a range of possible or reasonable values for a quantity that will indicate a major mistake. For instance, speed cannot be faster than speed of light!
+%
+\item Bound or threshold problems to scope design solutions. For instance, Will it fit in? No it is 100 times too large even with optimistic values.
+%
+\item Consider your results in context with the assumptions you have made.
+%
+\item Use two different methods to contrast \emph{Rough Order of Magnitude}, ROM, estimates. For instance, estimation and comparison.
+\end{enumerate}
+
+
+\subsubsection{Uncertainty}
+
+\begin{enumerate}
+\item Once you have a method to solve the problem, you can include best- or worst-case estimates; \eg, how many light bulbs are there in the U.S.? Somewhere between $\num{e8}$ and $\num{e9}$ people. Not less than $\SI{1}{light bulb/person}$. Likely not more than $\SI{e3}{light bulb/person}$. So the range of the answer is from $\num{e8}$ to $\num{e12}$ light bulbs.
+%
+\item The bounding box: between what values are we sure the answer lies. To get the largest possible overestimate, multiply all the largest possible values and divide by all the smallest possible values. And \vis for the lowest possible underestimate.
+%
+\item The likely box: similar to the bounding box but using the largest and smallest likely values.
+\end{enumerate}
+
+
+\subsection{Wittich}
+[Back of the Envelope Physics. Peter Wittich]
+
+
+\subsubsection{Goal}
+Back of the envelope goal: know what to expect: I want to measure a new quantity. Thus, I need to know roughly what to expect.
+
+
+\subsubsection{Common estimation tricks}
+
+\begin{enumerate}
+\item Remember, we want to simplify our calculations. Volume: everything is a square or a sphere. $\pi = 3$, $3^2 = 10$, $3\pi = 10$, $e = 3$, $\SI{1}{y} = \SI{\pi e7}{s}$.
+%
+\item Use the right units. For example, for energy: joules for macroscopic scales; $\si{eV}$ for nuclear physics scales.
+%
+\item Round, round, round. If you think your number is only good to an order of magnitude it doesn't make sense to drag along many significant digits.
+%
+\item Know some appropriate numbers. If calculating $g$ on the moon, compare it to $g$ on earth.
+\end{enumerate}
+
+
+\subsubsection{What's different compared to the piano tuners?}
+
+\begin{enumerate}
+\item You still need to know physics. You can't use \emph{back of the envelope} to forgo knowledge of physics. You need to know what the base equations are.
+%
+\item This is where practice comes in. Learn what the relevant approximations are; learn what you can ignore and what you cannot.
+\end{enumerate}
+
+
+\subsubsection{Preliminary conclusions}
+\begin{enumerate}
+\item Doing this kind of estimates is a good tool to have in your toolbox.
+%
+\item It requires a willingness to estimate quantities and a knowledge of enough physics to know what's important.
+%
+\item It's a skill that can be practiced.
+\end{enumerate}
+
+
+\subsection{Francis}
+[``Back-of-the-Envelope Calculations'' Or: The Seven Habits of Highly Effective Astronomers. Paul Francis]
+
+One of the most important skills that any professional astronomer needs is the ability to very quickly get a highly approximate answer to a problem, without getting bogged down in details. This has many purposes:
+\begin{enumerate}
+\item Most research projects start off with a bright/crazy idea. Most of these bright ideas turn out to be wrong, irrelevant or unimportant. Given that most ideas do not work, it is vital to be able to tell quickly whether it is worth pursuing a particular idea: if you work out every idea in enormous detail, you will never get to the few interesting ones. This is the most common mistake that young researchers make: they get bogged down in some horribly mathematical detailed calculation, full of nasty integrals and messy algebra, and in the end discover that the effect they are computing is $\num{e-27}$ too small to be detected, something they could have worked out on the back of an envelope right at the beginning if they'd tried, thus saving them a month of work. So, 
+%
+\begin{quote}
+whenever starting a research project, try and work out the answer very very approximately. 
+\end{quote}
+%
+If your idea is crazy, you will quickly find out. Only if this initial quick guesstimate comes out with an interesting answer should you bother doing the calculation in detail.
+%
+\item No really complex calculation or computer simulation ever gives the right answer first time. Worse still, for real research, there is no answer in the back of the textbook and no higher authority to give you a high mark for getting it right. What this means is that 
+%
+\begin{quote}
+you should never believe the result of any detailed calculation unless it roughly agrees with some simple approximate estimate that you can do on the back of an envelope and understand fully.
+\end{quote}
+%
+This is a second common mistake of young researchers: they get a result, go out and publish it and do vast amounts of work relying on it, while all the time it was clearly wrong. I see the same problem all the time in undergraduate assignments: someone comes up with an answer that is clearly, wildly, hopelessly wrong; \eg, the mass of some star is $\SI{0.7}{kg}$, an asteroid is traveling at $\SI{e10}{m/s}$ -- faster than light -- or the Earth took $\SI{e11}{y}$ to form (much longer than the age of the universe). So 
+%
+\begin{quote}
+always check your answers for plausibility. 
+\end{quote}
+%
+Even if you don't have time to re-do them properly, you will get credit for saying ``this is clearly garbage, but I don't have time to fix it''.
+%
+\item In most real situations, many different effects are operating. For example, consider the elementary physics problem of a falling object. You normally calculate how long it takes to hit the ground considering only gravity, height and maybe air resistance. In reality, however, its course will be influenced by radiation pressure, the Earth's magnetic field, the gravitational pull of Jupiter, the curvature of space-time, coriolis force, cosmic ray bombardment and the perfume being worn by the person who dropped it, to name but a few. Most of these effects are tiny: far too small to have a measurable effect. Nonetheless, many people waste vast amounts of time computing, in tedious detail, these tiny and unimportant effects. 
+%
+\begin{quote}
+A back-of-the-envelope calculation can often tell you, right away, that one of these effects is far too small to be worth calculating properly.
+\end{quote}
+%
+\end{enumerate}
+
+
+\subsubsection{Hints for doing Back-of-the Envelope estimates}
+Doing guesstimate type calculations is actually far harder than doing things properly in enormous detail. You need 
+\begin{itemize}
+\item a really strong grasp of physics, 
+\item intuition about which parts of a problem are important and 
+\item imagination to dream up short-cuts.
+\end{itemize} 
+The only real way to learn is through practice. What I can give you is a few hints, based on the personal experience of many professional astronomers. Everybody has their own style for doing these simple calculations: you should develop your own, but hopefully these hints will give you somewhere to start.
+
+\begin{enumerate}
+\item Don't worry about factors of $2$, $\pi$, \etc. The aim of most approximate calculations is to get an answer that is correct to about an order of magnitude (a factor of $\sim 10$). So don't worry about little things like factors of two, $\pi$ or $4/7$. Throw away most constants! The area of a circle is $r^2$, the gravitational field of the Earth is $\SI{10}{m/s^2}$ and so on.
+%
+\item Guess numbers. Every professional astronomer should have memorized a bunch of basic numbers, like the typical density of rock, mass of a star, radius of a galaxy, and so on. When you find that some new number is needed, you can often guess its value by comparison with numbers you already know.
+%
+\item Tinker with the geometry.  Feel free to be very cavalier with the geometry of the problem you are working on. For example, the Milky Way galaxy has a complex flattened shape, but for many purposes it can be approximated as a point source. Assume that mountains are square blocks, that asteroid are cubes or spheres: whatever makes the calculation easier.
+
+\emph{One specific hint}: replace smoothly varying functions (which have to be integrated over) with discrete functions. For example, consider the issue of whether a star passing near the solar system will disturb the planets in their orbits. As the star approaches, its gravitational pull slowly increases, constantly changing in direction, making the calculation of the perturbation of a planet's orbit tricky. Instead, why not just assume that the planet appears from nowhere, popping into existence at a distance from the solar system equal to its closest approach in the real situation. Keep it there for a time roughly comparable to the time needed to pass the solar system, and then make it disappear again. This is now an easy problem to solve: the gravitational pull of the star is always from the same direction and always has the same strength, and the answer won't be too far wrong.
+%
+\item Use Ratios. Ratios are wonderful things: they avoid the need to work out constants and fiddle with many details. For example, the gravity on the surface of a planet of radius $r$ and density $\rho$ is
+\beq
+g = 4G\pi r \rho \propto r\rho\,.
+\eeq
+Now, we know $g$ on earth ($\SI{10}{m/s^2}$). What is $g$ on Mars? Well, Mars is rocky, just like the Earth, so its density is going to be about the same. Its radius is $1/3$ that of the Earth, so on Mars, $g \sim 10/3 \sim 3$. We never needed to know $G$, or the density and radius of either planet.
+%
+\item Use Conservation Laws. One of the many wonderful things about Physics is all the lovely conservation laws: conservation of energy, mass, momentum, angular momentum, \etc. By judicious use of these laws, you can get an approximate answer to many problems, while leaving out all the messy details.
+
+For example, as a giant molecular gas cloud shrinks down to form stars and planets, the details of gas flows, turbulence, shocks and accretion are so complex that not even the world's fastest supercomputers come close to simulating it. Nonetheless, somehow all this messy physics must produce a final solar system with the same angular momentum as the cloud had at the beginning!
+%
+\item The Method of Dimensions (dimensional analysis). The laws of physics are supposedly universal: they work for everyone. This means that every valid equation should work equally well, regardless of the units you use (as long as they are self consistent). Thus
+\beq
+f = ma
+\eeq
+should work regardless of whether you use newtons, kilograms and meters per second or some other units. 
+
+This means that the units of both sides of any valid equation must always be the same. You can often use this fact to work out the form of an equation, without any knowledge of the physics. Play around with the various plausible terms in the equation (which you can usually guess) until you come up with something with the same units (dimensions) on both sides of the equals sign. This will hopefully be correct, apart from some dimensionless constant (like 2 or $\pi$).
+
+\emph{One hint on using this method}: if you are doing a calculation that will have a numerical answer, it is sometimes tempting to substitute numbers in place of symbols early in the analysis. This is bad for two reasons: firstly, it makes it impossible to use the method of dimensions to check your results. Secondly, if you find you got a silly answer, it is hard to see where you went wrong, and to recalculate things. It is almost always best to keep things as symbols right through to the end of the algebra, and only then to substitute in numbers.
+%
+\item Plausibility Checking. There are several ways to check your results without re-doing a whole tedious and complex calculation. The \emph{method of dimensions}, discussed above, is one such method. Another is to check that your solution gives a correct result in some situation where you know the answer. For example, if you derive an equation which tells you the thickness of the atmosphere on a planet of a given mass and composition, use it to calculate the thickness of the atmosphere of the Earth and see if it comes out right.
+
+Another very powerful method is to check that the functional form of the equation is correct. For example, say that you derived an equation relating the mass m of a star to its luminosity L. Imagine that the equation you derived was
+\beq
+l \propto 1.05 + m^3 + 4\pi/(3 - m)\,,
+\eeq
+with $m$ measured in units of solar masses and $l$ in units of solar luminosities.
+
+Do you think this could be correct? If you look at the equation, you can easily see two problems. Firstly, what happens if m is very small? Say a star with a mass on $\SI{1}{kg}$? It clearly should not be very bright. But the equation above says that even if $m = 0$, the luminosity is still more than 5 solar luminosities. This clearly makes no sense: if this equation were correct, then even pebbles would outshine the sun. Secondly, what happens if $m = 3$? The last term in the equation goes to infinity. This is saying that stars with three times the mass of the Sun are infinitely luminous. This doesn't seem to make much sense. Worse: it gives the wrong answer when $m = 1$ (the Sun should presumably have a luminosity of one solar luminosity) and for$ m$ just larger than three, it gives a negative answer (how can anything have a negative luminosity?).
+
+So: always check the functional form of your answer to make sure that it is behaving in the correct way (another good reason for leaving your algebra in the form of symbols right until the end). If they don't seem to make sense, go back and think very hard about what you've done. Sometimes the calculation is right and the answer that you thought made no sense is actually telling you something revolutionary about the universe (this is how the Hawking radiation from black holes was discovered), but usually it is telling you that you've stuffed up your calculation somewhere.
+\end{enumerate}
+
+
+\subsubsection{Conclusions}
+I hope I've convinced you that the art of doing back-of-the-envelope calculations is a very valuable one. They cannot take the place of proper calculations, of the sort you are doing in your physics and maths assignments, but most professional astronomers spend more of their time on these guesstimates than they do on full-blown calculations.
+
+Doing these approximate calculations is admittedly very hard: you have to really understand the physics and rote learning of techniques and equations won't help you with these. 
+
+
+\subsection{Serway}
+[Physics for Scientists \& Engineers, 6 Ed., Serway and Jewett]
+
+It is often useful to compute an approximate answer to a given physical problem even when little information is available. This answer can then be used to determine whether or not a more precise calculation is necessary. Such an approximation is usually based on certain assumptions, which must be modified if greater precision is needed. We will sometimes refer to an order of magnitude of a certain quantity as the power of ten of the number that describes that quantity. Usually, when an order-of-magnitude calculation is made, the results are reliable to within about a factor of 10. If a quantity increases in value by three orders of magnitude, this means that its value increases by a factor of about $\num{e3}= 1 000$. We use the symbol $\sim$ for \emph{is on the order of}. Thus,
+\beq
+0.0086 \sim \num{e-2}\,,\qquad
+0.0021 \sim \num{e-3}\qquad\text{and}\qquad
+720 \sim \num{e3}\,.
+\eeq
+The spirit of order-of-magnitude calculations, sometimes referred to as \emph{guesstimates} or \emph{ball-park figures}, is given in the following quotation: 
+%
+\begin{quote}
+Make an estimate before every calculation, try a simple physical argument... before every derivation, guess the answer to every puzzle.
+\end{quote}
+%
+Inaccuracies caused by guessing too low for one number are often canceled out by other guesses that are too high. You will find that with practice your guesstimates become better and better. Estimation problems can be fun to work as you freely drop digits, venture reasonable approximations for unknown numbers, make simplifying assumptions, and turn the question around into something you can answer in your head or with minimal mathematical manipulation on paper. Because of the simplicity of these types of calculations, they can be performed on a small piece of paper, so these estimates are often called \emph{back-of-the-envelope calculations}.
+
+
+\subsection{Cooper}
+[Making Estimates in Research and Elsewhere. Lance Cooper]
+
+\subsubsection{Why make estimates in science?}
+The ability to estimate -- to within an order of magnitude or so -- the size or probability of various quantities is useful in science as well as in many other endeavors:
+%
+\begin{enumerate}
+\item to provide a rough check of more exact calculations;
+%
+\item to provide a rough check of research results or hypotheses;
+%
+\item to obtain estimates of quantities when other resources aren't available;
+%
+\item to obtain estimates of quantities that are difficult to measure precisely;
+%
+\item to obtain estimates of quantities for which no firm theoretical prediction exists: particularly important in interdisciplinary sciences, soft matter, astrophysics; 
+%
+\item to provide bounds for possible design alternatives.
+\end{enumerate}
+
+
+\subsubsection{How?}
+Getting started:
+\begin{enumerate}
+\item Don't panic when you see the problem.
+%
+\item Write down any fact you do know related to the question.
+%
+\item Outline one or more possible procedures for determining the answer. 
+%
+\item List the things you'll need to know to answer the question.
+%
+\item Keep track of your assumptions.
+\end{enumerate}
+
+
+\subsubsection{Guidelines}
+Other general guidelines for making order-of-magnitude estimates:
+
+\begin{enumerate}
+\item Make everything as simple as possible!
+%
+\begin{itemize}
+\item Don't worry about specific values: round numbers to ``convenient values''; \eg, $\pi\sim 3$, $8.4\sim 10$, \etc.
+%
+\item Choose convenient geometries when modeling; \eg, a spherical cow, a cubic grain of sand, \etc.
+%
+\item Make ``educated'' guesses or even upper and lower bounds of quantities you don't know. Try to make good guesses, and keep track of these guesses, as they will set bounds on the fidelity of your estimate.
+%
+\item Use ratios when possible -- by comparing the value of one quantity (\eg, force, energy, \etc.) in comparison to a related quantity -- in order to eliminate unknown parameters and get a dimensionless parameter.
+%
+\item If possible, exploit plausible scaling behavior of some quantity; \ie, estimate an unknown quantity by assuming it scales linearly -- from known values -- with some parameter.
+\end{itemize}
+%
+\item Checking your estimates:
+%
+\begin{itemize}
+\item Make sure that your estimates and calculations are dimensionally correct! \emph{This is a very powerful tool!}
+%
+\item Check the plausibility of your estimate, if possible; \eg, if your answer exceeds the speed of light or the size of the universe, you've got a problem!
+%
+\item Check the plausibility of your estimate using an alternate calculation method. Do the two methods agree to within an order of magnitude?
+%
+\item Perform a ``reality check'' on your estimate based on the number and size of the approximations you made.
+%
+\item More quantitatively -- place ``bounds'' on your estimate:
+%
+\begin{enumerate}
+\item to obtain an ``upper bound'' -- in equations, put largest estimated values of quantities in the numerator and the smallest estimated values in the denominator;
+\item to obtain a ``lower bound'' -- in equations, put smallest estimated values of quantities in the numerator and the largest estimated values in the denominator.
+\end{enumerate}
+%
+\end{itemize}
+%
+\end{enumerate}
+
 
 
 
