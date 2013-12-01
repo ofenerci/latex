@@ -1,0 +1,170 @@
+\section{Dimensional analysis}
+
+
+\subsection{Dorsey}
+[Dimensional Analysis, Alan Dorsey]
+
+
+\subsubsection{Introduction}
+The first step in modeling any physical phenomena is the identification of the relevant physical quantities and the relationships among these quantities via known physical laws. For many complex phenomena, where \latin{ab initio} theories are difficult or impossible to construct, modeling methods are indispensable and one of the most powerful modeling methods is \lingo{dimensional analysis}. Here we will use dimensional analysis to \emph{solve} problems or at least to infer some information about the solution.
+
+The basic \emph{principle} is that
+\begin{quote}
+physical laws do not depend upon arbitrariness in the choice of the basic units of measurement.
+\end{quote}
+In other words, if a physical law is valid in a chosen system of units, then it's valid in all systems. Consider, for instance, the angular frequency of small oscillations of a mathematical pendulum of length $\length$ and mass $\mass$:
+\beq
+\angfreq = \sqrt{\dfrac{\grav}{\length}}\,,
+\eeq
+where $\grav$ is the free fall acceleration. The last equation can be derived applying Newton's second law of motion to the pendulum. However, we can deduce it from dimensional considerations alone. What can $\angfreq$ depend upon? It is reasonable to assume that the relevant quantities are $\mass$, $\length$ and $\grav$. Now suppose that we change the system of units so that the unit of mass is changed by a factor of $\phdim M$, the unit of length by a factor of $\phdim L$ and the unit of time by a factor of $\phdim T$. With this change of units, the units of frequency will change by a factor of $\phdim T^{-1}$, the units of velocity by a factor of $\phdim L\phdim T^{-1}$ and the units of acceleration by a factor of $\phdim L\phdim T^{-2}$. Therefore, the units of the quantity $\grav/\length$ will change by $\phdim T^{-2}$ and those of $\left(\grav/\length\right)^{1/2}$. Consequently, the ratio
+\beq
+\kdim = \dfrac{\angfreq}{\sqrt{\grav/\length}}
+\eeq
+is invariant under a change of units; $\kdim$ is called a \lingo{dimensionless quantity}. Since it doesn't depend upon the quantities $\elset{\mass, \grav, \length}$, it is in fact a constant. Therefore, from dimensional considerations alone, we find that
+\beq
+\angfreq = \kdim\sqrt{\dfrac{\grav}{\length}}\,.
+\eeq
+A few comments are in order:
+\begin{enumerate}
+\item the frequency is independent of the mass of the pendulum bob;
+\item the constant $\kdim$ cannot be determined from dimensional analysis alone.
+\end{enumerate}
+These results are typical to dimensional analysis:
+\begin{quote}
+uncovering often unexpected relations among the quantities, while at the same time falling to pin down numerical constants.
+\end{quote}
+Indeed, to fix the numerical constants we need a real \emph{theory} of the phenomena in question, which goes beyond dimensional analysis.
+
+
+\subsubsection{Dimensions}
+In the previous discussion, note that if the units of length are changed by a factor of $\phdim L$ and the units of time by a factor of $\phdim T$, then the units of velocity change by a factor of $\phdim L\phdim T^{-1}$. We call $\phdim L\phdim T^{-1}$ the \lingo{dimensions} of the velocity; it tell us the factor by which the numerical value of the velocity changes under a change in the units (within the $\elset{\phdim L, \phdim M, \phdim T}$ class). We denote the dimensions of a physical quantity, say, $\phi$ by $\dim\phi$; thus, $\dim\lvel = [\phdim L\phdim T^{-1}]$. A dimensionless quantity would have $\dim\kdim = [1]$; \ie, its numerical value is the same in all systems of units within a given class. What about more complicated quantities such as force? From Newton's second law, $\force = \mass\acc$, so that $\dim\force = \dim\mass\dim\acc = [\phdim M\phdim L/\phdim T^2]$. Proceeding in this way, we can easily construct the dimensions of any physical quantity; some of the more commonly encountered quantities are included in Table 1.
+
+We see that all of the dimensions in Table 1 are \lingo{power law monomials} of the form (in the $\elset{\phdim L, \phdim M, \phdim T}$ class):
+\beq
+\dim\phi = \kdim\phdim L^a\phdim M^b\phdim T^c\,,
+\eeq
+where $\kdim$ and $\elset{a,b,c}$ are constants. In fact, this is a general result that can be proven mathematically, see Barenblatt's book [...]. This property is often called \lingo{dimensional homogeneity} and is really the key to dimensional analysis. To see why this is useful, consider again the determination of the period of a point pendulum, in a more abstract form. We have for the dimensions $\dim\angfreq = [\phdim T^{-1}]$, $\dim\grav = [\phdim L/\phdim T^2]$, $\dim\length = [\phdim L]$ and $\phdim\mass = [\phdim M]$. If $\angfreq$ is a function of $\elset{\grav, \length, \mass}$, then its dimensions must be a power law monomial of the dimensions of these quantities. We then have
+%\beq
+  \begin{align*}
+    \dim\angfreq &= [\phdim T^{-1}] \\
+                 &= \dim\grav^a \dim\length^b \dim\mass^c \\
+                 &= \left(\phdim L/\phdim T^2\right)^a \phdim L^b \phdim M^c \\
+                 &= \phdim L^{a + b} \phdim T^{-2a} \phdim M^c \,,
+  \end{align*}
+%\eeq
+with $\elset{a,b,c}$ constants determined by comparing the dimensions on both sides of the equation. We see that 
+\beq
+a + b = 0\,,\qquad -2a = -1\quad\text{and}\quad c = 0\,.
+\eeq
+The solution is then $a = 1/2$, $b = -1/2$ and $c = 0$ and we recover that $\angfreq = \kdim\sqrt{\grav/\length}$.
+
+A set of quantities $\elset{a_1, a_2, \dotsc, a_k}$ is said to have \lingo{independent dimensions} if none of these quantities have dimensions that can be represented as a product of powers of the dimensions of the remaining quantities. For instance, density, $\dim\dens = [\phdim M/\phdim L^3]$, velocity and force have independent dimensions, so that there is no product of powers of these quantities that is dimensionless. On the other hand, density, velocity and pressure, $\dim\press = \phdim M/\phdim L\phdim T^2$, are \emph{not} independent for we can write $\dim\press = \dim\dens\dim\lvel^2$; \ie, $\press/\dens\lvel^2$ is a dimensionless quantity.
+
+Now suppose that we have a relationship between a quantity $a$, which is being determined in some experiment (which we will refer to as the \lingo{governed quantity}), and a set of quantities $\elset{a_1, \dotsc, a_k}$ that are under experimental control (the \lingo{governing quantities}, that is of the form
+\begin{equation}\label{eq:dimensionalequation}
+a = f\vat{a_1, \dotsc, a_k; a_{k + 1}, \dotsc, a_n}\,,
+\end{equation}
+where $\elset{a_1, \dotsc, a_k}$ have independent dimensions. For example, this would mean that the dimensions of the governed quantity $a$ is determined by the dimensions of $\elset{a_1, \dotsc, a_k}$, while all of the $a_s$'s with $s > k$ can be written as products of powers of the dimensions of $\elset{a_1, \dotsc, a_k}$; \eg, $a_{k + 1}/a_1^p\dotsb a_k^r$ would be dimensionless, with $\elset{p, \dotsc, r}$ an appropriately chosen set of constants. With this set of definitions, it is possible to prove that the last equation can be written as
+\begin{equation}\label{eq:dimensionlessequation}
+a = a_1^p\dotsb a_k^r\kdimf\vat{
+    \dfrac{a_{k + 1}}{a_1^{p_{k + 1}}\dotsb a_k^{r_{k + 1}}}\,,
+    \dotsc\,,
+    \dfrac{a_{n}}{a_1^{p_{n}}\dotsb a_k^{r_{n}}}
+    }\,,
+\end{equation}
+with $\kdimf$ some function of \lingo{dimensionless quantities only}. The great simplification is that while the function $f$ in 
+\autoref{eq:dimensionalequation} was a function of $n$ variables, the function $\kdimf$ in \autoref{eq:dimensionlessequation} is \emph{only a function of $n - k$ variables}. \autoref{eq:dimensionlessequation} is a mathematical statement of \lingo{Buckinham's $\Pi$-Theorem} -- the central result of dimensional analysis. Dimensional analysis cannot supply us with the dimensionless function $\kdimf$ -- we need a real theory for that.
+
+As a simple example of how this works, let's return to the pendulum, but this time we'll assume that the mass can be distributed, so that we relax the condition of the mass being concentrated at a point. The governed quantity is the frequency $\angfreq$; the governing quantities are $\grav$, $\length$, (which can be interpreted as the distance between the pivot point and the center of mass), $\mass$ and the moment of inertia about the pivot point, $\minert$. Since $\dim\minert = [\phdim M\phdim L^2]$, the set $\elset{\grav, \mass, \length, \minert}$ is not independent; we can choose as our independent quantities $\elset{\grav, \mass, \length}$ as before, with $\minert/\mass\length^2$ a dimensionless quantity. In the nottion developed above, $n = 4$ and $k = 3$. Therefore, dimensional analysis tells us that
+\beq
+\angfreq = \sqrt{\dfrac{\grav}{\length}}\kdimf\vat{\dfrac{\minert}{\mass\length^2}}\,,
+\eeq
+with $\kdimf$ some function that cannot be determined from dimensional analysis alone; we need a \emph{theory} in order to determine it.
+
+
+\subsection{Examples}
+
+\subsubsection{Oscillations of a star}
+A star undergoes some mode of oscillation. How does the frequency $\omega$ of oscillation depend upon the properties of the star? The first step is the identification of the physically relevant quantities. Certainly the density $\dens$ and the radius $\radius$ are important; we'll also need the gravitational constant $\kgrav$, which appears in Newton's law of universal gravitation. We could add the mass $\mass$ to the list, but if we assume that the density is constant as a first approximation, then $\mass = \dens 4\pi\radius^3/3$ and the mass is redundant. Therefore, $\omega$ is the governed quantity, with dimensions $\dim\omega = [\phdim T^{-1}]$ and $\elset{\dens, \radius, \kgrav}$ are the governing quantities, with dimensions $\dim\dens = [\phdim M/\phdim L^3]$, $\dim\radius = [\phdim L]$ and $\dim\kgrav = [\phdim L^3/\phdim M\phdim T^{2}]$. You can easily check that $\elset{\dens, \radius, \kgrav}$ have independent dimensions (in the $\elset{\phdim L, \phdim M, \phdim T}$ class, $\length$ brings $[\phdim L]$, $\dens$ brings $[\phdim M]$ and $\kgrav$ brings $[\phdim T]$); therefore, $n = 3$ and $k = 3$, so the function $\kdimf$ is simply a constant in this case. Next, determine the exponents. Then, we have
+\beq
+\omega = \kdim\sqrt{\kgrav\dens}\,,
+\eeq
+with $\kdim$ a dimless constant. We see that the frequency of oscillation is proportional to the square root of the density and independent of the radius. Once again, the determination of $\kdim$ requires a real theory of stellar oscillation, but the interesting dependence upon the physical quantities has been obtained from dimensional considerations alone.
+
+
+\subsubsection{Energy in a nuclear explosion}
+We next turn to a famous example worked out by G. I. Taylor. In a nuclear explosion there is an essentially instantaneous release of energy $\ener$ in a small region of space. This produces a spherical shock wave, with the pressure inside the shock wave thousands of times greater that the initial air pressure, which may be neglected. How does the radius $\radius$ of this shock wave grow with time $t$? The relevant governing variables are $\ener$, $t$, and the initial air density $\dens_0$. This set of quantities has independent dimensions, so $n = 3$ and $k = 3$. We next determine the exponents to find
+\beq
+\radius = \kdim\dfrac{\ener^{3/5}t^{2/5}}{\dens_0^{1/5}}\,,
+\eeq
+with $\kdim$ an undetermined dimless constant. If we could plot the radius $\radius$ of the shock as a function of time $t$ on a log-log plot, then the slope of the line should be $2/5$. The intercept of the graph would provide information about the energy $\ener$ released in the explosion, if the constant $\kdim$ could be determined. By solving a model shock-wave problem Taylor estimated $\kdim$ to be about 1; he was able to take declassified movies of nuclear tests and, using his model, infer the yield of the bombs. This data, of course, was strictly classified; it came as a surprise to the American intelligence community that these data were essentially publicly available to those well versed in dim. analysis.
+
+
+\subsubsection{Solution of the diffusion equation}
+Dimensional analysis can also be used to solve certain types of partial differential equations. If this seems too good to be true, it isn't. Here we will concentrate on the solution of the diffusion equation.
+
+We'll start by deriving the one-dimensional diffusion equation. Let $\tau\vat{x,t}$ represent the temperature of a metal bat at a point $x$ at time $t$. The first step is the derivation of a \lingo{continuity equation} for the thermal flow on the bar. Let the bar have a cross sectional area $a$, so that the infinitesimal volume of the bar between $x$ and $x + \Dx x$ is $a\Dx x$. The amount of thermal energy contained in this volume is $c_p\tau a\Dx x$, with $c_p$ the specific thermal capacity at constant pressure \emph{per unit volume}; it has dimensions $\dim c_p = [\phdim M/\phdim L\phdim T^2\phdimtemp]$. In a time interval $\dx t$, this energy changes by an amount $c_p\ipd t\tau a\Dx x\dx t$ due to the change in temperature. This change in energy must come from somewhere and is the result of a flux of energy $q\vat{x,t}$ through the area $a$ ($q$ is thermal energy flowing through a unit area per unit time). Into the left side of the volume, an amount of energy $qa\dx t$ flows an a time $\dx t$; on the right hand side of the volume, a quantity $a\left(q + \ipd xq \Dx x\right)\dx t$ flows out in a time $\dx t$, so that the net accumulation of thermal energy in the volume is $-a\ipd xq\Dx x\dx t$. Equating the two expressions for the rate of change of the thermal energy in the volume $a\Dx x$, we find
+\beq
+c_p\ipd t\tau = - \ipd xq\,,
+\eeq
+which is the equation of continuity. It is a mathematical expression of the conservation of energy in the volume $a\Dx x$. We supplement this with a phenomenological law of energy conduction known as \lingo{Fourier's law}: the thermal flux is proportional to the negative of the local temperature gradient (thermal energy flows from a hot reservoir to a cold reservoir):
+\beq
+q = -\kappa\ipd x\tau\,,
+\eeq
+with $\kappa$ the \lingo{thermal conductivity} of the metal bar. The thermal conductivity is usually measured in units of $\si{W.cm^{-1}.K^{-1}}$ and has dimensions $\dim\kappa = [\phdim M\phdim L/\phdim T^3\phdimtemp]$. Combining the last equations, we obtain the \lingo{diffusion equation}, often called the \lingo{heat} equation:
+\beq
+\ipd t\tau = d\nipd 2\tau x\,,
+\eeq
+where $d = \kappa/c_p$ is the \lingo{thermal diffusivity} of the metal bar; it has dimensions $\dim d = [\phdim L^2/\phdim T]$. The last equation is the diffusion equation for thermal energy. It usually results from combining a continuity equation with an empirical law that expresses a current of flux in terms of some local gradient.
+
+Suppose that the bar is very long, so that we can consider the idealized case of an infinite bar. At an initial time $t = 0$, we add an amount of thermal energy $q_0$ (with $\dim q_0 = [\phdim M\phdim L^2/\phdim T^2]$) at some point of the bar, which we will arbitrarily call $x = 0$. We could do this, for instance, by briefly holding a match to the bar. The energy is conserved at all times, so that
+\beq
+c_p a\int_\infty^\infty \tau\vat{x,t}\dx x = q_0\,.
+\eeq
+
+How does this thermal energy diffuse away from $x = 0$ as a function of time t; \ie, what is $\tau\vat{x,t}$? We first identify the important parameters. The temperature $\tau$ certainly depends upon $x$, $t$ and the diffusivity $d$; we see from the last equation that it also depends upon the initial conditions through the combination $q = q_0/c_p a$. We have then $n = 4$ dimensions. These dimensions are not independent, for the quantity $x/\left(dt\right)^{1/2}$ is dimensionless, so that $k = 3$. We will choose as our governing quantities $\elset{t, d, q}$. Now express $\tau$ in terms of these quantities using dimensional analysis, so the solution of the diffusion equation is of the form
+\beq
+\tau\vat{x,t} = \dfrac{q}{\left(dt\right)^{1/2}}\kdimf\vat{\dfrac{x}{\left(dt\right)^{1/2}}}\,,
+\eeq
+with $\kdimf$ a function that we still need to determine. The important point is that $\kdimf$ is only a function of the combination $x/\left(dt\right)^{1/2}$ and not $x$ and $t$ separately. To determine $\kdimf$, let's introduce the dimensionless variable $z = \left(dt\right)^{1/2}$. Now use the chain rule to calculate various derivatives of $\tau$ to have:
+\beq
+\nxod 2{\kdimf\vat{z}}z + \dfrac{z}{2} \xod {\kdimf\vat{z}}z + \dfrac{1}{2}\kdimf\vat z = 0\,.
+\eeq
+Note that
+\begin{quote}
+dimensional analysis has reduced the problem from the solution of a partial differential equation in two quantities to the solution of an ordinary differential equation in one quantity!
+\end{quote}
+The normalization condition, boundary condition, becomes 
+\beq
+\int_\infty^\infty \kdimf\vat z\,\dx z = 1\,.
+\eeq
+The last equation is an exact differential
+\beq
+\xod{}{z}\left(\xod\kdimf z + \dfrac{z}{2}\kdimf\right) = 0\,,
+\eeq
+which we can integrate once to obtain
+\beq
+\xod\kdimf z + \dfrac{z}{2}\kdimf = c\,,
+\eeq
+where $c$ is an integration constant.
+
+However, since any physically reasonable solution would have both $\kdimf\to 0$ and $\iod x\kdimf\to 0$ as $x\to\infty$, the integration constant must be zero. We now need to solve a first order differential equation. The solution of such an equation is
+\beq
+\kdimf\vat z = h\exp\vat{-z^2/4}\,,
+\eeq
+with $h$ a constant. To determine $h$, we use the normalization condition
+\beq
+h\int_\infty^\infty \exp\vat{-z^2/4}\,\dx z = h\left(4\pi\right)^{1/2} = 1\,,
+\eeq
+where the integral (known as a \lingo{Gaussian integral}) can be found in integral tables. Therefore, $h = 1/\left(4\pi\right)^{1/2}$. Finally, returning to our original quantities, we have
+\beq
+\tau\vat{x,t} = \dfrac{q}{\left(4\pi dt\right)^{1/2}}\exp\vat{-x^2/4dt}\,.
+\eeq
+This is the complete solution for the temperature distribution in a one-dimensional bar due to a point source of thermal energy.
+
+
+
+
+
+
+
