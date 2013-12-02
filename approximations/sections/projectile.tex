@@ -1,0 +1,125 @@
+\section{Projectile motion on variable gravity}
+
+[Lee DeVille. Math 558 - Methods of Applied Mathematics.]
+
+
+\subsection{Dim analysis}
+Consider that we throw a ball directly upwards from the surface of the earth. What is the maximum height?
+
+The phenomenon depends on Newton's second law of motion and Newton's law of universal gravitation. Name $\lpos$ the position of the ball of mass $\mass$ at any time $t$. Let's make the Ansatz that the maximal height $\lpos\txt{max}$ depends only on free fall acceleration $\grav$ and the initial velocity $\lvel_0$, so that
+\beq
+\lpos\txt{max} = f\vat{\grav, \mass, \lvel_0}\,.
+\eeq
+If this is true, then these quantities must have the same units; \ie,
+\beq
+\dim\lpos\txt{max} = \dim f\vat{\grav, \mass, \lvel_0}\,.
+\eeq
+Let us now make the further Ansatz that this function $f$ can be written as a monomial:
+\beq
+\dim\lpos\txt{max} = \dim{\grav^a \mass^b \lvel_0^c}\,.
+\eeq
+Solving the system, we find that
+\beq
+\lpos\txt{max} = \kdim\dfrac{\lvel_0^2}{\grav}\,.
+\eeq
+
+
+\subsection{Scaling}
+For instance, consider a ball thrown into air with initial speed $\lvel_0$ from the surface of earth with radius $\radius$. Denote by $\lpos$ its position at any time $t$ and $\grav$ the free fall acceleration on the surface of the planet. The governing equation is
+\beq
+\ddt\lpos = -\dfrac{\grav\radius}{\left(\lpos + \radius\right)^2}\,.
+\eeq
+Rescale space and time by
+\beq
+\lpos = \chpq\lpos\scpq\lpos\qquad\text{and}\qquad
+t = \chpq t\scpq t\,.
+\eeq
+After the replacement, the last equation becomes
+\beq
+\dfrac{\chpq\lpos}{\grav\chpq t^2}\ddt{\scpq\lpos} = -\dfrac{1}{\left(1 + \chpq\lpos \scpq\lpos/\radius\right)^2}\,.
+\eeq
+Moreover, we also have the initial conditions
+\beq
+\scpq\lpos\vat 0 = 0\,,\quad
+\dt{\scpq\lpos}\vat 0 = \lvel_0\chpq t/\chpq\lpos\,,
+\eeq
+where $\lvel_0$ is the initial velocity of the projectile. Not that three non-dim quantities show up in the problem:
+\beq
+\kdim_1 = \dfrac{\chpq\lpos}{\grav\chpq t^2}\,,\quad
+\kdim_2 = \dfrac{\chpq\lpos}{\radius}\quad\text{and}\quad
+\kdim_3 = \dfrac{\lvel_0\chpq t}{\chpq\lpos}\,.
+\eeq
+The first is the ratio of the characteristic acceleration of the problem with respect to the gravitational acceleration of the earth; the second is the characteristic size of the problem compared to the earth's radius and the third is the characteristic velocity with respect to the initial velocity of the problem.
+
+Using the rules of thumb on nondim, we choose $\kdim_3 = 1$. We can see that making $\kdim_2 = 0$, the problem changes completely, since the second derivative vanishes; thus it should remain free. We then set $\kdim_1 = 1$. This means that we choose the char scales of the problem as
+\beq
+\chpq t = \dfrac{\lvel_0}{\grav}\qquad\text{and}\qquad
+\chpq\lpos = \dfrac{\lvel_0^2}{\grav}\,.
+\eeq
+This gives
+\beq
+\kdim_2 = \dfrac{\chpq\lpos}{\radius} = \dfrac{\lvel_0^2}{\grav\radius}\,.
+\eeq
+Now, we expect this to be small if the projectile is our throwing a ball. We don't expect the char height of this problem to be significant when compared to $\radius$. Similarly, notice that the other expression is the ratio of the kinetic energy of the ball to the potential energy of the ball at time zero. Since, we don't expect to be able to throw a ball into orbit, we expect this ratio to be small as well. Since $\kdim_2$ is small, we denote it by $\smpq$ and we obtain the rescaled, nondim ODE
+\beq
+\ddt{\scpq\lpos} = -\dfrac{1}{\left(1 + \smpq\scpq\lpos\right)^2}\,,\quad
+\scpq\lpos\vat 0 = 0\quad\text{and}\quad
+\dt{\scpq\lpos}\vat 0 = 1\,.
+\eeq
+Now, we have chosen wisely, since we know that if we set $\smpq = 0$ in this problem, we have the ODE
+\begin{equation}\label{eq:scaledprojectileeqnofmotion}
+\ddt{\scpq\lpos} = -1\,,\quad
+\scpq\lpos\vat 0 = 0\quad\text{and}\quad
+\dt{\scpq\lpos}\vat 0 = 1\,,
+\end{equation}
+which we can solve explicitly as $\scpq\lpos = -\scpq t^2/2 + \scpq t$.
+
+So the question one can (and should!) ask at this point is how much the addition of an $\smpq$ in the problem changes things. More specifically, if we consider the problem
+\beq
+\ddt{\scpq\lpos^{\smpq}} = -\dfrac{1}{\left(1 + \smpq\scpq\lpos\right)^2}\,,
+\scpq\lpos^\smpq\vat 0 = 0\quad\text{and}\quad
+\dt{\scpq\lpos}^\smpq\vat 0 = 1\,,
+\eeq
+then \emph{how close} are $\scpq\lpos^\smpq$ and $\scpq\lpos^0$? This is a useful question, since we know the latter exactly. We need to be careful though about wha we mean by close here. Now, for instance, imagine that we know how to write
+\beq
+\scpq\lpos^\smpq\vat t = \scpq\lpos^0\vat t + \smpq\scpq\lpos_1\vat t + \smpq^2\scpq\lpos_2\vat t + \dotsb
+\eeq
+and we can guaranteed that $\scpq\lpos_1\vat t$ is bounded over some time interval. Then, we have a good approximation to the solution $\scpq\lpos^\smpq$ and we can make it better and better as $\smpq\to 0$. If we can do this, then we call the perturbation in \autoref{eq:scaledprojectileeqnofmotion} a \lingo{regular perturbation}.
+
+Finally, just to get a handle on numbers here, let us assume that the initial velocity was $\SI{25}{m/s}$. We then have
+\beq
+\chpq t = \dfrac{\lvel_0}{\grav} 
+        = \dfrac{\SI{25}{m/s}}{\SI{9.8}{m/s^2}}
+        \sim\SI{2.6}{s}\quad
+\chpq\lpos = \dfrac{\lvel_0^2}{\grav}
+           = \dfrac{\SI{625}{m^2/s^2}}{\SI{9.8}{m/s^2}}
+           \sim\SI{63.8}{m}\,.
+\eeq
+This gives us the typical time and length scales for the problem. Moreover, notice that
+\beq
+\smpq = \dfrac{\chpq\lpos}{\radius}
+      = \dfrac{\SI{62.8}{m}}{\SI{9.8}{m/s^2}}
+      \sim\num{9.85e-6}\,.
+\eeq
+Since $\smpq$ is so small compared to unity, our approximation probably work quite well. However, solving the approximate problem is easy: the time of maximum height occurs at $\scpq t = 1$ (or $t = \chpq t = \SI{2.6}{s}$) and therefore the maximum height is $\scpq\lpos = 1$ (or $\lpos\txt{max} = \chpq\lpos / 2 = \SI{31.9}{m}$).
+
+
+\subparagraph{Second scaling}
+What if, on the other hand, we had chosen $\kdim_2 = \kdim_3 = 1$? Then, we would have had
+\beq
+\scpq\lpos = \radius\,,\quad
+\scpq t = \dfrac{\radius}{\lvel_0}\quad\text{and}\quad
+\kdim_1 = \dfrac{\lvel_0^2}{\grav\radius}
+        \sim\dfrac{\lvel_0^2}{\SI{6.25e7}{m^2/s^2}}\,.
+\eeq
+For human velocities, this is clearly quite small. Again, choosing $\lvel_0 = \SI{25}{m/s}$, we have
+\beq
+\smpq = \kdim_1 = \num{9.99e-6}\,.
+\eeq
+This is again small, but plugging the nondim quantities into the equation, we obtain
+\beq
+\smpq\ddt{\scpq\lpos} = -\dfrac{1}{\left(1 + \scpq\lpos\right)^2}\,,\quad
+\scpq\lpos\vat 0 = 0\quad\text{and}\quad
+\dt{\scpq\lpos}\vat 0 = 1\,.
+\eeq
+Now, when we take the limit as $\smpq\to 0$, we obtain an equation where the derivatives disappear and in fact is not a differential equation at all. This is actually a \lingo{singular perturbation} instead of a \emph{regular} one and thus the former needs special treatment.

@@ -1,4 +1,7 @@
 \section{Introduction}
+%%%
+\newcommand{\lpos}{x} % linear position
+\newcommand{\lvel}{v} % linear velocity
 %
 %%%
 \epigraph{[...] the principle known as Occam's Razor: \latin{essentia non sunt multiplicanda praeter necessitatem} (hypotheses are not to be multiplied without necessity).}{attributed to William of Ockham, quoted by R.V. Jones}{\citep[p.95]{gibbings:2011}.}
@@ -358,5 +361,32 @@ Other general guidelines for making order-of-magnitude estimates:
 \end{enumerate}
 
 
+\subsection{Lee DeVille}
+[Lee DeVille. Math 558 - Methods of Applied Mathematics.]
 
+
+\subsubsection{Advises on DA and nondim}
+
+Make dim analysis before starting solving a problem. Use the problem parameters as scaling quantities. By applying DA, we have to insert much less information into the problem to obtain solutions and, sometimes, don't have to know how to solve differential equations.
+
+\begin{theorem}
+Let us consider a physical quantity $q$ that depends on the $n$ physical quantities $\elset{p_1, p_2, \dotsc, p_n}$. We have the relationship $q = f\vat{p_1, p_2, \dotsc, p_n}$. Next, assume that $q = f\vat{p_1, \dotsc, p_n}$ is a dimensionally homogeneous relation and $\elset{q_1, q_2, \dotsc, q_n}$ are \emph{dimensionally complete}. Then, there exists a function $f$ such that $q = q^* f\vat{\kdim_1, \dotsc, \kdim_k}$, where $\elset{\kdim_i}$ are dimensionless products of the $\elset{p_i}$, $\dim q^* = \dim q$ and $k$ is the dimension of the kernel of $A$.
+\end{theorem}
+
+To apply the theorem, two conditions must be satisfied:
+\begin{enumerate}
+\item $q = f\vat{p_1, \dotsc, p_n}$ must be dimensionally homogeneous; \ie, a valid physics law;
+\item the set $\elset{q_1, q_2, \dotsc, q_n}$ must be dimensionally complete.
+\end{enumerate}
+Then the last theorem expresses existence, but not uniqueness. It says that the function $f$ exists, but it may not be unique. Additionally, it doesn't say how to find $f$. Regularly, $f$ has to be found by theoretical work or by experimentation.
+
+Now, say you have a diff eqn with boundary and initial conditions. To scale the diff eqn replace the dependent and independent quantities, say position $\lpos$ and time $t$ by the product of dimensionless quantities and characteristic quantities: $\scpq\lpos = \lpos\chpq\lpos$ and $\scpq t = t\chpq t$, where $\scpq\lpos$ and $\scpq t$ are the dimensionless, scaled physical quantities and $\chpq\lpos$ and $\chpq t$ the characteristic quantities. At the end of the process, one ends with several dimensionless quantities made of characteristic quantities and constants. This parameters should be set to unity, zero or left as they are according to the following rules of thumb.
+
+
+\subsection{Rules of thumb on nondim}
+\begin{enumerate}
+\item (always) Make as many nondim quantities equal to one as possible;
+\item (usually) Make the nondim quantities that appear in the initial or boundary conditions equal to one.
+\item (usually) If there's a nondim quantity that, if we were to set it equal to zero, would simplify the problem significantly, allow it to remain free and then see when we can make it small (scaling analysis).
+\end{enumerate}
 

@@ -1,0 +1,67 @@
+\section{Diffusion equation}
+%
+%%%
+\newcommand{\krcoeff}{\gamma} % reaction coefficient
+
+
+[Lee DeVille. Math 558 - Methods of Applied Mathematics.]
+
+
+\subsection{Dim analysis}
+If we consider the density of, for instance, a chemical in solution, where we denote said concentration at $\lpos$ and $t$ by $\conc\vat{\lpos, t}$, then the diffusion equation is given by
+\begin{equation}\label{eq:dimensionaldiffusioneqn}
+\ipd t\conc = \kmdiff\ipd{\lpos\lpos}\conc\,,
+\end{equation}
+where $\kmdiff$ is the mass diffusion coefficient.
+
+Let us imagine that we post this problem on the domain $\lpos\in \ooint{0, \infty}$ and $t > 0$. Moreover, we assume that $\conc\vat{\lpos, 0} = 0$ for all $\lpos$ (zero concentration at time zero) and we inject the chemical at $\lpos = 0$, so that $\conc\vat{0, t} = \conc_0$. We also append the boundary condition $\conc\vat{\infty, t} = 0$.
+
+Now, assuming that the concentration is a function of $\elset{\lpos, t, \kmdiff, \conc_0}$, we obtain
+\beq
+\dfrac{\conc}{\conc_0} = \kdimf\vat{\dfrac{\lpos}{\sqrt{\kmdiff t}}}\,.
+\eeq
+Thus we have the nondim quantity $\kdim = \lpos/\sqrt{\kmdiff t}$ and we have $\conc/\conc_0 = \kdimf\vat\kdim$.
+
+Plugging this expression, $\conc/\conc_0 = \kdimf\vat\kdim$, into \autoref{eq:dimensionaldiffusioneqn} and its boundary and initial conditions, we obtain
+\beq
+\kdimf\vat{\kdim} = 1 - \dfrac{1}{\sqrt{\pi}}\int_0^\kdim \exp\vat{-s^2/4}\,,\dx s
+\eeq
+and therefore we have the general solution
+\beq
+\conc\vat{\lpos, t} = \conc_0\left(1 - \dfrac{1}{\sqrt{\pi}}\int_0^{\lpos/\sqrt{\kmdiff t}}\exp\vat{-s^2/4}\,,\dx s\right)\,.
+\eeq
+
+
+\subsection{Scaling}
+We can add a nonlinear term to the diffusion equation as follows:
+\beq
+\ipd t\conc = \kmdiff\ipd{\lpos\lpos}\conc + \krcoeff\conc^3\quad\text{and}\quad
+\conc\vat{\lpos, 0} = \conc_0\vat{\lpos}\,.
+\eeq
+This is an example of a \lingo{reaction-diffusion} equation; the polynomial term is a (local) reaction of the substance whose concentration we are tracking. Rescaling with
+\beq
+\lpos = \chpq\lpos\scpq\lpos\,,\quad
+t = \chpq t\scpq t\quad\text{and}\quad
+\conc = \chpq\conc\scpq\conc
+\eeq
+we obtain
+\beq
+\ipd{\scpq t}\scpq\conc = \kmdiff\dfrac{\chpq t}{\chpq\lpos^2}\ipd{\scpq\lpos\scpq\lpos}\scpq\conc 
+                          + \krcoeff\chpq t\chpq\conc^2\scpq\conc\,.
+\eeq
+Thus, we have
+\beq
+\kdim_1 = \dfrac{\kmdiff\chpq t}{\chpq\lpos^2}\quad\text{and}\quad
+\kdim_2 = \krcoeff\chpq t\chpq\conc^2
+\eeq
+as our nondim quantities. This lets us know what parameters we would choose to have (relative) small diffusion or (relative) large diffusion. If $\kdim_1\ll\kdim_2$; \ie, $\kmdiff\chpq\conc/\krcoeff\chpq\lpos^2\ll 1$, then we can write $\kdim_1 = \smpq$, $\kdim_2 = 1$ and we have the PDE
+\beq
+\ipd{\scpq t}\scpq\conc = \smpq\ipd{\scpq\lpos\scpq\lpos}\scpq\conc + \scpq\conc^3\,,
+\eeq
+or the \lingo{small diffusion} scaling regime. This lets us know how we would make this small; \eg, say the constants $\elset{\kmdiff, \krcoeff}$, we could either take $\chpq\conc$ small (small concentrations) or $\chpq\lpos$ (long lengthscales) to get the small diffusion regime.
+
+Similarly, if $\kdim_1\gg\kdim_2$, or $\kmdiff\chpq\conc/\krcoeff\chpq\lpos^2\gg 1$, then we can write $\kdim_1 = 1$, $\kdim_2 = \smpq$ and we have the PDE
+\beq
+\ipd{\scpq t}\scpq\conc = \ipd{\scpq\lpos\scpq\lpos}\scpq\conc + \smpq\scpq\conc^3\,,
+\eeq
+or the \lingo{small reaction} scaling regime. This can be obtained by looking at large concentrations or really small lengthscales.
