@@ -38,14 +38,20 @@
 %\newcommand{\igforce}[1]{\rvec{\force}{#1}}  % indexed gen. force
 
 %%% Mass transport
-\newcommand{\amount}{n}   % chemical amount
-\newcommand{\conc}{c}     % concentration
-\newcommand{\kmdiff}{\nu} % mass diffusion coefficient
+\newcommand{\amount}{n}      % chemical amount
+\newcommand{\conc}{c}        % concentration
+\newcommand{\kmdiff}{\gamma} % mass diffusion coefficient
 
 %%% Energy transport
-\newcommand{\temp}{\theta}          % temperature
-\newcommand{\then}{\ener\txt{th}}   % thermal energy
-\newcommand{\kthcond}{k}            % thermal conduction coefficient
+\newcommand{\temp}{\theta}           % temperature
+\newcommand{\then}{\ener\txt{th}}    % thermal energy
+\newcommand{\kthcond}{k}             % thermal conduction coefficient
+\newcommand{\kthdiff}{\alpha\txt{t}} % thermal diffusion coefficient
+
+%%% Momentum transport
+\newcommand{\dvisc}{\eta}             % dynamic viscosity
+\newcommand{\kvisc}{\nu}              % kinematic viscosity
+\newcommand{\kmomdiff}{\alpha\txt{m}} % momentum diffusivity
 
 %%% Physical constants
 %\newcommand{\kavog}{n\txt{avo}}     % Avogadro constant
@@ -69,11 +75,13 @@
 \newcommand{\kdimf}{\phi_{\pi}}      % dimensionless function
 
 %%% Dimless. quantities
-%\newcommand{\kreynolds}{\kdim\txt{re}} % reynolds number
+\newcommand{\kreynolds}{\kdim\txt{re}}  % reynolds number
+\newcommand{\kredrey}{\kdim^*\txt{re}}  % reduced reynolds number
+\newcommand{\kschmidt}{\kdim\txt{sc}}   % schmidt number
+\newcommand{\kdamkohler}{\kdim\txt{da}} % hamkohler number
+\newcommand{\kprandtl}{\kdim\txt{pr}}   % prandtl number
 %
 %\newcommand{\kbiot}{\kdim\txt{bi}}     % biot number
-%\newcommand{\kprandtl}{\kdim\txt{pr}}  % prandtl number
-%\newcommand{\kschmidt}{\kdim\txt{sc}}  % schmidt number
 %\newcommand{\kpeclet}{\kdim\txt{pe}}   % peclet number
 %\newcommand{\kgrashof}{\kdim\txt{gr}}  % grashof number
 %\newcommand{\krayleigh}{\kdim\txt{ra}} % rayleigh number

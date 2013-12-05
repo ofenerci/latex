@@ -1,0 +1,386 @@
+\section{Scaling analysis -- the art of getting something for nothing}
+%
+%%%
+\newcommand{\posx}{x^*} % x position coord
+\newcommand{\posy}{y^*} % y pos coord
+\newcommand{\velx}{u^*} % x velocity coord
+\newcommand{\vely}{v^*} % y vel coord
+%
+\newcommand{\posz}{z^*}   % z pos coord
+\newcommand{\posr}{r^*}   % radial coord
+\newcommand{\vela}{u^*_z} % axial velocity
+%
+\newcommand{\refq}{_\text{ref}} % reference quantity
+%
+\newcommand{\ndconc}{c}      % nondim conc
+\newcommand{\ndposx}{x}      % nondim x pos coord
+\newcommand{\ndposy}{y}      % nondim y pos coord
+\newcommand{\ndposz}{z}      % nondim z pos coord
+\newcommand{\ndposr}{r}      % nondim radial coord
+\newcommand{\ndvelx}{u}      % nondim x velocity coord
+\newcommand{\ndvely}{v}      % nondim y vel coord
+\newcommand{\ndtemp}{\theta} % nondim temperature
+\newcommand{\mfpath}{\lambda}% mean free path
+%
+\newcommand{\fsconc}{c_{\infty}} % free stream conc
+\newcommand{\fsvel}{u_{\infty}}  % free stream velocity
+\newcommand{\rradius}{\rho}      % reactor radius
+\newcommand{\kforcoeff}{\kappa}  % first-order reaction coefficient
+%
+\newcommand{\blthck}{\delta}          % boundary layer thickness
+\newcommand{\cblthck}{\delta\txt{c}}  % concentration layer thickness
+\newcommand{\tblthck}{\delta\txt{t}} % thermal layer thickness
+%
+\newcommand{\lilo}[1]{o\vat{#1}} % little o
+
+
+[P.C. Chau, Scaling analysis -- the art of getting something for nothing. UCSD. 1999]
+
+When we nondim a model equation, there is more to just turning the model to be in terms of dimless quantities. By making better judgment, we can reduce the model to retain only the most salient physical features or the \lingo{minimum parametric representation}. This is the essence of \lingo{scaling}. At a more advanced level and especially in asymptotic analysis, we learn to scale the equations so they have ``better properties''.
+
+We make use of scaling in introductory fluid dynamics to analyze a variety o problems such as creeping flow, boundary layer flow, lubrication and turbulence. Needless to say that we can apply scaling to mass transfer in a boundary layer. We'll get there in several steps.
+
+
+\subsection{A brief fluids review}
+As a review, let's take a quick look at the balance equations that essentially constitute the boundary layer model later. The continuity equation in \emph{dimensional} quantities is~\footnote{~In vector notation, the continuity equation is $\gder\iprod\lvel = 0$ .}
+\bneq\label{eq:dimensionalcontinuityequation}
+\ipd\posx\velx + \ipd\posy\vely = 0
+\eneq
+and the species continuity with constant binary diffusion coefficient, $\kmdiff_\ce{AB}$, is~\footnote{~In vector notation, the species continuity equation is $\lvel\iprod\grad\conc_\ce{A} = \kmdiff_\ce{AB}\lap\conc_\ce{A}$.}
+\bneq\label{eq:dimensionaldiffusionequation}
+\velx\ipd\posx\conc^*_\ce{A} + \vely\ipd\posy\conc^*_\ce{A} 
+    = \kmdiff_\ce{AB}\left(\ipd{\posx\posx}{\conc^*_\ce{A}} + \ipd{\posy\posy}{\conc^*_\ce{A}}\right)\,.
+\eneq
+
+We now consider defining \lingo{dimensionless quantities} with some \lingo{reference quantities}
+\beq
+\ndconc = \dfrac{\conc^*_\ce{A}}{\conc^*\refq}\,,\quad
+\ndposx = \dfrac{\posx}{\posx\refq}\,,\quad
+\ndposy = \dfrac{\posy}{\posy\refq}\,,\quad
+\ndvelx = \dfrac{\velx}{\velx\refq}\quad\text{and}\quad
+\ndvely = \dfrac{\vely}{\vely\refq}\,.
+\eeq
+It is not uncommon, then, to choose $\posx\refq = \posy\refq = \length$ and $\velx\refq = \vely\refq = \fsvel$. In scaling analysis, however, we like to choose the reference quantities such that each dimensionless quantity is \lingo{normalized}~\footnote{~That is, the dimensionless quantity is bounded between zero and unity, or in other words, it is of $\lilo 1$.
+More importantly, as an \emph{art} form, there is no rule to say that we must use normalized quantities to do scaling analysis. Indeed, we can use $\velx\refq = \vely\refq = \length$ and $\velx\refq = \vely\refq = \fsvel$ and can still arrive at whatever results that follow. We choose to use normalized quantities because this is a better habit.}. This is why we like to use the term \lingo{normalized quantities}. In this problem, we know that the length scales are very different in the $\posx$- and $\posy$-directions: $\length\gg\blthck$. So we want to define
+\bneq\label{eq:scalingquantities}
+\ndconc = \dfrac{\conc^*_\ce{A}}{\fsconc}\,,\quad
+\ndposx = \dfrac{\posx}{\length}\,,\quad
+\ndposy = \dfrac{\posy}{\blthck}\quad\text{and}\quad
+\ndvelx = \dfrac{\velx}{\fsvel}\,,
+\eneq
+where $\fsconc$ and $\fsvel$ are the \lingo{free stream}~\footnote{~Free stream means out of the boundary layer, where flow is turbulent.} concentration and velocity, $\length$ is the length of the flat plate and $\blthck$ is the boundary layer thickness. What is not immediately clear is the choice of reference for $\vely$. There are many ``styles'' of approach. We make two suggestions here.
+
+\begin{enumerate}
+\item We go ahead and substitute the nondimensional quantities in \cref{eq:dimensionalcontinuityequation}, leading to the partial step
+\beq
+\xpd{\left(\ndvelx\fsvel\right)}{\left(\ndposx\length\right)} + 
+\xpd{\left(\ndvely\vely\refq\right)}{\left(\ndposy\blthck\right)} = 0\implies
+%
+\dfrac{\fsvel}{\length}\xpd{\ndvelx}{\ndposx} + 
+\dfrac{\vely\refq}{\blthck}\xpd{\ndvely}{\ndposy} = 0\,,
+\eeq
+from which it should be clear that we need to define $\vely\refq = \fsvel\blthck/\length$ to arrive at the dimensionless equation
+\bneq\label{eq:dimensionlesscontinuityequation}
+\ipd\ndposx\ndvelx + \ipd\ndposy\ndvely = 0\,,
+\eneq
+where all quantities are normalized.
+%
+\item On a piece of scrap paper, we write down below \cref{eq:dimensionalcontinuityequation} the order of magnitude of every quantity in each term:
+\beq
+\dfrac{\fsvel}{\length}\xpd{\ndvelx}{\ndposx} + 
+\dfrac{\vely\refq}{\blthck}\xpd{\ndvely}{\ndposy} = 0\implies
+%
+\dfrac{\fsvel}{\length}\dfrac{\lilo 1}{\lilo 1} + \dfrac{\lilo\vely}{\blthck}\dfrac{\lilo 1}{\lilo 1}\sim 0
+\eeq
+or simply
+\beq
+\dfrac{\fsvel}{\length} + \dfrac{\lilo\vely}{\blthck}\sim 0\,.
+\eeq
+If the equation is properly scaled, then all the terms must be \lingo{balanced} and thus $\lilo\vely/\blthck$ should be the same order as $\fsvel/\length$. Hence, once again, we come to the conclusion of the need to choose $\velx\refq = \fsvel\blthck/\length$. In other words, we expect the magnitude of the velocity $\vely$ to be small relative to $\fsvel$ when it is scaled by the ratio $\blthck/\length$. Thus, we choose to define
+\bneq\label{eq:scalingyvelocity}
+\ndvely = \dfrac{\vely}{\vely\refq} 
+        = \dfrac{\length}{\blthck}\dfrac{\vely}{\fsvel}
+\eneq
+as the normalized velocity.
+
+Now we use the definitions of the normalized quantities in \cref{eq:scalingquantities} and \cref{eq:scalingyvelocity} in the species continuity equation, \cref{eq:dimensionaldiffusionequation}, and we should find
+\beq
+\dfrac{\fsvel}{\length}\ndvelx\xpd\ndconc\ndposx + \dfrac{\fsvel\blthck}{\blthck\length}\ndvely\xpd\conc\ndposy =
+\kmdiff_\ce{AB}\left(\dfrac{1}{\length^2}\nxpd 2\conc\ndposx + \dfrac{1}{\blthck^2}\nxpd 2\conc\ndposy\right)
+\eeq
+and on rearrangement
+\beq
+\ndvelx\xpd\conc\ndposx + \ndvely\xpd\conc\ndposy =
+\dfrac{\kmdiff_\ce{AB}\length}{\fsvel\blthck^2}
+\left(\dfrac{\blthck^2}{\length^2}\nxpd 2\conc\ndposx + \nxpd 2\conc\ndposy\right)\,.
+\eeq
+Since all the quantities are normalized, the diffusion term in the $\ndposx$-direction must be much smaller than that in the $\ndposy$-direction because of its coefficient $\left(\blthck/\length\right)^2\ll 1$ and thus we can neglect it. So we can finally write in dimensionless form
+\bneq\label{eq:dimlessspeciescontinuity}
+\ndvelx\xpd\conc\ndposx + \ndvely\xpd\conc\ndposy = \dfrac{1}{\kschmidt\kredrey}\nxpd 2\conc\ndposy\,,
+\eneq
+where we have used
+\beq
+\dfrac{\kmdiff_\ce{AB}\length}{\fsvel\blthck^2} = 
+\dfrac{\kmdiff_\ce{AB}}{\kvisc}\dfrac{\kvisc}{\fsvel\blthck}\dfrac{\length}{\blthck} =
+\dfrac{1}{\kschmidt}\dfrac{1}{\kreynolds}\dfrac{\length}{\blthck} = 
+\dfrac{1}{\kschmidt}\dfrac{1}{\kredrey}\,,
+\eeq
+in which $\kschmidt$ is the \lingo{Schmidt number}~\footnote{~The Schmidt number is the ratio of momentum diffusivity and mass diffusivity.}, $\kreynolds$ the \lingo{Reynolds number} and $\kredrey = \kreynolds\blthck/\length$ the \lingo{reduced Reynolds number} as used in the analysis of, for example, lubrication flow problems.
+\end{enumerate}
+
+We are not really done, and we'll come back to the species continuity equation later. The key of this simple review is to remind us that the \lingo{scales} of different quantities can be very different in different directions. Second, the dimensionless groups of a problem arise naturally from the balance equation when we nondimensionalize it. This second point should be familiar to you. Furthermore, you may also remind yourself that we can figure out dimensionless groups from the use of dimensional analysis (or the so-called \lingo{Buckingham Pi theorem}).
+
+
+\subsection{Laminar flow with heterogeneous reaction at the wall}
+Let's side-track a bit and look at a problem in which the scaling information comes from the boundary condition. This is the problem of having a chemical reaction only at the wall of a tube. An example where this scenario may arise is electrochemical reactors.
+
+We consider here a steady state laminar flow in a circular tube of radius $\rradius$. The tube length is long such that $\length\gg\rradius$. The fluid contains a solute \ce A that undergoes an irreversible first-order reaction at the wall of the tube. We want to see the approximations that we can make under \emph{extreme cases}.
+
+At steady state~\footnote{~At steady state, concentration is independent on time.}, the mass balance of species $\ce A$ in the pipe flow with axial convection and radial diffusion is
+\bneq\label{eq:massbalancepipeflow}
+\vela\xpd{\conc^*_\ce{A}}{\posz} = \kmdiff_\ce{AB}\left(\dfrac{1}{\posr}\xpd{}{\posr}{\posr}\xpd{\conc^*_\ce{A}}{\posr}\right)\,,
+\eneq
+where we know quite well from fluid mechanics that
+\beq
+\vela = 2\hat{\lvel}\left(1 - \left(\dfrac{\posr}{\rradius}\right)^2\right)
+\eeq
+and $\hat\lvel$ is the average velocity. The boundary conditions are as follows:
+\bneq\label{eq:boundaryconditionsmassbalancepipeflow}
+\text{At } \posz = 0\,,\quad\conc^*_\ce{A} = \conc^*_\ce{A_0}\quad\text{for }\ccineq 0\posr\rradius\,.
+\eneq
+For $\ccineq 0\posz\length$, we also have
+\beq
+\xpd{\conc^*_\ce{A}}{\posr}\quad\text{at }\posr = 0
+\eeq
+and
+\beq
+-\kmdiff_\ce{AB}\xpd{\conc^*_\ce{A}}{\posr} = \kforcoeff\conc^*_\ce{A}\quad\text{at }\posr = \rradius\,.
+\eeq
+The first boundary condition is the inlet concentration, the second is the symmetry condition at the center of the tube and the third is the condition at the wall, where the species \ce A is consumed by chemical reaction with first-order rate coefficient $\kforcoeff$. As \cref{eq:massbalancepipeflow} is written, we have taken it for granted that we have performed the scaling as illustrated in the previous section and found that diffusion in the axial direction is not important. The fact that we only have one (axial) convective term is dictated by the kinematics, that $\lvel = \tuple{\vela\vat\rradius,0,0}$.
+
+We now consider defining dimless quantities. Again, we follow the advice given in the previous section and define
+\beq
+\conc = \dfrac{\conc^*_\ce{A}}{\conc^*_\ce{A}}\,,\quad
+\ndposr = \dfrac{\posr}{\rradius}\quad\text{and}\quad
+\ndposz = \dfrac{\posz}{\length}
+\eeq
+as normalized quantities. The dimless form of the model in \cref{eq:massbalancepipeflow} is
+\bneq\label{eq:dimlessmassbalancepipeflow}
+\left(1 - \ndposr^2\right) \xpd{\conc}{\ndposz} = 
+    \dfrac{\kmdiff_\ce{AB}\length}{2\hat\lvel\rradius} +
+    \left(\dfrac{1}{\ndposr}\xpd{}\ndposr\ndposr\xpd\conc\ndposr\right)\,.
+\eneq
+The corresponding dimless boundary conditions are
+\beq
+\text{at }\ndposz = 0\,,\quad\conc = 1\quad\text{for }\ccineq{0}{\ndposr}{1}
+\eeq
+and for $\ccineq{0}{\ndposr}{1}$,
+\beq
+\xpd\conc\ndposr = 0\quad\text{at }\ndposr = 0
+\eeq
+and
+\bneq\label{eq:dimlessconcentrationgradient}
+-\xpd\conc\ndposr = \kdamkohler\conc\quad\text{at }\ndposr = 1\,,
+\eneq
+where
+\beq
+\kdamkohler = \dfrac{\kforcoeff\rradius}{\kmdiff_\ce{AB}}
+\eeq
+is the \lingo{Damköhler number} -- a relative measure of reaction rate to diffusion rate. [You can further rewrite \cref{eq:dimlessmassbalancepipeflow} to be in terms of $\kschmidt$ and $\kreynolds$ as we did in the last section, but we'll leave that as an exercise for you.]
+
+Next, we make use of the boundary condition at the wall ($\ndposr = 1$), which is the only location where the chemical reaction may have an effect in this model.
+
+We first consider when the Damköhler number is much greater than unity. The gradient $\ipd\ndposr\conc$ in \cref{eq:dimlessconcentrationgradient} should be bounded~\footnote{~We could have said that $\lilo{\ipd\ndposr\conc} = 1$, too. In making this statement, we are making the assertion that since $\conc$ and $\ndposr$ are normaziled, $\ipd\ndposr\conc$ should be reasonably well behaved. The actual value of the gradient may be larger than one, but the chance that it ``blows up'' as $\kdamkohler$ approaches infinity is not high.} Thus, when $\kdamkohler\gg 1$, we must have $\conc\gg 1$. Indeed, in problem in which the value of $\kdamkohler$ is very large, we can replace the boundary condition \cref{eq:dimlessconcentrationgradient} by the approximation
+\beq
+\conc = 0\quad\text{at }\ndposr = 1\,.
+\eeq
+If this observation is not clear, then try rearranging \cref{eq:dimlessconcentrationgradient} as
+\beq
+\dfrac{1}{\kdamkohler}\xpd\conc\ndposr + \conc = 0\quad\text{at }\ndposr = 1\,.
+\eeq
+Physically, the idea is that if the chemical reaction rate is much faster than the diffusion rate (or the replenishment of the reactant \ce A at the surface), then the chance that we can still find unconsumed \ce A on the wall is minute. This scenario of $\kdamkohler\gg 1$ is also called \lingo{mass transfer limited}.
+
+At the other extreme, we have $\kdamkohler\ll 1$, meaning that chemical reaction at the wall is much slower than diffusion. Here, we can replace the boundary condition \cref{eq:dimlessconcentrationgradient} by the approximation
+\beq
+\xpd\conc\ndposr \sim 0\quad\text{at }\ndposr = 1\,,
+\eeq
+since $\conc$ is of $\lilo 1$. We can go further than that!
+
+With the given physics of this problem, where the chemical reaction as at the wall, the largest gradient $\ipd\ndposr\conc$ that we expect to have is at $\ndposr = 1$ (the wall). If $\ipd\ndposr\conc\ll 1$ at the wall, then this condition must also be true over the entire tube, not to mention that we know $\ipd\ndposr\conc = 0$ by symmetry at the center. Thus we make the approximation that $\ipd\ndposr\conc\sim 0$ or, in other words, the concentration of \ce A is only a function of $\ndposz$; \ie, $\conc = \conc\vat\ndposz$ or $\conc_\ce A = \conc_\ce A\vat\posz$ only.
+
+In such a case, we can write down the differential balance of the tube as
+\beq
+\pi\rradius^2\hat\lvel \xod{\conc^*_\ce A}{\posz} = -2\pi\rradius\kforcoeff\conc^*_\ce A
+\eeq
+in place of \cref{eq:massbalancepipeflow}. After cleaning up, we have
+\bneq\label{eq:approxplugflow}
+\hat\lvel\xod{\conc^*_\ce A}{\posz} = -\dfrac{2\kforcoeff}{\rradius}\conc^*_\ce A\,,\quad
+\ccineq{0}{\posz}{\length}\,,
+\eneq
+which can be solved easily with the boundary condition \cref{eq:boundaryconditionsmassbalancepipeflow}. The approximation in \cref{eq:approxplugflow} is the so-called \lingo{plug-flow} model.
+
+We have arrived at the results in the two limits of $\kdamkohler$ with a rational approach. In many texts, these approximations are stated as \adhoc assumptions and it is not clear on what basis they may be valid.
+
+
+\subsection{Magnitude of thermal and concentration boundary layers}
+In this section, it is important to keep in mind that whatever we do is order of magnitude analysis based on scales. how we handle quantities is sloppy compared with when we have to set up the formal boundary layer flow problem. We first need to revisit the problem of hydrodynamic boundary layer. We did the scaling of continuity in \cref{eq:dimensionlesscontinuityequation}.
+
+We still have to tackle the momentum balance. For flow over a flat plate such that $\ipd\posx\press = 0$, we can pretty much jump ahead and make use of what we have learned from deriving \cref{eq:dimlessspeciescontinuity}. The analogous intermediate step in the scaling of the momentum equation in the $\posx$-direction is
+\beq
+\dfrac{\fsvel}{\length}\ndvelx\xpd\ndvelx\ndposx + 
+\dfrac{\fsvel}{\blthck}\dfrac{\blthck}{\length}\xpd\ndvelx\ndposy =
+\kvisc
+\left(
+\dfrac{1}{\length^2}\nxpd 2\ndvelx\ndposx +
+\dfrac{1}{\blthck^2}\nxpd 2\ndvelx\ndposy
+\right)
+\eeq
+or
+\beq
+\ndvelx\xpd\ndvelx\ndposx + 
+\dfrac{\blthck}{\length}\xpd\ndvelx\ndposy =
+\dfrac{\kvisc\length}{\fsvel\blthck^2}
+\left(
+\dfrac{\length^2}{\blthck^2}\nxpd 2\ndvelx\ndposx +
+\nxpd 2\ndvelx\ndposy
+\right)
+\eeq
+Since $\blthck\ll\length$,
+\bneq\label{eq:dimlessmomequation}
+\ndvelx\xpd\ndvelx\ndposx + 
+\dfrac{\blthck}{\length}\xpd\ndvelx\ndposy =
+\dfrac{\kvisc\length}{\fsvel\blthck^2}\nxpd 2\ndvelx\ndposy\,.
+\eneq
+At this step, we can diverge on different paths. In scaling for the boundary layer problem, we make the argument that within the boundary layer, the order of magnitude of the viscous term must be balanced by the inertia terms. So we write
+\bneq\label{eq:dimlessmomequationscaling}
+\ndvelx\xpd\ndvelx\ndposx +  \dfrac{\blthck}{\length}\xpd\ndvelx\ndposy \sim \nxpd 2\ndvelx\ndposy
+\eneq
+as a way to denote that the orders of magnitude of all three terms in the properly scaled boundary layer equation are the same~\footnote{~Reminder: if we were actually solving the problem, we would use the complete equations such as \cref{eq:dimlessmomequation} or earlier \cref{eq:dimlessspeciescontinuity}. We should mention that in other fluid dynamic problems, we may have $\length = \blthck$ and the leading coefficient on the RHS of \cref{eq:dimlessmomequation} would then be $1/\kreynolds$, where $\kreynolds = \fsvel\length/\kvisc$.}. To arrive at \cref{eq:dimlessmomequationscaling}, we must have the scaled (or reduced) $\kreynolds$ of order 1; this is the reciprocal of the coefficient on the RHS in \cref{eq:dimlessmomequation}:
+\beq
+\dfrac{\fsvel\blthck^2}{\kvisc\length} \sim 1\,.
+\eeq
+We can rewrite this order of magnitude estimation as
+\bneq\label{eq:blasiusapprox}
+\dfrac{\blthck}{\length}\sim\dfrac{1}{\sqrt{\kreynolds}}\,,\quad\text{with}\quad
+\kreynolds = \dfrac{\fsvel\length}{\kvisc}\,.
+\eneq
+This order of magnitude dependence of the hydrodynamic boundary layer thickness on the Reynolds number is consistent with the result from solving the Blasius equation. However, we hardly did any work to get the physical insight suggested by \cref{eq:blasiusapprox}.
+
+We can now move quickly with the concentration boundary layer equation. Based on the exercise that we had earlier with the species continuity, we can quickly drop the term for the diffusion in the $\ndposx$-direction and write
+\beq
+\ndvelx\xpd\conc\ndposx + \ndvely\xpd\conc\ndposy = \dfrac{\kmdiff_\ce{AB}\length}{\fsvel\cblthck^2}\nxpd 2\conc\ndposy\,.
+\eeq
+Note that we have used the notation $\cblthck$ to denote the concentration boundary layer thickness~\footnote{~Hiding behind this equation is the implicit assumption that we have started the scaling of $\ndvely$ and $\ndposy$ with $\cblthck$. If you are sharp, you will spot that the actual value of the dimless $\ndvely$ and $\ndposy$ cannot be the same as when we use the hydrodynamic $\blthck$. But then, keep in mind that we are really doing order of magnitude analysis and have no intention in solving these equations. If we do, we would use only one choice of $\blthck$ in all the equations.}. To have balanced diffusion and convective terms of the same order,
+\bneq\label{eq:balanceddiffusionconvection}
+\ndvelx\xpd\conc\ndposx + \ndvely\xpd\conc\ndposy \sim\nxpd 2\conc\ndposy\,,
+\eneq
+we need to have
+\beq
+\dfrac{\kmdiff_\ce{AB}\length}{\fsvel\cblthck^2}\sim 1
+\eeq
+or
+\beq
+\left(\dfrac{\cblthck}{\length}\right)^2\sim\dfrac{1}{\kschmidt\kreynolds}\,.
+\eeq
+Thus the concentration boundary layer is scaled by both the Reynolds and Schmidt numbers
+\beq
+\dfrac{\cblthck}{\length}\sim\dfrac{1}{\sqrt{\kschmidt\kreynolds}}\,.
+\eeq
+With \cref{eq:blasiusapprox}, we expect that the ratio of the concentration to the hydrodynamic boundary layer is a function of the Schmidt number
+\bneq\label{eq:ratioconchydroboundarylayers}
+\dfrac{\cblthck}{\blthck}\sim\dfrac{1}{\sqrt{\kschmidt}}\,.
+\eneq
+
+With our experience, we can move even quicker with the thermal boundary layer. Skipping all details, we can virtually guess that the balanced terms with the same order of magnitude should be
+\beq
+\ndvelx\xpd\ndtemp\ndposx + \ndvely\xpd\ndtemp\ndposy \sim \nxpd 2\ndtemp\ndposy\,,
+\eeq
+where $\ndtemp$ is used to denote normalized temperature and we also need
+\beq
+\dfrac{\kthdiff\length}{\fsvel\tblthck^2}\sim 1\,.
+\eeq
+The thermal boundary layer $\tblthck$ is scaled by both the Reynolds and Prondtl numbers
+\beq
+\dfrac{\tblthck}{\length}\sim\dfrac{1}{\sqrt{\kreynolds\kprandtl}}
+\eeq
+and the scale difference between the thermal and hydrodynamic boundary layer is
+\bneq\label{eq:ratiothermalhydroboundarylayers}
+\dfrac{\tblthck}{\blthck}\sim\dfrac{1}{\sqrt{\kprandtl}}\,.
+\eneq
+
+How valid are these results? We should recognize immediately that the variations of the concentrations and thermal boundary layers with respect to the hydrodynamic boundary layer in \cref{eq:ratioconchydroboundarylayers} and \cref{eq:ratiothermalhydroboundarylayers} are wrong in \emph{liquid} phase transport. An actual analysis would shouw that the dependence on $\kschmidt$ and $\kprandtl$ is to the $-1/3$ power, not $-1/2$. We should be happy, however, that we get so close for doing virtually nothing. This is where most textbooks left off.
+
+
+\subsection{What is the significance of these results?}
+The results of the scaling analysis provide useful physical insight that should help us construct boundary layer models. To do that, we also need an intuitive idea what the probable values of $\kschmidt$ and $\kprandtl$ may be. This is where we can make use of physical chemistry. We just give a quick and dirty idea here.
+
+From the kinetic theory of gases, we should find that the diffusion coefficient of a ``hard sphere'' gas is the same as the kinematic viscosity (momentum diffusivity)
+\beq
+\kmomdiff = \kvisc = \dfrac{1}{3}\hat\lvel\mfpath\,,
+\eeq
+where $\hat\lvel$ is the mean speed and $\mfpath$ is the mean free path. The point is that
+\beq
+\kschmidt = 1\quad\text{for an ideal gas}\,.
+\eeq
+Similarly, we should find that for a monatomic gas, $\kprandtl$ comes down to being the ratio of constant pressure \vs constant volume thermal capacities -- to be exact: $\kprandtl = 5/3$. So for estimation, we generally take that~\footnote{~For air, $\kprandtl$ is around 0.7.}
+\beq
+\kprandtl \sim 1\quad\text{for gases}\,.
+\eeq
+Hence, for gas phase problems, we can gather that in terms of orders of magnitude
+\beq
+\blthck\sim\tblthck\sim\cblthck\,.
+\eeq
+That is, the concentration and thermal boundary layers are just as \emph{thick} as the hydrodynamic boundary layer and there is no cutting corners in solving the thermal and mass transport problems. We need the full hydrodynamic boundary layer solution. On the other hand, the order of magnitude estimation in the previous section is proper.
+
+With liquids, we should find that (at least from tables in texts or handbooks)~\footnote{~It is difficult to generalize the magnitude of $\kprandtl$. For water, we should use $\kprandtl = \lilo{10}$. For viscous oils, $\kprandtl$ can be as large as $\num{10 000}$. At the other extreme, the $\kprandtl$ of molten or liquid metal (mercury) is much less than one.}
+\bneq\label{eq:prandtlforliquids}
+\kschmidt = \lilo{\num{e3}}\quad\text{and}\quad
+\kprandtl = \lilo{\num{e2}}\,.
+\eneq
+Thus for most liquid phase problems,
+\beq
+\blthck > \tblthck > \cblthck\,.
+\eeq
+From \cref{eq:prandtlforliquids}, $\tblthck$ is very roughly one-tenth that of $\blthck$ and $\cblthck$ is even \emph{thinner}. Thus, in solving liquid phase transport problems in the boundary layer, we can use an approximate velocity profile close to the surface. This is particularly true with mass transport.
+
+
+\subsection{Proper scaling of the concentration boundary layer}
+With hindsight, with is always 10/10, we can refine the \emph{standard} textbook scaling analysis in the liquid phase. Now that we understand $\cblthck\ll\blthck$ in liquids, we should focus very close to the surface ($\ndposy = 0$) when we do the scaling of the concentration problem. In this region, the velocity is much less than the free stream $\fsvel$ that we have used previously. A more proper choice of the reference velocity is
+\beq
+\vely = \dfrac{\cblthck}{\blthck}\fsvel\,,
+\eeq
+where we have assumed a linear dependence near the surface in the region of $\cblthck$. Similarly, we also should use $\cblthck$ is the reference length. Hence, the dimless $\ndvelx$ and $\ndvely$ are now defined as
+\beq
+\ndvelx = \dfrac{\velx}{\fsvel\cblthck/\blthck}\quad\text{and}\quad
+\ndvely = \dfrac{\vely}{\cblthck}\,.
+\eeq
+With these new quantities, we repeat the exercise of scaling the continuity equation that has led to \cref{eq:scalingyvelocity}. Now, we have
+\beq
+\dfrac{\cblthck}{\blthck}\dfrac{\fsvel}{\length}\xpd\ndvelx\ndposx +
+\dfrac{\vely\refq}{\cblthck}\xpd\ndvely\ndposy = 0\,,
+\eeq
+which means that we need to choose and define
+\beq
+\vely\refq = \dfrac{\cblthck^2}{\blthck}\dfrac{\fsvel}{\length}\quad\text{and}\quad
+\ndvely = \dfrac{\vely\blthck\length}{\fsvel\cblthck^2}\,.
+\eeq
+The next step is to rescale the concentration boundary equation. The step equivalent to just before \cref{eq:balanceddiffusionconvection} is now
+\beq
+\ndvelx\xpd\conc\ndposx + \ndvely\xpd\conc\ndposy = 
+\dfrac{\kmdiff_\ce{AB}\blthck\length}{\fsvel\cblthck^3}\nxpd 2\conc\ndposy\,.
+\eeq
+To recover \cref{eq:balanceddiffusionconvection}, we require this time
+\beq
+\dfrac{\kmdiff_\ce{AB}\blthck\length}{\fsvel\cblthck^3}\sim 1
+\eeq
+or
+\beq
+\left(\dfrac{\cblthck}{\blthck}\right)^3 \sim \dfrac{\kmdiff_\ce{AB}\length}{\fsvel\blthck^2} 
+                                         = \dfrac{\kmdiff_\ce{AB}}{\fsvel\blthck}\left(\dfrac{\length}{\blthck}\right)^2
+                                         = \dfrac{1}{\kreynolds\kschmidt}\left(\dfrac{\length}{\blthck}\right)^2\,.
+\eeq
+Finally we make use of the hydrodynamic boundary layer result in \cref{eq:blasiusapprox} and arrive at
+\beq
+\dfrac{\cblthck}{\blthck}\sim\kschmidt^{-1/3}\,,
+\eeq
+which is the expected result from more rigorous analyses.
