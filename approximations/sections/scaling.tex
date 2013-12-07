@@ -79,11 +79,11 @@ where $\fsconc$ and $\fsvel$ are the \lingo{free stream}~\footnote{~Free stream 
 \dfrac{\fsvel}{\length}\xpd{\ndvelx}{\ndposx} + 
 \dfrac{\vely\refq}{\blthck}\xpd{\ndvely}{\ndposy} = 0\,,
 \eeq
-from which it should be clear that we need to define $\vely\refq = \fsvel\blthck/\length$ to arrive at the dimensionless equation
+from which it should be clear that we need to define $\vely\refq = \fsvel\blthck/\length$ to arrive at the equation
 \bneq\label{eq:dimensionlesscontinuityequation}
 \ipd\ndposx\ndvelx + \ipd\ndposy\ndvely = 0\,,
 \eneq
-where all quantities are normalized.
+where all quantities are dimensionless and normalized.
 %
 \item On a piece of scrap paper, we write down below \cref{eq:dimensionalcontinuityequation} the order of magnitude of every quantity in each term:
 \beq
@@ -102,6 +102,7 @@ If the equation is properly scaled, then all the terms must be \lingo{balanced} 
         = \dfrac{\length}{\blthck}\dfrac{\vely}{\fsvel}
 \eneq
 as the normalized velocity.
+\end{enumerate}
 
 Now we use the definitions of the normalized quantities in \cref{eq:scalingquantities} and \cref{eq:scalingyvelocity} in the species continuity equation, \cref{eq:dimensionaldiffusionequation}, and we should find
 \beq
@@ -126,7 +127,6 @@ where we have used
 \dfrac{1}{\kschmidt}\dfrac{1}{\kredrey}\,,
 \eeq
 in which $\kschmidt$ is the \lingo{Schmidt number}~\footnote{~The Schmidt number is the ratio of momentum diffusivity and mass diffusivity.}, $\kreynolds$ the \lingo{Reynolds number} and $\kredrey = \kreynolds\blthck/\length$ the \lingo{reduced Reynolds number} as used in the analysis of, for example, lubrication flow problems.
-\end{enumerate}
 
 We are not really done, and we'll come back to the species continuity equation later. The key of this simple review is to remind us that the \lingo{scales} of different quantities can be very different in different directions. Second, the dimensionless groups of a problem arise naturally from the balance equation when we nondimensionalize it. This second point should be familiar to you. Furthermore, you may also remind yourself that we can figure out dimensionless groups from the use of dimensional analysis (or the so-called \lingo{Buckingham Pi theorem}).
 
