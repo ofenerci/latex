@@ -47,10 +47,10 @@
 %\newcommand{\oprod}{\wedge}     % outer product
 
 %%% Geometric calculus
-\newcommand{\gder}{\nabla} % geometric derivative
+\newcommand{\gder}{\partial} % geometric derivative
 %
-%\let\div\relax                          % \div already def.
-%\DeclareMathOperator{\div}{div}         % divergence
+\let\div\relax                           % \div already def.
+\DeclareMathOperator{\div}{div}          % divergence
 \DeclareMathOperator{\grad}{grad}        % gradient
 \DeclareMathOperator{\lap}{lap}          % Laplace operator
 %\newcommand{\dirder}[2]{\gder_{#1}{#2}} % directional derivative
@@ -65,6 +65,7 @@
 \newcommand{\ipd}[1]{\partial_{#1}}  % indexed partial derivative
 %\newcommand{\igd}[1]{\partial_{#1}} % indexed geometric derivative
 %\newcommand{\trate}{\iod{t}}        % time rate
+\newcommand{\cder}[2]{{#1}_{,{#2}}}  % comma derivative
 %
 \newcommand{\xpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}}            % expanded partial derivative
 \newcommand{\nxpd}[3]{\dfrac{\partial^{#1}{#2}}{\partial{#3}^{#1}}} % expanded partial derivative

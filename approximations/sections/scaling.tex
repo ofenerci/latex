@@ -36,13 +36,13 @@
 
 [P.C. Chau, Scaling analysis -- the art of getting something for nothing. UCSD. 1999]
 
-When we nondim a model equation, there is more to just turning the model to be in terms of dimless quantities. By making better judgment, we can reduce the model to retain only the most salient physical features or the \lingo{minimum parametric representation}. This is the essence of \lingo{scaling}. At a more advanced level and especially in asymptotic analysis, we learn to scale the equations so they have ``better properties''.
+When we nondim a model equation, there is more to just turning the model to be in terms of dimless quantities. By making better judgment, we can reduce the model to retain only the most salient physical features or the \lingo{minimum parametric representation}. This is the essence of \lingo{scaling}. At a more advanced level and especially in asymptotic analysis, we learn to scale the equations so they have \scare{better properties}.
 
 We make use of scaling in introductory fluid dynamics to analyze a variety o problems such as creeping flow, boundary layer flow, lubrication and turbulence. Needless to say that we can apply scaling to mass transfer in a boundary layer. We'll get there in several steps.
 
 
 \subsection{A brief fluids review}
-As a review, let's take a quick look at the balance equations that essentially constitute the boundary layer model later. The continuity equation in \emph{dimensional} quantities is~\footnote{~In vector notation, the continuity equation is $\gder\iprod\lvel = 0$ .}
+As a review, let's take a quick look at the balance equations that essentially constitute the boundary layer model later. The continuity equation in \emph{dimensional} quantities is~\footnote{~In vector notation, the continuity equation is $\div\lvel = \gder\iprod\lvel = 0$ .}
 \bneq\label{eq:dimensionalcontinuityequation}
 \ipd\posx\velx + \ipd\posy\vely = 0
 \eneq
@@ -61,7 +61,7 @@ We now consider defining \lingo{dimensionless quantities} with some \lingo{refer
 \ndvely = \dfrac{\vely}{\vely\refq}\,.
 \eeq
 It is not uncommon, then, to choose $\posx\refq = \posy\refq = \length$ and $\velx\refq = \vely\refq = \fsvel$. In scaling analysis, however, we like to choose the reference quantities such that each dimensionless quantity is \lingo{normalized}~\footnote{~That is, the dimensionless quantity is bounded between zero and unity, or in other words, it is of $\lilo 1$.
-More importantly, as an \emph{art} form, there is no rule to say that we must use normalized quantities to do scaling analysis. Indeed, we can use $\velx\refq = \vely\refq = \length$ and $\velx\refq = \vely\refq = \fsvel$ and can still arrive at whatever results that follow. We choose to use normalized quantities because this is a better habit.}. This is why we like to use the term \lingo{normalized quantities}. In this problem, we know that the length scales are very different in the $\posx$- and $\posy$-directions: $\length\gg\blthck$. So we want to define
+More importantly, as an \emph{art} form, there is no rule to say that we must use normalized quantities to do scaling analysis. Indeed, we can use $\velx\refq = \vely\refq = \length$ and $\velx\refq = \vely\refq = \fsvel$ and can still arrive at whatever results that follow. We choose to use normalized quantities because this is a better habit.}. This is why we like to use the term \lingo{normalized quantities}~\footnote{~Notice that we are doing normalization by using dimensional reference quantities; \ie, we are normalizing and nondimensionalizing at the same time.}. In this problem, we know that the length scales are very different in the $\posx$- and $\posy$-directions: $\length\gg\blthck$. So we want to define
 \bneq\label{eq:scalingquantities}
 \ndconc = \dfrac{\conc^*_\ce{A}}{\fsconc}\,,\quad
 \ndposx = \dfrac{\posx}{\length}\,,\quad
@@ -117,7 +117,8 @@ and on rearrangement
 \eeq
 Since all the quantities are normalized, the diffusion term in the $\ndposx$-direction must be much smaller than that in the $\ndposy$-direction because of its coefficient $\left(\blthck/\length\right)^2\ll 1$ and thus we can neglect it. So we can finally write in dimensionless form
 \bneq\label{eq:dimlessspeciescontinuity}
-\ndvelx\xpd\conc\ndposx + \ndvely\xpd\conc\ndposy = \dfrac{1}{\kschmidt\kredrey}\nxpd 2\conc\ndposy\,,
+%\ndvelx\xpd\conc\ndposx + \ndvely\xpd\conc\ndposy = \dfrac{1}{\kschmidt\kredrey}\nxpd 2\conc\ndposy\,,
+\kschmidt\kredrey\left(\ndvelx\cder\conc\ndposx + \ndvely\cder\conc\ndposy\right) = \cder\conc{\ndposy\ndposy}\,,
 \eneq
 where we have used
 \beq
@@ -167,7 +168,7 @@ We now consider defining dimless quantities. Again, we follow the advice given i
 as normalized quantities. The dimless form of the model in \cref{eq:massbalancepipeflow} is
 \bneq\label{eq:dimlessmassbalancepipeflow}
 \left(1 - \ndposr^2\right) \xpd{\conc}{\ndposz} = 
-    \dfrac{\kmdiff_\ce{AB}\length}{2\hat\lvel\rradius} +
+    \dfrac{\kmdiff_\ce{AB}\length}{2\hat\lvel\rradius}
     \left(\dfrac{1}{\ndposr}\xpd{}\ndposr\ndposr\xpd\conc\ndposr\right)\,.
 \eneq
 The corresponding dimless boundary conditions are
