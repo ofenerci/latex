@@ -1,0 +1,141 @@
+\section{Nondimensionalization}
+
+
+\subsection{Free fall}
+Nondimensionalze the equation of free fall:
+\begin{equation}\label{eq:dimensionalfreefallmodel}
+\pos = \pos_0 + \vel_0 t + \dfrac{1}{2}\grav t^2\,.
+\end{equation}
+
+
+Solution:
+\begin{itemize}
+%
+\item Problem domain: kinematics. Set of dim. ind. dims: $\elset{\phdim L, \phdim T}$.
+%
+\item Physical model: see \cref{tab:free-fall}.
+%
+% ------------------------------------------------------------- PreTable
+\docpretable{bt}{0.55\textwidth}{ccc}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+\toprule
+%
+Quantity    &     Symbol &    Dimension \\
+%
+\midrule
+%
+Vertical displacement         & $\pos$   & $\phdim L$ \\
+Initial vertical displacement & $\pos_0$ & $\phdim L$ \\
+Time                          & $t$      & $\phdim T$ \\
+Velocity                      & $\vel$   & $\phdim L/\phdim T$ \\
+Initial velocity              & $\vel_0$ & $\phdim L/\phdim T$ \\
+Free fall acceleration        & $\grav$  & $\phdim L/\phdim T^2$ \\
+%
+\bottomrule
+%
+\end{tabularx}
+\docposttable{Free fall}{Physical model of an object free falling}{tab:free-fall}
+% ------------------------------------------------------------- EndTable
+%
+\item Dimensional physical model:
+\beq
+f\vat{\pos, \pos_0, t, \vel, \vel_0, \grav} = 0\,.
+\eeq
+%
+\item Number of physical quantities: 6.
+%
+\item Number of scaling quantities: 2 (cardinality of the set of dim. ind. dims).
+%
+\item Number of control quantities: 2 (dependent and independent quantities).
+%
+\item Number of dimless quantities: $6 - 2 = 4$. 
+%
+\item Choose $\elset{\pos_0, \vel_0}$ as scaling quantities, to know the effect of gravity on the vertical displacement. Then,
+\begin{equation}\label{eq:dimlessfreefallphysicalmodel}
+\kdim_\pos  = \dfrac{\pos}{\pos_0}\,, \quad
+\kdim_t     = \dfrac{\vel_0 t}{\pos_0}\,, \quad
+\kdim_\vel  = \dfrac{\vel}{\vel_0}\quad\text{and}\quad
+\kdim_\grav = \dfrac{\pos_0\grav}{\vel_0}\,.
+\end{equation}
+%
+\item Dimless physical model (always possible, guarantee by the $\kdim$-theorem):
+\beq
+\kdimf\vat{\kdim_\pos, \kdim_t, \kdim_\vel, \kdim_\grav} = 0\,.
+\eeq
+%
+\item Using \cref{eq:dimensionalfreefallmodel} and \cref{eq:dimlessfreefallphysicalmodel} find
+\beq
+\scpq\pos = 1 + \scpq t + \dfrac{1}{2}\kdim_\grav \scpq t^2\,,
+\eeq
+where all the barred quantities are dimensionless! and $\kdim_\grav = \pos_0\grav/\vel_0$.
+%
+\end{itemize}
+%
+The process can be repeated if the effect of $\pos_0$ on $\pos$ is required, by using $\elset{\vel_0, \grav}$ as scaling parameters to find
+\beq
+\scpq\pos = \kdim + t + \dfrac{1}{2}\scpq t^2\,,
+\eeq
+where all the barred quantities are dimensionless and $\kdim = \grav\pos_0/\vel_0^2$.
+
+
+\subsection{Drag}
+\begin{itemize}
+%
+\item Problem domain: physics -- fluid dynamics. Set of dim. ind. dims: $\elset{\phdim L, \phdim M, \phdim T}$.
+%
+\item Physical model: see \cref{tab:drag-physical-model}.
+%
+% ------------------------------------------------------------- PreTable
+\docpretable{bt}{0.55\textwidth}{ccc}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+\toprule
+%
+Quantity    &     Symbol &    Dimension \\
+%
+\midrule
+%
+Drag             & $\drag$  & $\phdim M\phdim L/\phdim T^2$ \\
+Velocity         & $\vel$   & $\phdim L/\phdim T$ \\
+Sectional area   & $\area$  & $\phdim L^2$ \\
+Fluid density    & $\dens$  & $\phdim M/\phdim L^3$ \\
+%
+\bottomrule
+%
+\end{tabularx}
+\docposttable{Drag}{Physical model of an moving object with drag}{tab:drag-physical-model}
+% ------------------------------------------------------------- EndTable
+%
+\item Dimensional physical model:
+\beq
+f\vat{\drag, \vel, \area, \dens} = 0\,.
+\eeq
+%
+\item Number of physical quantities: 4.
+%
+\item Number of scaling quantities: 3 (cardinality of the set of dim. ind. dims).
+%
+\item Number of control quantities: 2 (dependent and independent quantities).
+%
+\item Number of dimless quantities: $4 - 3 = 1$. 
+%
+\item Choose $\elset{\vel, \area, \dens}$ as scaling quantities. Then,
+\begin{equation}\label{eq:dimlessdragmodel}
+\kdim_\drag  = \dfrac{\drag}{\dens\area\vel^2}\,.
+\end{equation}
+%
+\item Dimless physical model:
+\beq
+\kdimf\vat{\kdim_\drag} = 0\,.
+\eeq
+%
+\item Assume-derive-calculate-check. Assume a functional form for the last eqn. Begin with the simplest: a monomial of degree one:
+\beq
+\dfrac{\drag}{\dens\area\vel^2} = \kdim\,,
+\eeq
+where $\dim\kdim = 1$.
+%
+\item $\kdim$ has to be either derived by theory or by experiment.
+%
+\item Finally, any functional form has to be tested against experiment.
+%
+\end{itemize}
