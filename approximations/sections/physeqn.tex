@@ -1,0 +1,95 @@
+\section{Physical equations, dimensional homogeneity, and physical constants}
+%
+[Ain A. Sonin - The Physical Basis of DA]
+
+In quantitative analysis of physical events one seeks mathematical relationships between the numerical values of the physical quantities that describe the event. We are not, however, interested in just \emph{any} relationships that may apply between the values of physical quantities. A primitive soul may find it remarkable, or even miraculous, that his own mass in kilograms is exactly equal to his height in inches. We dismiss this kind of \scare{relationship} as an accidental result of the choice of units. Science is concerned only with expressing a \emph{physical} relationship between one quantity and a set of others, that is, with \scare{physical equations}. Nature is indifferent to the arbitrary choices we make when we pick base units. We are interested, therefore, only in numerical relationships that remain true independent of base unit size.
+
+This puts certain constraints on the allowable form of physical equations. Suppose that, in a specified physical event, the numerical value $q_0$ of a physical quantity is determined by the numerical values of a set $\elset{q_1, \dotsc, q_n}$ other physical quantities, that is,
+%
+\begin{equation}\label{eq:physicalmodel}
+q_0 = f\vat{q_1, \dotsc, q_n}\,,
+\end{equation}
+%
+The principle of absolute significance of relative values tells us that the relationship implied by \cref{eq:physicalmodel} can be physically relevant only if $q_0$ and $f$ change by the same factor when the magnitudes of any base units are changed. In other words, \emph{a physical equation must be dimensionally homogeneous}. Some reflection based on the points summarized at the end of Section 2.4 will show that dimensional homogeneity imposes the following constraints on any mathematical representation of a relationship like equation \cref{eq:physicalmodel}:
+%
+\begin{enumerate}
+\item  both sides of the equation must have the same dimension;
+%
+\item wherever a sum of quantities appears in $f$, all the terms in the sum must have the same dimension;
+%
+\item all arguments of any exponential, logarithmic, trigonometric or other special functions that appear in $f$ must be dimensionless.
+\end{enumerate}
+%
+For example, if a physical equation is represented by
+%
+\beq
+a = b\exp\vat{-c} - \dfrac{d_1 + d_2}{e} + f\,,
+\eeq
+%
+$c$ must be dimensionless, $d_1$ and $d_2$ must have the same dimension, and $a$, $b$, $d/e$ and $f$ must have the same dimension.
+
+An important consequence of dimensional homogeneity is that the \emph{form} of a physical equation is independent of the size of the base units.
+
+The following example may help to illustrate the reason for dimensional homogeneity in physical equations and show how conceptual errors that may arise if homogeneity isn't recognized. Suppose we release an object from rest in a uniform gravitational field, in vacuum, and ask what distance $x$ it will fall in a time $t$. We know of course that elementary Newtonian mechanics gives the answer as
+%
+\begin{equation}\label{eq:freefalleqn}
+x = \dfrac{1}{2}\grav t^2\,,
+\end{equation}
+%
+where $\grav$ is the local acceleration of gravity and has the dimension $\phdim{LT^2}$. This equation expresses the result of a general physical law, and is clearly dimensionally homogeneous.
+
+The physical basis of dimensional homogeneity becomes apparent when we consider the same phenomenon from a different perspective. Suppose we are ignorant of mechanics and conduct a large variety of experiments in Cambridge, Massachusetts, on the time $t$ it takes a body with mass $m$ to fall a distance $x$ from rest in an evacuated chamber. After performing experiments with numerous masses and distances, we find that if $t$ is measured in seconds and $x$ in meters, all our data can be accurately represented, regardless of mass, with the single equation
+%
+\begin{equation}\label{eq:gravityinmassachusets}
+x = 4.91 t^2\,.
+\end{equation}
+%
+
+This is a perfectly \emph{correct} equation. It describes and predicts all experiments (in Cambridge, Massachusetts) to a very good accuracy. However, it appears at first glance to be dimensionally non-homogeneous, the two sides seemingly having different dimensions, and thus appears not to be a true physical equation. This impression is, however, based on the false presumption that the coefficient 4.91 remains invariant when units are changed. In fact, the coefficient 4.91 represents not a dimensionless number, but a particular numerical value of a \emph{dimensional} physical quantity which characterizes the relationship between $x$ and $t$ in the Cambridge area. That this must be so becomes clear when we consider how equation \cref{eq:gravityinmassachusets} must transform when units are changed. We know that when units are changed, the actual \emph{physical} distance $x$ remains invariant, and we therefore argue that to obtain the falling distance in feet, for example, the right hand side of \cref{eq:gravityinmassachusets}, which gives it in meters, must be multiplied by 3.28, the number of feet in one meter. Thus, if $x$ is measured in feet and $t$ in seconds, the correct version of equation \cref{eq:gravityinmassachusets} is 
+%
+\beq
+x = 16.1 t^2\,.
+\eeq
+%
+This same transformation could also have been obtained by arguing that \cref{eq:gravityinmassachusets}, being an expression of a general physical law, must, according to Bridgman's principle of absolute significance of relative magnitude, be dimensionally homogeneous, and therefore should properly have been written
+%
+\beq
+x = c t^2\qquad
+\left(c = \SI{4.9}{m/s^2}\right)\,.
+\eeq
+%
+This form makes clear that the coefficient $c$ is a physical quantity rather than a numerical coefficient. The units of $c$ indicate its dimension and show that a change of the length unit from meters to feet, with the time unit remaining invariant, changes $c$ by the factor 3.28, the inverse of the factor by which the length unit is changed. This gives $c = \SI{16.1}{ft/s^2}$, as in \cref{eq:gravityinmassachusets}.
+
+The last equation is the correct way of representing the data of \cref{eq:freefalleqn}. It is dimensionally homogeneous, and makes the transformation to different base units straightforward.
+
+Every correct physical equation -- that is, every equation that expresses a physically significant relationship between numerical values of physical quantities -- must be dimensionally homogeneous. A fitting formula derived from correct empirical data may at first sight appear dimensionally non-homogeneous because it is intended for particular base units. Such formulas can always be rewritten in general, homogeneous form by the following procedure (Bridgman, 1931):
+%
+\begin{enumerate}
+\item Replace all the numerical coefficients in the equation with unknown dimensional constants.
+%
+\item Determine the dimensions of these constants by requiring that the new equation be dimensionally homogeneous.
+%
+\item Determine the numerical values of the constants by matching them with those in the original equation when the units are the same.
+\end{enumerate}
+%
+This is of course how the last equation was derived from \cref{eq:gravityinmassachusets}.
+
+Another example serves to reinforce this point. Suppose it is found that the pressure distribution in the earth's atmosphere over much of the United States can be represented (approximately) by the formula
+%
+\beq
+\press = \num{1.01e5}\exp\vat{-0.00012 z}\,,
+\eeq
+%
+where $\press$ is the pressure in \si{N/m^2} and $z$ is the altitude in meters. This expression applies only with the cited units. The correct, dimensionally homogeneous form of this equation is
+%
+\beq
+\press = a\exp\vat{-bz}\qquad 
+\left(a = \SI{1.01e5}{N.m^{-2}}\,, \quad b = \SI{0.00012}{m^{-1}}\right)\,.
+\eeq
+%
+where $a$ and $b$ are physical quantities. In this form the equation is valid independent of the chosen base units. The dimensions of $a$ and $b$ indicate how these quantities change when units are changed.
+
+The two quantities $a$ and $b$ in the last equation are \lingo{physical constants} in the sense that their values are fixed once the system of units is chosen. In this case the constants characterize a particular environment -- the pressure distribution in the earth's atmosphere over the US. Similarly, the acceleration of gravity $\grav$ in \cref{eq:freefalleqn} is a physical constant that characterizes the local gravitational force field at the earth's surface.
+
+The basic laws of physics also contain a number of \lingo{universal physical constants} whose magnitudes are the same in all problems once the system of units is chosen: the speed of light in vacuum, the universal gravitational constant, Planck's constant, Boltzmann's constant and many others.
+
