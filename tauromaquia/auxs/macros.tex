@@ -1,0 +1,140 @@
+% macros
+% macros and commands to be used during edition
+
+%%% General
+\newcommand{\defas}{\equiv} % defined as
+
+%%% Sets
+%
+\newcommand{\elset}[1]{\left\lbrace{#1}\right\rbrace} % elements of a set
+\newcommand{\tuple}[1]{\left[#1\right]}               %
+\newcommand{\vat}[1]{\!\left[#1\right]}               % value of a function at a point
+
+%%% Space
+\newcommand{\set}[1]{\mathcal{#1}}           % set
+\newcommand{\nset}[2]{\set{#1}^{#2}}         % n-dim set
+\newcommand{\espace}{\set{E}}                % Euclidean space
+\newcommand{\nespace}[1]{\nset{\espace}{#1}} % n-dim Euclidean space
+\newcommand{\pos}{x}                         % position vector
+\newcommand{\apos}{\xi}                      % alternate position vector
+\newcommand{\metric}{g}                      % metric
+
+%%% Geometry
+\newcommand{\bound}{\partial}     % boundary
+\newcommand{\length}{l}           % length
+\newcommand{\point}{\mathcal{P}}  % point
+\newcommand{\region}[1]{\set{#1}} % region
+\newcommand{\surf}{s}             % surface
+\newcommand{\vsurf}{\Sigma}       % vector surface
+\newcommand{\vol}{v}              % volume
+
+%%% Geometric algebra and geom. calculus
+\DeclareMathOperator{\adv}{adv}   % advection
+\let\div\relax                    % \div already def.
+\DeclareMathOperator{\div}{div}   % divergence
+\DeclareMathOperator{\grad}{grad} % gradient
+\newcommand{\gder}{\nabla}        % geometric derivative
+\newcommand{\iprod}{\cdot}        % inner product
+\DeclareMathOperator{\lap}{lap}   % laplacion
+\newcommand{\oprod}{\wedge}       % outer product
+
+%%% Calculus
+\newcommand{\cder}[2]{{#1}_{,{#2}}}
+\newcommand{\dx}{\text{d}}    % differential
+\newcommand{\dt}[1]{\dot{#1}} % time derivative
+
+%%% Physics
+%
+% Space and time
+\newcommand{\xdir}{x} % x direction
+\newcommand{\ydir}{y} % y direction
+\newcommand{\xvel}{u} % x dir velocity
+\newcommand{\yvel}{v} % y dir velocity
+%
+% Circular motion
+\newcommand{\amass}{i}      % momentum of inertia (angular mass)
+\newcommand{\amom}{\lambda} % angular momentum
+\newcommand{\avel}{\omega}  % angular velocity
+%
+% Mechanics
+\newcommand{\grav}{g}      % free fall acceleration
+\newcommand{\mass}{m}       % mass
+\newcommand{\tension}{\tau} % tension
+\newcommand{\vel}{u}        % velocity vector
+%
+% Electromagnetism
+\newcommand{\echarge}{q} % electric charge
+\newcommand{\efield}{e}  % electric field
+\newcommand{\mfield}{b}  % magnetic induction
+%
+% Waves
+\newcommand{\wspeed}{c}  % wave speed
+%
+% Transport
+%
+% General
+\newcommand{\dens}{\rho} % density
+\newcommand{\flux}{j}    % flux
+%
+% Mass transfer
+\newcommand{\conc}{c}   % concentration
+\newcommand{\pnum}{n}   % particle number
+\newcommand{\rreact}{r} % rate of reaction
+\newcommand{\vfrate}{q} % volumetric flow rate
+%
+\newcommand{\kdiff}{\phi} % diffusion coefficient
+\newcommand{\kreact}{k}   % reaction coefficient
+%
+% Fluid mechanics
+\newcommand{\blthck}{\delta} % boundary layer thickness
+\newcommand{\fstr}{_\infty}  % free stream (velocity, concentration,...)
+\newcommand{\kvisc}{\nu}     % kinematic viscosity
+
+%%% Vectors
+\newcommand{\inv}[1]{{#1}^{-1}}                  % inverse
+\newcommand{\klcoeff}[1]{h_{#1}}                 % lame coefficient
+\newcommand{\magn}[1]{\left\vert{#1}\right\vert} % magnitude
+\newcommand{\uvec}[1]{\hat{#1}}                  % unit vector
+
+%%% Index notation
+\newcommand{\bvec}{e}            % basis vector
+\newcommand{\ubvec}{\hat{\bvec}} % unit basis vector
+%
+\newcommand{\fbvec}[1]{\bvec_{#1}}        % frame basis vector
+\newcommand{\fubvec}[1]{\ubvec_{#1}}      % frame unit basis vector
+\newcommand{\fvec}[2]{{#1}^{#2}}          % vector onto frame
+%
+\newcommand{\rbvec}[1]{\bvec^{#1}}        % reciprocal frame basis vector
+\newcommand{\rubvec}[1]{\hat{\bvec}^{#1}} % reciprocal frame unit basis vector
+\newcommand{\rvec}[2]{{#1}_{#2}}          % vector onto reciprocal frame
+%
+\newcommand{\iod}[1]{\dx_{#1}}      % indexed ordinary derivative
+\newcommand{\ipd}[1]{\partial_{#1}} % indexed partial derivative
+%
+\newcommand{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}}           % expanded ordinary derivative
+\newcommand{\xpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}} % expanded partial derivative
+%
+\newcommand{\nxpd}[3]{\dfrac{\partial^{#1}{#2}}{\partial{#3}^{#1}}} % n-th expanded partial derivative
+%
+\newcommand{\fmet}[1]{\metric_{#1}} % metric on frame
+%
+\newcommand{\kron}{\delta}           % flat metric / kronecker delta
+\newcommand{\fkron}[2]{\kron_{#1#2}} % flat metric on frame
+
+%%% Other
+\DeclareMathOperator{\diag}{diag}                   % diagonal
+\newcommand{\iverson}[1]{\left[#1\right]_\text{iv}} % iverson brackets
+
+%%% Dim analysis
+\newcommand{\scpq}[1]{{#1}_{\text{sc}}} % scaling quantity, (characteristic or reference quantity)
+\newcommand{\dmpq}[1]{\hat{#1}}         % dimensional physical quantity
+\newcommand{\phdim}[1]{\mathsf{#1}}     % physical dimension
+%
+\newcommand{\kdim}{\Pi}                    % dimless number
+\newcommand{\ksmall}{\kdim_{\epsilon}}     % small dimless number
+\newcommand{\kmach}{\kdim_\text{ma}}       % mach number
+\newcommand{\kreynolds}{\kdim_\text{re}}   % reynolds number
+\newcommand{\kredrey}{\kdim^{*}_\text{re}} % reduced reynolds number
+\newcommand{\kschmidt}{\kdim_\text{sc}}    % schmidt number
+%
+\newcommand{\order}[1]{o\vat{#1}} % order of

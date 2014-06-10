@@ -1,0 +1,129 @@
+% preambule
+% provides definitions, commands and environments
+
+% -------------------------------------------------------- Verbatim file
+% File name:
+% Name, location, beg. line {hello.f90}{./main/hello.f90}{1}
+% ------------------------------------------------------------
+%\newcommand{\docfileverb}[3]%
+%{%
+%     \medskip%
+%     \noindent\peqmayus{File name:} {\code{\color{webgreen} #1}}%
+%
+%     \begingroup%
+%     \linenumbers*[#3]%
+%     \small%
+%     \verbatiminput{#2}%
+%     \endgroup%
+%}%
+
+% ------------------------------------------------------------ Equations
+\def\beq{\begin{equation*}}%
+\def\eeq{\end{equation*}}%
+
+% numbered equation
+\def\bneq{\begin{equation}}%
+\def\eneq{\end{equation}}%
+
+% ----------------------------- Majuscules and minuscules, old ligatures
+\newcommand{\mayus}[1]{{\spacedallcaps{#1}}}      % Capitals
+\newcommand{\minus}[1]{{\spacedlowsmallcaps{#1}}} % Small caps
+
+\newcommand{\oldlig}[1]%
+{%
+  {%
+  \fontspec[Ligatures=Rare]{MinionPro-Regular}%
+  \textit{% only noticeable with italics
+     {#1}%
+   }}%
+}%
+
+% -------------------------------------------------------- Ling. Formats
+% Code
+\newcommand{\code}[1]{{\tt #1}} % in typewritter
+
+% Brands
+\newcommand{\brand}[1]{{\tt #1}} % in typewritter
+
+% Quotation marks
+\newcommand{\dfscare}[1]{«\,{#1}\,»} % double french scare
+\newcommand{\scare}[1]{\dfscare{#1}}
+
+% Linguistic form (foreign language words and so on)
+\newcommand{\lingform}[1]{\textsl{#1}}
+\newcommand{\lingo}[1]{\oldlig{#1}}
+
+% Margin notes
+\newcommand{\note}[1]{\mgraffito{#1}}
+
+% ------------------------------------------------- Common abbreviations
+% "sc." and "viz." introduce a clarification; "i.e.", an equivalence
+%
+\newcommand{\aka}{\lingform{aka}\xspace}                     % also known as
+\newcommand{\ca}{\lingform{ca.}\xspace}                      % circa, approx
+\newcommand{\confer}{\lingform{cf.}\xspace}                  % compare, confer
+\newcommand{\eg}{\lingform{e.g.}\xspace}                     % exempli gratia
+\newcommand{\etc}{\lingform{\&c.}\xspace}                    % exempli gratia
+\newcommand{\ie}{\lingform{i.e.}\xspace}                     % id est
+\newcommand{\interalia}{\lingform{i.a.}\xspace}              % among other things: Hemingway- author (i.a. 'The Sun Also Rises')
+\newcommand{\notabene}[1]{\mgraffito{\lingform{N.B.}, {#1}}} % pay attention
+\newcommand{\quodvide}{\lingform{q.v.}\xspace}               % which to see
+\newcommand{\quaevide}{\lingform{qq.v.}\xspace}              % plural of q.v.
+\newcommand{\sic}{[\lingform{sic}]\xspace}                   % so or thus
+\newcommand{\scilicet}{\lingform{sc.}\xspace}                % "one may know" same "videlicet"
+\newcommand{\videinfra}{\lingform{v.i.}\xspace}              % see below
+\newcommand{\videlicet}{\lingform{viz.}\xspace}              % that is to say, namely
+\newcommand{\videsupra}{\lingform{v.s.}\xspace}              % see above
+\newcommand{\viceversa}{\lingform{vice versa}\xspace}        % italics
+\newcommand{\vs}{\lingform{vs.}\xspace}                      % versus
+
+% >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Floats
+% Floats width
+\newcommand{\docfloatwidth}{0.95\textwidth}%
+
+% Table headline
+\newcommand{\tabhead}[1]{{\spacedlowsmallcaps{#1}}}%
+
+% Table element centered
+\newcommand{\TEC}[1]{\multicolumn{1}{c}{#1}}%
+
+% ------------------------------------------------------------- PreTable
+% \docpretable{position}{size}{cols}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+% use: \docfloatwidth whenever possible!
+% NOTE: does not include \toprule
+\newcommand{\docpretable}[3]{%
+    \begin{table}[#1]%
+      \capstart\center\footnotesize%
+        \begin{tabularx}{#2}%
+          {#3}%
+}%
+
+% ------------------------------------------------------------ PostTable
+% \end{tabularx}
+% \docposttable{caption}{caption}{label}
+% include: \end{tabularx}%
+\newcommand{\docposttable}[3]{%
+% \end{tabularx}%
+      \normalsize\caption[#1]{#2}\label{#3}%
+    \end{table}%
+}%
+% ------------------------------------------------------------- EndTable
+
+% --------------------------------------------------------------- Figure
+% position: bthH. size:width=0.5\textwidth. file:location+filename.pdf
+% caption. label:fig:wec
+% use: \docfloatwidth whenever possible!
+% \docfigure{position}{size}{file}%
+%   {caption}%
+%   {caption}%
+%   {label}%
+\newcommand{\docfigure}[6]{%
+    \begin{figure}[#1]%
+      \capstart\center%
+        {\center\includegraphics[#2]{#3}}%
+      \caption[#4]{#5}%
+    \label{#6}%
+\end{figure}%
+}% end figure
+% ------------------------------------------------------------ EndFigure

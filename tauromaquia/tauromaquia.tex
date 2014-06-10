@@ -1,0 +1,23 @@
+\RequirePackage{fix-cm}
+
+\documentclass[twoside=false, open=right, titlepage, numbers=noenddot, 
+               headinclude, fontsize=11pt, paper=a4, footinclude, 
+               abstract=off, cleardoublepage=empty]{scrreprt}
+
+\input{auxs/docinfo}
+\RequirePackage{auxs/minionstyle}
+\input{auxs/preambule}
+\input{auxs/macros}
+
+\hyphenation{non-dimen-sion-a-lize}
+
+\begin{document}
+\frontMatterPageStyle
+
+\include{auxs/halftitle}
+\include{auxs/copyright}
+\pagestyle{scrheadings}
+
+\input{doc/tauromaquia}
+
+\end{document}
