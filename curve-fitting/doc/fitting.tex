@@ -1,0 +1,91 @@
+\chapter*{Fitting data to non-polynomial curves}
+%
+[Harold Cohen. Numerical approximation methods, p. 25.]
+
+Theory predicts that the data in \cref{tab:data} decreases with increasing $x$ as a quadratic in $1/x$.
+%
+% ------------------------------------------------------------- PreTable
+\docpretable{bt}{0.20\textwidth}{cc}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+% use: \docfloatwidth whenever possible!
+% NOTE: does not include \toprule
+%
+\toprule
+%
+$x$    & $f\vat x$ \\
+%
+\midrule
+%
+1.3 & 5.42 \\
+2.2 & 4.28 \\
+3.7 & 3.81 \\
+4.9 & 3.62 \\
+%
+\bottomrule
+%
+% ------------------------------------------------------------ PostTable
+\end{tabularx}
+\docposttable{Fitting data}{Data with inverse power of $x$ decrease}{tab:data}
+% include: \end{tabularx}%
+% ------------------------------------------------------------- EndTable
+%
+To find the best fit of these data, define
+%
+\beq
+    f\vat x = \alpha + \beta \dfrac{1}{x} + \gamma \dfrac{1}{x^2}\,.
+\eeq
+%
+Minimize the last equation by
+%
+\beq
+    e = \sum_k\left(\alpha + \beta\dfrac{1}{x} + \gamma\dfrac{1}{x^2} - f_k\right)^2\iverson{1\leq k\leq 4}
+\eeq
+%
+resulting in
+%
+\begin{align*}
+\ipd\alpha e &= 2\sum_k\left(\alpha + \beta\dfrac{1}{x_k} + \gamma\dfrac{1}{x_k^2} - f_k\right)\iverson{1\leq k\leq 4} 
+              = 0\,,\\
+%
+\ipd\beta  e &= 2\dfrac{1}{x_k}\sum_k\left(\alpha + \beta\dfrac{1}{x_k} + \gamma\dfrac{1}{x_k^2} 
+                - f_k\right)\iverson{1\leq k\leq 4}
+              = 0\,,\\
+%
+\ipd\gamma  e &= 2\dfrac{1}{x^2_k}\sum_k\left(\alpha + \beta\dfrac{1}{x_k} + \gamma\dfrac{1}{x_k^2} 
+                - f_k\right)\iverson{1\leq k\leq 4}
+               = 0\,.
+\end{align*}
+%
+Then, obtain
+%
+\begin{align*}
+  \alpha + \beta\sum_{k = 1}^4 \dfrac{1}{x_k} + \gamma\sum_{k = 1}^4 \dfrac{1}{x_k^2} &= 
+      \sum_{k = 1}^4 f_k\,,\\
+  %
+  \alpha\sum{k = 1}^4\dfrac{1}{x_k} + \beta\sum_{k = 1}^4 \dfrac{1}{x_k^2} + \gamma\sum_{k = 1}^4 \dfrac{1}{x_k^3} &= 
+      \sum_{k = 1}^4 f_k\dfrac{1}{x_k}\,,\\
+  %
+  \alpha\sum{k = 1}^4\dfrac{1}{x_k^2} + \beta\sum_{k = 1}^4 \dfrac{1}{x_k^3} + \gamma\sum_{k = 1}^4 \dfrac{1}{x_k^4} &= 
+      \sum_{k = 1}^4 f_k\dfrac{1}{x_k^2}\,.
+\end{align*}
+%
+This becomes into
+%
+\begin{align*}
+    4.000\alpha + 1.698\beta + 0.913\gamma &= 17.130\,\\
+    1.698\alpha + 0.913\beta + 0.577\gamma &= 7.883\,\\
+    0.913\alpha + 0.577\beta + 0.400\gamma &= 4.52\,.
+\end{align*}
+%
+from which $\alpha = 3.261$, $\beta = 1.480$, and $\gamma = 1.722$. With these values, the best fitting equation is
+%
+\beq
+    f\vat x = 3.261 + 1.480\dfrac{1}{x} + 1.722\dfrac{1}{x^2}
+\eeq
+%
+and the error in fitting
+%
+\beq
+    e = \sum_{k = 1}^4\left( 3.261 + 1.480\dfrac{1}{x} + 1.722\dfrac{1}{x^2} - f_k\right)^2 
+      = 0.001\,. \mqed
+\eeq

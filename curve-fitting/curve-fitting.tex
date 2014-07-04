@@ -1,0 +1,38 @@
+\RequirePackage{fix-cm}
+
+\documentclass[twoside=false, open=right, titlepage, numbers=noenddot, 
+               headinclude, fontsize=10pt, paper=a4, footinclude, 
+               abstract=off, cleardoublepage=empty]{scrreprt}
+
+\input{auxs/docinfo}
+\RequirePackage{auxs/minionstyle}
+\input{auxs/preambule}
+\RequirePackage{auxs/maths}
+\RequirePackage{auxs/physics}
+
+\hyphenation{non-dimen-sion-a-lize}
+
+\begin{document}
+
+\frontMatterPageStyle
+\include{auxs/halftitle}
+%\include{auxs/title}
+%\include{auxs/copyright}
+\pagestyle{scrheadings}
+%\tableofcontents
+\addcontentsline{toc}{chapter}{Contents}
+
+%\include{doc/summary}
+\include{doc/fitting}
+
+%\phantomsection
+%\bibliographystyle{plainnat}\label{biblio}
+%\addcontentsline{toc}{chapter}{Referencias}
+%\renewcommand{\bibname}{Referencias}
+%\bibliography{doc/references}
+%
+%\appendix
+%
+%\include{auxs/revision} % Update this
+
+\end{document}
