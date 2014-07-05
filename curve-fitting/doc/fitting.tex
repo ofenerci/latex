@@ -1,18 +1,21 @@
-\chapter*{Fitting data to non-polynomial curves}
+\chapter*{Fitting data by the method of least squares}
 %
 [Harold Cohen. Numerical approximation methods, p. 25.]
 
-Theory predicts that the data in \cref{tab:data} decreases with increasing $x$ as a quadratic in $1/x$.
+Given experimental data points $\tuple{x_k, y_k}$ and a hypothesized model equation to fit data $f\vat{x_k}$ with unknown coefficients $\alpha_k$, the method of least squares consists on minimizing the square of the rms error $e = \ssum{k}{\epsilon_k}^2 = \ssum{k}{\left(f_k - y_k\right)^2}$ wrt the coefficients $\alpha_k$.
+
+
+For instance, consider that a theory predicts that the data in \cref{tab:data} decreases with increasing $x$ as a quadratic in $1/x$.
 %
 % ------------------------------------------------------------- PreTable
-\docpretable{bt}{0.20\textwidth}{cc}%
+\docpretable{bt}{0.18\textwidth}{cc}%
 % position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
 % use: \docfloatwidth whenever possible!
 % NOTE: does not include \toprule
 %
 \toprule
 %
-$x$    & $f\vat x$ \\
+$x_k$ & $y_k$ \\
 %
 \midrule
 %
@@ -28,64 +31,49 @@ $x$    & $f\vat x$ \\
 \docposttable{Fitting data}{Data with inverse power of $x$ decrease}{tab:data}
 % include: \end{tabularx}%
 % ------------------------------------------------------------- EndTable
-%
-To find the best fit of these data, define
-%
+
+Define the model to fit the data:
 \beq
-    f\vat x = \alpha + \beta \dfrac{1}{x} + \gamma \dfrac{1}{x^2}\,.
+    f\vat x = \alpha_1 + \alpha_2 \dfrac{1}{x} + \alpha_3 \dfrac{1}{x^2}\,.
 \eeq
 %
-Minimize the last equation by
+Find the square of the rms error of the model and the data:
 %
 \beq
-    e = \sum_k\left(\alpha + \beta\dfrac{1}{x} + \gamma\dfrac{1}{x^2} - f_k\right)^2\iverson{1\leq k\leq 4}
+    e = \ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x} + \alpha_3\dfrac{1}{x^2} - y_k\right)^2}\,.    
 \eeq
 %
-resulting in
+Minimize $e$ with respect to the coefficients $\alpha_k$:
 %
 \begin{align*}
-\ipd\alpha e &= 2\sum_k\left(\alpha + \beta\dfrac{1}{x_k} + \gamma\dfrac{1}{x_k^2} - f_k\right)\iverson{1\leq k\leq 4} 
-              = 0\,,\\
 %
-\ipd\beta  e &= 2\dfrac{1}{x_k}\sum_k\left(\alpha + \beta\dfrac{1}{x_k} + \gamma\dfrac{1}{x_k^2} 
-                - f_k\right)\iverson{1\leq k\leq 4}
-              = 0\,,\\
+\ipd{\alpha_1} e &= 2\ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,,\\
 %
-\ipd\gamma  e &= 2\dfrac{1}{x^2_k}\sum_k\left(\alpha + \beta\dfrac{1}{x_k} + \gamma\dfrac{1}{x_k^2} 
-                - f_k\right)\iverson{1\leq k\leq 4}
-               = 0\,.
+\ipd{\alpha_2} e &= 2\dfrac{1}{x_k}\ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} 
+                    + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,,\\
+%
+\ipd{\alpha_3} e &= 2\dfrac{1}{x^2_k}\ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} 
+                    + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,.
+%
 \end{align*}
 %
-Then, obtain
+Distribute the sums in every term, perform algebra and replace the values of \cref{tab:data} to have
 %
 \begin{align*}
-  \alpha + \beta\sum_{k = 1}^4 \dfrac{1}{x_k} + \gamma\sum_{k = 1}^4 \dfrac{1}{x_k^2} &= 
-      \sum_{k = 1}^4 f_k\,,\\
-  %
-  \alpha\sum{k = 1}^4\dfrac{1}{x_k} + \beta\sum_{k = 1}^4 \dfrac{1}{x_k^2} + \gamma\sum_{k = 1}^4 \dfrac{1}{x_k^3} &= 
-      \sum_{k = 1}^4 f_k\dfrac{1}{x_k}\,,\\
-  %
-  \alpha\sum{k = 1}^4\dfrac{1}{x_k^2} + \beta\sum_{k = 1}^4 \dfrac{1}{x_k^3} + \gamma\sum_{k = 1}^4 \dfrac{1}{x_k^4} &= 
-      \sum_{k = 1}^4 f_k\dfrac{1}{x_k^2}\,.
+    4.000\alpha_1 + 1.698\alpha_2 + 0.913\alpha_3 &= 17.130\,,\\
+    1.698\alpha_1 + 0.913\alpha_2 + 0.577\alpha_3 &= 7.883\,,\\
+    0.913\alpha_1 + 0.577\alpha_2 + 0.400\alpha_3 &= 4.52\,.
 \end{align*}
 %
-This becomes into
-%
-\begin{align*}
-    4.000\alpha + 1.698\beta + 0.913\gamma &= 17.130\,\\
-    1.698\alpha + 0.913\beta + 0.577\gamma &= 7.883\,\\
-    0.913\alpha + 0.577\beta + 0.400\gamma &= 4.52\,.
-\end{align*}
-%
-from which $\alpha = 3.261$, $\beta = 1.480$, and $\gamma = 1.722$. With these values, the best fitting equation is
+Solve the system to find $\elset{\alpha_1 = 3.261, \alpha_2 = 1.480, \alpha_3 = 1.722}$. The model equation thus becomes
 %
 \beq
     f\vat x = 3.261 + 1.480\dfrac{1}{x} + 1.722\dfrac{1}{x^2}
 \eeq
 %
-and the error in fitting
+and its error in fitting data
 %
 \beq
-    e = \sum_{k = 1}^4\left( 3.261 + 1.480\dfrac{1}{x} + 1.722\dfrac{1}{x^2} - f_k\right)^2 
+    e = \sum_{k = 1}^4\left( 3.261 + 1.480\dfrac{1}{x} + 1.722\dfrac{1}{x^2} - y_k\right)^2 
       = 0.001\,. \mqed
 \eeq
