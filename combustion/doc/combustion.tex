@@ -1,0 +1,154 @@
+\chapter*{Energy of combustion}
+%
+In all of the following, perfect, complete, combustion is assumed.
+
+
+\section*{Specific energy of combustion in gasoline}
+%
+[Lawrence Weinstein and John A. Adam. Guesstimation. p. 145]
+
+Unless we are capable of photosynthesis, we get most of our energy from chemical reactions: from eating food and from burning hydrocarbon fuels. In a typical chemical reaction, one electron is exchanged between two atoms. The energy of this exchange is about \SI{1.5}{eV}~\note{~We know this because batteries convert chemical energy to electrical energy. Common batteries provide an electrical potential of \SI{1.5}{V}. Therefore, each single electron flowing through the battery gains an energy of \SI{1.5} {eV} and each coulomb of electricity (a coulomb is a LOT of electrons, $\SI{1}{C} = \SI{6e18}{e}$) flowing through the battery gains an energy of \SI{1.5}{coulomb volts} (or \SI{1.5}{J}).}. If you want more precision than that, ask a chemist or look it up. To convert this to a useful number, we need to know two things:
+%
+\begin{enumerate}
+%
+\item The conversion from electron volts to joules: $\SI{1}{eV}\sim \SI{2e-19}{J}$.
+%
+\item The number of molecules involved in the reaction.
+%
+\end{enumerate}
+
+To determine the second, we need to introduce a little chemistry. We will be concerned primarily with hydrocarbons and therefore will limit ourselves to the reactions \ce{C + O2 -> CO2} (carbon plus oxygen reacts to form carbon dioxide) and \ce{2 H2 + O2 -> 2 H2O} (hydrogen plus oxygen reacts to form water). All the oxygen for these reactions comes from the atmosphere.
+
+In this book, there are only three hydrocarbons: coal (pure carbon), natural gas (methane or \ce{CH4}), and everything in between (including gasoline), which we will call \ce{CH2}. One mole of carbon has a mass of \SI{12}{g} (the atomic weight of carbon) and contains $\kavogadro = \SI{6E23}{atoms}$. Burning that will result in $\kavogadro$ chemical reactions. One mole of methane has a mass of \SI{16}{g} (the atomic weight of the carbon plus four hydrogens) and contains $\kavogadro = \SI{6E23}{molecules}$. Burning that will result in $3\kavogadro$ reactions (one \ce{CO2} and two \ce{H2O}).
+
+How much chemical energy (in joules) can be released by burning \SI{1}{kg} (about \SI{1}{L}) of gasoline? What is its energy density (in \si{J/kg})?
+
+Since we know that the energy we get for each chemical reaction is \SI{1.5}{eV}, we need to estimate the number of chemical reactions that occur when we burn \SI{1}{kg} of gasoline. To do this we need to estimate the chemical composition.
+
+We will assume that the hydrogen to carbon ratio in gasoline is two (since it is more than zero [pure carbon] and less than four [pure methane]). Thus, we will assume that gasoline is made of \ce{CH2} molecules. The atomic masses of carbon and hydrogen are 12 and 1, respectively, so that the molecular mass of \ce{CH2} is 14. This means that one mole of \ce{CH2} has a mass of \SI{14}{g} or \SI{1.4e-2}{kg}. Thus, \SI{1}{kg} of gasoline contains
+%
+\beq
+    \npart = \dfrac{\SI{1}{kg}}{\SI{1.4e-2}{kg/mole}}  = \SI{70}{mol}\,. 
+\eeq
+
+Each of these \ce{CH2} \scare{molecules} will give us two reactions: the carbon atom will oxidize and form \ce{CO2} and the two hydrogen atoms will oxidize and form \ce{H2O}. Thus, each \ce{CH2} molecule will provide \SI{3}{eV}. The total energy released by burning (oxidizing) \SI{1}{kg} of gasoline will be
+%
+\beq
+    \SI{70}{mol/kg}\cdot\SI{6e23}{reaction/mol}\cdot\SI{3}{eV/reaction}\dfrac{\SI{1}{J}}{\SI{6e18}{eV}} = \SI{2e7}{J/kg}\,.
+\eeq
+
+Then, we estimate that \SI{1}{kg} of gasoline will release \SI{2e7}{J}.
+
+Looking this up on the web, we find that gasoline has an energy density \sic (specific energy) of about \SI{4.5e7}{J/kg} so we are only off by a factor of two. Not bad, considering the approximations we made.
+
+Note also that gasoline has a density of about $3/4$ that of water. This is definitely close enough to one for this book. However, if you need to be precise, you should use am energy density of \SI{3e7}{J/L}.
+
+Note that \SI{1}{kg} of TNT contains only \SI{4e6}{J}, which is only 10\% of gasoline. However, the TNT can release that energy MUCH more rapidly.
+
+[Correction: the balanced chemical equation for \ce{CH2} burning is \ce{2CH2 + 3O2 -> 2CO2 + 2H2O}. With this, the number of molecules that are exchanged is 6 (2 carbons and 4 hydrogens, \ce{2CH2}). Then, the energy released is $\SI{1.5}{eV}\cdot 6\sim\SI{9}{eV}$ and, finally, the total energy becomes \SI{6}{MJ/kg}.]
+
+
+\section*{Specific energy of combustion in methane}
+
+\subsection*{Guesstimation}
+%
+When methane burns in oxygen, \ce{CH4 + 2O2 -> CO2 + 2H2O}, one carbon and four hydrogens react, releasing $5\cdot\SI{1.5}{eV}\sim\SI{10}{eV/reaction}$. 
+
+The molecular mass of methane is $\SI{16}{g/mol}\sim\SI{20e-3}{kg/mol}$. So, one kilogram of methane has $\SI{1}{kg}/\SI{20e-3}{kg/mol}\sim\SI{50}{mol}$.
+
+The specific energy of combustion of methane in oxygen is then
+%
+\beq
+    \SI{50}{mol/kg}\cdot\SI{6e23}{reaction/mol}\cdot\SI{10}{eV/reaction}\dfrac{\SI{1}{J}}{\SI{6e18}{eV}} = \SI{5e7}{J/kg}\,.
+\eeq
+
+Thus, we estimate that burning methane in oxygen will release \SI{50}{MJ/kg}.
+
+On the web~\note{~\url{http://hypertextbook.com/facts/2004/BillyWan.shtml}}, we find that the specific energy of methane ranges from \SIrange{50}{55}{MJ/kg}.
+
+
+\section*{Binding energy}
+%
+[\url{http://www.physics.ohio-state.edu/~wilkins/energy/Resources/Lectures/combenergy-land.html}]
+
+Combustion produce energy by burning stable (usually) molecule to more stable end products. (Note: \ce{O2} binding energy is zero.)
+
+In combustion: reaction conserves number of each atom species; compute energy per standand number of molecules (mol) and not weight.
+
+On weight basis, methane produces the most energy.
+
+
+\subsection*{Conserve number of atoms of each element}
+%
+Consider methane \ce{CH4} burning in oxygen \ce{O2}: \ce{CH4 + 2 O2 -> CO2 + 2 H2O}.
+
+Balancing the equation: number of each atom species is conserved in reaction.
+
+Note: every molecule in reaction is stable. And yet we get energy. How?
+
+First we need to define binding energy of a molecule.
+
+
+\subsection*{Binding energy of a molecule}
+%
+Molecular \lingo{binding energy} is difference between energy of molecule and its elements in their most stable state.
+
+Chemists call this \lingo{enthalpy of formation}; the complete definition prescribes the measurement. Measurements are hard; in 30 years numbers have changed 1/2 percent.
+
+Set binding energy zero for most stable oxygen state \ce{O2}. Binding energies of other stable molecules are negative. (really?)
+
+Units: \si{kJ/mol}. What is a mol? Standard number of molecules ($\sim\num{6e23}$). Unit eases balancing chemical equations; imagine using \si{kJ/kg}. ($\sim\SI{20}{mol}$ in Dasani [\SI{335}{mL}].)
+
+
+\subsection*{Sample combustion calculation}
+%
+Combustion Energy from Methane (\SI{0.016}{kg/mol}):
+%
+\beq
+    \ce{CH4 + 2 O2 -> CO2 + 2 H2O + \text{heat}}\,.
+\eeq
+%
+Looking at thermochemical data for the species (binding energies in \si{kg/mol}), we find that $heat = 394 + 2(242) - 75 = \SI{803}{kJ/mol}$, which yields our estimate for the combustion energy of methane as $\SI{50}{MJ/kg}$.
+
+
+\section*{Born-Haber cycle}
+%
+[\url{http://www.elmhurst.edu/~chm/vchembook/512energycombust.html}]
+
+The combustion of all fossil fuels follows a very similar reaction:
+%
+\begin{quote}
+Fossil Fuel (any hydrocarbon source) plus oxygen yields carbon dioxide and water and \emph{energy}.
+\end{quote}
+
+The world and modern society are driven by the need to produce energy to make products (manufacturing), to move around (transportation), to heat homes and buildings, and to create light (electricity). At least 75\% of these needs are met by the combustion of fossil fuels. Energy is stored in chemical compounds in the bonds that bind atoms to each other.
+%
+\beq
+    \ce{CH4(g) + 2 O2(g) -> CO2(g) + 2 H2O(g) + \text{energy}}\,.
+\eeq
+ 
+A chemical reaction occurs by the rearrangement of atoms and molecules in the reactant (starting) molecules and the end product molecules. Some bonds are broken while others are reformed. The process of breaking and forming bonds results in a net energy needed or given off for a reaction.
+%
+% --------------------------------------------------------------- Figure
+%
+% position: bthH. size:width=0.5\textwidth. file:location+filename.pdf
+% caption. label:fig:wec
+% use: \docfloatwidth whenever possible!
+\docfigure{bt}{width=0.9\textwidth}{./graphs/energy-combustion.pdf}%
+  {Methane combustion}%
+  {Born-Haber cycle for the combustion of methane in oxygen}%
+  {fig:bornhabermethane}%
+%
+% ------------------------------------------------------------ EndFigure
+%
+
+In \cref{fig:bornhabermethane}, the combustion reaction of methane and oxygen to form carbon dioxide and water is shown broken into steps to show the entire energy \scare{using} and \scare{forming} process. First it takes energy to break bonds, all four of the \ce{C-H} bonds in methane must be broken. The energy units are kilojoules, a positive sign means that the process is \lingo{endothermic} or energy is required to break the bonds.
+
+In a similar fashion, two diatomic oxygen molecules are broken apart which requires more energy. Now all of the individual atoms in the reactant molecules have been broken apart.
+
+On the right side of the diagram in a second step, the various atoms form new bonds in new molecules of carbon dioxide and water. The formation of new bonds is an exothermic process where heat is given off. Again the energy given off is totaled to form new bonds in carbon dioxide and water molecules.
+
+Finally, the overall reaction yields an excess of energy given off \SI{-802}{kJ}. (the minus sign means that this is an \lingo{exothermic} process). In more familiar units this is equivalent to 191 kilocalories per 16 grams of methane. This is a little more than the 150 calories in a can of Coke.
+
+The excess of energy given off is mainly in the form of heat. Chemical energy stored in the bonds of molecules is transformed into heat and light energy. Most chemical reactions are of this type and thus are exothermic. Less energy is required to break old bonds than is given off in the process of forming new bonds.
+

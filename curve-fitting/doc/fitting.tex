@@ -2,10 +2,16 @@
 %
 [Harold Cohen. Numerical approximation methods, p. 25.]
 
-Given experimental data points $\tuple{x_k, y_k}$ and a hypothesized model equation to fit data $f\vat{x_k}$ with unknown coefficients $\alpha_k$, the method of least squares consists on minimizing the square of the rms error $e = \ssum{k}{\epsilon_k}^2 = \ssum{k}{\left(f_k - y_k\right)^2}$ wrt the coefficients $\alpha_k$.
+Given $n$ experimental data points $\tuple{x_k, y_k}$ and a \lingo{fitting equation}, \aka model equation, $f\vat{x_k}$ with unknown coefficients $\elset{\alpha_k}$ with $1 \leq k \leq n$, the method of least squares consists on minimizing the \lingo{square of the root mean square, rms, error} 
+%
+\beq
+    e = \ssum{k}{\epsilon_k}^2 = \ssum{k}{\left(f_k - y_k\right)^2}
+\eeq
+%
+with respect to the coefficients $\elset{\alpha_k}$.
 
 
-For instance, consider that a theory predicts that the data in \cref{tab:data} decreases with increasing $x$ as a quadratic in $1/x$.
+For instance, consider that a theory predicts the data in \cref{tab:data} decreasing with increasing $x$ as a quadratic in $1/x$.
 %
 % ------------------------------------------------------------- PreTable
 \docpretable{bt}{0.18\textwidth}{cc}%
@@ -32,28 +38,26 @@ $x_k$ & $y_k$ \\
 % include: \end{tabularx}%
 % ------------------------------------------------------------- EndTable
 
-Define the model to fit the data:
+Begin by defining the model to fit the data:
 \beq
     f\vat x = \alpha_1 + \alpha_2 \dfrac{1}{x} + \alpha_3 \dfrac{1}{x^2}\,.
 \eeq
 %
-Find the square of the rms error of the model and the data:
+Then, find the square of the rms error of the model and the data:
 %
 \beq
     e = \ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x} + \alpha_3\dfrac{1}{x^2} - y_k\right)^2}\,.    
 \eeq
 %
-Minimize $e$ with respect to the coefficients $\alpha_k$:
+Minimize $e$ with respect to the coefficients $\elset{\alpha_k}$:
 %
 \begin{align*}
 %
-\ipd{\alpha_1} e &= 2\ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,,\\
+\ipd 1e &= 2\ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,,\\
 %
-\ipd{\alpha_2} e &= 2\dfrac{1}{x_k}\ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} 
-                    + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,,\\
+\ipd 2e &= 2\dfrac{1}{x_k}\ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,,\\
 %
-\ipd{\alpha_3} e &= 2\dfrac{1}{x^2_k}\ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} 
-                    + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,.
+\ipd 3e &= 2\dfrac{1}{x^2_k}\ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,.
 %
 \end{align*}
 %
@@ -65,13 +69,13 @@ Distribute the sums in every term, perform algebra and replace the values of \cr
     0.913\alpha_1 + 0.577\alpha_2 + 0.400\alpha_3 &= 4.52\,.
 \end{align*}
 %
-Solve the system to find $\elset{\alpha_1 = 3.261, \alpha_2 = 1.480, \alpha_3 = 1.722}$. The model equation thus becomes
+Solve the system of equations to find $\elset{\alpha_1 = 3.261, \alpha_2 = 1.480, \alpha_3 = 1.722}$. The model thus becomes
 %
 \beq
-    f\vat x = 3.261 + 1.480\dfrac{1}{x} + 1.722\dfrac{1}{x^2}
+    f\vat x = 3.261 + 1.480\dfrac{1}{x} + 1.722\dfrac{1}{x^2}\,,
 \eeq
 %
-and its error in fitting data
+with a fitting error
 %
 \beq
     e = \sum_{k = 1}^4\left( 3.261 + 1.480\dfrac{1}{x} + 1.722\dfrac{1}{x^2} - y_k\right)^2 

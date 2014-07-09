@@ -1,0 +1,112 @@
+% maths
+% macros and commands to be used during edition
+
+\ProvidesPackage{maths}[07/05/2014 math macros and commands (rimbaudcode)]
+
+%%% General
+%
+\newcommand{\defas}{\equiv}        % defined as
+\newcommand{\order}[1]{o\vat{#1}}  % order of
+\newcommand{\txt}[1]{_{\text{#1}}} % subscript text
+%
+\newcommand{\mqed}{\tag*{\qedsymbol}}             % math qed
+\newcommand*{\txtqed}{\hfill\ensuremath{\square}} % text qed
+
+%%% Sets
+%
+\newcommand{\propset}[2]{\lbrace{#1}\,:\,{#2}\rbrace} % set with property
+\newcommand{\elset}[1]{\left\lbrace{#1}\right\rbrace} % elements of a set
+\newcommand{\tuple}[1]{\left[#1\right]}               % tuples
+\newcommand{\vat}[1]{\!\left[#1\right]}               % value of a function at a point
+
+%%% Intervals
+%
+\newcommand{\ccint}[1]{\left[{#1}\right]} % close-close interval
+
+%%% Space
+%
+\newcommand{\set}[1]{\mathcal{#1}}           % set
+\newcommand{\nset}[2]{\set{#1}^{#2}}         % n-dim set
+\newcommand{\espace}{\set{E}}                % Euclidean space
+\newcommand{\nespace}[1]{\nset{\espace}{#1}} % n-dim Euclidean space
+\newcommand{\pos}{x}                         % position vector
+\newcommand{\apos}{\xi}                      % alternate position vector
+\newcommand{\metric}{g}                      % metric
+
+%%% Geometry
+%
+\newcommand{\bound}{\partial}     % boundary
+\newcommand{\length}{l}           % length
+\newcommand{\point}{\mathcal{P}}  % point
+\newcommand{\region}[1]{\set{#1}} % region
+\newcommand{\surf}{s}             % surface
+\newcommand{\vsurf}{\Sigma}       % vector surface
+\newcommand{\vol}{v}              % volume
+
+%%% Geometric algebra and geom. calculus
+%
+\newcommand{\gder}{\nabla}        % geometric derivative
+\newcommand{\iprod}{\cdot}        % inner product
+\newcommand{\oprod}{\wedge}       % outer product
+
+%%% Calculus
+%
+\newcommand{\cder}[2]{{#1}_{,{#2}}} % comma derivative
+\newcommand{\dx}{\text{d}}          % differential
+\newcommand{\dt}[1]{\dot{#1}}       % time derivative
+\newcommand{\ddt}[1]{\ddot{#1}}     % second-order time derivative
+
+
+%%% Vectors
+%
+\newcommand{\inv}[1]{{#1}^{-1}}                  % inverse
+\newcommand{\klcoeff}[1]{h_{#1}}                 % lame coefficient
+\newcommand{\magn}[1]{\left\vert{#1}\right\vert} % magnitude
+\newcommand{\uvec}[1]{\hat{#1}}                  % unit vector
+
+%%% Index notation
+%
+% General
+%
+\newcommand{\bvec}{\gamma}       % basis vector
+\newcommand{\ubvec}{\hat{\bvec}} % unit basis vector
+%
+\newcommand{\fbvec}[1]{\bvec_{#1}}   % frame basis vector
+\newcommand{\fubvec}[1]{\ubvec_{#1}} % frame unit basis vector
+\newcommand{\fvec}[2]{{#1}^{#2}}     % vector onto frame
+%%
+\newcommand{\rbvec}[1]{\bvec^{#1}}        % reciprocal frame basis vector
+\newcommand{\rubvec}[1]{\hat{\bvec}^{#1}} % reciprocal frame unit basis vector
+\newcommand{\rvec}[2]{{#1}_{#2}}          % vector onto reciprocal frame
+%
+% Derivatives
+%
+\newcommand{\tder}{\dx} % total derivative
+%
+\newcommand{\igder}[1]{\partial_{#1}}   % index geometric derivative
+\newcommand{\iod}[1]{\dx_{#1}}          % indexed ordinary derivative
+\newcommand{\ipd}[1]{\partial_{#1}}     % indexed partial derivative
+%
+\newcommand{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}}              % expanded ordinary derivative
+\newcommand{\xpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}}    % expanded partial derivative
+\newcommand{\exod}[2]{\dfrac{\dx{}}{\dx{#2}}{#1}}           % elegant expanded ordinary derivative
+\newcommand{\expd}[2]{\dfrac{\partial{}}{\partial{#2}}{#1}} % elegant expanded partial derivative
+%
+\newcommand{\nxpd}[3]{\dfrac{\partial^{#1}{#2}}{\partial{#3}^{#1}}} % n-th expanded partial derivative
+%
+% Metric
+%
+\newcommand{\fmet}[2]{\metric_{#1#2}}  % metric on frame
+\newcommand{\kron}{\delta}             % flat metric / kronecker delta
+\newcommand{\fkron}[2]{\kron_{#1#2}}   % flat metric on frame
+
+%%% Sums
+%
+\newcommand{\ssum}[2]{\sum_{#1}{#2}}                % short sum
+\newcommand{\lsum}[3]{\sum_{#1}^{#2}{#3}}           % long sum
+\newcommand{\ivsum}[3]{\sum_{#1}{#2}\,\iverson{#3}} % iverson sum
+
+%%% Other
+%
+%\DeclareMathOperator{\diag}{diag}                   % diagonal
+\newcommand{\iverson}[1]{\left[#1\right]_\text{iv}} % iverson brackets
