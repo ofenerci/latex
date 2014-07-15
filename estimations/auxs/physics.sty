@@ -1,0 +1,124 @@
+% physics
+% macros and commands to be used during edition
+
+\ProvidesPackage{physics}[07/05/2014 physics macros and commands (rimbaudcode)]
+
+% Space and time
+%
+%\newcommand{\xdir}{x} % x direction
+%\newcommand{\ydir}{y} % y direction
+%\newcommand{\xvel}{u} % x dir velocity
+%\newcommand{\yvel}{v} % y dir velocity
+
+% Mechanics
+%
+\newcommand{\force}{f}      % force
+\newcommand{\grav}{g}       % free fall acceleration
+\newcommand{\mass}{m}       % mass
+\newcommand{\mom}{p}        % momentum
+\newcommand{\press}{p}      % pressure
+\newcommand{\tension}{\tau} % tension
+\newcommand{\vel}{u}        % velocity vector
+
+% Lagrangian and Hamiltonian mechanics
+%
+% Generalized coordinates
+%
+\newcommand{\gpos}{\xi}       % gen position
+\newcommand{\gvel}{\dt\gpos}  % gen velocity
+\newcommand{\gacc}{\ddt\gpos} % gen acceleration
+\newcommand{\gmom}{p}         % gen momentum
+\newcommand{\gforce}{f}       % gen force
+%
+% Index notation
+%
+\newcommand{\igpos}[1]{\gpos^{#1}} % indexed gen position
+\newcommand{\igvel}[1]{\gvel^{#1}} % ind gen velocity
+\newcommand{\igmom}[1]{\gmom_{#1}} % ind gen mom
+%
+% Energies
+%
+\newcommand{\ener}{e}          % energy
+\newcommand{\ekin}{e\txt{kin}} % kinetic energy
+\newcommand{\epot}{e\txt{pot}} % potential energy
+\newcommand{\elag}{e\txt{lag}} % lagrangian (energy)
+\newcommand{\eham}{e\txt{ham}} % hamiltonian (energy)
+%
+\newcommand{\eulag}[2]{\square_{{#1}{#2}}}                      % euler-lagrange operator
+\newcommand{\xeulag}[2]{\left(\ipd{#1} - \iod t\ipd{#2}\right)} % expanded euler-lagrange operator
+
+% Electromagnetism
+%
+%\newcommand{\echarge}{q} % electric charge
+%\newcommand{\efield}{e}  % electric field
+%\newcommand{\mfield}{b}  % magnetic induction
+
+% Waves
+%
+%\newcommand{\wspeed}{c} % wave speed
+
+% Transport
+%
+% General
+%
+\newcommand{\dens}{\rho}  % density
+\newcommand{\flux}{j}     % flux
+\newcommand{\svol}{\zeta} % specific volume
+
+% Mass transfer
+%
+\newcommand{\conc}{c}   % concentration
+\newcommand{\npart}{n}  % number of particles (n particles)
+\newcommand{\rreact}{r} % rate of reaction
+\newcommand{\vfrate}{q} % volumetric flow rate
+%
+\newcommand{\kdiff}{\phi} % diffusion coefficient
+\newcommand{\kreact}{k}   % reaction coefficient
+
+% Energy transfer
+%
+\newcommand{\temp}{\theta} % thermodynamic temperature
+
+% Fluid mechanics
+%
+\newcommand{\blthck}{\delta} % boundary layer thickness
+\newcommand{\fstr}{_\infty}  % free stream (velocity, concentration,...)
+\newcommand{\dvisc}{\mu}     % dynamic viscosity
+\newcommand{\kvisc}{\nu}     % kinematic viscosity
+%
+% Material derivatives
+%
+% Operators
+\DeclareMathOperator{\adv}{adv}   % advection (bulk transport)
+\DeclareMathOperator{\diff}{diff} % diffusion (molecular transport)
+\DeclareMathOperator{\conv}{conv} % convectivion (includes advection and diffusion)
+%
+\let\div\relax                    % \div already def.
+\DeclareMathOperator{\div}{div}   % divergence
+\DeclareMathOperator{\grad}{grad} % gradient
+\DeclareMathOperator{\lap}{lap}   % laplacian
+%
+\newcommand{\imd}{\text{D}_{t}}                        % indexed material derivative
+\newcommand{\xmd}[1]{\dfrac{\text{D}{#1}}{\text{D}t}}  % expanded material derivative
+\newcommand{\exmd}[1]{\dfrac{\text{D}}{\text{D}t}{#1}} % elegant expanded material derivative
+
+% Constants
+%
+\newcommand{\constant}{k}
+\newcommand{\kavogadro}{\constant_\text{av}}  % Avogadro's number
+\newcommand{\kboltzmann}{\constant_\text{bo}} % Boltzmann's constant
+
+% Dim analysis
+%
+%\newcommand{\scpq}[1]{{#1}_{\text{sc}}} % scaling quantity, (characteristic or reference quantity)
+%\newcommand{\dmpq}[1]{\hat{#1}}         % dimensional physical quantity
+%\newcommand{\phdim}[1]{\mathsf{#1}}     % physical dimension
+%%
+\newcommand{\kdim}{\Pi}                    % dimless number
+\newcommand{\ksmall}{\kdim_{\epsilon}}     % small dimless number
+%
+\newcommand{\kknud}{\kdim_\text{kn}}       % knudsen number
+\newcommand{\kmach}{\kdim_\text{ma}}       % mach number
+\newcommand{\kreynolds}{\kdim_\text{re}}   % reynolds number
+\newcommand{\kredrey}{\kdim^{*}_\text{re}} % reduced reynolds number
+\newcommand{\kschmidt}{\kdim_\text{sc}}    % schmidt number

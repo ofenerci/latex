@@ -1,0 +1,39 @@
+\chapter*{First derivative approximation}
+%
+The first derivative can be used to approximate the value of functions. The approximation is done by considering the \lingo{difference quotient}. Let $f\vat x$ be a differentiable function in $x$. Then, the difference quotient is defined as
+%
+\beq
+    f'\vat x \defas \dfrac{f\vat{x + \change x} - f\vat x}{\change x}\,.
+\eeq
+%
+This approximation is called the \lingo{best linear approximation} to $f$ near $x$.
+
+From such an approximation, derive
+%
+\beq
+    f\vat{x + \change x} \sim \change x f'\vat x + f\vat x\,,
+\eeq
+%
+which can be used in approximations, specially when $\change x$ is small compared to $x$.
+
+As an example, estimate the value of $\sin 0.1$. First, since sine is differentiable for all of reals, then $\sin' = \cos$. Next, note that $0.1 = 0.0 + 0.1$. thus, relate $x = 0.0$ and $\change x = 0.1$ and replace such values in the approx equation:
+%
+\beq
+    \sin\vat{0.1} = \sin\vat{0.0 + 0.1} 
+                  \sim 0.1\cdot\cos 0.0 + \sin 0.0
+                  \sim 0.1\,.
+\eeq
+%
+Using a calculator, one finds that $\sin 0.1 \sim 0.099833416646828$. So the approximation error is 0.17\%.
+
+As another example, estimate $\cos 0.1$. One can repeat the last calculation as for the sine, but it's easier to use the periodicity of the cosine in this case:
+%
+\beq
+    \cos\vat{0.1} = \sin\vat{0.1 + \tau/4}
+                  \sim\sin\vat{\tau/4}
+                  \sim 1.0\,,
+\eeq
+%
+where $\tau = 2\pi$. In geometric terms, we have translated the cosine function graph by $\tau/4$, which coincides with the sine function graph.
+
+Using a calculator, one finds $\cos 0.1 \sim 0.995004165278026$.

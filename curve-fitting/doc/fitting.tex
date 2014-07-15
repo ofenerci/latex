@@ -119,7 +119,7 @@ Follow the procedure to fit data:
 %
 Let's revisit the reference exercise, but this time let's apply the procedure to analyze data and then perform regression analysis. 
 
-To give a physical context to the data, assume that the impulse is temperature and the response mass density; \ie, $x$ becomes temperature $\temp/\si{\celsius}$ and $y$ mass density $\dens/\si{kg.cm^{-3}}$.
+To give a physical context to the data, assume that the impulse is temperature and the response mass density; \ie, $x$ becomes temperature $\temp/\si{\celsius}$ and $y$ mass density $\dens/\si{g.cm^{-3}}$.
 
 
 \subsubsection*{Data preprocessing}
@@ -224,12 +224,12 @@ Regression of the data presented in ... results in the model
 \beq
     \dens = \alpha_1 + \dfrac{\alpha_2}{\temp} + \dfrac{\alpha_3}{\temp^2}\,,\quad
             \begin{cases}
-                \alpha_1/\si{kg.cm^{-3}} &= 3.2612306\,,\\
-                \alpha_2/\si{kg.\celsius.cm^{-3}} &= 1.479891434\,,\\
-                \alpha_3/\si{kg.\celsius^2.cm^{-3}} &= 1.72179258678\,,
+                \alpha_1/\si{g.cm^{-3}} &= 3.2612306\,,\\
+                \alpha_2/\si{g.\celsius.cm^{-3}} &= 1.479891434\,,\\
+                \alpha_3/\si{g.\celsius^2.cm^{-3}} &= 1.72179258678\,,
             \end{cases}
 \eeq
-which is valid for $1.3\leq\temp/\si{\celsius}\leq 4.9$ and $3.62\leq\dens/\si{kg.cm^{-3}}\leq 5.42$, with an rms error of 0.001.
+which is valid for $1.3\leq\temp/\si{\celsius}\leq 4.9$ and $3.62\leq\dens/\si{g.cm^{-3}}\leq 5.42$, with an rms error of 0.001.
 
 Finally, the model equation can be presented in dimless form:
 %
@@ -238,7 +238,7 @@ Finally, the model equation can be presented in dimless form:
                 + \dfrac{0.0557}{\bar\temp} 
                 + \dfrac{0.0132}{\bar\temp^2}\quad
     \begin{cases}
-        \bar\dens = \dens/\SI{5.42}{kg.cm^{-3}}\,,\\
+        \bar\dens = \dens/\SI{5.42}{g.cm^{-3}}\,,\\
         \bar\temp = \temp/\SI{4.9}{\celsius}\,,
     \end{cases}
 \eeq

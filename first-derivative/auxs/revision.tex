@@ -1,0 +1,33 @@
+% revision
+% Document revision history
+
+\newcommand{\rhEntry}[3]{{#1} & {#2} & {#3}}        % revision history entry
+\newcommand{\doclastrow}{\rowcolor{superlightgray}} % color for the final version row
+
+\phantomsection\hfill\vfill
+%\thispagestyle{empty}
+
+\chapter*{Document revision history}\label{sec:docrevhist}
+\addcontentsline{toc}{chapter}{Revision history}
+
+The following table describes the changes to \scare{\docTitle}.
+\bigskip
+%
+% ------------------------------------------------------------- Table
+% \rhEntry{ver}{date}{changes}
+%
+\begingroup
+  \begin{center}\footnotesize
+  \begin{tabularx}{\docfloatwidth}{ccX}
+\toprule
+\tabhead{Version} & \tabhead{Date} & {\tabhead{Notes}}\\
+%
+\rhEntry{0.1}{27/12/2013}{Internal release} \\
+\rhEntry{0.2}{27/12/2013}{Corrections in chapter 1} \\
+%
+\doclastrow\docVersion & \docToday & Current release \\
+%
+\bottomrule
+ \end{tabularx}\normalsize
+ \end{center}
+\endgroup

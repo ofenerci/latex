@@ -1,0 +1,52 @@
+\chapter*{Air density}
+%
+Estimate air mass density at IUPAC'S standard temperature and pressure, STP: temperature \SI{273.15}{K} and absolute pressure \SI{100}{kPa}. 
+
+
+\section*{Guesstimation}
+%
+Assume air is a dry, ideal gas composed only of nitrogen. A mol of ideal gas at STP occupies \SI{22.0}{L}, but, since nitrogen is in a gaseous form, \ce{N2}, then two moles of nitrogen occupy \SI{22.0}{L} at STP. The molar mass of nitrogen is \SI{14}{kg/mol}. Then,
+%
+\beq
+    \dens_\mass \sim \dfrac{\SI{14}{g}}{\SI{1}{mol}}
+                     \dfrac{\SI{1}{kg}}{\SI{e3}{g}}
+                     \dfrac{\SI{2}{mol}}{\SI{22.0}{L}}
+                     \dfrac{\SI{e3}{L}}{\SI{1}{m^3}}
+                \sim \SI{1.22767857142854}{kg/m^3}\,,
+\eeq
+%
+which gives our estimate of dry air mass density of \SI{1.23}{kg/m^3}.
+
+
+\section*{Complex estimation}
+%
+Assume air is a dry, ideal gas:
+%
+\beq
+    \press = \dens_\npart\kboltzmann\temp\,,
+\eeq
+%
+where $\press$ represents pressure, $\dens_\npart$ particle number density, $\kboltzmann$ Boltzmann's constant and $\temp$ thermodynamic temperature.
+
+Isolate $\dens_\npart$ to find:
+%
+\beq
+    \dens_\npart = \dfrac{\press}{\kboltzmann\temp}\,,
+\eeq
+
+Replace the numeric values for the STP to have $\dens_\npart \sim \SI{2.652E25}{m^{-3}}$.
+
+Assume air is only nitrogen with molar mass of \SI{0.0280134}{kg/mol}:
+%
+\beq
+    \dens_\mass \sim \dfrac{\num{2.652E25}}{\si{m^3}}
+                     \dfrac{\num{0.0280134}\si{kg}}{\si{mol}}
+                     \dfrac{1\si{mol}}{\num{6.022141e23}}
+                \sim \SI{1.233}{kg.m^{-3}}\,,
+\eeq
+%
+where $\dens_\mass$ represents mass density and \num{6.022141e23} is Avogadro's number, $\kavogadro$.
+
+Thus, the final estimate for air mass density is \SI{1.233}{kg/m^3}.
+
+A search in the web, \citep{wiki:air}, results in \SI{1.2922}{kg/m^3}.
