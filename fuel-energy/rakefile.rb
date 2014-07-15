@@ -7,7 +7,7 @@
 
 require 'rake/clean'
 
-SRC = 'combustion.tex'
+SRC = 'fuel-energy.tex'
 
 COMPILE_SRC_TIMES = 2
 
@@ -53,7 +53,7 @@ end
 desc 'compile latex source to pdf'
 task :tex_to_pdf do
   sh "#{COMPILER} #{COMPILER_FLAGS} #{SRC}"
-  #sh "#{BIBTEX} #{File.basename(SRC, '.tex')}"
+  sh "#{BIBTEX} #{File.basename(SRC, '.tex')}"
   COMPILE_SRC_TIMES.times do sh "#{COMPILER} #{COMPILER_FLAGS} #{SRC}" end
 end
 

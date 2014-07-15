@@ -1,11 +1,46 @@
-\chapter*{Energy of combustion}
+\chapter*{Specific energy of fuels}
 %
-In all of the following, perfect, complete, combustion is assumed.
+\lingo{Specific energy} is the amount of energy stored in a given system or region of space per unit mass. Often only the extractable energy is measured; and thus chemically inaccessible energy, such as rest mass energy, is ignored.
+
+Herein, we estimate specific energy of fuels by analyzing the energy release when burning. In all of the following, we assume complete fuel combustion in oxygen.
 
 
-\section*{Specific energy of combustion in gasoline}
+\section*{Guesstimations}
+
+
+\subsection*{Fuels are fat}
 %
-[Lawrence Weinstein and John A. Adam. Guesstimation. p. 145]
+Food fat burns, so it is a fuel. When it burns, fat releases \ca \SI{40}{kJ/kg}, \citep{wiki:foodenergy}. So, roughly estimate the specific energy of \emph{all} fuels as \SI{50}{kJ/kg}.
+
+
+\subsection*{Average value}
+%
+Find a \emph{typical} specific energy value by averaging the lowest and the highest values of the burning energy spectrum. Choose, for instance, wood ($\sim\SI{20}{kJ/kg}$) and hydrogen ($\sim\SI{150}{kJ/kg}$) as estimators, see \cref{fig:energyspectrum}:
+%
+\beq
+    \ener = \sqrt{\SI{20}{kJ/kg}\times\SI{150}{kJ/kg}} 
+          \sim \SI{54.77}{kJ/kg}\,.
+\eeq
+%
+So, estimate fuel specific energy as \SI{50}{kJ/kg} (consistent with the fuels-are-fat guesstimate).
+%
+% --------------------------------------------------------------- Figure
+%
+% position: bthH. size:width=0.5\textwidth. file:location+filename.pdf
+% caption. label:fig:wec
+% use: \docfloatwidth whenever possible!
+\docfigure{bt}{width=1.1\textwidth}{./graphs/energy-spectrum.pdf}%
+  {Energy spectrum}%
+  {Specific energy and energy density of common fuels, \citep{wiki:energyspectrum}}%
+  {fig:energyspectrum}%
+%
+% ------------------------------------------------------------ EndFigure
+%
+
+
+\section*{Gasoline specific energy}
+%
+In this section, we estimate the gasoline specific energy value using the \lingo{\SI{1.5}{eV/reaction} rule}, \citep{weinstein:2008}.
 
 Unless we are capable of photosynthesis, we get most of our energy from chemical reactions: from eating food and from burning hydrocarbon fuels. In a typical chemical reaction, one electron is exchanged between two atoms. The energy of this exchange is about \SI{1.5}{eV}~\note{~We know this because batteries convert chemical energy to electrical energy. Common batteries provide an electrical potential of \SI{1.5}{V}. Therefore, each single electron flowing through the battery gains an energy of \SI{1.5} {eV} and each coulomb of electricity (a coulomb is a LOT of electrons, $\SI{1}{C} = \SI{6e18}{e}$) flowing through the battery gains an energy of \SI{1.5}{coulomb volts} (or \SI{1.5}{J}).}. If you want more precision than that, ask a chemist or look it up. To convert this to a useful number, we need to know two things:
 %
@@ -45,12 +80,15 @@ Note also that gasoline has a density of about $3/4$ that of water. This is defi
 
 Note that \SI{1}{kg} of TNT contains only \SI{4e6}{J}, which is only 10\% of gasoline. However, the TNT can release that energy MUCH more rapidly.
 
-[Correction: the balanced chemical equation for \ce{CH2} burning is \ce{2CH2 + 3O2 -> 2CO2 + 2H2O}. With this, the number of molecules that are exchanged is 6 (2 carbons and 4 hydrogens, \ce{2CH2}). Then, the energy released is $\SI{1.5}{eV}\cdot 6\sim\SI{9}{eV}$ and, finally, the total energy becomes \SI{6}{MJ/kg}.]
+[Correction: the balanced chemical equation for \ce{CH2} burning is \ce{2CH2 + 3O2 -> 2CO2 + 2H2O}. With this, the number of molecules that are exchanged is 6 (2 carbons and 4 hydrogens, \ce{2CH2}). Then, the energy released is $\SI{1.5}{eV}\cdot 6\sim\SI{9}{eV}$ and, finally, the total energy becomes \SI{60}{MJ/kg}.]
 
 
-\section*{Specific energy of combustion in methane}
+\section*{Methane specific energy}
+%
+In this section, we estimate methane specific energy values by several methods: eV per reaction rule, binding energy and Born-Habern cycle for methane combustion in oxygen.
 
-\subsection*{Guesstimation}
+
+\subsection*{eV per reaction rule}
 %
 When methane burns in oxygen, \ce{CH4 + 2O2 -> CO2 + 2H2O}, one carbon and four hydrogens react, releasing $5\cdot\SI{1.5}{eV}\sim\SI{10}{eV/reaction}$. 
 
@@ -64,12 +102,12 @@ The specific energy of combustion of methane in oxygen is then
 
 Thus, we estimate that burning methane in oxygen will release \SI{50}{MJ/kg}.
 
-On the web~\note{~\url{http://hypertextbook.com/facts/2004/BillyWan.shtml}}, we find that the specific energy of methane ranges from \SIrange{50}{55}{MJ/kg}.
+On the web, \citep{elert:methane}, we find that the specific energy of methane ranges from \SIrange{50}{55}{MJ/kg}.
 
 
-\section*{Binding energy}
+\subsection*{Binding energy}
 %
-[\url{http://www.physics.ohio-state.edu/~wilkins/energy/Resources/Lectures/combenergy-land.html}]
+[Taken from \citep{ohiostate:combustion}]
 
 Combustion produce energy by burning stable (usually) molecule to more stable end products. (Note: \ce{O2} binding energy is zero.)
 
@@ -78,7 +116,7 @@ In combustion: reaction conserves number of each atom species; compute energy pe
 On weight basis, methane produces the most energy.
 
 
-\subsection*{Conserve number of atoms of each element}
+\subsubsection*{Conserve number of atoms of each element}
 %
 Consider methane \ce{CH4} burning in oxygen \ce{O2}: \ce{CH4 + 2 O2 -> CO2 + 2 H2O}.
 
@@ -89,7 +127,7 @@ Note: every molecule in reaction is stable. And yet we get energy. How?
 First we need to define binding energy of a molecule.
 
 
-\subsection*{Binding energy of a molecule}
+\subsubsection*{Binding energy of a molecule}
 %
 Molecular \lingo{binding energy} is difference between energy of molecule and its elements in their most stable state.
 
@@ -100,7 +138,7 @@ Set binding energy zero for most stable oxygen state \ce{O2}. Binding energies o
 Units: \si{kJ/mol}. What is a mol? Standard number of molecules ($\sim\num{6e23}$). Unit eases balancing chemical equations; imagine using \si{kJ/kg}. ($\sim\SI{20}{mol}$ in Dasani [\SI{335}{mL}].)
 
 
-\subsection*{Sample combustion calculation}
+\subsubsection*{Sample combustion calculation}
 %
 Combustion Energy from Methane (\SI{0.016}{kg/mol}):
 %
@@ -108,12 +146,12 @@ Combustion Energy from Methane (\SI{0.016}{kg/mol}):
     \ce{CH4 + 2 O2 -> CO2 + 2 H2O + \text{heat}}\,.
 \eeq
 %
-Looking at thermochemical data for the species (binding energies in \si{kg/mol}), we find that $heat = 394 + 2(242) - 75 = \SI{803}{kJ/mol}$, which yields our estimate for the combustion energy of methane as $\SI{50}{MJ/kg}$.
+Looking at thermochemical data for the species (binding energies in \si{kg/mol}), we find that $\text{heat} = 394 + 2(242) - 75 = \SI{803}{kJ/mol}$, which yields our estimate for the combustion energy of methane as $\SI{50}{MJ/kg}$.
 
 
-\section*{Born-Haber cycle}
+\subsection*{Born-Haber cycle}
 %
-[\url{http://www.elmhurst.edu/~chm/vchembook/512energycombust.html}]
+[Taken from \citep{ophardt:bornhaner}]
 
 The combustion of all fossil fuels follows a very similar reaction:
 %
@@ -136,7 +174,7 @@ A chemical reaction occurs by the rearrangement of atoms and molecules in the re
 % use: \docfloatwidth whenever possible!
 \docfigure{bt}{width=0.9\textwidth}{./graphs/energy-combustion.pdf}%
   {Methane combustion}%
-  {Born-Haber cycle for the combustion of methane in oxygen}%
+  {Born-Haber cycle for the combustion of methane in oxygen. \citep{ophardt:bornhaner}}%
   {fig:bornhabermethane}%
 %
 % ------------------------------------------------------------ EndFigure

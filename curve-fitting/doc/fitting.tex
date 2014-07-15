@@ -1,6 +1,9 @@
 \chapter*{Fitting data by the method of least squares}
+
+
+\section*{Reference exercise}
 %
-[Harold Cohen. Numerical approximation methods, p. 25.]
+[Taken from \citep[p. 25.]{cohen:2010}]
 
 Given $n$ experimental data points $\tuple{x_k, y_k}$ and a \lingo{fitting equation}, \aka model equation, $f\vat{x_k}$ with unknown coefficients $\elset{\alpha_k}$ with $1 \leq k \leq n$, the method of least squares consists on minimizing the \lingo{square of the root mean square, rms, error} 
 %
@@ -39,9 +42,10 @@ $x_k$ & $y_k$ \\
 % ------------------------------------------------------------- EndTable
 
 Begin by defining the model to fit the data:
-\beq
+%
+\begin{equation}\label{eq:fittingequation}
     f\vat x = \alpha_1 + \alpha_2 \dfrac{1}{x} + \alpha_3 \dfrac{1}{x^2}\,.
-\eeq
+\end{equation}
 %
 Then, find the square of the rms error of the model and the data:
 %
@@ -55,9 +59,9 @@ Minimize $e$ with respect to the coefficients $\elset{\alpha_k}$:
 %
 \ipd 1e &= 2\ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,,\\
 %
-\ipd 2e &= 2\dfrac{1}{x_k}\ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,,\\
+\ipd 2e &= 2\ssum{k}{\dfrac{1}{x_k}\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,,\\
 %
-\ipd 3e &= 2\dfrac{1}{x^2_k}\ssum{k}{\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,.
+\ipd 3e &= 2\ssum{k}{\dfrac{1}{x^2_k}\left(\alpha_1 + \alpha_2\dfrac{1}{x_k} + \alpha_3\dfrac{1}{x_k^2} - y_k\right)} = 0\,.
 %
 \end{align*}
 %
@@ -81,3 +85,161 @@ with a fitting error
     e = \sum_{k = 1}^4\left( 3.261 + 1.480\dfrac{1}{x} + 1.722\dfrac{1}{x^2} - y_k\right)^2 
       = 0.001\,. \mqed
 \eeq
+
+
+\section*{Data analysis and regression analysis}
+
+
+\subsection*{Procedure}
+%
+Follow the procedure to fit data:
+%
+\begin{itemize}
+%
+\item plot data to see trends, NaNs, missing values, outliers, \etc. Consider fitting equations if there is not a subjacent theoretical equation for the data;
+%
+\item preprocess data: deal with missing values (interpolation), carefully remove NaNs and outliers, consider filtering and detrending data if appropriate;
+%
+\item summarize data with descriptive statistics;
+%
+\item normalize or standardize data to find more accurate fitting coefficients;
+%
+\item perform regression analysis with the norm. or std. data: find the fitting equation, perform error analysis (correlation coefficients, residuals);
+%
+\item denormalize or destandardize the coefficients and the fitting equation to give them the original dimensions;
+%
+\item analyze dimensions, specially for the fitting equation coefficients; \ie, give context to abstract fitting equations; non-dimensionalyze the results if possible;
+%
+\item present the fitting equation and its coefficients with proper dimensions, limits of applicability and errors. Follow Sonin's advice for result presentation, \cite[p. 23]{sonin:2001}.
+%
+\end{itemize}
+
+
+\subsection*{Example revisited}
+%
+Let's revisit the reference exercise, but this time let's apply the procedure to analyze data and then perform regression analysis. 
+
+To give a physical context to the data, assume that the impulse is temperature and the response mass density; \ie, $x$ becomes temperature $\temp/\si{\celsius}$ and $y$ mass density $\dens/\si{kg.cm^{-3}}$.
+
+
+\subsubsection*{Data preprocessing}
+%
+To begin with, plot the unprocessed data to see trends, NaNs and so on.
+%
+% --------------------------------------------------------------- Figure
+%
+% position: bthH. size:width=0.5\textwidth. file:location+filename.pdf
+% caption. label:fig:wec
+% use: \docfloatwidth whenever possible!
+ \docfigure{bt}{width=1.25\textwidth}{./graphs/raw-data.pdf}%
+   {Raw data}%
+   {Unprocessed experimental data}%
+   {fig:rawdata}%
+%
+% ------------------------------------------------------------ EndFigure
+
+As seen in \cref{fig:rawdata}, there are no NaNs, missing values or outliers. There is no need to filter, nor to detrend data either.
+
+Since there is a \scare{theory} behind data, assume the fitting equation \cref{eq:fittingequation}; \ie,
+%
+\beq
+    \dens\vat\temp = \alpha_1 + \alpha_2 \dfrac{1}{\temp} + \alpha_3 \dfrac{1}{\temp^2}\,.
+\eeq
+
+
+\subsubsection*{Descriptive statistics}
+%
+
+
+\subsubsection*{Data scaling}
+%
+Scale (normalize and non-dimensionalize) data by dividing the values by their maximum; \ie, by dividing temperature values by \SI{4.9}{\celsius} and mass density values by \SI{5.42}{g/cm^3}; \ie, transform data as
+%
+\begin{equation}\label{eq:scalefactors}
+    \bar\temp = \dfrac{\temp}{\temp\txt{max}}\qquad\text{and}\qquad
+    \bar\dens = \dfrac{\dens}{\dens\txt{max}}\,, 
+\end{equation}
+%
+where the bars represent scaled quantities.
+
+The result is presented in ...
+
+
+\subsubsection*{Regression analysis}
+%
+Perform the regression analysis as explained in the \emph{Reference exercise} section with the scaled data to find:
+%
+\beq
+    \bar\alpha_1 = 0.601703\,,\qquad
+    \bar\alpha_2 = 0.055723\qquad\text{and}\qquad
+    \bar\alpha_3 = 0.0132309\,,
+\eeq
+%
+where the bars represent scaled coefficients.
+
+
+\subsubsection*{Rescaling model equation}
+%
+Rescale the model equation by applying the inverse transform of \cref{eq:scalefactors}:
+%
+\beq
+    \dfrac{\dens}{\dens\txt{max}} = \bar\alpha_1 
+                                    + \bar\alpha_2\dfrac{\temp\txt{max}}{\temp} 
+                                    + \bar\alpha_3\dfrac{\temp^2\txt{max}}{\temp^2}\,.
+\eeq
+%
+By rescaling the model, the coefficients become
+%
+\beq
+    \alpha_1 = 3.2612306\,,\qquad
+    \alpha_2 = 1.479891434\qquad\text{and}\qquad
+    \alpha_3 = 1.72179258678\,.
+\eeq
+
+Finally, find the rms error as in table ...
+%
+\beq
+    e = 0.001\,.
+\eeq
+%
+\Cref{fig:crosscheck} depicts a cross check between data and model prediction. The straight line indicates agreement between the two; \ie, the model fits experimental data.
+%
+% --------------------------------------------------------------- Figure
+%
+% position: bthH. size:width=0.5\textwidth. file:location+filename.pdf
+% caption. label:fig:wec
+% use: \docfloatwidth whenever possible!
+ \docfigure{bt}{width=1.25\textwidth}{./graphs/cross-check.pdf}%
+   {Cross-check}%
+   {Cross-check between data and model prediction values}%
+   {fig:crosscheck}%
+%
+% ------------------------------------------------------------ EndFigure
+
+
+\subsubsection*{Results}
+%
+Regression of the data presented in ... results in the model
+%
+\beq
+    \dens = \alpha_1 + \dfrac{\alpha_2}{\temp} + \dfrac{\alpha_3}{\temp^2}\,,\quad
+            \begin{cases}
+                \alpha_1/\si{kg.cm^{-3}} &= 3.2612306\,,\\
+                \alpha_2/\si{kg.\celsius.cm^{-3}} &= 1.479891434\,,\\
+                \alpha_3/\si{kg.\celsius^2.cm^{-3}} &= 1.72179258678\,,
+            \end{cases}
+\eeq
+which is valid for $1.3\leq\temp/\si{\celsius}\leq 4.9$ and $3.62\leq\dens/\si{kg.cm^{-3}}\leq 5.42$, with an rms error of 0.001.
+
+Finally, the model equation can be presented in dimless form:
+%
+\beq
+    {\bar\dens} = 0.602 
+                + \dfrac{0.0557}{\bar\temp} 
+                + \dfrac{0.0132}{\bar\temp^2}\quad
+    \begin{cases}
+        \bar\dens = \dens/\SI{5.42}{kg.cm^{-3}}\,,\\
+        \bar\temp = \temp/\SI{4.9}{\celsius}\,,
+    \end{cases}
+\eeq
+which is valid for $0.265\leq\bar\temp\leq 1.000$ and $0.668\leq\bar\dens\leq 1.0000$, with an rms error of 0.001.
