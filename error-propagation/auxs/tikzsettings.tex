@@ -1,0 +1,84 @@
+% tikzp settings
+% tikzp global settings for graphs
+% copyright 2011 RimbaudCode
+%
+% license: GPLv3+
+
+% >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Color definition
+% See colors already defined in the style file (minion.sty)
+\definecolor{Gray1}{gray}{0.20}% dark gray for graphs
+\definecolor{Gray2}{gray}{0.90}% light grar for grids
+
+% >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> tikset options
+\tikzset{%
+% -------------------------------------------------- Born-Haber diagrams
+% Warning: verify that every style definition ends in a comma (,).
+%          With the exception of the last one
+    % Text
+    description/.style={fill=white,inner sep=2pt,font=\footnotesize},%
+    text height=1.5ex, text depth=0.25ex,%
+    % Enthalpy total change, arrow
+    enthchang/.style={thin,->,shorten >=2pt,shorten <=2pt,>=stealth,%
+    Maroon},% enthalpy change
+    % Enthalpy total change, base
+    enthlevel/.style={line width=1pt},% enthalpy level
+    % Intermediate steps, arrow
+    stepentchan/.style={%
+       ->,shorten >=0pt,shorten <=2pt,>=stealth,% step enthalpy change
+       Gray1,font=\small,%
+    },%
+    % Intermediate steps, base
+    stepentlevel/.style={thin},% step enthalpy level
+    % Lattice energy (enthalpy)
+    lattenergy/.style={thick,->>,shorten >=2pt,shorten <=2pt,>=stealth,%
+      font=\scriptsize,Maroon},%
+    % Formation enthalpy
+    formenth/.style={thick,->>,shorten >=2pt,shorten <=2pt,>=stealth,%
+      font=\scriptsize,Maroon},%
+    % Circles
+    productcircle/.style={circle,draw=Maroon,fill=Maroon!10,thick},%
+% ------------------------------------------------------------ X-Y Plots
+   % Grids
+   gridlines/.style={very thin,color=Gray2},%
+   % x-y axis
+   axismain/.style={thick,->,shorten >=2pt,shorten <=2pt,>=stealth},%
+   % x axis only
+   xaxismain/.style={thin,-,color=halfgray},%
+   % auto x-y axis, for pgf plots
+   autoaxismain/.style={thick,-},%
+   % x-y ticks: major and minor
+   axistick/.style={thin,color=Gray2,-},%
+   % x axis only ticks: major and minor
+   xaxistick/.style={thin,color=Gray1,-},%
+   % text for marks (a la Prins!)
+   textformarks/.style={mark size=0pt,thick,-,font=\small,color=black,%
+     anchor=north},%
+   % text for ticks
+   textforticks/.style={mark size=0pt,thick,-,%
+     font=\scriptsize,color=Gray1,anchor=north},%
+% --------------------------------------------------- Multiple X-Y Plots
+   % Dots (marks)
+   onegraph/.style={mark=*,color=Gray1,xshift=0cm},%
+   firstgraph/.style={mark=*,color=Gray1,xshift=0cm},%
+   secgraph/.style={mark=*,color=Gray2,xshift=0cm},%
+   xonlygraph/.style={mark=*,color=Maroon,xshift=0cm},%
+% ----------------------------------------------------- Feynman diagrams
+    photon/.style={decorate, decoration={snake}, draw=Maroon},%
+    snake/.style={%
+    ->,shorten >=0pt,shorten <=2pt,>=stealth,%
+    decorate,%
+    decoration={snake,amplitude=0.3mm,segment length=2mm,%
+    },%
+    Gray1,font=\small,%
+    },%
+    electron/.style={draw=blue, postaction={decorate},%
+        decoration={markings,mark=at position .55 with %
+        {\arrow[draw=RoyalBlue4]{>}}}},%
+    gluon/.style={decorate, draw=magenta,%
+        decoration={coil,amplitude=4pt, segment length=5pt}}% no comma at end
+% ------------------------------
+}% end tikyset
+
+% --------------------------------------------------------------- Shades
+\pgfdeclarehorizontalshading{hotfuel}{1cm}{color(0cm)=(blue);%
+  color(0.5cm)=(yellow); color(1cm)=(orange); color(1.5cm)=(red)}%

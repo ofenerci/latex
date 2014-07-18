@@ -1,0 +1,27 @@
+% title page
+% According to the Chicago Manual of Style. 15th ed.
+
+\begingroup
+\begin{titlepage}
+\begin{center}
+  {\large\spacedallcaps{\docTitle}} \\ \bigskip
+  {\large\color{darkergray}\oldlig{\docSubtitle} \\ \bigskip}
+  {\large\color{darkgray}\spacedlowsmallcaps{\docAuthor}}
+  \vfill
+
+\begin{tabular}{cl}
+\multirow{3}{*}{\includegraphics[height=2.0cm]{./graphs/simurgh-logo.pdf}} 
+%
+&
+{{\Large\raggedright\sc\MakeLowercase\docCompanyFull}}\\
+%
+& {\color{darkergray}{\large\raggedright\oldlig{\docAddress}}}\\
+%
+& {\color{darkergray}{\large\raggedright\oldlig{\docCityCode}}}\\
+%
+& {{\color{darkgray}\large\raggedright\docyear\today}}\\
+\end{tabular}
+
+\end{center}
+\end{titlepage}
+\endgroup
