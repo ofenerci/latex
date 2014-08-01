@@ -8,7 +8,7 @@
 
 \section*{Description}
 %
-Consider the quantities $a_k$s, with measured values $\mvalue a_k$s and measured uncertainty $\muncer a_k$s, and the quantities $b_l$s, with sample mean values $\smean b_l$s and sample standard deviations $\sstdev_{b_l}$s; \ie, the $\mvalue a_k$s arise from single measurements and the $\smean b_l$s from multiple measurements. Consider now a function $f$ that depends on the $a_k$s and on the $a_l$s. Then, the most likely value of $f$ is given by
+Consider the quantities $a_k$s, with measured values $\mvalue a_k$s and measured uncertainty $\muncer a_k$s, and the quantities $b_l$s, with sample mean values $\smean b_l$s and sample standard deviations $\sstdev_{b_l}$s; \ie, the $\mvalue a_k$s arise from single measurements and the $\smean b_l$s from multiple measurements. Consider now a function $f$ that depends on the $a_k$s and on the $b_l$s. Then, the most likely value of $f$ is given by
 %
 \beq
     \mvalue y = f\vat{\mvalue a_k, \smean b_l}\,,
@@ -38,7 +38,7 @@ where $\grav$ represents the local free fall acceleration.
 From the pendulum equation, isolate $\grav$ to have
 %
 \beq
-    \grav = 4\pi^2\dfrac{\length}{\period}\,.
+    \grav = 4\pi^2\dfrac{\length}{\period^2}\,.
 \eeq
 
 Then, the max uncertainty of $\grav$ is
@@ -57,7 +57,7 @@ Divide the last equation by the equation for $\grav$ to have the relative uncert
 Replace the given values in the $\grav$ equation and in the equation for its relative uncertainty to find
 %
 \begin{align*}
-    \grav &= 4\pi^2\dfrac{\length}{\period} 
+    \grav &= 4\pi^2\dfrac{\length}{\period^2} 
           = 4\pi^2\dfrac{1.00}{2.0062^2}
           = 9.808696222936447\,,\\
 %
