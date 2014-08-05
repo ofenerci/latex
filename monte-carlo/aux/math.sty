@@ -1,0 +1,54 @@
+% math
+% math commands, environments and macros
+
+\ProvidesPackage{aux/math}[05/08/2014 math macros and commands (rimbaudcode)]
+
+%%% General
+%
+\providecommand*{\defas}{\doteq} % is defined as
+%
+\def\beq{\begin{equation*}} %
+\def\eeq{\end{equation*}}   %
+%
+\providecommand*{\txt}[1]{_\text{#1}} % subscript text in math mode
+
+%%% Sets
+%
+\providecommand*{\propset}[2]{\lbrace{#1}\,:\,{#2}\rbrace} % set with property
+\providecommand*{\elset}[1]{\left\lbrace{#1}\right\rbrace} % elements of a set
+\providecommand*{\tuple}[1]{\left({#1}\right)}             %
+\providecommand*{\vat}[1]{\left[{#1}\right]}               % value (of a function) at a point
+
+%%% Intervals
+%
+\providecommand{\ccint}[2]{\left[{#1},{#2}\right]} % closed-closed interval
+
+%%% Calculus
+%
+\providecommand*{\bseq}[4]{\left[{#1}_{#2}\right]_{#3}^{#4}} % bounded sequence
+%
+\providecommand*{\Dx}{\triangle} % difference
+\providecommand*{\dx}{\text{d}}  % ordinary differencial
+\providecommand*{\pdx}{\partial} % partial differencial
+%
+% Index notation
+%
+\providecommand*{\iod}[1]{\dx_{#1}} % index ordinary derivative
+\providecommand*{\ipd}[1]{\pdx_{#1}} % index partial derivative
+
+%%% Probability
+%
+\providecommand*{\stddev}{\sigma} % std deviation
+\providecommand*{\unc}{u}         % uncertainty
+\DeclareMathOperator{\var}{var}   % variance
+
+%%% Sums
+%
+\providecommand*{\ssum}[2]{\sum_{#1}{#2}}                % short sum
+\providecommand*{\lsum}[3]{\sum_{#1}^{#2}{#3}}           % long sum
+\providecommand*{\ivsum}[3]{\sum_{#1}{#2}\,\iverson{#3}} % iverson sum
+
+%%% Other
+%
+\providecommand*{\mean}[1]{\bar{#1}}                     % mean value
+\providecommand*{\iverson}[1]{\left[#1\right]_\text{iv}} % iverson brackets

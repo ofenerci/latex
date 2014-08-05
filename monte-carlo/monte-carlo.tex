@@ -1,0 +1,45 @@
+\RequirePackage{fix-cm}                % fixes cm calcs
+\RequirePackage{fixltx2e}              % fixes some LaTeX stuff
+\RequirePackage[l2tabu, orthodox]{nag} % old packages checker
+
+\documentclass[twoside=false, open=right, titlepage, numbers=noenddot, 
+               headinclude, fontsize=10pt, paper=a4, footinclude, 
+               abstract=off, cleardoublepage=empty]{scrreprt}
+
+\input{aux/docinfo}
+\RequirePackage{aux/minionstyle}
+\RequirePackage{aux/preambule}
+\RequirePackage{aux/lingo}
+\RequirePackage{aux/math}
+%\RequirePackage{aux/physics}
+
+\hyphenation{non-dimen-sion-a-lize}
+
+\begin{document}
+
+  \frenchspacing
+  \pagenumbering{arabic}
+  \pagestyle{plain}
+  %\include{aux/halftitle}
+  %\include{aux/title}
+  %\include{aux/copyright}
+  \pagestyle{scrheadings}
+  %\tableofcontents
+  %\addcontentsline{toc}{chapter}{Contents}
+
+  %\include{doc/summary}
+  \include{doc/monte-carlo}
+
+  \phantomsection
+  \bibliographystyle{aipnum4-1}\label{biblio}
+  \addcontentsline{toc}{chapter}{References}
+  \renewcommand{\bibname}{References}
+  \bibliography{doc/references}
+
+  \appendix
+  \include{doc/code}
+  %\include{doc/quotes}
+
+  %\include{aux/revision} % Update!
+
+\end{document}
