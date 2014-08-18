@@ -1,0 +1,218 @@
+% preambule
+% general commands, environments and macros
+
+\ProvidesPackage{aux/preambule}[05/08/2014 preambule macros and commands (rimbaudcode)]
+
+% margin notes
+%
+\DeclareRobustCommand{\mgraffito}[1]
+{
+  \marginnote{{
+      \begingroup
+      %\rm\sffamily % roman sans serif
+      \footnotesize %\small%
+      \ifodd\thepage\raggedright\else\raggedleft\fi
+      \parindent=0pt\lineskip=0pt\lineskiplimit=0pt %\baselineskip=10pt
+      \tolerance=2000\hyphenpenalty=300\exhyphenpenalty=300
+      \doublehyphendemerits=100000
+      \finalhyphendemerits=\doublehyphendemerits
+      \color{\docdivisioncolor}                     % graffito in graffit color?
+      \hspace{0pt}{#1}
+      \endgroup
+      }}
+}
+
+% mgraffito with smaller space between lines
+%
+%\setlength{\marginparwidth}{1.2in}
+%\let\oldmarginpar\marginpar
+%\providecommand*\mgraffito[1]{\-\oldmarginpar[\color{halfgray}\raggedleft
+%  \footnotesize #1]%
+%{\color{halfgray}\raggedright\footnotesize #1}}
+
+% epigraph
+%\docepigraph{Text}{Author}{Source}
+%
+\providecommand*{\docepigraph}[3]
+{
+\makeatletter
+  \begingroup\vspace{0.5cm}
+    \begin{flushright}
+      \begin{minipage}[H]{0.9\linewidth}
+        \small\textsf{#1}% text...quote
+        \begin{flushright}
+          % author, reference
+          {--- \scshape\MakeLowercase{#2}}, {\scshape\MakeLowercase{#3}}
+        \end{flushright}
+      \end{minipage}
+    \end{flushright}
+  \endgroup\vspace{0.5cm}
+\makeatother
+}
+
+% Equations
+%
+\def\beq{\begin{equation*}}%
+\def\eeq{\end{equation*}}%
+
+% Majuscules and minuscules, old ligatures
+%
+\providecommand*{\mayus}[1]{{\spacedallcaps{#1}}}
+\providecommand*{\minus}[1]{{\spacedlowsmallcaps{#1}}}
+%
+\providecommand*{\oldlig}[1]%
+{%
+  {%
+  \fontspec[Ligatures=Rare]{MinionPro-Regular}%
+  \textit{% only noticeable with italics
+     {#1}%
+   }}%
+}%
+
+%%% Floats
+%
+% Floats width
+%
+\providecommand*{\docfloatwidth}{0.95\textwidth}%
+
+% Table headline
+%
+\providecommand*{\tabhead}[1]{{\spacedlowsmallcaps{#1}}}%
+
+% Table element centered
+%
+\providecommand*{\TEC}[1]{\multicolumn{1}{c}{#1}}%
+
+% ------------------------------------------------------------- PreTable
+% \docpretable{position}{size}{cols}%
+% position: bthH. size: 0.9\textwidth. cols: llcp{6mm}
+% use: \docfloatwidth whenever possible!
+% NOTE: does not include \toprule
+\providecommand*{\docpretable}[3]{%
+    \begin{table}[#1]%
+      \capstart
+      \begin{center}
+        \footnotesize%
+        \begin{tabularx}{#2}{#3}%
+      \end{center}
+}%
+
+% ------------------------------------------------------------ PostTable
+% \end{tabularx}
+% \docposttable{caption}{caption}{label}
+% include: \end{tabularx}%
+\providecommand*{\docposttable}[3]{%
+% \end{tabularx}%
+      \normalsize\caption[#1]{#2}\label{#3}%
+    \end{table}%
+}%
+% ------------------------------------------------------------- EndTable
+
+% --------------------------------------------------------------- Figure
+%
+% position: bthH. size:width=0.5\textwidth. file:location+filename.pdf
+% caption. label:fig:wec
+% use: \docfloatwidth whenever possible!
+% \docfigure{position}{size}{file}%
+%   {caption}%
+%   {caption}%
+%   {label}%
+\providecommand*{\docfigure}[6]{%
+    \begin{figure}[#1]%
+      \capstart
+        \begin{center}
+          \includegraphics[#2]{#3}
+        \end{center}
+      \caption[#4]{#5}%
+    \label{#6}%
+\end{figure}%
+}% end figure
+%
+% ------------------------------------------------------------ EndFigure
+
+%%% Versions
+%
+% preliminary version
+% change copyrightpage
+%
+\renewcommand*{\PrelimWords}{\relax}
+\renewcommand*{\PrelimText}
+{{\texttt\footnotesize\color{halfgray}[\,v.\docVersion\xspace\thistime\xspace\docToday\,]}}
+
+% final version
+%
+%\renewcommand*{\PrelimWords}{\relax}%
+%\renewcommand*{\PrelimText}{\relax}%
+
+%%% Configs
+%
+% Listings
+\lstset{language=Ruby, basicstyle=\footnotesize\ttfamily,breaklines=true}
+
+% siunitx setup
+%
+\sisetup{
+  input-symbols = \pi\tau,
+  exponent-product = \cdot  % use cdot instead of times in sci notation
+}
+
+% Hypersetup
+%
+\hypersetup
+{
+  colorlinks=true,
+  linktocpage=true,
+  pdfstartpage=1,                                        % 3 for Books and 1 for Reports (3 default)
+  pdfstartview=FitPage,                                  % FitH=fit height, default=FitV=fit Vertical
+  breaklinks=true, pdfpagemode=UseNone, pageanchor=true,
+  pdfpagemode=UseOutlines,
+  plainpages=false, bookmarksnumbered, bookmarksopen=true,
+  bookmarksopenlevel=1,
+  hypertexnames=true, pdfhighlight=/O,
+  %
+  urlcolor= \doclinkcolor, 
+  linkcolor= \doclinkcolor,
+  citecolor= \doclinkcolor,
+  %
+  pdftitle={\docTitle, \docSubtitle},
+  pdfauthor={\docAuthor},
+  pdfsubject={\docCompany},
+  pdfkeywords={\docKeywords},
+  pdfcreator={XeLaTeX with package hyperref},
+  pdfproducer={XeLaTeX with hyperref and modified classicthesis}
+}
+
+% After Hypersetup
+%
+% Glossaries
+%
+%\RequirePackage[all]{hypcap}%
+%\RequirePackage[toc,hyperfirst=true,acronym]{glossaries}%
+%\makeindex% when acronym option in glossaries package is used
+
+% New glossary: Notation
+%
+%\newglossary[nlg]{notation}{not}{ntn}{Notation}%
+%\makeglossaries%
+
+% Bibliography back references: After hyperref
+%
+% Style of the backrefs from the bibliography
+% setup the style of the backrefs from the bibliography
+%
+%\providecommand*{\backrefnotcitedstring}{\relax}%(Not cited.)
+%\providecommand*{\backrefcitedsinglestring}[1]{{\small(Cited p.~#1.)}}%
+%\providecommand*{\backrefcitedmultistring}[1]{{\small(Cited pp.~#1.)}}%
+% 
+%\RequirePackage[hyperpageref]{backref} %   to be loaded after hyperref package
+%   \renewcommand*{\backreftwosep}{ and~} %  seperate 2 pages
+%   \renewcommand*{\backreflastsep}{, and~}% seperate last of longer list
+%   \renewcommand**{\backref}[1]{}%          Disable standard
+%   \renewcommand**{\backrefalt}[4]{%        Detailed backref
+%      \ifcase #1 %
+%         \backrefnotcitedstring%
+%      \or%
+%         \backrefcitedsinglestring{#2}%
+%      \else%
+%         \backrefcitedmultistring{#2}%
+%      \fi}%

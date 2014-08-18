@@ -1,0 +1,41 @@
+% physics
+% physics commands, environments and macros
+
+\ProvidesPackage{aux/physics}[05/08/2014 physics macros and commands (rimbaudcode)]
+
+%%% Mechanics
+%
+% Kinematics
+%
+\providecommand*{\pos}{q} % position
+\providecommand*{\vel}{v} % velocity
+\providecommand*{\acc}{a} % acceleration
+%
+% Dynamics
+%
+\providecommand*{\force}{f} % force
+\providecommand*{\ener}{e}  % energy
+\providecommand*{\mass}{m}  % mass
+\providecommand*{\mom}{p}   % linear momentum
+%
+\providecommand*{\amom}{\phi} % angular momentum
+\providecommand*{\tork}{\tau} % torque
+%
+% Lagrangian mechanics
+%
+\providecommand*{\action}{\aleph}      % action
+\providecommand*{\gmom}{p}             % generalized momentum
+\providecommand*{\gpos}{q}             % generalized position
+\providecommand*{\gvel}{\dt\gpos}      % generalized velocity
+\providecommand*{\elag}{\ener\txt{la}} % lagrangian
+%
+\providecommand*{\vpos}{\epsilon} % variational position
+
+%%% Eng notation (Cartesian coordinates)
+%
+\providecommand*{\xpos}{x} % x-position
+
+
+%%% Dimensional analysis
+%
+\providecommand*{\phdim}[1]{\mathsf{#1}} % physical dimension

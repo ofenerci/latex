@@ -1,0 +1,114 @@
+\chapter{Lagrangian mechanics}
+%
+[Based upon \citep{tong:2004}]
+
+
+\section{Newton's Laws of Motion}
+%
+\subsection{Introduction}
+%
+Newton's \book{Principia} sums up the fundamental principles of classical mechanics based on previous knowledge and his ideas. A particle's motion, for instance, can be found applying Newton's \lingo{three laws of motion}. These laws and the motto \fact{focus on forces} started a whole program of research for future scientists.
+%
+\mnote{Newton's second law of motion: give me a particle, tell me the forces applied on it and I'll tell you how it moves.}
+%
+Newton's method for finding particles' motion is:
+%
+\begin{itemize}
+%
+\item given a collection of particles, acted upon by a collection of forces, draw a nice diagram, with the particles as points and the forces as arrows;
+%
+\item added up the forces and 
+%
+\item apply Newton's famous $\force = \mass\acc$ to figure out where the particle's velocities are heading next. 
+%
+\end{itemize}
+
+Post Newtonian researchers found out Newton's method unsatisfactory, since
+%
+\begin{itemize}
+%
+\item it's messy and inelegant; 
+%
+\item it's hard to model extended objects, rather than point particles; 
+%
+\item it obscures certain features of dynamics -- chaos theory took over 200 years to discover -- and 
+%
+\item it's unclear the relationship between Newton's classical laws and quantum physics.
+%
+\end{itemize}
+
+To resolve these issues, modelers established a new formalism that brought new perspectives on Newton's ideas by reformulating them using more powerful techniques.
+%
+\mnote{Better techniques result into an immediate practical advantage to quantify certain complicated phenomena with relative ease.}
+%
+Simultaneously, such a formalism provides an elegant viewpoint that reveals the basic principles underling Newton's familiar laws of motion: it pries open $\force = \mass\acc$ to reveal the structures and symmetries that lie beneath.
+
+Moreover, the formalism has become the basis for \emph{all} of fundamental modern physics. Every theory of Nature is best described in the newly developed language. Finally, it also provides the bridge between the classical and the quantum world.
+
+However, there are phenomena in Nature for which these formalism is not particularly useful: \lingo{dissipative systems}, for example, are not so well suited to these new techniques.
+
+
+\subsection{Newtonian mechanics: single particle}
+%
+\lingo{Particle}: an object of insignificant size; \eg, an electron, a tennis ball or a planet. The validity of this statement depends on the context: to a first approximation, the earth can be treated as a particle when computing its orbit around the sun. But if you want to understand its spin, it must be treated as an extended object.
+
+The motion of a particle of \lingo{mass} $\mass$ at the \lingo{position} $\pos$ is modeled by \lingo{Newton's Second Law}:
+%
+\begin{equation}\label{eq:newtonsecondlaw}
+  \force = \dt\mom\,,
+\end{equation}
+%
+wherein $\force = \force\vat{\pos,\dt\pos}$ represents the \lingo{force} that, in general, can depend on both the position $\pos$ and the velocity $\dt\pos$
+%
+\mnote{friction forces depend on velocity.}
+%
+and $\mom = \mass\dt\pos$ represents the \lingo{momentum}. \Cref{eq:newtonsecondlaw} reduces to $\force = \mass\acc$ when mass is constant, $\dx\mass = 0$.
+
+\emph{The goal of classical dynamics}: given positions and velocities at an initial time $t = t_0$, integrate \cref{eq:newtonsecondlaw} to determine $\pos\vat t$ for all $t$, as long as $\force$ remains finite. 
+
+\Cref{eq:newtonsecondlaw} holds only in an \lingo{inertial frame}: a frame where a \lingo{free particle} with constant mass travels in a straight line:
+%
+\mnote{free particle: particle subject to no force}
+%
+\begin{equation}\label{eq:straightlinemotion}
+  \pos = \pos_0 + \vel t\,.
+\end{equation}
+%
+\lingo{Newton's first law} states that such frames exist.
+
+An inertial frame is \emph{not} unique: there are an infinite number of inertial frames. Let $\frm$ be an inertial frame. Then, there are ten \lingo{linearly independent transformations} $\frm\to\frm'$ such that $\frm'$ is also an inertial frame; \ie, if \cref{eq:straightlinemotion} holds in $\frm$, then it also holds in $\frm'$. These are
+%
+\begin{itemize}
+%
+\item three rotations: $\pos' = O\pos$, where $O$ is a $3\cprod 3$ orthogonal matrix;
+%
+\item three spatial translations: $\pos' = \pos + \pos_k$, for a constant position $\pos_k$;
+%
+\item three boosts: $\pos' = \pos + \vel_k t$, for a constant velocity $\vel_k$;
+%
+\item one time translation: $t' = t + t_k$, for a constant time $t_k$.
+%
+\end{itemize}
+%
+%If motion is uniform in $\frame$, it will also be uniform in $\frame'$. These transformations make up the \lingo{Galilean Group} under which Newton's laws are \lingo{invariant}.
+%
+\mnote{Invariant: if you have a particle moving in a straight line and apply any or all of the transformations to \cref{eq:straightlinemotion}, then you end up with a particle also moving in a straight line.}
+%
+They will be important later, where we will see that these symmetries of space and time are the underlying reason for conservation laws. 
+
+As a parenthetical remark, recall from special relativity that \lingo{Einstein's laws of motion} are invariant under \lingo{Lorentz transformations}, which, together with translations, make up the \lingo{Poincaré group}. We can recover the Galilean group from the Poincaré group by taking the speed of light to infinity.
+
+
+\subsubsection{Angular momentum}
+%
+We define the angular momentum $\amom$ of a particle and the torque $\tork$ acting upon it as
+%
+\begin{equation}\label{eq:amomandtork}
+  \amom = \pos\cprod\mom 
+  \qquad\text{and}\qquad
+  \tork = \pos\cprod\force
+\end{equation}
+
+Note that, unlike linear momentum, both $\amom$ and $\tork$ depend on where we take the origin: \emph{we measure angular momentum with respect to a particular point}.
+
+

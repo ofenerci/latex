@@ -11,7 +11,7 @@ Consider a \lingo{sequence} of numbers $a = \bseq ak1n$. The \lingo{average valu
   \mean a = \dfrac{1}{n}\ssum k a_k\,.
 \eeq
 %
-Apply the same concept to find \emph{function} average values.
+By analogy, extend this idea to find \emph{function} average values.
 
 
 \section*{Average value of a function}
@@ -24,13 +24,13 @@ Consider a function $f$ integrable over the interval $a\leq x\leq b$. Then, esti
 %
 Note that, as $n$ increases, the estimate improves -- a hint to work with calculus.
 
-To begin with, multiply and divide the last equation by $\Dx x$, then use $n\Dx x = \left(b - a\right)$ to have
+Multiply and divide thus the last equation by $\Dx x$, then use $n\Dx x = \left(b - a\right)$ to have
 %
 \beq
   \mean f\txt{est} = \dfrac{1}{b - a}\ssum k f\vat{x_k}\Dx x\,.
 \eeq
 %
-Calculate next the average value of $f$ by taking the limit of the last equation:
+Calculate next the average value of $f$ by taking the limit of the last equation, provided such a limit exists:
 %
 \beq
   \mean f = \dfrac{1}{b - a}\lim_{n\to\infty}\lsum{k = 1}{n} f\vat{x_k}\Dx x
@@ -43,36 +43,42 @@ Finally, define the \lingo{average value} of a function $f$ integrable over the 
   \mean f \defas \dfrac{1}{b - a}\int_i f\,;
 \eeq
 %
-that is, the average value of an integrable function over an interval equals the integral of the function divided by the size of the interval.
+that is, \definition{the average value of a function over an interval equals the integral of the function divided by the size of the interval}.
 
 
 \section*{Monte-Carlo integration}
 %
 \lingo{Monte-Carlo integration} is a procedure to estimate a value for the integral of a function over an interval not by partitioning the interval and picking values at the subintervals, but by \lingo{randomly} picking numbers within the whole interval and with them calculating function values. The process of picking random numbers within the interval is called \lingo{random sampling}.
 
+The process is the inverse to that of finding the average value using integration. In Monte-Carlo integration, the average value of a function is estimated first and then the value of the integral estimated by
+%
+\beq
+  \int_i f = \mean f\left(b - a\right)\,.
+\eeq
+%
+This procedure is formalized as follows.
+
 
 \subsection*{Integration}
 %
-Suppose we wish to estimate the value of the integral $l = \int_i f$, where $f$ represents an integrable function over the interval $i = \ccint ab$.
+Suppose we wish to estimate the value of the integral $l = \int_{\ccint ab} f$ of a function $f$.
 
-First, \emph{randomly} choose $n$ points $\elset{x_k}$ within $a\leq x\leq b$ and use these to estimate the average value of $f$
+First, \emph{randomly} choose $n$ points $\elset{x_k}$ within $a\leq x\leq b$, use these to calculate the values of $f$, $\elset{f\vat{x_k}}$ and then estimate the average value of $f$:
 %
 \beq
   \mean f\txt{est} = \dfrac{1}{n}\lsum{k = 1}{n}{f\vat{x_k}}
 \eeq
 %
-then, an estimate for the value of the integral becomes
+Estimate finally the value of the integral as
 %
 \beq
   l\txt{est} = \left(b - a\right)\mean f\txt{est}\,.
 \eeq
-%
-This is Monte-Carlo integration.
 
 
 \subsection*{Integration uncertainty}
 %
-The \lingo{central limit theorem} of probability theory gives an estimate for the \lingo{uncertainty} in Monte-Carlo integration. 
+The \lingo{central limit theorem} of probability theory provides with an estimate for the \lingo{uncertainty} in Monte-Carlo integration. 
 
 Suppose the average value of a function $f$ is estimated by random sampling $n$ numbers, \aka the \lingo{sample size},
 %
@@ -94,7 +100,7 @@ Measure the uncertainty $\unc$ by the standard deviation:
   u = \dfrac{\stddev}{\sqrt{n}}\,.
 \eeq
 
-Note that the uncertainty goes to zero like $1/\sqrt{n}$\,; \ie, for example, to decrease the uncertainty by a factor of 1000, increase the sample size by a factor of 1000000.
+Note that the uncertainty goes to zero like $1/\sqrt{n}$\,; \ie, for example, to decrease the uncertainty by a factor of \num{1000}, increase the sample size by a factor of \num{1000000}.
 
 
 \subsection*{Example}
@@ -107,5 +113,5 @@ Estimate the value of the integral~\nbene{The reference value is $\left(1 - \exp
 %
 where $\tau\defas 2\pi$.
 
-With the aid of computer generated (pseudo) random numbers (see \cref{app:code} for details), it was possible to estimate the value of the integral and its uncertainty as \num{0.49819 +- 0.00037} with a sample size of \num{100000}. The result of the Monte-Carlo integration differs in 0.2\% from the reference value of \num{0.4990663}.
+With the aid of computer generated (pseudo) random numbers (see \cref{app:code} for the computer source code), it was possible to estimate the value of the integral and its uncertainty as \num{0.49819 +- 0.00037}, for a sample size of \num{100000}. The result of the Monte-Carlo integration differs in 0.20\% from the reference value of \num{0.4990663}.
 

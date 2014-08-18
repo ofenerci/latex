@@ -51,7 +51,9 @@ task :sanity_checks do
 end
 
 desc 'compile latex source to pdf'
-task :tex_to_pdf do 
+task :tex_to_pdf do
+  sh "#{COMPILER} #{COMPILER_FLAGS} #{SRC}"
+  sh "#{BIBTEX} #{File.basename(SRC, '.tex')}"
   COMPILE_SRC_TIMES.times do sh "#{COMPILER} #{COMPILER_FLAGS} #{SRC}" end
 end
 
@@ -60,9 +62,9 @@ task :open do
   sh "#{VIEWER} #{OUTPUT_PDF}"
 end
 
-CLEAN.include('**/*.aux', '*.bbl', '*.blg', '*.bak', '*.log', '*~', 
-'*.acn', '*.glo', '*.ist', '*.lof', '*.lot', '*.ntn', '*.toc', '*.idx', 
-'*.out', '*.acr', '*.bbl', '*.blg', '*.brf', '*.gls', '*.not', '*.nav', 
+CLEAN.include('**/*.aux', '*.bak', '*.log', '*~', '*.acn', '*.glo', 
+'*.ist', '*.lof', '*.lot', '*.ntn', '*.toc', '*.idx', '*.out', '*.acr', 
+'*.bbl', '*.blg', '*.brf', '*.gls', '*.not', '*.nav', 
 '*.snm', '*.gz', '*.synctex.gz*')
 
 CLOBBER.include("#{OUTPUT_PDF}")

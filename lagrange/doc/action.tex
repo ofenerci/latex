@@ -1,0 +1,125 @@
+\chapter{\docTitle: \docSubtitle}
+%
+\docepigraph{Nature is thrifty in all its actions.}{Maupertuis}{\citep{leastaction:wiki}}
+%
+\docepigraph{Since the fabric of the universe is most perfect and the work of a most wise Creator, nothing at all takes place in the universe in which some rule of maximum or minimum does not appear.}{Euler}{\citep{euler:wikiquote}}
+%
+\docepigraph{The laws of movement and of rest deduced from this principle being precisely the same as those observed in nature, we can admire the application of it to all phenomena. The movement of animals, the vegetative growth of plants ... are only its consequences; and the spectacle of the universe becomes so much the grander, so much more beautiful, the worthier of its Author, wen one knows that a small number of laws, most wisely established, suffice for all movements.}
+{Maupertuis}
+{\citep{leastaction:wiki}}
+
+
+\section{Action}
+%
+[Section taken from \citep{action:wiki}]
+
+\lingo{Action}, $\action$, is an attribute of a dynamical physical system. It is represented by a mathematical functional that takes the \lingo{system trajectory}
+%
+\mnote{system trajectory, \aka system path or system history}
+%
+as its argument and results in a real number. Generally, the action takes different values for different paths. Action has the dimensions of $\phdim E\phdim T$.
+
+
+\subsection{Notation}
+%
+The symbol to represent physical action was chosen after a Borge's story: The Aleph \citep{borges:wiki}. In Borges' story, the Aleph is a point in space that contains all other points. Anyone who gazes into it can see everything in the universe from every angle simultaneously, without distortion, overlapping or confusion.
+
+Aleph or Alef, $\aleph$, is the first letter of the Hebrew alphabet and the number 1 in Hebrew. Its esoteric meaning in Judaic Kabbalah, as denoted in the theological treatise \lingform{Sefer-ha-Bahir}, relates to the origin of the universe, the \scare{primordial one that contains all numbers}. The aleph is also the first letter of the Arabic alphabet, as well as the Phoenician, Aramaic and Syriac alphabets. Aleph is also the first letter of the Persian alphabet. [\dots] In mathematics, aleph numbers denote the cardinality (or size) of infinite sets. This relates to the theme of infinity present in Borges's story. [\dots] The aleph also recalls the \lingo{monad} as conceptualized by Gottfried Wilhelm Leibniz, the 17th-century philosopher and mathematician. Just as Borges's aleph registers the traces of everything else in the universe, so Leibniz's monad is a mirror onto every other object of the world \citep{borges:wiki}.
+
+
+\section{Introduction}
+%
+Classical mechanics postulates that \fact{the actual path followed by a physical system is that for which the action is minimized or, more generally, is \emph{stationary}}; \ie, the action satisfies a variational principle: the \lingo{principle of stationary action}. The action is defined by an integral; the classical equations of motion of a system can be \emph{derived} by minimizing the value of that integral.
+
+This simple principle provides deep insights into physics and is an important concept in modern theoretical physics.
+The equivalence of these two approaches is contained in \lingo{Hamilton's principle}: \theorem{the differential equations of motion for any physical system can be re-formulated as an equivalent integral equation}. It applies not only to the classical mechanics of a single particle, but also to classical fields such as the electromagnetic and gravitational fields. Hamilton's principle has also been extended to quantum mechanics and quantum field theory.
+
+
+\subsection{Mathematical definition}
+%
+Expressed in mathematical language, using the calculus of variations, the \lingo{evolution of a physical system}
+%
+\mnote{system evolution: how the system progresses from one state to another.}
+% 
+corresponds to a \lingo{stationary point} -- usually a minimum -- of the action. Several different definitions of \scare{the action} are in common use in physics. The action is usually an integral over time. But for action pertaining to fields, it may be integrated over spatial variables as well. In some cases, the action is integrated along the path followed by the physical system.
+
+The action is typically represented as an integral over time, taken along the path of the system between the initial time $t_1$ and the final time $t_2$ of the development of the system,
+%
+\mnote{abbreviated notation for integrals in force \citep{apostol:1967}}
+%
+\beq
+  \action = \sint i\elag
+          = \lint{\ccint{t_1}{t_2}}{\elag}{\dx t}\,,
+\eeq
+%
+where the integrand $\elag$ is called the \lingo{Lagrangian}. For the action integral to be well-defined the trajectory has to be bounded in time and space.
+
+
+\subsection{Action in classical physics}
+%
+In classical physics, the term \scare{action} has a number of meanings.
+
+
+\subsubsection{Action}
+%
+Most commonly, the term is used for a functional $\action$ which takes a function of time and (for fields) space as input and returns a scalar. In classical mechanics, the input function is the evolution $\gpos\vat t$ of the system between two times $t_1$ and $t_2$, where $\gpos$ represent the generalized position. The action $\action\vat{\gpos\vat t}$ is defined as the integral of the Lagrangian for an input evolution between the two times
+%
+\beq
+  \action\vat{\gpos\vat t} = \sint{i}{\elag\vat{\gpos\vat t,\gvel\vat t,t}}
+                           = \lint{\ccint{t_1}{t_2}}{\elag\vat{\gpos\vat t,\gvel\vat t,t}}{\dx t}\,.
+\eeq
+%
+where the endpoints of the evolution are fixed and defined as $\gpos_1 = \gpos\vat{t_1}$ and $\gpos_2 = \gpos\vat{t_2}$. According to Hamilton's principle, the true evolution $\gpos\txt{true}\vat t$ is an evolution for which the action is stationary (a minimum, maximum, or a saddle point). This principle results in the equations of motion in Lagrangian mechanics.
+
+
+\subsubsection{Abbreviated action}
+%
+Usually denoted as $\action_0$, this is also a functional. Here the input function is the \lingo{path} followed by the physical system without regard to its parameterization by time. For example, the path of a planetary orbit is an ellipse, and the path of a particle in a uniform gravitational field is a parabola; in both cases, the path does not depend on how fast the particle traverses the path. The abbreviated action is defined as the integral of the generalized momenta along a path in the generalized position
+%
+\beq
+  \action_0 = \int\gmom\iprod\gpos
+            = \int\icov\gmom k\dx\ivec\gpos k\,.
+\eeq
+%
+According to Maupertuis' principle, the true path is a path for which the abbreviated action is stationary.
+
+
+\subsection{Euler-Lagrange equations for the action integral}
+%
+As noted above, the requirement that the action integral be stationary under small perturbations of the evolution is equivalent to a set of differential equations (called \lingo{Euler-Lagrange equations}) that may be determined using the calculus of variations. We illustrate this derivation here using only one coordinate, $\xpos$; the extension to multiple coordinates is straightforward. 
+
+Adopting Hamilton's principle, we assume that the Lagrangian $\elag$ (the integrand of the action integral) depends only on the coordinate $\xpos\vat t$ and its time derivative $\dt\xpos\vat t$, and may also depend explicitly on time. In that case, the action integral can be written
+%
+\beq
+  \action = \lint{\ccint{t_1}{t_2}}{\elag\vat{\xpos,\dt\xpos,t}}{\dx t}\,,
+\eeq
+%
+where the initial and final times ($t_1$ and $t_2$) and the final and initial positions are specified in advance as $\ivec\xpos 1 = \xpos\vat{t_1}$ and $\ivec\xpos 2 = \xpos\vat{t_2}$. Let $\xpos\txt{true}\vat t$ represent the true evolution that we seek, and let $\xpos\txt{per}$ be a slightly perturbed version of it, albeit with the same endpoints, $\xpos\txt{per}\vat{t_1} = \ivec\xpos 1$ and $\xpos\txt{per}\vat{t_2} = \ivec\xpos 2$. The difference between these two evolutions, which we will call $\vpos = \xpos\txt{per} - \xpos\txt{true}$, is small at all times
+%
+\beq
+  \vpos\vat t = \xpos\txt{per}\vat t - \xpos\txt{true}\vat t\,.
+\eeq
+%
+At the end points, it vanishes; \viz $\vpos\vat{t_1} = \vpos\vat{t_2}$.
+
+...
+
+The requirement that $\action$ be stationary implies that the first-order change must be zero for \emph{any} possible perturbation $\vpos\vat t$ about the true evolution. This can be true only if
+%
+\beq
+  \iod t\parth{\ipd{\dt\xpos}\elag} - \ipd{\xpos}\elag = 0\,.
+\eeq
+
+The quantity $\ipd{\dt\xpos}\elag$ is called \lingo{conjugate momentum for the coordinate $\xpos$}. 
+
+An important consequence of Euler-Lagrange's equations is that if $\elag$ does not explicitly contain coordinate $\xpos$; \ie, if $\ipd\xpos\elag = 0$, then the conjugate momentum is constant in time: $\ipd{\dt\xpos}\elag$. In such cases, the coordinate $\xpos$ is called a \lingo{cyclic coordinate}, and its conjugate momentum is conserved.
+
+
+\subsection{Classical fields}
+%
+The action principle can be extended to obtain the equations of motion for fields, such as the electromagnetic field or gravitational field. The Einstein equation utilizes the Einstein-Hilbert action as constrained by a variational principle. The trajectory (path in spacetime) of a body in a gravitational field can be found using the action principle. For a free falling body, this trajectory is a geodesic.
+
+
+\subsection{Conservation laws}
+%
+Implications of symmetries in a physical situation can be found with the action principle, together with Euler-Lagrange's equations, which are derived from the action principle. An example is Noether's theorem, which states that to every continuous symmetry in a physical situation there corresponds a conservation law (and conversely). This deep connection requires that the action principle be assumed.
