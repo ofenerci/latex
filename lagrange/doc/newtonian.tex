@@ -1,0 +1,194 @@
+\chapter{Newtonian mechanics}
+%
+[Based upon \citep{tong:2004}]
+
+
+\section{Newton's laws of motion}
+%
+\subsection{Introduction}
+%
+Newton's \book{Principia} sums up the fundamental principles of classical mechanics based on previous knowledge and his ideas. A particle's motion, for instance, can be found applying Newton's \lingo{three laws of motion}. These laws and the motto \fact{focus on forces} started a whole program of research for future scientists.
+%
+\mnote{Newton's second law of motion: give me a particle, tell me the forces applied on it and I'll tell you how it moves.}
+%
+Newton's method for finding particles' motion is:
+%
+\begin{itemize}
+%
+\item given a collection of particles, acted upon by a collection of forces, draw a nice diagram, with the particles as points and the forces as arrows;
+%
+\item added up the forces and 
+%
+\item apply Newton's famous $\force = \mass\acc$ to figure out where the particle's velocities are heading next. 
+%
+\end{itemize}
+
+Post Newtonian researchers found out Newton's method unsatisfactory, since
+%
+\begin{itemize}
+%
+\item it's messy and inelegant; 
+%
+\item it's hard to model extended objects, rather than point particles; 
+%
+\item it obscures certain features of dynamics -- chaos theory took over 200 years to discover -- and 
+%
+\item it's unclear the relationship between Newton's classical laws and quantum physics.
+%
+\end{itemize}
+
+To resolve these issues, modelers established a new formalism, bringing new perspectives on Newton's ideas by reformulating them using more powerful techniques.
+%
+\mnote{Better techniques result into an immediate practical advantage to quantify certain complicated phenomena with relative ease.}
+%
+Simultaneously, such a formalism provides an elegant viewpoint that reveals the basic principles underling Newton's familiar laws of motion: it pries open $\force = \mass\acc$ to reveal the structures and symmetries that lie beneath.
+
+Moreover, the formalism has become the basis for \emph{all} of fundamental modern physics. Every theory of Nature is best described in the newly developed language. Finally, it also provides the bridge between the classical and the quantum world.
+
+However, there are phenomena in Nature for which these formalism is not particularly useful: \lingo{dissipative systems}, for example, are not so well suited to these new techniques.
+
+
+\subsection{Newtonian mechanics: single particle}
+%
+\lingo{Particle}: an object of insignificant size; \eg, an electron, a tennis ball or a planet. The validity of this statement depends on the context: to a first approximation, the earth can be treated as a particle when computing its orbit around the sun. But if you want to understand its spin, it must be treated as an extended object.
+
+The motion of a particle of \lingo{mass} $\mass$ at the \lingo{position} $\pos$ is modeled by \lingo{Newton's Second Law}:
+%
+\begin{equation}\label{eq:newtonsecondlaw}
+  \force = \dt\mom\,,
+\end{equation}
+%
+wherein $\force = \force\vat{\pos,\dt\pos}$ represents the \lingo{force} that, in general, can depend on both the position $\pos$ and the velocity $\dt\pos$
+%
+\mnote{friction forces depend on velocity.}
+%
+and $\mom = \mass\dt\pos$ represents the \lingo{momentum}. \Cref{eq:newtonsecondlaw} reduces to $\force = \mass\acc$ when mass is constant, $\dx\mass = 0$.
+
+\emph{The goal of classical dynamics}: given positions and velocities at an initial time $t = t_0$, integrate \cref{eq:newtonsecondlaw} to determine $\pos\vat t$ for all $t$, as long as $\force$ remains finite. 
+
+\Cref{eq:newtonsecondlaw} holds only in an \lingo{inertial frame}: a frame where a \lingo{free particle} with constant mass travels in a straight line:
+%
+\mnote{free particle: particle subject to no force}
+%
+\begin{equation}\label{eq:straightlinemotion}
+  \pos = \pos_0 + \vel t\,.
+\end{equation}
+%
+\lingo{Newton's first law} states that such frames exist.
+
+An inertial frame is \emph{not} unique: there are an infinite number of inertial frames. Let $\frm$ be an inertial frame. Then, there are ten \lingo{linearly independent transformations} $\frm\to\frm'$ such that $\frm'$ is also an inertial frame; \ie, if \cref{eq:straightlinemotion} holds in $\frm$, then it also holds in $\frm'$. These are
+%
+\begin{itemize}
+%
+\item three rotations: $\pos' = O\pos$, where $O$ is a $3\cprod 3$ orthogonal matrix;
+%
+\item three spatial translations: $\pos' = \pos + \pos_k$, for a constant position $\pos_k$;
+%
+\item three boosts: $\pos' = \pos + \vel_k t$, for a constant velocity $\vel_k$;
+%
+\item one time translation: $t' = t + t_k$, for a constant time $t_k$.
+%
+\end{itemize}
+%
+%If motion is uniform in $\frame$, it will also be uniform in $\frame'$. These transformations make up the \lingo{Galilean Group} under which Newton's laws are \lingo{invariant}.
+%
+\mnote{Invariant: if you have a particle moving in a straight line and apply any or all of the transformations to \cref{eq:straightlinemotion}, then you end up with a particle also moving in a straight line.}
+%
+They will be important later, where we will see that these symmetries of space and time are the underlying reason for conservation laws. 
+
+As a parenthetical remark, recall from special relativity that \lingo{Einstein's laws of motion} are invariant under \lingo{Lorentz transformations}, which, together with translations, make up the \lingo{Poincaré group}. We can recover the Galilean group from the Poincaré group by taking the speed of light to infinity.
+
+
+\subsubsection{Angular momentum}
+%
+We define the angular momentum $\amom$ of a particle and the torque $\tork$ acting upon it as
+%
+\begin{equation}\label{eq:amomandtork}
+  \amom = \pos\cprod\mom 
+  \qquad\text{and}\qquad
+  \tork = \pos\cprod\force
+\end{equation}
+
+Note that, unlike linear momentum, both $\amom$ and $\tork$ depend on where we take the origin: \emph{we measure angular momentum with respect to a particular point}. Let us cross both sides of \cref{eq:newtonsecondlaw} with $\pos$. Using the fact that $\dt\pos$ is parallel to $\mom$, we can write $\iod t\parth{\pos\cprod\mom} = \pos\cprod\dt\mom$. Then we get a version of Newton's second law that holds for angular momentum:
+%
+\begin{equation}\label{eq:angularnewtonsecondlaw}
+  \tork = \dt\amom\,.
+\end{equation}
+
+
+\subsection{Conservation laws}
+%
+From \cref{eq:newtonsecondlaw} and \cref{eq:angularnewtonsecondlaw}, two important conservation laws follow immediately:
+%
+\begin{itemize}
+%
+\item If $\force = 0$, then $\mom$ is constant throughout the motion and
+%
+\item if $\tork = 0$, then $\amom$ is constant throughout the motion.
+%
+\end{itemize}
+%
+Notice that $\tork = 0$ does not require $\force = 0$, but only $\pos\cprod\force = 0$. This means that $\force$ must be parallel to $\pos$. This is the definition of a \lingo{central force}. As written above in terms of forces and torques, these conservation laws appear trivial. Afterwards, we'll see how they arise as a property of the symmetry of space as encoded in the Galilean group.
+
+
+\subsection{Energy}
+%
+Recall the definitions of energy. Firstly define the \lingo{kinetic energy} $\ekin$ as
+%
+\begin{equation}
+  2\ekin = \mass\dt\pos\iprod\dt\pos\,.
+\end{equation}
+%
+Suppose hereafter that the mass is constant. Compute the change of kinetic energy with time: $\iod t\ekin = \dt\mom\iprod\dt\pos = \force\iprod\dt\pos$. If the particle travels from position $\pos_1$ at time $t_1$ to position $\pos_2$ at time $t_2$, then this change in kinetic energy is given by
+%
+\begin{equation}\label{eq:energyworktheorem}
+  \ekin\vat{t_2} - \ekin\vat{t_1} = \sint{t_1,t_2}{\xod\ekin t}\dx t
+                                  = \lint{t_1,t_2}{\force\iprod\dt\pos}{\dx t}
+                                  = \sint{\pos_1,\pos_2}{\force\iprod\dx\pos}\,,
+\end{equation}
+%
+where the final expression involving the integral of the force over the path is called the \lingo{work done by the force}. So see that the \theorem{work done is equal to the change in kinetic energy}. From now on we will mostly focus on a very special type of force known as a \lingo{conservative force}: a force that depends only on position $\pos$ rather than velocity $\dt\pos$ and is such that the work done is independent of the path taken. In particular, for a closed path, the work done vanishes.
+%
+\begin{equation}
+  \oint\force\iprod\dt\pos = 0 \iff \gder\cprod\force = 0\,.
+\end{equation}
+%
+It is a deep property of Euclidean (flat) space $\nespace 3$ that this property implies we may write the force as
+%
+\begin{equation}
+  \force = -\gder\epot
+\end{equation}
+%
+for some potential $\epot\vat\pos$. Systems which admit a potential of this form include gravitational, electrostatic and interatomic forces. \theorem{When we have a conservative force, we necessarily have a conservation law for energy}. To see this, return to \cref{eq:energyworktheorem}, which now reads
+%
+\begin{equation}
+  \ekin\vat{t_2} - \ekin\vat{t_1} = -\sint{\pos_1,\pos_2}{\gder\epot\iprod\dx\pos}
+                                  = -\epot\vat{t_2} + \epot\vat{t_1}\,,
+\end{equation}
+%
+or, rearranging things,
+%
+\begin{equation}
+  \ekin\vat{t_1} + \epot\vat{t_1} = \ekin\vat{t_2} + \epot\vat{t_2}
+                                  \equiv\ener
+\end{equation}
+%
+So $\ener = \ekin + \epot$ is also a \lingo{constant of motion}. It is the energy. When the energy is considered to be a function of position $\pos$ and momentum $\mom$ it is referred to as the \lingo{Hamiltonian} $\eham$. Afterwards, we will be seeing much more of the Hamiltonian.
+
+
+\subsection{Examples}
+%
+\begin{description}
+%
+\item[The Simple Harmonic Oscillator] This is a one-dimensional system with a force proportional to the distance $\xpos$ to the
+origin: $\force\vat\xpos = -k\xpos$. This force arises from a potential $2\epot = k\xpos^2$. Since $\force \not= 0$, momentum is \emph{not} conserved (the object oscillates backwards and forwards) and, since the system lives in only one dimension, angular momentum is not defined. But energy $2\ener = \mass\dt\xpos^2 + k\xpos^2$ is conserved.
+%
+\item[The Damped Simple Harmonic Oscillator] We now include a friction term so that $\force\vat{\xpos, \dt\xpos} = -k\xpos - \gamma\dt\xpos$. Since $\force$ is not conservative,
+%
+\mnote{a conservative force depends only on position, rather than on position and velocity.}
+%
+energy is not conserved. This system loses energy until it comes to rest.
+%
+\item[Particle Moving Under Gravity] Consider a particle of mass $\mass$ moving in three dimensions under the gravitational pull of a much larger particle of mass $\mass'$. The force is $\force\pos^2 = -\uknewton\mass\mass'\uvec\pos$, which arises from the potential $\epot\pos = -\uknewton\mass\mass'$. Again, the linear momentum $\mom$ of the smaller particle is not conserved, but the force is both central and conservative, ensuring the particle's total energy $\ener$ and the angular momentum $\amom$ are conserved.
+%
+\end{description}

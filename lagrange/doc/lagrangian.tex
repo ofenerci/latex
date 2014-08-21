@@ -3,112 +3,105 @@
 [Based upon \citep{tong:2004}]
 
 
-\section{Newton's Laws of Motion}
+\section{The principle of least action}
 %
-\subsection{Introduction}
+Part of the power of the Lagrangian formulation over the Newtonian approach is that it does away with vectors in favor of more general coordinates. Let's write the positions of $\npart$ particles with coordinates $\ivec\pos i$, where $i = 1,\dotsc,3\npart$. Then Newton's equations read
 %
-Newton's \book{Principia} sums up the fundamental principles of classical mechanics based on previous knowledge and his ideas. A particle's motion, for instance, can be found applying Newton's \lingo{three laws of motion}. These laws and the motto \fact{focus on forces} started a whole program of research for future scientists.
+\begin{equation}
+  \icov{\dt\mom} i = -\ipd{\ivec\pos i}\epot\,,
+\end{equation}
 %
-\mnote{Newton's second law of motion: give me a particle, tell me the forces applied on it and I'll tell you how it moves.}
+where $\icov\mom i = \mass_i\ivec{\dt\pos} i$. The \lingo{number of degrees of freedom} of the system is said to be $3\npart$. These parameterize a $3\npart$-dimensional space known as the \lingo{configuration space} $\cspace$. Each point in $\cspace$ specifies a configuration of the system; \ie, the positions of \emph{all} $\npart$ particles. \lingo{Time evolution} gives rise to a curve in $\cspace$, \vide \cref{fig:configurationspace}.
 %
-Newton's method for finding particles' motion is:
+%%% Figure
+%
+% position: bthH. size:width=0.5\textwidth. file:location+filename.pdf
+% caption. label:fig:wec
+\docfigure{bt}{width=0.7\textwidth}{./graph/config-space.pdf}{Configuration space}
+  {The path of particles in real space (on the left) and in configuration space (on the right).}
+  {fig:configurationspace}
+
+
+\subsection{Lagrangian}
+%
+Define the Lagrangian to be a function of the positions $\ivec\pos i$ and the velocities $\ivec{\dt\pos}{i}$ of all the particles, given by
+%
+\begin{equation}
+  \elag = \ekin - \epot \implies
+  \elag\vat{\ivec\pos i, \ivec{\dt\pos} i} = \ekin\vat{\dt\pos} - \epot\vat\pos\,,
+\end{equation}
+%
+where $\ekin$ is the kinetic energy and $\epot$ the potential energy. Note the minus sign between energies! To describe the principle of least action, we consider all smooth paths $\ivec\pos i\vat t$ in $\cspace$ with fixed end points so that
+%
+\begin{equation}
+  \ivec\pos i\vat{t\txt i} = \ivec\pos i\txt{initial} \qquad\text{and}\qquad
+  %
+  \ivec\pos i\vat{t\txt f} = \ivec\pos i\txt{final}\,.
+\end{equation}
+%
+Of all these possible paths, only one is the true path taken by the system. Which one? To each path, let us assign a number called the action $\action$ defined as
+%
+\begin{equation}
+  \action = \sint{t\txt i, t\txt f}{\elag} \implies
+  %
+  \action\vat{\ivec\pos i\vat t} = \lint{t\txt i, t\txt f}{\elag\vat{\ivec\pos i, \ivec{\dt\pos}i}}{\dx t}\,.
+\end{equation}
+%
+The action is a functional; \ie, a function of the path, which is itself a function. The \lingo{principle of least action} is the following result:
+%
+\begin{quote}\begin{center}
+%
+\theorem{the actual path taken by the system is an extremum of $\action$.}
+%
+\end{center}\end{quote}
+%
+The requirement that $\action$ be extremum implies that the first-order change must be zero for any possible perturbation about the true evolution. This can be true only if
+%
+\begin{equation}
+  \xeleq{\ivec\pos i}{\ivec{\dt\pos}{i}}{\elag} = 0
+\end{equation}
+%
+for each $i = 1,\dotsc,3\npart$. These equations are known as \lingo{Lagrange's equations} (or \lingo{Euler-Lagrange's equations}). It can be proved that Lagrange's equations are equivalent to Newton's.
+
+Let's now define \lingo{Euler-Lagrange's operator} $\elop{}{}$ to keep notation tidy:
+%
+\mnote{The musical symbol $\natural$, called \lingo{natural}, represents the unaltered pitch of a note.}
+%
+\begin{equation}
+  \elop{\pos}{\dt\pos} \defas \xeleq{\pos}{\dt\pos}{}\,.
+\end{equation}
+%
+Using this operator, Lagrange's equations can be rewritten as
+%
+\begin{equation}
+  \elop{\ivec\pos i}{\ivec{\dt\pos}{i}}\elag = 0\,.
+\end{equation}
+
+
+\subsection{Remarks on the principle of the least action}
 %
 \begin{itemize}
 %
-\item given a collection of particles, acted upon by a collection of forces, draw a nice diagram, with the particles as points and the forces as arrows;
+\item This is an example of a variational principle.
 %
-\item added up the forces and 
+\item The principle of \emph{least} action is a slight misnomer. The proof only requires that $\partial\action = 0$, and does not specify whether it is a maxima or minima of $\action$. So \lingo{Principle of stationary action} would be a more accurate, but less catchy, name. It is sometimes called \scare{Hamilton's principle}.
 %
-\item apply Newton's famous $\force = \mass\acc$ to figure out where the particle's velocities are heading next. 
+\item \emph{All} the fundamental laws of physics can be written in terms of an action principle. This includes electromagnetism, general relativity, the standard model of particle physics and attempts to go beyond the known laws of physics such as string theory. 
 %
-\end{itemize}
-
-Post Newtonian researchers found out Newton's method unsatisfactory, since
+\item There is a beautiful generalization of the action principle to quantum mechanics.
 %
-\begin{itemize}
-%
-\item it's messy and inelegant; 
-%
-\item it's hard to model extended objects, rather than point particles; 
-%
-\item it obscures certain features of dynamics -- chaos theory took over 200 years to discover -- and 
-%
-\item it's unclear the relationship between Newton's classical laws and quantum physics.
+\item Back to classical mechanics, there are two very important reasons for working with Lagrange's equations rather than Newton's. The first is that Lagrange's equations hold in any coordinate system, while Newton's are restricted to an inertial frame. The second is the ease with which we can deal with constraints in the Lagrangian system. We'll look at these two aspects in the next two subsections.
 %
 \end{itemize}
 
-To resolve these issues, modelers established a new formalism that brought new perspectives on Newton's ideas by reformulating them using more powerful techniques.
-%
-\mnote{Better techniques result into an immediate practical advantage to quantify certain complicated phenomena with relative ease.}
-%
-Simultaneously, such a formalism provides an elegant viewpoint that reveals the basic principles underling Newton's familiar laws of motion: it pries open $\force = \mass\acc$ to reveal the structures and symmetries that lie beneath.
 
-Moreover, the formalism has become the basis for \emph{all} of fundamental modern physics. Every theory of Nature is best described in the newly developed language. Finally, it also provides the bridge between the classical and the quantum world.
-
-However, there are phenomena in Nature for which these formalism is not particularly useful: \lingo{dissipative systems}, for example, are not so well suited to these new techniques.
+\subsection{Changing coordinate systems}
+%
+\theorem{Lagrange's equations hold in any coordinate system}. This follows immediately from the action principle, which is a statement about paths and \emph{not} about coordinates.
+%
+\mnote{Paths are \emph{coordinate-independent} geometric objects.}
+%
 
 
-\subsection{Newtonian mechanics: single particle}
-%
-\lingo{Particle}: an object of insignificant size; \eg, an electron, a tennis ball or a planet. The validity of this statement depends on the context: to a first approximation, the earth can be treated as a particle when computing its orbit around the sun. But if you want to understand its spin, it must be treated as an extended object.
-
-The motion of a particle of \lingo{mass} $\mass$ at the \lingo{position} $\pos$ is modeled by \lingo{Newton's Second Law}:
-%
-\begin{equation}\label{eq:newtonsecondlaw}
-  \force = \dt\mom\,,
-\end{equation}
-%
-wherein $\force = \force\vat{\pos,\dt\pos}$ represents the \lingo{force} that, in general, can depend on both the position $\pos$ and the velocity $\dt\pos$
-%
-\mnote{friction forces depend on velocity.}
-%
-and $\mom = \mass\dt\pos$ represents the \lingo{momentum}. \Cref{eq:newtonsecondlaw} reduces to $\force = \mass\acc$ when mass is constant, $\dx\mass = 0$.
-
-\emph{The goal of classical dynamics}: given positions and velocities at an initial time $t = t_0$, integrate \cref{eq:newtonsecondlaw} to determine $\pos\vat t$ for all $t$, as long as $\force$ remains finite. 
-
-\Cref{eq:newtonsecondlaw} holds only in an \lingo{inertial frame}: a frame where a \lingo{free particle} with constant mass travels in a straight line:
-%
-\mnote{free particle: particle subject to no force}
-%
-\begin{equation}\label{eq:straightlinemotion}
-  \pos = \pos_0 + \vel t\,.
-\end{equation}
-%
-\lingo{Newton's first law} states that such frames exist.
-
-An inertial frame is \emph{not} unique: there are an infinite number of inertial frames. Let $\frm$ be an inertial frame. Then, there are ten \lingo{linearly independent transformations} $\frm\to\frm'$ such that $\frm'$ is also an inertial frame; \ie, if \cref{eq:straightlinemotion} holds in $\frm$, then it also holds in $\frm'$. These are
-%
-\begin{itemize}
-%
-\item three rotations: $\pos' = O\pos$, where $O$ is a $3\cprod 3$ orthogonal matrix;
-%
-\item three spatial translations: $\pos' = \pos + \pos_k$, for a constant position $\pos_k$;
-%
-\item three boosts: $\pos' = \pos + \vel_k t$, for a constant velocity $\vel_k$;
-%
-\item one time translation: $t' = t + t_k$, for a constant time $t_k$.
-%
-\end{itemize}
-%
-%If motion is uniform in $\frame$, it will also be uniform in $\frame'$. These transformations make up the \lingo{Galilean Group} under which Newton's laws are \lingo{invariant}.
-%
-\mnote{Invariant: if you have a particle moving in a straight line and apply any or all of the transformations to \cref{eq:straightlinemotion}, then you end up with a particle also moving in a straight line.}
-%
-They will be important later, where we will see that these symmetries of space and time are the underlying reason for conservation laws. 
-
-As a parenthetical remark, recall from special relativity that \lingo{Einstein's laws of motion} are invariant under \lingo{Lorentz transformations}, which, together with translations, make up the \lingo{Poincaré group}. We can recover the Galilean group from the Poincaré group by taking the speed of light to infinity.
-
-
-\subsubsection{Angular momentum}
-%
-We define the angular momentum $\amom$ of a particle and the torque $\tork$ acting upon it as
-%
-\begin{equation}\label{eq:amomandtork}
-  \amom = \pos\cprod\mom 
-  \qquad\text{and}\qquad
-  \tork = \pos\cprod\force
-\end{equation}
-
-Note that, unlike linear momentum, both $\amom$ and $\tork$ depend on where we take the origin: \emph{we measure angular momentum with respect to a particular point}.
 
 

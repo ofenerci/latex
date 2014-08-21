@@ -22,7 +22,7 @@ as its argument and results in a real number. Generally, the action takes differ
 
 \subsection{Notation}
 %
-The symbol to represent physical action was chosen after a Borge's story: The Aleph \citep{borges:wiki}. In Borges' story, the Aleph is a point in space that contains all other points. Anyone who gazes into it can see everything in the universe from every angle simultaneously, without distortion, overlapping or confusion.
+The symbol to represent physical action was chosen after a Jorge Luis Borge's story: The Aleph \citep{borges:wiki}. In Borges' story, the Aleph is a point in space that contains all other points. Anyone who gazes into it can see everything in the universe from every angle simultaneously, without distortion, overlapping or confusion.
 
 Aleph or Alef, $\aleph$, is the first letter of the Hebrew alphabet and the number 1 in Hebrew. Its esoteric meaning in Judaic Kabbalah, as denoted in the theological treatise \lingform{Sefer-ha-Bahir}, relates to the origin of the universe, the \scare{primordial one that contains all numbers}. The aleph is also the first letter of the Arabic alphabet, as well as the Phoenician, Aramaic and Syriac alphabets. Aleph is also the first letter of the Persian alphabet. [\dots] In mathematics, aleph numbers denote the cardinality (or size) of infinite sets. This relates to the theme of infinity present in Borges's story. [\dots] The aleph also recalls the \lingo{monad} as conceptualized by Gottfried Wilhelm Leibniz, the 17th-century philosopher and mathematician. Just as Borges's aleph registers the traces of everything else in the universe, so Leibniz's monad is a mirror onto every other object of the world \citep{borges:wiki}.
 
@@ -49,7 +49,7 @@ The action is typically represented as an integral over time, taken along the pa
 %
 \beq
   \action = \sint i\elag
-          = \lint{\ccint{t_1}{t_2}}{\elag}{\dx t}\,,
+          = \lint{t_1,t_2}{\elag}{\dx t}\,,
 \eeq
 %
 where the integrand $\elag$ is called the \lingo{Lagrangian}. For the action integral to be well-defined the trajectory has to be bounded in time and space.
@@ -66,7 +66,7 @@ Most commonly, the term is used for a functional $\action$ which takes a functio
 %
 \beq
   \action\vat{\gpos\vat t} = \sint{i}{\elag\vat{\gpos\vat t,\gvel\vat t,t}}
-                           = \lint{\ccint{t_1}{t_2}}{\elag\vat{\gpos\vat t,\gvel\vat t,t}}{\dx t}\,.
+                           = \lint{t_1,t_2}{\elag\vat{\gpos\vat t,\gvel\vat t,t}}{\dx t}\,.
 \eeq
 %
 where the endpoints of the evolution are fixed and defined as $\gpos_1 = \gpos\vat{t_1}$ and $\gpos_2 = \gpos\vat{t_2}$. According to Hamilton's principle, the true evolution $\gpos\txt{true}\vat t$ is an evolution for which the action is stationary (a minimum, maximum, or a saddle point). This principle results in the equations of motion in Lagrangian mechanics.
@@ -91,7 +91,7 @@ As noted above, the requirement that the action integral be stationary under sma
 Adopting Hamilton's principle, we assume that the Lagrangian $\elag$ (the integrand of the action integral) depends only on the coordinate $\xpos\vat t$ and its time derivative $\dt\xpos\vat t$, and may also depend explicitly on time. In that case, the action integral can be written
 %
 \beq
-  \action = \lint{\ccint{t_1}{t_2}}{\elag\vat{\xpos,\dt\xpos,t}}{\dx t}\,,
+  \action = \lint{t_1,t_2}{\elag\vat{\xpos,\dt\xpos,t}}{\dx t}\,,
 \eeq
 %
 where the initial and final times ($t_1$ and $t_2$) and the final and initial positions are specified in advance as $\ivec\xpos 1 = \xpos\vat{t_1}$ and $\ivec\xpos 2 = \xpos\vat{t_2}$. Let $\xpos\txt{true}\vat t$ represent the true evolution that we seek, and let $\xpos\txt{per}$ be a slightly perturbed version of it, albeit with the same endpoints, $\xpos\txt{per}\vat{t_1} = \ivec\xpos 1$ and $\xpos\txt{per}\vat{t_2} = \ivec\xpos 2$. The difference between these two evolutions, which we will call $\vpos = \xpos\txt{per} - \xpos\txt{true}$, is small at all times

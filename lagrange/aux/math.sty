@@ -18,6 +18,9 @@
 %
 \providecommand*{\set}[1]{\mathcal{#1}} % sets
 \providecommand*{\frm}{\set{F}}         % frame
+%
+\providecommand*{\espace}{\set{E}}          % Euclidean space
+\providecommand*{\nespace}[1]{\espace^{#1}} % n-dim Euclidean space
 
 %%% Intervals
 %
@@ -33,6 +36,8 @@
 \providecommand*{\iod}[1]{\dx_{#1}}      % index ordinary derivative
 \providecommand*{\ipd}[1]{\partial_{#1}} % index partial derivative
 %
+\providecommand*{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}} % expanded ord. deriv.
+%
 % Integrals
 %
 \providecommand*{\sint}[2]{\int_{#1}{#2}}       % short integral
@@ -42,6 +47,14 @@
 %
 \providecommand*{\cprod}{\times} % cross product
 \providecommand*{\iprod}{\cdot}  % inner product
+%
+% Geometric calculus
+%
+\providecommand*{\gder}{\raisebox{\depth}{\ensuremath{\bigtriangledown}}} % geometric derivative
+%
+% Vectors
+%
+\providecommand*{\uvec}[1]{\hat{#1}} % unit lenght vector
 
 %%% Index notation
 %
