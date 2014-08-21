@@ -1,0 +1,356 @@
+\chapter{\docTitle}
+%
+To illustrate various problem solving techniques, we will analyze the motion of a charged particle using Newtonian Physics. We will do so by showing various math and physics methods in different levels of sophistication: guessing, dimensional analysis, approximations and analytic techniques. Finally, we present a final wrapped-up solution.
+
+one has to assume, derive and test the model. The issue is strengthened in design.
+
+
+\section{Problem statement}
+%
+In professional work, seldom does one find a \scare{well-posed problem}, where all the problem data, the information regarding...  one has to work towards that goal: to well pose a problem (well posed problems have more chances to find a solution).
+
+However, herein we will not be concerned by posing a problem, we will rather take one from a book (the reference exercise) and illustrate the ideas on how to solve problems by applying different techniques to solve such an exercise.
+
+
+\subsection{Reference exercise}\label{sec:reference}
+%
+The reference exercise comes from \cite[chap. 1]{thorne:2011}, from the \book{Particle Kinetics and Lorentz Force in Geometric Language} section. Therein, geometric ideas, \via the \fact{geometric principle},
+%
+~\mnote{the laws of physics must all be expressible as geometric [\dots] relationships between geometric objects [\dots], which represent physical entities. \cite[part I, p. iii]{thorne:2013}}
+%
+are applied to Newtonian physics. 
+
+We quote such an exercise verbatim:
+%
+\begin{description}
+%
+\item[Energy change for charged particle] \theorem{Without introducing any coordinates or basis vectors, show that, when a particle with charge $\echarge$ interacts with electric and magnetic fields, its energy changes at a rate}
+%
+\begin{equation}\label{eq:referenceequation}
+  dE/dt = \mathbf{v}\iprod\mathbf{E}\,.
+\end{equation}
+%
+\end{description}
+%
+In \cref{eq:referenceequation}, $E$ represents the particle's kinetic energy, $t$ (Newton's) universal time, $\mathbf{v}$ the particle's velocity and $\mathbf{E}$ an electric field.
+
+
+\subsection{Reference exercise analysis}
+%
+The reference exercise asks to derive a formula. As a healthy habit, \emph{always} check formula correctness by  \lingo{dimensional analysis}.
+%
+\mquote{Upon seeing any equation, first check its dimensions [\dots]. If all terms do not have identical dimensions, the equation is not worth solving -- a great savings of effort.}{\cite[p. 42]{sanjoy:2010}}
+%
+In a correct equation all of its terms have the same dimensions. Let's see if \cref{eq:referenceequation} passes this test.
+
+Since we are dealing with dynamics and electromagnetism, choose the dimensionally independent set $\elset{\phdim F, \phdim L, \phdim Q, \phdim T}$, where $\phdim F$ represents the dimension of force, $\phdim L$ length, $\phdim Q$ electric charge and $\phdim T$ time. Then, for \cref{eq:referenceequation}, we have
+%
+\begin{align*}
+%
+  \dfrac{\dim\dx E}{\dim\dx t} &= \dfrac{\phdim{FL}}{\phdim{T}}\,, & \eqtxt{LHS of \cref{eq:referenceequation}} \\
+  %
+  \dim{\mathbf{v}}\iprod\dim{\mathbf{E}} &= \dfrac{\phdim{FL}}{\phdim{QT}}\,. & \eqtxt{RHS of \cref{eq:referenceequation}}
+%
+\end{align*}
+%
+As we can see, dimensions do not match; \viz the additional $\phdim Q$ in the RHS. So \cref{eq:referenceequation} in wrong! As an error pointer, see that in the exercise statement the particle's electric charge $\echarge$ is given and a magnetic field is mentioned; however, neither appear in \cref{eq:referenceequation}.
+
+
+\subsection{Reference exercise reformulation}
+%
+Since the conclusion of the reference exercise, \cref{eq:referenceequation}, is wrong, do we still have to solve it? Yes, because the premises remain valid. We have just to ditch. This mean to reformulate the statement. This reformulation can be done by changing the \scare{show that} bit to something different. Let's try:
+%
+\begin{description}
+%
+\item[Energy change for charged particle] \theorem{Without introducing any coordinates or basis vectors, find the energy change rate $dE/dt$ of a particle with charge $\echarge$ when it interacts with an electric $\mathbf{E}$ and magnetic fields.}
+%
+\end{description}
+%
+In this way, we don't have to worry about any formula to match. It is us who has to derive one.
+
+
+\subsection{Working exercise}\label{sec:workingexercise}
+%
+The reference exercise was analyzed and reformulated. However, there are some additional changes I would like to make before having a working exercise:
+%
+\begin{itemize}
+%
+\item Remove data from the statement and relax its hypotheses. Then, the exercise becomes more general.
+%
+\item Change notation, following \cite{denker:notation}. In the reference exercise, $E$ is used to represent kinetic energy and $\mathbf{E}$ to represent electric field. Although distinguishable in printed text, this notation posses issues when working on paper. I \emph{could} decorate vectors using an arrow, like $\vec{E}$; but I'm not going to. I don't like how arrows look like. Instead I'll use different symbols for different quantities and use minuscules to typeset variables.
+%
+\item Finally, make the statement self contained. I like how mathematicians present propositions: they are a bit more pedantic and it means more typing but the result is a self contained statement.
+%
+\end{itemize}
+
+With these changes in mind, we have a working version of the exercise:
+%
+\begin{description}
+%
+\item[Energy change for a charged body] \theorem{Consider an electrically charged body $\body$ moving in the present of a non-moving electrically charged body $\body'$. Find the temporal change of the energy of $\body$.}
+%
+\end{description}
+%
+
+\mquote{Before developing the necessary mathematics, survey the crucial physics.}{\cite[p. 11]{lindner:2011}}
+%
+\section{Guessing the solution}
+%
+As a first approximation to the solution, instead of working with the general case, we go to an specific example by considering the moving particle to be an electron and the electric field to be originated by a proton. The dynamics is described by \lingo{Lorentz force law}.
+
+Let's first analyze the \emph{electron-electric field interaction}. The proton creates an electric field due to its charge $\pecharge$. Lorentz force states that the proton's field strength $\magni{\efield\txt p}$ is given by $\magni{\efield\txt p}\propto\pecharge/\rpos^2$, where $\rpos$ is the distance from the proton's center. Geometrically, this means that $\magni{\efield\txt p}$ creates concentric surfaces of equal electric potential in $\nespace 3$, called \lingo{isoelectric surfaces}, just like a static \scare{heat source} forms concentric \lingo{isothermal} surfaces around its center. When something moves towards the proton, it will \scare{pierce} such surfaces. Note that the field strength scales inversely with the squared distance: for instance, if the distance is halved, the field strengthens by a factor of four. In other words, the closer to the proton's center, the stronger the interaction with its field becomes. On the other hand, when an electron, with charge $\eecharge < 0$, enters the field, it is \scare{attracted} to the proton's center as the force between them, $\magni{\force\txt{p-e}}\propto -\eecharge\pecharge/\rpos^2$, increases with decreasing distance. In turn, the electron's velocity $\vel\txt{e}$ increases and so does its kinetic energy $\ekin\txt e\propto\vel\txt e^2$. Therefore, we expect $\dt\ekin\txt e\sim-\eecharge\efield\txt p\vel\txt e$. Notice the negative sign in the expression: it says that the electron looses energy as it falls into the proton! Also, see that $\dt\ekin\txt e$ does not depend on the electron's mass.
+
+Now, let's analyze the \emph{electron-magnetic field interaction}. An electron moving in a magnetic field experiences a sideways force $\force\txt m$ proportional to (i) the strength of the magnetic \scare{field} $\magni\mfield$, (ii) the component of the velocity perpendicular to such field $\vel\txt e$ and (iii) the charge of the electron $\eecharge$; \ie, the second term of the Lorentz force: $\force\txt m = \eecharge\vel\txt e\cprod\mfield$. Note that $\force\txt m$ is always perpendicular to both the $\vel\txt e$ and the $\mfield$ that created it, mathematically expressed by the (cross) product $\vel\txt e\cprod\mfield$. Then, when the electron moves in the field, it traces an helical path in which the helix axis is parallel to the field and in which $\vel\txt e$ remains constant. Because the magnetic force is always perpendicular to the motion, the $\mfield$ can do \emph{no} work. It can only do work \emph{indirectly}, via the electric field generated by a changing $\mfield$. This means that, if no work is directly created by the magnetic field, then the change rate of the electron's kinetic energy should not depend directly on it, but rather indirectly, via the electron's velocity: $\ekin\txt e\propto\vel\txt e^2\implies\dt\ekin\txt e\propto\vel\txt e$, which has the same dependence as the equation obtained in the electron-electric field analysis.
+
+Finally, because an electron moving towards a proton is an example of a more general case, expect the \emph{form} of the electron-proton case to work for \emph{any} moving charged particle under a constant electromagnetic field. This means that, physically, the change of the particle's kinetic energy $\ekin$ should directly depend only on the electric field (and not on the magnetic induction), the particle's charge and its velocity: $\dt\ekin\sim\echarge\efield\vel$. Mathematically, see that, since $\efield$ and $\vel$ are both vectors, the product $\efield\vel$ must be a product between vectors. The only suitable product is the \lingo{inner product}, \aka scalar product, because it is the only one to return a scalar; this would agree with the scalar nature of $\ekin$. This means, therefore,
+%
+\beq
+  \dt\ekin \sim \echarge\efield\iprod\vel\,.
+\eeq
+%
+We expect this guessed equation to be obtained by formal methods.
+
+
+\section{Dimensional analysis}
+%
+For the next solution, we will use \lingo{dimensional analysis} to determine the \emph{functional form} of the model to the phenomenon. To find the functional form of the physical model by means of dimensional analysis, follow the steps:
+%
+\begin{itemize}
+%
+\item Since the phenomenon belongs to electromagnetism, use the set $\elset{\phdim F, \phdim L, \phdim T, \phdim Q}$ of \emph{four} dimensionally independent dimensions.
+%
+~\mnote{We use this set because it doesn't include mass as we guessed so in the previous section.}
+%
+\item In the chosen set, the dimensions of the \emph{six} physical quantities that model the phenomenon are $\dim\ekin = \phdim{FL}$, $\dim t = \phdim T$, $\dim\echarge = \phdim Q$, $\dim\efield = \phdim F/\phdim Q$, $\dim\vel = \phdim L/\phdim T$ and $\dim\mfield = \phdim F\phdim T/\phdim L\phdim Q$.
+%
+~\mnote{Again, mass doesn't appear in the physical model.}
+%
+\item According to the Buckinham's theorem, there are $6 - 4 = 2$ dimensionless quantities $\kdim$. The first one is $\kdim_1 = \ekin/t\efield\vel\echarge$ and the second $\kdim_2 = \mfield\vel/\efield$.
+%
+\item Finally, the model should have the form:
+%
+\beq
+  \fdim'\vat{\kdim_1, \kdim_2} = \fdim'\vat{\dfrac{\ekin}{t\efield\vel\echarge}, \dfrac{\mfield\vel}{\efield}} 
+                               = 0
+                                \implies
+  \dfrac{\ekin}{t} = \efield\vel\echarge\,\fdim\vat{\dfrac{\mfield\vel}{\efield}}\,,
+\eeq
+%
+where $\fdim$ is an \emph{unknown} dimensionless functions of dimensionless arguments.
+%
+\end{itemize}
+%
+In the last equation, the precise form of the function $\fdim$ must be determined by experimentation or by analytic means. However, dimensional analysis confirms our suspicion: $\dt\ekin\sim\ekin/t\sim\echarge\efield\vel$; \ie, the product $\echarge\efield\vel$ \scare{lives upstairs} in the equation. 
+
+Finally, the function $\fdim$ should be equal to a dimensionless parameter $\kdim$ if our guess is to be correct. We will keep $\fdim$, nevertheless, for it may be that our guess is incorrect.
+
+
+\section{Approximate methods}
+%
+For a second approximation, we will use actual equations and will apply to them approximate methods to find the form of the physical model. 
+%
+\mquote{Too much mathematical rigor teaches \lingform{rigor mortis}: the fear of making an unjustified leap even when it lands on a correct result. Instead of paralysis, have courage -- shoot first and ask questions later. Although unwise as public policy, it is a valuable problem-solving philosophy.}{\cite[p. viii]{sanjoy:2010}}
+%
+This helps to better understand the physics behind the process by avoiding the distractions of unnecessary constants, numeric factors and complicated notation. Additionally, it helps, as a sketch, to develop and to present the analytic solution.
+
+First, write the complete set of equations modeling the phenomenon:
+%
+\begin{align*}
+  2\ekin &= \mass\vel^2\,,                                 &\eqtxt{kinetic energy} \\
+  \force &= \echarge\parth{\efield + \vel\cprod\mfield}\,, &\eqtxt{Lorentz force} \\
+  \force &= \mass\dt\mom = \mass\dt\vel\,,                 &\eqtxt{Newton's second law}
+\end{align*}
+%
+where the variables were already defined during guessing and dimensional analysis. 
+
+Then, drop unnecessary constants and numeric factors, use the \lingo{secant method} to approximate derivatives and treat vectors as scalars to find
+%
+~\mnote{In the secant method, tangents (derivatives) are replaced by secants (quotients); \ie, if $f = f\vat x$, then $\iod xf \sim f/x$. Replace vectors by scalars and replace products between vectors by multiplications between scalars.}
+%
+\begin{align*}
+  \ekin    &\sim \mass\vel^2\,, \\
+  \dt\ekin &\sim \ekin/t \sim \mass\vel^2/t \sim \parth{\mass\vel/t}\vel\,, \\
+  \force   &\sim \echarge\parth{\efield + \vel\mfield}\,, \\
+  \force   &\sim \mass\vel/t\,.
+\end{align*}
+
+Find the equation of motion by equating Newton's law to Lorentz law: $\mass\vel/t\sim\echarge\parth{\efield + \vel\mfield}$. Plug this equation into the one for $\ekin/t$, via the factor $\mass\vel/t$:
+%
+\beq
+  \ekin/t \sim \echarge\parth{\efield + \vel\mfield}\vel 
+          \sim \echarge\efield\vel + \echarge\vel\mfield\vel\,.
+\eeq
+%
+In the last equation, the term $\echarge\vel\mfield\vel$ is likely to vanish, because $\vel$ is to enter $\vel\cprod\mfield$ as $\parth{\vel\cprod\mfield}\iprod\vel$, for $\vel$ comes from $\ekin\sim\mass\vel^2\sim\vel\iprod\vel$ and thus
+$\parth{\echarge\vel\cprod\mfield}\iprod\vel\sim\echarge\vel\mfield\vel = 0$, since $\vel\cprod\mfield$ is orthogonal to $\vel$. Then, the expression would be $\ekin/t\sim\echarge\efield\vel$ with some product of vectors between $\efield$ and $\vel$ -- the scalar product. The model could thus be written as $\ekin/t\sim\echarge\efield\iprod\vel$. Finally, remembering that $\ekin/t\sim\dt\ekin$, then
+%
+\beq
+  \dt\ekin\sim\echarge\efield\iprod\vel\,.
+\eeq
+%
+which gives the temporal change of kinetic energy.
+
+The equation found by approximate means agrees with our guess and with dimensional analysis, increasing thus our confidence in understanding the phenomenon! Besides, all the previous methods have cleared the derivation plan: i) find $\dt\ekin$ from $\ekin$; ii) find the equation of motion by using the definition of linear momentum, by equating Newton's law to Lorentz law and by leaving $\mass\vel$ on one side and iii) finally, plug in the equation of motion onto $\dt\ekin$ and use vectorial identities to arrive at the final solution.
+
+
+\section{Wordy derivation}
+% 
+We solve the problem now by presenting a \scare{wordy-version} of the analytic solution: we describe the math derivation in detail.
+
+The particle kinetic energy is $2\ekin = \mass\vel^2$. This can be rewritten as
+%
+\beq
+  2\ekin = \mass\vel\iprod\vel\,,
+\eeq
+%
+since $\vel$ is colinear to itself; \ie, its outer product is zero; \viz, $\vel^2 = \vel\vel = \vel\iprod\vel + \vel\oprod\vel = \vel\iprod\vel$. 
+
+Then, calculate the kinetic energy change rate with time by
+%
+\beq
+  2\ekin = \mass\vel\iprod\vel \implies
+  2\dt\ekin = \mass\parth{\dt\vel\iprod\vel + \vel\iprod\dt\vel} 
+            = \mass\parth{\dt\vel\iprod\vel + \dt\vel\iprod\vel}
+            = 2\mass\dt\vel\iprod\vel\,,
+\eeq
+%
+where the product rule for the differentiation of the inner product, the commutativity property of the inner product and the dot notation for derivatives were used.
+
+Next, one cancels out the numerical factor 2 in both sides of the equality to find that
+%
+\beq
+  \ekin = \mass\dt\vel\iprod\vel\,.
+\eeq
+
+On the other hand, the particle's motion can be modeled by equating Newton's second law of motion with Lorentz force, since the particle interacts with an electromagnetic field. Thus, we find that
+%
+\beq
+  \dt\mom = \echarge\parth{\efield + \vel\cprod\mfield}\,,
+\eeq
+%
+where $\mom$ is the particle's linear momentum. By definition, $\mom = \mass\vel$, so $\dt\mom = \dt\mass\vel + \mass\dt\vel = \mass\dt\vel$, because mass is constant, $\dt\mass = 0$, then we have that
+%
+\beq
+  \mass\dt\vel = \echarge\parth{\efield + \vel\cprod\mfield}\,.
+\eeq
+
+Plug in the last equation (equation of motion) into the $\dt\ekin$ expression:
+%
+\beq
+  \dt\ekin = \echarge\efield\iprod\vel + \echarge\parth{\vel\cprod\mfield}\iprod\vel\,.
+\eeq
+%
+Since the triple product vanishes, one finally finds
+%
+\beq
+  \dt\ekin = \echarge\efield\iprod\vel\,,
+\eeq
+%
+the rate at which the particle's kinetic energy changes with respect to time.
+
+This (analytic) solution confirms our guessed model and the approximate solutions. Then, it creates confidence, not only on our intuition, but also on the efficacy of approximate methods.
+
+
+\section{Formal solution}
+%
+Finally, we present a terser solution.
+
+Agree on the given hypotheses and on the symbols and notation previously established.
+
+First, model the movement of the particle (equation of motion) by equating Newton's second law to Lorentz force law:
+%
+\begin{equation}\label{eq:chargedparticleeqofmotion}
+  \mass\dt\vel = \echarge\parth{\efield + \vel\cprod\mfield}\,.
+\end{equation}
+
+Write next the particle's kinetic energy as $2\ekin = \mass\vel\iprod\vel$ and then calculate its temporal change $\dt\ekin$:
+%
+\begin{equation}\label{eq:timederivkinenergy}
+  \dt\ekin = \mass\dt\vel\iprod\vel\,.
+\end{equation}
+
+Plug \cref{eq:chargedparticleeqofmotion} into \cref{eq:timederivkinenergy} to find: $\dt\ekin/\echarge = \efield\iprod\vel + \vel\cprod\mfield\iprod\vel$. Since the scalar triple product vanishes, the model is finally
+%
+\beq
+  \dt\ekin = \echarge\efield\iprod\vel\,.
+\eeq
+%
+The last formula models the temporal change of kinetic energy of a charged particle moving through a constant electromagnetic field.
+
+The formal solution was obtained from the derivation of the wordy solution. They only differ in presentation. In the formal solution,
+%
+\begin{itemize}
+%
+\item the presentation is brief, concise, straight to the point, but not incomplete. It only leaves \scare{obvious details} to be filled in; \eg, nowhere it is written that $\dt\mom = \dt\mass\vel + \mass\dt\vel = \mass\dt\vel$, because under hypotheses, $\mass$ is constant, so it is \scare{well-known} that $\dt\mom = \mass\dt\vel$ in such a case;
+%
+\item equations are referred to by proper, technical names: Newton's second law of motion, scalar triple product and so on;
+%
+\item only \scare{important} equations, derivations and results are displayed, whereas small equations, non-trivial, but small, derivations and partial results are presented in-line -- with the running text;
+%
+\item verbs changed to the imperative to avoid the use of personal grammar forms -- we, us, one and so on -- and of the passive voice.
+%
+\end{itemize}
+
+
+\section{Math proof}
+%
+... \cite[chap. 1]{lehman:2011}
+
+Consider a body $\body$ with electric charge $\echarge$ moving with velocity $\vel$ through a constant electric field of strength $\efield$. The formula
+%
+\beq
+  \dt\ekin = \echarge\efield\iprod\vel
+\eeq
+%
+models the body temporal change of kinetic energy $\dt\ekin$.
+
+
+\subsection{Proof scratch work}
+%
+Suppose we didn't... Two column style: left-hand side for calculations, right-hand side for explanations. We use the approx. method solution style.
+
+Use Newton's and classical electromagnetism theories. Assume the body is a particle. 
+%
+\begin{align*}
+%
+  \force &\sim \mass\vel/t                           & \eqtxt{Newton's second} \\
+  \force &\sim \echarge\parth{\efield + \vel\mfield} & \eqtxt{Lorentz force} \\
+  \implies
+  \mass\vel/t &\sim \echarge\parth{\efield + \vel\mfield} & \eqtxt{equation of motion}\\
+  \ekin &\sim\mass\vel^2 & \eqtxt{kin energy definition} \\
+  \implies
+  \dt\ekin &\sim\mass\vel & \eqtxt{time derivative} \\
+%
+\end{align*}
+%
+
+
+
+
+\subsection{Lamport's proof style}
+%
+Lamport's proof style \cite{lamport:1993,lamport:2012}.
+
+\begin{proof}
+%
+\begin{description}
+%
+\item[Proof sketch] we begin by
+%
+\end{description}
+%
+\end{proof}
+
+
+\subsection{Traditional proof style}
+%
+
+
+
+\subsection{Wrong}
+%
+the answer to the problem was wrong in \cite{thorne:2011} and then corrected in \cite{thorne:2013}.
+
+quote: nuilluis in verba :).
+
+

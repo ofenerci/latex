@@ -1,0 +1,52 @@
+% physics
+% physics commands, environments and macros
+
+\ProvidesPackage{aux/physics}[05/08/2014 physics macros and commands (rimbaudcode)]
+
+%%% Geometry
+%
+\providecommand*{\body}{\set{B}} % body (region in space)
+
+%%% Electromagnetism
+%
+\providecommand*{\echarge}{q}                % electric charge
+\providecommand*{\eecharge}{\echarge\txt{e}} % electron electric charge
+\providecommand*{\pecharge}{\echarge\txt{p}} % proton electric charge
+%
+% Field
+%
+\providecommand*{\efield}{e} % electric field
+\providecommand*{\mfield}{b} % magnetic field
+
+%%% Mechanics
+%
+% Kinematics
+%
+\providecommand*{\vel}{v} % velocity
+%
+% Dynamics
+%
+\providecommand*{\force}{f} % force
+\providecommand*{\mass}{m}  % mass
+\providecommand*{\mom}{p}   % momentum
+%
+% Energy
+%
+\providecommand*{\ener}{e} % energy
+\providecommand*{\ekin}{k} % kinetic energy
+
+%%% Dimensional analysis
+%
+\providecommand*{\phdim}[1]{\mathsf{#1}} % physical dimension
+\providecommand*{\fdim}{\Xi}             % dimless function
+\providecommand*{\kdim}{\Pi}             % dimless quantity
+
+%%% Universal constants
+%
+\providecommand*{\uconst}[1]{k\txt{#1}} % general universal constant
+%
+\providecommand*{\uknewton}{\uconst{ne}} % Newton's gravitational constant
+
+%%% Eng. notation
+%
+\providecommand*{\rpos}{r} % radial position (coordinate)

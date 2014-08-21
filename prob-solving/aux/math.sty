@@ -1,0 +1,67 @@
+% math
+% math commands, environments and macros
+
+\ProvidesPackage{aux/math}[05/08/2014 math macros and commands (rimbaudcode)]
+
+%%% General
+%
+\def\beq{\begin{equation*}} %
+\def\eeq{\end{equation*}}   %
+%
+\providecommand*{\defas}{\doteq}               % is defined as
+\providecommand*{\parth}[1]{\left({#1}\right)} % parentheses
+\providecommand*{\eqtxt}[1]{[\text{#1}]}       % explanatory text in equations
+\providecommand*{\txt}[1]{_\text{#1}}          % subscript text in math mode
+\providecommand*{\tuple}[1]{\left({#1}\right)} %
+\providecommand*{\vat}[1]{\!\left[{#1}\right]} % value (of a function) at a point
+
+%%% Sets
+%
+\providecommand*{\set}[1]{\mathcal{#1}} % sets
+\providecommand*{\frm}{\set{F}}         % frame
+%
+\providecommand*{\espace}{\set{E}}          % Euclidean space
+\providecommand*{\nespace}[1]{\espace^{#1}} % n-dim Euclidean space
+%
+\providecommand*{\elset}[1]{\lbrace{#1}\rbrace} % elements of a set
+
+%%% Intervals
+%
+\providecommand*{\ccint}[2]{\left[{#1},{#2}\right]} % closed-closed interval
+
+%%% Calculus
+%
+% Derivatives
+%
+\providecommand*{\dx}{\text{d}}    % derivative symbol
+\providecommand*{\dt}[1]{\dot{#1}} % time (dot) derivative
+%
+\providecommand*{\iod}[1]{\dx_{#1}}      % index ordinary derivative
+\providecommand*{\ipd}[1]{\partial_{#1}} % index partial derivative
+%
+\providecommand*{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}} % expanded ord. deriv.
+%
+% Integrals
+%
+\providecommand*{\sint}[2]{\int_{#1}{#2}}       % short integral
+\providecommand*{\lint}[3]{\int_{#1}{#2}\,{#3}} % long integral
+
+%%% Geometric algebra
+%
+\providecommand*{\cprod}{\times}            % cross product
+\providecommand*{\iprod}{\cdot}             % inner product
+\providecommand*{\oprod}{\wedge}            % outer product
+\providecommand*{\magni}[1]{\vert{#1}\vert} % magnitud
+%
+% Geometric calculus
+%
+\providecommand*{\gder}{\raisebox{\depth}{\ensuremath{\bigtriangledown}}} % geometric derivative
+%
+% Vectors
+%
+\providecommand*{\uvec}[1]{\hat{#1}} % unit lenght vector
+
+%%% Index notation
+%
+\providecommand*{\ivec}[2]{{#1}^{#2}} % index vector
+\providecommand*{\icov}[2]{{#1}_{#2}} % index covector
