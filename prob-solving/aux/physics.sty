@@ -1,11 +1,15 @@
 % physics
 % physics commands, environments and macros
 
-\ProvidesPackage{aux/physics}[05/08/2014 physics macros and commands (rimbaudcode)]
+\ProvidesPackage{aux/physics}[23/08/2014 physics macros and commands (rimbaudcode)]
 
 %%% Geometry
 %
-\providecommand*{\body}{\set{B}} % body (region in space)
+\providecommand*{\geoelement}[1]{\mathfrak{#1}} % geometric element (regions, points, ...)
+%
+\providecommand*{\body}{\geoelement{B}}     % body: region in space
+\providecommand*{\event}{\geoelement{E}}    % event
+\providecommand*{\point}{\geoelement{P}}    % point/particle
 
 %%% Electromagnetism
 %
@@ -22,6 +26,7 @@
 %
 % Kinematics
 %
+\providecommand*{\acc}{a} % acceleration
 \providecommand*{\vel}{v} % velocity
 %
 % Dynamics
