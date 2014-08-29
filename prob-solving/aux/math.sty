@@ -1,7 +1,7 @@
 % math
 % math commands, environments and macros
 
-\ProvidesPackage{aux/math}[23/08/2014 math macros and commands (rimbaudcode)]
+\ProvidesPackage{aux/math}[27/08/2014 math macros and commands (rimbaudcode)]
 
 %%% General
 %
@@ -10,15 +10,16 @@
 %
 \providecommand*{\defas}{\doteq}               % is defined as
 \providecommand*{\parth}[1]{\left({#1}\right)} % parentheses
-\providecommand*{\eqtxt}[1]{[\,\text{#1}\,]}   % explanatory text in equations
 \providecommand*{\txt}[1]{_\text{#1}}          % subscript text in math mode
 \providecommand*{\tuple}[1]{\left({#1}\right)} %
 \providecommand*{\vat}[1]{\!\left[{#1}\right]} % value (of a function) at a point
+%
+\providecommand*{\eqtxt}[1]{[\begingroup\small\,\text{#1}\,\endgroup]} % explanatory text in equations
 
 %%% Sets
 %
-\providecommand*{\set}[1]{\mathcal{#1}} % sets
-\providecommand*{\frm}{\set{F}}         % frame
+\providecommand*{\set}[1]{\mathfrak{#1}} % sets
+\providecommand*{\frm}{\set{F}}          % frame
 %
 \providecommand*{\espace}{\set{E}}          % Euclidean space
 \providecommand*{\nespace}[1]{\espace^{#1}} % n-dim Euclidean space
@@ -52,6 +53,8 @@
 \providecommand*{\iprod}{\cdot}             % inner product
 \providecommand*{\oprod}{\wedge}            % outer product
 \providecommand*{\magni}[1]{\vert{#1}\vert} % magnitud
+\providecommand*{\met}{g}                   % metric
+\providecommand*{\fsmet}{\delta}            % flat space metric (Kronecker's delta)
 %
 % Geometric calculus
 %
@@ -63,5 +66,21 @@
 
 %%% Index notation
 %
+\providecommand*{\fvec}{\gamma} % frame vector
+%
+\providecommand*{\ifvec}[1]{\fvec_{#1}} % index frame vector
+\providecommand*{\ifcov}[1]{\fvec^{#1}} % index frame covector
+%
 \providecommand*{\ivec}[2]{{#1}^{#2}} % index vector
 \providecommand*{\icov}[2]{{#1}_{#2}} % index covector
+%
+\providecommand*{\iffsmet}[2]{\fsmet_{{#1}{#2}}} % index flat space metric in frame
+\providecommand*{\ifmet}[2]{\met_{{#1}{#2}}}     % index metric in frame
+
+%%% Other
+%
+\providecommand*{\lsum}[3]{\sum_{#1}^{#2}\,{#3}} % long sum
+\providecommand*{\ssum}[2]{\sum_{#1}\,{#2}}      % short sum
+%
+\providecommand*{\ivbra}[1]{\left[{#1}\right]\txt{iv}}                % Iverson brackets
+\providecommand*{\series}[3]{\left\lbrace{#1}\right\rbrace_{#2}^{#3}} % series

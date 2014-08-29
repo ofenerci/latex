@@ -1,0 +1,316 @@
+\chapter{Things to organize}
+
+
+\subsection{Interpretation of the solution}
+%
+[Apply the case to the electron-proton. Only e-field interaction needed :)]
+
+%The proton cre- ates an electric field due to its charge qp. Lorentz force states that the proton’s field strength |ep| is given by |ep| ∝ qp/r2, where r is the dis- tance from the proton’s center. Geometrically, this means that |ep| cre- ates concentric surfaces of equal electric potential in E3, called isoelectric surfaces, just like a static « heat source » forms concentric isothermal sur- faces around its center. When something moves towards the proton, it will « pierce » such surfaces. Note that the field strength scales inversely with the squared distance: for instance, if the distance is halved, the field strengthens by a factor of four. In other words, the closer to the proton’s center, the stronger the interaction with its field becomes. On the other hand,whenanelectron,withchargeqe <0,entersthefield,itis«attracted» to the proton’s center as the force between them, |fp-e| ∝ −qeqp/r2, in- creases with decreasing distance. In turn, the electron’s velocity ve in- creases and so does its kinetic energy ke ∝ ve2. Therefore, we expect k ̇e ∼ −qeepve. Notice the negative sign in the expression: it says that the electron looses energy as it falls into the proton! Also, see that k ̇ e does not depend on the electron’s mass.
+
+
+\subsection{Proof scratch work}
+%
+Suppose we didn't... Two column style: left-hand side for calculations, right-hand side for explanations. We use the approx. method solution style.
+%
+% --------------------------------------------------------------- Figure
+%
+\begin{figure}[bt]
+  \capstart
+  \begin{center}
+  \footnotesize
+  %
+\begin{prooftree}
+  %
+  % kinetic energy
+  %
+  \AxiomC{$\ekin \sim \mass\vel^2$}
+  \UnaryInfC{$\ekin/t \sim \mass\vel^2/t$}
+  %
+  % force
+  %
+  \AxiomC{$\force \sim \mass\vel/t$}
+  \AxiomC{$\force' \sim \echarge\parth{\efield' + \vel\mfield'}$}
+  \BinaryInfC{$\mass\vel/t \sim \echarge\parth{\efield' + \vel\mfield'}$}
+  \UnaryInfC{$\mass\vel^2/t \sim \echarge\parth{\efield' + \vel\mfield'}\vel$}
+  %
+  % conclusion
+  %
+  \BinaryInfC{$\ekin/t \sim \echarge\parth{\efield' + \vel\mfield'}\vel$} % take kin. energy and force conclusions as axioms
+  %
+\end{prooftree}
+  %
+  \normalsize
+  \end{center}
+  \caption[Natural deduction charged particles]{Natural deduction proof tree (Gentzen style) of the charged particles case. At the top of the tree, there are the main dynamic laws: definition of kinetic energy, Newton's second law of motion and definition of Lorentz force law. From them and using, throughout, the secant approximation for derivatives, it is possible to derive an approximate formula for the change of kinetic energy of an electrically charged particle toward another electrically charged particle in the Newtonian framework. (ref. here)}
+  \label{fig:natdeducchargedpart}
+\end{figure}
+%
+% ------------------------------------------------------------ EndFigure
+%
+%
+% --------------------------------------------------------------- NDL
+% Natural deduction Lemmon style
+% \ndl{Assumptions}{Formula Statement}{Justification}
+%
+\begin{table}\capstart\begingroup\footnotesize\begin{center}
+  \begin{tabularx}{1.00\textwidth}{lll}
+  %
+  \toprule
+  %
+  \multicolumn{3}{c}{Object model and state quantities} \\
+  \midrule
+  %
+  \ndlst{A}{$\body$ is a particle}{}
+  \ndlst{A}{$\body$ has mass $\mass$}{}
+  \ndlst{A}{$\body$ has electric charge $\echarge$}{}
+  \ndlst{A}{$\body$ moves with velocity $\vel$}{}
+  %
+  \midrule
+  \multicolumn{3}{c}{Agent model and state quantities} \\
+  \midrule
+  %
+  \ndlst{A}{$\body'$ is a particle}{}
+  \ndlst{A}{$\body'$ has mass $\mass'$}{}
+  \ndlst{A}{$\body'$ is static}{}
+  \ndlst{A}{$\body'$ has electric charge $\echarge'$}{}
+  \ndlst{A}{$\body'$ has electric field $\efield'$}{}
+  \ndlst{A}{$\body'$ has magnetic field $\mfield'$}{}
+  \ndlst{A}{$t$ is universal}{}
+  %
+  \midrule
+  \multicolumn{3}{c}{Dynamic laws} \\
+  \midrule
+  %
+  \ndleq{1,2,4}{\ekin\sim\mass\vel^2}{$\body$ kin. energy}
+  \ndleq{1,2,4,11}{\force\sim\mass\vel/t}{$\body$ motion: Newton's second}
+  %
+  \midrule
+  \multicolumn{3}{c}{Interaction laws} \\
+  \midrule
+  %
+  \ndleq{1,3,4,5,7,8,9,10}{\force'\sim\echarge\parth{\efield' + \vel\mfield'}}{$\body, \body'$ interact: Lorentz force}
+  %
+  \midrule
+  \multicolumn{3}{c}{Model derivation} \\
+  \midrule
+  %
+  \ndleq{12}{\ekin/t\sim\mass\vel^2/t}{time derivative}
+  \ndleq{13.14}{\mass\vel/t\sim\echarge\parth{\efield' + \vel\mfield'}}{$=$}
+  \ndleq{16}{\mass\vel^2/t\sim\echarge\parth{\efield' + \vel\mfield'}\vel}{times $\vel$}
+  \ndleq{17}{\ekin/t\sim\echarge\parth{\efield' + \vel\mfield'}\vel}{$=$}
+  %
+  \bottomrule
+  %
+\end{tabularx}\end{center}\endgroup\normalsize
+\caption[Proof sketch electric]{Sketch work to model the electrically charged bodies interaction. The left column contains the statements (formulas) being used, the right column their justifications \cite[p. 3]{lamport:1993}. Note the usage of approximations throughout the derivation -- specially the secant approximation for derivatives \cite[p. 38]{sanjoy:2010} --, of apostrophes to differentiate $\point$ quantities from $\point'$ quantities and of geometric algebra \cite{hestenes:2003}. [A] means assumption.}\label{tab:sketchworkelectric}
+\end{table}
+%
+% ------------------------------------------------------------- EndNDL
+
+
+\section{Wordy derivation}
+% 
+We solve the problem now by presenting a \scare{wordy-version} of the analytic solution: we describe the math derivation in detail.
+
+The particle kinetic energy is $2\ekin = \mass\vel^2$. This can be rewritten as
+%
+\beq
+  2\ekin = \mass\vel\iprod\vel\,,
+\eeq
+%
+since $\vel$ is colinear to itself; \ie, its outer product is zero; \viz, $\vel^2 = \vel\vel = \vel\iprod\vel + \vel\oprod\vel = \vel\iprod\vel$. 
+
+Then, calculate the kinetic energy change rate with time by
+%
+\beq
+  2\ekin = \mass\vel\iprod\vel \implies
+  2\dt\ekin = \mass\parth{\dt\vel\iprod\vel + \vel\iprod\dt\vel} 
+            = \mass\parth{\dt\vel\iprod\vel + \dt\vel\iprod\vel}
+            = 2\mass\dt\vel\iprod\vel\,,
+\eeq
+%
+where the product rule for the differentiation of the inner product, the commutativity property of the inner product and the dot notation for derivatives were used.
+
+Next, one cancels out the numerical factor 2 in both sides of the equality to find that
+%
+\beq
+  \ekin = \mass\dt\vel\iprod\vel\,.
+\eeq
+
+On the other hand, the particle's motion can be modeled by equating Newton's second law of motion with Lorentz force, since the particle interacts with an electromagnetic field. Thus, we find that
+%
+\beq
+  \dt\mom = \echarge\parth{\efield + \vel\cprod\mfield}\,,
+\eeq
+%
+where $\mom$ is the particle's linear momentum. By definition, $\mom = \mass\vel$, so $\dt\mom = \dt\mass\vel + \mass\dt\vel = \mass\dt\vel$, because mass is constant, $\dt\mass = 0$, then we have that
+%
+\beq
+  \mass\dt\vel = \echarge\parth{\efield + \vel\cprod\mfield}\,.
+\eeq
+
+Plug in the last equation (equation of motion) into the $\dt\ekin$ expression:
+%
+\beq
+  \dt\ekin = \echarge\efield\iprod\vel + \echarge\parth{\vel\cprod\mfield}\iprod\vel\,.
+\eeq
+%
+Since the triple product vanishes, one finally finds
+%
+\beq
+  \dt\ekin = \echarge\efield\iprod\vel\,,
+\eeq
+%
+the rate at which the particle's kinetic energy changes with respect to time.
+
+This (analytic) solution confirms our guessed model and the approximate solutions. Then, it creates confidence, not only on our intuition, but also on the efficacy of approximate methods.
+
+
+\section{Formal solution}
+%
+Finally, we present a terser solution.
+
+Agree on the given hypotheses and on the symbols and notation previously established.
+
+First, model the movement of the particle (equation of motion) by equating Newton's second law to Lorentz force law:
+%
+\begin{equation}\label{eq:chargedparticleeqofmotion}
+  \mass\dt\vel = \echarge\parth{\efield + \vel\cprod\mfield}\,.
+\end{equation}
+
+Write next the particle's kinetic energy as $2\ekin = \mass\vel\iprod\vel$ and then calculate its temporal change $\dt\ekin$:
+%
+\begin{equation}\label{eq:timederivkinenergy}
+  \dt\ekin = \mass\dt\vel\iprod\vel\,.
+\end{equation}
+
+Plug \cref{eq:chargedparticleeqofmotion} into \cref{eq:timederivkinenergy} to find: $\dt\ekin/\echarge = \efield\iprod\vel + \vel\cprod\mfield\iprod\vel$. Since the scalar triple product vanishes, the model is then
+%
+\beq
+  \dt\ekin = \echarge\efield\iprod\vel\,,
+\eeq
+%
+which can be scaled to 
+\beq
+  \dfrac{\dt\ekin}{\echarge\efield\iprod\vel} = 1\,.
+\eeq
+%
+The last formula models the temporal change of kinetic energy of a charged particle moving through a constant electromagnetic field.
+
+The formal solution was obtained from the derivation of the wordy solution. They only differ in presentation. In the formal solution,
+%
+\begin{itemize}
+%
+\item the presentation is brief, concise, straight to the point, but not incomplete. It only leaves \scare{obvious details} to be filled in; \eg, nowhere it is written that $\dt\mom = \dt\mass\vel + \mass\dt\vel = \mass\dt\vel$, because under hypotheses, $\mass$ is constant, so it is \scare{well-known} that $\dt\mom = \mass\dt\vel$ in such a case;
+%
+\item equations are referred to by proper, technical names: Newton's second law of motion, scalar triple product and so on;
+%
+\item only \scare{important} equations, derivations and results are displayed, whereas small equations, non-trivial, but small, derivations and partial results are presented in-line -- with the running text;
+%
+\item verbs changed to the imperative to avoid the use of personal grammar forms -- we, us, one and so on -- and of the passive voice.
+%
+\end{itemize}
+
+
+\section{Math proof}
+%
+... \cite[chap. 1]{lehman:2011} ... \cite{houston:2009}.
+ 
+Consider two electrically charged bodies $\body$ and $\body'$. Consider $\body$ mass to be constant and consider $\body$ moving towards $\body'$. Let $\echarge$ and $\vel$ represent $\body$ electric charge and velocity and let $\efield$ represent $\body'$ electric field. Then, the formula
+%
+\beq
+  \dt\ekin/\echarge\efield\iprod\vel = 1
+\eeq
+%
+models $\body$ temporal change of kinetic energy $\dt\ekin$.
+
+
+\subsection{Lamport's proof style}
+%
+
+
+\subsection{Traditional proof style}
+%
+
+
+
+\subsection{Wrong}
+%
+the answer to the problem was wrong in \cite{thorne:2011} and then corrected in \cite{thorne:2013}.
+
+quote: nuilluis in verba :).
+
+
+\section{Final remarks}
+%
+The method herein presented is far from being perfect. But it has worked nicely for me, not only when solving textbook exercises, but also in personal research and professional work. In textbooks, authors can write shorter, open statements, because the context given by the surrounding text allows them to do so. In real research, however, one never finds a textbook problem with a back-of-the-book solution.
+
+The most important aspects on solving exercises are, according to my experience:
+%
+\begin{itemize}
+%
+\item having a problem that interests me;
+%
+\item working hard on having a good description of the problem;
+%
+\item making assumptions.
+%
+\end{itemize}
+%
+If all of the previous premises are satisfied, I ....
+
+My working methodology is heavily influenced by John Denker, David Hestenes and Sanjoy Mahajan's ideas.
+
+David Hestenes and Kip Thorne ideas on working with the geometric principle...
+
+Math proofs from Houston.
+
+the writing style comes from AIP Style Manual, Denker, Linder, Mahajan and mainly Fourier (theory of heat!).
+
+I like to write in first person (singular and plural)
+%
+~\mquote{The old taboo against using the first person in formal prose has long been deplored by the best authorities and ignored by some of the best writers. [\dots] A single author should also use \scare{we} in the common construction that includes the reader.}{\cite[p. 14]{aip:1990}}
+
+
+\section{Formal proof}
+%
+Natural deduction proof (tree proof): Gentzen style.
+
+For this section consider the assumptions made in ... and geometric algebra.
+%
+\setcounter{ndlproofcounter}{0} % reset counter
+% --------------------------------------------------------------- NDL
+% Natural deduction Lemmon style
+% \ndl{Assumptions}{Formula Statement}{Justification}
+%
+\begin{table}\capstart\begingroup\footnotesize\begin{center}
+  \begin{tabularx}{1.00\textwidth}{lll}
+  %
+  \toprule
+  \multicolumn{3}{c}{Dynamic and interaction laws} \\
+  \midrule
+  %
+  \ndleq{A}{2\ekin = \mass\vel\iprod\vel}{kinetic energy}
+  \ndleq{A}{\dt\mom = \mass\dt\vel}{Newton's second}
+  \ndleq{A}{\force' = \echarge\parth{\efield' + \vel\cprod\mfield'}}{Lorentz force}
+  %
+  \midrule
+  \multicolumn{3}{c}{Model derivation} \\
+  \midrule
+  %
+  \ndleq{1}{\dt\ekin = \mass\dt\vel\iprod\vel}{$\iod t$}
+  \ndleq{2,3}{\mass\dt\vel = \echarge\parth{\efield' + \vel\cprod\mfield'}}{$=$}
+  \ndleq{5}{\mass\dt\vel\iprod\vel = \echarge\parth{\efield' + \vel\cprod\mfield'}\iprod\vel}{${}\iprod\vel$}
+  \ndleq{6}{\mass\dt\vel\iprod\vel = \echarge\efield'\iprod\vel}{$\vel\cprod\mfield'\iprod\vel = 0$}
+  \ndleq{4,7}{\dt\ekin = \echarge\efield'\iprod\vel}{$=$}
+  \ndleq{8}{\dt\ekin/\echarge\efield'\iprod\vel = 1}{$1/\echarge\efield'\iprod\vel$}
+  %
+  \bottomrule
+  %
+\end{tabularx}\end{center}\endgroup\normalsize
+\caption[.]{[Ga] means geometric algebra identity.}\label{tab:formalmodelderivation}
+\end{table}
+%
+% ------------------------------------------------------------- EndNDL
+
+We adapt Lamport's math proof style \cite{lamport:1993,lamport:2012} to physics, 

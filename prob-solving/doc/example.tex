@@ -23,13 +23,13 @@ However, herein we will not be concerned by posing a problem, we will rather tak
 
 \subsection{Reference exercise}\label{sec:referenceexercise}
 %
-The reference exercise comes from the \book{Particle Kinetics and Lorentz Force in Geometric Language} section in \cite[chap. 1, p. 8]{thorne:2011}. Therein, geometric ideas, \via the \fact{geometric principle},
+As a \lingo{reference exercise}, I chose a nice one presented in the \book{Particle Kinetics and Lorentz Force in Geometric Language} section in \cite[chap. 1, p. 8]{thorne:2011}. There, geometric ideas, \via the \fact{geometric principle},
 %
 ~\mnote{The laws of physics must all be expressible as geometric [\dots] relationships between geometric objects [\dots], which represent physical entities. \cite[part I, p. iii]{thorne:2013}}
 %
-are applied to Newtonian physics. 
+are applied to Newtonian physics.
 
-I quote the exercise verbatim:
+Now, to save your time for finding it, I quote the exercise verbatim:
 %
 \begin{description}
 %
@@ -46,17 +46,17 @@ In \cref{eq:referenceequation}, $E$ represents the particle's kinetic energy, $t
 
 \subsection{Reference exercise analysis}\label{sec:referenceanalysis}
 %
-The reference exercise asks us to match (derive) a given formula. Thus, it is better to be sure that such a formula is derivable. As a healthy habit, then, get used to \emph{always} check formula correctness by the simplest (but powerful) analytic method we have on physics: \lingo{dimensional analysis}.
+In the reference exercise, we are asked to derive (match) a given formula. As a healthy advice, always check if a formula, specially one to match, is correct (in this case, derivable). But, how to know if a formula is correct without a formal derivation? Catch-22! Well, not really. We have a simple (but powerful) method to analyze formula correctness without the need of long computations: \lingo{dimensional analysis}
 %
 \mquote{Upon seeing any equation, first check its dimensions [\dots]. If all terms do not have identical dimensions, the equation is not worth solving -- a great savings of effort.}{\cite[p. 42]{sanjoy:2010}}
 %
-In a correct equation all of its terms have the same dimensions. Let's see if \cref{eq:referenceequation} passes this test.
+-- in a correct equation, all of its terms have the same dimensions. Let's see if \cref{eq:referenceequation} passes this test.
 
-Since we are dealing with dynamics and electromagnetism, choose the dimensionally independent set $\elset{\phdim F, \phdim L, \phdim Q, \phdim T}$, where $\phdim F$ represents the dimension of force, $\phdim L$ length, $\phdim Q$ electric charge and $\phdim T$ time. Then, for \cref{eq:referenceequation}, we have
+Since we are dealing with electrodynamics, we choose the dimensions of force $\phdim F$, length $\phdim L$, electric charge $\phdim Q$ and time $\phdim T$ as base dimensions for the analysis. Then, for \cref{eq:referenceequation}, we have that
 %
 \begin{align*}
 %
-  \dfrac{\dim\dx E}{\dim\dx t} &= \dfrac{\phdim{FL}}{\phdim{T}} & \eqtxt{LHS of \cref{eq:referenceequation}} \\
+  \dfrac{\dim dE}{\dim dt} &= \dfrac{\phdim{FL}}{\phdim{T}} & \eqtxt{LHS of \cref{eq:referenceequation}} \\
   %
   &\not= & \\
   %
@@ -64,12 +64,20 @@ Since we are dealing with dynamics and electromagnetism, choose the dimensionall
 %
 \end{align*}
 %
-As we can see, dimensions do not match; \viz the additional $\phdim Q$ in the RHS. So \cref{eq:referenceequation} in wrong! As an error pointer, see that in the exercise statement the particle's electric charge $q$ is given and a magnetic field is mentioned; however, neither appear in \cref{eq:referenceequation}.
+Note the additional $\phdim Q$ in the RHS of \cref{eq:referenceequation} (or the lack thereof in the LHS). Dimensions do not match, thus the formula is false! Then, we could well stop here and move on. But, we are a bit curious: what went wrong? Misprint, mistype or bad derivation are possible causes. But, as an error pointer, we realize that in the exercise statement the particle's electric charge $q$ is given and a magnetic field is mentioned; however, neither appear in \cref{eq:referenceequation}. Let's use this observation to guess that
+%
+\begin{equation}\label{eq:plausibleequation}
+  dE/dt = q\mathbf{v}\iprod\mathbf{E}\,.
+\end{equation}
+%
+The last equation is dimensionally homogeneous and, thus, plausible.
 
 
 \subsection{Reference exercise reformulation}
 %
-Since the conclusion of the reference exercise, \cref{eq:referenceequation}, is wrong, do we still have to solve it? Yes, because the phenomenon still exists (consider, for instance, an electron moving in the field created by a proton). Moreover, we would like to know where exactly the derivation of the reference exercise went astray. To correct the exercise, we have just to ditch the equation. But, removing it also means to reformulate the statement. This reformulation can be done by replacing the \scare{show} bit for \scare{find}. Let's try:
+In the last section, we briefly analyzed the reference exercise, found out its conclusion is incorrect and guessed a plausible formula. But, we are far from the end: a plausible equation is not our final answer.
+
+The next step is to reform the exercise statement itself. I think the reference exercise aim was not to asked us to \scare{show} a wrong conclusion. We replace then the \emph{show} bit for \emph{find}. In this way, we do not have to worry about any formula to match. We will have to derive one. Let's try:
 %
 \begin{description}
 %
@@ -77,18 +85,17 @@ Since the conclusion of the reference exercise, \cref{eq:referenceequation}, is 
 %
 \end{description}
 %
-In this way, we don't have to worry about any formula to match. It is us who has to derive one.
 
 
 \subsection{Working exercise}\label{sec:workingexercise}
 %
-The reference exercise was analyzed and reformulated to avoid its wrong conclusion. We could work with the reformulated reference exercise. However, there are some additional changes I would like to make before having a working exercise:
+The reference exercise was analyzed and reformulated to avoid its wrong conclusion. We could work with the reformulated reference exercise. However, there are some additional changes I would like to make before having a \emph{working exercise}:
 %
 \begin{itemize}
 %
 \item I will generalize the statement by relaxing hypotheses and removing data. Specifically, I will remove the recommendation of not using coordinates nor basis vectors;
 %
-~\mnote{although this is an important reminder of better working with geometric objects, it limits generalization.}
+~\mnote{although this is an important reminder of working with geometric objects rather than with coordinates, it limits generalization.}
 %
 will relax the \scare{particle} model by hypothesizing a \scare{body}, $\body$, instead; will replace the data \scare{charge $q$}, \scare{electric field $\mathbf{E}$} and \scare{magnetic field} with \scare{electrically charged}. These replacements will correct the lack of $q$ and the magnetic field in \cref{eq:referenceequation} -- perhaps they are not needed.
 %
@@ -96,9 +103,9 @@ will relax the \scare{particle} model by hypothesizing a \scare{body}, $\body$, 
 %
 \mquote{[On Newton's laws] the laws fail to explicitly state that \emph{every force has an agent}, that every force is a binary function describing the action of an agent on an object.}{\cite{hestenes:1987}}
 %
-This is a serious omission that perpetuates the \lingo{impetus believe}: \scare{that a force can be imparted to an object and act on it independently of any agent} \cite{hestenes:1987}. It is particularly notorious in the reference exercise: we are told, in electromagnetic theories, that any charged particle creates electric and magnetic fields. So, is the $\mathbf{E}$ in the reference exercise due to the moving particle or to another one? We \emph{interpret} the statement as \scare{there is an agent, different from the moving particle, that creates the electric and magnetic fields with which the moving particle interacts}. We correct this lack of agent by adding a second electrically charged body, $\body'$.
+This is a serious omission that perpetuates the \lingo{impetus believe}: \scare{that a force can be imparted to an object and act on it independently of any agent} \cite{hestenes:1987}. It is particularly notorious in the reference exercise: we are told, in electromagnetic theories, that any charged particle creates electric and magnetic fields. So, is the $\mathbf{E}$ in the reference exercise due to the moving particle or to another one? We \emph{interpret} the statement as \scare{there is a particle, different from the moving one, that creates the electric and magnetic fields with which the moving particle interacts}. We correct this lack of agent by adding a second electrically charged body, $\body'$.
 %
-\item Finally, I like how mathematicians present propositions. They explicitly write two main parts: the premises (or hypotheses) and the conclusion (or question) in a way that nothing is left to interpretation. In such a fashion, the problem becomes \lingo{self-contained}. Self-contained statements tend to be a bit long and sound pedantic; but the result pays off in understanding.
+\item Finally, I like how mathematicians present propositions. They explicitly write the \lingo{premises} (or hypotheses) and the \lingo{conclusion} (or question) in a way that nothing is left to interpretation. In such a fashion, the problem becomes \lingo{self-contained}. Self-contained statements tend to sound a bit pedantic; but, the result pays off in understanding.
 %
 \end{itemize}
 
@@ -106,21 +113,61 @@ With these changes in mind, we present a working version of the exercise:
 %
 \begin{description}
 %
-\item[Energy change for a charged body] \theorem{Consider an electrically charged body $\body$ moving toward an electrically charged body $\body'$. Then, find $\body$ temporal change of energy.}
+\item[Charged body energy change] \theorem{Consider a massive, electrically charged body $\body$ moving toward an electrically charged body $\body'$. Then, find $\body$ temporal change of energy.}
 %
 \end{description}
 
 
 \section{Working exercise solution}
 %
-Now we are ready to work on the exercise. But, wait! Without you noticing it, we already stared solving the exercise. We started by applying two of my favorite methods: \lingo{dimensional analysis} and \lingo{abstraction}. Dimensional analysis was briefly treated in \cref{sec:referenceanalysis} and will be shown more fully in \cref{sec:dimanalysis}. In the next section, thus, I will explain abstraction.
+Now we are ready to work on the exercise. But, wait! Without you noticing it, we already stared working on it. We started by applying two of my favorite methods: \lingo{dimensional analysis} and \lingo{abstraction}. 
+%
+% --------------------------------------------------------------- Figure
+%
+\begin{figure}[bt]
+  \capstart
+  \begin{center}
+  \footnotesize
+  %
+    \Tree [.{how to handle complexity} 
+            %
+            [.{organizing complexity} 
+              [.{abstraction} ] [.{divide and conquer} ] 
+            ]
+            %
+            [.{discarding \emph{fake} complexity (symmetry)} 
+              [.{dimensional analysis} ]
+             ] 
+           ]
+  %
+  \normalsize
+  \end{center}
+  \caption[Handling complexity]
+    {Dimensional analysis and abstraction as methods to handle complexity when solving physics or math problems, adapted from \cite[p. 2]{sanjoy:2008}}
+  \label{fig:handlingcomplexity}
+\end{figure}
+%
+% ------------------------------------------------------------ EndFigure
+%
+% --------------------------------------------------------------- Figure
+% pos.: bthH. size: width=0.5\textwidth. file:./graph/fname.pdf
+% caption. label:fig:wec
+%
+%\docfigure{bt}{height=0.8\textheight}{./graph/complexity.pdf}{How to handle complexity}{Various techniques used to handle complexity when solving physics (or math) problems \cite[p. 2]{sanjoy:2008}. Two of them are used in the present text: dimensional analysis and abstraction.}{fig:handlingcomplexity}
+%
+% ------------------------------------------------------------ EndFigure
+%
+These methods are ideal to handle complexity, \vide \cref{fig:handlingcomplexity}. While dimensional analysis discards \scare{fake} complexity by compressing information, abstraction organizes it.
+
+Dimensional analysis was briefly treated in \cref{sec:referenceanalysis} and will be shown more fully in \cref{sec:dimanalysis}. In the next section, I will explain abstraction.
 
 
 \subsection{Abstraction}
 %
+As seen in \cref{sec:workingexercise},
 \mquote{The problem statement should be very general and free of as much data as possible, as later stages in the modelling process will consider and gather what is needed.}{\cite[p. 8]{nsw:2000}}
 %
-As seen in \cref{sec:workingexercise}, abstraction is the process of relaxing hypotheses and removing data to leave only the bare bones of an statement. There are three main reasons to do this:
+abstraction is the process of relaxing hypotheses and removing data to leave only the bare bones of an statement. There are some reasons to do this:
 %
 \begin{enumerate}
 %
@@ -160,19 +207,21 @@ For instance, in the case of the working exercise, note the keywords \emph{elect
 For the present case, in order to retain the spirit of the reference exercise, we choose Newtonian physics as the main physical framework in which to work. (The relationships among several physical theories is presented in \cref{fig:classicalquantumphysics}.)
 
 
-\subsection{Notes on notation}
+\subsection{Notation}
+%
+Often,
 %
 \mquote{A name is not the same as an explanation. Do not expect the structure of a name or symbol to tell you everything you need to know. Most of what you need to know belongs in the legend. The name or symbol should allow you to look up the explanation in the legend.}{\cite{denker:notation}}
 %
-Often, scalars, vectors and other mathematical objects are typeset with different font faces for each math type. Although this convention works fine for printed texts, it posses issues when working on paper. See, for instance, that, in the reference exercise, $E$ is used to represent energy and $\mathbf{E}$ to represent electric field. Now, how to distinguish between $E$ and $\mathbf{E}$ with pen on paper without both e's getting confused?
+scalars, vectors and other mathematical objects are typeset with different font faces for each math type. Although this convention works fine for printed texts, it posses issues when working on paper. See, for instance, that, in the reference exercise, $E$ is used to represent energy and $\mathbf{E}$ to represent electric field. Now, how to distinguish between $E$ and $\mathbf{E}$ with pen on paper without both e's getting confused?
 
-The alternatives, then, are to decorate objects, like using arrows on top of letters for vectors -- $\vec E$ for electric field -- or to use majuscules and minuscules to distinguish objects. Herein I \emph{could} follow any of such conventions, but I am not going to. I do not like how arrows, bold typefaces or majuscules look like. Instead I will use different symbols for different quantities and minuscules to typeset variables; for instance, $\force$ would represent force, $\efield$ electric field, $\ekin$ kinetic energies and so forth. Even though this latter convention appears error prone, it constantly reminds me to be careful when working with mixed types of math objects, for I do not rely on typographical decoration anymore.
+The alternatives, then, are to decorate objects, like using arrows on top of letters for vectors -- $\vec E$ for electric field -- or to use majuscules and minuscules to distinguish objects. Herein I \emph{could} follow any of such conventions, but I am not going to. I do not like how arrows, bold typefaces or majuscules look like. Instead I will use different symbols for different quantities and minuscules to typeset variables; for instance, $\force$ would represent force, $\efield$ electric field, $\ekin$ kinetic energy and so forth. Even though this latter convention appears error prone, it constantly reminds me to be careful when working with mixed types of math objects, for I do not rely on typographical decoration anymore.
 
 Finally,
 %
 \mquote{Typography exists to honor content.}{\cite[p. 17]{brinhurst:2004}}
 %
-in the writer's opinion, besides honoring math objects in lieu of making notation to stand out, this flat, undecorated typography seems to give equations an air of elegance and simplicity unmatchable by heavy decoration. Consider, for example, how Newton's second law of motion looks like undecorated
+in the writer's eyes, besides honoring math objects while quenching notation, this flat, undecorated typography seems to give equations an air of elegance and simplicity unmatchable by heavy decoration. Compare, for instance, the undecorated version of Newton's second law of motion 
 %
 \mquote{But in our opinion truths of this kind should be drawn from notions rather than from notations.}{\cite{gauss:wikiquote}}
 %
@@ -183,15 +232,15 @@ in the writer's opinion, besides honoring math objects in lieu of making notatio
 with $\vec F = m\vec a$ or $\mathbf{F} = m\mathbf{a}$, its decorated and bold counterparts.
 
 
-\subsection{Adoption of physical framework}
+\subsection{Adoption of physical framework -- model theory}\label{sec:physicalframework}
 %
-We adapt Lamport's math proof style \cite{lamport:1993,lamport:2012} to physics, \via the model theory \cite{hestenes:1987}.
+\via the model theory \cite{hestenes:1987}.
 %
 \mquote{Before developing the necessary mathematics, survey the crucial physics.}{\cite[p. 11]{lindner:2011}}
 %
 \begin{description}
 %
-\item[Theory] Newtonian physics: Newtonian electrodynamics.
+\item[Theory] Newtonian electrodynamics: (Newtonian physics)
 %
 \item[Object] body $\body$ modeled as a moving particle: (state variables, object variables, ...) with charge $\echarge$ and mass $\mass$.
 %
@@ -201,18 +250,16 @@ We adapt Lamport's math proof style \cite{lamport:1993,lamport:2012} to physics,
 %
 \begin{align}
   %
-  \mom &= \mass\vel & \eqtxt{Lin. momentum def.} \\
-  %
-  \force &= \dt\mom & \eqtxt{Newton's second} \\
-  %
-  2\ekin &= \mass\vel & \eqtxt{Kin. energy definition}
+  \mom   &= \mass\vel   & \eqtxt{def. momentum} \\
+  \force &= \dt\mom     & \eqtxt{Newton's second law} \\
+  2\ekin &= \mass\vel^2 & \eqtxt{def. kinetic energy}
   %
 \end{align}
 %
 \item[Interaction laws]
 %
 \begin{align}
-  \force &= \echarge\parth{\efield + \vel\cprod\mfield} & \eqtxt{Lorentz force}
+  \force &= \echarge\parth{\efield' + \vel\cprod\mfield'} & \eqtxt{Lorentz force}
 \end{align}
 %
 \item[Interpretation] ...
@@ -224,21 +271,286 @@ We adapt Lamport's math proof style \cite{lamport:1993,lamport:2012} to physics,
 Notice that interpretation forms a part of the proof!
 
 
-\subsection{Interpretation of the solution}
+\subsection{Approximate solution}
 %
-As a first approximation to the solution, instead of working with the general case, we go to an specific example by considering the moving particle to be an electron and the electric field to be originated by a proton. The dynamics is described by \lingo{Lorentz force law}.
+Now that we have the physical framework in place, it is time to mathematically model the phenomenon using laws, definitions and theorems from the framework. However, we will not use the full-blown formulas; we will use approximations instead.
+%
+\mquote{Too much mathematical rigor teaches \lingform{rigor mortis}: the fear of making an unjustified leap even when it lands on a correct result. Instead of paralysis, have courage -- shoot first and ask questions later. Although unwise as public policy, it is a valuable problem-solving philosophy.}{\cite[p. viii]{sanjoy:2010}}
+%
+% --------------------------------------------------------------- Figure
+%
+\begin{figure}[bt]
+  \capstart
+  \begin{center}
+  \footnotesize
+  %
+    \Tree [.{how to handle complexity} 
+            %
+            [.{discarding \emph{fake} complexity (symmetry)} 
+              [.{dimensional analysis} ]
+            ] 
+            [.{discarding \emph{actual} complexity} 
+              [.{approximation} ] 
+            ]
+           ]
+  %
+  \normalsize
+  \end{center}
+  \caption[Handling complexity, again]
+    {Approximation as methods to handle complexity when solving physics or math problems, adapted from \cite[p. 2]{sanjoy:2008}}
+  \label{fig:handlingcomplexitytwo}
+\end{figure}
+%
+% ------------------------------------------------------------ EndFigure
 
-Let's first analyze the \emph{electron-electric field interaction}. The proton creates an electric field due to its charge $\pecharge$. Lorentz force states that the proton's field strength $\magni{\efield\txt p}$ is given by $\magni{\efield\txt p}\propto\pecharge/\rpos^2$, where $\rpos$ is the distance from the proton's center. Geometrically, this means that $\magni{\efield\txt p}$ creates concentric surfaces of equal electric potential in $\nespace 3$, called \lingo{isoelectric surfaces}, just like a static \scare{heat source} forms concentric \lingo{isothermal} surfaces around its center. When something moves towards the proton, it will \scare{pierce} such surfaces. Note that the field strength scales inversely with the squared distance: for instance, if the distance is halved, the field strengthens by a factor of four. In other words, the closer to the proton's center, the stronger the interaction with its field becomes. On the other hand, when an electron, with charge $\eecharge < 0$, enters the field, it is \scare{attracted} to the proton's center as the force between them, $\magni{\force\txt{p-e}}\propto -\eecharge\pecharge/\rpos^2$, increases with decreasing distance. In turn, the electron's velocity $\vel\txt{e}$ increases and so does its kinetic energy $\ekin\txt e\propto\vel\txt e^2$. Therefore, we expect $\dt\ekin\txt e\sim-\eecharge\efield\txt p\vel\txt e$. Notice the negative sign in the expression: it says that the electron looses energy as it falls into the proton! Also, see that $\dt\ekin\txt e$ does not depend on the electron's mass.
+We do this because we do not want to be distracted by fancy math, detailed calculations, extra accurate results, unnecessary math factors (like $\tau$ or $\pi$) in our first contact with the model formulation, \vide \cref{fig:handlingcomplexitytwo}. We want understanding first, then we polish the model little by little; \ie, we will firstly focus on estimating the backbone effects influencing the phenomenon. There are some recommended estimations available \cite{francis:1999}:
+%
+\begin{itemize}
+%
+\item discarding unnecessary factors;
+%
+\item number guessing;
+%
+\item geometry tinkering (everything is a cube or a sphere);
+%
+\item usage of ratios;
+%
+\item usage of conservation laws;
+%
+\item dimensional analysis;
+%
+\item plausibility checks.
+%
+\end{itemize}
+%
+In our case, we will mainly discard unnecessary factors and use the \lingo{secant method} for approximating derivatives \cite[p. 38]{sanjoy:2010}.
 
-Now, let's analyze the \emph{electron-magnetic field interaction}. An electron moving in a magnetic field experiences a sideways force $\force\txt m$ proportional to (i) the strength of the magnetic \scare{field} $\magni\mfield$, (ii) the component of the velocity perpendicular to such field $\vel\txt e$ and (iii) the charge of the electron $\eecharge$; \ie, the second term of the Lorentz force: $\force\txt m = \eecharge\vel\txt e\cprod\mfield$. Note that $\force\txt m$ is always perpendicular to both the $\vel\txt e$ and the $\mfield$ that created it, mathematically expressed by the (cross) product $\vel\txt e\cprod\mfield$. Then, when the electron moves in the field, it traces an helical path in which the helix axis is parallel to the field and in which $\vel\txt e$ remains constant. Because the magnetic force is always perpendicular to the motion, the $\mfield$ can do \emph{no} work. It can only do work \emph{indirectly}, via the electric field generated by a changing $\mfield$. This means that, if no work is directly created by the magnetic field, then the change rate of the electron's kinetic energy should not depend directly on it, but rather indirectly, via the electron's velocity: $\ekin\txt e\propto\vel\txt e^2\implies\dt\ekin\txt e\propto\vel\txt e$, which has the same dependence as the equation obtained in the electron-electric field analysis.
-
-Finally, because an electron moving towards a proton is an example of a more general case, expect the \emph{form} of the electron-proton case to work for \emph{any} moving charged particle under a constant electromagnetic field. This means that, physically, the change of the particle's kinetic energy $\ekin$ should directly depend only on the electric field (and not on the magnetic induction), the particle's charge and its velocity: $\dt\ekin\sim\echarge\efield\vel$. Mathematically, see that, since $\efield$ and $\vel$ are both vectors, the product $\efield\vel$ must be a product between vectors. The only suitable product is the \lingo{inner product}, \aka scalar product, because it is the only one to return a scalar; this would agree with the scalar nature of $\ekin$. This means, therefore,
+The secant method for approximating derivatives consists in replacing derivatives by divisions:
 %
 \beq
-  \dt\ekin \sim \echarge\efield\iprod\vel\,.
+  \dfrac{\dx f}{\dx x} \sim \dfrac{f}{x}\,,
 \eeq
 %
-We expect this guessed equation to be obtained by formal methods.
+where $f$ is a function whose derivative with respect to $x$ exists and $\sim$ means \lingo{is similar to}.
+
+Discarding factors and approximating derivatives by the secant can be illustrated by estimating the kinetic energy temporal change of a moving particle:
+%
+\beq
+  \ekin = \dfrac{1}{2}\mass\vel^2
+        \sim\mass\vel^2
+  \implies
+  \dt\ekin \sim \dfrac{\ekin}{t} 
+           \sim \dfrac{\mass\vel^2}{t}\,,
+\eeq
+%
+where we have discarded the factor of $1/2$ and approximated the kinetic energy time derivative.
+
+Working back on the exercise, first, we write the set of equations obtained in \cref{sec:physicalframework}:
+%
+\begin{align*}
+  2\ekin  &= \mass\vel^2\,,                                   &\eqtxt{kinetic energy} \\
+  \force  &= \mass\dt\mom = \mass\dt\vel\,.                   &\eqtxt{Newton's second law} \\
+  \force' &= \echarge\parth{\efield' + \vel\cprod\mfield'}\,, &\eqtxt{Lorentz force}
+\end{align*}
+%
+where unprimed quantities represent $\point$ (moving body -- \emph{object} -- modeled as particle) properties, while primed quantities $\point'$ (non-moving body -- \emph{agent} -- modeled as particle) properties.
+
+Then, we drop numeric factors, product between vectors and use the secant method to approximate derivatives to find
+%
+\begin{align*}
+  \ekin    &\sim \mass\vel^2\,, \\
+  \dt\ekin &\sim \ekin/t \sim \mass\vel^2/t \sim \parth{\mass\vel/t}\vel\,, \\
+  \force   &\sim \mass\vel/t\,, \\
+  \force'  &\sim \echarge\parth{\efield' + \vel\mfield'}\,.
+\end{align*}
+
+We begin the analysis by \lingo{dividing and conquering}, \vide \cref{fig:handlingcomplexity}, the last set. We first analyze the electric field effect, then the magnetic field effect on the particle motion and finally we join them both.
+
+\subsubsection{Electric field effect}
+%
+To understand the electric field effect, we use a \lingo{tree diagram} that contains all the computational work with the quantities and the formulas governing the particle's motion, \vide \cref{fig:electricfieldeffect}.
+%
+% --------------------------------------------------------------- Figure
+%
+\begin{figure}[bt]
+  \capstart
+  \begin{center}
+  \begingroup
+  \footnotesize
+  %
+  \begin{tikzpicture}[grow'=up]
+    %
+    %       % conclusion
+    \Tree [.{$\ekin/t\sim\echarge\efield'\vel$} 
+            %
+            % kin energy branch
+            [.{$\ekin/t\sim\mass\vel\vel/t$} [.{$\ekin\sim\mass\vel\vel$} ] ] 
+            %
+            % forces branch
+            [.{$\mass\vel\vel/t\sim\echarge\efield'\vel$} 
+              [.{$\mass\vel/t\sim\echarge\efield'$} 
+                  {$\force\sim\mass\vel/t$} 
+                  {$\force'\sim\echarge\efield'$} 
+                ] 
+              ] 
+            ] 
+          ] 
+  %
+  \end{tikzpicture}
+  \endgroup
+  \end{center}
+  \caption[Electric field effect]
+    {Effect of electric field on particle $\point$}
+  \label{fig:electricfieldeffect}
+\end{figure}
+%
+% ------------------------------------------------------------ EndFigure
+
+Atop \cref{fig:electricfieldeffect}, we wrote the three main dynamic laws governing the particle's motion: kinetic energy definition, Newton's second law of motion and Lorentz force law. On the LHS, we begun with the kinetic energy definition and then approximated its time derivative. On the RHS, we begun with Newton's second law and Lorentz force law, then equated them and multiplied the result by $\vel$ (to match the $\vel\vel$ in the LHS). Finally, we equated the LHS to the RHS to find that
+%
+\begin{equation}\label{eq:kinenergyelectricfield}
+  \dt\ekin \sim \ekin/t 
+           \sim \echarge\efield'\vel\,,
+\end{equation}
+%
+which gives the effect of the electric field created by $\point'$ on $\point$ motion. This equation shows that $\dt\ekin$ depends neither on forces nor on masses. A fact we will use a bit later.
+
+Notice that we were careful when writing vector multiplications, since there are some: inner product, cross product, outer product and geometric product. However, using this very same information, we can go a bit further with \cref{eq:kinenergyelectricfield}. We know that $\efield'$ and $\vel$ are vectors, so we need a product between them, and we also know that $\dt\ekin$ is a scalar. Thus, for the two sides of \cref{eq:kinenergyelectricfield} to agree, the only product between $\efield'$ and $\vel$ is the inner product, since is the only one that returns a scalar. With this, \cref{eq:kinenergyelectricfield} becomes:
+%
+\beq
+  \dt\ekin \sim \echarge\efield'\iprod\vel\,,
+\eeq
+%
+which agrees nicely with \cref{eq:plausibleequation}; the equation we guessed when correcting the reference exercise. 
+
+It is worth to mention that \cref{eq:plausibleequation} and \cref{eq:kinenergyelectricfield} illustrate the power of dimensional analysis and approximations. With these two, plus some insights, we were able to independently derive meaningful expressions without the need of full-blow calculations! Plausible equations with little job done.
+
+
+\subsubsection{Magnetic field effect}
+%
+To understand the magnetic field effect, we repeat the same methodology used in the previous section: a tree diagram, \vide \cref{fig:magneticfieldeffect}.
+%
+% --------------------------------------------------------------- Figure
+%
+\begin{figure}[bt]
+  \capstart
+  \begin{center}
+  \begingroup
+  \footnotesize
+  %
+  \begin{tikzpicture}[grow'=up]
+    %
+    %       % conclusion
+    \Tree [.{$\ekin/t\sim\echarge\vel\mfield'\vel$} 
+            %
+            % kin energy branch
+            [.{$\ekin/t\sim\mass\vel^2/t$} [.{$\ekin\sim\mass\vel^2$} ] ] 
+            %
+            % forces branch
+            [.{$\mass\vel^2/t\sim\echarge\vel\mfield'\vel$} 
+              [.{$\mass\vel/t\sim\echarge\vel\mfield'$} 
+                  {$\force\sim\mass\vel/t$} 
+                  {$\force'\sim\echarge\vel\mfield'$} 
+                ] 
+              ] 
+            ] 
+          ] 
+  %
+  \end{tikzpicture}
+  \endgroup
+  \end{center}
+  \caption[Magnetic field effect]
+    {Effect of magnetic field on particle $\point$}
+  \label{fig:magneticfieldeffect}
+\end{figure}
+%
+% ------------------------------------------------------------ EndFigure
+%
+The result is that
+%
+\beq
+  \dt\ekin \sim \ekin/t 
+           \sim \echarge\vel\mfield'\vel\,,
+\eeq
+%
+which gives the effect of the electric field created by $\point'$ on $\point$ motion. This equation shows again that $\dt\ekin$ does not depend on $\force$, $\force'$ or $\mass$.
+
+In this case, note the triple product of the vectors $\vel\mfield'\vel$. It can be traced back to the dynamic laws as
+%
+\beq
+  \vel\mfield'\vel \sim \parth{\vel\cprod\mfield'}\iprod\vel\,.
+\eeq
+%
+Again, the right hand side $\vel$ must enter as an inner product, since the LHS of the equation is a scalar, $\dt\ekin$, and the result of $\vel\cprod\mfield'$ is a vector. Using vector algebra, it is possible to show that the triple product vanishes. We could show it that way, but we prefer to argue geometrically. The product $\vel\cprod\mfield'$ returns a vector perpendicular to the plane formed by $\vel$ and $\mfield'$. Then, the triple product \emph{must} vanish, for the angle formed by the vector resulting from $\vel\cprod\mfield'$ and $\vel$ is
+%
+~\mnote{For convenience, define $\tau\defas 2\pi$. \cite{hartl:2010}}
+%
+$\tau/4$ or \SI{90}{\degree}. Thus,
+%
+\begin{equation}\label{eq:kinenergymagneticfield}
+  \dt\ekin \sim 0\,.
+\end{equation}
+
+The last equation agrees with the physical interpretation of the phenomenon. Call $\force\txt m$ the force due to the magnetic field; \ie, the RHS term of Lorentz force: $\echarge\parth{\vel\cprod\mfield}$. Note that $\force\txt m$ is always perpendicular to both the $\vel$ and the $\mfield$ that created it -- mathematically expressed by the (cross) product $\vel\cprod\mfield$. Then, when a charged particle moves through the field, it traces an helical path in which the helix axis is parallel to the field and where $\vel$ remains constant. Because the magnetic force is \emph{always} perpendicular to the motion, then $\mfield$ can do \emph{no} work.
+
+Finally, we see again that approximate methods and some physical insights yield meaningful results.
+
+
+\subsubsection{Electromagnetic field effect}
+%
+Once we have understood a bit more on the physics of the phenomenon, we can join the electric and magnetic effects into an electromagnetic effect, \vide \cref{fig:electromagneticfieldeffect}.
+%
+% --------------------------------------------------------------- Figure
+%
+\begin{figure}[bt]
+  \capstart
+  \begin{center}
+  \begingroup
+  \footnotesize
+  %
+  \begin{tikzpicture}[grow'=up]
+    %
+    %       % conclusion
+    \Tree [.{$\ekin/t\sim\echarge\parth{\efield' + \vel\mfield'}\vel$} 
+            %
+            % kin energy branch
+            [.{$\ekin/t\sim\mass\vel^2/t$} [.{$\ekin\sim\mass\vel^2$} ] ] 
+            %
+            % forces branch
+            [.{$\mass\vel^2/t\sim\echarge\parth{\efield' + \vel\mfield'}\vel$} 
+              [.{$\mass\vel/t\sim\echarge\parth{\efield' + \vel\mfield'}$} 
+                  {$\force\sim\mass\vel/t$} 
+                  {$\force'\sim\echarge\parth{\efield' + \vel\mfield'}$} 
+                ] 
+              ] 
+            ] 
+          ] 
+  %
+  \end{tikzpicture}
+  \endgroup
+  \end{center}
+  \caption[Electromagnetic effect]
+    {Effect of electromagnetic field on particle $\point$}
+  \label{fig:electromagneticfieldeffect}
+\end{figure}
+%
+% ------------------------------------------------------------ EndFigure
+%
+The result is that
+%
+\beq
+  \dt\ekin \sim \echarge\vel\iprod\efield'\,,
+\eeq
+%
+which gives the effect of the electric field created by $\point'$ on $\point$ motion. This equation shows that $\dt\ekin$ does not depend on $\force$, $\force'$, $\mass$ or $\mfield'$.
+
+One more thing. The last equation is fine, but we can do even better. See that both sides have the same dimensions and that the inner product of $\efield$ and $\vel$, two vectors, is a scalar. Then, we can present the last formula as
+%
+\begin{equation}\label{eq:scaledkinenergyelectrofield}
+  \dt\ekin/\echarge\efield\iprod\vel\sim 1\,.
+\end{equation}
+
+The presentation of \cref{eq:scaledkinenergyelectrofield} has two advantages: it is \lingo{scaled} (dimensionless and of order unity) and it stresses the scalar character the solution.
 
 
 \subsection{Dimensional analysis}\label{sec:dimanalysis}
@@ -309,277 +621,3 @@ Time & $t$ & $\phdim T$ \\
 % ------------------------------------------------------------- EndTable
 %
 
-
-\section{Approximate methods}
-%
-For a second approximation, we will use actual equations and will apply to them approximate methods to find the form of the physical model. 
-%
-\mquote{Too much mathematical rigor teaches \lingform{rigor mortis}: the fear of making an unjustified leap even when it lands on a correct result. Instead of paralysis, have courage -- shoot first and ask questions later. Although unwise as public policy, it is a valuable problem-solving philosophy.}{\cite[p. viii]{sanjoy:2010}}
-%
-This helps to better understand the physics behind the process by avoiding the distractions of unnecessary constants, numeric factors and complicated notation. Additionally, it helps, as a sketch, to develop and to present the analytic solution.
-
-First, write the complete set of equations modeling the phenomenon:
-%
-\begin{align*}
-  2\ekin &= \mass\vel^2\,,                                 &\eqtxt{kinetic energy} \\
-  \force &= \echarge\parth{\efield + \vel\cprod\mfield}\,, &\eqtxt{Lorentz force} \\
-  \force &= \mass\dt\mom = \mass\dt\vel\,,                 &\eqtxt{Newton's second law}
-\end{align*}
-%
-where the variables were already defined during guessing and dimensional analysis. 
-
-Then, drop unnecessary constants and numeric factors, use the \lingo{secant method} to approximate derivatives and treat vectors as scalars to find
-%
-~\mnote{In the secant method, tangents (derivatives) are replaced by secants (quotients); \ie, if $f = f\vat x$, then $\iod xf \sim f/x$. Replace vectors by scalars and replace products between vectors by multiplications between scalars.}
-%
-\begin{align*}
-  \ekin    &\sim \mass\vel^2\,, \\
-  \dt\ekin &\sim \ekin/t \sim \mass\vel^2/t \sim \parth{\mass\vel/t}\vel\,, \\
-  \force   &\sim \echarge\parth{\efield + \vel\mfield}\,, \\
-  \force   &\sim \mass\vel/t\,.
-\end{align*}
-
-Find the equation of motion by equating Newton's law to Lorentz law: $\mass\vel/t\sim\echarge\parth{\efield + \vel\mfield}$. Plug this equation into the one for $\ekin/t$, via the factor $\mass\vel/t$:
-%
-\beq
-  \ekin/t \sim \echarge\parth{\efield + \vel\mfield}\vel 
-          \sim \echarge\efield\vel + \echarge\vel\mfield\vel\,.
-\eeq
-%
-In the last equation, the term $\echarge\vel\mfield\vel$ is likely to vanish, because $\vel$ is to enter $\vel\cprod\mfield$ as $\parth{\vel\cprod\mfield}\iprod\vel$, for $\vel$ comes from $\ekin\sim\mass\vel^2\sim\vel\iprod\vel$ and thus
-$\parth{\echarge\vel\cprod\mfield}\iprod\vel\sim\echarge\vel\mfield\vel = 0$, since $\vel\cprod\mfield$ is orthogonal to $\vel$. Then, the expression would be $\ekin/t\sim\echarge\efield\vel$ with some product of vectors between $\efield$ and $\vel$ -- the scalar product. The model could thus be written as $\ekin/t\sim\echarge\efield\iprod\vel$. Finally, remembering that $\ekin/t\sim\dt\ekin$, then
-%
-\beq
-  \dt\ekin\sim\echarge\efield\iprod\vel\,.
-\eeq
-%
-which gives the temporal change of kinetic energy.
-
-The equation found by approximate means agrees with our guess and with dimensional analysis, increasing thus our confidence in understanding the phenomenon! Besides, all the previous methods have cleared the derivation plan: i) find $\dt\ekin$ from $\ekin$; ii) find the equation of motion by using the definition of linear momentum, by equating Newton's law to Lorentz law and by leaving $\mass\vel$ on one side and iii) finally, plug in the equation of motion onto $\dt\ekin$ and use vectorial identities to arrive at the final solution.
-
-[Last equation is fine, but we can do better. Notice that both sides have the same dimensions and that the inner product of $\efield$ and $\vel$, two vectors, is a scalar. Then, we can present the last equation in its scaled version:
-%
-\beq
-  \dt\ekin/\echarge\efield\iprod\vel\sim 1\,.
-\eeq
-%
-The last equation has two advantages: it's scaled (dimensionless and of order unity) and it stresses the scalar character the solution.]
-
-
-\section{Wordy derivation}
-% 
-We solve the problem now by presenting a \scare{wordy-version} of the analytic solution: we describe the math derivation in detail.
-
-The particle kinetic energy is $2\ekin = \mass\vel^2$. This can be rewritten as
-%
-\beq
-  2\ekin = \mass\vel\iprod\vel\,,
-\eeq
-%
-since $\vel$ is colinear to itself; \ie, its outer product is zero; \viz, $\vel^2 = \vel\vel = \vel\iprod\vel + \vel\oprod\vel = \vel\iprod\vel$. 
-
-Then, calculate the kinetic energy change rate with time by
-%
-\beq
-  2\ekin = \mass\vel\iprod\vel \implies
-  2\dt\ekin = \mass\parth{\dt\vel\iprod\vel + \vel\iprod\dt\vel} 
-            = \mass\parth{\dt\vel\iprod\vel + \dt\vel\iprod\vel}
-            = 2\mass\dt\vel\iprod\vel\,,
-\eeq
-%
-where the product rule for the differentiation of the inner product, the commutativity property of the inner product and the dot notation for derivatives were used.
-
-Next, one cancels out the numerical factor 2 in both sides of the equality to find that
-%
-\beq
-  \ekin = \mass\dt\vel\iprod\vel\,.
-\eeq
-
-On the other hand, the particle's motion can be modeled by equating Newton's second law of motion with Lorentz force, since the particle interacts with an electromagnetic field. Thus, we find that
-%
-\beq
-  \dt\mom = \echarge\parth{\efield + \vel\cprod\mfield}\,,
-\eeq
-%
-where $\mom$ is the particle's linear momentum. By definition, $\mom = \mass\vel$, so $\dt\mom = \dt\mass\vel + \mass\dt\vel = \mass\dt\vel$, because mass is constant, $\dt\mass = 0$, then we have that
-%
-\beq
-  \mass\dt\vel = \echarge\parth{\efield + \vel\cprod\mfield}\,.
-\eeq
-
-Plug in the last equation (equation of motion) into the $\dt\ekin$ expression:
-%
-\beq
-  \dt\ekin = \echarge\efield\iprod\vel + \echarge\parth{\vel\cprod\mfield}\iprod\vel\,.
-\eeq
-%
-Since the triple product vanishes, one finally finds
-%
-\beq
-  \dt\ekin = \echarge\efield\iprod\vel\,,
-\eeq
-%
-the rate at which the particle's kinetic energy changes with respect to time.
-
-This (analytic) solution confirms our guessed model and the approximate solutions. Then, it creates confidence, not only on our intuition, but also on the efficacy of approximate methods.
-
-
-\section{Formal solution}
-%
-Finally, we present a terser solution.
-
-Agree on the given hypotheses and on the symbols and notation previously established.
-
-First, model the movement of the particle (equation of motion) by equating Newton's second law to Lorentz force law:
-%
-\begin{equation}\label{eq:chargedparticleeqofmotion}
-  \mass\dt\vel = \echarge\parth{\efield + \vel\cprod\mfield}\,.
-\end{equation}
-
-Write next the particle's kinetic energy as $2\ekin = \mass\vel\iprod\vel$ and then calculate its temporal change $\dt\ekin$:
-%
-\begin{equation}\label{eq:timederivkinenergy}
-  \dt\ekin = \mass\dt\vel\iprod\vel\,.
-\end{equation}
-
-Plug \cref{eq:chargedparticleeqofmotion} into \cref{eq:timederivkinenergy} to find: $\dt\ekin/\echarge = \efield\iprod\vel + \vel\cprod\mfield\iprod\vel$. Since the scalar triple product vanishes, the model is finally
-%
-\beq
-  \dt\ekin = \echarge\efield\iprod\vel\,.
-\eeq
-%
-The last formula models the temporal change of kinetic energy of a charged particle moving through a constant electromagnetic field.
-
-The formal solution was obtained from the derivation of the wordy solution. They only differ in presentation. In the formal solution,
-%
-\begin{itemize}
-%
-\item the presentation is brief, concise, straight to the point, but not incomplete. It only leaves \scare{obvious details} to be filled in; \eg, nowhere it is written that $\dt\mom = \dt\mass\vel + \mass\dt\vel = \mass\dt\vel$, because under hypotheses, $\mass$ is constant, so it is \scare{well-known} that $\dt\mom = \mass\dt\vel$ in such a case;
-%
-\item equations are referred to by proper, technical names: Newton's second law of motion, scalar triple product and so on;
-%
-\item only \scare{important} equations, derivations and results are displayed, whereas small equations, non-trivial, but small, derivations and partial results are presented in-line -- with the running text;
-%
-\item verbs changed to the imperative to avoid the use of personal grammar forms -- we, us, one and so on -- and of the passive voice.
-%
-\end{itemize}
-
-
-\section{Math proof}
-%
-... \cite[chap. 1]{lehman:2011} ... \cite{houston:2009}.
-
-Consider two electrically charged bodies $\body$ and $\body'$. Consider $\body$ moving towards $\body'$. Let $\echarge$ and $\vel$ represent $\body$ electric charge and velocity and let $\efield$ represent $\body'$ electric field. Then, the formula
-%
-\beq
-  \dt\ekin = \echarge\efield\iprod\vel
-\eeq
-%
-models $\body$ temporal change of kinetic energy $\dt\ekin$.
-
-
-\subsection{Proof scratch work}
-%
-Suppose we didn't... Two column style: left-hand side for calculations, right-hand side for explanations. We use the approx. method solution style.
-%
-% --------------------------------------------------------------- Table
-%
-\begin{table}\capstart\begingroup\footnotesize\begin{center}
-  \begin{tabularx}{0.95\textwidth}{cll}
-%
-\toprule
-\multicolumn{3}{l}{Assume: Newtonian physics. Model particles: $\point$ and $\point'$} \\
-\midrule
-%
-\TEC{Id.} & \TEC{\tabhead{Statements}} & \TEC{\tabhead{Justifications}} \\
-%
-\midrule
-\multicolumn{3}{c}{Kinetic energy} \\
-\midrule
-%
-1 & $\ekin\sim\mass\vel^2$ & definition \\
-%
-2 & $\implies\ekin/t\sim\mass\vel^2/t$ & time \scare{derivative} of (id.) 1 \\
-%
-\midrule
-\multicolumn{3}{c}{Forces} \\
-\midrule
-%
-3 & $\mom\sim\mass\vel$ & momentum def. \\
-4 & $\force\sim\mom/t$ & Newton's second \\
-5 & $\implies\force\sim\mass\vel/t$ & $3 = 5$ (id.'s) \\
-6 & $\force'\sim\echarge\parth{\efield' + \vel\mfield'}$ & Lorentz force \\
-7 & $\implies\mass\vel/t\sim\echarge\parth{\efield' + \vel\mfield'}$ & motion equation: $5 = 6$ (id.'s) \\
-8 & $\implies\mass\vel^2/t\sim\echarge\parth{\efield' + \vel\mfield'}\vel$ & 7 (id.) times $\vel$ \\
-%
-\midrule
-\multicolumn{3}{c}{Conclusion} \\
-\midrule
-%
-9 & $\ekin/t\sim\echarge\parth{\efield' + \vel\mfield'}\vel$ & $8 = 2$ (id.'s), \via $\mass\vel^2/t$ \\
-10 & $\dt\ekin\sim\echarge\parth{\efield' + \vel\mfield'}\vel$ & from $\ekin/t\sim\dt\ekin$ \\
-11 & \qed & end. answer: 10 (id.) \\
-%
-\bottomrule
-%
-  \end{tabularx}\end{center}\endgroup\normalsize
-\caption[Proof sketch electric]{Sketch work to model the electrically charged bodies interaction. The left column contains the statements (formulas) being used, the right column their justifications \cite[p. 3]{lamport:1993}. Note the usage of approximations throughout the derivation -- specially the secant approximation for derivatives \cite[p. 38]{sanjoy:2010} --, of apostrophes to differentiate $\point$ quantities from $\point'$ quantities and of geometric algebra \cite{hestenes:2003}.}\label{tab:sketchworkelectric}
-\end{table}
-%
-% ------------------------------------------------------------- EndTable
-
-
-
-\subsection{Lamport's proof style}
-%
-
-
-\subsection{Traditional proof style}
-%
-
-
-
-\subsection{Wrong}
-%
-the answer to the problem was wrong in \cite{thorne:2011} and then corrected in \cite{thorne:2013}.
-
-quote: nuilluis in verba :).
-
-
-\section{Final remarks}
-%
-The method herein presented is far from being perfect. But it has worked nicely for me, not only when solving textbook exercises, but also in personal research and professional work. In textbooks, authors can write shorter, open statements, because the context given by the surrounding text allows them to do so. In real research, however, one never finds a textbook problem with a back-of-the-book solution.
-
-The most important aspects on solving exercises are, according to my experience:
-%
-\begin{itemize}
-%
-\item having a problem that interests me;
-%
-\item working hard on having a good description of the problem;
-%
-\item making assumptions.
-%
-\end{itemize}
-%
-If all of the previous premises are satisfied, I ....
-
-My working methodology is heavily influenced by John Denker, David Hestenes and Sanjoy Mahajan's ideas.
-
-David Hestenes and Kip Thorne ideas on working with the geometric principle...
-
-Math proofs from Houston.
-
-the writing style comes from AIP Style Manual, Denker, Linder, Mahajan and mainly Fourier (theory of heat!).
-
-
-
-
-
-Some things...
-%
-~\mquote{The old taboo against using the first person in formal prose has long been deplored by the best authorities and ignored by some of the best writers. [\dots] A single author should also use \scare{we} in the common construction that includes the reader.}{\cite[p. 14]{aip:1990}}
-%
-
-
-$\point$, $\espace$

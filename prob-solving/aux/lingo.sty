@@ -1,7 +1,7 @@
 % lingo
 % linguistic commands, environments and macros
 
-\ProvidesPackage{aux/lingo}[21/08/2014 linguistic macros and commands (rimbaudcode)]
+\ProvidesPackage{aux/lingo}[28/08/2014 linguistic macros and commands (rimbaudcode)]
 
 % General
 %
@@ -49,3 +49,59 @@
 \providecommand*{\viceversa}{\lingform{vice versa}\xspace}        % italics
 \providecommand*{\vs}{\lingform{vs.}\xspace}                      % versus
 \providecommand*{\visavis}{\lingform{vis-à-vis}\xspace}           % face to face
+
+% Linguistic trees
+% last package to be called in the preambule
+%
+% Example: \Tree [.S [.NP LaTeX ] [.VP [.V is ] [.NP fun ] ] ]
+% http://en.wikibooks.org/wiki/LaTeX/Linguistics
+%
+\RequirePackage{tikz}
+\RequirePackage{tikz-qtree}
+
+% Logic
+%
+\RequirePackage{bussproofs}
+%
+% Example of a proof (tree: Gentzen style)
+%
+%\begingroup\small
+%\begin{prooftree}
+%  %
+%  \AxiomC{$2\ekin = \mass\vel^2$}
+%  \AxiomC{$\vel^2 = \vel\iprod\vel$}
+%  \BinaryInfC{$2\ekin = \mass\iprod\vel$}
+%  %
+%\end{prooftree}
+%\endgroup
+%
+
+%%% Logic
+%
+% NDL: Natural deduction Lemmon (style)
+%
+\newcounter{ndlproofcounter}
+%
+% Use the next two commands inside a (3-col) table environment
+% \ndlst: natural deduction line statement
+% \ndleq: natural deduction line equation
+%
+% \ndlst{Assumptions}{Statement}{Justification}
+%
+\providecommand*{\ndlst}[3]{
+  [{#1}] &
+  \stepcounter{ndlproofcounter}
+  (\arabic{ndlproofcounter})
+  \quad{#2} &
+  {#3} \\
+}
+%
+% \ndleq{Assumptions}{Equation}{Justification}
+%
+\providecommand*{\ndleq}[3]{
+  [{#1}] &
+  \stepcounter{ndlproofcounter}
+  (\arabic{ndlproofcounter})
+  \ensuremath{\quad{#2}} &
+  {#3} \\
+}
