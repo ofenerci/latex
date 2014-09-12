@@ -1,0 +1,476 @@
+% minionstyle
+% LaTeX style file based on Minion-Pro font (A Classic Thesis Style. André Miede)
+% copyright 2013 rimbaudcode
+
+\ProvidesPackage{aux/minionstyle}[05/08/2014 minionstyle (rimbaudcode)]
+
+\RequirePackage{scrhack} % fixes conflicts with KomaScript
+%
+%\RequirePackage[printonlyused,smaller]{acronym} % acronyms
+\RequirePackage{amsmath}                         % maths
+\RequirePackage{amsfonts}                        % maths
+\RequirePackage{amssymb}                         % maths
+\RequirePackage{amsthm}                          % maths (theorems) (qedsymbol)
+\RequirePackage{booktabs}                        % tables
+\RequirePackage[dvipsnames,table]{xcolor}        % [dvipsnames]
+
+\RequirePackage{float}                      % \begin{table}[H]
+\RequirePackage{lastpage}                   % last page: \pageref
+%\RequirePackage{lineno}                    % line numbers on paragraphs
+\RequirePackage{listings}                   % fine typesetting of code listings!
+%\RequirePackage{lscape}                    % \begin{landscape}...\end{landscape}
+\RequirePackage{marginnote}                 % margin notes
+\RequirePackage[version=3]{mhchem}          % chemistry
+\RequirePackage[protrusion=true]{microtype} % no expansion with xelatex :(
+\RequirePackage{mparhack}                   % marginpar right
+
+\RequirePackage{multicol}               % multicol
+\RequirePackage{multirow}               % multirow
+%\RequirePackage{paralist}              % paragraph lists! (list env. in paragraphs)
+\RequirePackage[draft]{prelim2e}        % final and draft versions
+%\RequirePackage{rotating}              % rotate tables
+\RequirePackage[square,numbers]{natbib} % references
+
+\RequirePackage{tabularx}           % tables
+\RequirePackage{textcase}           % \MakeTextUppercase
+%\RequirePackage{textcomp}          % symbols and old style numerals
+\RequirePackage{titlesec}           % custom sections
+\RequirePackage[titles]{tocloft}    % TOC
+%\RequirePackage{scalefnt}          % scale fonts {\scalefont{5} test}
+\RequirePackage[automark]{scrpage2} % headers and footers
+\RequirePackage{scrtime}            % date and time access
+\RequirePackage{siunitx}            % SI units
+
+% Subfigures in figures (different from \subfigure package)
+% the \subfigure package does not work (there is a conflict with TOC)
+\RequirePackage{subfig}   % subfigures
+\RequirePackage{verbatim} % verbatim
+\RequirePackage{xspace}   % spacing after macros
+
+\RequirePackage[xetex]{hyperref} % pagebackref
+\RequirePackage[all]{hypcap}     % correct hyperlink in floats
+
+%\RequirePackage[small,euler-hat-accent]{eulervm} % math font
+%\RequirePackage{fontspec}                        % xetex (loaded by mathspec package)
+\RequirePackage[no-math]{mathspec}                % oldstyle nums in math mode (look config. below)
+\RequirePackage{xunicode}                         % xetex
+\RequirePackage{xltxtra}                          % xetex
+
+\RequirePackage[english]{babel}       % language support
+\RequirePackage{datetime}             % always after hyperref
+\newdateformat{docyear}{\THEYEAR}     %
+\RequirePackage[nameinlink]{cleveref} % autoref replacement (load at last)
+
+%%% Page layout
+%
+% Fonts and Font sizes
+%
+\newfont{\chapterNumber}{eurb10 scaled 7000} % Numbers
+
+% MinionPro
+%
+%\RequirePackage[OT1,small]{eulervm}                  % maths
+%
+% old numerals in math mode (depends on mathspec)
+% if (Digits,Latin) option is used, then the result is not pleasant :(
+% eg, $t$ is typeset in roman instead of italic!
+% I want only Digits to be affected
+\setmathsfont(Digits)[Numbers={OldStyle}]{MinionPro-Regular} % 
+%
+\setsansfont[Mapping=tex-text,Scale=0.9]{Myriad Pro} % sans
+\setmonofont[Mapping=tex-text,Scale=0.8]{Menlo}      % mono
+\defaultfontfeatures{Numbers=OldStyle}               % before roman
+\setmainfont[Mapping=tex-text]{MinionPro-Regular}    % roman
+\addfontfeature{Kerning=Uppercase}                   % space in Uppercase
+%
+% Garamond
+%
+%\setsansfont[Mapping=tex-text,Scale=0.9]{Helvetica Neue}           % sans
+%\setmonofont[Mapping=tex-text,Scale=0.8]{Bitstream Vera Sans Mono} % mono
+%\defaultfontfeatures{Numbers=OldStyle}                             % before roman
+%\setmainfont[Mapping=tex-text]{Garamond}                           % roman
+%\addfontfeature{Kerning=Uppercase}                                 % space in Uppercase
+
+% Colors for doc divisions
+%
+% For gray: lower value -> darker!
+%
+\definecolor{darkergray}{gray}{0.20}
+\definecolor{darkgray}{gray}{0.30}
+\definecolor{halfgray}{gray}{0.50}
+\definecolor{lightgray}{gray}{0.80}
+\definecolor{superlightgray}{gray}{0.95}
+
+\definecolor{Maroon}{cmyk}{0,0.87,0.68, 0.32} % classic
+\definecolor{RoyalBlue4}{rgb}{0.0,0.0,0.40}   % blue
+\definecolor{SlatedGrey4}{gray}{0.30}         % light gray
+
+% Textblock
+%
+% Block area
+%
+\areaset[5mm]{288pt}{684pt}        % 609 + 33 + 42 head \the\footskip
+\setlength{\marginparwidth}{9.5em} % No mod. the text block
+\setlength{\marginparsep}{1.5em}   % 2em original
+
+\DeclareRobustCommand{\spacedallcaps}[1]{\MakeTextUppercase{#1}}
+\DeclareRobustCommand{\spacedlowsmallcaps}[1]{\scshape\MakeTextLowercase{#1}}
+
+\parindent=11pt % Paragraph indentation: 1em
+
+% Sloopy bottom
+%
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty = 10000
+\flushbottom
+\raggedbottom
+
+%%% Document divisions
+%
+% Parts and chapters color
+%
+\newcommand*{\docdivisioncolor}{darkgray}
+\newcommand*{\docchapternumbercolor}{lightgray}
+\newcommand*{\doclinkcolor}{darkergray}
+
+% Parts
+%
+\titleformat{\part}[display]{
+  \normalfont\centering\large}
+            {\thispagestyle{empty}\partname~\MakeTextUppercase
+              {\thepart}}{1em}
+            {\color{\docdivisioncolor}\spacedallcaps
+}
+
+% Chapters
+% Chapter: one line
+%
+\titleformat{\chapter}[display]
+       {\relax}{\mbox{}\marginpar{\vspace*{-3\baselineskip}
+           \color{darkgray}
+           \chapterNumber\thechapter}}{0pt}
+       {\raggedright\spacedallcaps}[\normalsize\vspace*
+         {.8\baselineskip}
+         \titlerule]
+
+% Numbering: a la Brinhurst
+%
+% Sections
+%
+\titleformat{\section}[leftmargin]
+            {\scshape\vspace{0pt}\scshape}
+            {\scshape\MakeTextLowercase{\thesection}}{1em}{
+              \raggedleft
+              %   \ifodd\thepage\raggedleft\else
+              %\raggedright\fi% wise alignment
+              \spacedlowsmallcaps}
+            \titlespacing{\section}
+                         {6em}{1.5ex plus .1ex minus .2ex}{2em}
+%
+% Subsection
+%
+\titleformat{\subsection}{\relax}{\textsc{%\color{\doclinkcolor}
+    \MakeTextLowercase{\thesubsection}}}{1em}{\normalsize\itshape}
+
+% Subsubsection
+%
+\titleformat{\subsubsection}{\relax}{
+  \itshape %\normalsize\itshape
+  \thesubsubsection}
+  {1em}{\itshape}
+
+% Headers
+% Provides headers and footers (KOMA Script)
+%
+\clearscrheadings\setheadsepline{0pt}
+\renewcommand*{\chaptermark}[1]{\markboth{\spacedlowsmallcaps{#1}}
+  {\spacedlowsmallcaps{#1}}}
+\renewcommand*{\sectionmark}[1]{\markright{\thesection\enspace
+    \spacedlowsmallcaps{#1}}}
+\lehead{\mbox{\llap{\small\thepage\kern2em}\headmark\hfil}}
+
+% Pagination
+%
+\rohead{\mbox{\hfil{\headmark}\rlap{\small\kern2em\thepage}}} % ex: 5
+
+\renewcommand*{\headfont}{\small} % small caps, old-style numbers also
+
+% Paragraphs and lists
+% Change the alignment of the bullet points and numerals in lists
+%
+\setlength{\leftmargini}{0em}
+%
+% Description environment
+\renewcommand*{\descriptionlabel}[1]{\hspace{\labelsep}\minus{#1}}
+
+%%% Table of contents
+%
+\setcounter{tocdepth}{1} % where n is the level (1 for sections only)
+% avoid page numbers being right-aligned in fixed-size box
+\newlength{\newnumberwidth}
+\settowidth{\newnumberwidth}{99}  % overfull hbox warns for pages > 99
+\cftsetpnumwidth{\newnumberwidth} %
+% have the bib neatly positioned after the rest
+\newlength{\beforebibskip}
+\setlength{\beforebibskip}{0em}
+
+% Parts
+%
+\renewcommand*{\thepart}{\roman{part}}
+\renewcommand*{\cftpartpresnum}{\scshape\lowercase}
+\renewcommand*{\cftpartfont}{\color{\docdivisioncolor}\normalfont}
+\renewcommand*{\cftpartpagefont}{\normalfont}
+\renewcommand*{\cftpartleader}{\hspace{1.5em}}
+\renewcommand*{\cftpartafterpnum}{\cftparfillskip}
+\setlength{\cftbeforepartskip}{1em}
+\setlength{\cftbeforechapskip}{.1em}
+\setlength{\beforebibskip}{\cftbeforepartskip}
+
+% Chapters
+%
+\renewcommand*{\cftchappresnum}{\scshape\MakeTextLowercase}
+\renewcommand*{\cftchapfont}{\scshape\lowercase}
+\renewcommand*{\cftchappagefont}{\normalfont}
+\renewcommand*{\cftchapleader}{\hspace{1.5em}}
+\renewcommand*{\cftchapafterpnum}{\cftparfillskip}
+
+% Sections
+%
+\renewcommand*{\cftsecpresnum}{\scshape\MakeTextLowercase}
+\renewcommand*{\cftsecfont}{\normalfont}
+\renewcommand*{\cftsecpagefont}{\normalfont}
+\renewcommand*{\cftsecleader}{\hspace{1.5em}}
+\renewcommand*{\cftsecafterpnum}{\cftparfillskip}
+
+% Subsections
+%
+\renewcommand*{\cftsubsecpresnum}{\scshape\MakeTextLowercase}
+\renewcommand*{\cftsubsecfont}{\color{darkergray}
+  \normalfont}
+\renewcommand*{\cftsubsecleader}{\hspace{1.5em}}
+\renewcommand*{\cftsubsecafterpnum}{\cftparfillskip}
+
+% Figures
+%
+\renewcommand*{\cftfigpresnum}{\scshape\MakeTextLowercase}
+\renewcommand*{\cftfigfont}{\normalfont}
+\renewcommand*{\cftfigleader}{\hspace{1.5em}}
+\renewcommand*{\cftfigpresnum}{\figurename~}
+\renewcommand*{\cftfigafterpnum}{\cftparfillskip}
+\newlength{\figurelabelwidth}
+\settowidth{\figurelabelwidth}{\cftfigpresnum~99}
+\addtolength{\figurelabelwidth}{2.5em}
+\cftsetindents{figure}{0em}{\figurelabelwidth}
+\renewcommand*{\thefigure}{\arabic{figure}}     % no chapter numbers
+
+% Tables
+%
+\renewcommand*{\cfttabpresnum}{\scshape\MakeTextLowercase}
+\renewcommand*{\cfttabfont}{\normalfont}
+\renewcommand*{\cfttableader}{\hspace{1.5em}}
+\renewcommand*{\cfttabpresnum}{\tablename~}
+\renewcommand*{\cfttabafterpnum}{\cftparfillskip}
+\newlength{\tablelabelwidth}
+\settowidth{\tablelabelwidth}{\cfttabpresnum~99}
+\addtolength{\tablelabelwidth}{2.5em}
+\cftsetindents{table}{0em}{\figurelabelwidth}
+\renewcommand*{\thetable}{\arabic{table}}     % no chapter numbers
+
+% General
+%
+\AtBeginDocument{\addtocontents{toc}{\protect\vspace{-\cftbeforepartskip}}}
+
+%%% Floats and captions
+%
+% Captions
+% captions in fig and table font
+%
+\setkomafont{caption}{\small}
+
+% Style change
+% Caption text with the left margin
+%
+\DeclareCaptionFormat{llap}{\llap{#1#2}#3\par}
+\captionsetup{format=llap,labelsep=quad,singlelinecheck=no}
+
+% Tables
+%
+\setlength{\extrarowheight}{3pt} % Increase table row height
+
+%%% Page notes
+% mgraffito: middle of a paragraph graffito
+%
+\renewcommand*{\raggedleftmarginnote}{{\leftskip=0pt\rightskip=0pt plus 0cm}}
+
+%%% Cross referencing
+%
+% Cross referencing: \autoref{} hyperref package
+
+% fullnames for \autoref macros
+%
+%\renewcommand*{\figureautorefname}{Figure}%
+%\renewcommand*{\tableautorefname}{Table}%
+%\renewcommand*{\partautorefname}{Part}%
+%\renewcommand*{\chapterautorefname}{Chapter}%
+%\renewcommand*{\sectionautorefname}{Section}%
+%\renewcommand*{\subsectionautorefname}{Section}%
+%\renewcommand*{\subsubsectionautorefname}{Section}%
+%\renewcommand*{\equationautorefname}{Equation}%
+
+% abbreviations for \autoref macros
+%
+%\renewcommand*{\figureautorefname}{Fig.}%
+%\renewcommand*{\tableautorefname}{Tab.}%
+%\renewcommand*{\partautorefname}{Part}%
+%\renewcommand*{\chapterautorefname}{Chap.}%
+%\renewcommand*{\sectionautorefname}{Sec.}%
+%\renewcommand*{\subsectionautorefname}{Sec.}%
+%\renewcommand*{\subsubsectionautorefname}{Sec.}%
+%\renewcommand*{\equationautorefname}{Eq.}%
+
+% for German texts (or other languages) to get \autoref macros right
+%
+%\renewcommand*{\paragraphautorefname}{Absatz}
+%\renewcommand*{\subparagraphautorefname}{Unterabsatz}
+%\renewcommand*{\footnoteautorefname}{Fu\"snote}
+%\renewcommand*{\FancyVerbLineautorefname}{Zeile}
+%\renewcommand*{\theoremautorefname}{Theorem}
+%\renewcommand*{\appendixautorefname}{Anhang}
+%\renewcommand*{\equationautorefname}{Gleichung}
+%\renewcommand*{\itemautorefname}{Punkt}
+%\newcommand**{\subfigureautorefname}{Abbildung}
+
+%%% Acronyms. Package acronym
+%
+%\renewcommand*{\bflabel}[1]{{#1}\hfill} % Fix the list of acronyms
+
+%%% Back Matter
+% necessary for correct hyperlinks (index, bib, etc.)
+%
+\newcounter{dummy}
+\newcommand*{\longpage}{\enlargethispage{3\baselineskip}}
+\newcommand*{\medpage}{\enlargethispage{2\baselineskip}}
+\newcommand*{\shortpage}{\enlargethispage{\baselineskip}}
+\newcommand*{\concskip}{\medskip}
+
+%%% Miscellaneous
+%
+% Minor space adjustments
+%
+\newlength{\abcd}                % for ab..z string length calculation
+\setlength{\extrarowheight}{3pt} % increase table row height
+
+%%% Mathematics
+
+% Number formatting: equations
+% Tag appereance when amsmath has been loaded (eqn. # in [])
+%
+%\makeatletter%
+%\def\tagform@#1{\maketag@@@{[#1]\@@italiccorr}}%
+%\makeatother%
+
+% Equations
+%
+\renewcommand*{\theequation}{\arabic{equation}} % no chapter numbers
+
+%%% Symbols
+%
+% European style of greek letters (lower case)
+%
+%\renewcommand*{\epsilon}{\varepsilon}%
+%\renewcommand*{\rho}{\varrho}%
+%\renewcommand*{\phi}{\varphi}%
+
+%%% Math Environments
+%
+% Math Environments: Axioms, theorems, lemmas, Style
+% Charles Geyer (charlie@stat.umn.edu) Dec 8, 1996.
+% Revised July, 1, 2004.
+% http://www.stat.umn.edu/~charlie/amslatex.html
+% Recommended by AMS (AMS User's Manual) [Original recomm]
+% Also from the italian classicthesis documentation
+% To use them: \begin{theorem}...\label{T:set1} \end{theorem}
+% or \begin{theorem}[Euler's theorem]
+% Depend on to the AMS (American Mathematical Society) class
+%
+% Proof of theorems, solution of examples, exercises, etc:
+% \begin{proof}[Euler's theorem]...\end{proof} It finishes with
+% a q.e.d symbol
+% "Classic Theorem" Style: theorems, lemmas, propositions,
+% corollaries, examples (from the italian
+% classicthesis documentation)
+% ----------------------------------------------- Theorem, Definition, Remark
+%\newtheoremstyle{classicthm}% Name
+%{12pt}%     Space above
+%{12pt}%	    Space below
+%{\itshape}% Body font
+%{}%         Indent amount (empty = no indent,
+%% \parindent = para indent)
+%{\scshape}% Thm head font \scshape
+%{:}%        Punctuation after thm head
+%{0.5em}%    Space after thm head: " " = normal interword space;
+%% \newline = linebreak
+%{}%         Thm head spec (can be left empty, meaning `normal')
+%
+%% "Classic Definition" Style: definitions, conjectures, examples
+%\newtheoremstyle{classicdef}% Name
+%{12pt}%	     Space above
+%{12pt}%	     Space below
+%{\itshape}%  Body font
+%{}%          Indent amount (empty = no indent,
+%% \parindent = para indent)
+%{\scshape}%  Thm head font \scshape
+%{:}%         Punctuation after thm head
+%{0.5em}%     Space after thm head: " " = normal interword space;
+%% \newline = linebreak
+%{}%           Thm head spec (can be left empty, meaning `normal')
+%
+%% "Classic Remark" Style: remarks, notes, cases
+%\newtheoremstyle{classicrem}% Name
+%{12pt}%	       Space above
+%{12pt}%	       Space below
+%{\itshape}%    Body font
+%{}%            Indent amount (empty = no indent,
+%% \parindent = para indent)
+%{\itshape}%    Thm head font
+%{:}%           Punctuation after thm head
+%{0.5em}%       Space after thm head: " " = normal interword space;
+%% \newline = linebreak
+%{}%            Thm head spec (can be left empty, meaning `normal')
+%
+%% "Classic Theorem" Style: theorems, lemmas, propositions,
+%% corollaries
+%\theoremstyle{classicthm}%
+%\newtheorem{theorem}{Theorem}[section]%
+%\newtheorem{lemma}[theorem]{Lemma}%
+%\newtheorem{proposition}[theorem]{Proposition}%
+%\newtheorem{corollary}{Corollary}%
+%
+%% "Classic Definition" Style: definitions, conjectures,
+%% examples, exercises
+%\theoremstyle{classicdef}%
+%\newtheorem{definition}{Definition}[section]%
+%\newtheorem{conj}{Conjecture}[section]%
+%\newtheorem{exmp}{Example}[section]%
+%
+%% "Classic Remark" Style: remarks, notes, cases
+%\theoremstyle{classicrem}%
+%\newtheorem{remark}{Remark}%
+%\newtheorem{note}{Note}%
+%\newtheorem{case}{Case}%
+%
+%% ------------------------------------------- Shortcuts for theorems,...
+%\def\bexmp{\begin{exmp}}%   example
+%\def\eexmp{\end{exmp}}%     example
+%
+%\def\bproof{\begin{proof}}% proof
+%\def\eproof{\end{proof}}%   proof
+%
+%\def\bsolution{\noindent{\itshape Solution.}\hspace{0.5em}}% proof
+%\def\esolution{\qed}% proof
+%
+%% discussion of exmp, theorms...(in sans serif)
+%\def\bdiscussion{\noindent{\itshape Discussion.}\hspace{0.5em}\begingroup}%
+%\def\ediscussion{\endgroup}% discussion of examples, theorems and so
+
