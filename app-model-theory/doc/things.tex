@@ -314,3 +314,112 @@ For this section consider the assumptions made in ... and geometric algebra.
 % ------------------------------------------------------------- EndNDL
 
 We adapt Lamport's math proof style \cite{lamport:1993,lamport:2012} to physics, 
+
+
+\section{Things}
+%
+Integral: $\lint{a,b}{ax + b}{\dx x}$, 124.2134 -- $124.2134$.
+
+
+\section{Dim analysis}
+%
+[taken from \cite[p. 97]{bhaskar:1990}]
+
+A crucial step in computing the $\kdim$s is the selection of $r$ basis variables. In principle there are $\binom nr$ choices; however, many of these do not yield an ensemble, \ie there are fewer equations than there are unknowns.
+
+We have found the following \lingo{basis selection heuristics} to be useful. These heuristics assume that for all candidates for membership in the basis, the property that basis dimensions cover the dimensional space of the problem holds.
+%
+\begin{itemize}
+%
+\item A variable of interest, whose behavior is to be reasoned about, should not be included in the basis.
+%
+\item Exogenous variables, \emph{whenever possible}, should be included in the basis. 
+%
+\item Other things being equal, dimensional richness (\eg $\phdim{MLT^{-2}}$ is richer than $\phdim L$) is the criterion for including a variable in the basis.
+%
+\item Given several variables with the same dimensional representation, only one should be included in the basis.
+%
+\end{itemize}
+
+Implementing a system for dimensional reasoning is largely a matter of selecting the input variables and output variables that characterize a particular device or process. The heuristics that we have listed above are guides to implementing device models rather than heuristics that can be used by a system to select basis variables.
+
+
+\section{Test}
+%
+Let $u$ and $v$ be two vectors in $\nespace n$. Then, define their inner product by
+%
+\beq
+  u\iprod v = \ifvec k\ivec uk\iprod\ifvec l\ivec vl
+            = \ivec uk\ivec vl\ifvec k\iprod\ifvec l
+            = \ivec uk\ivec vl\ifmet kl\,.
+\eeq
+
+Consider two space vectors $u$ and $v$. Define their \lingo{inner product} as
+%
+\beq
+  u\iprod v = \ifvec k\ivec uk\iprod\ifvec l\ivec vl
+            = \ivec uk\ivec vl\ifvec k\iprod\ifvec l
+            = \ivec uk\ivec vl\ifmet kl\,.
+\eeq
+
+Geometric algebra in 3-dims: $\set G^3$, $\nespace 3$.
+
+Cliffs (multivectors) in space:
+%
+\begin{align*}
+  c &\defas s + v + b + t \\
+  c &\equiv s + v + b + t \,.
+\end{align*}
+
+A quantity which changes continuously in value is called a fluent. [clifford, elements of dynamic. vol. i, p. 62] (good book). add classification of kinematics. bodies: particle, elastic, rigid...
+
+This rate of change of a fluent quantity is called its fluxion, or sometimes, more shortly, its flux. It appears from the above considerations that a flux is always to be conceived as a velocity ; because a quantity must be continuous to be fluent, must therefore be specified either by a line or an angle (which may be placed at the centre of a standard circle and measured by its arc) and rate of change of a length measured on a straight line or circle means velocity of one end of it (if the other be still) or difference of velocity of the two ends.
+
+operational def. conceptual def.
+
+evolution. state var. and so on.
+
+
+\section{Components}
+%
+Given a basis, we can write any arbitrary vector $v$ as a linear combination of the basis vectors:
+%
+\beq
+  v = \ivec v0\ifvec 0 + \ivec v1\ifvec 1 + \ivec v2\ifvec 2 + \ivec v3\ifvec 3
+    = \ivec vk\ifvec k\,,
+\eeq
+%
+for suitable scalars $\series{\ivec vk}{k = 0}{3}$.
+
+Terminology: These scalars ($\ivec vk$) are sometimes called the \lingo{components of $v$ in the chosen basis}. They can also be called the \lingo{matrix elements of $v$ in the chosen basis}.
+
+Terminology: The vector $\ivec v0\ifvec 0$ is sometimes called the \lingo{component of $v$ in the chosen $\ifvec 0$ direction} (and similarly for the other terms on the RHS of the last equations). Such a vector can also be called the \lingo{projection of $v$ onto the chosen directions}.
+
+It is usually obvious from context which definition of \scare{component} is intended. If you want to avoid ambiguity in your writing, you can avoid the word \scare{component} and instead say \scare{matrix element} or \scare{projection} as appropriate.
+
+Beware: Even though $\ivec vk$ is a component of the vector $v$ and is a scalar, please do not think of $\ifvec k$ in the same way. Each $\ifvec k$ is a vector unto itself, not a scalar. The $k$ in $\ifvec k$ tells which vector, whereas the $k$ in $\ivec vk$ tells which component of the vector. There is no advantage in imagining some super-vector that has the $\ifvec k$ vectors as its components.
+
+
+\section{Functions}
+%
+$f:\set N\to\set Z$, $x\mapsto 4 - x$. $f$ is a function from the set $\set N$ \emph{to} the set $\set Z$ that \emph{maps} $x$ to $4 - x$. The formula $f\vat x = 4 - x$ is the value of $f$ under the argument $x$.
+
+In general, $f:\set D\to\set C$, $x\mapsto y$; \ie, $f$ is a function from the set $\set D$ (domain) to the set $\set C$ (codomain) that maps $x$ to $y$ or, succinctly, $y = f\vat x$.
+
+
+\section{Proof}
+%
+This is a proof:
+%
+\begingroup\small
+\begin{prooftree}
+  %
+  \AxiomC{$\force = \mass\acc$}
+  \AxiomC{$\force' = -k\pos$}\RightLabel{\sffamily\scriptsize Newton's second law}
+  \BinaryInfC{$\mass\acc = -k\pos$}
+  %
+\end{prooftree}
+\endgroup
+
+
+This is a test: $\ener\txt{kin}$, $\kdim\txt{re}$.

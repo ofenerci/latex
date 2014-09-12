@@ -7,7 +7,7 @@
 
 require 'rake/clean'
 
-SRC = 'prob-solving.tex'
+SRC = 'app-mod-theory.tex'
 
 COMPILE_SRC_TIMES = 2
 

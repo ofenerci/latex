@@ -221,7 +221,7 @@ Finally,
 %
 \mquote{Typography exists to honor content.}{\cite[p. 17]{brinhurst:2004}}
 %
-in the writer's eyes, besides honoring math objects while quenching notation, this flat, undecorated typography seems to give equations an air of elegance and simplicity unmatchable by heavy decoration. Compare, for instance, the undecorated version of Newton's second law of motion 
+in the writer's eyes, besides honoring math objects by quenching notation, this flat, undecorated typography seems to give equations an air of elegance and simplicity unmatchable by heavy decoration. Compare, for instance, the undecorated version of Newton's second law of motion 
 %
 \mquote{But in our opinion truths of this kind should be drawn from notions rather than from notations.}{\cite{gauss:wikiquote}}
 %
@@ -244,7 +244,7 @@ with $\vec F = m\vec a$ or $\mathbf{F} = m\mathbf{a}$, its decorated and bold co
 %
 \item[Object] body $\body$ modeled as a moving particle: (state variables, object variables, ...) with charge $\echarge$ and mass $\mass$.
 %
-\item[Agent] body $\body'$ modeled as a non-moving particle.
+\item[Agent] body $\body'$ modeled as a stationary particle.
 %
 \item[Dynamic laws]
 %
@@ -259,7 +259,7 @@ with $\vec F = m\vec a$ or $\mathbf{F} = m\mathbf{a}$, its decorated and bold co
 \item[Interaction laws]
 %
 \begin{align}
-  \force &= \echarge\parth{\efield' + \vel\cprod\mfield'} & \eqtxt{Lorentz force}
+  \force' &= \echarge\parth{\efield' + \vel\cprod\mfield'} & \eqtxt{Lorentz force}
 \end{align}
 %
 \item[Interpretation] ...
@@ -271,7 +271,7 @@ with $\vec F = m\vec a$ or $\mathbf{F} = m\mathbf{a}$, its decorated and bold co
 Notice that interpretation forms a part of the proof!
 
 
-\subsection{Approximate solution}
+\subsection{Approximate solution}\label{sec:approxsolution}
 %
 Now that we have the physical framework in place, it is time to mathematically model the phenomenon using laws, definitions and theorems from the framework. However, we will not use the full-blown formulas; we will use approximations instead.
 %
@@ -328,10 +328,10 @@ In our case, we will mainly discard unnecessary factors and use the \lingo{secan
 The secant method for approximating derivatives consists in replacing derivatives by divisions:
 %
 \beq
-  \dfrac{\dx f}{\dx x} \sim \dfrac{f}{x}\,,
+  \dfrac{\dx\psi}{\dx x} \sim \dfrac{\psi}{x}\,,
 \eeq
 %
-where $f$ is a function whose derivative with respect to $x$ exists and $\sim$ means \lingo{is similar to}.
+where $\psi$ is a function whose derivative with respect to $x$ exists and $\sim$ means \lingo{is similar to}.
 
 Discarding factors and approximating derivatives by the secant can be illustrated by estimating the kinetic energy temporal change of a moving particle:
 %
@@ -353,7 +353,7 @@ Working back on the exercise, first, we write the set of equations obtained in \
   \force' &= \echarge\parth{\efield' + \vel\cprod\mfield'}\,, &\eqtxt{Lorentz force}
 \end{align*}
 %
-where unprimed quantities represent $\point$ (moving body -- \emph{object} -- modeled as particle) properties, while primed quantities $\point'$ (non-moving body -- \emph{agent} -- modeled as particle) properties.
+where unprimed quantities represent $\point$ (moving body -- \emph{object} -- modeled as particle) properties, while primed quantities $\point'$ (stationary body -- \emph{agent} -- modeled as particle) properties.
 
 Then, we drop numeric factors, product between vectors and use the secant method to approximate derivatives to find
 %
@@ -491,7 +491,7 @@ $\tau/4$ or \SI{90}{\degree}. Thus,
   \dt\ekin \sim 0\,.
 \end{equation}
 
-The last equation agrees with the physical interpretation of the phenomenon. Call $\force\txt m$ the force due to the magnetic field; \ie, the RHS term of Lorentz force: $\echarge\parth{\vel\cprod\mfield}$. Note that $\force\txt m$ is always perpendicular to both the $\vel$ and the $\mfield$ that created it -- mathematically expressed by the (cross) product $\vel\cprod\mfield$. Then, when a charged particle moves through the field, it traces an helical path in which the helix axis is parallel to the field and where $\vel$ remains constant. Because the magnetic force is \emph{always} perpendicular to the motion, then $\mfield$ can do \emph{no} work.
+The last equation agrees with the physics of the phenomenon. Call $\force\txt m$ the force due to the magnetic field; \ie, the RHS term of Lorentz force: $\echarge\parth{\vel\cprod\mfield}$. Note that $\force\txt m$ is always perpendicular to both the $\vel$ and the $\mfield$ that created it -- mathematically expressed by the (cross) product $\vel\cprod\mfield$. Then, when a charged particle moves through the field, it traces an helical path in which the helix axis is parallel to the field and where $\vel$ remains constant. Because the magnetic force is \emph{always} perpendicular to the motion, then $\mfield$ can do \emph{no} work. No work, no change of kinetic energy. Thus, $\dt\ekin\sim 0$, or, accordingly, $\dt\ekin$ must not depend on $\mfield$. (Indeed, $\dt\ekin$ does not depend on $\mfield'$ \cite[p. 142]{tong:2013}.)
 
 Finally, we see again that approximate methods and some physical insights yield meaningful results.
 
@@ -544,51 +544,43 @@ The result is that
 %
 which gives the effect of the electric field created by $\point'$ on $\point$ motion. This equation shows that $\dt\ekin$ does not depend on $\force$, $\force'$, $\mass$ or $\mfield'$.
 
-One more thing. The last equation is fine, but we can do even better. See that both sides have the same dimensions and that the inner product of $\efield$ and $\vel$, two vectors, is a scalar. Then, we can present the last formula as
+One more thing. The last equation is fine, but we can do better. See that both sides have the same dimensions and that the inner product of $\efield$ and $\vel$, two vectors, is a scalar. Then, we can present the last formula as
 %
 \begin{equation}\label{eq:scaledkinenergyelectrofield}
   \dt\ekin/\echarge\efield\iprod\vel\sim 1\,.
 \end{equation}
 
-The presentation of \cref{eq:scaledkinenergyelectrofield} has two advantages: it is \lingo{scaled} (dimensionless and of order unity) and it stresses the scalar character the solution.
+The presentation of \cref{eq:scaledkinenergyelectrofield} has two advantages: it is manifestly \lingo{scaled}
+%
+~\mnote{dimensionless and of order unity}
+%
+and it stresses the scalar character the solution.
 
 
 \subsection{Dimensional analysis}\label{sec:dimanalysis}
 %
-For the next solution, we will use \lingo{dimensional analysis} to determine the \emph{functional form} of the model to the phenomenon. To find the functional form of the physical model by means of dimensional analysis, follow the steps:
+We
 %
-\begin{itemize}
+\mquote{No investigator should allow himself to proceed to the detailed solution of a problem until he has made a dimensional analysis of the nature of the solution which will be obtained, and convinced himself by appeal to experiment that the points of view embodied in the underlying equations are sound.}{\cite[p. 88]{bridgman:1920}}
 %
-%\item Since the phenomenon belongs to electromagnetism, use the set $\elset{\phdim F, \phdim L, \phdim T, \phdim Q}$ of \emph{four} dimensionally independent dimensions.
-%
-\item Experience has shown us that to analyze geometric problems we need only the dimension of length, $\phdim L$; to analyze kinematic problems we need add time $\phdim T$; to analyze dynamics, we can add either mass $\phdim M$ or force $\phdim F$. We cheese
-%
-\item Physical model: a list of the relevant variables: \vide \cref{tab:physicalmodelelectricparticle}, \cite[p. 4]{price:2006}.
-%
-~\mnote{We use this set because it doesn't include mass as we guessed so in the previous section.}
-%
-\item In the chosen set, the dimensions of the \emph{six} physical quantities that model the phenomenon are $\dim\ekin = \phdim{FL}$, $\dim t = \phdim T$, $\dim\echarge = \phdim Q$, $\dim\efield = \phdim F/\phdim Q$, $\dim\vel = \phdim L/\phdim T$ and $\dim\mfield = \phdim F\phdim T/\phdim L\phdim Q$.
-%
-~\mnote{Again, mass doesn't appear in the physical model.}
-%
-\item According to the Buckinham's theorem, there are $6 - 4 = 2$ dimensionless quantities $\kdim$. The first one is $\kdim_1 = \ekin/t\efield\vel\echarge$ and the second $\kdim_2 = \mfield\vel/\efield$.
-%
-\item Finally, the model should have the form:
-%
-\beq
-  \fdim'\vat{\kdim_1, \kdim_2} = \fdim'\vat{\dfrac{\ekin}{t\efield\vel\echarge}, \dfrac{\mfield\vel}{\efield}} 
-                               = 0
-                                \implies
-  \dfrac{\ekin}{t} = \efield\vel\echarge\,\fdim\vat{\dfrac{\mfield\vel}{\efield}}\,,
-\eeq
-%
-where $\fdim$ is an \emph{unknown} dimensionless functions of dimensionless arguments.
-%
-\end{itemize}
-%
-In the last equation, the precise form of the function $\fdim$ must be determined by experimentation or by analytic means. However, dimensional analysis confirms our suspicion: $\dt\ekin\sim\ekin/t\sim\echarge\efield\vel$; \ie, the product $\echarge\efield\vel$ \scare{lives upstairs} in the equation. 
+have already used dimensional analysis when checking the reference exercise. We did it, however, for an elementary task: formula checking. This time, we based the whole model on this tool.
 
-Finally, the function $\fdim$ should be equal to a dimensionless parameter $\kdim$ if our guess is to be correct. We will keep $\fdim$, nevertheless, for it may be that our guess is incorrect.
+When using dimensional analysis as the basis of the model, the goal is to determine the \emph{functional form} of the model formula; \ie, dimensionless relationships among dimensionless quantities. This is better understood by means of using the tool. 
+
+To find the functional form of a model, some steps can be given:
+%
+\begin{description}
+%
+\item[Relevant quantities] We write down the set of the quantities, we think, govern the phenomenon under analysis. In the present case, we choose the set $\elset{\echarge, \ekin, \vel, \efield', \mfield', t}$ of \emph{six} quantities. Such a set was obtained in previous sections. Note that we have \emph{not} included forces nor masses in the set, due to the information we got in \cref{sec:approxsolution}. According to this set, we propose the phenomenon to be modeled by a (so far \emph{unknown}) function $\phi$ of the form
+%
+\begin{equation}\label{eq:dimensionalmodel}
+  \phi\vat{\echarge, \ekin, \vel, \efield', \mfield', t} = 0 \,.
+\end{equation}
+%
+\item[Base dimensions set] Since we are dealing with electromagnetism, we need to choose a suitable set of dimensions on which base the relevant physical quantities. This comes from a chain of reasoning: to analyze geometric problems, we need only the dimension of length, $\phdim L$; to analyze kinematics, we add time $\phdim T$; to analyze dynamics, we can add mass $\phdim M$, force $\phdim F$ or energy $\phdim E$; to analyze electrodynamics, we add electric charge $\phdim Q$. We choose, for solving the present exercise, the set $\elset{\phdim E, \phdim L, \phdim T, \phdim Q}$ of \emph{four} base dimensions. Again, this set was chosen based on the realizations gained in \cref{sec:approxsolution}.
+%
+\item[Physical model] We then write down a list of the dimensions of the relevant quantities with respect to the set of the base dimensions. We call this list the \lingo{physical model}: \vide \cref{tab:physicalmodelelectricparticle}, \cite[p. 4]{price:2006}.
+%
 %
 % --------------------------------------------------------------- Table
 %
@@ -600,13 +592,21 @@ Finally, the function $\fdim$ should be equal to a dimensionless parameter $\kdi
 \tabhead{Physical quantity} & \tabhead{Symbol} & \tabhead{Dimensions} \\
 %
 \midrule
+\multicolumn{3}{c}{Object properties} \\
+\midrule
 %
 $\point$ electric charge  & $\echarge$ & $\phdim Q$ \\
-$\point$ kinetic energy   & $\ekin$    & $\phdim{FL}$ \\
+$\point$ kinetic energy   & $\ekin$    & $\phdim E$ \\
 $\point$ velocity         & $\vel$     & $\phdim{L/T}$ \\
 %
-$\point'$ electric field  & $\efield'$ & $\phdim{F/Q}$ \\
-$\point'$ magnetic field  & $\mfield'$ & $\phdim{FT/LQ}$ \\
+\midrule
+\multicolumn{3}{c}{Agent properties} \\
+\midrule
+%
+$\point'$ electric field  & $\efield'$ & $\phdim{E/QL}$ \\
+$\point'$ magnetic field  & $\mfield'$ & $\phdim{ET/L^2Q}$ \\
+%
+\midrule
 %
 Time & $t$ & $\phdim T$ \\
 %
@@ -620,4 +620,48 @@ Time & $t$ & $\phdim T$ \\
 %
 % ------------------------------------------------------------- EndTable
 %
+%
+\item[Dimensionless model] According to the Buckinham's theorem, \cref{eq:dimensionalmodel} can be rewritten by grouping its six arguments into $6 - 4 = 2$ dimensionless quantities; \ie, \cref{eq:dimensionalmodel} becomes
+%
+\begin{equation}
+  \fdim'\vat{\kdim_1, \kdim_2} = 0 \,,
+\end{equation}
+%
+where the dimensionless quantities $\kdim_1$ and $\kdim_2$ and the dimensionless function $\fdim'$ are still unknown.
+%
+\item[Dimensionless quantities] Now, it is time to find out $\kdim_1$ and $\kdim_2$. There are several methods to do this (like linear algebra), we choose the method of \lingo{repeating variables}. According to this method, the first step is to choose a subset of the set of relevant quantities as a \emph{new} base dimensions set. There are four dimensions in our base dimensions set, so we need four relevant quantities. See that $t$ brings the dimension of $\phdim T$, $\vel$ the dimension of $\phdim L$, $\echarge$ the dimension of $\phdim Q$ and $\efield'$ the dimension of $\phdim E$. 
 
+The second step is to find dimensionless combinations of the physical model quantities in the new set of base dimensions. We find out the set by physical arguments. The first dimensionless quantity $\kdim_1$ \emph{must} include the quantity we are interested in (sometimes called the \lingo{independent variable}); in our case, $\dt\ekin\sim\ekin/t$. Thus, we need to choose quantities that make the dimensions of $\ekin/t$ equal to one. Since $\dim \ekin/t = \phdim E/\phdim T$ (dimensions of \lingo{power}), we form a power using $\efield$ (which brings $\phdim E$), $\vel$ (which brings $\phdim L$) and $\echarge$ (which brings $\phdim Q$); \ie,
+%
+\begin{equation}
+  \kdim_1 = \dfrac{\ekin}{t\efield\vel\echarge}\,.
+\end{equation}
+
+Following a similar reasoning, we find that $\kdim_2 = \mfield\vel/\efield$.
+%
+\item[Dimensionless formula] Now, we replace $\kdim_1$ and $\kdim_2$ into \cref{eq:dimensionalmodel}, to have
+%
+\beq
+  \fdim'\vat{\kdim_1, \kdim_2} = \fdim'\vat{\dfrac{\ekin}{t\efield\vel\echarge}, \dfrac{\mfield\vel}{\efield}} 
+                               = 0\,,
+\eeq
+%
+from where we could isolate $\kdim_1$:
+%
+\beq
+  \dfrac{\ekin}{t\efield\vel\echarge} = \fdim\vat{\dfrac{\mfield\vel}{\efield}}\,,
+\eeq
+%
+or, by replacing, $\ekin/t\sim\dt\ekin$:
+%
+\begin{equation}\label{eq:dimlessmodelfinal}
+  \dfrac{\dt\ekin}{\efield\vel\echarge} = \fdim\vat{\dfrac{\mfield\vel}{\efield}}\,,
+\end{equation}
+%
+where $\fdim$ is our desired result: the dimensionless form of \cref{eq:dimensionalmodel} -- the equation thought to model the phenomenon under analysis.\qed
+%
+\end{description}
+%
+A closed form for the function $\fdim$ in \cref{eq:dimlessmodelfinal} cannot be found by dimensional analysis alone. It must be determined by experimentation, other analytic means or physical reasoning. However, dimensional analysis confirms our suspicion: $\dt\ekin\sim\ekin/t\sim\echarge\efield\vel$. 
+
+Finally, note that $\dt\ekin$ should increase with increasing $\echarge$, increasing $\efield$ and increasing $\vel$. \Cref{eq:dimlessmodelfinal} passes these \lingo{plausibility checks}.
