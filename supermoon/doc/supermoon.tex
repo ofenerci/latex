@@ -1,0 +1,72 @@
+\chapter{\docTitle: \docSubtitle}
+%
+Some supermoon intro. Lunch anecdote. Assume bigger means increasing size; \ie, increasing volume. We test it by a quick-and-dirty method: back-of-the-envelope calculations using ball-park figures.
+
+The hypothesis can be tested by estimating the value of the temperature required to expand the size of the moon from full to super and then analyzing such a value.
+
+
+\section{Hypothesis}
+%
+More formally, we would like to test the idea that
+%
+\begin{quote}\begin{center}
+  \fact{the moon increases its volume due to thermal expansion}.
+\end{center}\end{quote}
+
+
+\section{Math model}
+%
+Imagine the moon being heated by an external agent, say the sun. Consider then the moon size increasing due to the heating (thermal expansion). Now, let $\vol$ represent the moon volume and $\Dx\vol$ the volume increase. The volume fractional change can then be modeled by \cite[p. 403]{lienhard:2012}
+%
+\beq
+  \dfrac{\Dx\vol}{\vol} \defas \kthexpv\Dx\temp\,,
+\eeq
+%
+where $\kthexpv$ represents the volume coefficient of thermal expansion and $\Dx\temp$ the temperature change to produce the volume increase. 
+
+Finally, solve for $\Dx\temp$ to have 
+%
+\begin{equation}\label{eq:moonthermalexpmodel}
+  \Dx\temp = \dfrac{\Dx\vol}{\vol}\dfrac{1}{\kthexpv}\,.
+\end{equation}
+%
+The last formula models the temperature change required to increase the moon volume.
+
+
+\section{Moon data}
+%
+The next step is to gather some information about the moon and its composition:
+%
+\begin{itemize}
+%
+\item supermoon size (wiki): 20\% \scare{bigger} than full moon;
+%
+\item moon main component (Apollo 11 lunar samples): basalt and
+%
+\item basalt linear coefficient of thermal expansion (encyclopedia britannica): $\kthexpl/\si{\celsius^{-1}}\sim\num{e-5}$.
+%
+\end{itemize}
+
+
+\section{Calculation}
+%
+Replace the gathered numerical values into \cref{eq:moonthermalexpmodel} to find:
+%
+\beq
+  \Dx\temp \sim 1.20\dfrac{1}{3\cdot\SI{e-5}{\celsius^{-1}}}
+           \sim \SI{4e5}{\celsius}\,,
+\eeq
+%
+where we have assumed that basalt is isotropic; \ie, its volume coefficient of thermal expansion is three times its linear coefficient. 
+
+
+\section{Discussion}
+%
+For the moon to thermally expand to supermoon, we estimated that a temperature change of \SI{e5}{\celsius} is required; \ie, the moon temperature should be \emph{at least} \SI{e5}{\celsius}. Since the moon main component is basalt and since basalt melts at $\sim\SI{e3}{\celsius}$, thus a supermoon would have a melted surface.
+
+On the other hand, the temperature of the sun's corona is \SI{6e3}{\celsius}. If we further assume basalt being a black body, then, a supermoon would be as bright as the sun. 
+
+
+\section{Conclusion}
+%
+Using the math model, \cref{eq:moonthermalexpmodel}, and moon data, we estimated that a supermoon would have a surface temperature of at least $\sim\SI{e5}{\celsius}$. Since this temperature value is unlikely to be true, we thus reject hypothesis -- the idea of the \scare{moon getting bigger because of thermal expansion}.

@@ -1,0 +1,68 @@
+% physics
+% physics commands, environments and macros
+
+\ProvidesPackage{aux/physics}[10/09/2014 physics macros and commands (rimbaudcode)]
+
+%%% Geometry
+%
+\providecommand*{\geoelement}[1]{\mathfrak{#1}} % geometric element (regions, points, ...)
+%
+\providecommand*{\body}{\geoelement{B}}  % body: region in space
+\providecommand*{\event}{\geoelement{E}} % event
+\providecommand*{\point}{\geoelement{P}} % point/particle
+%
+\providecommand*{\vol}{\Omega} % volume
+
+%%% Electromagnetism
+%
+\providecommand*{\echarge}{q}                % electric charge
+\providecommand*{\eecharge}{\echarge\txt{e}} % electron electric charge
+\providecommand*{\pecharge}{\echarge\txt{p}} % proton electric charge
+%
+% Field
+%
+\providecommand*{\efield}{e} % electric field
+\providecommand*{\mfield}{b} % magnetic field
+
+%%% Mechanics
+%
+% Kinematics
+%
+\providecommand*{\acc}{a} % acceleration
+\providecommand*{\pos}{x} % position
+\providecommand*{\vel}{v} % velocity
+%
+% Dynamics
+%
+\providecommand*{\force}{f} % force
+\providecommand*{\mass}{m}  % mass
+\providecommand*{\mom}{p}   % momentum
+%
+% Energy
+%
+\providecommand*{\ener}{e} % energy
+\providecommand*{\ekin}{k} % kinetic energy
+
+%%% Thermodynamics
+%
+\providecommand*{\temp}{\theta}   % thermodynamic temperature
+\providecommand*{\kthexp}{\alpha} % coefficient of thermal expansion
+%
+\providecommand*{\kthexpl}{\kthexp\txt{lin}} % linear coefficient of thermal expansion
+\providecommand*{\kthexpv}{\kthexp\txt{vol}} % volumetric coefficient of thermal expansion
+
+%%% Dimensional analysis
+%
+\providecommand*{\phdim}[1]{\mathsf{#1}} % physical dimension
+\providecommand*{\fdim}{\Xi}             % dimless function
+\providecommand*{\kdim}{\Pi}             % dimless quantity
+
+%%% Universal constants
+%
+\providecommand*{\uconst}[1]{k\txt{#1}} % general universal constant
+%
+\providecommand*{\uknewton}{\uconst{ne}} % Newton's gravitational constant
+
+%%% Eng. notation
+%
+\providecommand*{\rpos}{r} % radial position (coordinate)
