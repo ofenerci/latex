@@ -109,10 +109,9 @@ exponent-product = \cdot  % use cdot instead of times in sci notation
 % \DeclareMathSizes{10}{9}{6}{4}% always match with \documentclass
 
 %\RequirePackage[small,euler-hat-accent]{eulervm} % math font
-%\RequirePackage{fontspec}                        % xetex (loaded by mathspec package)
-\RequirePackage[no-math]{mathspec}                % oldstyle nums in math mode (look config. below)
-\RequirePackage{xunicode}                         % xetex
-\RequirePackage{xltxtra}                          % xetex
+\RequirePackage{fontspec}                        % xetex
+\RequirePackage{xunicode}                        % xetex
+\RequirePackage{xltxtra}                         % xetex
 
 % To know the exact name (mac):
 % Font Book> select font. In menu bar, select preview>show font info
@@ -121,12 +120,6 @@ exponent-product = \cdot  % use cdot instead of times in sci notation
 % MinionPro
 %
 %\RequirePackage[OT1,small]{eulervm}                  % maths
-%
-% old numerals in math mode (depends on mathspec)
-% if (Digits,Latin) option is used, then the result is not pleasant :(
-% eg, $t$ is typeset in roman instead of italic!
-% I want only Digits to be affected
-\setmathsfont(Digits)[Numbers={OldStyle}]{MinionPro-Regular}
 %
 \setsansfont[Mapping=tex-text,Scale=0.9]{Myriad Pro} % sans
 \setmonofont[Mapping=tex-text,Scale=0.8]{Menlo}      % mono
