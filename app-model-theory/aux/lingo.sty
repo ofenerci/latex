@@ -59,9 +59,14 @@
 \RequirePackage{tikz}
 \RequirePackage{tikz-qtree}
 
-% Logic
+%%% Logic
+%
+% Natural deduction tree (Gentzen style)
 %
 \RequirePackage{bussproofs}
+%
+% natural deduction tree label
+\providecommand*{\ndtlabel}[1]{\RightLabel{\sffamily\scriptsize{#1}}} % 
 %
 % Example of a proof (tree: Gentzen style)
 %
@@ -75,8 +80,6 @@
 %\end{prooftree}
 %\endgroup
 %
-
-%%% Logic
 %
 % NDL: Natural deduction Lemmon (style)
 %

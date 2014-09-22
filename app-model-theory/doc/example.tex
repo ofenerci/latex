@@ -349,7 +349,7 @@ Working back on the exercise, first, we write the set of equations obtained in \
 %
 \begin{align*}
   2\ekin  &= \mass\vel^2\,,                                   &\eqtxt{kinetic energy} \\
-  \force  &= \mass\dt\mom = \mass\dt\vel\,.                   &\eqtxt{Newton's second law} \\
+  \force  &= \dt\mom = \mass\dt\vel\,.                        &\eqtxt{Newton's second law} \\
   \force' &= \echarge\parth{\efield' + \vel\cprod\mfield'}\,, &\eqtxt{Lorentz force}
 \end{align*}
 %
@@ -665,3 +665,204 @@ where $\fdim$ is our desired result: the dimensionless form of \cref{eq:dimensio
 A closed form for the function $\fdim$ in \cref{eq:dimlessmodelfinal} cannot be found by dimensional analysis alone. It must be determined by experimentation, other analytic means or physical reasoning. However, dimensional analysis confirms our suspicion: $\dt\ekin\sim\ekin/t\sim\echarge\efield\vel$. 
 
 Finally, note that $\dt\ekin$ should increase with increasing $\echarge$, increasing $\efield$ and increasing $\vel$. \Cref{eq:dimlessmodelfinal} passes these \lingo{plausibility checks}.
+
+
+\section{Proof sketch work}
+%
+In the last sections, we have applied several approximate methods to find the solution to the working exercise. Not only did these approximations provide solutions, but also a method to be used in finding a more formal answer.
+
+The sketch for the derivation can be found in \cref{fig:electromagneticfieldeffect}, where we analyzed the electric and magnetic combined (electromagnetic) effect on the moving particle. The proof path is as follows:
+%
+\begin{itemize}
+%
+\item state the definition of the particle kinetic energy and differentiate it with respect to time (first equation);
+%
+\item find the particle equation of motion by stating Newton's second law for a constant mass particle subject to a Lorentz force originated by another electrically charged and motionless particle.
+%
+\item right inner multiply the equation of motion by the particle velocity (second equation) and
+%
+\item finally, join the two equations to have the time derivative of the kinetic energy as function of the electromagnetic field.
+%
+\end{itemize}
+
+
+\subsection{Kinetic energy time derivative}
+%
+Let's start the proof sketch by finding the kinetic energy time derivative. We do that by using a \lingo{natural deduction proof tree} (Gentzen style):
+%
+\begingroup\small
+\begin{prooftree}
+  %
+  \AxiomC{$2\ekin = \mass\vel^2$}                                              \ndtlabel{$\vel\parallel\vel$}
+  \UnaryInfC{$2\ekin = \mass\vel\iprod\vel$}                                   \ndtlabel{$\iod t{}$}
+  \UnaryInfC{$2\dt\ekin = \iod t\parth{\mass\vel\iprod\vel}$}                  \ndtlabel{$\dt\mass = 0$}
+  \UnaryInfC{$2\dt\ekin = \mass\iod t\parth{\vel\iprod\vel}$}                  \ndtlabel{prod. rule}
+  \UnaryInfC{$2\dt\ekin = \mass\parth{\dt\vel\iprod\vel + \vel\iprod\dt\vel}$} \ndtlabel{$\dt\vel\iprod\vel = \vel\iprod\dt\vel$}
+  \UnaryInfC{$2\dt\ekin = 2\mass\dt\vel\iprod\vel$}                            \ndtlabel{${}\cdot 1/2$}
+  \UnaryInfC{$\dt\ekin  = \mass\dt\vel\iprod\vel$}
+  %
+\end{prooftree}
+\endgroup
+%
+which results in
+%
+\begin{equation}\label{eq:kinentimederformal}
+  \dt\ekin = \mass\dt\vel\iprod\vel\,.
+\end{equation}
+%
+The last equation gives the kinetic energy time derivative.
+
+
+\subsection{Equation of motion}
+%
+Now, we repeat the work for the equation of motion. Let's find out Newton's second law of motion, then multiply it by $\vel$ (LHS of the tree) and equal it to Lorentz force law also multiplied it by $\vel$ (RHS of the tree):
+%
+%
+\begingroup\small
+\begin{prooftree}
+  %
+  % Newton's second law of motion
+  %
+  \AxiomC{$\mom = \mass\vel$}                              \ndtlabel{$\iod t{}$}
+  \UnaryInfC{$\dt\mom = \iod t\parth{\mass\vel}$}          \ndtlabel{$\dt\mass = 0$}
+  \UnaryInfC{$\dt\mom = \mass\dt\vel$}                     \ndtlabel{Newton's law}
+  \UnaryInfC{$\force = \mass\dt\vel$}                      \ndtlabel{${}\iprod\vel$}
+  \UnaryInfC{$\force\iprod\vel = \mass\dt\vel\iprod\vel$}
+  %
+  % Lorentz force law
+  %
+  \AxiomC{$\force' = \echarge\parth{\efield' + \vel\cprod\mfield'}$}                        \ndtlabel{${}\iprod\vel$}
+  \UnaryInfC{$\force'\iprod\vel = \echarge\parth{\efield' + \vel\cprod\mfield'}\iprod\vel$} \ndtlabel{Expand parenth.}
+  \UnaryInfC{$\force'\iprod\vel = \echarge\efield'\iprod\vel + \echarge\vel\cprod\mfield'\iprod\vel$} 
+    \ndtlabel{$\echarge\vel\cprod\mfield'\iprod\vel = 0$}
+  %
+  \UnaryInfC{$\force'\iprod\vel = \echarge\efield'\iprod\vel$} \ndtlabel{$\force\iprod\vel = \force'\iprod\vel$}
+  %
+  % Equate Newton's to Lorentz
+  \BinaryInfC{$\mass\dt\vel\iprod\vel = \echarge\efield'\iprod\vel$}
+  %
+\end{prooftree}
+\endgroup
+%
+%
+which results in
+%
+\begin{equation}\label{eq:eqnofmotionformal}
+  \mass\dt\vel\iprod\vel = \echarge\efield'\iprod\vel\,.
+\end{equation}
+%
+The last equation gives the particle equation of motion.
+
+
+\subsection{Kinetic energy time derivative and equation of motion}
+%
+Finally, let's join the kinetic energy time derivative, \cref{eq:kinentimederformal}, to the equation of motion, \cref{eq:eqnofmotionformal}, to find:
+%
+\beq
+ \dt\ekin = \echarge\efield'\iprod\vel\,,
+\eeq
+%
+which upon rearrangement gives
+%
+\begin{equation}
+  \dfrac{\dt\ekin}{\echarge\efield'\iprod\vel} = 1\,.
+\end{equation}
+%
+The last equation gives the desired result: the particle kinetic energy time derivative due to an interaction with an electromagnetic field.
+
+This (analytic) solution confirms our guessed model and the approximate solutions. Thus, it creates confidence, not only on our intuition, but also on the efficacy of approximate methods.
+
+
+\section{Formal solution}
+%
+In this section, we will write up the analytic solution to make it ready for presentation.
+
+
+\subsection{Statement}
+%
+\theorem{Consider a massive, electrically charged body $\body$ moving toward an electrically charged body $\body'$. Then, find $\body$ temporal change of energy.}
+
+
+\subsection{Solution}
+%
+Agree on the given hypotheses and on the symbols and notation previously established (sections...).
+
+Write first the particle's kinetic energy as $2\ekin = \mass\vel\iprod\vel$ and then calculate its temporal change $\dt\ekin$:
+%
+\begin{equation}\label{eq:timederivkinenergy}
+  \dt\ekin = \mass\dt\vel\iprod\vel\,.
+\end{equation}
+
+Model the movement of the particle (equation of motion) by equating Newton's second law to Lorentz force law and right inner multiply both sides by $\vel$:
+%
+\begin{equation}\label{eq:chargedparticleeqofmotion}
+  \mass\dt\vel\iprod\vel = \echarge\parth{\efield' + \vel\cprod\mfield'}\iprod\vel\,.
+\end{equation}
+
+
+Equate \cref{eq:chargedparticleeqofmotion} and \cref{eq:timederivkinenergy} to find: $\dt\ekin/\echarge = \efield\iprod\vel + \vel\cprod\mfield\iprod\vel$. Since the scalar triple product vanishes, the model is then $\dt\ekin = \echarge\efield\iprod\vel$, which can be scaled to 
+\beq
+  \dfrac{\dt\ekin}{\echarge\efield\iprod\vel} = 1\,.
+\eeq
+%
+The last formula models the temporal change of kinetic energy of a charged particle moving through a constant electromagnetic field.
+
+
+\subsection{Notes}
+%
+Note that in the formal solution
+%
+\begin{itemize}
+%
+\item the presentation is brief, concise, straight to the point, but not incomplete. It only leaves \scare{obvious details} to be filled in; \eg, nowhere it is written that $\dt\mom = \dt\mass\vel + \mass\dt\vel = \mass\dt\vel$, because under hypotheses, $\mass$ is constant, so it is \scare{well-known} that $\dt\mom = \mass\dt\vel$ in such a case;
+%
+\item equations are referred to by proper, technical names: Newton's second law of motion, scalar triple product and so on;
+%
+\item only \scare{important} equations, derivations and results are displayed, whereas small equations, non-trivial, but small, derivations and partial results are presented in-line -- with the running text;
+%
+\item verbs are used in imperative voice to avoid the use of personal grammar forms -- we, us, one and so on -- and of the passive voice.
+%
+\end{itemize}
+
+
+\section{Model interpretation}
+%
+
+
+\section{Conclusions}
+%
+the answer to the problem was wrong in \cite{thorne:2011} and then corrected in \cite{thorne:2013}.
+
+quote: nuilluis in verba :).
+
+
+\section{Final remarks}
+%
+The method herein presented is far from being perfect. But it has worked nicely for me, not only when solving textbook exercises, but also in personal research and professional work. In textbooks, authors can write shorter, open statements, because the context given by the surrounding text allows them to do so. In real research, however, one never finds a textbook problem with a back-of-the-book solution.
+
+The most important aspects on solving exercises are, according to my experience:
+%
+\begin{itemize}
+%
+\item having a problem that interests me;
+%
+\item working hard on having a good description of the problem;
+%
+\item making assumptions.
+%
+\end{itemize}
+%
+If all of the previous premises are satisfied, I ....
+
+My working methodology is heavily influenced by John Denker, David Hestenes and Sanjoy Mahajan's ideas.
+
+David Hestenes and Kip Thorne ideas on working with the geometric principle...
+
+Math proofs from Houston.
+
+the writing style comes from AIP Style Manual, Denker, Linder, Mahajan and mainly Fourier (theory of heat!).
+
+I like to write in first person (singular and plural)
+%
+~\mquote{The old taboo against using the first person in formal prose has long been deplored by the best authorities and ignored by some of the best writers. [\dots] A single author should also use \scare{we} in the common construction that includes the reader.}{\cite[p. 14]{aip:1990}}
+

@@ -29,6 +29,10 @@
 %
 \providecommand*{\elset}[1]{\lbrace{#1}\rbrace} % elements of a set
 
+%%% Functions
+%
+\providecommand*{\lfdef}[5]{{#1}:\set{#2}\to\set{#3},{#4}\mapsto{#5}} % long function definition
+
 %%% Intervals
 %
 \providecommand*{\ccint}[2]{\left[{#1},{#2}\right]} % closed-closed interval
@@ -37,13 +41,16 @@
 %
 % Derivatives
 %
-\providecommand*{\dx}{\mathrm{d}}    % derivative symbol
+\providecommand*{\dx}{\mathrm{d}}  % derivative symbol
 \providecommand*{\dt}[1]{\dot{#1}} % time (dot) derivative
 %
 \providecommand*{\iod}[1]{\dx_{#1}}      % index ordinary derivative
 \providecommand*{\ipd}[1]{\partial_{#1}} % index partial derivative
 %
-\providecommand*{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}} % expanded ord. deriv.
+\providecommand*{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}}           % expanded ord. deriv.
+\providecommand*{\xpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}} % expanded partial deriv.
+%
+%\providecommand*{\nxpd}[3]{\dfrac{\partial^{#1}{#2}}{\partial{#3}^{#1}}} % n expanded partial deriv.
 %
 % Integrals
 %
@@ -57,7 +64,7 @@
 %
 % Series
 %
-\providecommand*{\series}[3]{\left\lbrace{#1}\right\rbrace_{#2}^{#3}} % series
+\providecommand*{\seq}[3]{\left[{#1}\right]_{#2}^{#3}} % sequence
 
 %%% Geometric algebra
 %

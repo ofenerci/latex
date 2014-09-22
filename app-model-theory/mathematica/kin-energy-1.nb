@@ -1,0 +1,187 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5061,        178]
+NotebookOptionsPosition[      4131,        141]
+NotebookOutlinePosition[      4514,        158]
+CellTagsIndexPosition[      4471,        155]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input"],
+
+Cell["\<\
+Find the kinetic energy time derivative (geometric principle: no components \
+allowed!)\
+\>", "Text",
+ CellChangeTimes->{{3.619520704274117*^9, 3.619520749079307*^9}, {
+  3.619521660658757*^9, 3.619521662623415*^9}}],
+
+Cell["Define the kinetic energy (inner product: v.v)", "Text",
+ CellChangeTimes->{{3.619520484531682*^9, 3.61952049213769*^9}, {
+  3.619520522242948*^9, 3.619520527682868*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"k", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"1", "/", "2"}], " ", "m", " ", 
+   RowBox[{"v", ".", "v"}]}]}]], "Input",
+ CellChangeTimes->{{3.619520495671996*^9, 3.6195205050971117`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"m", " ", 
+   RowBox[{"v", ".", "v"}]}], "2"]], "Output",
+ CellChangeTimes->{{3.619520530204094*^9, 3.619520536429495*^9}, 
+   3.619521816359456*^9, 3.6195269924627333`*^9, 3.619527593970962*^9}]
+}, Open  ]],
+
+Cell["Find the time derivative of k:", "Text",
+ CellChangeTimes->{{3.61952054089215*^9, 3.619520549618137*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dk", " ", "=", " ", 
+  RowBox[{"Dt", "[", 
+   RowBox[{"k", ",", "t"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.619520551667225*^9, 3.61952055957882*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   FractionBox["1", "2"], " ", "m", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"v", ".", 
+      RowBox[{"Dt", "[", 
+       RowBox[{"v", ",", "t"}], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"Dt", "[", 
+       RowBox[{"v", ",", "t"}], "]"}], ".", "v"}]}], ")"}]}], "+", 
+  RowBox[{
+   FractionBox["1", "2"], " ", 
+   RowBox[{"v", ".", "v"}], " ", 
+   RowBox[{"Dt", "[", 
+    RowBox[{"m", ",", "t"}], "]"}]}]}]], "Output",
+ CellChangeTimes->{3.619520560097287*^9, 3.619521818313114*^9, 
+  3.619526992491005*^9, 3.619527594003746*^9}]
+}, Open  ]],
+
+Cell["Assume constant mass:", "Text",
+ CellChangeTimes->{{3.61952056373965*^9, 3.619520568185672*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dk", " ", "=", " ", 
+  RowBox[{"dk", "/.", 
+   RowBox[{
+    RowBox[{"Dt", "[", 
+     RowBox[{"m", ",", "t"}], "]"}], "\[Rule]", "0"}]}]}]], "Input",
+ CellChangeTimes->{{3.6195205719125423`*^9, 3.61952058746553*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", "m", " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"v", ".", 
+     RowBox[{"Dt", "[", 
+      RowBox[{"v", ",", "t"}], "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"Dt", "[", 
+      RowBox[{"v", ",", "t"}], "]"}], ".", "v"}]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.619520588006474*^9, 3.6195218205313663`*^9, 
+  3.6195269925127697`*^9, 3.619527594036055*^9}]
+}, Open  ]],
+
+Cell["Use the symmetric property of the inner product:", "Text",
+ CellChangeTimes->{{3.619520592738558*^9, 3.619520603288499*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dk", " ", "=", " ", 
+  RowBox[{"dk", "/.", 
+   RowBox[{
+    RowBox[{"v", ".", 
+     RowBox[{"Dt", "[", 
+      RowBox[{"v", ",", "t"}], "]"}]}], "\[Rule]", 
+    RowBox[{
+     RowBox[{"Dt", "[", 
+      RowBox[{"v", ",", "t"}], "]"}], ".", "v"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.619520609038307*^9, 3.619520634575979*^9}}],
+
+Cell[BoxData[
+ RowBox[{"m", " ", 
+  RowBox[{
+   RowBox[{"Dt", "[", 
+    RowBox[{"v", ",", "t"}], "]"}], ".", "v"}]}]], "Output",
+ CellChangeTimes->{3.619520635141603*^9, 3.619521823440696*^9, 
+  3.619526992545993*^9, 3.619527594072022*^9}]
+}, Open  ]],
+
+Cell["That\[CloseCurlyQuote]s the answer!", "Text",
+ CellChangeTimes->{{3.619520640176818*^9, 3.619520642847109*^9}, 
+   3.619520715595107*^9}]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 73, 1, 35, "Input"],
+Cell[634, 23, 226, 5, 61, "Text"],
+Cell[863, 30, 176, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1064, 36, 208, 5, 35, "Input"],
+Cell[1275, 43, 233, 5, 52, "Output"]
+}, Open  ]],
+Cell[1523, 51, 111, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[1659, 56, 178, 4, 35, "Input"],
+Cell[1840, 62, 573, 18, 55, "Output"]
+}, Open  ]],
+Cell[2428, 83, 102, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2555, 88, 239, 6, 35, "Input"],
+Cell[2797, 96, 411, 12, 55, "Output"]
+}, Open  ]],
+Cell[3223, 111, 130, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3378, 116, 349, 10, 35, "Input"],
+Cell[3730, 128, 239, 6, 35, "Output"]
+}, Open  ]],
+Cell[3984, 137, 143, 2, 37, "Text"]
+}
+]
+*)
+
+(* End of internal cache information *)

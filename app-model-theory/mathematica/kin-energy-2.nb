@@ -1,0 +1,518 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17605,        509]
+NotebookOptionsPosition[     15243,        425]
+NotebookOutlinePosition[     15626,        442]
+CellTagsIndexPosition[     15583,        439]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input"],
+
+Cell["Find Newton\[CloseCurlyQuote]s law and Lorentz force law", "Text",
+ CellChangeTimes->{{3.619521712526445*^9, 3.619521729340889*^9}}],
+
+Cell["Define the vectors:", "Text",
+ CellChangeTimes->{{3.619521733596066*^9, 3.6195217579880743`*^9}, {
+  3.619524107883524*^9, 3.619524110330777*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"$Assumptions", "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"f1", "|", "f2", "|", "p", "|", "v", "|", "e", "|", "b"}], ")"}], 
+   "\[Element]", 
+   RowBox[{"Vectors", "[", 
+    RowBox[{"3", ",", "Reals"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.619521763318969*^9, 3.61952179387064*^9}, {
+   3.619521865378016*^9, 3.619521868167408*^9}, {3.619521904343728*^9, 
+   3.6195219049027033`*^9}, 3.61952410490602*^9, {3.619527228264868*^9, 
+   3.619527232714755*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"f1", "|", "f2", "|", "p", "|", "v", "|", "e", "|", "b"}], ")"}], 
+  "\[Element]", 
+  RowBox[{"Vectors", "[", 
+   RowBox[{"3", ",", "Reals"}], "]"}]}]], "Output",
+ CellChangeTimes->{{3.619521798045518*^9, 3.619521805871305*^9}, 
+   3.619521836771906*^9, 3.619521869521887*^9, 3.619521905723044*^9, 
+   3.6195234381706257`*^9, 3.619524114581766*^9, 3.619525173421813*^9, 
+   3.619527004120335*^9, 3.619527049733158*^9, {3.619527234146864*^9, 
+   3.6195272383503036`*^9}, {3.6195272691143427`*^9, 3.61952729614082*^9}, 
+   3.619527379782791*^9, 3.619527412151239*^9, 3.619527452520197*^9, 
+   3.6195274870958023`*^9, 3.619527606046238*^9, 3.619757540130039*^9}]
+}, Open  ]],
+
+Cell["Write down particle momentum:", "Text",
+ CellChangeTimes->{{3.619521843006009*^9, 3.619521850141717*^9}, {
+  3.6195218973804893`*^9, 3.619521900756575*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"p", " ", "=", " ", 
+  RowBox[{"m", " ", "v"}]}]], "Input",
+ CellChangeTimes->{{3.619521877005248*^9, 3.619521913251978*^9}}],
+
+Cell[BoxData[
+ RowBox[{"m", " ", "v"}]], "Output",
+ CellChangeTimes->{
+  3.619521913955921*^9, 3.6195241173389387`*^9, 3.6195251754970837`*^9, 
+   3.619527004154502*^9, 3.619527049766247*^9, 3.619527238384993*^9, {
+   3.619527269149184*^9, 3.6195272961724043`*^9}, 3.619527379816708*^9, 
+   3.6195274121855993`*^9, 3.6195274525543623`*^9, 3.619527487126768*^9, 
+   3.619527606081458*^9, 3.619757540144006*^9}]
+}, Open  ]],
+
+Cell["Find the time derivative of momentum:", "Text",
+ CellChangeTimes->{{3.619521992371007*^9, 3.619522003522317*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dp", " ", "=", " ", 
+  RowBox[{"Dt", "[", 
+   RowBox[{"p", ",", "t"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.619522005623506*^9, 3.619522014826993*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"v", " ", 
+   RowBox[{"Dt", "[", 
+    RowBox[{"m", ",", "t"}], "]"}]}], "+", 
+  RowBox[{"m", " ", 
+   RowBox[{"Dt", "[", 
+    RowBox[{"v", ",", "t"}], "]"}]}]}]], "Output",
+ CellChangeTimes->{
+  3.61952201556459*^9, 3.619522422079939*^9, 3.619524119127894*^9, 
+   3.619525177185553*^9, 3.6195270041821938`*^9, 3.619527049800221*^9, 
+   3.619527238416442*^9, {3.619527269181941*^9, 3.619527296204772*^9}, 
+   3.619527379849203*^9, 3.6195274122190323`*^9, 3.619527452637143*^9, 
+   3.619527487159659*^9, 3.619527606113627*^9, 3.619757540171513*^9}]
+}, Open  ]],
+
+Cell["Assume constant mass:", "Text",
+ CellChangeTimes->{{3.619522047083811*^9, 3.619522051664401*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"dp", " ", "=", " ", 
+  RowBox[{"dp", "/.", 
+   RowBox[{
+    RowBox[{"Dt", "[", 
+     RowBox[{"m", ",", "t"}], "]"}], "\[Rule]", "0"}]}]}]], "Input",
+ CellChangeTimes->{{3.61952205463245*^9, 3.619522064625533*^9}, {
+  3.619522418560511*^9, 3.619522419363038*^9}}],
+
+Cell[BoxData[
+ RowBox[{"m", " ", 
+  RowBox[{"Dt", "[", 
+   RowBox[{"v", ",", "t"}], "]"}]}]], "Output",
+ CellChangeTimes->{
+  3.619522065137048*^9, {3.619522419768051*^9, 3.619522423866571*^9}, 
+   3.619524121066704*^9, 3.619525178905459*^9, 3.6195270041987247`*^9, 
+   3.61952704983351*^9, 3.619527238451478*^9, {3.619527269215034*^9, 
+   3.619527296239099*^9}, 3.6195273798843117`*^9, 3.619527412253694*^9, 
+   3.619527452671094*^9, 3.619527487193153*^9, 3.619527606145938*^9, 
+   3.61975754018596*^9}]
+}, Open  ]],
+
+Cell["Write down Newton\[CloseCurlyQuote]s second law:", "Text",
+ CellChangeTimes->{{3.61952208062871*^9, 3.619522089634556*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"f1", " ", "=", " ", "dp"}]], "Input",
+ CellChangeTimes->{{3.619522092882464*^9, 3.619522095363287*^9}, {
+  3.619522431432726*^9, 3.619522432021803*^9}}],
+
+Cell[BoxData[
+ RowBox[{"m", " ", 
+  RowBox[{"Dt", "[", 
+   RowBox[{"v", ",", "t"}], "]"}]}]], "Output",
+ CellChangeTimes->{
+  3.6195220963747683`*^9, 3.6195223370480127`*^9, {3.619522425719524*^9, 
+   3.619522432432226*^9}, 3.6195241227956944`*^9, 3.619525181849436*^9, 
+   3.61952700421563*^9, 3.619527049866506*^9, 3.619527238480134*^9, {
+   3.619527269248165*^9, 3.619527296272688*^9}, 3.6195273799163446`*^9, 
+   3.619527412284927*^9, 3.6195274527039013`*^9, 3.6195274872796183`*^9, 
+   3.619527606181121*^9, 3.619757540218807*^9}]
+}, Open  ]],
+
+Cell["Right (inner) multiply it by v:", "Text",
+ CellChangeTimes->{{3.619525082898417*^9, 3.619525095232252*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"lhs", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"f1", ".", "v"}], "//", "ExpandAll"}]}]], "Input",
+ CellChangeTimes->{{3.619525098665841*^9, 3.6195251119750023`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"m", " ", 
+    RowBox[{"Dt", "[", 
+     RowBox[{"v", ",", "t"}], "]"}]}], ")"}], ".", "v"}]], "Output",
+ CellChangeTimes->{{3.619525104182227*^9, 3.6195251124983063`*^9}, 
+   3.61952514677313*^9, 3.619525183978422*^9, 3.61952700423244*^9, 
+   3.619527049902051*^9, 3.619527238517497*^9, {3.619527269281773*^9, 
+   3.619527296304646*^9}, 3.6195273799489403`*^9, 3.6195274123173037`*^9, 
+   3.619527452734166*^9, 3.6195274873103447`*^9, 3.619527606213468*^9, 
+   3.619527792473309*^9, 3.619757540253448*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"lhs", " ", "=", " ", 
+  RowBox[{"lhs", "/.", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"m", " ", 
+        RowBox[{"Dt", "[", 
+         RowBox[{"v", ",", "t"}], "]"}]}], ")"}], ".", "v"}], "\[Rule]", 
+     RowBox[{"(", 
+      RowBox[{"m", " ", 
+       RowBox[{
+        RowBox[{"Dt", "[", 
+         RowBox[{"v", ",", "t"}], "]"}], ".", "v"}]}], ")"}]}], 
+    "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.619527677681773*^9, 3.619527786351666*^9}}],
+
+Cell[BoxData[
+ RowBox[{"m", " ", 
+  RowBox[{
+   RowBox[{"Dt", "[", 
+    RowBox[{"v", ",", "t"}], "]"}], ".", "v"}]}]], "Output",
+ CellChangeTimes->{{3.619527719909799*^9, 3.619527736873*^9}, {
+   3.619527767137089*^9, 3.619527795345825*^9}, 3.61975754028734*^9}]
+}, Open  ]],
+
+Cell["Write down Lorentz force law:", "Text",
+ CellChangeTimes->{{3.619522213584503*^9, 3.619522224558207*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"f2", " ", "=", " ", 
+  RowBox[{"q", 
+   RowBox[{"(", 
+    RowBox[{"e", " ", "+", " ", 
+     RowBox[{"v", "\[Cross]", "b"}]}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.6195222501039867`*^9, 3.619522300048296*^9}}],
+
+Cell[BoxData[
+ RowBox[{"q", " ", 
+  RowBox[{"(", 
+   RowBox[{"e", "+", 
+    RowBox[{"v", "\[Cross]", "b"}]}], ")"}]}]], "Output",
+ CellChangeTimes->{
+  3.619522300992813*^9, 3.6195223403334923`*^9, 3.619522434627437*^9, 
+   3.619523445905888*^9, 3.619524125581232*^9, 3.619525188037751*^9, 
+   3.619527004249077*^9, 3.619527049933387*^9, 3.61952723855018*^9, {
+   3.619527269314692*^9, 3.619527296338254*^9}, 3.619527379981949*^9, 
+   3.619527412351348*^9, 3.61952745277015*^9, 3.619527487343639*^9, 
+   3.619527606245841*^9, 3.619757540320581*^9}]
+}, Open  ]],
+
+Cell["Right (inner) multiply it by v:", "Text",
+ CellChangeTimes->{{3.619525075945421*^9, 3.619525077968659*^9}, {
+  3.619525191381095*^9, 3.619525200228964*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rhs", " ", "=", " ", 
+  RowBox[{"f2", ".", "v"}]}]], "Input",
+ CellChangeTimes->{{3.61952521904287*^9, 3.6195252401654778`*^9}, {
+   3.619527247619822*^9, 3.619527248361418*^9}, {3.61952739067834*^9, 
+   3.619527393399095*^9}, 3.6195274661895227`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"q", " ", 
+    RowBox[{"(", 
+     RowBox[{"e", "+", 
+      RowBox[{"v", "\[Cross]", "b"}]}], ")"}]}], ")"}], ".", "v"}]], "Output",\
+
+ CellChangeTimes->{
+  3.619525240637252*^9, 3.619525286495399*^9, 3.619527004288216*^9, 
+   3.619527049966558*^9, 3.6195271962932796`*^9, {3.619527241417989*^9, 
+   3.619527298412942*^9}, {3.619527382129931*^9, 3.61952741528646*^9}, {
+   3.619527455832472*^9, 3.619527487373426*^9}, 3.619527606278097*^9, 
+   3.619757540354598*^9}]
+}, Open  ]],
+
+Cell["Find the value for the triple product:", "Text",
+ CellChangeTimes->{{3.6195253066113043`*^9, 3.619525318632224*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"Cross", "[", 
+     RowBox[{"v", ",", "b"}], "]"}], ")"}], ".", "v"}], "//", 
+  "TensorReduce"}]], "Input",
+ CellChangeTimes->{{3.61952532432845*^9, 3.619525358804904*^9}, {
+  3.619527026879228*^9, 3.619527027612022*^9}, {3.619527159204741*^9, 
+  3.619527173740634*^9}, {3.61952720660465*^9, 3.619527218773356*^9}, {
+  3.6195272829792633`*^9, 3.619527284666709*^9}, {3.619527370559985*^9, 
+  3.619527443410878*^9}, {3.619527473566798*^9, 3.6195274743873253`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$IterationLimit", "::", "itlim"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iteration limit of \[NoBreak]\\!\\(4096\\)\[NoBreak] \
+exceeded. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/$IterationLimit/itlim\\\", ButtonNote -> \
+\\\"$IterationLimit::itlim\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.619527241520175*^9, 3.619527298499996*^9}, {
+   3.619527373388453*^9, 3.61952748743755*^9}, 3.619527606347007*^9, 
+   3.619527742170847*^9, 3.619757540578793*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$IterationLimit", "::", "itlim"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iteration limit of \[NoBreak]\\!\\(4096\\)\[NoBreak] \
+exceeded. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/$IterationLimit/itlim\\\", ButtonNote -> \
+\\\"$IterationLimit::itlim\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.619527241520175*^9, 3.619527298499996*^9}, {
+   3.619527373388453*^9, 3.61952748743755*^9}, 3.619527606347007*^9, 
+   3.619527742170847*^9, 3.619757540632844*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$IterationLimit", "::", "itlim"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iteration limit of \[NoBreak]\\!\\(4096\\)\[NoBreak] \
+exceeded. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/$IterationLimit/itlim\\\", ButtonNote -> \
+\\\"$IterationLimit::itlim\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.619527241520175*^9, 3.619527298499996*^9}, {
+   3.619527373388453*^9, 3.61952748743755*^9}, 3.619527606347007*^9, 
+   3.619527742170847*^9, 3.619757540688986*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \
+\[NoBreak]\\!\\(\\*StyleBox[\\($IterationLimit :: itlim\\), \\\"MessageName\\\
+\"]\\)\[NoBreak] will be suppressed during this calculation. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/stop\\\", \
+ButtonNote -> \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.619527241520175*^9, 3.619527298499996*^9}, {
+   3.619527373388453*^9, 3.61952748743755*^9}, 3.619527606347007*^9, 
+   3.619527742170847*^9, 3.6197575407990723`*^9}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{{3.619525349937023*^9, 3.6195253596987267`*^9}, {
+   3.619527004320257*^9, 3.619527050001066*^9}, {3.6195271655785923`*^9, 
+   3.619527299411683*^9}, {3.6195273743587227`*^9, 3.6195274881046658`*^9}, 
+   3.619527607006907*^9, 3.619527742831149*^9, 3.619757541381523*^9}]
+}, Open  ]],
+
+Cell["Then, rhs becomes", "Text",
+ CellChangeTimes->{{3.619525364999374*^9, 3.619525368445477*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rhs", " ", "=", " ", 
+  RowBox[{"rhs", "/.", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"v", "\[Cross]", "b"}], ")"}], "\[Rule]", "0"}]}]}]], "Input",
+ CellChangeTimes->{{3.6195253722564573`*^9, 3.6195255002685623`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"e", " ", "q"}], ")"}], ".", "v"}]], "Output",
+ CellChangeTimes->{
+  3.619525412719475*^9, {3.619525444416419*^9, 3.6195254633758698`*^9}, 
+   3.619525500940246*^9, 3.619527004352754*^9, 3.6195270500324287`*^9, {
+   3.619527242457992*^9, 3.619527299446274*^9}, 3.619527383290555*^9, 
+   3.6195274163934402`*^9, 3.619527456664447*^9, 3.619527488177293*^9, 
+   3.619527607079812*^9, 3.61975754160701*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rhs", " ", "=", " ", 
+  RowBox[{"rhs", "/.", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"e", " ", "q"}], ")"}], ".", "v"}], "\[Rule]", 
+    RowBox[{"q", " ", 
+     RowBox[{"e", ".", "v"}]}]}]}]}]], "Input",
+ CellChangeTimes->{{3.619527642064767*^9, 3.619527659549346*^9}}],
+
+Cell[BoxData[
+ RowBox[{"q", " ", 
+  RowBox[{"e", ".", "v"}]}]], "Output",
+ CellChangeTimes->{3.619527660238559*^9, 3.619757541657049*^9}]
+}, Open  ]],
+
+Cell["Equate both sides:", "Text",
+ CellChangeTimes->{{3.619522316597962*^9, 3.6195223237325*^9}, {
+  3.6195255132055264`*^9, 3.619525513707611*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"lhs", " ", "\[Equal]", "rhs"}]], "Input",
+ CellChangeTimes->{{3.619525544694503*^9, 3.619525547497745*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"m", " ", 
+   RowBox[{
+    RowBox[{"Dt", "[", 
+     RowBox[{"v", ",", "t"}], "]"}], ".", "v"}]}], "\[Equal]", 
+  RowBox[{"q", " ", 
+   RowBox[{"e", ".", "v"}]}]}]], "Output",
+ CellChangeTimes->{
+  3.61952554814231*^9, 3.619527004388111*^9, 3.619527050067174*^9, {
+   3.619527242523466*^9, 3.619527299512558*^9}, 3.619527383334149*^9, 
+   3.61952741642642*^9, 3.619527456695421*^9, 3.619527488207378*^9, 
+   3.6195276071137123`*^9, 3.619527663749976*^9, {3.619527748563047*^9, 
+   3.619527800523456*^9}, 3.6197575417020903`*^9}]
+}, Open  ]],
+
+Cell["That\[CloseCurlyQuote]s the answer!", "Text",
+ CellChangeTimes->{{3.619522483758238*^9, 3.619522492332171*^9}, {
+  3.619522902055901*^9, 3.619522908563533*^9}}]
+},
+WindowSize->{638, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 73, 1, 35, "Input"],
+Cell[634, 23, 138, 1, 37, "Text"],
+Cell[775, 26, 152, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[952, 32, 489, 11, 58, "Input"],
+Cell[1444, 45, 710, 13, 37, "Output"]
+}, Open  ]],
+Cell[2169, 61, 162, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[2356, 67, 148, 3, 36, "Input"],
+Cell[2507, 72, 409, 7, 35, "Output"]
+}, Open  ]],
+Cell[2931, 82, 119, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3075, 87, 179, 4, 36, "Input"],
+Cell[3257, 93, 580, 13, 35, "Output"]
+}, Open  ]],
+Cell[3852, 109, 103, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3980, 114, 286, 7, 36, "Input"],
+Cell[4269, 123, 504, 10, 35, "Output"]
+}, Open  ]],
+Cell[4788, 136, 129, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[4942, 141, 176, 3, 36, "Input"],
+Cell[5121, 146, 535, 10, 35, "Output"]
+}, Open  ]],
+Cell[5671, 159, 113, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[5809, 164, 186, 4, 36, "Input"],
+Cell[5998, 170, 556, 11, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6591, 186, 505, 16, 35, "Input"],
+Cell[7099, 204, 262, 6, 35, "Output"]
+}, Open  ]],
+Cell[7376, 213, 111, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[7512, 218, 238, 6, 36, "Input"],
+Cell[7753, 226, 548, 11, 36, "Output"]
+}, Open  ]],
+Cell[8316, 240, 162, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[8503, 246, 275, 5, 35, "Input"],
+Cell[8781, 253, 516, 13, 36, "Output"]
+}, Open  ]],
+Cell[9312, 269, 122, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[9459, 274, 527, 11, 35, "Input"],
+Cell[9989, 287, 614, 12, 29, "Message"],
+Cell[10606, 301, 614, 12, 29, "Message"],
+Cell[11223, 315, 614, 12, 29, "Message"],
+Cell[11840, 329, 684, 13, 50, "Message"],
+Cell[12527, 344, 318, 4, 35, "Output"]
+}, Open  ]],
+Cell[12860, 351, 99, 1, 37, "Text"],
+Cell[CellGroupData[{
+Cell[12984, 356, 245, 6, 35, "Input"],
+Cell[13232, 364, 453, 9, 36, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13722, 378, 312, 9, 36, "Input"],
+Cell[14037, 389, 137, 3, 36, "Output"]
+}, Open  ]],
+Cell[14189, 395, 149, 2, 37, "Text"],
+Cell[CellGroupData[{
+Cell[14363, 401, 131, 2, 35, "Input"],
+Cell[14497, 405, 561, 13, 36, "Output"]
+}, Open  ]],
+Cell[15073, 421, 166, 2, 37, "Text"]
+}
+]
+*)
+
+(* End of internal cache information *)

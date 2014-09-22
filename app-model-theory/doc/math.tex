@@ -1,0 +1,165 @@
+\chapter{Math derivation}
+%
+Herein, we present a formal math derivation of the working exercise (section...)
+
+Begin by restating the statement in a more theorem-like way. use natural deduction tree Lemmon style, \cite[chap. 1]{lehman:2011} ... \cite{houston:2009}.
+
+We adapt Lamport's math proof style \cite{lamport:1993,lamport:2012} to physics.
+
+
+\section{Statement}
+%
+Consider two electrically charged bodies $\body$ and $\body'$. Consider $\body$ mass to be constant and consider $\body$ moving towards $\body'$. Let $\echarge$ and $\vel$ represent $\body$ electric charge and velocity and let $\efield$ represent $\body'$ electric field. Then, the formula
+%
+\beq
+  \dfrac{\dt\ekin}{\echarge\efield\iprod\vel} = 1
+\eeq
+%
+models $\body$ temporal change of kinetic energy $\dt\ekin$.
+
+
+\section{Formal proof}
+%
+For this section consider the assumptions made in ... and geometric algebra. Natural deduction Lemmon style
+%
+%\setcounter{ndlproofcounter}{0} % reset counter
+%
+% --------------------------------------------------------------- NDL
+% Natural deduction Lemmon style
+% \ndlst{Assumptions}{Formula Statement}{Justification}
+% \ndleq{Assumptions}{Formula}{Justification}
+%
+\begin{table}\capstart\begingroup\footnotesize\begin{center}
+  \begin{tabularx}{1.00\textwidth}{lll}
+  %
+  \toprule
+  %
+  \multicolumn{3}{c}{Object model and state quantities} \\
+  \midrule
+  %
+  \ndlst{A}{$\body$ is a particle}{}
+  \ndlst{A}{$\body$ has mass $\mass$}{}
+  \ndlst{A}{$\body$ has electric charge $\echarge$}{}
+  \ndlst{A}{$\body$ moves with velocity $\vel$}{}
+  %
+  \midrule
+  \multicolumn{3}{c}{Agent model and state quantities} \\
+  \midrule
+  %
+  \ndlst{A}{$\body'$ is a particle}{}
+  \ndlst{A}{$\body'$ has mass $\mass'$}{}
+  \ndlst{A}{$\body'$ is static}{}
+  \ndlst{A}{$\body'$ has electric charge $\echarge'$}{}
+  \ndlst{A}{$\body'$ has electric field $\efield'$}{}
+  \ndlst{A}{$\body'$ has magnetic field $\mfield'$}{}
+  \ndlst{A}{$t$ is universal}{}
+  %
+  \midrule
+  \multicolumn{3}{c}{Dynamic laws} \\
+  \midrule
+  %
+  \ndleq{1,2,4}{2\ekin = \mass\vel^2}{$\body$ kin. energy}
+  \ndleq{1,2,4}{\mom = \mass\vel}{$\body$ momentum}
+  \ndleq{1,2,4,11}{\force = \dt\mom}{$\body$ motion: Newton's second}
+  %
+  \midrule
+  \multicolumn{3}{c}{Interaction laws} \\
+  \midrule
+  %
+  \ndleq{1,3,4,5,7,8,9,10}{\force' = \echarge\parth{\efield' + \vel\mfield'}}{$\body, \body'$ interact: Lorentz force}
+  %
+  \midrule
+  \multicolumn{3}{c}{Model derivation} \\
+  \midrule
+  %
+  % kinetic energy
+  %
+  \ndleq{12}{2\ekin = \mass\vel\vel}{GA axioms}
+  \ndleq{12}{2\ekin = \mass\parth{\vel\iprod\vel + \vel\oprod\vel}}{GP canonical form}
+  \ndleq{12}{2\ekin = \mass\parth{\vel\iprod\vel}}{$\vel\parallel\vel$}
+  \ndleq{12}{2\dt\ekin = \iod t\parth{\mass\vel\iprod\vel}}{$\iod t{}$}
+  %
+  % newton's second law and lorentz force
+  %
+  \ndleq{123}{\dt\mom = \iod t\parth{\mass\vel}}{$\iod t{}$}
+  \ndleq{123}{\dt\mom = \mass\dt\vel}{$\dt\mass = 0$}
+  \ndleq{123}{\force = \mass\dt\vel}{$=$}
+  \ndleq{123}{\force\iprod\vel = \mass\dt\vel\iprod\vel}{${}\iprod\vel$}
+  %
+  \ndleq{13,14}{\force' = \echarge\parth{\efield' + \vel\cprod\mfield'}}{}
+  \ndleq{123}{\force'\iprod\vel = \echarge\parth{\efield' + \vel\cprod\mfield'}\iprod\vel}{${}\iprod\vel$}
+  \ndleq{123}{\force'\iprod\vel = \echarge\efield'\iprod\vel + \vel\cprod\mfield'\iprod\vel}{parenth. expansion}
+  \ndleq{123}{\force'\iprod\vel = \echarge\efield'\iprod\vel}{$\vel\cprod\mfield'\iprod\vel = 0$}
+  %
+  \ndleq{123}{\mass\dt\vel\iprod\vel = \echarge\efield'\iprod\vel}{$\force\iprod\vel = \force'\iprod\vel$}
+  %
+  \ndleq{16}{\dt\ekin = \echarge\efield'\iprod\vel}{$=$}
+  \ndleq{16}{\dt\ekin/\echarge\efield'\iprod\vel = 1}{rearrangement}
+  \ndlst{}{QED}{}
+  %
+  \bottomrule
+  %
+\end{tabularx}\end{center}\endgroup\normalsize
+\caption[Math proof]{Derivation of a mathematical model for the electrically charged bodies interaction. The first column from the left contains the assumptions being used, the second column a numeric counter used as reference, the third column statements and formulas and the fourth column the justifications of math steps \cite[p. 3]{lamport:1993}. In the first column, [A] means assumption and in the fourth column GA geometric algebra and GP geometric product \cite{hestenes:2003}.}\label{tab:sketchworkelectric}
+\end{table}
+%
+% ------------------------------------------------------------- EndNDL
+
+
+\section{Wordy derivation}
+% 
+We solve the problem now by presenting a \scare{wordy-version} of the analytic solution: we describe the math derivation in detail.
+
+The particle kinetic energy is $2\ekin = \mass\vel^2$. This can be rewritten as
+%
+\beq
+  2\ekin = \mass\vel\iprod\vel\,,
+\eeq
+%
+since $\vel$ is colinear to itself; \ie, its outer product is zero; \viz, $\vel^2 = \vel\vel = \vel\iprod\vel + \vel\oprod\vel = \vel\iprod\vel$. 
+
+Then, calculate the kinetic energy change rate with time by
+%
+\beq
+  2\ekin = \mass\vel\iprod\vel \implies
+  2\dt\ekin = \mass\parth{\dt\vel\iprod\vel + \vel\iprod\dt\vel} 
+            = \mass\parth{\dt\vel\iprod\vel + \dt\vel\iprod\vel}
+            = 2\mass\dt\vel\iprod\vel\,,
+\eeq
+%
+where the product rule for the differentiation of the inner product, the commutativity property of the inner product and the dot notation for derivatives were used.
+
+Next, one cancels out the numerical factor 2 in both sides of the equality to find that
+%
+\beq
+  \ekin = \mass\dt\vel\iprod\vel\,.
+\eeq
+
+On the other hand, the particle's motion can be modeled by equating Newton's second law of motion with Lorentz force, since the particle interacts with an electromagnetic field. Thus, we find that
+%
+\beq
+  \dt\mom = \echarge\parth{\efield + \vel\cprod\mfield}\,,
+\eeq
+%
+where $\mom$ is the particle's linear momentum. By definition, $\mom = \mass\vel$, so $\dt\mom = \dt\mass\vel + \mass\dt\vel = \mass\dt\vel$, because mass is constant, $\dt\mass = 0$, then we have that
+%
+\beq
+  \mass\dt\vel = \echarge\parth{\efield + \vel\cprod\mfield}\,.
+\eeq
+
+Plug in the last equation (equation of motion) into the $\dt\ekin$ expression:
+%
+\beq
+  \dt\ekin = \echarge\efield\iprod\vel + \echarge\parth{\vel\cprod\mfield}\iprod\vel\,.
+\eeq
+%
+Since the triple product vanishes, one finally finds
+%
+\beq
+  \dt\ekin = \echarge\efield\iprod\vel\,,
+\eeq
+%
+the rate at which the particle's kinetic energy changes with respect to time.
+
+This (analytic) solution confirms our guessed model and the approximate solutions. Then, it creates confidence, not only on our intuition, but also on the efficacy of approximate methods.
+
