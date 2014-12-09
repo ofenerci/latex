@@ -1,0 +1,31 @@
+\documentclass[10pt]{article}
+
+%%% Packages
+%
+\RequirePackage{amsmath}  % maths
+\RequirePackage{amsfonts} % maths
+\RequirePackage{amssymb}  % maths
+\RequirePackage{amsthm}   % maths (theorems) (qedsymbol)
+%
+%%% Math
+%
+\providecommand*{\Diff}{\Delta}              % difference
+\providecommand*{\vat}[1]{\!\left[#1\right]} % value at
+%
+%%% Physics
+%
+\providecommand*{\kdecay}{k}      % decay coefficient
+\providecommand*{\npart}{n}       % number of particles
+\providecommand*{\dt}{\text{d}_t} % time derivative
+
+\begin{document}
+
+Let $\npart = \npart\vat t$ be the number of radioactive nuclei at time $t$ and let $\Diff t$ be a small change in time $t$. We know that the change in the number of nuclei is proportional to the number of nuclei at the start of the time period. Hence, the word equation translates to
+%
+\begin{equation}
+  \dt\npart = -\kdecay\npart\,,
+\end{equation}
+%
+where $\kdecay$ is a positive coefficient indicating the rate of decay per nucleus in unit time. We write $\npart$ in the right-hand side for $\npart\vat t$ as the dependance on $t$ is implied by the derivative $\dt$. We assume $\kdecay$ to be fixed although it will have a different value for different elements or isotopes.
+
+\end{document}
