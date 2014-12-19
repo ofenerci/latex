@@ -1,0 +1,162 @@
+\documentclass[9pt,reqno]{amsart}
+
+%%% Doc info
+%
+\title{Scaling of differential equations}
+\author{dfhe}
+\date{2014.12.16}
+%
+%%% Packages
+%
+\RequirePackage{amsmath}    % maths
+\RequirePackage{amsfonts}   % maths
+\RequirePackage{amssymb}    % maths
+\RequirePackage{amsthm}     % maths (theorems) (qedsymbol)
+\RequirePackage{cleveref}   % references
+\RequirePackage{graphicx}   % graph support
+\RequirePackage[inline]{showlabels} % show lables in equations
+\RequirePackage{xspace}
+%
+\RequirePackage[protrusion=true]{microtype} % microtypo :)
+%
+%%% Math
+%
+\providecommand*{\Diff}{\Delta}               % difference
+\providecommand*{\order}[1]{O\vat{#1}}        % order of magnitude
+\providecommand*{\parens}[1]{\left(#1\right)} % parentheses
+\providecommand*{\txt}[1]{_\text{#1}}         % text in eqns
+\providecommand*{\vat}[1]{\!\left[#1\right]}  % value at
+%
+% Intervals
+%
+\providecommand*{\ccint}[1]{\left[#1\right]} % closed-closed interval
+% Calculus
+%
+\providecommand*{\dx}{\text{d}}                     % differential
+\providecommand*{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}} % exp. ord. diff.
+%
+% short integral
+% {interval}{differential}{integrand}
+\providecommand*{\sint}[3]{\int_{#1}{#2}\,{#3}} % 
+%
+%%% Physics
+%
+\providecommand*{\mass}{m}           % concentration
+\providecommand*{\dt}{\text{d}}      % time derivative
+\providecommand*{\dd}[1]{\dot{#1}}   % dot derivative
+\providecommand*{\kdecay}{k}         % decay coefficient
+%
+\providecommand*{\hlife}{t\txt{hl}}          % half-life
+\providecommand*{\dlhlife}{\dlpq{t}\txt{hl}} % dimless half-life
+%
+% Dim analysis
+%
+\providecommand*{\dlpq}[1]{\hat{#1}}      % dimensional physical quantity
+\providecommand*{\rfpq}[1]{{#1}\txt{ref}} % reference physical quantity
+%
+%%% Lingo
+%
+\providecommand*{\brand}[1]{\textsf{#1}\xspace} % brand
+\providecommand*{\ca}{\textit{ca.}\xspace}      % circa
+\providecommand*{\ie}{\textit{i.e.}\xspace}     % that is
+\providecommand*{\lingo}[1]{\emph{#1}\xspace}   % lingo
+
+
+\begin{document}
+%
+\maketitle
+%
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+
+\section{Real world problem}
+%
+
+
+\section{Assumptions}
+%
+
+
+\section{Problem formulation}
+%
+Consider a decaying substance. Let $\dlpq\mass = \dlpq\mass\vat{\dlpq t}$ represent
+%
+~\footnote{~Hats are used to represent the dependent and independent quantities in \emph{dimensional} form.}
+%
+the mass of the substance at any time $\dlpq t$. If we hypothesise that the mass temporal change is proportional to the present amount of mass and add the condition that, at the beginning, mass equals the initial mass, then we have that
+%
+\begin{equation}
+  \begin{cases}
+    -\xod{\dlpq\mass}{\dlpq t} = \kdecay\dlpq\mass\,, & \\
+    \dlpq\mass\vat 0 = \dlpq\mass_0\,. & \\
+  \end{cases}
+\end{equation}
+
+
+
+\section{Solution}
+%
+
+
+\subsection{Guessing}
+%
+
+
+\subsection{Dimensional analysis}
+%
+
+
+\subsection{Extreme cases}
+%
+
+
+\subsection{Analytic solution}
+%
+
+
+\subsubsection{Non-dimensionalization}
+%
+
+
+\subsubsection{Normalization}
+%
+
+
+\subsubsection{Analytical solution}
+%
+
+
+\subsubsection{Dimensional solution}
+%
+
+
+\section{Solution plot}
+%
+
+
+\section{Interpretation of the solution}
+%
+
+
+\section{Model verification}
+%
+
+
+\section{Report}
+%
+
+
+\subsection{Report}
+%
+
+
+\subsection{Explain}
+%
+
+
+\subsection{Predict}
+%
+
+
+\end{document}
