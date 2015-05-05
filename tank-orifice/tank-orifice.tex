@@ -1,0 +1,42 @@
+\RequirePackage{fix-cm}                % fixes cm calcs
+\RequirePackage{fixltx2e}              % fixes some LaTeX stuff
+\RequirePackage[l2tabu, orthodox]{nag} % old packages checker
+
+\documentclass[twoside=false, open=right, titlepage, numbers=noenddot, 
+               headinclude, fontsize=10pt, paper=a4, footinclude, 
+               abstract=off, cleardoublepage=empty
+               ]{scrreprt}
+
+\input{aux/docinfo}
+\RequirePackage{aux/minionstyle}
+\RequirePackage{aux/preambule}
+\RequirePackage{aux/lingo}
+\RequirePackage{aux/math}
+\RequirePackage{aux/physics}
+
+\hyphenation{co-ordi-nate-in-de-pendent}
+
+\begin{document}
+
+  \frenchspacing
+  \pagenumbering{arabic}
+  \pagestyle{plain}
+  \pagestyle{scrheadings}
+
+  \include{doc/tank-orifice}
+
+  \phantomsection
+  \bibliographystyle{aipnum4-1}\label{biblio}
+  \addcontentsline{toc}{chapter}{References}
+  \renewcommand{\bibname}{References}
+  \setbibpreamble{
+    \docepigraph{Standing on the shoulder of giants}
+      {Newton}{\cite{newton:wikiquote}}
+  }
+  \bibliography{doc/references}
+
+  \appendix
+
+  \include{aux/revision} % Update!
+
+\end{document}

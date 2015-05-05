@@ -1,0 +1,59 @@
+% physics
+% physics commands, environments and macros
+
+\ProvidesPackage{aux/physics}[23/08/2014 physics macros and commands (rimbaudcode)]
+
+%%% Geometry
+%
+\providecommand*{\geoelement}[1]{\mathfrak{#1}} % geometric element (regions, points, ...)
+%
+\providecommand*{\body}{\geoelement{B}}  % body: region in space
+\providecommand*{\event}{\geoelement{E}} % event
+\providecommand*{\point}{\geoelement{P}} % point/particle
+%
+\providecommand*{\area}{a} % sectional area
+
+%%% Mechanics
+%
+% Kinematics
+%
+\providecommand*{\acc}{a} % acceleration
+\providecommand*{\pos}{x} % position
+\providecommand*{\vel}{v} % velocity
+%
+% Dynamics
+%
+\providecommand*{\dens}{\rho} % mass density
+\providecommand*{\force}{f}   % force
+\providecommand*{\grav}{g}    % gravity
+\providecommand*{\mass}{m}    % mass
+\providecommand*{\press}{p}   % momentum
+%
+% Energy
+%
+\providecommand*{\ener}{e} % energy
+\providecommand*{\ekin}{k} % kinetic energy
+
+%%% Fluid dynamics
+%
+\providecommand*{\kcont}{k\txt{c}} % coefficient of contraction
+\providecommand*{\kdisc}{k\txt{d}} % coefficient of discharge
+\providecommand*{\kvel}{k_\vel}    % coefficient of velocity
+\providecommand*{\hlevel}{h}       % height
+\providecommand*{\vflow}{q}        % volumetric flow
+
+%%% Dimensional analysis
+%
+\providecommand*{\phdim}[1]{\mathsf{#1}} % physical dimension
+\providecommand*{\fdim}{\Xi}             % dimless function
+\providecommand*{\kdim}{\Pi}             % dimless quantity
+
+%%% Universal constants
+%
+\providecommand*{\uconst}[1]{k\txt{#1}} % general universal constant
+%
+\providecommand*{\uknewton}{\uconst{ne}} % Newton's gravitational constant
+
+%%% Eng. notation
+%
+\providecommand*{\zpos}{z} % z position (coordinate)

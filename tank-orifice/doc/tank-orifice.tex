@@ -1,0 +1,96 @@
+\chapter*{\docTitle}
+%
+[Taken from \cite{nptel:2015}]
+
+
+\section*{Flow Through Orifices And Mouthpieces}
+%
+An \lingo{orifice} is a small aperture through which the fluid passes. The thickness of an orifice in the direction of flow is very small in comparison to its other dimensions.
+
+If a tank containing a liquid has a hole made on the side or base through which liquid flows, then such a hole may be termed as an orifice.The rate of flow of the liquid through such an orifice at a given time will depend partly on the shape, size and form of the orifice. 
+
+An orifice usually has a sharp edge so that there is minimum contact with the fluid and consequently minimum frictional resistance at the sides of the orifice. If a sharp edge is not provided, then the flow depends on the thickness of the orifice and the roughness of its boundary surface too.
+
+
+\section*{Flow from an Orifice at the Side of a Tank under a Constant Head}
+%
+Let us consider a tank containing a liquid and with an orifice at its side wall as shown in \cref{fig:tank-orifice}.
+%
+% --------------------------------------------------------------- Figure
+% pos.: bthH. size: width=0.5\textwidth. file:./graph/fname.pdf
+% caption. label:fig:wec
+%
+\docfigure
+  {bt}
+  {width=0.9\textwidth}
+  {./graph/tank.pdf}
+  {Flow through an orifice}
+  {Flow through an orifice placed in a tank \cite{nptel:2015}}
+  {fig:tank-orifice}
+%
+% ------------------------------------------------------------ EndFigure
+%
+The orifice has a sharp edge with the bevelled side facing downstream. Let the height of the free surface of liquid above the centre line of the orifice be kept fixed by some adjustable arrangements of inﬂow to the tank. 
+
+The liquid issues from the orifice as a \lingo{free jet} under the influence of gravity only. The streamlines approaching the orifice converges towards it. Since an instantaneous change of direction is not possible, the streamlines continue to converge beyond the orifice until they become parallel at the Sec. c-c (\cref{fig:tank-orifice}). 
+
+For an \emph{ideal fluid}, streamlines will strictly be parallel at an infinite distance; however, fluid friction in practice produce parallel flow at only a short distance from the orifice. The area of the jet at the Sec. c-c is lower than the area of the orifice. The Sec. c-c is known as the \lingo{vena contracta}.
+
+The contraction of the jet can be attributed to the action of a lateral force on the jet due to a change in the direction of flow velocity when the fluid approaches the orifice. Since the streamlines become parallel at vena contracta, the pressure at this section is assumed to be uniform. 
+
+If the pressure difference due to surface tension is neglected, the pressure in the jet at vena contracta becomes equal to that of the ambience surrounding the jet.
+
+\emph{Considering the flow to be steady} and \emph{frictional effects to be negligible}, we can write by the application of Bernoulli's equation between two points $\point_1$ and $\point_2$ on a particular stream-line with $\point_2$ being at vena contracta (\cref{fig:tank-orifice}):
+%
+\begin{equation}\label{eq:bernoulli}
+  \dfrac{\press_1}{\dens\grav} + \dfrac{\vel_1^2}{2\grav} + \zpos_1 = 
+  \dfrac{\press\txt{atm}}{\dens\grav} + \dfrac{\vel_2^2}{2\grav} + 0\,.
+\end{equation}
+%
+The horizontal plane through the centre of the orifice has been taken as datum level for determining the potential head. 
+
+If the area of the tank is large enough as compared to that of the orifice, the velocity at $\point_
+1$ becomes negligibly small and pressure $\press_1$ equals to the hydrostatic pressure 1 equals to the hydrostatic pressure at that point as $\press_1 = \press\txt{atm} + \dens\grav \parth{\hlevel - \zpos_1}$.
+
+Therefore, \cref{eq:bernoulli} becomes
+%
+\begin{equation}\label{eq:torricelli}
+  \vel_2 = \sqrt{2\grav\hlevel}\,.
+\end{equation}
+%
+If the orifice is small in comparison to $\hlevel$, the velocity of the jet is constant across the vena contracta. The \cref{eq:torricelli} states that the velocity with which a jet of liquid escapes from a small orifice is proportional to the square root of the head above the orifice -- \lingo{Torricelli's formula}.
+
+The velocity $\vel_2$ in \cref{eq:torricelli} represents the ideal velocity since the frictional effects were neglected in the derivation. Therefore, a multiplying factor $\kvel$ known as \lingo{coefficient of velocity} is introduced to determine the actual velocity as
+%
+\begin{equation*}
+  \vel\txt{actual} = \kvel\sqrt{2\grav\hlevel}\,.
+\end{equation*}
+%
+Since the role of friction is to reduce the velocity, $\kvel$ is always less than unity. The \lingo{volumetric flow}, \aka rate of discharge, through the orifice can then be written as,
+%
+~\enummarnote{~from the continuity equation, $\vflow = \area\vel$.}
+%
+\begin{equation}\label{eq:vflow}
+  \vflow = \area\txt{vc}\kvel\sqrt{2\grav\hlevel}\,,
+\end{equation}
+%
+where $\area\txt{vc}$ is the cross-sectional area of the jet \emph{at the vena contracta}.
+
+Defining a \lingo{coefficient of contraction} $\kcont$ as the ratio of the area of vena contracta to the \emph{area of orifice}, \cref{eq:vflow} can be written as
+%
+\begin{equation*}
+  \vflow = \area_0\kcont\kvel\sqrt{2\grav\hlevel}\,,
+\end{equation*}
+%
+where $\area_0$ is the cross-sectional area of the orifice. The product $\kcont\kvel$ is written as $\kdisc$ and termed as \lingo{coefficient of discharge}. Therefore,
+%
+\begin{equation*}
+  \vflow = \area_0\kdisc\sqrt{2\grav\hlevel}\,,
+\end{equation*}
+%
+and thus
+%
+\begin{align*}
+  \kdisc &= \dfrac{\vflow}{\area_0\kdisc\sqrt{2\grav\hlevel}}\,,\\
+         &= \dfrac{\text{actual discharge}}{\text{ideal discharge}}\,.
+\end{align*}

@@ -1,0 +1,110 @@
+% lingo
+% linguistic commands, environments and macros
+
+\ProvidesPackage{aux/lingo}[07/09/2014 linguistic macros and commands (rimbaudcode)]
+
+% General
+%
+\providecommand*{\book}[1]{\oldlig{#1}}             % reference material
+\providecommand*{\code}[1]{\texttt{#1}}             % code
+\providecommand*{\fact}[1]{\textsl{#1}}             % scientific facts
+\providecommand*{\definition}[1]{\textit{#1}}       % lebesgue's style for inline theorems
+\providecommand*{\lingform}[1]{\oldlig{#1}}         % foreign language
+\providecommand*{\lingo}[1]{\oldlig{#1}}            % scitech jargon
+\providecommand*{\mnote}[1]{\enummarnote{#1}}       % margin note
+\providecommand*{\mquote}[2]{\mgraffito{{#1} {#2}}} % margin quote
+\providecommand*{\scare}[1]{«\,{#1}\,»}             % quotation marks
+\providecommand*{\theorem}[1]{\textit{#1}}          % lebesgue's style for inline theorems
+%
+% Abbreviations
+%
+% "sc." and "viz." introduce a clarification; "i.e.", an equivalence
+%
+\providecommand*{\aka}{\lingform{aka}\xspace}                     % also known as
+\providecommand*{\abinitio}{\lingform{ab initio}\xspace}          % from first principles
+\providecommand*{\adhoc}{\lingform{ad hoc}\xspace}                % for this: designed with specific purpose
+\providecommand*{\aposteriori}{\lingform{a posteriori}\xspace}    % from what is after
+\providecommand*{\apriori}{\lingform{a priori}\xspace}            % from what is before
+\providecommand*{\apropos}{\lingform{á propos}\xspace}            % to the purpos, -(of) concerning
+\providecommand*{\ca}{\lingform{ca.}\xspace}                      % circa, approx
+\providecommand*{\confer}{\lingform{cf.}\xspace}                  % compare, confer
+\providecommand*{\ditto}{\lingform{ditto}\xspace}                 % dictussaid
+\providecommand*{\eg}{\lingform{e.g.}\xspace}                     % exempli gratia
+\providecommand*{\etc}{\lingform{\&c.}\xspace}                    % exempli gratia
+\providecommand*{\ibidem}{\lingform{ibid.}\xspace}                % in the same place
+\providecommand*{\ie}{\lingform{i.e.}\xspace}                     % id est
+\providecommand*{\interalia}{\lingform{i.a.}\xspace}              % among other things
+\providecommand*{\nbene}[1]{\mgraffito{\lingform{N.B.}\,: {#1}}}  % pay attention
+\providecommand*{\QED}{\lingform{QED}}                            % quod erat demonstrandum
+\providecommand*{\quodvide}{\lingform{q.v.}\xspace}               % which to see
+\providecommand*{\quaevide}{\lingform{qq.v.}\xspace}              % plural of q.v.
+\providecommand*{\sic}{[\lingform{sic}]\xspace}                   % so or thus
+\providecommand*{\scilicet}{\lingform{sc.}\xspace}                % "one may know" same "videlicet"
+\providecommand*{\via}{\lingform{via}\xspace}                     % by way of
+\providecommand*{\vide}{\lingform{vide}\xspace}                   % see!
+\providecommand*{\videinfra}{\lingform{v.i.}\xspace}              % see below
+\providecommand*{\videlicet}{\lingform{viz.}\xspace}              % that is to say, namely
+\providecommand*{\viz}{\lingform{viz.}\xspace}                    % that is to say, namely
+\providecommand*{\videsupra}{\lingform{v.s.}\xspace}              % see above
+\providecommand*{\viceversa}{\lingform{vice versa}\xspace}        % italics
+\providecommand*{\vs}{\lingform{vs.}\xspace}                      % versus
+\providecommand*{\visavis}{\lingform{vis-à-vis}\xspace}           % face to face
+
+% Linguistic trees
+% last package to be called in the preambule
+%
+% Example: \Tree [.S [.NP LaTeX ] [.VP [.V is ] [.NP fun ] ] ]
+% http://en.wikibooks.org/wiki/LaTeX/Linguistics
+%
+\RequirePackage{tikz}
+\RequirePackage{tikz-qtree}
+
+%%% Logic
+%
+% Natural deduction tree (Gentzen style)
+%
+\RequirePackage{bussproofs}
+%
+% natural deduction tree label
+\providecommand*{\ndtlabel}[1]{\RightLabel{\sffamily\scriptsize{#1}}} % 
+%
+% Example of a proof (tree: Gentzen style)
+%
+%\begingroup\small
+%\begin{prooftree}
+%  %
+%  \AxiomC{$2\ekin = \mass\vel^2$}
+%  \AxiomC{$\vel^2 = \vel\iprod\vel$}
+%  \BinaryInfC{$2\ekin = \mass\iprod\vel$}
+%  %
+%\end{prooftree}
+%\endgroup
+%
+%
+% NDL: Natural deduction Lemmon (style)
+%
+\newcounter{ndlproofcounter}
+%
+% Use the next two commands inside a (3-col) table environment
+% \ndlst: natural deduction line statement
+% \ndleq: natural deduction line equation
+%
+% \ndlst{Assumptions}{Statement}{Justification}
+%
+\providecommand*{\ndlst}[3]{
+  [{#1}] &
+  \stepcounter{ndlproofcounter}
+  (\arabic{ndlproofcounter})
+  \quad{#2} &
+  {#3} \\
+}
+%
+% \ndleq{Assumptions}{Equation}{Justification}
+%
+\providecommand*{\ndleq}[3]{
+  [{#1}] &
+  \stepcounter{ndlproofcounter}
+  (\arabic{ndlproofcounter})
+  \ensuremath{\quad{#2}} &
+  {#3} \\
+}

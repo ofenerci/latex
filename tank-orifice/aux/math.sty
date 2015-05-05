@@ -1,0 +1,101 @@
+% math
+% math commands, environments and macros
+
+\ProvidesPackage{aux/math}[07/09/2014 math macros and commands (rimbaudcode)]
+
+%%% General
+%
+\def\beq{\begin{equation*}} %
+\def\eeq{\end{equation*}}   %
+%
+\providecommand*{\defas}{\circeq}               % is defined as
+\providecommand*{\parth}[1]{\left({#1}\right)} % parentheses
+%
+\providecommand*{\tuple}[1]{\left({#1}\right)} %
+\providecommand*{\vat}[1]{\!\left[{#1}\right]} % value (of a function) at a point
+%
+% Text in math mode
+%
+\providecommand*{\eqtxt}[1]{[\begingroup\small\,\text{\sffamily #1}\,\endgroup]} % explanatory text in equations
+\providecommand*{\txt}[1]{_{\text{\sffamily #1}}}                                % subscript text in math mode
+
+%%% Sets
+%
+\providecommand*{\set}[1]{\mathfrak{#1}} % sets
+\providecommand*{\frm}{\set{F}}          % frame
+%
+\providecommand*{\espace}{\set{E}}          % Euclidean space
+\providecommand*{\nespace}[1]{\espace^{#1}} % n-dim Euclidean space
+%
+\providecommand*{\elset}[1]{\lbrace{#1}\rbrace} % elements of a set
+
+%%% Functions
+%
+\providecommand*{\lfdef}[5]{{#1}:\set{#2}\to\set{#3},{#4}\mapsto{#5}} % long function definition
+
+%%% Intervals
+%
+\providecommand*{\ccint}[2]{\left[{#1},{#2}\right]} % closed-closed interval
+
+%%% Calculus
+%
+% Derivatives
+%
+\providecommand*{\dx}{\mathrm{d}}  % derivative symbol
+\providecommand*{\dt}[1]{\dot{#1}} % time (dot) derivative
+%
+\providecommand*{\iod}[1]{\dx_{#1}}      % index ordinary derivative
+\providecommand*{\ipd}[1]{\partial_{#1}} % index partial derivative
+%
+\providecommand*{\xod}[2]{\dfrac{\dx{#1}}{\dx{#2}}}           % expanded ord. deriv.
+\providecommand*{\xpd}[2]{\dfrac{\partial{#1}}{\partial{#2}}} % expanded partial deriv.
+%
+%\providecommand*{\nxpd}[3]{\dfrac{\partial^{#1}{#2}}{\partial{#3}^{#1}}} % n expanded partial deriv.
+%
+% Integrals
+%
+\providecommand*{\sint}[2]{\int_{#1}{#2}}       % short integral
+\providecommand*{\lint}[3]{\int_{#1}{#3}\;{#2}} % long integral: limit, integrand, dx
+%
+% Sums
+%
+\providecommand*{\lsum}[3]{\sum_{#1}^{#2}\,{#3}} % long sum
+\providecommand*{\ssum}[2]{\sum_{#1}\,{#2}}      % short sum
+%
+% Series
+%
+\providecommand*{\seq}[3]{\left[{#1}\right]_{#2}^{#3}} % sequence
+
+%%% Geometric algebra
+%
+\providecommand*{\cprod}{\times}            % cross product
+\providecommand*{\iprod}{\cdot}             % inner product
+\providecommand*{\oprod}{\wedge}            % outer product
+\providecommand*{\magni}[1]{\vert{#1}\vert} % magnitud
+\providecommand*{\met}{g}                   % metric
+\providecommand*{\fsmet}{\delta}            % flat space metric (Kronecker's delta)
+%
+% Geometric calculus
+%
+\providecommand*{\gder}{\raisebox{\depth}{\ensuremath{\bigtriangledown}}} % geometric derivative
+%
+% Vectors
+%
+\providecommand*{\uvec}[1]{\hat{#1}} % unit lenght vector
+
+%%% Index notation
+%
+\providecommand*{\fvec}{\gamma} % frame vector
+%
+\providecommand*{\ifvec}[1]{\fvec_{#1}} % index frame vector
+\providecommand*{\ifcov}[1]{\fvec^{#1}} % index frame covector
+%
+\providecommand*{\ivec}[2]{{#1}^{#2}} % index vector
+\providecommand*{\icov}[2]{{#1}_{#2}} % index covector
+%
+\providecommand*{\iffsmet}[2]{\fsmet_{{#1}{#2}}} % index flat space metric in frame
+\providecommand*{\ifmet}[2]{\met_{{#1}{#2}}}     % index metric in frame
+
+%%% Other
+%
+\providecommand*{\ivbra}[1]{\left[{#1}\right]\txt{iv}}                % Iverson brackets
