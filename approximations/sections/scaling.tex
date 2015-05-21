@@ -42,19 +42,19 @@ We make use of scaling in introductory fluid dynamics to analyze a variety o pro
 
 
 \subsection{A brief fluids review}
-As a review, let's take a quick look at the balance equations that essentially constitute the boundary layer model later. The continuity equation in \emph{dimensional} quantities is~\footnote{~In vector notation, the continuity equation is $\div\lvel = \gder\iprod\lvel = 0$ .}
+As a review, let's take a quick look at the balance equations that essentially constitute the boundary layer model later. The continuity equation in \emph{dimensional} quantities is~\footnote{~In vector notation, the continuity equation is $\div\lvel = \gder\iprod\lvel = 0$.}
 \bneq\label{eq:dimensionalcontinuityequation}
 \ipd\posx\velx + \ipd\posy\vely = 0
 \eneq
-and the species continuity with constant binary diffusion coefficient, $\kmdiff_\ce{AB}$, is~\footnote{~In vector notation, the species continuity equation is $\lvel\iprod\grad\conc_\ce{A} = \kmdiff_\ce{AB}\lap\conc_\ce{A}$.}
+and the species continuity with constant binary diffusion coefficient, $\kmdiff_{\ce{AB}}$, is~\footnote{~In vector notation, the species continuity equation is $\lvel\iprod\grad\conc_{\ce{A}} = \kmdiff_{\ce{AB}}\lap\conc_{\ce{A}}$.}
 \bneq\label{eq:dimensionaldiffusionequation}
-\velx\ipd\posx\conc^*_\ce{A} + \vely\ipd\posy\conc^*_\ce{A} 
-    = \kmdiff_\ce{AB}\left(\ipd{\posx\posx}{\conc^*_\ce{A}} + \ipd{\posy\posy}{\conc^*_\ce{A}}\right)\,.
+\velx\ipd\posx\conc^*_{\ce{A}} + \vely\ipd\posy\conc^*_{\ce{A}} 
+    = \kmdiff_{\ce{AB}}\left(\ipd{\posx\posx}{\conc^*_{\ce{A}}} + \ipd{\posy\posy}{\conc^*_{\ce{A}}}\right)\,.
 \eneq
 
 We now consider defining \lingo{dimensionless quantities} with some \lingo{reference quantities}
 \beq
-\ndconc = \dfrac{\conc^*_\ce{A}}{\conc^*\refq}\,,\quad
+\ndconc = \dfrac{\conc^*_{\ce{A}}}{\conc^*\refq}\,,\quad
 \ndposx = \dfrac{\posx}{\posx\refq}\,,\quad
 \ndposy = \dfrac{\posy}{\posy\refq}\,,\quad
 \ndvelx = \dfrac{\velx}{\velx\refq}\quad\text{and}\quad
@@ -63,7 +63,7 @@ We now consider defining \lingo{dimensionless quantities} with some \lingo{refer
 It is not uncommon, then, to choose $\posx\refq = \posy\refq = \length$ and $\velx\refq = \vely\refq = \fsvel$. In scaling analysis, however, we like to choose the reference quantities such that each dimensionless quantity is \lingo{normalized}~\footnote{~That is, the dimensionless quantity is bounded between zero and unity, or in other words, it is of $\lilo 1$.
 More importantly, as an \emph{art} form, there is no rule to say that we must use normalized quantities to do scaling analysis. Indeed, we can use $\velx\refq = \vely\refq = \length$ and $\velx\refq = \vely\refq = \fsvel$ and can still arrive at whatever results that follow. We choose to use normalized quantities because this is a better habit.}. This is why we like to use the term \lingo{normalized quantities}~\footnote{~Notice that we are doing normalization by using dimensional reference quantities; \ie, we are normalizing and nondimensionalizing at the same time.}. In this problem, we know that the length scales are very different in the $\posx$- and $\posy$-directions: $\length\gg\blthck$. So we want to define
 \bneq\label{eq:scalingquantities}
-\ndconc = \dfrac{\conc^*_\ce{A}}{\fsconc}\,,\quad
+\ndconc = \dfrac{\conc^*_{\ce{A}}}{\fsconc}\,,\quad
 \ndposx = \dfrac{\posx}{\length}\,,\quad
 \ndposy = \dfrac{\posy}{\blthck}\quad\text{and}\quad
 \ndvelx = \dfrac{\velx}{\fsvel}\,,
@@ -107,12 +107,12 @@ as the normalized velocity.
 Now we use the definitions of the normalized quantities in \cref{eq:scalingquantities} and \cref{eq:scalingyvelocity} in the species continuity equation, \cref{eq:dimensionaldiffusionequation}, and we should find
 \beq
 \dfrac{\fsvel}{\length}\ndvelx\xpd\ndconc\ndposx + \dfrac{\fsvel\blthck}{\blthck\length}\ndvely\xpd\conc\ndposy =
-\kmdiff_\ce{AB}\left(\dfrac{1}{\length^2}\nxpd 2\conc\ndposx + \dfrac{1}{\blthck^2}\nxpd 2\conc\ndposy\right)
+\kmdiff_{\ce{AB}}\left(\dfrac{1}{\length^2}\nxpd 2\conc\ndposx + \dfrac{1}{\blthck^2}\nxpd 2\conc\ndposy\right)
 \eeq
 and on rearrangement
 \beq
 \ndvelx\xpd\conc\ndposx + \ndvely\xpd\conc\ndposy =
-\dfrac{\kmdiff_\ce{AB}\length}{\fsvel\blthck^2}
+\dfrac{\kmdiff_{\ce{AB}}\length}{\fsvel\blthck^2}
 \left(\dfrac{\blthck^2}{\length^2}\nxpd 2\conc\ndposx + \nxpd 2\conc\ndposy\right)\,.
 \eeq
 Since all the quantities are normalized, the diffusion term in the $\ndposx$-direction must be much smaller than that in the $\ndposy$-direction because of its coefficient $\left(\blthck/\length\right)^2\ll 1$ and thus we can neglect it. So we can finally write in dimensionless form
@@ -122,8 +122,8 @@ Since all the quantities are normalized, the diffusion term in the $\ndposx$-dir
 \eneq
 where we have used
 \beq
-\dfrac{\kmdiff_\ce{AB}\length}{\fsvel\blthck^2} = 
-\dfrac{\kmdiff_\ce{AB}}{\kvisc}\dfrac{\kvisc}{\fsvel\blthck}\dfrac{\length}{\blthck} =
+\dfrac{\kmdiff_{\ce{AB}}\length}{\fsvel\blthck^2} = 
+\dfrac{\kmdiff_{\ce{AB}}}{\kvisc}\dfrac{\kvisc}{\fsvel\blthck}\dfrac{\length}{\blthck} =
 \dfrac{1}{\kschmidt}\dfrac{1}{\kreynolds}\dfrac{\length}{\blthck} = 
 \dfrac{1}{\kschmidt}\dfrac{1}{\kredrey}\,,
 \eeq
@@ -139,7 +139,7 @@ We consider here a steady state laminar flow in a circular tube of radius $\rrad
 
 At steady state~\footnote{~At steady state, concentration is independent on time.}, the mass balance of species $\ce A$ in the pipe flow with axial convection and radial diffusion is
 \bneq\label{eq:massbalancepipeflow}
-\vela\xpd{\conc^*_\ce{A}}{\posz} = \kmdiff_\ce{AB}\left(\dfrac{1}{\posr}\xpd{}{\posr}{\posr}\xpd{\conc^*_\ce{A}}{\posr}\right)\,,
+\vela\xpd{\conc^*_{\ce{A}}}{\posz} = \kmdiff_{\ce{AB}}\left(\dfrac{1}{\posr}\xpd{}{\posr}{\posr}\xpd{\conc^*_{\ce{A}}}{\posr}\right)\,,
 \eneq
 where we know quite well from fluid mechanics that
 \beq
@@ -147,28 +147,28 @@ where we know quite well from fluid mechanics that
 \eeq
 and $\hat\lvel$ is the average velocity. The boundary conditions are as follows:
 \bneq\label{eq:boundaryconditionsmassbalancepipeflow}
-\text{At } \posz = 0\,,\quad\conc^*_\ce{A} = \conc^*_\ce{A_0}\quad\text{for }\ccineq 0\posr\rradius\,.
+\text{At } \posz = 0\,,\quad\conc^*_{\ce{A}} = \conc^*_{\ce{A_0}}\quad\text{for }\ccineq 0\posr\rradius\,.
 \eneq
 For $\ccineq 0\posz\length$, we also have
 \beq
-\xpd{\conc^*_\ce{A}}{\posr}\quad\text{at }\posr = 0
+\xpd{\conc^*_{\ce{A}}}{\posr}\quad\text{at }\posr = 0
 \eeq
 and
 \beq
--\kmdiff_\ce{AB}\xpd{\conc^*_\ce{A}}{\posr} = \kforcoeff\conc^*_\ce{A}\quad\text{at }\posr = \rradius\,.
+-\kmdiff_{\ce{AB}}\xpd{\conc^*_{\ce{A}}}{\posr} = \kforcoeff\conc^*_{\ce{A}}\quad\text{at }\posr = \rradius\,.
 \eeq
 The first boundary condition is the inlet concentration, the second is the symmetry condition at the center of the tube and the third is the condition at the wall, where the species \ce A is consumed by chemical reaction with first-order rate coefficient $\kforcoeff$. As \cref{eq:massbalancepipeflow} is written, we have taken it for granted that we have performed the scaling as illustrated in the previous section and found that diffusion in the axial direction is not important. The fact that we only have one (axial) convective term is dictated by the kinematics, that $\lvel = \tuple{\vela\vat\rradius,0,0}$.
 
 We now consider defining dimless quantities. Again, we follow the advice given in the previous section and define
 \beq
-\conc = \dfrac{\conc^*_\ce{A}}{\conc^*_\ce{A}}\,,\quad
+\conc = \dfrac{\conc^*_{\ce{A}}}{\conc^*_{\ce{A}}}\,,\quad
 \ndposr = \dfrac{\posr}{\rradius}\quad\text{and}\quad
 \ndposz = \dfrac{\posz}{\length}
 \eeq
 as normalized quantities. The dimless form of the model in \cref{eq:massbalancepipeflow} is
 \bneq\label{eq:dimlessmassbalancepipeflow}
 \left(1 - \ndposr^2\right) \xpd{\conc}{\ndposz} = 
-    \dfrac{\kmdiff_\ce{AB}\length}{2\hat\lvel\rradius}
+    \dfrac{\kmdiff_{\ce{AB}}\length}{2\hat\lvel\rradius}
     \left(\dfrac{1}{\ndposr}\xpd{}\ndposr\ndposr\xpd\conc\ndposr\right)\,.
 \eneq
 The corresponding dimless boundary conditions are
@@ -185,7 +185,7 @@ and
 \eneq
 where
 \beq
-\kdamkohler = \dfrac{\kforcoeff\rradius}{\kmdiff_\ce{AB}}
+\kdamkohler = \dfrac{\kforcoeff\rradius}{\kmdiff_{\ce{AB}}}
 \eeq
 is the \lingo{Damköhler number} -- a relative measure of reaction rate to diffusion rate. [You can further rewrite \cref{eq:dimlessmassbalancepipeflow} to be in terms of $\kschmidt$ and $\kreynolds$ as we did in the last section, but we'll leave that as an exercise for you.]
 
@@ -207,15 +207,15 @@ At the other extreme, we have $\kdamkohler\ll 1$, meaning that chemical reaction
 \eeq
 since $\conc$ is of $\lilo 1$. We can go further than that!
 
-With the given physics of this problem, where the chemical reaction as at the wall, the largest gradient $\ipd\ndposr\conc$ that we expect to have is at $\ndposr = 1$ (the wall). If $\ipd\ndposr\conc\ll 1$ at the wall, then this condition must also be true over the entire tube, not to mention that we know $\ipd\ndposr\conc = 0$ by symmetry at the center. Thus we make the approximation that $\ipd\ndposr\conc\sim 0$ or, in other words, the concentration of \ce A is only a function of $\ndposz$; \ie, $\conc = \conc\vat\ndposz$ or $\conc_\ce A = \conc_\ce A\vat\posz$ only.
+With the given physics of this problem, where the chemical reaction as at the wall, the largest gradient $\ipd\ndposr\conc$ that we expect to have is at $\ndposr = 1$ (the wall). If $\ipd\ndposr\conc\ll 1$ at the wall, then this condition must also be true over the entire tube, not to mention that we know $\ipd\ndposr\conc = 0$ by symmetry at the center. Thus we make the approximation that $\ipd\ndposr\conc\sim 0$ or, in other words, the concentration of \ce A is only a function of $\ndposz$; \ie, $\conc = \conc\vat\ndposz$ or $\conc_{\ce A} = \conc_{\ce A}\vat\posz$ only.
 
 In such a case, we can write down the differential balance of the tube as
 \beq
-\pi\rradius^2\hat\lvel \xod{\conc^*_\ce A}{\posz} = -2\pi\rradius\kforcoeff\conc^*_\ce A
+\pi\rradius^2\hat\lvel \xod{\conc^*_{\ce A}}{\posz} = -2\pi\rradius\kforcoeff\conc^*_{\ce A}
 \eeq
 in place of \cref{eq:massbalancepipeflow}. After cleaning up, we have
 \bneq\label{eq:approxplugflow}
-\hat\lvel\xod{\conc^*_\ce A}{\posz} = -\dfrac{2\kforcoeff}{\rradius}\conc^*_\ce A\,,\quad
+\hat\lvel\xod{\conc^*_{\ce A}}{\posz} = -\dfrac{2\kforcoeff}{\rradius}\conc^*_{\ce A}\,,\quad
 \ccineq{0}{\posz}{\length}\,,
 \eneq
 which can be solved easily with the boundary condition \cref{eq:boundaryconditionsmassbalancepipeflow}. The approximation in \cref{eq:approxplugflow} is the so-called \lingo{plug-flow} model.
@@ -269,7 +269,7 @@ This order of magnitude dependence of the hydrodynamic boundary layer thickness 
 
 We can now move quickly with the concentration boundary layer equation. Based on the exercise that we had earlier with the species continuity, we can quickly drop the term for the diffusion in the $\ndposx$-direction and write
 \beq
-\ndvelx\xpd\conc\ndposx + \ndvely\xpd\conc\ndposy = \dfrac{\kmdiff_\ce{AB}\length}{\fsvel\cblthck^2}\nxpd 2\conc\ndposy\,.
+\ndvelx\xpd\conc\ndposx + \ndvely\xpd\conc\ndposy = \dfrac{\kmdiff_{\ce{AB}}\length}{\fsvel\cblthck^2}\nxpd 2\conc\ndposy\,.
 \eeq
 Note that we have used the notation $\cblthck$ to denote the concentration boundary layer thickness~\footnote{~Hiding behind this equation is the implicit assumption that we have started the scaling of $\ndvely$ and $\ndposy$ with $\cblthck$. If you are sharp, you will spot that the actual value of the dimless $\ndvely$ and $\ndposy$ cannot be the same as when we use the hydrodynamic $\blthck$. But then, keep in mind that we are really doing order of magnitude analysis and have no intention in solving these equations. If we do, we would use only one choice of $\blthck$ in all the equations.}. To have balanced diffusion and convective terms of the same order,
 \bneq\label{eq:balanceddiffusionconvection}
@@ -277,7 +277,7 @@ Note that we have used the notation $\cblthck$ to denote the concentration bound
 \eneq
 we need to have
 \beq
-\dfrac{\kmdiff_\ce{AB}\length}{\fsvel\cblthck^2}\sim 1
+\dfrac{\kmdiff_{\ce{AB}}\length}{\fsvel\cblthck^2}\sim 1
 \eeq
 or
 \beq
@@ -368,16 +368,16 @@ which means that we need to choose and define
 The next step is to rescale the concentration boundary equation. The step equivalent to just before \cref{eq:balanceddiffusionconvection} is now
 \beq
 \ndvelx\xpd\conc\ndposx + \ndvely\xpd\conc\ndposy = 
-\dfrac{\kmdiff_\ce{AB}\blthck\length}{\fsvel\cblthck^3}\nxpd 2\conc\ndposy\,.
+\dfrac{\kmdiff_{\ce{AB}}\blthck\length}{\fsvel\cblthck^3}\nxpd 2\conc\ndposy\,.
 \eeq
 To recover \cref{eq:balanceddiffusionconvection}, we require this time
 \beq
-\dfrac{\kmdiff_\ce{AB}\blthck\length}{\fsvel\cblthck^3}\sim 1
+\dfrac{\kmdiff_{\ce{AB}}\blthck\length}{\fsvel\cblthck^3}\sim 1
 \eeq
 or
 \beq
-\left(\dfrac{\cblthck}{\blthck}\right)^3 \sim \dfrac{\kmdiff_\ce{AB}\length}{\fsvel\blthck^2} 
-                                         = \dfrac{\kmdiff_\ce{AB}}{\fsvel\blthck}\left(\dfrac{\length}{\blthck}\right)^2
+\left(\dfrac{\cblthck}{\blthck}\right)^3 \sim \dfrac{\kmdiff_{\ce{AB}}\length}{\fsvel\blthck^2} 
+                                         = \dfrac{\kmdiff_{\ce{AB}}}{\fsvel\blthck}\left(\dfrac{\length}{\blthck}\right)^2
                                          = \dfrac{1}{\kreynolds\kschmidt}\left(\dfrac{\length}{\blthck}\right)^2\,.
 \eeq
 Finally we make use of the hydrodynamic boundary layer result in \cref{eq:blasiusapprox} and arrive at

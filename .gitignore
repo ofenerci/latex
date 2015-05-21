@@ -29,5 +29,6 @@
 *.DS_Store
 .DS_Store
 .texpadtmp
+*.pdf
 
 resume
