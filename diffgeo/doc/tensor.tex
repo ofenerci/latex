@@ -1,0 +1,602 @@
+
+\section{Tensors: Local Machinery of Differential Geometry}
+
+Following the \lingo{geometric principle}, equations representing physical laws must be written without reference to a particular coordinate system; \ie, all physical equations must be \lingo{tensorial}. Therefore, as a reference, we give herein the basic formulae of standard tensor analysis, used throughout the text. 
+
+Hereafter, we follow tensor analysis notational conventions: \lingo{index notation}, \lingo{Einstein's summation convention} over repeated indices, and \lingo{Jacobi's notation for partial derivatives}. 
+
+\begin{example}
+  In tensor notation, \lingo{Jacobi's determintant} can be written concisely as
+  %
+  \begin{equation}\label{eq:jacobiandeterminant}
+    \det\ipd i\atvec\pos i
+  \end{equation}
+  %
+  instead of the traditional
+  %
+  \begin{equation*}
+    \mleft\lvert
+      \dfrac{\partial\parens{\atvec\pos 1, \partial\atvec\pos 2, \dotsc}}{\partial\parens{\tvec\pos 1, \tvec\pos i, \dotsc}}
+    \mright\rvert \,.
+  \end{equation*}
+\end{example}
+
+
+\subsection{Transformation of coordinates}
+
+\begin{definition}[Coordinate transformation]
+  Consider two sets of single-valued, continuous, and smooth curvilinear coordinates $\coodsys{\tvec\pos i}{i = 1}{m}$ and $\coodsys{\atvec\pos i}{\bidx i = 1}{n}$. Then, a general $\parens{m\times n}$-dimensional \lingo{coordinate transformation} is a map $\tvec\pos i\mapsto\atvec\pos i$ whose set of transformation equations is given by
+  %
+  \begin{equation}\label{eq:coordinatetransformations}
+    \atvec\pos i = \atvec\pos i\vat{\tvec\pos i} \,,\qquad\text{with}\qquad
+    i = 1, \dotsc, m                             \, \quad\text{and}\quad
+    \bidx i = 1, \dotsc, n                       \,.
+  \end{equation}
+  %
+  If \lingo{Jacobi's determinant} of these transformations does not vanish, then the transformation \cref{eq:coordinatetransformations} is reversible and thus the inverse transformation, $\tvec\pos i = \tvec\pos i\vat{\atvec\pos i}$, exists as well.
+\end{definition}
+
+\begin{note}
+  See that the coordinate functions are precisely that: functions. They take a point $\point P$ and return a value: the coordinate of the point in the chosen coordinate system.  
+\end{note}
+
+
+\begin{example}
+  In $\nespace 3$, transformation from rectangular coordinates $\tvec\pos i$ into spherical coordinates $\atvec\pos i$ is given by
+  %
+  \begin{equation}\label{eq:rectangulartosphericaltransformation}
+    \atvec\pos 1 = \sqrt{\parens{\tvec\pos 1}^2 + \parens{\tvec\pos 2}^2 + \parens{\tvec\pos 3}^2}    \,, \quad
+    \atvec\pos 2 = \arctan\dfrac{\tvec\pos 2}{\tvec\pos 1}                                            \,, \quad
+    \atvec\pos 3 = \arctan\dfrac{\tvec\pos 3}{\sqrt{\parens{\tvec\pos 1}^2 + \parens{\tvec\pos 2}^2}} \,, \quad
+    \det\aipd i\tvec\pos i = \dfrac{1}{\parens{\tvec\pos 1}^2\cos\tvec\pos 3}                         \,.
+  \end{equation}
+  
+  Moreover, since Jacobi's determinant is nonzero, the transformation is invertible and given by
+  %
+  \begin{equation*}
+    \tvec\pos 1 = \atvec\pos 1\cos\atvec\pos 2\cos\atvec\pos 3      \,,\quad
+    \tvec\pos 2 = \atvec\pos 1\sin\atvec\pos 2\cos\atvec\pos 3      \,,\quad
+    \tvec\pos 3 = \atvec\pos 1\sin\atvec\pos 3                      \,,\quad\text{with}\quad
+    \det\aipd i\tvec\pos i = \parens{\tvec\pos 1}^2\cos\tvec\pos 3  \,.
+  \end{equation*}
+\end{example}
+
+\begin{remark}
+  The mapping between index and non-index notation is $\tuple{\tvec\pos 1,\tvec\pos 2,\tvec\pos 3}\mapsto\tuple{\xpos,\ypos,\zpos}$ for rectangular coordinates, while for spherical coordinates $\tuple{\atvec\pos 1, \atvec\pos 2, \atvec\pos 3}\mapsto\tuple{\sxpos,\sypos,\szpos}$.
+\end{remark}
+
+\begin{remark}[Coordinate transformation]
+    Consider a vector $v$ in a Euclidean space $\nespace n$. Consider a coordinate system $\tvec\pos i$ in $\nespace n$. Then, the vector $v$ is a function of $\tvec\pos i$ in such a coordinate system; \viz, $\tvec vi = \tvec vi\vat{\tvec\pos i}$. If we now change the underlying coordinate system to a system $\atvec\pos i$, then the vector becomes $\tvec vi = \tvec vi\vat{\tvec\pos i\vat{\atvec\pos i}}$. Finally, to find the components of $v$ in the new coordinate system, $\atvec vi$, apply the chain rule to have
+    %
+    \begin{equation*}
+      \atvec vi = \tvec vi\aipd i\,\tvec\pos i\,.
+    \end{equation*}
+\end{remark}
+
+
+\subsubsection{Scalar invariants}
+
+\begin{definition}[Zeroth-order tensor]
+  Call a geometric object $\phi$ a \lingo{zeroth order tensor} if $\phi$ does not change under the transformation \cref{eq:coordinatetransformations}; \ie,
+  %
+  \begin{equation}\label{eq:definitionofscalars}
+    \phi\vat{\tvec\pos i} = \phi\vat{\atvec\pos i}\,.
+  \end{equation}
+  %
+  A zeroth order tensor is also called a \lingo{scalar invariant}.
+\end{definition}
+
+\begin{note}
+  See the usage of the same letter $\phi$ regardless of the coordinate system. This is because the geometric object $\phi$ represents a \emph{physical quantity} and thus it is liable to the geometric principle. In math, on the other hand, $\phi$ would represent a \emph{functional relationship} and hence we would \emph{not} use the same letter for different coordinates. As an example, consider a function $\phi$ of two parameters. The function value $\phi\vat{0.5,0.5}$ is ambiguous in physics \emph{unless you have already specified the coordinate system}. Not so with the math convention.
+\end{note}
+
+Examples of invariants are energies (kinetic, potential), work, as well as related thermodynamic quantities (free energy, temperature, entropy, \etc.).
+
+
+\subsubsection{Vectors and covectors}
+
+\begin{definition}[First-order contravariant tensor]
+  Call a geometric object $v$ a \lingo{first-order contravariant tensor} if $\tvec vi$ transforms under the coordinate transformation \cref{eq:coordinatetransformations} as
+  %
+  \begin{equation}\label{eq:vectortransformation}
+    \atvec v i = \tvec vi\ipd i\atvec\pos i\,.
+  \end{equation}
+  %
+  A first-order contravariant tensor is also called a \lingo{vector}, a \lingo{contravariant vector}, or a \lingo{first–order tensor}. We will mostly use the term vector.
+\end{definition}
+
+\begin{note}
+  Index gymnastics: see that the index $\bidx i$ in $\atvec v i$ comes from the position $\atvec\pos i$ (hence a vector); while the index $i$ pairs between $\tvec vi$ and partial derivative $\ipd i$.
+\end{note}
+
+
+Examples of vectors include both translational and rotational accelerations and velocities.
+
+\begin{remark}
+  Strictly speaking, in tensor analysis, the position \scare{vector} is \emph{not} a vector, because it transforms according to \cref{eq:coordinatetransformations} and \emph{not} according to \cref{eq:vectortransformation}. However, it is named as such for historical reasons.
+\end{remark}
+
+\begin{definition}[First-order covariant tensor]
+  Call a geometric object $v$ a \lingo{first-order covariant tensor} if $\tcov vi$ transforms under the coordinate transformation \cref{eq:coordinatetransformations} as  
+  %
+  \begin{equation*}
+    \atcov v i = \tcov vi\aipd i\tvec\pos i\,.
+  \end{equation*}
+  %
+  A first-order covariant tensor is also called a \lingo{covector}, \lingo{covariant vector}, or a \lingo{one-form}. We will mostly use the term covector.
+\end{definition}
+
+\begin{note}
+  Index gymnastics: see that the index $\bidx i$ in $\atcov v i$ comes from the partial derivative $\aipd i$ (hence a covector); while the index $i$ pairs between $\tcov vi$ and the position $\tvec\pos i$.
+\end{note}
+
+Examples of covectors include both translational and rotational forces, momenta, and torques.
+
+\begin{note}
+  Here there are some aids to spot a vector:
+  %
+  \begin{itemize}
+    \item if a geometric object transforms as the differential position, $d\pos$, then it is likely a vector; \eg, velocity transforms as the differential position, so it is a vector.
+    \item if a geometric object has the dimensions of $\phdim L$ in the numerator, then it is likely a vector; \eg, velocity is a vector since $\dim\vel = \phdim{L/T}$.
+  \end{itemize}
+  
+  Here there are some aids to spot a covector:
+  %
+  \begin{itemize}
+    \item if a geometric object has the dimensions of $\phdim{L}$ in the denomitaor, then it is likely a vector; \eg, temperature gradient is a covector since $\dim\grad\temp = \phdim{E/L}$.
+  \end{itemize}
+\end{note}
+
+
+\subsubsection{Second-order tensors}
+
+\begin{definition}[Second–order contravariant tensor]
+  Call a geometric object $t$ a \lingo{second-order contravariant tensor} if $\itens t{^i^j}$ transforms under the coordinate transformation \cref{eq:coordinatetransformations} as
+  %
+  \begin{equation*}
+    \itens t{^{\bidx i}^{\bidx j}} = \itens t{^i^j}\ipd i\tvec\pos{\bidx i}\ipd j\tvec\pos{\bidx j}\,,\qquad\text{with}\qquad
+    \bidx i = 1, \dotsc, n
+    \quad\text{and}\quad
+    i = 1, \dotsc, m\,,
+  \end{equation*}
+\end{definition}
+
+A second-order contravariant tensor can be get as the \lingo{outer product} of two contravariant vectors, $\itens t{^i^j} = \tvec ui\tvec vj$.
+
+\begin{definition}[Second–order covariant tensor]
+  Call a geometric object $t$ a \lingo{second-order covariant tensor} if $\itens t{_i_j}$ transforms under the coordinate transformation \cref{eq:coordinatetransformations} as
+  %
+  \begin{equation*}
+    \itens t{_{\bidx i}_{\bidx j}} = \itens t{_i_j}\aipd i\tvec\pos i\aipd j\tvec\pos j\,.
+  \end{equation*}
+\end{definition}
+
+A second-order covariant tensor can be get as the \lingo{outer product} of two covariant vectors, $\itens t{_i_j} = \tcov ui\tcov vj$.
+
+\begin{definition}[Second–order mixed tensor]
+  Call a geometric object $t$ a \lingo{second-order mixed tensor} if $\itens t{^i_j}$ transforms under the coordinate transformation \cref{eq:coordinatetransformations} as
+  %
+  \begin{equation*}
+    \itens t{^{\bidx i}_{\bidx j}} = \itens t{^i_j}\ipd i\atvec\pos i\aipd j\tvec\pos j\,.
+  \end{equation*}
+\end{definition}
+
+A second-order mixed tensor can be get as the \lingo{outer product} of a vector and a covector, $\itens t{^i_j} = \tvec ui\tcov vj$.
+
+\begin{note}
+  Index gymnastics: see where indices come from and pair in second-order tensors. Contravariant indices come from the position, while covariant indices come from the partial derivatives.
+\end{note}
+
+Standard physical and engineering examples of second-order tensors include:
+%
+\begin{itemize}
+  \item The fundamental (material) \lingo{covariant metric tensor} $\metric = \tcovmet ij$; \ie, inertia matrix, given usually by the transformation from rectangular coordinates $\tvec\pos i$ to curvilinear coordinates $\atvec\pos i$,
+  %
+  \begin{equation}
+    \atcovmet ij = \tcovmet kl\aipd i\tvec\pos k\aipd j\tvec\pos l\,,
+  \end{equation}
+  %
+  where $\atcovmet ij$ represents the metric of the curvilinear coordinates and $\tcovmet kl$ the metric of the rectangular coordinates, defined as
+  %
+  \begin{equation}\label{eq:metriccoordinatetransformation}
+    \tcovmet kl\defas\diag\tuple{\underbrace{1,\dotsc,1}_{n\;\text{times}}}\,.
+  \end{equation}
+  
+  It is used in the \lingo{line element} squared $\sqlinelem$ of the space under consideration; \eg, a certain physical or engineering configuration space:
+  %
+  \begin{equation*}
+    \sqlinelem  \defas d\pos\iprod d\pos 
+                = \tcovmet ij d\tvec\pos i d\tvec\pos j 
+                = \atcovmet ij d\atvec\pos i d\atvec\pos j\,,
+  \end{equation*}
+  %
+  where $\tcovmet ij$ represents the \lingo{Euclidean metric}, while $\atcovmet ij$ the \lingo{Riemannian metric} of the space.
+  %
+  \item The \lingo{inverse metric tensor} $\invmet$ given by
+  %
+  \begin{equation*}
+    \tvecmet ij = \parens{\tcovmet ij}^{-1}\,.
+  \end{equation*}
+  %
+  \item \lingo{Kronecker's delta} $\kron$ defined by
+  %
+  \begin{equation*}
+    \tkron{^i_j} = \iverson{i = j}\,,
+  \end{equation*}
+  %
+  where $\iverson{}$ are \lingo{Iverson's brackets}.
+\end{itemize}
+
+\begin{example}
+  To derive components of the metric, $\tcovmet ij$, in standard spherical coordinates, we use the relation \cref{eq:rectangulartosphericaltransformation} between spherical coordinates, $\tuple{\atvec\pos 1, \atvec\pos 2, \atvec\pos 3}\mapsto \tuple{\sxpos,\sypos,\szpos}$, and rectangular coordinates, $\tuple{\tvec\pos 1, \tvec\pos 2, \tvec\pos 3}\mapsto\tuple{\xpos,\ypos,\zpos}$, and the transformation of the metric, \cref{eq:metriccoordinatetransformation}, to get the metric tensor in matrix form
+  %
+  \begin{equation}\label{eq:sphericalcoordinatemetric}
+    \tcovmet ij = \diag\parens{1, \parens{\sxpos\cos\szpos}^2, \parens{\szpos}^2}
+  \end{equation}
+  %
+  and the inverse metric tensor
+  %
+  \begin{equation}\label{eq:sphericalcoordinateinversemetric}
+    \tvecmet ij = \diag\parens{1, \dfrac{1}{\parens{\sxpos\cos\szpos}^2}, \dfrac{1}{\parens{\szpos}^2}} \,.
+  \end{equation}
+  %
+\end{example}
+
+\begin{definition}[Index gymnastics]
+  Given a tensor, we can derive other tensors by \lingo{raising} and \lingo{lowering its indices}, by their multiplication with covariant and contravariant metric tensors. In this way, the \lingo{associated tensors} to the given tensor are formed.
+\end{definition}
+
+\begin{example}
+  For example, $\tvec vi$ and $\tcov vi$ are associated tensors, related by $\tcov vi = \tcovmet ij\tvec vj$ and $\tvec vi = \tvecmet ij\tcov vj$.
+\end{example}
+
+\begin{definition}[Inner product]
+  Given two vectors, $\tvec ui$ and $\tvec vi$, define their \lingo{inner product} by
+  %
+  \begin{equation*}
+    u\iprod v \defas \tcovmet ij\tvec ui\tvec vj\,.
+  \end{equation*}
+  %  The inner product is also called \lingo{scalar product} or \lingo{dot product}.
+\end{definition}
+
+\begin{definition}[Cross product]
+  Given two three-dimensional vectors, $\tvec ui$ and $\tvec vi$, define their \lingo{inner product} by
+  %
+  \begin{equation*}
+    \tcov{\parens{u\cprod v}}i \defas \tlevi ijk\tvec uj\tvec vk\,.
+  \end{equation*}  The cross product is also called \scare{vector} product.
+\end{definition}
+
+\begin{remark}
+  The cross product is only well defined in three dimensions. Note also that as defined the cross product returns a first-order \emph{contravariant} tensor, \ie, a one-form, rather than a vector. For this reason, it is \emph{wrong} to call the result of the cross product a \scare{vector}. In vector analysis, the result is called an \scare{axial vector}.
+\end{remark}
+
+
+\subsubsection{Higher-order tensors}
+As a generalization of above tensors, consider a geometrical object $\riemann$ that under the coordinate transformation \cref{eq:coordinatetransformations} transforms as
+%
+\begin{equation}
+  \atriemann ijkl = \triemann ijkl\ipd i\atvec\pos i\aipd j\tvec\pos j\aipd k\tvec\pos k\aipd l\tvec\pos l 
+    \qquad\text{with all the indices running from $1$ to $n$}\,.
+\end{equation}
+%
+\begin{definition}[Riemann's curvature tensor]
+  The object $\triemann ijkl$ is a \lingo{fourth-order tensor}, once contravariant and three times covariant, representing the central tensor in \lingo{Riemannian geometry}, called \lingo{Riemann's curvature tensor}.
+\end{definition}
+
+As all physical and engineering configuration spaces are Riemannian manifolds, they are all characterized by curvature tensors. 
+
+In the case that $\riemann = 0$, the corresponding Riemannian manifold reduces to the Euclidean space of the same dimension, in which $\tcovmet ij = \diag\parens{1,\dotsc,1}$.
+
+\begin{definition}[Tensor contraction]
+  If one contravariant and one covariant index of a tensor a set equal, then the resulting sum is a tensor of rank two less than that of the original tensor. This process is called \lingo{tensor contraction}.
+\end{definition}
+
+\begin{definition}[Tensor fields]
+  If to each point of a region in an $n$-dimensional space there corresponds a definite tensor, then we say that a \lingo{tensor–field} has been defined. In particular, this is a \lingo{vector–field} or a \lingo{scalar–field} according as the tensor is of rank one or zero.
+\end{definition}
+
+\begin{note}
+  A tensor or tensor–field is not just the set of its components in one special coordinate system, but all the possible sets of components under any transformation of coordinates.
+\end{note}
+
+
+\subsubsection{Tensor symmetry}
+
+\begin{definition}
+  A tensor is called \lingo{symmetric} with respect to two indices of the \emph{same variance} if its components remain unaltered upon swapping the indices; \eg, $\tensor{t}{^i^j} = \tensor{t}{^j^i}$ or $\tensor{t}{_i_j} = \tensor{t}{_j_i}$. A tensor is called \lingo{skew–symmetric} with respect to two indices of the same variance if its components \emph{change sign} upon swapping the indices; \eg, $\tensor{t}{^i^j} = -\tensor{a}{^j^i}$, or $\tensor{t}{_i_j} = -\tensor{t}{_j_i}$.
+\end{definition}
+
+Regarding tensor symmetry, in the following we will prove several useful propositions.
+
+\begin{theorem}
+  Every second–order tensor can be expressed as the sum of two tensors, one of which is symmetric and the other is skew–symmetric.
+\end{theorem}
+
+\begin{theorem}
+  Every quadratic form can be made symmetric.
+\end{theorem}
+
+\begin{theorem}
+  Every second–order tensor that is the sum $\tensor{a}{^i^j} = \tvec ui\tvec vj + \tvec uj\tvec vi$ or $\tensor{a}{_i_j} = \tcov ui\tcov vj + \tcov uj\tcov vi$ is symmetric.
+\end{theorem}
+
+\begin{theorem}
+  Every second–order tensor that is the difference $\tensor{a}{^i^j} = \tvec ui\tvec vj - \tvec uj\tvec vi$ or $\tensor{a}{_i_j} = \tcov ui\tcov vj - \tcov uj\tcov vi$ is skew–symmetric.
+\end{theorem}
+
+
+\subsection{Euclidean tensors}
+
+\subsubsection{Basis vectors and the metric tensor in $\nrspace n$}
+The natural rectangular coordinate basis in an $n$-dimensional Euclidean space $\nespace n$ is defined as a set of $n$-dim \lingo{unit vectors} $\tsbvec i$ given by
+%
+\begin{equation*}
+  \tsbvec 1 = \tuple{1,0,0,\dotsc}^t \,,\quad
+  \tsbvec 2 = \tuple{0,1,0,\dotsc}^t \,,\quad
+  \tsbvec 3 = \tuple{0,0,1,\dotsc}^t \,,\quad
+  \dotsb
+  \tsbvec n = \tuple{0,0,0,\dotsc,1}^t \,,
+\end{equation*}
+%
+where index $t$ denotes transpose; while its \lingo{dual basis} $\tsbcov i$ is given by
+%
+\begin{equation*}
+  \tsbcov 1 = \tuple{1,0,0,\dotsc} \,,\quad
+  \tsbcov 2 = \tuple{0,1,0,\dotsc} \,,\quad
+  \tsbcov 3 = \tuple{0,0,1,\dotsc} \,,\quad
+  \dotsb
+  \tsbcov n = \tuple{0,0,0,\dotsc,1} \,,
+\end{equation*}
+%
+(no transpose) where the definition of the dual basis is given by the Kronecker's delta:
+%
+\begin{equation*}
+  \tsbvec i\iprod\tsbcov j  = \tkron{^i_j} 
+                            = \diag\tuple{1,1,1,\dotsc,1}\,.
+\end{equation*}
+
+That is, the metric tensor in rectangular coordinates equals $\tkron{^i_j}$. 
+
+However, in curvilinear coordinate systems, the metric tensor $\tcovmet ij$ is defined as the scalar product of the dual basis vectors; \ie, the $\parens{n\times n}$-matrix:
+%
+\begin{equation*}
+  \tcovmet ij = \tsbcov i\iprod\tsbcov j 
+              = \begin{pmatrix}
+                  \tcovmet 11 & \tcovmet 12 & \tcovmet 13 & \dotsb & \tcovmet 1n \\
+                  \tcovmet 21 & \tcovmet 22 & \tcovmet 33 & \dotsb & \tcovmet 2n \\
+                  \tcovmet 31 & \tcovmet 32 & \tcovmet 33 & \dotsb & \tcovmet 3n \\
+                  \dotsb
+                  \tcovmet n1 & \tcovmet n2 & \tcovmet n3 & \dotsb & \tcovmet nn
+                \end{pmatrix}\,.
+\end{equation*}
+
+
+\subsubsection{Tensor products in $\nespace n$}
+
+Let $u$ and $v$ denote two vectors in $\nespace n$, with their \lingo{components} given by $\tvec ui = u\tsbcov i$ and $\tvec vj = v\tsbcov j$. Then their \lingo{inner product} $u\iprod v$ a scalar invariant $s$, defined as
+%
+\begin{equation*}
+  s = u\iprod v 
+    = \tcovmet ij\tvec ui\tvec vj\,.
+\end{equation*}
+
+Besides the inner product of to vectors $u,v\in\nespace n$, there is also their \lingo{tensor product}, which is a second-order tensor
+%
+\begin{equation*}
+  t = u\tprod v;
+  \qquad\text{or in components,}\qquad
+  \tensor{t}{^i^j} = \tvec ui\tprod\tvec vj\,,
+\end{equation*}
+%
+in the coordinate basis $\tsbcov i$, this tensor is expanded as
+%
+\begin{equation*}
+  t = \tensor{t}{^i^j}\tsbvec i\tprod\tsbvec vj\,,
+\end{equation*}
+%
+while its components in the dual basis read:
+%
+\begin{equation*}
+  \tensor{t}{^i^j} = \norm t\tsbvec i\iprod\tsbvec vj\,,
+\end{equation*}
+%
+where $\norm t$ is its norm. To get its components in curvilinear coordinates, we need first to substitute it in a rectangular basis:
+%
+\begin{equation*}
+  \tensor{t}{^i^j} = \tensor{t}{^m^n}\parens{\tsbcov m\tprod\tsbcov n}\parens{\tsbvec i, \tsbvec j}\,,
+\end{equation*}
+%
+then to evaluate it on the slots:
+%
+\begin{equation*}
+  \tensor{t}{^i^j} = \tensor{t}{^m^n}\parens{\tsbcov m\iprod\tsbvec i}\parens{\tsbcov n\iprod\tsbcov j}\,,
+\end{equation*}
+%
+and finally to calculate the other index configurations by lowering indices, by means of the metric.
+
+
+\subsection{Covariant differentiation}
+%
+Hereafter, consider some $n$-dimensional Riemannian manifold $\manifold M$ with the metric form (\aka, line element) $\sqlinelem = \tcovmet ij\,d\tvec\pos i d\tvec\pos j$, as a configuration space for certain physical system.
+
+
+\subsubsection{Christoffel's symbols}
+%
+Partial derivations of the metric form themselves special symbols that do \emph{not} transform as tensors with respect to transformation \cref{eq:coordinatetransformations}, but nevertheless represent important quantities in tensor analysis. They are called \lingo{Christoffel's symbols of the first kind}, defined by
+%
+\begin{equation*}
+  \fkchris ijk \defas \dfrac{1}{2}\parens{\ipd k\tcovmet ij + \ipd j\tcovmet ki - \ipd i\tcovmet jk}
+\end{equation*}
+%
+and \lingo{Chirstoffel's symbols of the second kind}, defined by
+%
+\begin{equation*}
+  \skchris kij = \tvecmet kl\fkchris ijl\,.
+\end{equation*}
+
+Riemann's curvature tensor $\triemann lijk$ of the manifold can be expressed in terms of the later as
+%
+\begin{equation*}
+  \triemann lijk = \ipd j\skchris lik - \ipd k\skchris lij + \skchris lrj\skchris rik - \skchris lrk\skchris rij\,.
+\end{equation*}
+
+
+\begin{example}
+  In $\nespace 3$ in spherical coordinates, with the metric and its inverse given by \cref{eq:sphericalcoordinatemetric,eq:sphericalcoordinateinversemetric}, it can be shown that the only nonzero Christoffel's symbols are
+  %
+  \begin{equation}\label{eq:sphericalcoordinateschristoffelsymbols}
+    \skchris 212 = \skchris 221 = \skchris 313 = \skchris 331 = \dfrac{1}{\sxpos} \,,\quad
+    \skchris 323 = \skchris 232 = -\tan\sypos \,,\quad
+    \skchris 122 = -\sxpos \,,\quad 
+    \skchris 133 = -\sxpos\parens{\cos\sypos}^2 \,,\quad\text{and}\quad
+    \skchris 233 = \sin\sypos\cos\sypos \,.
+  \end{equation}
+\end{example}
+
+
+\begin{note}
+  To ease computations, look for Christoffel's symbols and Riemann's tensor symmetries and properties.
+\end{note}
+
+
+\subsubsection{Geodesics}
+
+From Riemann's metric form $\sqlinelem = \tcovmet ij\,d\tvec\pos i d\tvec\pos j$, it follows that the distance between two point $t_1$ and $t_2$ on a \lingo{curve} $\tvec\pos i = \tvec\pos i\vat t$ in $\manifold M$ is given by
+%
+\begin{equation*}
+  \linelem = \int_{t_1}^{t_2}\sqrt{\tcovmet ij\tvec{\dt\pos}{i}\tvec{\dt\pos}{j}}\,dt\,.
+\end{equation*}
+
+\begin{note}
+  \lingo{Curve} (oriented object) that's why we use a \lingo{signed definite integral} $\int_a^b$, instead of \emph{neither} a unsigned definite integral $\int_{[a,b]}$ \emph{nor} an undefinite integral $\int$.
+\end{note}
+
+That curve $\tvec\pos i = \tvec\pos i\vat t$ in $\manifold M$ that makes the distance $\linelem$ a minimum is called a \lingo{geodesic} of the space $\manifold M$; \eg, in a sphere, the geodesics are arcs of great circles. Using calculus of variations, the geodesics can be found from the \lingo{differential geodesic equation},
+%
+\begin{equation}\label{eq:geodesicequation}
+    \tvec{\ddt\pos}{i} + \skchris ijk\,\tvec{\dt\pos}j\tvec{\dt\pos}k = 0\,,
+\end{equation}
+%
+where the overdot means derivative upon the line parameter $t$.
+
+\begin{example}
+  In $\nespace 3$ in spherical coordinates, $\tvec\pos i = \tuple{\sxpos,\sypos,\szpos}$, the geodesic equation becomes a system of three scalar ODEs,
+  %
+  \begin{equation}
+    \ddt\sxpos - \sxpos\parens{\dt\sypos}^2 - \sxpos\parens{\cos\sypos\dt\szpos}^2 = 0\,,\quad
+    \ddt\sypos + \dfrac{2}{\sxpos}\dt\sxpos\dt\szpos + \sin\sypos\cos\sypos\parens{\dt\szpos}^2 = 0\,,\quad\text{and}\quad
+    \ddt\sypos + \dfrac{2}{\sxpos}\dt\sxpos\dt\szpos - 2\tan\sypos\dt\sypos\dt\szpos = 0\,.
+  \end{equation}
+\end{example}
+
+
+\subsubsection{Covariant derivative}
+%
+Ordinary total and partial derivatives of vectors (covectors) do \emph{not} transform as vectors (covectors) with respect to the transformation \cref{eq:coordinatetransformations}.
+
+\begin{example}
+  Let $\tvec\pos i$ be rectangular coordinates and $\atvec\pos i$ be general curvilinear coordinates of a dynamical system (with $i,\bidx i = 1,\dotsc,n$). Then, we have that $\atvec\pos i\vat t = \atvec\pos i\vat{\tvec\pos i\vat t}$, which implies that by the chain rule
+  %
+  \begin{equation*}
+    d_t\atvec\pos i = \ipd i\atvec\pos i\,d_t\tvec\pos i\,,\quad\text{or equivalently}\,,\quad
+    \atvec{\dt\pos}i = \ipd i\atvec\pos i\,\tvec{\dt\pos}i\,;
+  \end{equation*}
+\end{example}
+%
+that is, by definition, a \emph{transformation law for the contravariant vector}, which means that the velocity $\tvec\vel i = \tvec{\dt\pos} i = d_t\tvec\pos i$ \emph{is} a proper contravariant vector. However, if we perform another time differentiation, then we get
+%
+\begin{equation*}
+  d_{tt}\atvec\pos i = \aipd i\tvec\pos i\,d_{tt}\tvec\pos i + \aipd{ij}\tvec\pos i\,d_t\tvec\pos i d_t\tvec\pos j\,,
+\end{equation*}
+%
+which means that $d_{tt}\atvec\pos i$ is \emph{not} a proper vector. Therefore, according to the geometric principle, it \emph{cannot} represent acceleration!
+
+The derivative $d_{tt}\atvec\pos i$ is a proper acceleration (vector) \emph{only} in the special case when $\atvec\pos i$ are another rectangular coordinate; then, the mixed partial derivatives vanish; \ie, $\aipd{ij}\tvec\pos i$. Thus, the derivative $d_{tt}\atvec\pos i$ represents an acceleration only in terms of Newton's mechanics in an $\nespace n$ in rectangular coordinates, while it is \emph{not} a proper acceleration in terms of Lagrange's or Hamilton's mechanics in general curvilinear coordinates on a smooth manifold.
+
+\begin{note}
+  Practically, we know that Newton's mechanics is sufficient only for fairly simple mechanical systems, then the need for Lagrange's and Hamilton's mechanics to cover more complex mechanical systems.
+\end{note}
+
+The above is true for any tensor. Thus, we need to find another derivative operator so that tensors preserve their character. The solution to this problem is the \lingo{covariant derivative}.
+
+The \lingo{covariant derivative of a contravariant vector} $v$, noted $Dv = D_k\tvec vi$, is defined as
+%
+\begin{equation*}
+  D_k\tvec vi = \ipd k\tvec vi + \skchris ijk \tvec vj\,.
+\end{equation*}
+
+\begin{remark}
+  To save some typing and ink, it is common to denote partial derivation of a vector, say $\tvec vi$, with respect to $\tvec\pos k$ by appending a comma to indicate derivation, like $\tvec vi_{,k} = \ipd k\tvec vi$. Then, the derivative is called \scare{comma derivative}. By the same token, to denote covariant derivation of $\tvec vi$, a semicolon is used as in $\tvec vi_{;k} = D_k\tvec vi$. Then, the derivative is called \scare{colon derivative}. The problem is that in the literature their usage is inconsistent. Sometimes the comma represents covariant derivatives; while the semicolon, partial derivation. For this reason, we do not use them here, even if they are commonly used. We prefer the longer versions with more typing and ink, instead of math confusion, for both you and I.
+  %
+  \begin{quotation}
+    I avoid comma and semicolon derivative like the plague.
+  \end{quotation}
+\end{remark}
+
+Similarly, the \lingo{covariant derivative of a covariant vector} $v$, noted $Dv = D_k\tcov vi$, is defined as
+%
+\begin{equation*}
+  D_k\tcov vi = \ipd k\tcov vi - \skchris jik \tcov vj\,.
+\end{equation*}
+
+Generalization for higher-order tensors is straightforward; \eg, the covariant derivative $D_q\tensor{t}{^j_k_l}$ of the third-order tensor $t$ is given by
+%
+\begin{equation*}
+  D_q\tensor{t}{^j_k_l} = \ipd q\tensor{t}{^j_k_l} 
+                        + \skchris jqs\tensor{t}{^s_k_l} 
+                        - \skchris skq\tensor{t}{^j_s_l} 
+                        - \skchris slq\tensor{t}{^j_k_s}\,.
+\end{equation*}
+
+\begin{remark}
+  The covariant derivative is the most important tensor operator in general relativity (its zero defines \lingo{parallel transport}), as well as the basis for defining other differential operators in physics.
+\end{remark}
+
+
+\subsubsection{Covariant form of differential operators}
+%
+Herein, we present equations in coordinate basis (\aka, natural basis).
+
+Here, we give the covariant form of classical vector differential operators: gradient, divergence, curl, and Laplace's operator.
+
+\paragraph{Gradient:} if $\phi = \phi\vat{\pos,t}$ is a scalar field, then the gradient covector (\aka, one-form) is defined by
+%
+\begin{equation*}
+  \grad\phi = D_i\phi
+            = \ipd i\phi\,.
+\end{equation*}
+%
+Sometimes the gradient is noted with the nabla operator: $\nabla\phi = \grad\phi$.
+
+\paragraph{Divergence} The divergence $\div\tvec vi$ of a vector field $v = v\vat{\pos,t}$ is defined by the contraction of its covariant derivative with respect to the coordinate $\tvec\pos i\vat t$; \ie, the contraction of $D_k\tvec vi$, namely,
+%
+\begin{equation*}
+  \div\tvec vi  = \cont Dv
+                = D_i\tvec vi
+                = \dfrac{1}{\sqrt{\det\metric}}\ipd i\parens{\sqrt{\det\metric}\,\tvec vi}\,,
+\end{equation*}
+%
+where $\cont$ represents the \lingo{contraction of a tensor}; while $\det\metric$, the determinant of the metric $\metric$.
+
+\paragraph{Curl} The curl $\curl\omega$ of a first-order covariant tensor (one-form) $\tcov\omega i\vat{\pos,t}$ is a second-order covariant tensor defined as
+%
+\begin{equation*}
+  \curl\tcov\omega i  = D_k\tcov\omega i - D_k\tcov\omega k
+                      = \ipd k\tcov\omega i - \ipd i\tcov\omega k\,.
+\end{equation*}
+
+\paragraph{Laplace's operator} Sometimes known as \lingo{Laplacian}, Laplace's operator $\lap$ of a scalar invariant $\phi\vat{\pos,t}$, $\lap\phi$, is the divergence of the gradient of $\phi$, or
+%
+\begin{equation*}
+  \lap\phi  = \div\parens{\grad\phi}
+            = \div\parens{D_i\phi}
+            = \dfrac{1}{\sqrt{\det\metric}}\ipd i\parens{\sqrt{\det\metric}\,\tvecmet ik\,\ipd k\phi}\,.
+\end{equation*}
+
+\begin{remark}
+  Study the geometric interpretations of $\div$, $\grad$, $\curl$, and $\lap$, as well as their properties.
+\end{remark}
+
+
+
