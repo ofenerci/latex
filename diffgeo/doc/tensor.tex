@@ -6,7 +6,7 @@ Following the \lingo{geometric principle}, equations representing physical laws 
 Hereafter, we follow tensor analysis notational conventions: \lingo{index notation}, \lingo{Einstein's summation convention} over repeated indices, and \lingo{Jacobi's notation for partial derivatives}. 
 
 \begin{example}
-  In tensor notation, \lingo{Jacobi's determintant} can be written concisely as
+  In tensor notation, \lingo{Jacobi's determinant} can be written concisely as
   %
   \begin{equation}\label{eq:jacobiandeterminant}
     \det\ipd i\atvec\pos i
@@ -143,7 +143,7 @@ Examples of covectors include both translational and rotational forces, momenta,
   Here there are some aids to spot a covector:
   %
   \begin{itemize}
-    \item if a geometric object has the dimensions of $\phdim{L}$ in the denomitaor, then it is likely a vector; \eg, temperature gradient is a covector since $\dim\grad\temp = \phdim{E/L}$.
+    \item if a geometric object has the dimensions of $\phdim{L}$ in the denomitator, then it is likely a vector; \eg, temperature gradient is a covector since $\dim\grad\temp = \phdim{E/L}$.
   \end{itemize}
 \end{note}
 
@@ -256,7 +256,8 @@ Standard physical and engineering examples of second-order tensors include:
   \begin{equation*}
     u\iprod v \defas \tcovmet ij\tvec ui\tvec vj\,.
   \end{equation*}
-  %  The inner product is also called \lingo{scalar product} or \lingo{dot product}.
+  %
+  The inner product is also called \lingo{scalar product} or \lingo{dot product}.
 \end{definition}
 
 \begin{definition}[Cross product]
@@ -264,7 +265,8 @@ Standard physical and engineering examples of second-order tensors include:
   %
   \begin{equation*}
     \tcov{\parens{u\cprod v}}i \defas \tlevi ijk\tvec uj\tvec vk\,.
-  \end{equation*}  The cross product is also called \scare{vector} product.
+  \end{equation*}
+  The cross product is also called \scare{vector} product.
 \end{definition}
 
 \begin{remark}
@@ -273,7 +275,8 @@ Standard physical and engineering examples of second-order tensors include:
 
 
 \subsubsection{Higher-order tensors}
-As a generalization of above tensors, consider a geometrical object $\riemann$ that under the coordinate transformation \cref{eq:coordinatetransformations} transforms as
+
+As a generalization of above tensors, consider a geometrical object $\riemann$ that under the coordinate transformation \cref{eq:coordinatetransformations} transforms as
 %
 \begin{equation}
   \atriemann ijkl = \triemann ijkl\ipd i\atvec\pos i\aipd j\tvec\pos j\aipd k\tvec\pos k\aipd l\tvec\pos l 
@@ -329,7 +332,8 @@ Regarding tensor symmetry, in the following we will prove several useful proposi
 \subsection{Euclidean tensors}
 
 \subsubsection{Basis vectors and the metric tensor in $\nrspace n$}
-The natural rectangular coordinate basis in an $n$-dimensional Euclidean space $\nespace n$ is defined as a set of $n$-dim \lingo{unit vectors} $\tsbvec i$ given by
+
+The natural rectangular coordinate basis in an $n$-dimensional Euclidean space $\nespace n$ is defined as a set of $n$-dim \lingo{unit vectors} $\tsbvec i$ given by
 %
 \begin{equation*}
   \tsbvec 1 = \tuple{1,0,0,\dotsc}^t \,,\quad
@@ -483,7 +487,7 @@ where the overdot means derivative upon the line parameter $t$.
 \begin{example}
   In $\nespace 3$ in spherical coordinates, $\tvec\pos i = \tuple{\sxpos,\sypos,\szpos}$, the geodesic equation becomes a system of three scalar ODEs,
   %
-  \begin{equation}
+  \begin{equation}\label{eq:componentsaccelerationsphericalcoordinates}
     \ddt\sxpos - \sxpos\parens{\dt\sypos}^2 - \sxpos\parens{\cos\sypos\dt\szpos}^2 = 0\,,\quad
     \ddt\sypos + \dfrac{2}{\sxpos}\dt\sxpos\dt\szpos + \sin\sypos\cos\sypos\parens{\dt\szpos}^2 = 0\,,\quad\text{and}\quad
     \ddt\sypos + \dfrac{2}{\sxpos}\dt\sxpos\dt\szpos - 2\tan\sypos\dt\sypos\dt\szpos = 0\,.
@@ -560,7 +564,7 @@ Herein, we present equations in coordinate basis (\aka, natural basis).
 
 Here, we give the covariant form of classical vector differential operators: gradient, divergence, curl, and Laplace's operator.
 
-\paragraph{Gradient:} if $\phi = \phi\vat{\pos,t}$ is a scalar field, then the gradient covector (\aka, one-form) is defined by
+\paragraph{Gradient} If $\phi = \phi\vat{\pos,t}$ is a scalar field, then the gradient covector (\aka, one-form) is defined by
 %
 \begin{equation*}
   \grad\phi = D_i\phi
@@ -582,7 +586,7 @@ where $\cont$ represents the \lingo{contraction of a tensor}; while $\det\metric
 \paragraph{Curl} The curl $\curl\omega$ of a first-order covariant tensor (one-form) $\tcov\omega i\vat{\pos,t}$ is a second-order covariant tensor defined as
 %
 \begin{equation*}
-  \curl\tcov\omega i  = D_k\tcov\omega i - D_k\tcov\omega k
+  \curl\tcov\omega i  = D_k\tcov\omega i - D_i\tcov\omega k
                       = \ipd k\tcov\omega i - \ipd i\tcov\omega k\,.
 \end{equation*}
 
@@ -590,7 +594,7 @@ where $\cont$ represents the \lingo{contraction of a tensor}; while $\det\metric
 %
 \begin{equation*}
   \lap\phi  = \div\parens{\grad\phi}
-            = \div\parens{D_i\phi}
+            = \cont\parens{D\phi}
             = \dfrac{1}{\sqrt{\det\metric}}\ipd i\parens{\sqrt{\det\metric}\,\tvecmet ik\,\ipd k\phi}\,.
 \end{equation*}
 
@@ -599,4 +603,131 @@ where $\cont$ represents the \lingo{contraction of a tensor}; while $\det\metric
 \end{remark}
 
 
+\subsubsection{Absolute derivative}
+%
+The \lingo{absolute derivative} (or, intrinsic, or Bianchi's derivative) of a contravariant vector along a curve $\tvec\pos i\vat t$ is denoted by $D_tv\defas\dbder v$ and defined as the inner product of the covariant derivative of $\tvec vi$ and the tangent vector to the curve ($\tvec{\dt\pos}{k} = d_t\tvec\pos k$); \ie, $D_k\tvec vi\tvec{\dt\pos}{k}$, and is given by
+%
+\begin{equation*}
+  D_t\tvec vi = \tvec{\dbder v}i 
+              = \tvec{\dt v}i + \skchris ijk\tvec vj\tvec{\dt\pos}{k}\,.
+\end{equation*}
+%
+Similarly, the absolute derivative of a covariant vector $\tcov vi$ is defined as
+%
+\begin{equation*}
+  D_t\tcov vi = \tcov{\dbder v}i 
+              = \tcov{\dt v}i - \skchris jik\tcov vj\tvec{\dt\pos}{k}\,.
+\end{equation*}
+%
+Generalization for higher-order tensors is striaghtforward; \ie, the absolute derivative $D_t \tensor{t}{^j_k_l}= \tensor{\dbder t}{^j_k_l}$ of the third-order tensor $t$ is given by
+%
+\begin{equation*}
+  \tensor{\dbder t}{^j_k_l} = \tensor{\dt t}{^j_k_l} + \skchris jqs\tensor{t}{^s_k_l}\tvec{\dt\pos}{q}
+                                                     - \skchris skq\tensor{t}{^j_s_l}\tvec{\dt\pos}{q}
+                                                     - \skchris slq\tensor{t}{^j_k_s}\tvec{\dt\pos}{q}\,.
+\end{equation*}
 
+\begin{remark}
+  The absolute derivative is the most important differential operator in physics, as it is the basis for the \lingo{covariant form} of both Lagrange's and Hamilton's mechanics equations of motion of many physical systems.
+\end{remark}
+
+\begin{example}[Three-dimensional geometry: Frenet-Serret formulae]
+  Given three unit vectors: tangent $\tvec\tau i$, principal normal $\tvec\beta i$, and binormal $\tvec\nu i$, as well as two scalar invariants: curvature $k$ and torsion $t$, of a curvet $\Gamma\vat s = \Gamma\vat{\tvec\pos i\vat s}$, the so-called \lingo{Frenet-Serret formulae} are valid:
+  %
+  \begin{align*}
+    \tvec{\dbder\tau}{i}  &= \tvec{\dt\tau}{i}  + \skchris ijk\tvec\tau j\tvec{\dt\pos}{k} = k\tvec\beta i \,,\\
+    \tvec{\dbder\beta}{i} &= \tvec{\dt\beta}{i} + \skchris ijk\tvec\beta j\tvec{\dt\pos}{k} = -\parens{k\tvec\tau i + t\tvec\nu i} \,,
+      \quad\text{and}\\
+    \tvec{\dbder\nu}{i} &= \tvec{\dt\nu}{i} + \skchris ijk\tvec\nu j\tvec{\dt\pos}{k} = t\tvec\beta i \,.
+  \end{align*}
+  %
+  In coordinate-independent notation, $D_t\tau = k\beta$, $D_t\beta = k\tau - t\nu$, and $D_t = t\beta$.
+  %
+\end{example}
+
+
+\subsection{Mechanical acceleration and force}
+%
+In modern analytical mechanics, the two fundamental notions of \lingo{acceleration} and \lingo{force} in general curvilinear coordinates are substantially different from the corresponding terms in rectangular coordinates, as commonly used in engineering mechanics. Namely, acceleration is \emph{not} an ordinary derivative of the velocity; \scare{even worse}, force, which is a paradigm of a vector, is \emph{not} a vector at all! The proper math definition of acceleration is the absolute derivative of velocity, while force is a second-order \emph{covariant} tensors; \ie, a one-form.
+
+Consider a material dynamical system described by $n$ curvilinear coordinates $\tvec\pos i\vat t$. First, recall that an ordinary time derivative of the velocity $\tvec\vel i\vat t = \tvec{\dt\pos}i\vat t$ does \emph{not} transform as a vector with respect to the general coordinate transformation \cref{eq:coordinatetransformations}. Therefore, $\tvec\acc i \neq \tvec{\dt\vel}i$. So, we need to use its absolute time derivative to define the acceleration (with $i,j,k = 1,\dotsc,n$), $\acc = D_t\vel$, in general coordinates,
+%
+\begin{equation}\label{eq:generalaccelerationvector}
+  \tvec\acc i = D_t\tvec\vel i
+              = \tvec{\dbder\vel}{i}
+              = \tvec{\dt\vel}{i} + \skchris ijk\tvec\vel j\tvec\vel k
+              = \tvec{\ddt\pos}{i} + \skchris ijk\tvec{\dt\pos}{j}\tvec{\dt\pos}{k}\,,
+\end{equation}
+%
+which is equivalent to the lhs of the geodesic equation \cref{eq:geodesicequation}. Only in the particular case of rectangular coordinates, does the general acceleration vector \cref{eq:generalaccelerationvector} reduce to the familiar engineering form of the Euclidean acceleration vector, $\acc = \dt\vel$.
+
+\begin{note}
+  Any \emph{Euclidean space} can be defined as a set of \emph{rectangular} coordinates, while any \emph{Riemannian manifold} can be defined as a set of \emph{curvilinear} coordinates. Christoffel's symbols vanish in Euclidean spaces defined by rectangular coordinates; however, they are nonzero in Riemannian manifolds defined by curvilinear coordinates.
+\end{note}
+
+\begin{example}
+  In standard spherical coordinates, $\tvec\pos i = \tuple{\sxpos,\sypos,\szpos}$, we have the components of the acceleration given by \cref{eq:componentsaccelerationsphericalcoordinates}:
+  %
+  \begin{equation*}
+    \tvec\acc\sxpos = \ddt\sxpos - \sxpos\parens{\dt\sypos}^2 - \sxpos\parens{\cos\sypos\dt\szpos}^2              \,,\quad
+    \tvec\acc\sypos = \ddt\sypos + \dfrac{2}{\sxpos}\dt\sxpos\dt\szpos + \sin\sypos\cos\sypos\parens{\dt\szpos}^2 \,,\quad\text{and}\quad
+    \tvec\acc\szpos = \ddt\sypos + \dfrac{2}{\sxpos}\dt\sxpos\dt\szpos - 2\tan\sypos\dt\sypos\dt\szpos            \,.
+  \end{equation*}
+\end{example}
+%
+Now, using \cref{eq:generalaccelerationvector}, \lingo{Newton's equation of motion}, $\force = \mass\acc = \mass D_t\vel$, one gets the following tensorial form
+%
+\begin{equation}\label{eq:contravariantdefinitionofforce}
+  \tvec\force i = \mass\tvec\acc i
+                = \mass\tvec{\dbder\vel} i
+                = \mass\parens{\tvec{\dt\vel}i + \skchris ijk\tvec\vel j\tvec\vel k}
+                = \mass\parens{\tvec{\ddt\pos}i + \skchris ijk\tvec{\dt\pos} j\tvec{\dt\pos} k}\,,
+\end{equation}
+%
+which defines Newtonian force as a contravariant vector.
+
+However, modern Lagrange's and Hamilton's dynamics reminds us that
+%
+\begin{enumerate}
+  \item Newton's own force definition was \emph{not} really $\force = \mass\acc$, but rather $\force = \dt\lmom$; where $\lmom$ is the system's momentum; and
+  \item momentum \scare{vector} is \emph{not} really a vector! But rather a dual quantity: a differential, first-order covariant tensors (\aka, differential one-form. Consequently, the force, as its time derivative, is also a differential, first-order covariant tensor, \aka, a differential one-form.
+\end{enumerate}
+%
+This new form definition includes the precise definition of the mass distribution within the system, by means of its Riemannian metric $\metric$. Thus, \cref{eq:contravariantdefinitionofforce} has to be modified as 
+%
+\begin{equation}\label{eq:covariantdefinitionofforce}
+  \tcov\force i = \mass\tcovmet ij\tvec\acc j
+                = \mass\tcovmet ij\parens{\tvec{\dt\vel} j + \skchris jik\tvec\vel i\tvec\vel k}
+                = \mass\tcovmet ij\parens{\tvec{\dt\vel} j + \skchris jik\tvec{\dt\pos} i\tvec{\dt\pos} k}\,,
+\end{equation}
+%
+where the quantity $\mass\tcovmet ij$ is called the \lingo{material metric} or \lingo{inertia} tensor.
+
+\Cref{eq:covariantdefinitionofforce} generalizes the notion of Newtonian force $\force$, from Euclidean space $\nespace n$ to the Riemannian manifold $\manifold M$.
+
+\begin{note}
+  Why linear momentum is a covector (one-form)? In Lagrange's mechanics, Euler-Lagrange's equation can be written in a form that resembles Newton's first law of motion: $\force = \dt\lmom$. Here, Newtonian force $\force$ becomes a \lingo{generalized force} $\ipd\pos\elag$, where $\elag$ is Lagrange's function (\aka, Lagrangian) of the system and $\pos$ a \lingo{generalized coordinate}, and Newtonian momentum $\lmom$ becomes a \lingo{generalized momentum} $d_t\parens{\ipd{\dt\pos}\elag}$, where $\dt\pos$ is a \lingo{generalized velocity}. Thus, the relationship between Newton's law and Euler-Lagrange's equation is
+  %
+  \begin{equation*}
+    \force = \dt\lmom \mapsto \ipd\pos\elag = d_t\parens{\ipd{\dt\pos}\elag}\,.
+  \end{equation*}
+  %
+  Note the (physical) dimensions of the generalized force: $\dim\force = \dim\ipd\pos\elag = \phdim{E/L}$; thus, the generalized force has the same dimensional dependence on the coordinates as the gradient (a prototype covector). The same happens with the generalized momentum. Therefore, we have a \emph{dimensional hint} that both forces and momenta should be covectors. 
+  
+  However, the stronger indication comes from the fact that, in Lagrange's mechanics, (generalized) forces and (generalized) momenta behave as covectors under coordinate changes. When a coordinate system is chosen, say $\tvec\pos i$, then the generalized force becomes $\ipd{\tvec\pos i}\elag$. See now that the generalized force is \emph{manifestly} a covector. On the other hand, the generalized momentum turns into $d_t\parens{\ipd{\tvec{\dt\pos} i}\elag}$, which is also manifestly a covector.
+  
+  The final piece of puzzle comes from knowing that Lagrange's mechanics supersedes, extends, and is more fundamental than Newton's mechanics; thus, the interpretation of forces and momenta should follow Lagrange's mechanics instead of Newton's.
+\end{note}
+
+\begin{note}
+  Why is Lagrange's mechanics more fundamental than Newton's? Newtonian mechanics was handed out to the scientific world after Newton's studies, observations, and powerful intuition; but, in essence, they are no more a set of principles listed by a genius. We had to trust Newton on that!
+  
+  On the other hand, Lagrangian mechanics is based upon two pillars: the \lingo{principle of the stationary action} (\aka, principle of least action) and \lingo{variational calculus}. The former, states that \emph{Nature is thrifty in its actions}, thus, for instance, a particle follows the \emph{minimum} path between two points and no other path. The latter is a branch of math dealing with the minimization of functions. When applied to the laws of mechanics, these two principles result in Euler-Lagrange's equations, which form the base of Lagrangian mechanics. These principles and their result are not only rich from a theoretical viewpoint that it have been shown that the whole of mechanics -- classical (theory of relativity and Newton's mechanics) and quantum -- spring naturally from the formalism, when the appropriate Lagrangian is chosen, but also they are satisfying from a philosophical (philosophy of science) viewpoint: mechanics rests on only one principle: the principle of stationary action!
+\end{note}
+
+\begin{note}
+  Why angular momentum is a covector? Because, in modern analytical mechanics, it comes from the outer product of two vectors. The outer product of two vectors results in tensor analysis as a covector.
+\end{note}
+
+
+$\br{\br{x + y} + \od xy + \pd ab + \br{\atvec\pos 1}} + \tvec\pos i = \tvec\pos i\vat{\atvec\pos i} = \tvec\pos i\br{\atvec\pos i}$
