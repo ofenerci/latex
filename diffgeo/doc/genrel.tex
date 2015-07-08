@@ -1,0 +1,222 @@
+
+\section{Tensor calculus applied to general relativity}
+
+Herein, we deal with a geometric description of general relativity using \lingo{differential geometry} as an extension to vector calculus.
+
+We use units where the speed of light is unity, $\klight = 1$. \emph{Greek} indices range from 0 to 3 and are used to represent components of tensors. We assume Einstein's summation convention: repeated upper and lower indices are to be summed over their ranges; \eg, $\tvec a\mu\tcov b\mu = \tvec a0\tcov b0 + \tvec a1\tcov b1 + \tvec a2\tcov b2 + \tvec a3\tcov b3$. Vectors are noted with arrows, $\vec v$, while covectors with a tilde, $\cov p$. Events, spacetime points, are denoted without decoration, $\event P$, while the position of $\event P$ by $\vec\pos\vat{\event P}$ or, shortly by, $\vec\pos$. Finally, the coordinates of a point, once a coordinate system is chosen, will be denoted with a superscript index, $\tepos\mu$.
+
+
+\subsection{Vectors and covectors}
+
+The essential math of general relativity is \lingo{differential geometry}: math dealing with \lingo{differential manifolds}, \aka\ smooth manifolds.
+
+It is important to distinguish the geometric interpretation of a physical quantity \vs\ its representation on coordinate; thus, for instance, a vector $\vec v$ is different from its coordinate counterpart $\tvec v\mu$.
+
+We introduce geometric objects in a component-free manner, using \lingo{abstract index notation}. We later introduce coordinates for the purpose of simplifying calculations. This approach requires a clear distinction between vectors, covectors, and tensors.
+
+
+\subsubsection{Vectors}
+
+A \lingo{vector} is a quantity with a magnitude and a direction. Vectors form a \lingo{vector space}: a set where its elements satisfy closed addition and multiplication by scalars. Vectors are \emph{invariant} under coordinate transformations, whereas vector components are \emph{not}.
+
+Events in spacetime are denoted as $\event P$, while its position by $\vec\pos\vat{\event P}$, or shortly $\vec\pos$. Note that $\vec\pos$ refers to a point, \emph{not} a vector; since there is no way to add two vectors in curved space, the geometric arena of general relativity. Thus, we are discussing \lingo{tangent vectors}; \ie, vectors that lie in the \lingo{tangent space} of the manifold at each point. As long as the space is smooth (as assumed when a differential manifold was considered), the differential position $d\vec\pos$ between two infinitesimally close points may be defined. The set of all $d\vec\pos$ defines the tangent space at $\vec\pos$. By assigning a tangent vector to every spacetime point, we can recover the concept of a \lingo{vector field}. With \lingo{parallel transport}, to be introduced later, we may compare vectors.
+
+
+\subsubsection{Covectors}
+
+Also known as a \lingo{one-form}, a \lingo{covector} is a linear scalar function of a vector; a covector takes a vector as input and outputs a scalar. The action of a covector $\cov p$ an a vector $\vec v$, $\cov p\vat{\vec v}$, is also called the \lingo{scalar product} and may be denoted using angle brackets:
+%
+\begin{equation}\label{eq:scalarproductvectorcovector}
+  \cov p\vat{\vec v} = \sprod{\cov p}{\vec v}\,.
+\end{equation}
+
+Covectors are linear functions; \ie, for all scalars $a,b$ and vectors $\vec v,\vec w$, the covector satisfies
+%
+\begin{equation}\label{eq:scalarproductidentities}
+  \cov p\vat{a\vec v + b\vec w} = \sprod{\cov p}{a\vec v + b\vec w}
+                                = a\sprod{\cov p}{\vec v} + b\sprod{\cov p}{\vec v}
+                                = a\cov p\vat{\vec v} + b\cov p\vat{\vec w}\,.
+\end{equation}
+
+Then, we may consider the covector $\cov p$ independently of any particular vector $\vec v$. By associating a covector to \emph{every} point in a manifold, we can define a \lingo{covector field}. Note that $\cov p$ is a covector at a point $\point P$, while $\cov p\vat{\vec v}$ is a scalar defined at $\point P$.
+
+Covectors obey their own linear algebra distinct from that of vectors. Given any two scalars $a,b$ and two covectors $\cov p,\cov q$, we may define the covector $a\cov p + b\cov q$ by
+%
+\begin{equation}\label{eq:covectorlinearity}
+  \br{a\cov p + b\cov q}\vat{\vec v}  = \sprod{a\cov p + b\cov q}{\vec v}
+                                      = a\sprod{\cov p}{\vec v} + b\sprod{\cov q}{\vec v}
+                                      = a\cov p\vat{\vec v} + b\cov q\vat{\vec v}\,.
+\end{equation}
+
+Comparing \cref{eq:scalarproductidentities} and \cref{eq:covectorlinearity}, we see that vectors and covectors are linear operators on each other, producing scalars. Thus, it is helpful to consider a vector as being a linear scalar function of a covector. Thus, we may write $\sprod{\cov p}{\vec v} = \cov p\vat{\vec v} = \vec v\vat{\cov p}$. The vector space of covectors is called the \lingo{dual vector space}, or cotangent space.
+
+As we will see, the distinction between vectors and covectors is necessary because spacetime is curved.
+
+
+\subsection{Tensors}
+
+A \lingo{tensor of order $\torder mn$}, also called a $\torder mn$ tensor, is a scalar function of $m$ vectors and $n$ covectors that is linear in all of tis arguments. It follows that scalars are tensors of order $\torder 00$, vectors of order $\torder 10$, and covectors of order $\torder 01$. We may denote a tensor of order $\torder 02$ by $t\vat{\cov p,\cov q}$.
+
+\begin{note}[Alternative definition of tensor]
+  A \lingo{tensor} on the vector space $\vecspace V$ is defined to be an element of a vector space of the form:
+  %
+  \begin{equation*}
+    \vecspace V\tprod\dotsb\tprod\vecspace V\tprod\covspace V\tprod\dotsb\covspace V\,,
+  \end{equation*}
+  %
+  where $\covspace V$ is the dual space of $\vecspace V$.
+  
+  If there are $m$ copies of $\vecspace V$ ($m$ vectors) and $n$ copies of $\covspace V$ ($n$ covectors) in our product, then the tensor is said to be of order $\torder mn$, contravariant of order $m$, covariant of order $n$, and of total order $m + n$.
+\end{note}
+
+\begin{remark}
+  Our notation does not distinguish a $\torder 20$ tensor $t$ from a $\torder 21$ tensor $t$. However, a distinction could be made by placing $m$ arrows and $n$ tildes over the symbol, or by appropriate use of dummy indices.
+\end{remark}
+
+\begin{note}[Alternative definition of tensor]
+  An order-$n$ tensor $t$ is, by definition, a real-valued, linear function of $n$ vectors. Pictorially, we shall regard $t$ as a box with $n$ slots in its top, into which are inserted $n$ vectors, and one slot in its end, which prints out a single real number: the value that the tensor $t$ has when evaluated as a function of the $n$ inserted vectors:
+  %
+  \begin{equation*}
+    t\underbrace{\vat{\eslot,\dotsc,\eslot}}_{\text{$n$ slots}}\,.
+  \end{equation*}
+\end{note}
+
+\begin{remark}
+  A notation can be made by using slots in the places where vectors and covectors should go. For instance, a $\torder 20$ tensor $t$ can be noted as $t\vat{\vslot,\vslot}$; whereas a $\torder 21$ tensor $t$, as $t\vat{\vslot,\vslot,\cslot}$. 
+\end{remark}
+
+\begin{remark}
+  A tensor returns a scalar only when all of its slots are full. Otherwise, it returns tensors of different order. For instance, consider a tensor that takes two vectors and two covectors -- a $\torder 22$ tensor, call it $t$. In slot notation, $t$ is written as $t\vat{\vslot,\vslot,\cslot,\cslot}$. When a vector $\vec v$ is inserted in $t$ first slot and a covector $\cov p$ in the last slot, then $t$ becomes $t\vat{\vslot,\vec v,\cslot,\cov p}$, a $\torder 11$ tensor. If, now, another vector $\vec w$ and another covector $\cov q$ are inserted in the .
+\end{remark}
+
+The \lingo{scalar product} is a $\torder 11$ tensor, denoted $\idtens$, and called the \lingo{identity tensor}:
+%
+\begin{equation}\label{eq:identitytensorproduct}
+  \idtens\vat{\cov p, \vec v} \defas \sprod{\cov p}{\vec v}
+                              = \cov p\vat{\vec v}
+                              = \vec v\vat{\cov p}\,.
+\end{equation}
+
+A tensor of order $\torder mn$ is linear in all of its arguments. Consider, for instance, a $\torder 20$ tensor $t$, then, as extension of \cref{eq:scalarproductidentities}, we have:
+%
+\begin{equation*}
+  t\vat{a\cov p + b\cov q, c\cov r + d\cov s} = ac t\vat{\cov p,\cov r}
+                                              + ad t\vat{\cov p,\cov s}
+                                              + bc t\vat{\cov q,\cov r}
+                                              + bd t\vat{\cov q,\cov s}\,.
+\end{equation*}
+%
+Tensor of a giver order form a linear space; \ie, a linear combination of tensors of order $\torder mn$ is a $\torder mn$ tensor, defined as an extension of \cref{eq:covectorlinearity}. It is important to keep track of the oder of every tensor, since tensors of different order cannot be added or compared.
+
+As scalars, vectors, and covectors, tensors can be associated at every point to form a \lingo{tensor field}.
+
+There are three ways of changing a tensor order: via the tensor product, contraction, and gradient (to be discussed later).
+
+The \lingo{tensor product}, denoted by the symbol $\tprod$, combines two tensors of order $\torder mn$ and $\torder{m'}{n'}$ to form a tensor of order $\torder{m + m'}{n + n'}$ by combining the argument list of the two tensors and thereby expanding the dimensionality of the tensor space. For instanace, the tensor product of two vectors $\vec a,\vec b$ gives a $\torder 20$ tensor:
+%
+\begin{equation*}
+  t = \vec a\tprod\vec b
+    = t\vat{\cov p,\cov q}\,,\qquad
+  t \defas \vec a\vat{\cov p}\vec b\vat{\cov q}\,.
+\end{equation*}
+
+The tensor product is \emph{non-comutative}: $\vec a\tprod\vec b\neq\vec b\tprod\vec a$, since $\vec a\vat{\cov p}\vec b\vat{\cov q}\neq\vec a\vat{\cov q}\vec b\vat{\cov q}$. We also use the symbol $tprod$ to denote the tensor product of two tensors; \eg, $s =\cov p\tprod t = \cov p\tprod\vec a\tprod\vec b$, a $\torder 21$ tensor, or, in slot notation $s\vat{\cslot,\vslot,\vslot}$.
+
+Tensor contraction also change the order of a tensor. It reduces its order from $\torder mn$ to $\torder{m - 1}{n - 1}$.
+
+
+\subsection{The metric tensor}
+%
+As defined, the scalar product \cref{eq:scalarproductvectorcovector} requires a vector and a covector. Is it possible to obtain a scalar from two vectors of from two covectors? From the definition of tensors, the answer is yes! Any tensor of order $\torder 02$ will give a scalar from two covectors and any tensor $\torder 20$ combines two vectors to gie a scalar. However, there is a particular $\torder 20$ tensor \emph{field} $\metric$ called the \lingo{metric tensor} and a related $\torder 02$ tensor field $\invmet$ called the \lingo{inverse metric tensor}.
+
+The metric tensor is a symmetric, bilinear scalar function of two vectors, $\metric\vat{\vslot,\vslot}$; \ie, given two vectors $\vec v,\vec w$, $\metric$ returns a scalar, called the \lingo{dot product}:
+%
+\begin{equation}\label{eq:vectordotproduct}
+  \metric\vat{\vec v,\vec w} = \vec v\iprod\vec w 
+                             = \vec w\iprod\vec v
+                             = \metric\vat{\vec w, \vec v}\,.
+\end{equation}
+%
+See that $\metric$ returns a scalar when both slots are taken.
+
+Similarly, $\invmet$ is a $\torder 02$ tensor ($\invmet\vat{\cslot,\cslot}$) that returns a scalar from two covectors $\cov p,\cov q$. The inverse metric is also called the \lingo{dot product}:
+%
+\begin{equation}\label{eq:covectordotproduct}
+  \invmet\vat{\cov p, \cov q} = \cov p\iprod\cov q
+                              = \cov q\iprod\cov p
+                              = \invmet\vat{\cov q,\cov p}\,.
+\end{equation}
+%
+The two different dot products are to be distinguished by context. We reserve the dot product notation for the metric and for the inverse metric tensors, just as we reserve the angle brackets scalar product notation for the identity tensor \cref{eq:identitytensorproduct}.
+
+One of the most important properties of the metric is that 
+%
+\begin{quotation}
+  the metric allows us to convert vectors into covectors.
+\end{quotation}
+%
+If we \scare{forget} to include $\vec w$ in \cref{eq:vectordotproduct}, then we get a quantity, denoted $\cov v$, that behaves like a covector:
+%
+\begin{equation}\label{eq:halffullmetric}
+  \cov v\vat\vslot \defas \metric\vat{\vec v,\vslot} 
+                   = \metric\vat{\vslot,\vec v}\,.
+\end{equation}
+%
+where we have inserted an arrow $\vslot$ to remind ourselves that a \emph{vector} must be inserted to yield a scalar. (Remember: a covector is a scalar function of a vector!) We use the \emph{same} letter to indicate the relation between $\vec v$ and $\cov v$. Thus, we see that
+%
+\begin{quotation}
+  the metric tensor $\metric$ is a mapping from the space of vectors to the space of covectors, $\fdef{\metric}{\vecspace V}{\covspace V}$. By definition, the inverse metric tensor $\invmet$ is the inverse mapping: $\fdef{\invmet}{\covspace V}{\vecspace V}$.
+\end{quotation}
+%
+It can be proven that the inverse \emph{always} exists for nonsingular spacetimes. Thus, if $\cov v$ is defined for any $\vec v$, by \cref{eq:halffullmetric}, then the inverse metric tensor is defined by
+%
+\begin{equation}\label{eq:halffullinvmetric}
+  \vec v\vat{\cslot} \defas \invmet\vat{\cov v, \cslot}
+                      = \invmet\vat{\cslot,\cov v}\,.
+\end{equation}
+%
+\Crefrange{eq:identitytensorproduct}{eq:halffullinvmetric} give us several equivalent ways to obtain scalars from vectors $\vec v,\vec w$ and their associated covectors $\cov v$ and $\cov w$:
+%
+\begin{equation}
+  \sprod{\cov v}{\vec w} = \sprod{\cov w}{ \vec v}
+                         = \vec v\iprod\vec w
+                         = \cov v\iprod\cov w
+                         = \idtens\vat{\cov v, \vec w}
+                         = \idtens\vat{\cov w, \vec v}
+                         = \metric\vat{\vec v, \vec w}
+                         = \invmet\vat{\cov v, \cov w}\,.
+\end{equation}
+
+
+\subsection{Some concepts revisited}
+%
+\subsubsection{Tensor product -- revisited}
+
+From any number of vectors, say $\vec a, \vec b, \vec c$, we can construct a tensor; their tensor product, defined as
+%
+\begin{equation*}
+  \vec a\tprod\vec b\tprod\vec c\vat{\vec e, \vec f, \vec g} \defas \vec a\vat{\vec e}\vec b\vat{\vec e}\vec c\vat{\vec g}
+                                                              = \br{\vec a\iprod \vec e}\br{\vec b\iprod\vec f}\br{\vec c\iprod\vec g}\,.
+\end{equation*}
+%
+Similar definitions can be given for the tensor product of any two tensor or more tensors of any order. For instance, given $t\vat{\vslot,\vslot}$ and $s\vat{\vslot,\vslot,\vslot}$, then their tensor product is given by
+%
+\begin{equation*}
+  t\tprod s\vat{\vec e,\vec f,\vec g,\vec h,\vec j} \defas t\vat{\vec e,\vec f}s\vat{\vec g,\vec h,\vec j}\,.
+\end{equation*}
+
+
+\subsection{Contraction}
+
+One can show that any second-rank tensor $t$ can be expressed as a sum of tensor products of vectors, $t = \vec a\tprod\vec b + \vec c\tprod\vec d + \dotsb$. Then, define the contraction of $t$ to be
+%
+\begin{equation*}
+  \cont t = \vec a\iprod\vec b + \vec c\iprod\vec d + \dotsb\,.
+\end{equation*}
+%
+Note that this contraction process lowers the order of the tensor by two, from 2 to 0. Similarly, for a $\torder n0$ tensor, one can construct a $\torder{n - 2}{0}$ tensor by contraction, but one must specify the slots are to be contracted. For example, given $t\vat{\vslot\vslot\vslot}$, one can express it as $t = \vec a\tprod\vec b\tprod\vec c + \vec e\tprod\vec f\tprod\vec g + \dotsb$. Then, the contraction of $t$ on its first and third slots is the vector ($\torder 10$ tensor)
+%
+\begin{equation*}
+  \cont_{1,3} t = \cont_{1,3}\br{\vec a\tprod\vec b\tprod\vec c + \vec e\tprod\vec f\tprod\vec g + \dotsb}
+                = \br{\vec a\iprod\vec c}\vec b + \br{\vec e\iprod\vec g}\vec f\,.
+\end{equation*}

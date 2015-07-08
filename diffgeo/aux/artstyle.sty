@@ -8,7 +8,10 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
 \RequirePackage[pdalt]{bropd}
+\RequirePackage{centernot}
 \RequirePackage{cleveref}
+\RequirePackage{colonequals}
+\RequirePackage{epigraph}
 \RequirePackage{fixltx2e}
 \RequirePackage[fixamsmath,disallowspaces]{mathtools}
 \RequirePackage{mathtools}
@@ -57,3 +60,8 @@
 \newtheorem*{notation}{Notation}
 %
 \newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+% epigraph
+%
+\renewcommand{\epigraphsize}{\footnotesize\sffamily}
+\setlength{\epigraphrule}{0pt}

@@ -13,6 +13,7 @@
 \providecommand*{\eg}{\lingform{e.g.}}
 \providecommand*{\etc}{\lingform{etc}}
 \providecommand*{\ie}{\lingform{i.e.}}
+\providecommand*{\vs}{\lingform{vs.}}
 \providecommand*{\viz}{\lingform{viz.}}
 %
 % quotation marks
@@ -23,14 +24,20 @@
 %
 % spaces
 %
-\providecommand*{\set}[1]{\mathcal{#1}} % set
+\providecommand*{\elset}[1]{\mleft\lbrace{#1}\mright\rbrace}  % elements of a set
+\providecommand*{\set}[1]{\mathcal{#1}}                       % set
+\providecommand*{\linspace}[1]{\set{#1}}                      % linear space
+\providecommand*{\vecspace}[1]{\linspace{#1}}                 % vector space
+\providecommand*{\covspace}[1]{\linspace{#1}^\star}           % dual vector (covector) space
+\providecommand*{\torder}[2]{\parens{{#1},{#2}}}              % tensor order
 %
 % special sets
 %
-\providecommand*{\eset}[1]{\mathbb{#1}}
-\providecommand*{\espace}{\eset{E}}         % euclidean space
+\providecommand*{\cartprod}{\times}         % cartesian product
+\providecommand*{\sset}[1]{\mathbb{#1}}     % special sets
+\providecommand*{\espace}{\sset{E}}         % euclidean space
 \providecommand*{\nespace}[1]{\espace^{#1}} % n-dim euclidean space
-\providecommand*{\rspace}{\eset{R}}         % real space
+\providecommand*{\rspace}{\sset{R}}         % real space
 \providecommand*{\nrspace}[1]{\rspace^{#1}} % n-dim real space
 %
 \providecommand*{\xset}[1]{\mleft\lbrace{#1}\rbrace\mright} % expanded set
@@ -47,8 +54,12 @@
 \providecommand*{\point}[1]{\region{#1}}                   % points
 \providecommand*{\manifold}[1]{\region{#1}}                % manifold
 %
+\providecommand*{\event}[1]{\point{#1}} % event (spacetime point)
+\providecommand*{\cov}[1]{\tilde{#1}}   % covector
+%
 \providecommand*{\echarge}{e}               % electric charge
 \providecommand*{\farad}{f}                 % Faraday's tensor
+\providecommand*{\idtens}{i}                % identity tensor
 \providecommand*{\kron}{\delta}             % Kronecker's delta
 \providecommand*{\levi}{\varepsilon}        % Levi-Civita tensor
 \providecommand*{\mass}{m}                  % mass
@@ -58,16 +69,19 @@
 \providecommand*{\riemann}{r}               % riemann tensor
 \providecommand*{\sqlinelem}{\parens{ds}^2} % squared line element
 %
-\providecommand*{\slot}{\textunderscore} % slot in tensors
+\providecommand*{\bset}[3]{\seq{#1}{#2}{#3}}        % basis set
 %
-\providecommand*{\bvec}{\gamma} % basis vector
-\providecommand*{\sbvec}{e}     % standard basis vector (rectangular basis)
+\providecommand*{\basis}{e}                               % basis element
+\providecommand*{\tbvec}[1]{\tensor{\vec{\basis}}{_{#1}}} % basis vector
+\providecommand*{\tbcov}[1]{\tensor{\cov{\basis}}{^{#1}}} % basis vector
 %
 % vector products
 %
 \providecommand*{\iprod}{\cdot}   % inner product
 \providecommand*{\cprod}{\times}  % cross product
 \providecommand*{\tprod}{\otimes} % tensor product
+%
+\providecommand*{\sprod}[2]{\mleft\langle{#1},{#2}\mright\rangle} % scalar product
 %
 % mechanics
 %
@@ -80,6 +94,7 @@
 \providecommand*{\pos}{x}               % position
 \providecommand*{\svec}{\xi}            % separation vector
 \providecommand*{\vel}{u}               % velocity
+\providecommand*{\ptime}{\tau}          % proper time
 %
 % energy transport
 %
@@ -115,6 +130,8 @@
 \providecommand*{\tvec}[2]{\tensor{#1}{^{#2}}} % tensor vector (vector in tensor notation)
 \providecommand*{\tcov}[2]{\tensor{#1}{_{#2}}} % tensor covector (covector in tensor notation)
 %
+\providecommand*{\tepos}[1]{\tensor{\pos}{^{#1}}} % position coordinates
+%
 \providecommand*{\tsbvec}[1]{\tensor{\sbvec}{^{#1}}} % tensor basis vector
 \providecommand*{\tsbcov}[1]{\tensor{\sbvec}{_{#1}}} % tensor basis covector
 %
@@ -140,6 +157,12 @@
 %
 \providecommand*{\fkchris}[3]{\tensor{\Gamma}{_{#1}_{#2}_{#3}}} % Christoffel symbols -- first kind
 \providecommand*{\skchris}[3]{\tensor{\Gamma}{^{#1}_{#2}_{#3}}} % Christoffel symbols -- second kind
+%
+% slot-naming notation
+%
+\providecommand*{\vslot}{{\scriptstyle\rightarrow}} % vector slot
+\providecommand*{\cslot}{{\scriptstyle{}\sim{}}}    % covector slot
+\providecommand*{\eslot}{{\scriptstyle\cdot}}       % empty (contracted slot)
 %
 % coordinates
 %
@@ -171,8 +194,9 @@
 
 % various
 %
-\providecommand*{\defas}{\equiv}                                % defined as
+\providecommand*{\defas}{\colonequals}                          % defined as
 \providecommand*{\eqtext}[1]{\text{[\footnotesize\textsf{#1}]}} % text in equation
+\providecommand*{\inv}[1]{{#1}^{-1}}                            % inverse
 \providecommand*{\parens}[1]{\mleft({#1}\mright)}               % parenthesis
 \providecommand*{\tuple}[1]{\parens{#1}}                        %
 \providecommand*{\sbtxt}[1]{_\text{\textsf{#1}}}                % subscript text
@@ -183,3 +207,7 @@
 %
 \DeclareMathOperator{\norm}{norm} % absolute value, norm, length of a tensor
 \DeclareMathOperator{\diag}{diag} % diagonal of a matrix
+
+% constants
+%
+\providecommand*{\klight}{c} % speed of light in vacuum

@@ -333,30 +333,30 @@ Regarding tensor symmetry, in the following we will prove several useful proposi
 
 \subsubsection{Basis vectors and the metric tensor in $\nrspace n$}
 
-The natural rectangular coordinate basis in an $n$-dimensional Euclidean space $\nespace n$ is defined as a set of $n$-dim \lingo{unit vectors} $\tsbvec i$ given by
+The natural rectangular coordinate basis in an $n$-dimensional Euclidean space $\nespace n$ is defined as a set of $n$-dim \lingo{unit vectors} $\tbvec i$ given by
 %
 \begin{equation*}
-  \tsbvec 1 = \tuple{1,0,0,\dotsc}^t \,,\quad
-  \tsbvec 2 = \tuple{0,1,0,\dotsc}^t \,,\quad
-  \tsbvec 3 = \tuple{0,0,1,\dotsc}^t \,,\quad
+  \tbvec 1 = \tuple{1,0,0,\dotsc}^t \,,\quad
+  \tbvec 2 = \tuple{0,1,0,\dotsc}^t \,,\quad
+  \tbvec 3 = \tuple{0,0,1,\dotsc}^t \,,\quad
   \dotsb
-  \tsbvec n = \tuple{0,0,0,\dotsc,1}^t \,,
+  \tbvec n = \tuple{0,0,0,\dotsc,1}^t \,,
 \end{equation*}
 %
-where index $t$ denotes transpose; while its \lingo{dual basis} $\tsbcov i$ is given by
+where index $t$ denotes transpose; while its \lingo{dual basis} $\tbcov i$ is given by
 %
 \begin{equation*}
-  \tsbcov 1 = \tuple{1,0,0,\dotsc} \,,\quad
-  \tsbcov 2 = \tuple{0,1,0,\dotsc} \,,\quad
-  \tsbcov 3 = \tuple{0,0,1,\dotsc} \,,\quad
+  \tbcov 1 = \tuple{1,0,0,\dotsc} \,,\quad
+  \tbcov 2 = \tuple{0,1,0,\dotsc} \,,\quad
+  \tbcov 3 = \tuple{0,0,1,\dotsc} \,,\quad
   \dotsb
-  \tsbcov n = \tuple{0,0,0,\dotsc,1} \,,
+  \tbcov n = \tuple{0,0,0,\dotsc,1} \,,
 \end{equation*}
 %
 (no transpose) where the definition of the dual basis is given by the Kronecker's delta:
 %
 \begin{equation*}
-  \tsbvec i\iprod\tsbcov j  = \tkron{^i_j} 
+  \tbvec i\iprod\tbcov j  = \tkron{^i_j} 
                             = \diag\tuple{1,1,1,\dotsc,1}\,.
 \end{equation*}
 
@@ -365,7 +365,7 @@ That is, the metric tensor in rectangular coordinates equals $\tkron{^i_j}$.
 However, in curvilinear coordinate systems, the metric tensor $\tcovmet ij$ is defined as the scalar product of the dual basis vectors; \ie, the $\parens{n\times n}$-matrix:
 %
 \begin{equation*}
-  \tcovmet ij = \tsbcov i\iprod\tsbcov j 
+  \tcovmet ij = \tbcov i\iprod\tbcov j 
               = \begin{pmatrix}
                   \tcovmet 11 & \tcovmet 12 & \tcovmet 13 & \dotsb & \tcovmet 1n \\
                   \tcovmet 21 & \tcovmet 22 & \tcovmet 33 & \dotsb & \tcovmet 2n \\
@@ -378,7 +378,7 @@ However, in curvilinear coordinate systems, the metric tensor $\tcovmet ij$ is d
 
 \subsubsection{Tensor products in $\nespace n$}
 
-Let $u$ and $v$ denote two vectors in $\nespace n$, with their \lingo{components} given by $\tvec ui = u\tsbcov i$ and $\tvec vj = v\tsbcov j$. Then their \lingo{inner product} $u\iprod v$ a scalar invariant $s$, defined as
+Let $u$ and $v$ denote two vectors in $\nespace n$, with their \lingo{components} given by $\tvec ui = u\tbcov i$ and $\tvec vj = v\tbcov j$. Then their \lingo{inner product} $u\iprod v$ a scalar invariant $s$, defined as
 %
 \begin{equation*}
   s = u\iprod v 
@@ -393,40 +393,40 @@ Besides the inner product of to vectors $u,v\in\nespace n$, there is also their 
   \tensor{t}{^i^j} = \tvec ui\tprod\tvec vj\,,
 \end{equation*}
 %
-in the coordinate basis $\tsbcov i$, this tensor is expanded as
+in the coordinate basis $\tbcov i$, this tensor is expanded as
 %
 \begin{equation*}
-  t = \tensor{t}{^i^j}\tsbvec i\tprod\tsbvec vj\,,
+  t = \tensor{t}{^i^j}\tbvec i\tprod\tbvec j\,,
 \end{equation*}
 %
 while its components in the dual basis read:
 %
 \begin{equation*}
-  \tensor{t}{^i^j} = \norm t\tsbvec i\iprod\tsbvec vj\,,
+  \tensor{t}{^i^j} = \norm\br{t}\tbvec i\iprod\tbvec j\,,
 \end{equation*}
 %
 where $\norm t$ is its norm. To get its components in curvilinear coordinates, we need first to substitute it in a rectangular basis:
 %
 \begin{equation*}
-  \tensor{t}{^i^j} = \tensor{t}{^m^n}\parens{\tsbcov m\tprod\tsbcov n}\parens{\tsbvec i, \tsbvec j}\,,
+  \tensor{t}{^i^j} = \tensor{t}{^m^n}\parens{\tbcov m\tprod\tbcov n}\parens{\tbvec i, \tbvec j}\,,
 \end{equation*}
 %
 then to evaluate it on the slots:
 %
 \begin{equation*}
-  \tensor{t}{^i^j} = \tensor{t}{^m^n}\parens{\tsbcov m\iprod\tsbvec i}\parens{\tsbcov n\iprod\tsbcov j}\,,
+  \tensor{t}{^i^j} = \tensor{t}{^m^n}\parens{\tbcov m\iprod\tbvec i}\parens{\tbcov n\iprod\tbcov j}\,,
 \end{equation*}
 %
 and finally to calculate the other index configurations by lowering indices, by means of the metric.
 
 
 \subsection{Covariant differentiation}
-%
+
 Hereafter, consider some $n$-dimensional Riemannian manifold $\manifold M$ with the metric form (\aka, line element) $\sqlinelem = \tcovmet ij\,d\tvec\pos i d\tvec\pos j$, as a configuration space for certain physical system.
 
 
 \subsubsection{Christoffel's symbols}
-%
+
 Partial derivations of the metric form themselves special symbols that do \emph{not} transform as tensors with respect to transformation \cref{eq:coordinatetransformations}, but nevertheless represent important quantities in tensor analysis. They are called \lingo{Christoffel's symbols of the first kind}, defined by
 %
 \begin{equation*}
@@ -496,7 +496,7 @@ where the overdot means derivative upon the line parameter $t$.
 
 
 \subsubsection{Covariant derivative}
-%
+
 Ordinary total and partial derivatives of vectors (covectors) do \emph{not} transform as vectors (covectors) with respect to the transformation \cref{eq:coordinatetransformations}.
 
 \begin{example}
@@ -559,7 +559,7 @@ Generalization for higher-order tensors is straightforward; \eg, the covariant d
 
 
 \subsubsection{Covariant form of differential operators}
-%
+
 Herein, we present equations in coordinate basis (\aka, natural basis).
 
 Here, we give the covariant form of classical vector differential operators: gradient, divergence, curl, and Laplace's operator.
@@ -604,7 +604,7 @@ where $\cont$ represents the \lingo{contraction of a tensor}; while $\det\metric
 
 
 \subsubsection{Absolute derivative}
-%
+
 The \lingo{absolute derivative} (or, intrinsic, or Bianchi's derivative) of a contravariant vector along a curve $\tvec\pos i\vat t$ is denoted by $D_tv\defas\dbder v$ and defined as the inner product of the covariant derivative of $\tvec vi$ and the tangent vector to the curve ($\tvec{\dt\pos}{k} = d_t\tvec\pos k$); \ie, $D_k\tvec vi\tvec{\dt\pos}{k}$, and is given by
 %
 \begin{equation*}
@@ -647,7 +647,7 @@ Generalization for higher-order tensors is striaghtforward; \ie, the absolute de
 
 
 \subsection{Mechanical acceleration and force}
-%
+
 In modern analytical mechanics, the two fundamental notions of \lingo{acceleration} and \lingo{force} in general curvilinear coordinates are substantially different from the corresponding terms in rectangular coordinates, as commonly used in engineering mechanics. Namely, acceleration is \emph{not} an ordinary derivative of the velocity; \scare{even worse}, force, which is a paradigm of a vector, is \emph{not} a vector at all! The proper math definition of acceleration is the absolute derivative of velocity, while force is a second-order \emph{covariant} tensors; \ie, a one-form.
 
 Consider a material dynamical system described by $n$ curvilinear coordinates $\tvec\pos i\vat t$. First, recall that an ordinary time derivative of the velocity $\tvec\vel i\vat t = \tvec{\dt\pos}i\vat t$ does \emph{not} transform as a vector with respect to the general coordinate transformation \cref{eq:coordinatetransformations}. Therefore, $\tvec\acc i \neq \tvec{\dt\vel}i$. So, we need to use its absolute time derivative to define the acceleration (with $i,j,k = 1,\dotsc,n$), $\acc = D_t\vel$, in general coordinates,
@@ -730,4 +730,118 @@ where the quantity $\mass\tcovmet ij$ is called the \lingo{material metric} or \
 \end{note}
 
 
-$\br{\br{x + y} + \od xy + \pd ab + \br{\atvec\pos 1}} + \tvec\pos i = \tvec\pos i\vat{\atvec\pos i} = \tvec\pos i\br{\atvec\pos i}$
+\subsection{Tensors (intrinsic definition)}
+
+\epigraph{Mathematics, rightly viewed, possesses not only truth, but supreme beauty -- a beauty cold and austere, like that of sculpture, without appeal to any part of our weaker nature, without the gorgeous trappings of painting or music, yet sublimely pure, and capable of a stern perfection such as only the greatest art can show. The true spirit of delight, the exaltation, the sense of being more than Man, which is the touchstone of the highest excellence, is to be found in mathematics as surely as poetry.}{Bertrand Russell}
+
+\subsubsection{Coordinate-free}
+
+A \lingo{coordinate-free treatment}, \aka\ component-free treatment, of a scientific theory or mathematical topic develops its concepts on any form of manifold \emph{without} reference to any particular coordinate system.
+
+Coordinate-free treatments generally allow for simpler systems of equations and inherently constrain certain types of inconsistency, allowing greater mathematical elegance at the cost of some abstraction from the detailed formulae needed to evaluate these equations within a particular system of coordinates.
+
+Coordinate-free treatments were the only available approach to geometry (\aka\ \lingo{synthetic geometry}) before the development of analytic geometry by Descartes. After several centuries of generally coordinate-based exposition, the modern tendency is generally to introduce students to coordinate-free treatments early on, and then to derive the coordinate-based treatments from the coordinate-free treatment, rather than vice versa.
+
+Fields that are now often introduced with coordinate-free treatments include vector calculus, tensors, and differential geometry.
+
+In physics, the existence of coordinate-free treatments of physical theories is a corollary of the \lingo{principle of general covariance}.
+
+
+\subsubsection{Principle of general covariance}
+
+In theoretical physics, \lingo{general covariance} (\aka\ \lingo{diffeomorphism covariance} or \lingo{general invariance}) is the invariance of the form of physical laws under arbitrary differentiable coordinate transformations. The essential idea is that coordinates do not exist a priori in nature, but are only artifices used in describing nature, and hence should play no role in the formulation of fundamental physical laws.
+
+A physical law expressed in a generally covariant fashion takes the same mathematical form in all coordinate systems, and is usually expressed in terms of tensor fields. The classical (non-quantum) theory of electrodynamics is one theory that has such a formulation.
+
+
+\subsection{Geometric principle}
+
+The laws of physics must all be expressible as geometric relationships between geometric objects, which represent physical entities.
+
+Geometric relationships: coordinate-independent and reference-frame-independent. Geometric objects: tensors (scalars, vectors).
+
+Note: we model physics with geometry: physical processes: geometric relationships, physical quantities: geometric objects.
+
+
+\subsection{Tensors (intrinsic definition)}
+
+In mathematics, the modern component-free approach to the theory of a tensor views a tensor as an abstract object, expressing some definite type of multi-linear concept. Their well-known properties can be derived from their definitions, as linear maps or more generally; and the rules for manipulations of tensors arise as an extension of linear algebra to multilinear algebra.
+
+In differential geometry an intrinsic geometric statement may be described by a tensor field on a manifold, and then doesn't need to make reference to coordinates at all. The same is true in general relativity, of tensor fields describing a physical property. The component-free approach is also used heavily in abstract algebra and homological algebra, where tensors arise naturally.
+
+\begin{note}
+  This section assumes an understanding of the tensor product of vector spaces without chosen bases. An overview of the subject can be found in the main tensor article.
+\end{note}
+
+\paragraph{Definition via tensor products of vector spaces} Given a finite set $\elset{\vecspace V^1, \dotsc, \vecspace V^n}$ of \lingo{vector spaces} over a common field $\set{F}$, one may form their \lingo{tensor product} $\vecspace V^1\tprod\vecspace V^2\tprod\dotsb\vecspace V^n$, an element of which is termed a \lingo{tensor}.
+
+A tensor on the vector space $\vecspace V$ is then defined to be an element of (\ie, a vector in) a vector space of the form
+%
+\begin{equation*}
+  \vecspace V\tprod\dotsb\tprod\vecspace V\tprod\covspace V\tprod\dotsb\tprod\covspace V\,,
+\end{equation*}
+%
+where $\covspace V$ is the dual space of $\vecspace V$.
+
+If there are $m$ copies of $\vecspace V$ and $n$ copies of $\covspace V$ in our product, the tensor is said to be of \lingo{type $\torder mn$} and \lingo{contravariant of order $m$} and \lingo{covariant of order $n$} and of \lingo{total order $m + n$}. The \lingo{tensors of order zero} are just the \lingo{scalars} (elements of the field $\set F$), those of \lingo{contravariant order 1} are the \lingo{vectors} in $\vecspace V$, and those of \lingo{covariant order 1} are the \lingo{covectors}, \aka\ one-forms, in $\covspace V$ (for this reason the last two spaces are often called the \lingo{contravariant and covariant vectors}). The space of all tensors of type $\parens{m,n}$ is denoted
+%
+\begin{equation*}
+  \tensor{t}{^m_n}\vat{\vecspace V} = \underbrace{\vecspace V\tprod\dotsb\tprod\vecspace V}_{m}\tprod
+                                      \underbrace{\covspace V\tprod\dotsb\tprod\covspace V}_{n}\,.
+\end{equation*}
+%
+The $\torder 11$ tensors $\vecspace V\tprod\covspace V$ are \lingo{isomorphic} in a natural way to the space of linear transformations from $\vecspace V$ to $\vecspace V$. A bilinear form on a real vector space $\vecspace V$; $\vecspace V\cartprod\vecspace V\to\rspace$ corresponds in a natural way to a $\torder 02$ tensor in $\covspace V\tprod\covspace V$ termed the associated \lingo{metric tensor} (or sometimes misleadingly the metric or inner product) and usually denoted $\metric$.
+
+\paragraph{Tensor fields} Differential geometry, physics and engineering must often deal with \lingo{tensor fields} on \lingo{smooth manifolds}. The term tensor is sometimes used as a shorthand for tensor field. A tensor field expresses the concept of a tensor that varies from point to point.
+
+\providecommand*{\cov}[1]{\tilde{#1}}
+
+
+\subsection{Abstract index notation}
+
+\lingo{Abstract index notation} is a mathematical notation for tensors and spinors that uses \emph{indices to indicate their order}, rather than their components in a particular basis. The indices are mere placeholders, not related to any fixed basis and, in particular, are non-numerical. Thus it should \emph{not} be confused with the \lingo{Ricci calculus}. The notation was introduced by Roger Penrose as a way to use the formal aspects of the Einstein summation convention in order to compensate for the difficulty in describing contractions and covariant differentiation in modern abstract tensor notation, while preserving the explicit covariance of the expressions involved.
+
+Let $\vecspace V$ be a vector space, and $\covspace V$ its dual. Consider, for example, a order-2 covariant tensor $h\in\covspace V\iprod\covspace V$. Then, $h$ can be identified with a bilinear form on $\vecspace V$; \ie, it is a function of two arguments in $\vecspace V$ which can be represented as a \lingo{pair of slots}:
+%
+\begin{equation*}
+  h = h\vat{\eslot,\eslot}\,.
+\end{equation*}
+
+Abstract index notation is merely a labelling of the slots by Latin letters, which have no significance apart from their designation as labels of the slots (\ie, they are non-numerical): $h = \tensor h{_a_b}$.
+
+A \lingo{contraction} between two tensors is represented by the \lingo{repetition of an index label}, where one label is \emph{contravariant} (an upper index corresponding to a tensor in $\vecspace V$) and one label is \emph{covariant} (a lower index corresponding to a tensor in $\covspace V$). Thus, for instance, $\tensor t{_a_b^b}$ is the trace of a tensor $t = \tensor t{_a_b^c}$ over its last two slots. This manner of representing tensor contractions by repeated indices is formally similar to Einstein's summation convention. However, as the indices are non-numerical, it does \emph{not} imply summation: rather it corresponds to the abstract basis-independent trace operation (or duality pairing) between tensor factors of type $\vecspace V$ and those of type $\covspace V$.
+
+
+\providecommand*{\braid}[1]{\tau_{\parens{#1}}} % braiding map
+
+\subsubsection{Braiding}
+
+To any tensor product on a single vector space, there are associated \lingo{braiding maps}. For example, the braiding map
+%
+\begin{equation*}
+  \braid{12}: \vecspace V\tprod\vecspace V\to\vecspace V\tprod\vecspace V
+\end{equation*}
+%
+interchanges the two tensor factors; \eg, \lingo{braid action on simple tensors} $v,w$ is given by $\braid{12}\br{v\tprod w} = w\tprod v$. In general, the braiding maps are in one-to-one correspondence with elements of the symmetric group, acting by permuting the tensor factors. Here, we use $\braid\sigma$ to denote the braiding map associated to the permutation $\sigma$ (represented as a product of disjoint cyclic permutations).
+
+Braiding maps are important in differential geometry, for instance, in order to express \lingo{Bianchi's identity}. Here let $\riemann$ denote Riemann's tensor, regarded as a tensor in $\covspace V\tprod\covspace V\tprod\covspace V\tprod\vecspace V$. The first Bianchi's identity then asserts that
+%
+\begin{equation*}
+  \riemann + \braid{123}\riemann + \braid{132}\riemann = 0\,.
+\end{equation*}
+
+Abstract index notation handles braiding as follows. On a particular tensor product, an ordering of the abstract indices is fixed (usually this is a lexicographic ordering). The braid is then represented in notation by permuting the labels of the indices. Thus, for instance, with  Riemann's tensor
+%
+\begin{equation*}
+  \riemann  = \tensor{\riemann}{_a_b_c^d}\in\tensor{\vecspace V}{_a_b_c^d}
+            = \covspace V\tprod\covspace V\tprod\covspace V\tprod\vecspace V\,.
+\end{equation*}
+%
+Bianchi's identity becomes
+%
+\begin{equation*}
+  \tensor{\riemann}{_a_b_c^d} + \tensor{\riemann}{_c_a_b^d} + \tensor{\riemann}{_b_c_a^d} = 0\,.
+\end{equation*}
+
+
+

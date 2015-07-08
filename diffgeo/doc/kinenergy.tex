@@ -4,87 +4,50 @@
 \subsection{Kinetic energy}
 %
 \begin{example}
-  Express the kinetic energy $\ekin$ of a moving particle of mass $\mass$ traveling with velocity $\vel$. First use vector analysis and then tensor analysis.
+  Express the kinetic energy $\ekin$ of a moving particle of mass $\mass$ traveling with velocity $\vel$.
 \end{example}
 %
-In coordinate-independent form, and thus according to the geometric principle, the kinetic energy of the particle is given by
-%
-\begin{equation}\label{eq:kineticenergyinvariant}
-  2\ekin = \mass\vel\iprod\vel\,.
-\end{equation}
-%
-\begin{solution}[Vector analysis]
-  The position of the particle at any moment $t$ in rectangular coordinates is given by
+\begin{solution}
+  In component-free form, and thus according to the geometric principle, the kinetic energy of the particle is defined as
   %
-  \begin{equation}\label{eq:positionvectorrectangular}
-    \pos\sbtxt{rect} = \tuple{\xpos,\ypos,\zpos}\,.
-  \end{equation}
+  \begin{equation*}
+    2\ekin = \mass\br{\vel}^2\,.
+  \end{equation*}
   %
-  Thus, in spherical coordinates, the position is
+  In abstract-index form, the kinetic energy becomes
   %
-  \begin{equation}\label{eq:positionvectorspherical}
-    \pos\sbtxt{sph} = \tuple{\sxpos\sin\sypos\cos\szpos, \sxpos\sin\sypos\sin\szpos, \sxpos\cos\sypos}\,.
-  \end{equation}
+  \begin{equation*}
+    2\ekin = \mass\metric\vat{\vel,\vel}\,.
+  \end{equation*}
   %
-  Then, the particle velocity is calculated by finding the time derivative of position; \ie, $\vel = d_t\pos$:
+  Then, in spherical \emph{coordinate} basis, the position of the particle is given by
   %
-  \begin{equation}\label{eq:velocityvectorrspherical}
-    \vel\sbtxt{sph} = \tuple{
-                        \sin\sypos\cos\szpos\,\dt\sxpos + \sxpos\cos\sypos\cos\szpos\,\dt\sypos - \sxpos\sin\sypos\sin\szpos\,\dt\szpos,\,
-                        \sin\sypos\sin\szpos\,\dt\sxpos + \sxpos\cos\sypos\sin\szpos\,\dt\sypos + \sxpos\sin\sypos\cos\szpos\,\dt\szpos,\,
-                        \cos\sypos\,\dt\sxpos - \sxpos\sin\sypos\,\dt\sypos
-                            }
-  \end{equation}
-  %
-  where the product and the chain rule for partial derivatives have been applied, several times.
-  
-  Therefore, to calculate $\vel\sbtxt{sph}$, find the inner product of $\vel$ with $\vel$ and then perform lots of algebra, per component, to get
-  %
-  \begin{equation}\label{eq:velinnerproductvectorspherical}
-    \br{\vel\iprod\vel}\sbtxt{sph} = \br{\cdots}
-                                   = \br{\dt\sxpos^2 + \sxpos^2\,\dt\sypos^2 + \sxpos^2\sin^2\sypos\,\dt\szpos^2}\,.
-  \end{equation}
-  %
-  Finally, the kinetic energy in spherical coordinates is given by replacing \cref{eq:velinnerproductvectorspherical} into \cref{eq:kineticenergyinvariant}; \ie,
-  %
-  \begin{equation}\label{eq:kinenergyvectorspherical}
-    2\ekin = \mass\br{\dt\sxpos^2 + \sxpos^2\,\dt\sypos^2 + \sxpos^2\sin^2\sypos\,\dt\szpos^2}\,.
-  \end{equation}
-\end{solution}
-
-\begin{solution}[Tensor analysis]
-  In spherical \emph{coordinate} basis, the position of the particle is given by
-  %
-  \begin{equation}\label{eq:positiontensorspherical}
+  \begin{equation*}
     \atvec\pos i = \tuple{\sxpos, \sypos, \szpos}\,.
-  \end{equation}
+  \end{equation*}
   %
-  Note that the last equation, \cref{eq:positiontensorspherical}, differs substantially from its analog in vector analysis, \cref{eq:positionvectorspherical}. But it rather resembles \cref{eq:positionvectorrectangular}; in fact, it has \emph{exactly} the same \emph{form} as the position in rectangular coordinates, \cref{eq:positionvectorrectangular}. Additionally, see that we need not begin with rectangular coordinates, find the position in them, and then switch to spherical coordinates. We started right away with spherical coordinates, \emph{no rectangular coordinates needed}. These facts lead to the conclusion:
+  The particle velocity is thus
   %
-  \begin{quotation}
-    Rectangular coordinate systems are \emph{not} special, they are in exactly the same footing as other coordinates system.
-  \end{quotation}
-  %
-  The particle velocity is then, in coordinate basis,
-  %
-  \begin{equation}\label{eq:velocitytensorrspherical}
+  \begin{equation*}
     \atvec\vel i = d_t\atvec\pos i
                  = \tuple{\dt\sxpos, \dt\sypos, \dt\szpos}\,.
-  \end{equation}
+  \end{equation*}
   %
-  Look at the last equation and compare it with its analog \cref{eq:velocityvectorrspherical}. \Cref{eq:velocitytensorrspherical} given $\vel$ in a very natural way: velocity is the time derivative of position. It could not be more straightforward!
-  
   Here's where the magic happens:
   %
   \begin{equation*}
-    \vel\iprod\vel = \atcovmet ij\,\tvec{\dt\pos}{i}\tvec{\dt\pos}{j}\,,
+    \metric\vat{\vel,\vel} = \atcovmet ij\,\tvec{\dt\pos}{i}\tvec{\dt\pos}{j}\,,
   \end{equation*}
   %
-  where the magic is encoded in the coefficients of the metric $\atcovmet ij$, which for spherical coordinates is $\atcovmet ij = \diag\tuple{1, \parens{\sxpos}^2, \parens{\sxpos\sin\sypos}^2}$. Thus, the inner product of $\vel$ with itself becomes
+  where $\metric$ encodes the magic in its coefficients, $\atcovmet ij$, which for spherical coordinates are $\atcovmet ij = \diag\tuple{1, \parens{\sxpos}^2, \parens{\sxpos\sin\sypos}^2}$. Thus, the inner product of $\vel$ with itself becomes
   %
   \begin{equation*}
     \vel\iprod\vel = \parens{\dt\sxpos}^2 + \parens{\sxpos\dt\sypos}^2 + \parens{\sxpos\sin\sypos\dt\szpos}^2\,.
   \end{equation*}
+  %
+  Finally, the kinetic energy is given by replacing the last equation into \cref{eq:kineticenergyinvariant}:
+  %
+  \begin{equation*}
+    2\ekin = \mass\br{\dt\sxpos^2 + \sxpos^2\,\dt\sypos^2 + \sxpos^2\sin^2\sypos\,\dt\szpos^2}\,.
+  \end{equation*}
 \end{solution}
-
-

@@ -3,12 +3,12 @@
 
 In physics, we don't study objects by themselves, but rather \lingo{measurable} properties of the objects and their interrelations (\lingo{physical processes}). Thus, we don't study a body, but rather its electric charge, mass, orbit, or size and their relationships, such as law of motions. 
 
-In this book, we use \lingo{geometric objects} to model object properties and to measure such properties. Additionally, we use \lingo{geometric transformations} to quantify physical processes.
+In this book, we use \lingo{geometric objects} to model object properties and to measure such properties and we use \lingo{geometric transformations} to represent physical processes.
 
 Our main tool for studying nature is the \lingo{geometric principle}, which states that
 %
 \begin{quotation}
-the laws of physics must all be expressible as geometric (coordinate-independent and reference-frame-independent) relationships between geometric objects (scalars, vectors, tensors), which represent physical entitities.
+the laws of physics must all be expressible as geometric (coordinate-independent and reference-frame-independent) relationships between geometric objects (scalars, vectors, tensors), which represent physical entities.
 \end{quotation}
 
 Don't describe motion by farewell objects. \lingo{Physics is simple only when analyzed locally}.
@@ -20,7 +20,7 @@ Space tells matter how to move. Matter tells space how to curve.
 
 Problem: how to measure in curved spacetime. Resolution: characterize events by what happens there. Events are points in spacetime. The name of an event can even be arbitrary. Coordinates provide a convenient naming system. To order events, introduce coordinates.
 
-Coordinates generally do \emph{not} measure length. They are more like telephone numbers: they serve to localize an phone-line owner, but not to measure the distance between owners. Several coordinate systems can be used at once.
+Coordinates generally do \emph{not} measure length (only rectangulars do, other coordinates measure angles, for instance). They are more like telephone numbers: they serve to localize an phone-line owner, but not to measure the distance between owners. Several coordinate systems can be used at once.
 
 Choose two neighbor events, known as such by the nearness of their coordinate values in a smooth coordinate system. Draw an arrow from one to another, call the arrow a \lingo{vector}. Vectors can be given a convenient name, components, but it is still a convenience; the vector exists even without it.
 
@@ -73,13 +73,13 @@ How, then, in curved spacetime, can one determine the components $D_{ss}\tvec\sv
 Riemann's tensor, like the metric tensor, can be thought of as a family of machines, one machinery residing at each event in spacetime. Each machine has three slots for the insertion of three vectors:
 %
 \begin{equation*}
-  \riemann\vat{\slot,\slot,\slot}\,.
+  \riemann\vat{\eslot,\eslot,\eslot}\,.
 \end{equation*}
 %
 Choose a fiducial geodesic (free-particle world line) passing through an event $\event Q$, and denote its unit tangent vector (particle velocity) there by
 %
 \begin{equation*}
-  \vel = d_\tau\pos\,;\qquad\text{components,}\qquad \tvec\vel\alpha = d_\tau\tvec\pos\alpha\,.
+  \vel = d_\ptime\pos\,;\qquad\text{components,}\qquad \tvec\vel\alpha = d_\ptime\tvec\pos\alpha\,.
 \end{equation*}
 %
 Choose another, neighboring geodesic, and denote by $\svec$ its perpendicular separation from the fiducial geodesic. There, insert $\vel$ into the first slot of Riemann's tensor $\riemann$ at $\event Q$, $\svec$ into the second slot, and $\vel$ into the third. Riemann's tensor will grind for awhile; then out will pop a new vector, $\riemann\vat{\vel,\svec,\vel}$.
@@ -87,7 +87,7 @@ Choose another, neighboring geodesic, and denote by $\svec$ its perpendicular se
 The equation of geodesic deviation states that this new vector is the negative of the relative acceleration of the two geodesics:
 %
 \begin{equation*}
-  D_{\tau\tau}\svec + \riemann\vat{\vel,\svec,\vel} = 0\,.
+  D_{\ptime\ptime}\svec + \riemann\vat{\vel,\svec,\vel} = 0\,.
 \end{equation*}
 %
 Riemann's tensor, like the metric tensor, and like all other tensor, is a linear machine. The vector it puts out is a linear function of each vector inserted into a slot:
@@ -107,7 +107,7 @@ Consequently, in any coordinate system, the components of the vector put out in:
 (Here there is an implied summation in the indices $\beta$, $\gamma$, and $\delta$.) The $4\times 4\times 4\times 4 = 256$ numbers $\triemann\alpha\beta\gamma\delta$ are called the \lingo{components of Riemann's tensor in the given coordinate system}. In term of components, the equation of geodesic deviation states
 %
 \begin{equation*}
-  D_{\tau\tau}\tvec\svec\alpha + \triemann\alpha\beta\gamma\delta\,d_\tau\tvec\pos\beta\,\tvec\svec\gamma\,d_\tau\tvec\pos\beta = 0\,.
+  D_{\ptime\ptime}\tvec\svec\alpha + \triemann\alpha\beta\gamma\delta\,d_\ptime\tvec\pos\beta\,\tvec\svec\gamma\,d_\ptime\tvec\pos\beta = 0\,.
   \qquad
   \mleft\lbrack
     \tvec{\ddt\svec}\alpha + \triemann\alpha\beta\gamma\delta\,\tvec{\dt\pos}\beta\,\tvec\svec\gamma\,\tvec{\dt\pos}\beta = 0
@@ -117,7 +117,7 @@ Consequently, in any coordinate system, the components of the vector put out in:
 In Einstein's geometric theory of gravity, this equation of geodesic deviation summarizes the entire effect of geometry on matter. It does for gravitation physics what Lorentz's force equation,
 %
 \begin{equation*}
-  D_{\tau\tau}\tvec\pos\alpha - \dfrac{\echarge}{\mass}\tensor{\farad}{^\alpha_\beta}\,d_\tau\tvec\pos\beta = 0\,,
+  D_{\ptime\ptime}\tvec\pos\alpha - \dfrac{\echarge}{\mass}\tensor{\farad}{^\alpha_\beta}\,d_\ptime\tvec\pos\beta = 0\,,
   \qquad
   \mleft\lbrack
     \tvec{\ddt\pos}\alpha - \dfrac{\echarge}{\mass}\tensor{\farad}{^\alpha_\beta}\,\tvec{\dt\pos}\beta = 0
@@ -186,7 +186,7 @@ since $\atvec\svec\alpha \defas \atvec\pos\alpha\vat{\event P} - \atvec\pos\alph
 At each event of spacetime, indeed, at each point of any \lingo{Riemannian manifold}, there exists a geometrical object called the \lingo{metric tensor} $\metric$. It is a machine with two input slots for the insertion of two \emph{vectors}:
 %
 \begin{equation*}
-  \metric\vat{\slot, \slot}\,.
+  \metric\vat{\eslot, \eslot}\,.
 \end{equation*}
 %
 If one inserts the same vector $u$ into both slots, then one gets out the square of the length of $u$, $\metric\vat{u,u} = \parens{u}^2$. If, on the other hand, one inserts two different vectors, $u$ and $v$, (it matters \emph{not} in which order!), then one gets out a number called the \lingo{scalar product of $u$ on $v$} and denoted $u\iprod v$:
@@ -262,35 +262,5 @@ The geometry of an apple's surface is locally Euclidean everywhere. The geometry
 \end{itemize}
 
 
+basis vector fields: $\tbvec\mu$. basis covector fields: $\tbcov\nu$ and basis set $\bset{\tbvec\mu}{\mu = 1}{3}$.
 
-\subsection{Modern thermodynamics pearls!}
-%
-\subsubsection{Conservation of energy [p. 25-26]}
-%
-The first law of thermodynamics states that energy obeys a local conservation law. By this we mean something very specific:
-%
-\begin{quotation}
-  Any decrease in the amount of energy in a given region of space must be exactly balanced by a simultaneous increase in the amount of energy in an adjacent region of space.
-\end{quotation}
-%
-Note the adjectives \emph{simultaneous} and \emph{adjacent}. The laws of physics do not permit energy to disappear now and reappear later. Similarly the laws do not permit energy to disappear from here and reappear at some distant place. \emph{Energy is conserved right here, right now}.
-It is usually possible to observe and measure the physical processes whereby energy is transported from one region to the next. This allows us to express the energy-conservation law as an equation:
-%
-\begin{equation*}
-  \text{change in energy (inside boundary)} = \text{net flow of energy (inward minus outward across boundary)}\,.
-\end{equation*}
-
-The word flow in this expression has a very precise technical meaning, closely corresponding to one of the meanings it has in everyday life.
-There is also a \lingo{global law of conservation of energy}: The total energy in the universe cannot change. The local law implies the global law but not conversely. The global law is interesting, but not nearly as useful as the local law, for the following reason: suppose I were to observe that some energy has vanished from my laboratory. It would do me no good to have a global law that asserts that a corresponding amount of energy has appeared \scare{somewhere} else in the universe. There is no way of checking that assertion, so I would not know and not care whether energy was being globally conserved. Also it would be very hard to reconcile a non-local law with the requirements of special relativity.
-
-[...], there is an important distinction between the notion of conservation and the notion of constancy. Local conservation of energy says that the energy in a region is constant except insofar as energy flows across the boundary.
-
-
-\subsubsection{General Case : Some Energy Not Available [p. 31]}
-%This sheds an interesting side-light on the energy-conservation law. As with most laws of physics, this law, by itself, does not tell you what will happen; it only tells you what \emph{cannot} happen: you cannot have any process that fails to conserve energy. To say the same thing another way: 
-%
-\begin{quotation}
-  if something is prohibited by the energy-conservation law, the prohibition is absolute, whereas if something is permitted by the energy-conservation law, the permission is conditional, conditioned on compliance with all the other laws of physics. 
-\end{quotation}
-%
-In particular, [...], you have to comply with all the laws, not just conservation of energy. You also have to conserve angular momentum. You also have to comply with the second law of thermodynamics.
