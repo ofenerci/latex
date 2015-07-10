@@ -1,11 +1,12 @@
 
-\RequirePackage{fix-cm}                % fixes cm calcs
-\RequirePackage[l2tabu, orthodox]{nag} % old packages checker
+\RequirePackage[l2tabu, orthodox]{nag}
 
-\documentclass[aps,pra,10pt,a4paper]{revtex4-1} % reprint
+\documentclass[aps,pra,10pt,a4paper]{revtex4-1}
 
-\usepackage{./aux/artstyle}
-\usepackage{./aux/macros}
+\usepackage{./sty/artstyle}
+\usepackage{./sty/artlingo}
+\usepackage{./sty/artmath}
+\usepackage{./sty/artphysics}
 
 \begin{document}
 
@@ -15,14 +16,10 @@
 
 %\maketitle
 
-%\input{./doc/mechanics}
-%\input{./doc/tensor}
-%\input{./doc/kinenergy}
-%\input{./doc/modern-thermo}
-%
 \input{./doc/genrel}
-\input{./doc/gravitation}
-%
-%\input{./doc/index-gym}
+%\input{./doc/tensrep}
+
+\bibliographystyle{aipnum4-1}
+\bibliography{./doc/references}
 
 \end{document}

@@ -1,0 +1,63 @@
+
+\ProvidesPackage{./sty/artlingo}[2015/07/08 physics macros. rimbaudcode]
+
+% constants
+%
+\providecommand*{\klight}{c} % speed of light in vacuum
+
+% (coordinate-free) geometric objects
+%
+\providecommand*{\cov}[1]{\tilde{#1}}     % covector
+\providecommand*{\idtens}{i}              % identity tensor
+\providecommand*{\event}[1]{\mathcal{#1}} % events (points in spacetime)
+%
+% metric
+%
+\providecommand*{\fmetric}{\eta}              % flat metric
+\providecommand*{\kron}{\delta}               % Kronecker's delta
+\providecommand*{\metric}{g}                  % metric tensor
+\providecommand*{\invmet}{\inverse{\metric}}  % inverse metric tensor
+%
+\providecommand*{\pos}{x}    % event position
+\providecommand*{\sep}{\xi}  % event separation
+%
+% basis
+%
+\providecommand*{\belem}{e}                  % basis element
+\providecommand*{\bcov}{\cov{\belem}}        % basis covector
+\providecommand*{\bvec}{\vec{\belem}}        % basis vector
+\providecommand*{\bset}[3]{\seq{#1}{#2}{#3}} % basis set
+
+% tensor products
+%
+\providecommand*{\iprod}{\cdot}                                   % dot product
+\providecommand*{\tprod}{\otimes}                                 % tensor product
+\providecommand*{\sprod}[2]{\mleft\langle{#1},{#2}\mright\rangle} % scalar product
+
+% tensor slots
+%
+\providecommand*{\cslot}{{\scriptstyle\sim}}        % covector slot
+\providecommand*{\fslot}{{\scriptstyle\checkmark}}  % filled slot
+\providecommand*{\vslot}{{\scriptstyle\rightarrow}} % vector slot
+
+% tensor order
+%
+\providecommand*{\torder}[2]{\parens{{#1},{#2}}} % order, rank, type of a tensor
+
+% operators
+%
+\DeclareMathOperator{\cont}{cont} % tensor contraction
+
+% index-notation
+%
+\providecommand*{\tcov}[2]{\tensor{#1}{_{#2}}}                 % covector components
+\providecommand*{\tvec}[2]{\tensor{#1}{^{#2}}}                 % vector components
+\providecommand*{\tvecfmet}[2]{\tensor{\fmetric}{^{#1}^{#2}}}  % flat metric components
+%
+\providecommand*{\tmetric}[2]{\tensor{\metric}{_{#1}_{#2}}} % metric components
+\providecommand*{\tinvmet}[2]{\tensor{\metric}{^{#1}^{#2}}} % inverse metric components
+\providecommand*{\tidtens}[2]{\tensor{\idtens}{^{#1}_{#2}}} % identity tensor components
+\providecommand*{\tkron}[2]{\tensor{\kron}{^{#1}_{#2}}}     % Kronecker's delta components
+%
+\providecommand*{\tbcov}[1]{\tensor{\bcov}{^{#1}}} % basis covectors
+\providecommand*{\tbvec}[1]{\tensor{\bvec}{_{#1}}} % basis vectors

@@ -1,0 +1,121 @@
+
+\ProvidesPackage{./sty/artstyle}[2015/06/27 Style for short articles. rimbaudcode]
+
+% packages
+%
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage[pdalt]{bropd}
+\RequirePackage{colonequals}
+\RequirePackage{epigraph}
+\RequirePackage[fixamsmath,disallowspaces]{mathtools}
+\RequirePackage{microtype}
+\RequirePackage{mleftright}
+\RequirePackage{tensor}
+\RequirePackage[inline]{showlabels}
+\RequirePackage[dvipsnames,table]{xcolor}
+%
+\RequirePackage[xetex]{hyperref}
+%
+% refcheck does not work with cleveref by default. refcheck must be hacked
+%
+\RequirePackage{cleveref}
+\RequirePackage{refcheck}
+%
+% hack for refcheck to work with cleveref
+% http://tex.stackexchange.com/questions/87610/making-refcheck-work-with-cleveref
+%
+\makeatletter
+\newcommand{\refcheckize}[1]{%
+  \expandafter\let\csname @@\string#1\endcsname#1%
+  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[1]{%
+    \csname @@\string#1\endcsname{##1}\@for\@temp:=##1\do{\wrtusdrf{\@temp}}}%
+  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
+}
+\newcommand{\refcheckizetwo}[1]{%
+  \expandafter\let\csname @@\string#1\endcsname#1%
+  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[2]{%
+    \csname @@\string#1\endcsname{##1}{##2}\wrtusdrf{##1}\wrtusdrf{##2}}%
+  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
+}
+\makeatother
+%
+\refcheckize{\cref}
+\refcheckize{\Cref}
+\refcheckizetwo{\crefrange}
+\refcheckizetwo{\Crefrange}
+
+% fonts
+%
+% Minion Pro with old style numerals
+%
+\RequirePackage[english]{babel}    % language support
+\RequirePackage[no-math]{mathspec} % oldstyle nums in math mode
+\RequirePackage{xunicode}          % xetex
+\RequirePackage{xltxtra}           % xetex
+%
+\setmathsfont(Digits)[Numbers={OldStyle}]{MinionPro-Regular} %
+\setsansfont[Mapping=tex-text,Scale=0.9]{Myriad Pro}         % sans font
+\setmonofont[Mapping=tex-text,Scale=0.8]{Menlo}              % mono font
+\defaultfontfeatures{Numbers=OldStyle}                       % before setting the roman font
+\setmainfont[Mapping=tex-text]{MinionPro-Regular}            % roman font
+\addfontfeature{Kerning=Uppercase}                           % space in Uppercase
+
+% amsthm package
+%
+\theoremstyle{plain}
+\newtheorem{theorem}{Proposition}
+%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}
+%
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem*{notation}{Notation}
+%
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+% epigraph package
+%
+\renewcommand{\epigraphsize}{\footnotesize\sffamily}
+\setlength{\epigraphrule}{0pt}
+
+% showlabels package
+%
+\renewcommand{\showlabelfont}{\footnotesize\sffamily\color{VioletRed}}
+
+% color definitions
+%
+\definecolor{darkgray}{gray}{0.30}
+\definecolor{halfgray}{gray}{0.50}
+
+% hyperref setup
+%
+\hypersetup
+{
+  colorlinks=true,
+  linktocpage=true,
+  pdfstartpage=1,                                        % 3 for Books and 1 for Reports (3 default)
+  pdfstartview=FitPage,                                  % FitH=fit height, default=FitV=fit Vertical
+  breaklinks=true, pdfpagemode=UseNone, pageanchor=true,
+  pdfpagemode=UseOutlines,
+  plainpages=false, bookmarksnumbered, bookmarksopen=true,
+  bookmarksopenlevel=1,
+  hypertexnames=true, pdfhighlight=/O,
+  %
+  %urlcolor= \darkgray, 
+  %linkcolor= \darkgray,
+  %citecolor= \darkgray,
+  %
+  %pdftitle={},
+  %pdfauthor={},
+  %pdfsubject={},
+  %pdfkeywords={},
+  pdfcreator={XeLaTeX with package hyperref},
+  pdfproducer={XeLaTeX with hyperref}
+}

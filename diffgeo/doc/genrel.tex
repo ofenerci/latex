@@ -1,222 +1,463 @@
 
-\section{Tensor calculus applied to general relativity}
+\section{Differential geometry on general relativity}
 
-Herein, we deal with a geometric description of general relativity using \lingo{differential geometry} as an extension to vector calculus.
+\subsection{Introduction}
+%
+\theme{Source:} this section summarizes \cite{bertschinger:1999}.
 
-We use units where the speed of light is unity, $\klight = 1$. \emph{Greek} indices range from 0 to 3 and are used to represent components of tensors. We assume Einstein's summation convention: repeated upper and lower indices are to be summed over their ranges; \eg, $\tvec a\mu\tcov b\mu = \tvec a0\tcov b0 + \tvec a1\tcov b1 + \tvec a2\tcov b2 + \tvec a3\tcov b3$. Vectors are noted with arrows, $\vec v$, while covectors with a tilde, $\cov p$. Events, spacetime points, are denoted without decoration, $\event P$, while the position of $\event P$ by $\vec\pos\vat{\event P}$ or, shortly by, $\vec\pos$. Finally, the coordinates of a point, once a coordinate system is chosen, will be denoted with a superscript index, $\tepos\mu$.
+\theme{Requirement:} general relativity (GR) requires familiarity with the geometrical properties of curved spacetime.
+
+\theme{GR essential ideas:} a curved, four-dimensional pseudo-Riemannian manifold models spacetime. At every event (spacetime point), general relativity physics is locally special relativity physics. Mass (as mass and momentum flux) curves spacetime as described by Einstein's field equations.
+
+\theme{Events:} Points in spacetime.
+
+\theme{Covariant principle:} the laws of physics must be expressed in a form that is valid independently of any coordinate system used to label events.
+
+\theme{Geometric description} of GR is better suited to develop physical understanding and thus used for theoretical work. Components and coordinate systems are useful for calculations \emph{once a coordinate system is chosen} .
+
+\theme{Conventions and notation:} assume units where \lingo{speed of light of vacuum} is unity, $\klight = 1$. \emph{Greek} indices ranging from 0 to 3 will represent tensorial components. \lingo{Coordinate-free notation}, \lingo{abstract index notation}, and \lingo{Einstein's summation convention} are used. Vectors will be decorated with an arrow, $\vec v$, while covectors with a tilde, $\cov p$. Events will be denoted with calligraphic fonts, $\event P$. Event positions on spacetime by $\vec\pos\vat{\event P}$, or shortened to $\vec\pos$. Event coordinates $\tvec\pos\mu\vat{\event P}$, or shortened to $\tvec\pos\mu$. The flat spacetime metric (Minkowski metric) components are $\tvecfmet\mu\nu = \diag\tuple{-1,+1,+1,+1}$.
 
 
 \subsection{Vectors and covectors}
+%
+\theme{GR math:} differential geometry: the math of smoothly curved (hyper-)surfaces: differentiable manifolds.
 
-The essential math of general relativity is \lingo{differential geometry}: math dealing with \lingo{differential manifolds}, \aka\ smooth manifolds.
+\theme{Geometry} models physics, thus keep in mind the geometrical interpretation of physical quantities.
 
-It is important to distinguish the geometric interpretation of a physical quantity \vs\ its representation on coordinate; thus, for instance, a vector $\vec v$ is different from its coordinate counterpart $\tvec v\mu$.
+\theme{Plan:} introduction of geometric objects in a coordinate-free manner. Then, coordinates to simplify calculations.
 
-We introduce geometric objects in a component-free manner, using \lingo{abstract index notation}. We later introduce coordinates for the purpose of simplifying calculations. This approach requires a clear distinction between vectors, covectors, and tensors.
+\theme{Main geometric objects:} scalars, vectors, covectors, and tensors.
 
 
 \subsubsection{Vectors}
-
-A \lingo{vector} is a quantity with a magnitude and a direction. Vectors form a \lingo{vector space}: a set where its elements satisfy closed addition and multiplication by scalars. Vectors are \emph{invariant} under coordinate transformations, whereas vector components are \emph{not}.
-
-Events in spacetime are denoted as $\event P$, while its position by $\vec\pos\vat{\event P}$, or shortly $\vec\pos$. Note that $\vec\pos$ refers to a point, \emph{not} a vector; since there is no way to add two vectors in curved space, the geometric arena of general relativity. Thus, we are discussing \lingo{tangent vectors}; \ie, vectors that lie in the \lingo{tangent space} of the manifold at each point. As long as the space is smooth (as assumed when a differential manifold was considered), the differential position $d\vec\pos$ between two infinitesimally close points may be defined. The set of all $d\vec\pos$ defines the tangent space at $\vec\pos$. By assigning a tangent vector to every spacetime point, we can recover the concept of a \lingo{vector field}. With \lingo{parallel transport}, to be introduced later, we may compare vectors.
-
-
-\subsubsection{Covectors}
-
-Also known as a \lingo{one-form}, a \lingo{covector} is a linear scalar function of a vector; a covector takes a vector as input and outputs a scalar. The action of a covector $\cov p$ an a vector $\vec v$, $\cov p\vat{\vec v}$, is also called the \lingo{scalar product} and may be denoted using angle brackets:
 %
-\begin{equation}\label{eq:scalarproductvectorcovector}
-  \cov p\vat{\vec v} = \sprod{\cov p}{\vec v}\,.
+\theme{Vector:} a quantity with a magnitude and a direction. Vectors form a linear space (linear algebra, \aka\ vector space); \ie, it's possible to add vectors and multiply them by scalars. Addition is closed.
+
+Scalars and vectors are \lingo{invariant} under coordinate transformations; vector \emph{components} are not.
+
+\theme{Events:} denote events in spacetime by $\event P$. This notation refers to a point in spacetime \emph{not} to a vector. So there's no need to think of vectors going from an origin to a point.
+
+\theme{Separation:} as long as space is smooth (as assumed by considering a differentiable manifold), it's possible to define the separation (vector) $d\vec\sep$ between two infinitesimally close events, say $\event P,\event Q$. The set of all $d\vec\sep_\event{P}$ defines a tangent space at $\event P$. 
+
+\theme{Vector field:} by assigning a tangent vector to \emph{every} event, we define a vector field at $\event P$.
+
+
+\subsubsection{Covectors and dual vector space}
+%
+\theme{Covector:} defined as a linear scalar function of a vector; \ie, a covector takes a vector as input and outputs a scalar. 
+
+Consider a covector $\cov p$, a linear space $\lspace V$, and a vector $\vec v\in\lspace V$. Then, 
+%
+\begin{equation*}
+  \fdef{\cov p}{\lspace V}{\rspace}\suchthat\fmap{\vec v}{\rspace}\,.
+\end{equation*}
+
+\theme{Scalar product:} the action of $\cov p$ on $\vec v$, $\cov p\vat{\vec v}$, denoted with angle brackets:
+%
+\begin{equation}\label{eq:scalarproductcovectoronvector}
+  \cov p\vat{\vec v} \defas \sprod{\cov p}{\vec v}\,.
 \end{equation}
 
-Covectors are linear functions; \ie, for all scalars $a,b$ and vectors $\vec v,\vec w$, the covector satisfies
+\theme{Notation:} use a right arrow $\vslot$ to denote a vector argument of a function, a tilde $\cslot$ for a covector argument, and a checkmark $\fslot$ for a taken argument.
+
+\theme{Scalar product operator:} binary operator taking a covector and a vector to return a scalar, $s\in\rspace$
 %
-\begin{equation}\label{eq:scalarproductidentities}
-  \cov p\vat{a\vec v + b\vec w} = \sprod{\cov p}{a\vec v + b\vec w}
-                                = a\sprod{\cov p}{\vec v} + b\sprod{\cov p}{\vec v}
-                                = a\cov p\vat{\vec v} + b\cov p\vat{\vec w}\,.
+\begin{equation*}
+  \fdef{\sprod\cslot\vslot}{\dlspace V\setprod\lspace V}{\rspace}\suchthat\fmap{\tuple{\cov p, \vec v}}{s}\,,
+\end{equation*}
+%
+\theme{Note:} as defined, the scalar product works \emph{only} for covectors and vectors!
+
+\theme{Covector as maps:} covectors are linear functions; \ie, consider two scalars $a,b\in\rspace$, two vectors $\vec v,\vec w$, and a covector $\cov p$. Then, $\cov p$ satisfies
+%
+\begin{align}\label{eq:covectorpropertiesasmap}
+  \cov p\vat{a\vec v + b\vec w} &= \sprod{\cov p}{a\vec v + b\vec w}                  \,, && \eqtxt{action of $\cov p$ on a vector} \\\nonumber
+                                &= a\sprod{\cov p}{\vec v} + b\sprod{\cov p}{\vec w}  \,, && \eqtxt{linearity}              \\\nonumber
+                                &= a\cov p\vat{\vec v} + b\cov p\vat{\vec w}          \,. && \eqtxt{definition of scalar product} \nonumber
+\end{align}
+
+\theme{Vectors and covectors are different:} consider covectors as independent objects of any vector (covectors are just functions!).
+
+\theme{Covector field:} association of a covector to every event.
+
+\theme{Distinction between objects} Events $\event P$, covectors $\cov p$, and vectors $\vec v$ are all distinct, as seen by $\sprod{\cov p_\event{P}}{\vec v_\event{P}}$.
+
+\theme{Dual vector space:} covectors obey their own (linear) algebra, distinct from that of vectors. Thus, given two scalars $a,b\in\rspace$ and two covectors $\cov p,\cov q$. Then, we may define the covector $a\cov p + b\cov q$ by its action on a vector $\vec v$ as
+%
+\begin{equation}\label{eq:dualvectorspace}
+  \br{a\cov p + b\cov q}\vat{\vec v} = \sprod{a\cov p + b\cov q, \vec v} 
+                                     = a\sprod{\cov p}{\vec v} + b\sprod{\cov q}{\vec v}
+                                     = a\cov p\vat{\vec v} + b\cov q\vat{\vec v}\,.
 \end{equation}
 
-Then, we may consider the covector $\cov p$ independently of any particular vector $\vec v$. By associating a covector to \emph{every} point in a manifold, we can define a \lingo{covector field}. Note that $\cov p$ is a covector at a point $\point P$, while $\cov p\vat{\vec v}$ is a scalar defined at $\point P$.
-
-Covectors obey their own linear algebra distinct from that of vectors. Given any two scalars $a,b$ and two covectors $\cov p,\cov q$, we may define the covector $a\cov p + b\cov q$ by
+\theme{Note:} by \cref{eq:scalarproductcovectoronvector,eq:dualvectorspace}, vectors and covectors are linear operators on each other, producing scalars. Thus, we may write
 %
-\begin{equation}\label{eq:covectorlinearity}
-  \br{a\cov p + b\cov q}\vat{\vec v}  = \sprod{a\cov p + b\cov q}{\vec v}
-                                      = a\sprod{\cov p}{\vec v} + b\sprod{\cov q}{\vec v}
-                                      = a\cov p\vat{\vec v} + b\cov q\vat{\vec v}\,.
-\end{equation}
+\begin{equation*}
+  \sprod{\cov p}{\vec v} = \cov p\vat{\vec v}
+                         = \vec v\vat{\cov p}\,.
+\end{equation*}
+%
+The set of all covectors is a linear space complementary to, but different from, the linear space of vectors.
 
-Comparing \cref{eq:scalarproductidentities} and \cref{eq:covectorlinearity}, we see that vectors and covectors are linear operators on each other, producing scalars. Thus, it is helpful to consider a vector as being a linear scalar function of a covector. Thus, we may write $\sprod{\cov p}{\vec v} = \cov p\vat{\vec v} = \vec v\vat{\cov p}$. The vector space of covectors is called the \lingo{dual vector space}, or cotangent space.
+\theme{Dual vector space:} call the set of all covectors \lingo{dual vector space}.
 
-As we will see, the distinction between vectors and covectors is necessary because spacetime is curved.
+\theme{Necessary distinction} between vectors and covectors, since spacetime is curved.
 
 
 \subsection{Tensors}
-
-A \lingo{tensor of order $\torder mn$}, also called a $\torder mn$ tensor, is a scalar function of $m$ vectors and $n$ covectors that is linear in all of tis arguments. It follows that scalars are tensors of order $\torder 00$, vectors of order $\torder 10$, and covectors of order $\torder 01$. We may denote a tensor of order $\torder 02$ by $t\vat{\cov p,\cov q}$.
-
-\begin{note}[Alternative definition of tensor]
-  A \lingo{tensor} on the vector space $\vecspace V$ is defined to be an element of a vector space of the form:
-  %
-  \begin{equation*}
-    \vecspace V\tprod\dotsb\tprod\vecspace V\tprod\covspace V\tprod\dotsb\covspace V\,,
-  \end{equation*}
-  %
-  where $\covspace V$ is the dual space of $\vecspace V$.
-  
-  If there are $m$ copies of $\vecspace V$ ($m$ vectors) and $n$ copies of $\covspace V$ ($n$ covectors) in our product, then the tensor is said to be of order $\torder mn$, contravariant of order $m$, covariant of order $n$, and of total order $m + n$.
-\end{note}
-
-\begin{remark}
-  Our notation does not distinguish a $\torder 20$ tensor $t$ from a $\torder 21$ tensor $t$. However, a distinction could be made by placing $m$ arrows and $n$ tildes over the symbol, or by appropriate use of dummy indices.
-\end{remark}
-
-\begin{note}[Alternative definition of tensor]
-  An order-$n$ tensor $t$ is, by definition, a real-valued, linear function of $n$ vectors. Pictorially, we shall regard $t$ as a box with $n$ slots in its top, into which are inserted $n$ vectors, and one slot in its end, which prints out a single real number: the value that the tensor $t$ has when evaluated as a function of the $n$ inserted vectors:
-  %
-  \begin{equation*}
-    t\underbrace{\vat{\eslot,\dotsc,\eslot}}_{\text{$n$ slots}}\,.
-  \end{equation*}
-\end{note}
-
-\begin{remark}
-  A notation can be made by using slots in the places where vectors and covectors should go. For instance, a $\torder 20$ tensor $t$ can be noted as $t\vat{\vslot,\vslot}$; whereas a $\torder 21$ tensor $t$, as $t\vat{\vslot,\vslot,\cslot}$. 
-\end{remark}
-
-\begin{remark}
-  A tensor returns a scalar only when all of its slots are full. Otherwise, it returns tensors of different order. For instance, consider a tensor that takes two vectors and two covectors -- a $\torder 22$ tensor, call it $t$. In slot notation, $t$ is written as $t\vat{\vslot,\vslot,\cslot,\cslot}$. When a vector $\vec v$ is inserted in $t$ first slot and a covector $\cov p$ in the last slot, then $t$ becomes $t\vat{\vslot,\vec v,\cslot,\cov p}$, a $\torder 11$ tensor. If, now, another vector $\vec w$ and another covector $\cov q$ are inserted in the .
-\end{remark}
-
-The \lingo{scalar product} is a $\torder 11$ tensor, denoted $\idtens$, and called the \lingo{identity tensor}:
 %
-\begin{equation}\label{eq:identitytensorproduct}
+\theme{Tensor of order $\torder mn$:} defined as a scalar function of $m$ vectors and $n$ covectors, linear in all of its arguments. Refer to a tensor of order $\torder mn$ also as $\torder mn$-tensor.
+
+\theme{Tensor types:} from the definition, scalars are $\torder 00$ tensors, vectors $\torder 10$ tensors, and covectors $\torder 10$ tensors.
+
+\theme{Notation:} the $\torder mn$ notation does not distinguish were vectors and covectors are to be placed. To solve this, represent vectors by arrows and covectors by tildes in tensor slots; \eg, a $\torder 21$ tensor $t$ taking a vector in its first and third slots and a covector in the second will be noted as a linear function with two vector and one covector arguments: $t\vat{\vslot,\cslot,\vslot}$.
+
+\theme{Identity tensor:} the scalar product is a $\torder 11$ tensor, denoted by $\idtens$ and called \lingo{identity tensor}
+%
+\begin{equation}\label{eq:identitytensordefinition}
   \idtens\vat{\cov p, \vec v} \defas \sprod{\cov p}{\vec v}
                               = \cov p\vat{\vec v}
                               = \vec v\vat{\cov p}\,.
 \end{equation}
-
-A tensor of order $\torder mn$ is linear in all of its arguments. Consider, for instance, a $\torder 20$ tensor $t$, then, as extension of \cref{eq:scalarproductidentities}, we have:
+%
+The identity tensor is a function that take a covector and a vector and returns a scalar, $s$:
 %
 \begin{equation*}
-  t\vat{a\cov p + b\cov q, c\cov r + d\cov s} = ac t\vat{\cov p,\cov r}
-                                              + ad t\vat{\cov p,\cov s}
-                                              + bc t\vat{\cov q,\cov r}
-                                              + bd t\vat{\cov q,\cov s}\,.
+  \fdef{\idtens}{\dlspace V\setprod\lspace V}{\rspace}\suchthat
+  \fmap{\tuple{\cov p,\vec v}}{\sprod{\cov p}{\vec v} = s}\,.
 \end{equation*}
 %
-Tensor of a giver order form a linear space; \ie, a linear combination of tensors of order $\torder mn$ is a $\torder mn$ tensor, defined as an extension of \cref{eq:covectorlinearity}. It is important to keep track of the oder of every tensor, since tensors of different order cannot be added or compared.
+If a covector $\cov p$ is plugged into $\idtens$ but no vector, then $\idtens\vat{\cov p, \vslot} = \cov p$. Thus, a covector can be seen as a function waiting for a vector to produce a scalar. By a similar argument, a vector can be seen as a function waiting for a covector to return a scalar.
 
-As scalars, vectors, and covectors, tensors can be associated at every point to form a \lingo{tensor field}.
+\theme{Notation:} reserve the angle bracket scalar product for the identity tensor.
 
-There are three ways of changing a tensor order: via the tensor product, contraction, and gradient (to be discussed later).
-
-The \lingo{tensor product}, denoted by the symbol $\tprod$, combines two tensors of order $\torder mn$ and $\torder{m'}{n'}$ to form a tensor of order $\torder{m + m'}{n + n'}$ by combining the argument list of the two tensors and thereby expanding the dimensionality of the tensor space. For instanace, the tensor product of two vectors $\vec a,\vec b$ gives a $\torder 20$ tensor:
+\theme{Linearity:} a $\torder mn$ tensor is linear in all of its arguments. For instance, for $m = 2$ and $n = 0$, by extension of \cref{eq:covectorpropertiesasmap}, we have
 %
-\begin{equation*}
-  t = \vec a\tprod\vec b
-    = t\vat{\cov p,\cov q}\,,\qquad
-  t \defas \vec a\vat{\cov p}\vec b\vat{\cov q}\,.
-\end{equation*}
-
-The tensor product is \emph{non-comutative}: $\vec a\tprod\vec b\neq\vec b\tprod\vec a$, since $\vec a\vat{\cov p}\vec b\vat{\cov q}\neq\vec a\vat{\cov q}\vec b\vat{\cov q}$. We also use the symbol $tprod$ to denote the tensor product of two tensors; \eg, $s =\cov p\tprod t = \cov p\tprod\vec a\tprod\vec b$, a $\torder 21$ tensor, or, in slot notation $s\vat{\cslot,\vslot,\vslot}$.
-
-Tensor contraction also change the order of a tensor. It reduces its order from $\torder mn$ to $\torder{m - 1}{n - 1}$.
-
-
-\subsection{The metric tensor}
-%
-As defined, the scalar product \cref{eq:scalarproductvectorcovector} requires a vector and a covector. Is it possible to obtain a scalar from two vectors of from two covectors? From the definition of tensors, the answer is yes! Any tensor of order $\torder 02$ will give a scalar from two covectors and any tensor $\torder 20$ combines two vectors to gie a scalar. However, there is a particular $\torder 20$ tensor \emph{field} $\metric$ called the \lingo{metric tensor} and a related $\torder 02$ tensor field $\invmet$ called the \lingo{inverse metric tensor}.
-
-The metric tensor is a symmetric, bilinear scalar function of two vectors, $\metric\vat{\vslot,\vslot}$; \ie, given two vectors $\vec v,\vec w$, $\metric$ returns a scalar, called the \lingo{dot product}:
-%
-\begin{equation}\label{eq:vectordotproduct}
-  \metric\vat{\vec v,\vec w} = \vec v\iprod\vec w 
-                             = \vec w\iprod\vec v
-                             = \metric\vat{\vec w, \vec v}\,.
+\begin{equation}\label{eq:linearityoftensors}
+  t\vat{a\cov p + b\cov q, c\cov r + d\cov s} = ac\,t\vat{\cov p, \cov r} 
+                                              + ad\,t\vat{\cov p, \cov s} 
+                                              + bc\,t\vat{\cov q, \cov r} 
+                                              + bd\,t\vat{\cov q, \cov s}
 \end{equation}
 %
-See that $\metric$ returns a scalar when both slots are taken.
+By extension of \cref{eq:dualvectorspace}, tensors of a given order form a linear algebra: a linear combination of $\torder mn$ tensors is also a $\torder mn$ tensor.
 
-Similarly, $\invmet$ is a $\torder 02$ tensor ($\invmet\vat{\cslot,\cslot}$) that returns a scalar from two covectors $\cov p,\cov q$. The inverse metric is also called the \lingo{dot product}:
+\theme{Equality:} two tensors of the same order are equal if they return the same scalar when applied to all possible input vectors and covectors.
+
+\theme{Addition:} only tensors of the same order may be added or compared.
+
+\theme{Note:} due to equality and addition, it's \emph{crucial} to keep track the order of each tensor.
+
+\theme{Tensor fields:} association of a tensor to every event; just as scalar fields, vector fields, and covector fields.
+
+\theme{Changing tensor order:} by i) tensor product, ii) contraction, and iii) taking its gradient.
+
+\theme{Tensor product:} noted by $\tprod$, the tensor product combines two tensors of order $\torder mn$ and $\torder{m'}{n'}$ to form a tensor of order $\torder{m + m'}{n + n'}$ by simply combining the argument list of the two tensors and thereby expanding the dim of the tensor space. For instance, the tensor product of two vectors $\vec a,\vec b$ gives a $\torder 20$ tensor:
 %
-\begin{equation}\label{eq:covectordotproduct}
+\begin{equation}\label{eq:vectorvectortensorproduct}
+  t = \vec a\tprod\vec b\,,\quad t\vat{\cov p, \cov q} \defas \vec a\vat{\cov p}\vec b\vat{\cov q}\,,
+\end{equation}
+%
+or, as a function, $\tprod:\fmap{\tuple{\vec a,\vec b}}{\vec a\vat{\cov p}\vec b\vat{\cov q}}$. 
+
+\theme{Process:} remember that every vector can be seen as having a potential covector and every covector as having a potential vector. Thus, when forming a tensor $t = \vec a\tprod\vec b$, we are leaving the potential covectors in the arguments of $t$; \ie, $t\vat{\cov p,\cov q}$. So that, when $t$ is evaluated, it can return the scalar $\vec a\vat{\cov p}\vec b\vat{\cov q}$.
+
+\theme{Example:} Say there is a $\torder 21$ tensor $t\vat{\cslot,\vslot,\vslot}$. Then, it can be seen as a product of a covector $\cov u$, a vector $\vec v$, and a vector $\vec w$; \ie, $t = \cov u\tprod\vec v\tprod\vec w$. Thus, when forming $t$ by the tensor product, we are leaving the dual of the forming entities in the argument list of $t$:
+%
+\begin{equation*}
+  t\vat{\cslot,\vslot,\vslot}         \,,\quad 
+  t = \cov u\tprod\vec v\tprod\vec w  \,,\quad
+  t\vat{\vec a,\cov b,\cov c} = \cov u\vat{\vec a}\vec v\vat{\cov b}\vec w\vat{\cov c}\,.
+\end{equation*}
+
+\theme{Note:} the preceding reasoning will help, I hope, to understand tensors in coordinate bases.
+
+\theme{Commutativity:} the tensor product is anti-commutative: $\vec a\tprod\vec b \neq \vec b\tprod\vec a$, since $\vec a\vat{\cov p}\vec b\vat{\cov q}\neq\vec a\vat{\cov q}\vec b\vat{\cov p}$, for all $\cov p$ and $\cov q$.
+
+\theme{Contraction:} contraction reduces the order of a $\torder mr$ tensor to $\torder{m - 1}{n - 1}$.
+
+\theme{Gradient:} to be discussed later.
+
+
+\subsubsection{Metric tensor}
+%
+\theme{Extending scalar product:} as defined \cref{eq:scalarproductcovectoronvector}, the scalar product requires a covector and a vector. It can be extended to accept two vectors or two covectors by the definition of a tensor. Any $\torder 20$ tensor will give a scalar from two vectors and any $\torder 02$ tensor will give a scalar from two covectors. However, there is a special $\torder 20$ tensor field called the \lingo{metric} $\metric$ and a related $\torder 02$ tensor called the \lingo{inverse metric tensor} that deserve special attention.
+
+\theme{Metric tensor:} a symmetric, bilinear scalar function of two vectors, $\metric\vat{\vslot,\vslot}$, or $\fdef{\metric}{\lspace V\setprod\lspace V}{\rspace}$. Consider two vectors $\vec v,\vec w$. Then $\metric$ returns a scalar, called the \lingo{dot product}:
+%
+\begin{equation}\label{eq:metricdotproduct}
+  \metric\vat{\vec v, \vec w} = \vec v\iprod\vec w 
+                              = \vec w\iprod\vec v 
+                              = \metric\vat{\vec w,\vec v}\,.
+\end{equation}
+
+\theme{Inverse metric tensor:} a symmetric, bilinear scalar function of two covectors, $\metric\vat{\cslot,\cslot}$, or $\fdef{\invmet}{\dlspace V\setprod\dlspace V}{\rspace}$. Consider two covectors $\cov p,\cov q$. Then $\invmet$ returns a scalar, called the \lingo{dot product}:
+%
+\begin{equation}\label{eq:inversemetricdotproduct}
   \invmet\vat{\cov p, \cov q} = \cov p\iprod\cov q
-                              = \cov q\iprod\cov p
+                              = \cov q\iprod\cov p 
                               = \invmet\vat{\cov q,\cov p}\,.
 \end{equation}
-%
-The two different dot products are to be distinguished by context. We reserve the dot product notation for the metric and for the inverse metric tensors, just as we reserve the angle brackets scalar product notation for the identity tensor \cref{eq:identitytensorproduct}.
 
-One of the most important properties of the metric is that 
+\theme{Note:} reserve the dot product notation for the metric and inverse metric tensors.
+
+\theme{Property:} the metric allows us to convert vectors to covectors. If we forget to include a vector $\vec w$ in \cref{eq:metricdotproduct}, then we get a quantity, denoted $\cov v$, that behaves as a covector:
 %
-\begin{quotation}
-  the metric allows us to convert vectors into covectors.
-\end{quotation}
-%
-If we \scare{forget} to include $\vec w$ in \cref{eq:vectordotproduct}, then we get a quantity, denoted $\cov v$, that behaves like a covector:
-%
-\begin{equation}\label{eq:halffullmetric}
-  \cov v\vat\vslot \defas \metric\vat{\vec v,\vslot} 
-                   = \metric\vat{\vslot,\vec v}\,.
+\begin{equation}\label{eq:metricasmap}
+  \cov v\vat{\vslot} \defas \metric\vat{\vec v, \vslot}
+                      = \metric\vat{\vslot, \vec v}\,,
 \end{equation}
 %
-where we have inserted an arrow $\vslot$ to remind ourselves that a \emph{vector} must be inserted to yield a scalar. (Remember: a covector is a scalar function of a vector!) We use the \emph{same} letter to indicate the relation between $\vec v$ and $\cov v$. Thus, we see that
+where we have inserted a $\vslot$ to remind ourselves that a vector must be inserted to return a scalar.
+
+\theme{Metric as map:} $\metric$ acts as a map from the space of vectors to that of covectors: $\fdef{\metric}{\lspace V}{\dlspace V}$. By definition, $\invmet$ is the inverse map: it takes covectors and returns vectors: $\fdef{\invmet}{\dlspace V}{\lspace V}$.
+
+\theme{Inverse metric as map:} if $\cov v$ is defined for any $\vec v$ by \cref{eq:metricasmap}, then the inverse metric $\invmet$ is defined by
 %
-\begin{quotation}
-  the metric tensor $\metric$ is a mapping from the space of vectors to the space of covectors, $\fdef{\metric}{\vecspace V}{\covspace V}$. By definition, the inverse metric tensor $\invmet$ is the inverse mapping: $\fdef{\invmet}{\covspace V}{\vecspace V}$.
-\end{quotation}
-%
-It can be proven that the inverse \emph{always} exists for nonsingular spacetimes. Thus, if $\cov v$ is defined for any $\vec v$, by \cref{eq:halffullmetric}, then the inverse metric tensor is defined by
-%
-\begin{equation}\label{eq:halffullinvmetric}
+\begin{equation}\label{eq:inversemetricasmap}
   \vec v\vat{\cslot} \defas \invmet\vat{\cov v, \cslot}
-                      = \invmet\vat{\cslot,\cov v}\,.
+                      = \invmet\vat{\cslot, \cov v}\,.
 \end{equation}
+
+\theme{Scalars from vectors and covectors:} \cref{eq:identitytensordefinition} and \crefrange{eq:metricdotproduct}{eq:inversemetricasmap} give us several ways to obtain scalars from vectors $\vec v,\vec w$ and their associated covectors $\cov v,\cov w$:
 %
-\Crefrange{eq:identitytensorproduct}{eq:halffullinvmetric} give us several equivalent ways to obtain scalars from vectors $\vec v,\vec w$ and their associated covectors $\cov v$ and $\cov w$:
-%
-\begin{equation}
-  \sprod{\cov v}{\vec w} = \sprod{\cov w}{ \vec v}
+\begin{equation}\label{eq:scalarsfromvecsandassociatedcovecs}
+  \sprod{\cov v}{\vec w} = \sprod{\cov w}{\vec v}
                          = \vec v\iprod\vec w
                          = \cov v\iprod\cov w
-                         = \idtens\vat{\cov v, \vec w}
-                         = \idtens\vat{\cov w, \vec v}
-                         = \metric\vat{\vec v, \vec w}
-                         = \invmet\vat{\cov v, \cov w}\,.
+                         = \idtens\vat{\cov v,\vec w}
+                         = \idtens\vat{\cov w,\vec v}
+                         = \metric\vat{\vec v,\vec w}
+                         = \invmet\vat{\cov v,\cov w}\,.
 \end{equation}
 
+\theme{Pattern:} both the angle bracket product and the identity tensor accept a covector and a vector (in that order!), dot product accepts either two covectors or two vectors, metric tensor accepts only vectors, and inverse metric tensor accepts only covectors.
 
-\subsection{Some concepts revisited}
+
+\subsubsection{Basis vectors and covectors}
 %
-\subsubsection{Tensor product -- revisited}
+\theme{Geometric formulation} of GR is best suited for understanding and theoretical work.
 
-From any number of vectors, say $\vec a, \vec b, \vec c$, we can construct a tensor; their tensor product, defined as
+\theme{Coordinates} are better suited to perform calculations.
+
+\theme{How to introduce coordinates?} Introduce a set of linearly independent basis vectors and a set of linearly independent basis covectors spanning our vector and dual vector spaces.
+
+\theme{How many basis vectors?} The number of linearly independent basis vectors equals the dimensionality of the vector space. In our case, we need four basis vectors and four basis covectors, since the dimensionality of spacetime is four.
+
+\theme{Basis vectors:} set of basis vector fields: $\bset{\tbvec\mu}{\mu = 0}{3}$, where the index $\mu$ labels the basis vector.
+
+\theme{Note:} \emph{any} four linearly independent basis vectors at each event will work. We do \emph{not} impose orthogonality, nor orthonormality, \emph{nor} any other condition in general. There is \emph{no} implied relation to coordinates!
+
+\theme{Vector projection:} given a basis, we may project (expand) \emph{any} vector field $\vec a$ as a linear combination of basis vectors:
+%
+\begin{equation}\label{eq:vectorprojectiononbasisvectors}
+  \vec a = \tvec a\mu\tbvec\mu
+         = \tvec a0\tbvec 0 + \tvec a1\tbvec 1 + \tvec a2\tbvec 2 + \tvec a3\tbvec 3\,.
+\end{equation}
+%
+Note the pairing of superscripts with subscripts to satisfy Einstein's summation covention.
+
+\theme{Contravariant components:} the coefficients $\tvec a\mu$ are called the components of the vector on the given basis, \aka\ contravariant components.
+
+\theme{Important!} the components $\tvec a\mu$ depend on the basis vectors $\tbvec\mu$, but the vector $\vec a$ does \emph{not}!
+
+\theme{Covector projection:} similarly, we may choose a basis of covectors on which to project (expand) covectors. Although \emph{any} four linearly independent covectors will suffice for each event, we \emph{prefer} to choose a special covector basis called the dual basis, denoted $\bset{\tbcov\mu}{\mu = 0}{3}$.
+
+\theme{Relation basis vectors and basis vectors} So far, there is \emph{no} relation between basis vectors and basis covectors, not even given by the metric tensor. Rather, the dual basis (covector basis) is \emph{defined} by imposing the following requirements at each event:
+%
+\begin{equation}\label{eq:relationbasisvecbasiscovec}
+  \sprod{\tbcov\mu}{\tbvec\mu} = \tkron\mu\nu\,,
+\end{equation}
+%
+where $\kron$ is Kronecker's delta.
+
+\theme{Note:} Kronecker's delta has \emph{always} a superscript and a subscript.
+
+\theme{Covector projection:} Now, with the covector basis defined, we can expand any covector field $\cov p$ in the covector basis:
+%
+\begin{equation}\label{eq:vectorprojectiononbasiscovecs}
+  \cov p = \tcov p\mu\tbcov\mu\,.
+\end{equation}
+
+\theme{Covariant components:} the coefficients $\tcov p\mu$ are called the covariant components.
+
+\theme{Getting components:} there's a \scare{simple} way to get the components of vectors and covectors: use the fact that vectors are scalar functions of covectors and \vicvers. Thus, one simply evaluates the vector using the appropriate covector basis (action of $\vec a$ on $\tbcov\mu$):
+%
+\begin{align}\label{eq:veccomponentsusingcovecbasis}
+  \vec a\vat{\tbcov\mu} &= \sprod{\tbcov\mu}{\vec a}               \,,&&\eqtxt{definition of covector}\\\nonumber
+                        &= \sprod{\tbcov\mu}{\tvec a\nu\tbvec\nu}  \,,&&\eqtxt{expansion of $\vec a$ on $\tbvec\nu$}\\\nonumber
+                        &= \sprod{\tbcov\mu}{\tbvec\nu}\tvec a\nu  \,,&&\eqtxt{linearity}\\\nonumber
+                        &= \tkron\mu\nu\tvec a\nu                  \,,&&\eqtxt{definition of $\kron$}\\\nonumber
+                        &= \tvec a\mu                              \,,&&\eqtxt{index gymnastics}\\\nonumber
+\end{align}
+%
+similarly for a covectors:
+%
+\begin{equation}\label{eq:covcomponentsusingvecbasis}
+  \cov a\vat{\tbvec\mu} = \sprod{\tbvec\mu}{\cov a}
+                        = \sprod{\tbvec\mu}{\tcov a\nu\tbcov\nu}
+                        = \sprod{\tbvec\mu}{\tbcov\nu}\tcov a\nu
+                        = \tkron\mu\nu\tcov a\nu
+                        = \tcov a\nu\,,
+\end{equation}
+
+\theme{Note} that to get a \emph{vector component} (a scalar), we need a function that takes a vector and returns a scalar: the angle bracket product. However, for the angle bracket product to work, we need to plug the vector whose component we need and a covector: the basis covector! Now all works and makes sense! By the same token, to get a \emph{covector component} (a scalar), we need the angle bracket again and the \emph{vector basis}.
+
+\theme{Summary:} to get vector (contravariant) components, use the covector basis. To get covector (covariant) components, use the vector basis.
+
+
+\subsubsection{Tensor algebra}
+%
+\theme{Tensor components:} use the same ideas to expand tensors as products of components and basis tensors. First, we note that a basis for a $\torder mn$ tensor is provided by the tensor product of $m$ vectors and $n$ covectors. For instance, consider the $\torder 20$ metric tensor. The metric tensor can be decomposed into basis tensors $\tbcov\mu\tprod\tbcov\nu$. The \lingo{components} of a $\torder mn$ tensor, labeled with $m$ superscripts and $n$ subscripts, are obtained by evaluating the tensor using $m$ basis covectors and $n$ basis vectors.
+
+\theme{Tensor decomposition:} to decompose a vector, we need to use a basis covector. To decompose a covector, we need a basis vector. Thus, to decompose the metric tensor (that requires two vectors as input), we need two basis covectors forming a basis: $\tbcov\mu\tprod\tbcov\nu$.
+
+\theme{Metric tensor and inverse metric tensor components:} the components of the $\torder 20$ metric tensor, the $\torder 02$ inverse metric tensor, and the $\torder 11$ identity tensor are
+%
+\begin{align}\label{eq:metricinversemetricidentitytensorscomponents}
+  \tmetric\mu\nu &= \metric\vat{\tbvec\mu, \tbvec\nu} = \tbvec\mu\iprod\tbvec\nu \,,\\\nonumber
+  \tinvmet\mu\nu &= \invmet\vat{\tbcov\mu, \tbcov\nu} = \tbcov\mu\iprod\tbcov\nu \,,\\\nonumber
+  \tidtens\mu\nu &= \tkron\mu\nu = \idtens\vat{\tbcov\mu, \tbvec\nu} = \sprod{\tbcov\mu}{\tbvec\nu} \,.\\\nonumber
+\end{align}
+
+\theme{Proof:} $\metric$ eats up two vectors and returns a scalar: $\metric\vat{\vslot,\vslot}$, so it behaves like a covector. Then, $\metric$ can be thought of being the tensor product of two covectors: $\metric = \cov a\tprod\cov b$. On the other hand, to find the components of a covector $\cov a$, we used the basis vectors $\tbvec\mu$ and applied $\cov a$ to $\tbvec\mu$. Then, using the same technique as for covectors, we can apply the basis vectors to the metric tensor, we have:
+%
+\begin{align*}
+  \metric\vat{\tbvec\mu,\tbvec\nu} &= \br{\cov a\tprod\cov b}\vat{\tbvec\mu,\tbvec\nu}  \,,\\
+                                   &= \cov a\vat{\tbvec\mu}\cov b\vat{\tbvec\nu}        \,, \\
+                                   &= \sprod{\cov a}{\tbvec\mu}\sprod{\cov b}{\tbvec\nu} \,, \\
+                                   &= \sprod{\tcov a\alpha\tbcov\alpha}{\tbvec\mu}\sprod{\tcov b\beta\tbcov\beta}{\tbvec\nu} \,, \\
+                                   &= \tcov a\alpha\tcov b\beta\sprod{\tbcov\alpha}{\tbvec\mu}\sprod{\tbcov\beta}{\tbvec\nu} \,, \\
+                                   &= \tcov a\alpha\tcov b\beta\,\tkron\alpha\mu\tkron\beta\nu \,, \\
+                                   &= \tcov a\mu\tcov b\nu  \,,\\
+                                   &= \tmetric\mu\nu        \,.
+\end{align*}
+
+\theme{Note:} I don't like the last proof. It seems that something is wrong. Specially, $\metric = \vec a\tprod\vec b$.
+
+\theme{Remember:} metric tensor: $\metric\vat{\vslot,\vslot}$, inverse metric tensor: $\invmet\vat{\cslot,\cslot}$, and identity tensor: $\idtens\vat{\cslot,\vslot}$.
+
+\theme{Pattern:} metric tensor takes two vectors and returns a scalar, thus it eats up two basis vectors and uses the dot product. The inverse metric tensor takes two covectors and returns a scalar, thus it eats up two basis covectors and uses the dot product. The identity tensor takes a covector and a vector (in that order) and returns a scalar, thus it eats up a basis covector and a basis vector and uses the angle bracket product.
+
+\theme{Process:} metric tensor takes two vectors and returns a scalar, thus, to find its components, we need two basis vectors and a product capable of acting on them to return a scalar. We need the dot product. Similarly, for the inverse metric tensor and the identity tensor.
+
+\theme{Tensor expansion:} remember that vectors can be expanded into a vector basis, as $\tvec v\mu\tbvec\mu$, we want to do the same with higher-order tensors. Tensors are given by summing over the tensor product of basis vectors and covectors:
+%
+\begin{align}\label{eq:metricinvmetricidtensorexpansiononabasis}
+  \metric &= \tmetric\mu\nu\,\tbcov\mu\tprod\tbcov\nu \,,\\\nonumber
+  \invmet &= \tinvmet\mu\nu\,\tbvec\mu\tprod\tbvec\nu \,,\\\nonumber
+  \idtens &= \tkron\mu\nu  \,\tbvec\mu\tprod\tbvec\nu   \,.\nonumber
+\end{align}
+
+\theme{Important!} Vector components are scalars. To expand a vector, we need a vector basis. But, to find its components into the basis, we need the covector basis and the angle bracket product to generate a scalar.
+
+\theme{Crucial!} I cannot find a proof for \cref{eq:metricinvmetricidtensorexpansiononabasis}. I have only an argument: when having a covector (and the metric behaves like that), it is possible to expand it onto a basis of covectors: $\tcov p\mu\tbcov\mu$. Then, the $\metric$ needs a basis of covectors, say $\tbcov\mu\tprod\tbcov\nu$. Therefore, $\metric$ can be expanded on that basis: $\metric = \tmetric\mu\nu\,\tbcov\mu\tprod\tbcov\nu$.
+
+\theme{Mixed products:} basis vectors and basis covectors allow us to represent any tensor equation using components. For instance, the dot product between two vectors and two covectors and the scalar product between a covector and a vector may be written using components as
+%
+\begin{equation}\label{eq:dotproductscalarproductincomponents}
+  \vec a\iprod\vec b = \tmetric\mu\nu\,\tvec a\mu\tvec b\nu\,,\quad
+  \sprod{\cov p}{\vec a} = \tcov p\mu\tvec a\mu\,,\quad
+  \cov p\iprod\cov q = \tinvmet\mu\nu\tcov p\mu\tcov q\nu\,.
+\end{equation}
+
+\theme{Proof:} all follow by expanding vectors and covectors onto their basis, by applying the definitions of the metric tensor and the identity tensor, and by using index gymnastics, like the first equation:
 %
 \begin{equation*}
-  \vec a\tprod\vec b\tprod\vec c\vat{\vec e, \vec f, \vec g} \defas \vec a\vat{\vec e}\vec b\vat{\vec e}\vec c\vat{\vec g}
-                                                              = \br{\vec a\iprod \vec e}\br{\vec b\iprod\vec f}\br{\vec c\iprod\vec g}\,.
-\end{equation*}
-%
-Similar definitions can be given for the tensor product of any two tensor or more tensors of any order. For instance, given $t\vat{\vslot,\vslot}$ and $s\vat{\vslot,\vslot,\vslot}$, then their tensor product is given by
-%
-\begin{equation*}
-  t\tprod s\vat{\vec e,\vec f,\vec g,\vec h,\vec j} \defas t\vat{\vec e,\vec f}s\vat{\vec g,\vec h,\vec j}\,.
+  \vec a\iprod\vec b = \tvec a\mu\tbvec\mu\iprod\tvec b\nu\tbvec\nu
+                     = \tbvec\mu\iprod\tbvec\nu\,\tvec a\mu\tvec b\nu
+                     = \tmetric\mu\nu\,\tvec a\mu\tvec b\nu\,.
 \end{equation*}
 
+\theme{Equality:} two tensors are equal if they are of the same order and if all of their components are equal. If two tensors are equal in one basis, then they are equal in any base.
 
-\subsection{Contraction}
+\theme{Getting vectors out of covectors:} the metric tensor and the inverse metric tensor allow us to transform vectors into covectors and \vicvers.
+%
+\begin{equation}\label{eq:metricandinversemetrictransformvecsintocovecs}
+  \tcov v\mu = \metric\vat{\tbvec\mu, \vec v} = \tmetric\mu\nu\tvec v\nu\,,\quad
+  \tvec v\mu = \invmet\vat{\tbcov\mu, \cov v} = \tinvmet\mu\nu\tcov v\nu\,.
+\end{equation}
 
-One can show that any second-rank tensor $t$ can be expressed as a sum of tensor products of vectors, $t = \vec a\tprod\vec b + \vec c\tprod\vec d + \dotsb$. Then, define the contraction of $t$ to be
+\theme{Remember} that the metric tensor is a function that takes two vectors, thus every slot behaves as a covector; so, if we only input one vector, then $\metric$ acts as a covector: it waits for another vector to be input. This is how $\metric$ transforms vectors into covectors. The inverse metric tensor does the same, but for covectors into vectors:
+
+Because \cref{eq:metricandinversemetrictransformvecsintocovecs} must hold for any vector $\vec v$, the matrix defined by $\tinvmet\mu\nu$ is the inverse of the matrix defined by $\tmetric\mu\nu$:
 %
-\begin{equation*}
-  \cont t = \vec a\iprod\vec b + \vec c\iprod\vec d + \dotsb\,.
-\end{equation*}
+\begin{equation}\label{eq:metricandinversemetricrelationship}
+  \tinvmet\mu\nu\tmetric\mu\nu = \tkron\mu\nu\,.
+\end{equation}
+
+\theme{Index gymnastics:} use the metric tensor and the inverse metric tensor to lower and raise indices on components:
 %
-Note that this contraction process lowers the order of the tensor by two, from 2 to 0. Similarly, for a $\torder n0$ tensor, one can construct a $\torder{n - 2}{0}$ tensor by contraction, but one must specify the slots are to be contracted. For example, given $t\vat{\vslot\vslot\vslot}$, one can express it as $t = \vec a\tprod\vec b\tprod\vec c + \vec e\tprod\vec f\tprod\vec g + \dotsb$. Then, the contraction of $t$ on its first and third slots is the vector ($\torder 10$ tensor)
+\begin{equation}\label{eq:loweringrisingindices}
+  \vec v\iprod\vec w = \tmetric\mu\nu\,\tvec v\mu\tvec w\nu
+                     = \tvec v\mu\tcov w\mu
+                     = \tcov v\nu\tvec w\nu
+                     = \tinvmet\mu\nu\,\tcov v\mu\tcov w\nu\,.
+\end{equation}
+
+\theme{Note:} two of the indices must be pairing: one up, one down!
+
+\theme{Metric tensor as transform:} use the metric tensor and the inverse metric to transform $\torder mn$ tensors into $\torder{m + k}{n - k}$, where $k = -m, -m+1, \dotsc, n$. For instance, consider a $\torder 21$ tensor 
 %
-\begin{equation*}
-  \cont_{1,3} t = \cont_{1,3}\br{\vec a\tprod\vec b\tprod\vec c + \vec e\tprod\vec f\tprod\vec g + \dotsb}
-                = \br{\vec a\iprod\vec c}\vec b + \br{\vec e\iprod\vec g}\vec f\,.
-\end{equation*}
+\begin{equation}\label{eq:anexampleofatensor}
+  \tensor{t}{^\mu_\nu_\lambda} = t\vat{\cslot,\vslot,\vslot}\,.
+\end{equation}
+%
+\theme{Note}: by using the recommendations of \cref{sec:varioustensorrepresentations}, $t$ can be rewritten as
+%
+\begin{align*}
+  \tensor{t}{^\mu_\nu_\lambda} &\implies t\vat{\tbcov\mu,\tbvec\nu,\tbvec\lambda} \,,\\
+                               &\implies \tensor{t}{^\mu_\nu_\lambda}\,\tbvec\mu\tprod\tbcov\nu\tprod\tbcov\lambda\,,\\
+                               &\implies t\vat{\cslot,\vslot,\vslot}\,.
+\end{align*}
+
+In \cref{eq:anexampleofatensor}, if we fail to plug in the covector $\tbcov\mu$, the result is the \emph{vector} $\tensor{t}{^\kappa_\nu_\lambda}\tbvec\kappa$ (in slot notation: $t\vat{\cslot,\fslot,\fslot}$ returns a \emph{vector}, since it behaves as an entity that \emph{needs} a covector to return a scalar!) This vector may be inserted into the metric tensor to give the components of a $\torder 30$ tensor:
+%
+\begin{equation}\label{eq:exampleofmetrictransformationofatensor}
+  \tensor{t}{_\mu_\nu_\lambda} \defas \metric\vat{\tbvec\mu, \tensor{t}{^\kappa_\nu_\lambda}\tbvec\kappa}
+                               = \tmetric\mu\kappa\tensor{t}{^\kappa_\nu_\lambda}\,.
+\end{equation}
+%
+The tensor $t$ has now order $\torder 30$; since $\tensor{t}{_\mu_\nu_\lambda} = t\vat{\tbvec\mu,\tbvec\nu,\tbvec\lambda} = t\vat{\vslot,\vslot,\vslot}$.
+
+We could now use the inverse metric tensor to raise the third index, say, giving us the components of a $\torder 21$ tensor:
+%
+\begin{equation}\label{eq:exampleofinversemetrictransformationofatensor}
+  \tensor{t}{_\mu_\nu^\lambda} \defas \invmet\vat{\tbcov\lambda,\tensor{t}{_\mu_\nu_\kappa}\tbcov\kappa}
+                               = \tinvmet\lambda\kappa\tensor{t}{_\mu_\nu_\kappa}
+                               = \tinvmet\lambda\kappa\tmetric\mu\rho\tensor{t}{^\rho_\nu_\kappa}\,.
+\end{equation}
+%
+(\scare{To raise the third index} means to transform the last slot from vector to covector. Thus, $\tensor{t}{_\mu_\nu^\lambda} = t\vat{\vslot,\vslot,\cslot}$, a $\torder 21$ tensor.)
+%
+In fact, there are $2^{m + n}$ different tensor spaces with ranks summing to $m + n$. The metric tensor or the inverse metric tensor allow all of these tensors to be transformed into each other.
+
+\theme{Why distinction between vectors and covectors?} \Cref{eq:loweringrisingindices} tells us why to distinguish between vectors and covectors. The scalar product of two vectors requires the metric tensor, while that of two covectors requires the inverse metric tensor. Only in \emph{flat spacetime} in \emph{rectangular} coordinates with \emph{orthonormal} basis are they equal. In more general settings (curved spaces, or non-rectangular coordinates, or non-orthonormal basis), we have that $\tmetric\mu\nu\neq\tinvmet\mu\nu$. As a result, \emph{it is impossible} to define a coordinate system where $\tmetric\mu\nu = \tinvmet\mu\nu$ everywhere.
+
+
+\subsection{Tensor contraction}
+%
+\theme{Changing a tensor order:} as mentioned, contraction changes the dimensionality of a tensor by lowering its order. 
+
+\theme{Contraction} pairs two arguments of a $\torder mn$ tensor: one vector and one covector. The arguments are replaced by basis vectors and basis covectors and summed over. For instance, consider a $\torder 31$ tensor $t\vat{\cslot,\vslot,\vslot,\vslot}$. Then, contract its second vector argument (by pairing the first argument -- a covector -- with the third argument -- the second vector argument) to have
+%
+\begin{equation}\label{eq:examplefofthecontractionofatensor}
+  t\vat{\vslot,\vslot} = \cont_{1,3}t\vat{\cslot,\vslot,\vslot,\vslot}
+                       = \tkron\beta\alpha t\vat{\tbcov\alpha, \vslot, \tbvec\beta,\vslot}
+                       = \sum_{\lambda = 0}^{3}t\vat{\tbcov\lambda, \vslot, \tbvec\lambda,\vslot}\,,
+\end{equation}
+%
+resulting in a $\torder 20$ tensor with the same name $t$ as the non-contracted tensor, but with shorter argument list, and with components $t\vat{\vslot,\vslot} = t\vat{\tbvec\mu,\tbvec\nu} = \tensor{t}{_\mu_\nu}$. In index notation, the last equation can be written as
+%
+\begin{equation}\label{eq:examplefofthecontractionofatensorindexnotation}
+  \tensor{t}{_\mu_\nu} = \tensor{t}{^\lambda_\mu_\lambda_\nu}\quad\eqtxt{summation over $\lambda$ implied} \,,
+\end{equation}
+%
+where the indices of the contracted $t$ where calculated as $t\vat{\tbcov\lambda,\vslot,\tbvec\lambda,\vslot} = t\vat{\tbcov\lambda,\tbvec\mu,\tbvec\lambda,\tbvec\nu} = \tensor{t}{^\lambda_\mu_\lambda_\nu}$.
+
+\theme{Note} that contraction may be performed on any pair of covariant and contravariant indices.
+
+
+\subsection{Change of basis}
+%
+

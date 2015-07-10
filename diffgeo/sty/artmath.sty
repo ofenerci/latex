@@ -1,0 +1,47 @@
+
+\ProvidesPackage{./sty/artmath}[2015/06/27 math macros. rimbaudcode]
+
+% various
+%
+\providecommand*{\defas}{\colonequals}            % defined as
+\providecommand*{\parens}[1]{\mleft({#1}\mright)} % parenthesis
+\providecommand*{\vat}[1]{\parens{#1}}            % value of a function at a point
+
+% sets and functions
+%
+\providecommand*{\set}[1]{\mathcal{#1}}       % set
+\providecommand*{\fdef}[3]{{#1}:{#2}\to{#3}}  % function definition
+\providecommand*{\fmap}[2]{{#1}\mapsto{#2}}   % function mapping
+%
+\providecommand*{\setprod}{\times} % set (Cartesian) product
+%
+% special sets
+%
+\providecommand*{\specialset}[1]{\mathbb{#1}} % reals, naturals, ...
+\providecommand*{\rspace}{\specialset{R}}     % real space
+
+% spaces
+%
+\providecommand*{\dlspace}[1]{\set{#1}^{\star}} % dual linear space
+\providecommand*{\lspace}[1]{\set{#1}}          % linear space
+
+% tuples
+%
+\providecommand*{\tuple}[1]{\parens{#1}} % tuples
+
+% operators
+%
+\DeclareMathOperator{\diag}{diag} % diagonal of a matrix
+
+% inverse
+%
+\providecommand*{\inverse}[1]{{#1}^{-1}} % inverse
+
+% sequences
+%
+\providecommand*{\seq}[3]{{#1}\vert_{#2}^{#3}} % sequences
+
+% text in math mode
+%
+\providecommand*{\suchthat}{\quad\text{such that}\quad}                          % such that (mappings)
+\providecommand*{\eqtxt}[1]{\mleft\lbrack\text{\footnotesize{#1}}\mright\rbrack} % text in math environments
