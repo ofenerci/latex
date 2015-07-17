@@ -1,0 +1,53 @@
+
+\ProvidesPackage{./sty/artphysics}[2015/07/08 physics macros. rimbaudcode]
+
+% dimensional analysis
+%
+\providecommand*{\kdim}{\Pi}         % dimensionless quantity
+\providecommand*{\phdim}[1]{\si{#1}} % physical dimension
+\providecommand*{\scale}{\sim}       % scales as
+
+\providecommand*{\region}[1]{\set{#1}} % regions in space
+
+% metric
+%
+\providecommand*{\metric}{g}                  % metric tensor
+
+% tensor products
+%
+\providecommand*{\oprod}{\wedge}  % outer product
+\providecommand*{\tprod}{\otimes} % tensor product
+
+% index-notation
+%
+\providecommand*{\tcov}[2]{\tensor{#1}{_{#2}}}                 % covector components
+\providecommand*{\tvec}[2]{\tensor{#1}{^{#2}}}                 % vector components
+\providecommand*{\tvecfmet}[2]{\tensor{\fmetric}{^{#1}^{#2}}}  % flat metric components
+%
+\providecommand*{\tmetric}[2]{\tensor{\metric}{_{#1}_{#2}}} % metric components
+\providecommand*{\tinvmet}[2]{\tensor{\metric}{^{#1}^{#2}}} % inverse metric components
+\providecommand*{\tidtens}[2]{\tensor{\idtens}{^{#1}_{#2}}} % identity tensor components
+\providecommand*{\tkron}[2]{\tensor{\kron}{^{#1}_{#2}}}     % Kronecker's delta components
+%
+\providecommand*{\tbcov}[1]{\tensor{\bcov}{^{#1}}} % basis covectors
+\providecommand*{\tbvec}[1]{\tensor{\bvec}{_{#1}}} % basis vectors
+
+% coordinates
+%
+% rectangular
+%
+\providecommand*{\rxpos}{x}  % rectangular x coordinate of the position
+\providecommand*{\rypos}{y}  % rectangular y
+\providecommand*{\rzpos}{z}  % rectangular z
+%
+% cylindrical
+%
+\providecommand*{\cxpos}{\rho}    % cylindrical x coordinate of the position
+\providecommand*{\cypos}{\theta}  % cylindrical y
+\providecommand*{\czpos}{\rzpos}  % cylindrical z
+%
+% spherical
+%
+\providecommand*{\sxpos}{\cxpos}  % spherical x coordinate of the position
+\providecommand*{\sypos}{\theta}  % spherical y
+\providecommand*{\szpos}{\phi}    % spherical z

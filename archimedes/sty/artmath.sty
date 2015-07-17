@@ -1,0 +1,34 @@
+
+\ProvidesPackage{./sty/artmath}[2015/06/27 math macros. rimbaudcode]
+
+% various
+%
+\providecommand*{\defas}{\colonequals}            % defined as
+\providecommand*{\parens}[1]{\mleft({#1}\mright)} % parenthesis
+\providecommand*{\vat}[1]{\parens{#1}}            % value of a function at a point
+
+% sets and functions
+%
+\providecommand*{\set}[1]{\mathcal{#1}}                               % set
+\providecommand*{\desset}[2]{\mleft\lbrace{{#1}:{#2}}\mright\rbrace}  % descriptive set
+\providecommand*{\elset}[1]{\mleft\lbrace{#1}\mright\rbrace}          % elements of a set
+
+% spaces
+%
+\providecommand*{\eset}[1]{\mathcal{#1}}    % special set
+\providecommand*{\espace}{\eset{E}}         % euclidean space
+\providecommand*{\nespace}[1]{\espace^{#1}} % n dim euclidean space
+
+% tuples
+%
+\providecommand*{\tuple}[1]{\parens{#1}} % tuples
+
+% operators
+%
+\DeclareMathOperator{\diag}{diag} % diagonal of a matrix
+
+% text in math mode
+%
+\providecommand*{\suchthat}{\quad\text{such that}\quad}                          % such that (mappings)
+\providecommand*{\eqtxt}[1]{\mleft\lbrack\text{\footnotesize{#1}}\mright\rbrack} % text in math environments
+\providecommand*{\sbtxt}[1]{_{\text{\textsf{#1}}}}                               % subscript text

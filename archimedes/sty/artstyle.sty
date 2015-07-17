@@ -10,16 +10,20 @@
 \RequirePackage[pdalt]{bropd}
 \RequirePackage{colonequals}
 \RequirePackage{epigraph}
+\RequirePackage{graphicx}
 \RequirePackage[fixamsmath,disallowspaces]{mathtools}
 \RequirePackage{microtype}
 \RequirePackage{mleftright}
+\RequirePackage{natbib}
 \RequirePackage{tensor}
 \RequirePackage[inline]{showlabels}
+\RequirePackage{siunitx}
 \RequirePackage[dvipsnames,table]{xcolor}
 %
-\usepackage{pdfsync}
+\RequirePackage{pdfsync}
 %
 \RequirePackage[xetex]{hyperref}
+\RequirePackage{hypcap}
 %
 % refcheck does not work with cleveref by default. refcheck must be hacked
 %
@@ -91,11 +95,6 @@
 %
 \renewcommand{\showlabelfont}{\footnotesize\sffamily\color{VioletRed}}
 
-% color definitions
-%
-\definecolor{darkgray}{gray}{0.30}
-\definecolor{halfgray}{gray}{0.50}
-
 % hyperref setup
 %
 \hypersetup
@@ -110,9 +109,9 @@
   bookmarksopenlevel=1,
   hypertexnames=true, pdfhighlight=/O,
   %
-  %urlcolor= \darkgray, 
-  %linkcolor= \darkgray,
-  %citecolor= \darkgray,
+  %urlcolor=black,
+  %linkcolor=black,
+  %citecolor=black,
   %
   %pdftitle={},
   %pdfauthor={},

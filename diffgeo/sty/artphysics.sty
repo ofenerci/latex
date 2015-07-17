@@ -1,5 +1,5 @@
 
-\ProvidesPackage{./sty/artlingo}[2015/07/08 physics macros. rimbaudcode]
+\ProvidesPackage{./sty/physics}[2015/07/08 physics macros. rimbaudcode]
 
 % constants
 %
@@ -10,6 +10,7 @@
 \providecommand*{\cov}[1]{\tilde{#1}}     % covector
 \providecommand*{\idtens}{i}              % identity tensor
 \providecommand*{\event}[1]{\mathcal{#1}} % events (points in spacetime)
+\providecommand*{\transmat}{\Lambda}      % transformation matrix
 %
 % metric
 %
@@ -61,3 +62,13 @@
 %
 \providecommand*{\tbcov}[1]{\tensor{\bcov}{^{#1}}} % basis covectors
 \providecommand*{\tbvec}[1]{\tensor{\bvec}{_{#1}}} % basis vectors
+%
+% change of basis
+%
+\providecommand*{\aidx}[1]{{#1}\sp{\prime}} % alternate index
+%
+\providecommand*{\atbcov}[1]{\tensor{\bcov}{^{\aidx{#1}}}} % (alternative) basis covectors
+\providecommand*{\atbvec}[1]{\tensor{\bvec}{_{\aidx{#1}}}} % (alternative) basis vectors
+%
+\providecommand*{\ttransmat}[2]{\tensor{\transmat}{^{#1}_{#2}}} % transformation matrix components
+

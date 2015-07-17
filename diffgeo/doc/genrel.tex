@@ -233,6 +233,8 @@ where we have inserted a $\vslot$ to remind ourselves that a vector must be inse
 
 \theme{Pattern:} both the angle bracket product and the identity tensor accept a covector and a vector (in that order!), dot product accepts either two covectors or two vectors, metric tensor accepts only vectors, and inverse metric tensor accepts only covectors.
 
+\theme{Summary:} see the efficiency of the methods. We defined only one product, the angle bracket product, to multiply covectors and vectors. Then, we use the metric to transform either the covector into a vector, or the vector into a covector, to get the scalar product of two vectors or of two covectors. That's why we needed the metric, to act as a transforming agent!
+
 
 \subsubsection{Basis vectors and covectors}
 %
@@ -460,4 +462,77 @@ where the indices of the contracted $t$ where calculated as $t\vat{\tbcov\lambda
 
 \subsection{Change of basis}
 %
+\theme{Change of basis:} since we made no restrictions when choosing the basis, we can choose an alternative basis to express vectors.
+
+\theme{Basis transformation:} given a basis $\bset{\tbvec\mu}{\mu = 0}{3}$, define another basis $\bset{\atbvec\mu}{\aidx\mu = 0}{3}$, distinguished by placing a prime on the indices, as follows:
+%
+\begin{equation}\label{eq:changeofbasisvectors}
+  \atbvec\mu = \ttransmat{\mu}{\aidx\mu}\tbvec\mu\,.
+\end{equation}
+%
+\theme{Process:} begin with $\tbvec\mu$, the basis we want to transform. Then, transform it using the transformation matrix $\ttransmat{\mu}{\aidx\mu}$ to $\tbvec\mu\ttransmat{\mu}{\aidx\mu}$. See how the $\mu$ index is paired in $\ttransmat{\mu}{\aidx\mu}$ (up: old index $\mu$, down: new index $\aidx\mu$). Finally, form the transformed element using the unpaired index in the other side of the equation, $= \tbvec{\aidx\mu}$; that is,
+%
+\begin{equation*}
+  \tbvec\mu\ttransmat{\mu}{\aidx\mu} \mapsto \tbvec{\aidx\mu}\,.
+\end{equation*}
+
+\theme{Reflexion:} the transformation matrix therefore acts as a function that takes basis vectors and returns basis vectors:
+%
+\begin{equation*}
+  \fdmap{\transmat}{\tbvec\mu}{\tbvec{\aidx\mu}}\,.
+\end{equation*}
+
+\theme{Unique transformation?} No! \emph{Any} linearly independent linear combination of old basis vectors may be selected as the new basis vectors. The transformation is only required to be nonsingular.
+
+\theme{Inversion:} since the transformation matrix is assumed to be nonsingular, the transformation may be inverted:
+%
+\begin{equation}\label{eq:inversechangeofbasisvectors}
+  \tbvec\mu = \ttransmat{\aidx\mu}{\mu}\tbvec{\aidx\mu}\,,\quad\text{where}\quad
+  \ttransmat{\mu}{\aidx\mu}\ttransmat{\aidx\mu}{\mu} \defas\tkron\mu\mu\,.
+\end{equation}
+
+\theme{Index place:} in our notation, \cref{eq:changeofbasisvectors,eq:inversechangeofbasisvectors} , the inverse matrix places the prime on the other index.
+
+\theme{Careful!} Primed indices are never summed together with unprimed indices.
+
+\theme{Dual basis?} If we change basis vectors, then we \emph{must} also transform the basis covectors, to preserve the duality condition, \cref{eq:relationbasisvecbasiscovec}:
+%
+\begin{equation}\label{eq:transformationofdualbasis}
+  \tbcov{\aidx\mu} = \ttransmat{\aidx\mu}{\mu}\tbcov\mu\,.
+\end{equation}
+%
+Note that the same process as in the case of transforming basis vectors applies. We are given $\tbcov\mu$. Then, transform it to have $\tbcov\mu\ttransmat{\aidx\mu}{\mu}$, which finally yields the transformed basis $\tbcov{\aidx\mu}$.
+
+\theme{Alternative way!} Find the transformation matrix and its inverse by scalar products of the old and new basis vectors and basis covectors:
+%
+\begin{equation}\label{eq:transformationmatrixfromscalarproducts}
+  \ttransmat\mu{\aidx\mu} = \sprod{\tbcov\mu}{\tbvec{\aidx\mu}}\quad\text{and}\quad
+  \ttransmat{\aidx\mu}\mu = \sprod{\tbcov{\aidx\mu}}{\tbvec\mu}\,.
+\end{equation}
+
+\theme{Crucial!} Aport from the basis vectors and basis covectors, a vector $\vec v$ and a covector $\cov p$ are, \emph{by definition}, invariant under a change of basis. However, their components are \emph{not}! 
+
+\theme{Vector component transformation:} Consider a vector $\vec v$. Using \cref{eq:inversechangeofbasisvectors} or \cref{eq:transformationmatrixfromscalarproducts}, we get
+%
+\begin{equation}\label{eq:transformationofvectorcomponents}
+  \vec a = \tvec a\mu\tbvec\mu = \tvec a{\aidx\mu}\tbvec{\aidx\mu}\quad\text{and}\quad
+  \tvec a{\aidx\mu} = \sprod{\tbvec{\aidx\mu}}{\vec a} = \ttransmat{\aidx\mu}{\mu}\tvec a\mu\,.
+\end{equation}
+
+\theme{Proofs:} for \cref{eq:transformationofvectorcomponents}, transform the components of $\vec a$ by applying to it the transformation matrix:
+%
+\begin{equation*}
+  \fdmap{\transmat}{\tvec a\mu\tbvec\mu}{\tvec a\mu\ttransmat{\aidx\mu}{\mu}\tbvec{\aidx\mu} = \tvec a{\aidx\mu}\tbvec{\aidx\mu}}\,.
+\end{equation*}
+%
+
+
+this is a test!
+
+this is another test!
+
+this is the final test!
+
+
+
 
