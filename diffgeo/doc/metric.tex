@@ -1,0 +1,94 @@
+\section{Metric tensor calculation}
+%
+As we have seen, the geometric object that carries information about lengths is the metric tensor. So, it should be the first object to be computed when a new coordinate system is met.
+
+As an illustration, we calculate the metric tensor in polar coordinates.
+
+\theme{Problem.} We want to work with the same ease in different coordinate systems as we work in rectangular coordinates.
+
+\theme{Rectangular coordinates advantage.} The advantage of rectangular coordinates is that they measure distances. Spherical coordinates, for instance, measure lengths and angles.
+
+
+\subsection{Example}
+%
+Consider a disk, for instance. We would like to explode its symmetry by labeling points in the disk in polar coordinates $\tuple{\cxpos,\cypos}$. See that $\cxpos$ measures lengths; while $\cypos$ angles.
+
+\theme{Metric.} We want, however, that the information about lengths is managed by an specific object: the metric tensor. So we head to calculate it.
+
+\theme{Transformation.} We begin by stating the transformation from polar coordinates (the coordinates we decided to use) to rectangular coordinates (our reference coordinates):
+%
+\begin{equation*}
+  \xpos = \cxpos\cos\cypos\quad\text{and}\quad
+  \ypos = \cxpos\sin\cypos\,.
+\end{equation*}
+
+\theme{Differential position.} Consider now two neighboring points in the disk. The differential distance between them is given by the differential position $d\vec\pos$. Since the differential position measures lengths, we want to find a transformation matrix $\transmat$ that takes our differential position $d\vec\pos$ from polar to rectangular coordinates, or
+%
+\begin{equation*}
+  d\tvec\pos\mu\ttransmat{\ridx\mu}{\mu} \mapsto d\tvec\pos{\ridx\mu}\,,
+\end{equation*}
+%
+where the hat in $\ridx\mu$ represents reference (rectangular) coordinates. so we can measure distances comfortably.
+%
+Such a transformation matrix, from polar to rectangular coordinates, is given by Jacobi's matrix:
+%
+\begin{equation*}
+  \ttransmat{\ridx\mu}\mu = \ipd\mu\tvec\pos{\ridx\mu}
+                          = \dfrac{\partial\tvec\pos{\ridx\mu}}{\partial\tvec\pos\mu}
+                          = \dfrac{\partial\br{\xpos,\ypos}}{\partial\br{\cxpos,\cypos}}
+                          = \begin{bmatrix}
+                              \cos\cypos & -\cxpos\sin\cypos \\
+                              \sin\cypos &  \cxpos\cos\cypos
+                            \end{bmatrix}\,,
+\end{equation*}
+%
+whose determinant is given by
+%
+\begin{equation*}
+  \det\ttransmat{\ridx\mu}\mu = \cxpos \neq 0 \,,
+\end{equation*}
+%
+so the transformation has an inverse.
+
+The metric tensor components in polar coordinates can now be found by (matrix) multiplying the transpose of the transformation matrix with the transformation matrix:
+%
+\begin{align*}
+  \asmatrix\metric &= \br{\ttransmat{\ridx\mu}{\mu}}^\tau\ttransmat{\ridx\mu}\mu \\
+                   &= \begin{bmatrix}
+                        \cos\cypos & -\cxpos\sin\cypos \\
+                        \sin\cypos &  \cxpos\cos\cypos
+                      \end{bmatrix}^{\tau}
+                      \begin{bmatrix}
+                        \cos\cypos & -\cxpos\sin\cypos \\
+                        \sin\cypos &  \cxpos\cos\cypos
+                      \end{bmatrix} \\
+                   &= \begin{bmatrix}
+                        \cos\cypos        & \sin\cypos \\
+                        -\cxpos\sin\cypos & \cxpos\cos\cypos
+                      \end{bmatrix}
+                      \begin{bmatrix}
+                        \cos\cypos & -\cxpos\sin\cypos \\
+                        \sin\cypos &  \cxpos\cos\cypos
+                      \end{bmatrix} \\
+                   &= \begin{bmatrix}
+                        \cos^2\cypos + \sin^2\cypos & 0 \\
+                        0                           & \cxpos^2\cos^2\cypos + \cxpos^2\sin^2\cypos
+                      \end{bmatrix} \\
+                   &= \begin{bmatrix}
+                        1 & 0 \\
+                        0 & \cxpos^2
+                      \end{bmatrix} \\
+                   &= \diag\tuple{1,\cxpos^2}\,.
+\end{align*}
+%
+With the metric tensor coefficients $\tmetric\mu\nu$, we can calculate distances between neighboring points by
+%
+\begin{equation*}
+  \sqdifdist  = d\vec\pos\iprod d\vec\pos
+              = \tmetric\mu\nu d\tvec\pos\mu d\tvec\pos\nu\,.
+\end{equation*}
+
+
+\subsection{Method}
+%
+

@@ -58,7 +58,7 @@ Consider a covector $\cov p$, a linear space $\lspace V$, and a vector $\vec v\i
   \cov p\vat{\vec v} \defas \sprod{\cov p}{\vec v}\,.
 \end{equation}
 
-\theme{Notation:} use a right arrow $\vslot$ to denote a vector argument of a function, a tilde $\cslot$ for a covector argument, and a checkmark $\fslot$ for a taken argument.
+\theme{Notation:} use a right arrow $\vslot$ to denote a vector argument of a function, a tilde $\cslot$ for a covector argument, and a check mark $\fslot$ for a taken argument.
 
 \theme{Scalar product operator:} binary operator taking a covector and a vector to return a scalar, $s\in\rspace$
 %
@@ -257,7 +257,7 @@ where we have inserted a $\vslot$ to remind ourselves that a vector must be inse
          = \tvec a0\tbvec 0 + \tvec a1\tbvec 1 + \tvec a2\tbvec 2 + \tvec a3\tbvec 3\,.
 \end{equation}
 %
-Note the pairing of superscripts with subscripts to satisfy Einstein's summation covention.
+Note the pairing of superscripts with subscripts to satisfy Einstein's summation convention.
 
 \theme{Contravariant components:} the coefficients $\tvec a\mu$ are called the components of the vector on the given basis, \aka\ contravariant components.
 
@@ -437,7 +437,7 @@ In fact, there are $2^{m + n}$ different tensor spaces with ranks summing to $m 
 \theme{Why distinction between vectors and covectors?} \Cref{eq:loweringrisingindices} tells us why to distinguish between vectors and covectors. The scalar product of two vectors requires the metric tensor, while that of two covectors requires the inverse metric tensor. Only in \emph{flat spacetime} in \emph{rectangular} coordinates with \emph{orthonormal} basis are they equal. In more general settings (curved spaces, or non-rectangular coordinates, or non-orthonormal basis), we have that $\tmetric\mu\nu\neq\tinvmet\mu\nu$. As a result, \emph{it is impossible} to define a coordinate system where $\tmetric\mu\nu = \tinvmet\mu\nu$ everywhere.
 
 
-\subsection{Tensor contraction}
+\subsubsection{Tensor contraction}
 %
 \theme{Changing a tensor order:} as mentioned, contraction changes the dimensionality of a tensor by lowering its order. 
 
@@ -460,14 +460,14 @@ where the indices of the contracted $t$ where calculated as $t\vat{\tbcov\lambda
 \theme{Note} that contraction may be performed on any pair of covariant and contravariant indices.
 
 
-\subsection{Change of basis}
+\subsubsection{Change of basis}
 %
 \theme{Change of basis:} since we made no restrictions when choosing the basis, we can choose an alternative basis to express vectors.
 
-\theme{Basis transformation:} given a basis $\bset{\tbvec\mu}{\mu = 0}{3}$, define another basis $\bset{\atbvec\mu}{\aidx\mu = 0}{3}$, distinguished by placing a prime on the indices, as follows:
+\theme{Basis transformation:} given a basis $\bset{\tbvec\mu}{\mu = 0}{3}$, define another basis $\bset{\tbvec{\aidx\mu}}{\aidx\mu = 0}{3}$, distinguished by placing a prime on the indices, as follows:
 %
 \begin{equation}\label{eq:changeofbasisvectors}
-  \atbvec\mu = \ttransmat{\mu}{\aidx\mu}\tbvec\mu\,.
+  \tbvec{\aidx\mu} = \ttransmat{\mu}{\aidx\mu}\tbvec\mu\,.
 \end{equation}
 %
 \theme{Process:} begin with $\tbvec\mu$, the basis we want to transform. Then, transform it using the transformation matrix $\ttransmat{\mu}{\aidx\mu}$ to $\tbvec\mu\ttransmat{\mu}{\aidx\mu}$. See how the $\mu$ index is paired in $\ttransmat{\mu}{\aidx\mu}$ (up: old index $\mu$, down: new index $\aidx\mu$). Finally, form the transformed element using the unpaired index in the other side of the equation, $= \tbvec{\aidx\mu}$; that is,
@@ -510,7 +510,7 @@ Note that the same process as in the case of transforming basis vectors applies.
   \ttransmat{\aidx\mu}\mu = \sprod{\tbcov{\aidx\mu}}{\tbvec\mu}\,.
 \end{equation}
 
-\theme{Crucial!} Aport from the basis vectors and basis covectors, a vector $\vec v$ and a covector $\cov p$ are, \emph{by definition}, invariant under a change of basis. However, their components are \emph{not}! 
+\theme{Crucial!} Apart from the basis vectors and basis covectors, a vector $\vec v$ and a covector $\cov p$ are, \emph{by definition}, invariant under a change of basis. However, their components are \emph{not}! 
 
 \theme{Vector component transformation:} Consider a vector $\vec v$. Using \cref{eq:inversechangeofbasisvectors} or \cref{eq:transformationmatrixfromscalarproducts}, we get
 %
@@ -525,14 +525,305 @@ Note that the same process as in the case of transforming basis vectors applies.
   \fdmap{\transmat}{\tvec a\mu\tbvec\mu}{\tvec a\mu\ttransmat{\aidx\mu}{\mu}\tbvec{\aidx\mu} = \tvec a{\aidx\mu}\tbvec{\aidx\mu}}\,.
 \end{equation*}
 %
+Transform the components of $\vec a$ by using the scalar product:
+%
+\begin{equation*}
+  \tvec a{\aidx\mu} = \sprod{\tbcov{\aidx\mu}}{\tvec a\mu}
+                    = \tvec a\mu\sprod{\tbcov{\aidx\mu}}{\tbvec\mu}
+                    = \ttransmat{\aidx\mu}{\mu}\tvec a{\aidx\mu}\,.
+\end{equation*}
+%
+\theme{Tip:} transforming vector components is a two step process: i) transform the basis vector from the old to the new basis and ii) transform the components of the vector using ESC. For instance, consider a vector $\vec a$ with expansion $\tvec a\mu$ on the basis $\tbvec\mu$. Transform the components of $\vec a$ to a new basis $\tbvec{\aidx\mu}$:
+%
+\begin{align*}
+  \tbvec\mu & \mapsto\ttransmat{\aidx\mu}\mu\tbvec{\aidx\mu}\,, 
+    && \eqtxt{basis vectors from old to new} \\
+  %
+  \tvec a\mu\ttransmat{\aidx\mu}\mu\tbvec{\aidx\mu} & \mapsto\tvec a{\aidx\mu}\tbvec{\aidx\mu}\,. 
+    && \eqtxt{vector components: ESC}
+\end{align*}
+%
+If we combine the two steps into one, then we have
+%
+\begin{equation*}
+  \vec a = \tvec a\mu\tbvec\mu
+         = \tvec a\mu\ttransmat{\aidx\mu}{\mu}\tbvec{\aidx\mu}
+         = \br{\tvec a\mu\ttransmat{\aidx\mu}{\mu}}\tbvec{\aidx\mu}
+         = \tvec a{\aidx\mu}\tbvec{\aidx\mu}\,.
+\end{equation*}
+%
+\theme{Remember} that $\vec a$ does \emph{not} change, its \emph{components} do.
+
+\theme{Note:} vector components transform oppositely to the basis vectors, \cref{eq:changeofbasisvectors}; while covectors transform like basis vectors -- as suggested by the fact that both are labeled with a subscript:
+%
+\begin{equation}\label{eq:transformationofcovectorcomponents}
+  \cov a = \tcov a\mu\tbcov\mu = \tcov a{\aidx\mu}\tbcov{\aidx\mu}\quad\text{and}\quad
+  \tcov a{\aidx\mu} = \sprod{\cov a}{\tbcov{\aidx\mu}} = \ttransmat{\mu}{\aidx\mu}\tcov a{\aidx\mu}\,.
+\end{equation}
+%
+\theme{Tip:} transforming covector components is a two step process alike transforming vector components. These two process can be combined into one:
+%
+\begin{equation*}
+  \cov a = \tcov a\mu\tbcov\mu
+         = \tcov a\mu\ttransmat{\mu}{\aidx\mu}\tbcov{\aidx\mu}
+         = \br{\tcov a\mu\ttransmat\mu{\aidx\mu}}\tbcov{\aidx\mu}
+         = \tcov a{\aidx\mu}\tbcov{\aidx\mu}\,.
+\end{equation*}
+
+\theme{Using ESC.} ESC can help us to notice how basis vectors, vector components and covector components transform:
+%
+\begin{itemize}
+  \item basis vectors change as $\tbvec{\color{red}\mu}\ttransmat{\color{red}\mu}{\aidx\mu}\mapsto\tbvec{\aidx\mu}$; they use the transformation matrix $\ttransmat{\color{red}\mu}{\aidx\mu}$;
+  \item vector components change as $\tvec a{\color{red}\mu}\ttransmat{\aidx\mu}{\color{red}\mu}\mapsto\tvec a{\aidx\mu}$; they eat up the \emph{lower} index of $\ttransmat{\aidx\mu}{\color{red}\mu}$; and
+  \item covector components change as $\tcov a{\color{red}\mu}\ttransmat{\color{red}\mu}{\aidx\mu}\mapsto\tcov a{\aidx\mu}$; they eat up the \emph{upper} index of $\ttransmat{\color{red}\mu}{\aidx\mu}$.
+\end{itemize}
+%
+Thus, since basis vectors and covector components take the \emph{upper} index of $\ttransmat{\color{red}\mu}{\aidx\mu}$, they are say to transform in an \emph{alike} manner.
+
+\theme{Note} also that the transformation matrix itself is different for vector components and covector components. For vector components, the transformation matrix is $\ttransmat{\color{red}\aidx\mu}{\mu}$; while, for covector components, $\ttransmat{\mu}{\color{red}\aidx\mu}$, the same as for basis vectors.
+
+\theme{Naming:} Since vector components transform oppositely to the basis vectors, they are also called \lingo{contravariant} components; while covector components are called \lingo{covariant} components, for they transform alike basis vectors.
+
+\theme{Invariance:} if the components of two vectors or two covectors are equal in one basis, then they are equal in any basis.
+
+\theme{Tensors:} higher order tensor \emph{components} also transform under a change of basis. The new components may be found by recalling that a $\torder mn$ tensor is a function of $m$ vectors and $n$ covectors and that its components are gotten by evaluating the tensor using the basis vectors and covectors, \cref{eq:metricinversemetricidentitytensorscomponents}. For example, the metric components are transformed under the change of basis \cref{eq:changeofbasisvectors} to
+%
+\begin{equation}\label{eq:metriccomponentstransformation}
+  \tmetric{\aidx\mu}{\aidx\nu} \defas \metric\vat{\tbvec{\aidx\mu},\tbvec{\aidx\nu}}
+                                = \tmetric\alpha\beta\,\tbcov\alpha\vat{\tbvec{\aidx\mu}}\tbcov\beta\vat{\tbvec{\aidx\nu}}
+                                = \tmetric\alpha\beta\,\ttransmat{\alpha}{\aidx\mu}\ttransmat{\beta}{\aidx\nu}\,.
+\end{equation}
+%
+\theme{Tip:} for the metric tensor components: to transform from the basis $\mu,\nu$ to the basis $\aidx\mu,\aidx\nu$, we work exactly as in the case of covectors: we use the transformation matrix and ESC:
+%
+\begin{equation*}
+  \tmetric\mu\nu\,\ttransmat{\mu}{\aidx\mu}\ttransmat{\nu}{\aidx\nu} = \tmetric{\aidx\mu}{\aidx\nu}\,.
+\end{equation*}
+
+\theme{Recall} that \lingo{evaluating} a covector or vector means using the scalar product, \cref{eq:scalarproductcovectoronvector}.
+
+\theme{See} that the covariant components of the metric tensor (lower indices) transform exactly as covector components; \ie, they use the transformation matrices $\ttransmat{\color{red}\mu}{\aidx\mu}\ttransmat{\color{red}\nu}{\aidx\nu}$ (old basis index up, new basis index down, take upper index).
+
+\theme{Pattern:} the components of a $\torder mn$ tensor transform like the product of $m$ vector components and $n$ covector components.
+
+\subsubsection{Coordinate bases}
+%
+\theme{Coordinate system} is a set of four differentiable \emph{scalar} field $\tvec\pos\mu$ (\emph{not} one \emph{vector} field -- note that $\mu$ labels the coordinates and not the vector components) that attach a unique set of labels to each spacetime event $\event P$.
+
+\theme{Uniqueness:} no two points are allowed to have identical values of all four scalar fields and the coordinates must vary smoothly throughout spacetime (although occasional singularities may arise).
+
+\theme{No other restrictions} are imposed to coordinates.
+
+\theme{Important!} The freedom to choose different coordinate systems is available to us even in a Euclidean space; there is nothing sacred about rectangular (Cartesian) coordinates. This is more true in a non-Euclidean space, where rectangular coordinates covering the whole space do not exist.
+
+\theme{Usefulness:} coordinate systems are useful for three reasons. First, they allow us to label each spacetime point (event) by a $4$-tuple $\tuple{\tvec\pos 0, \tvec\pos 1, \tvec\pos 2, \tvec\pos 3}$. The second, and more important use, is in providing a special set of basis vectors called a \lingo{coordinate basis}. The third is that they can be used to describe the distance between two events (spacetime points).
+
+\theme{Coordinate basis:} suppose that two infinitesimally close events have coordinates $\tvec\pos\mu$ and $\tvec\pos\mu + d\tvec\pos\mu$. The infinitesimal difference vector between the events, denoted $d\vec\pos$, is a vector defined at $\event P$. We \emph{define} the coordinate basis as the set of four basis vectors $\tbvec\mu$ such that the components of $d\vec\pos$ are $d\tvec\pos\mu$:
+%
+\begin{equation}\label{eq:definitionofcoordinatebasis}
+  d\vec\pos \defas d\tvec\pos\mu\tbvec\mu\qquad\text{defines $\tbvec\mu$ in a coordinate basis}.
+\end{equation}
+%
+\theme{No restrictions used.} According to \cref{eq:definitionofcoordinatebasis}, the basis vector $\tbvec 0$, for example, must point in the direction of increasing $\tvec\pos 0$ at $\event P$. This corresponds to a unique direction in (four-dimensional) spacetime just as the direction of increasing latitude corresponds to a unique direction (north) at a given point on the earth. In more math treatments, $\tbvec\mu$ is associated with the directional derivative $\ipd\mu\defas\partial/\partial\tvec\pos\mu$ at $\event P$.
+
+\theme{Note} that \emph{not} all bases are coordinate bases.
+
+\theme{Dual coordinate basis:} the coordinate basis $\bset{\tbvec\mu}{0}{3}$ defined by \cref{eq:definitionofcoordinatebasis} has a dual basis of covectors $\bset{\tbcov\mu}{0}{3}$ defined by \cref{eq:relationbasisvecbasiscovec}. The covector dual basis is related to the gradient as follows.
+
+\theme{Dual coordinate basis and gradient.} Consider any scalar field $f$. Treating $f$ as a function of the coordinates, the difference in $f$ between two infinitesimally close points is
+%
+\begin{equation}\label{eq:definitionofgradient}
+  df = \dfrac{\partial f}{\partial\tvec\pos\mu}d\tvec\pos\mu
+     \defas\ipd\mu f\,d\tvec\pos\mu\,.
+\end{equation}
+
+\theme{Motivation:} consider a scalar field $f$ (that is, $\fmap{\tvec\pos\mu}{f\vat{\tvec\pos\mu}}$). Then, find its (total) differential in traditional notation and in rectangular coordinates as:
+%
+\begin{align*}
+  df &=   \dfrac{\partial f}{\partial t}    dt
+        + \dfrac{\partial f}{\partial\xpos} d\xpos
+        + \dfrac{\partial f}{\partial\ypos} d\ypos
+        + \dfrac{\partial f}{\partial\zpos} d\zpos\,,        &&\eqtxt{traditional notation} \\
+     &=   \dfrac{\partial f}{\partial\tvec\pos 0} d\tvec\pos 0
+        + \dfrac{\partial f}{\partial\tvec\pos 1} d\tvec\pos 1
+        + \dfrac{\partial f}{\partial\tvec\pos 2} d\tvec\pos 2
+        + \dfrac{\partial f}{\partial\tvec\pos 3} d\tvec\pos 3 \,,                  &&\eqtxt{index notation} \\
+     &= \sum_{\mu = 0}^{3}\dfrac{\partial f}{\partial\tvec\pos\mu} d\tvec\pos\mu\,, &&\eqtxt{sigma notation} \\
+     %
+     &= \dfrac{\partial f}{\partial\tvec\pos\mu} d\tvec\pos\mu\,,  &&\eqtxt{Einstein's summation convention} \\
+     %
+     &= \ipd\mu f\,d\tvec\pos\mu\,.       &&\eqtxt{Jacobi's notation for partials}
+\end{align*}
+
+\Cref{eq:definitionofgradient} may be taken as the definition of the components of the gradient. However, partial derivatives depend on the coordinates, while the gradient (covariant derivative) should not. The notation $\ipd\mu$, with its covariant (subscript) index, reinforces our view that the partial derivative is the component of a covector and not a vector. 
+
+\theme{Gradient covector:} we denote the gradient covector by $\gradcov$.
+
+\theme{Gradient expansion:} like all covectors, the gradient may be decomposed into a sum over basis covectors, $\tbcov\mu$. Using \cref{eq:definitionofgradient,eq:relationbasisvecbasiscovec}, as the requirement for a dual basis, we conclude that the expansion of the gradient is
+%
+\begin{equation}\label{eq:gradientexpansiononcoordinatebasis}
+  \gradcov \defas \tbcov\mu\ipd\mu\qquad\text{in a coordinate basis}\,.
+\end{equation}
+
+\theme{Crucial:} we must write the basis covector \emph{to the left} of the partial derivative operator, for the basis covector itself may depend on position! 
+
+\theme{Coordinate free gradient.} In the present case, it is clear from its definition, \cref{eq:definitionofgradient}, that we must let the derivative act only on the function $f$. We can now rewrite \cref{eq:gradientexpansiononcoordinatebasis} in the \emph{coordinate-free manner}:
+%
+\begin{equation}\label{eq:coordinatefreegradient}
+  df = \sprod{\gradcov f}{d\vec\pos}\,.
+\end{equation}
+
+\theme{Directional derivative:} if we want the directional derivative of $f$ along any particular direction, we simply replace $d\vec\pos$ by a vector pointing in the desired direction; \eg, the tangent vector to some curve.
+
+\theme{Basis covector.} if we let $f$ equal one of the coordinates, using \cref{eq:gradientexpansiononcoordinatebasis}, the gradient gives us the corresponding basis covector:
+%
+\begin{equation}\label{eq:coordinatebasiselements}
+  \gradcov = \tbcov\mu\qquad\text{in a coordinate basis}\,.
+\end{equation}
+
+\theme{Distance between events:} as mentioned, coordinates can be used to describe the distance between two events (spacetime points). However, coordinates alone are not enough, the metric tensor is also needed.
+
+\theme{Squared distance between events} is given by
+%
+\begin{equation}\label{eq:squareddistancebetweenevents}
+  \sqdifdist = \norm{d\vec\pos}^2
+             \defas \metric\vat{d\vec\pos,d\vec\pos}
+             = d\vec\pos\iprod d\vec\pos\,.
+\end{equation}
+
+\theme{Invariance:} \cref{eq:squareddistancebetweenevents} is a scalar equation that makes no reference to components, is takes as the \emph{definition} of the metric tensor.
+
+\theme{Metric tensor uniqueness:} up to now, the metric tensor could have been any symmetric $\torder 20$ tensor. But if we insist on being able to measure distances, given an infinitesimal difference vector $d\vec\pos$, only one $\torder 20$ tensor can give the squared distance. We define the metric tensor to be that tensor. Indeed, the squared magnitude of \emph{any} vector is
+%
+\begin{equation*}
+  \norm{\vec a}^2 \defas \metric\vat{\vec a, \vec a}\,.
+\end{equation*}
+
+\theme{Line element:} we now specialized to a coordinate basis, using \cref{eq:definitionofcoordinatebasis} for $d\vec\pos$. In a coordinate basis (and \emph{only} in a coordinate basis), the squared distance is called the \lingo{line element} and takes the form, by \cref{eq:metricinversemetricidentitytensorscomponents}:
+%
+\begin{equation}\label{eq:lineelementdefinition}
+  \sqdifdist = \tmetric\mu\nu\,d\tvec\pos\mu d\tvec\pos\nu\qquad\text{in a coordinate basis}\,.
+\end{equation}
+
+\theme{Change of basis.} If we transform coordinates, we will have to change our vector and covector bases. Suppose that we transform from $\tvec\pos\mu$ to $\tvec\pos{\aidx\mu}$, with the prime indicating the new coordinates. For instance, in the Euclidean plane, we could transform from rectangular coordinates ($\tvec\pos 1 = \xpos, \tvec\pos 2 = \ypos$) to polar coordinates ($\tvec\pos{\aidx 1} = \cxpos,\tvec\pos{\aidx 2} = \cypos$):
+%
+\begin{equation*}
+  \xpos = \cxpos\cos\cypos\qquad\text{and}\qquad
+  \ypos = \cxpos\sin\cypos\,.
+\end{equation*}
+%
+A one-to-one mapping is given from the old to new coordinates, allowing us to define \lingo{Jacobi's matrix} and its inverse, \lingo{Jacobi's inverse matrix} as
+%
+\begin{equation*}
+  \ttransmat{\aidx\mu}{\nu}\defas\ipd\nu\tvec\pos{\aidx\mu}
+    \parens{= \dfrac{\partial\tvec\pos{\aidx\mu}}{\partial\tvec\pos\nu}}
+  \qquad\text{and}\qquad
+  \ttransmat{\nu}{\aidx\mu} = \ipd{\aidx\mu}\tvec\pos\nu\,.
+\end{equation*}
+
+\theme{Vector components transformation:} see that vector \emph{components} transform like $d\tvec\pos{\aidx\mu} = \ipd\nu\tvec\pos{\aidx\mu}\,d\tvec\pos\nu$.
+
+\theme{Other transformation:} transforming the basis vectors, basis covectors, and tensor components is straightforward using \crefrange{eq:changeofbasisvectors}{eq:metriccomponentstransformation}.
+
+\theme{Invariant:} \cref{eq:definitionofcoordinatebasis,eq:gradientexpansiononcoordinatebasis,eq:coordinatebasiselements,eq:lineelementdefinition} remain valid after a coordinate transformation.
+
+\theme{Proofs.} we have that
+%
+\begin{align*}
+  d\tvec\pos\mu\tbvec\mu &\mapsto d\tvec\pos\mu\tbvec{\aidx\mu}\ttransmat{\aidx\mu}{\mu} 
+    = d\tvec\pos{\aidx\mu}\tbvec{\aidx\mu}\,, &&\qquad\eqtxt{\cref{eq:definitionofcoordinatebasis}} \\
+  %
+  \tbcov\mu\ipd\mu &\mapsto\tbcov{\aidx\mu}\ttransmat{\mu}{\aidx\mu}\ipd\mu 
+    = \tbcov{\aidx\mu}\ipd{\aidx\mu}\,, &&\qquad\eqtxt{\cref{eq:gradientexpansiononcoordinatebasis}} \\
+  %
+  \tmetric\mu\nu\,d\tvec\pos\mu d\tvec\pos\nu
+    &\mapsto\tmetric{\aidx\mu}{\aidx\nu}\ttransmat{\aidx\mu}{\mu}\ttransmat{\aidx\nu}{\nu}\,d\tvec\pos\mu d\tvec\pos\nu
+  = \tmetric{\aidx\mu}{\aidx\nu}\,d\tvec\pos{\aidx\mu}d\tvec\pos{\aidx\nu}\,; &&\qquad\eqtxt{\cref{eq:lineelementdefinition}}
+\end{align*}
+%
+\ie, they are all valid after transformations.
+
+\theme{Reflection.} Let us reflect on our treatment of vectors, covectors, and tensors. The math and notation, while straightforward, are complicated. Can we simplify the notation without sacrificing rigor? One way to modify our notation would be to abandon the basis vectors and covectors and to work only with components of tensors. We could have defined vectors, covectors, and tensors from the outset in terms of the transformation properties of their components. However, the reader should appreciate the clarity of the geometrical approach that we have adopted. \emph{Our notation has forced us to distinguish physical objects like vectors from basis-dependent ones, like vector components}. As long as the definition of a tensor is not forgotten, computations are straightforward and unambiguous. Moreover, adopting a basis did not force us to abandon geometrical concepts. On the contrary, computations are made easier and clearer by retaining the notation and meaning of basis vectors and covectors.
 
 
-this is a test!
-
-this is another test!
-
-this is the final test!
+\subsubsection{Isomorphism of vectors and covectors}
+%
+\theme{Different but related.} The linear space of vectors is \emph{isomorphic} to the dual vector space of covectors; thus, every equation or operation in one space has an equivalent equation or operation in the other space.
 
 
+\subsubsection{Example: Euclidean plane}
+%
+\theme{Description.} The Euclidean plane is a flat two-dimensional space that can be covered by rectangular coordinates $\tuple{\xpos,\ypos}$ with line element and metric components:
+%
+\begin{equation}\label{eq:euclideanplanelineelementmetricrectangular}
+  \sqdifdist = \br{d\xpos}^2 + \br{d\ypos}^2 \implies
+  \tmetric\xpos\xpos = \tmetric\ypos\ypos = 1\,,\quad\text{and}\quad
+  \tmetric\xpos\ypos = \tmetric\ypos\xpos = 0\,.
+\end{equation}
 
+\theme{Polar coordinates.} However, there is nothing sacred about rectangular coordinates. Consider polar coordinates $\tuple{\cxpos,\cypos}$, defined by the transformation $x = \cxpos\cos\cypos, y= \cxpos\sin\cypos$. An exercise in partial derivatives yields the line element and from it the metric tensor coefficients in polar coordinates:
+%
+\begin{equation}\label{eq:euclideanpolarcoordinateslineelementmetric}
+  \sqdifdist = \br{d\cxpos}^2 + \br{\cxpos d\cypos}^2 \implies
+  \tmetric\cxpos\cxpos = 1 \,,\quad
+  \tmetric\cypos\cypos = \br{\cxpos}^2\,,\quad\text{and}\quad
+  \tmetric\cxpos\cypos = \tmetric\cypos\cxpos = 0\,.
+\end{equation}
+
+\theme{Coordinate basis are not normal.} This appears reasonable until one considers the basis vectors $\tbvec\cxpos,\tbvec\cypos$, recalling that $\tmetric\mu\nu = \tbvec\mu\iprod\tbvec\nu$. Then, while $\tbvec\cxpos\iprod\tbvec\cxpos = 1$ and $\tbvec\cxpos\iprod\tbvec\cypos = 0$; $\tbvec\cypos\iprod\tbvec\cypos = \cxpos^2 \neq 1$, thus $\tbvec\cypos$ is \emph{not} a unit vector. The new basis vectors are found in terms of the rectangular basis using \cref{eq:changeofbasisvectors}:
+%
+\begin{equation}\label{eq:polarbasisinrectangularbasis}
+  \tbvec\cxpos = \dfrac{\xpos}{\sqrt{\xpos^2 + \ypos^2}}\tbvec\xpos 
+               + \dfrac{\ypos}{\sqrt{\xpos^2 + \ypos^2}}\tbvec\ypos\,,\quad
+  \tbvec\cypos = - \ypos\tbvec\xpos + \xpos\tbvec\ypos\,.
+\end{equation}
+%
+The polar \emph{unit} vectors are $\uvec\cxpos = \tbvec\cxpos, \uvec\cypos = \inv\cxpos\tbvec\cypos$.
+
+\theme{Reflect.} Why does our formalism give us non-unit vectors? The answer is because we \emph{insisted} that our basis vectors be a \emph{coordinate} basis (\cref{eq:definitionofcoordinatebasis,eq:gradientexpansiononcoordinatebasis,eq:coordinatebasiselements,eq:lineelementdefinition}). 
+
+\theme{Simpler form in coordinate basis:} in terms of the orthonormal unit vectors, the difference position (vector) between points $\tuple{\cxpos,\cypos}$ and $\tuple{\cxpos + d\cxpos, \cypos + d\cypos}$ is $d\vec\pos = \uvec\cxpos\,d\cxpos + \uvec\cypos\,\cxpos d\cypos$. In the \emph{coordinate basis}, this takes the simpler form $d\vec\pos = \tbvec\cxpos\,d\cxpos + \tbvec\cypos\,d\cypos = d\tvec\pos\mu\tbvec\mu$.
+
+\theme{Metric tensor measures lengths.} In the coordinate basis, we don't have to worry about normalizing our vectors: \emph{all information about lengths is carried instead by the metric tensor.} In the \emph{non}-coordinate basis of orthonormal vectors $\uvec\cxpos,\uvec\cypos$, we have to make a separate note that the distance elements are $d\cxpos,\cxpos d\cypos$.
+
+In the non-coordinate basis, we can no longer use \cref{eq:lineelementdefinition} for the line element. We must instead use \cref{eq:squareddistancebetweenevents}. The metric components in the non-coordinate basis are
+%
+\begin{equation}\label{eq:metriccomponentsinnoncoordinatebasis}
+  \tmetric{\uvec\cxpos}{\uvec\cxpos} = \tmetric{\uvec\cypos}{\uvec\cypos} = 1\quad\text{and}\quad
+  \tmetric{\uvec\cxpos}{\uvec\cypos} = \tmetric{\uvec\cypos}{\uvec\cxpos} = 0\,.
+\end{equation}
+
+\theme{Useless metric.} Thus, in a non-coordinate basis, the metric tensor will not tell us how to measure distances in terms of coordinate differentials.
+
+With a non-coordinate basis, we must sacrifice \cref{eq:definitionofcoordinatebasis,eq:lineelementdefinition}. Nonetheless, for some applications, it proves convenient to introduce an orthonormal non-coordinate basis called a \lingo{tetrad basis}.
+
+\theme{Non-coordinates and gradient.} The use of non-coordinate bases also complicates the gradient (\cref{eq:gradientexpansiononcoordinatebasis,eq:coordinatebasiselements}). In our polar \emph{coordinate} basis (\cref{eq:euclideanpolarcoordinateslineelementmetric}), the inverse metric components are
+%
+\begin{equation}\label{eq:invmetriccomponentsincoordinatebasis}
+  \tinvmet\cxpos\cxpos = 1\,,\quad
+  \tinvmet\cypos\cypos = \br{\xpos}^{-2}\,,\quad\text{and}\quad
+  \tinvmet\cxpos\cypos = \tinvmet\cypos\cxpos = 0\,.
+\end{equation}
+%
+\theme{Tip:} The matrix $\tmetric\mu\nu$ is diagonal, so its inverse is also diagonal with entries given by the reciprocals.
+
+The basis covectors obey the rules $\tbcov\mu\iprod\tbcov\nu = \tinvmet\mu\nu$. They are isomorphic to the dual basis vectors $\tbvec\mu = \tinvmet\mu\nu\tbvec\nu$. Thus, $\tensor{\bvec}{^\cxpos} = \tbvec\cxpos = \uvec\cxpos$, $\tensor{\bvec}{^\cypos} = \cxpos^{-2}\tbvec\cypos = \inv\cxpos\uvec\cypos$. \Cref{eq:gradientexpansiononcoordinatebasis} gives the gradient covector as $\gradcov = \tbcov\cxpos\ipd\cxpos + \tbcov\cypos\ipd\cypos$. Expressing this as a vector, we get
+%
+\begin{equation}\label{eq:gradientvectorinpolarcoordinates}
+  \gradvec = \tbvec\cxpos\ipd\cxpos + \tbvec\cypos\ipd\cypos
+           = \uvec\cxpos\ipd\cxpos + \uvec\cypos\dfrac 1\cxpos\ipd\cypos\,.
+\end{equation}
+%
+\theme{Simpler gradient.} The gradient is simpler is the coordinate basis. The coordinate basis has the added advantage that we can get the dual basis vectors (or the basis covectors) by applying the gradient to the coordinates:
+%
+\begin{equation*}
+  \tbvec\cxpos = \gradvec\cxpos\qquad\text{and}\qquad
+  \tbvec\cypos = \gradvec\cypos\,.
+\end{equation*}
+
+\theme{Convention:} from now on, unless otherwise noted, we will assume that our basis vectors are on a coordinate basis. We will use covectors and vectors interchangeably through the mapping provided by the metric tensor and its inverse.
+
+
+\subsection{Differentiation and integration}
+%
 

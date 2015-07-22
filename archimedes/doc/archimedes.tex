@@ -30,13 +30,13 @@ Consider a circular cylinder of height $\phi$ and radius $\rho$ and a ball of ra
 %
 \theme{Analyze.} Look for some possible troubles with the problem statement.
 
-\theme{Extreme cases.} The problem statement allows us to choose any ball (the cylinder follows by circumscription). Then, consider the empty ball. The empty cylinder thus circumscribes the empty ball. By definition, an empty figure has zero volume. Therefore, both empty figures have zero volume and their ratio just becomes
+\theme{Extreme cases.} The problem statement allows us to choose any ball (the cylinder follows by circumscription). Then, consider the empty ball. The empty cylinder thus circumscribes the empty ball. By definition, an empty figure has zero volume \cite[p.112]{apostol:1967}. Therefore, both considered figures have zero volume and their ratio just becomes
 %
 \begin{equation*}
   \dfrac\vball\vcyl = \dfrac 00 = \text{undefined!}
 \end{equation*}
 %
-\theme{Need for reformulation.} Although a solution, this answer is not very useful for the general case (nonempty figures). So we have to reformulate the statement to limit math pathologies.
+\theme{Need for reformulation.} Although a solution, this answer is not very useful for attacking the general case (nonempty figures). So we have to reformulate the statement to limit math pathologies.
 
 \theme{Suitable notation.} Additionally, the statement \emph{suggests} notation. But such a notation is not very intuitive. Then, since we are not forced to follow the \statusquo, we can choose more suitable notation at any time.
 
@@ -52,7 +52,7 @@ Consider a circular cylinder of height $\phi$ and radius $\rho$ and a ball of ra
 
 \theme{Critique.} This statement removes empty shapes and sets us free to select both notation and solving methodologies. Nevertheless, we can further improve it.
 
-\theme{Be concise.} We only require a nonempty ball, since a nonempty cylinder will follow due to circumscription. We additionally join the clauses.
+\theme{Be concise.} We only require a nonempty ball, since a nonempty cylinder will follow due to circumscription. We additionally merge the statement clauses.
 
 \theme{Reformulate statement.} We work therefore with a new statement:
 %
@@ -68,19 +68,33 @@ Consider a circular cylinder of height $\phi$ and radius $\rho$ and a ball of ra
 
 \theme{Define terms before proceed.} To \lingo{circumscribe}: draw (a figure) around another, touching it at points but not cutting it. 
 
-\theme{Depict.} When a cylinder circumscribes a ball, it meets the ball at six points as shown in \cref{fig:archimedes}.
+\theme{Depict.} When a cylinder circumscribes a ball, it meets the ball at six points as shown in \cref{fig:ballcylfrontview,fig:ballcylsideview}.
 %
 \begin{figure}[b]
   \capstart
   \centering
-  \includegraphics[width=0.3\textwidth]{./graph/archimedes}
-  \caption{Archimedes' circumscribed cylinder to a ball, \citep{wiki:archimedes}}
-  \label{fig:archimedes}
+  %
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./graph/ball-cyl-side}
+    \caption{Side view}
+    \label{fig:ballcylfrontview}
+  \end{subfigure}
+  %
+  \qquad\qquad
+  %
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./graph/ball-cyl-front}
+    \caption{Front view}
+    \label{fig:ballcylsideview}
+  \end{subfigure}
+  %
+  \caption{Cylinder circumscribing a nonempty ball}
+  \label{fig:ballcylfrontsideview}
 \end{figure}
 
 \theme{Notation:} a ball is defined by one parameter: its radius; while a cylinder by two: its radius and height. Then, denote the ball radius by $\rball$, its volume by $\vball$, the cylinder radius by $\rcyl$, its height by $\hcyl$, and its volume by $\vcyl$.
 
-\theme{Express constraints mathematically.} By looking at \cref{fig:archimedes}, circumscription translates to math as
+\theme{Express constraints symbolically.} By looking at \cref{fig:ballcylfrontview,fig:ballcylsideview}, circumscription translates to
 %
 \begin{equation}\label{eq:volumetricratioconstraint}
   \rball = \rcyl = \radius\quad\text{and}\quad\hcyl = 2\radius.
@@ -116,7 +130,7 @@ Consider a circular cylinder of height $\phi$ and radius $\rho$ and a ball of ra
 \subsection{Refining guess} % (fold)
 \label{sub:refining_guess}
 %
-\theme{Squeeze good graphs.} Confirm in \cref{fig:archimedes} that $\vball < \vcyl$. Notice also that $\vball$ is greater than $\vcyl/2$. Therefore, refine the estimate to $\vcyl/2 < \vball < \vcyl$, or
+\theme{Squeeze good graphs.} Confirm in \cref{fig:ballcylfrontsideview} that $\vball < \vcyl$. Notice also that $\vball$ is greater than $\vcyl/2$. Therefore, refine the estimate to $\vcyl/2 < \vball < \vcyl$, or
 %
 \begin{equation}\label{eq:firstestimate}
   \dfrac 12 < \dfrac{\vball}{\vcyl} < 1\,;
@@ -148,7 +162,7 @@ Consider a circular cylinder of height $\phi$ and radius $\rho$ and a ball of ra
 %
 which gives a second estimate for the volumetric ratio. 
 
-\theme{Confirm and chain previous work.} \Cref{eq:secondestimate} agrees with the refined guess, \cref{eq:firstestimate}. It therefore suggests a bind: $0.5 < \kdim < 1$.
+\theme{Compare and chain with previous work.} \Cref{eq:secondestimate} agrees with the refined guess, \cref{eq:firstestimate}. It therefore suggests a bind: $0.5 < \kdim < 1$.
 
 \theme{Hints on how to scale:} in general, given a circular cylinder, its height and radius have $\dim\height = \dim\radius = \phdim L$; while its volume $\dim\volume = \phdim{L^3}$. Thus, to satisfy dimensional homogeneity, either $\volume\scale\height^2\radius$ or $\volume\scale\height\radius^2$. To resolve ambiguity, note that, since the cylinder is circular, it can be thought of as a set of stacked disks. Finally, because the disk area scales with its squared radius, the cylinder volume scales as $\volume\scale\height\radius^2$.
 
@@ -187,7 +201,7 @@ which gives a second estimate for the volumetric ratio.
   \dfrac{\vball}{\vcyl} = \kdim\,.
 \end{equation}
 
-\theme{Confirm previous work.} \Cref{eq:thirdestimate} agrees with the refined guess, \cref{eq:firstestimate}, and scaling, \cref{eq:secondestimate}.
+\theme{Compare with previous work.} \Cref{eq:thirdestimate} agrees with the refined guess, \cref{eq:firstestimate}, and scaling, \cref{eq:secondestimate}.
 
 \theme{Reflect.} Intentionally, we did not \emph{constrain early} the model, thus our calculation was long. Had we done so, we would have had a shorter, cleaner solution.
 
@@ -201,7 +215,9 @@ which gives a second estimate for the volumetric ratio.
 
 \theme{Correct.} To find the precise value, we use differential geometry.
 
-In cylindrical coordinates, a circular cylinder $\region C$ of height $\hcyl$ and radius $\rcyl$ can be represented by the set
+\theme{Method:} \Cref{eq:guesstimate,eq:firstestimate} relied only on the properties of the figures and volumes. We did not measure them -- we did not use heights or radii. For the differential geometry solution, on the other hand, we find the volumetric ratio by measuring the figures. First, we describe the figures with a coordinate system along with its oriented volume form and metric. Then, we transform the volume form into a volume element using the metric (to measure the figure volume in dimensions of $\phdim{L^3}$). Finally, we integrate the volume element over the figure to have its volume.
+
+\theme{Cylinder:} in cylindrical coordinates, a circular cylinder $\region C$ of height $\hcyl$ and radius $\rcyl$ can be described by the set
 %
 \begin{equation*}
   \region C = \desset{\tuple{\cxpos,\cypos,\czpos}\in\nespace 3}
@@ -211,18 +227,25 @@ In cylindrical coordinates, a circular cylinder $\region C$ of height $\hcyl$ an
                      }\,,
 \end{equation*}
 %
-where the set has been properly oriented.
-%
-The metric for cylindrical coordinates is $\metric\sbtxt{cyl} = \diag\vat{1,\cxpos,1}$. Therefore, the volume of the cylinder can be calculated from the cylinder volume form as
+which sets the cylinder's oriented volume form as $d\cxpos\oprod d\cypos\oprod d\czpos$. 
+
+On the other hand, to transform the volume form into a volume element, use the metric for cylindrical coordinates: $\metric\sbtxt{cyl} = \diag\vat{1,\cxpos,1}$ to have
 %
 \begin{equation*}
-  \vcyl = \int_{\region C}\sqrt{\det\metric\sbtxt{cyl}}\,d\cxpos\oprod d\cypos\oprod d\czpos
+  \sqrt{\det\metric\sbtxt{cyl}}\,d\cxpos\oprod d\cypos\oprod d\czpos \implies
+    \cxpos\,d\cxpos d\cypos d\czpos\,.
+\end{equation*}
+%
+Therefore, the cylinder volume can be calculated by integrating the volume element over the figure as
+%
+\begin{equation*}
+  \vcyl = \int_{\region C}\cxpos\,d\cxpos d\cypos d\czpos
         = \int_{0}^{\rcyl}\cxpos\,d\cxpos \int_{0}^{2\pi}d\cypos \int_{0}^{\hcyl}d\czpos 
         = \dfrac 12 \rcyl^2 2\pi \hcyl
         = \pi\rcyl^2\hcyl\,.
 \end{equation*}
 
-In spherical coordinates, a ball $\region B$ of radius $\rball$ can be described as
+\theme{Ball:} in spherical coordinates, a ball $\region B$ of radius $\rball$ can be described by the set
 %
 \begin{equation*}
   \region B = \desset{\tuple{\sxpos,\sypos,\szpos}\in\nespace 3}
@@ -232,27 +255,34 @@ In spherical coordinates, a ball $\region B$ of radius $\rball$ can be described
                      }\,,
 \end{equation*}
 %
-where the set has been properly oriented.
-%
-The metric for spherical coordinates is $\metric\sbtxt{sph} = \diag\vat{1,\sxpos,\sxpos\sin\sypos}$. Therefore, the volume of the cylinder can be calculated from the cylinder volume form as
+which sets the ball's oriented volume form as $d\sxpos\oprod d\sypos\oprod d\szpos$. 
+
+On the other hand, to transform the volume form into a volume element, use the metric for spherical coordinates: $\metric\sbtxt{sph} = \diag\vat{1,\sxpos,\sxpos\sin\sypos}$ to have
 %
 \begin{equation*}
-  \vcyl = \int_{\region C}\sqrt{\det\metric\sbtxt{sph}}\,d\sxpos\oprod d\sypos\oprod d\szpos
-        = \int_{0}^{\rball}\sxpos^2\,d\sxpos \int_{0}^{2\pi} d\sypos \int_{0}^{\pi}\sin\szpos\,d\szpos 
-        = \dfrac 13\rball^3 2\pi 2
-        = \dfrac 43\pi\rball^3\,.
+  \sqrt{\det\metric\sbtxt{ball}}\,d\sxpos\oprod d\sypos\oprod d\szpos \implies
+    \sxpos^2\sin\sypos\,d\sxpos d\sypos d\szpos\,.
 \end{equation*}
 %
-Therefore, after applying the embedding constraint, the volumetric ratio is given by
+Therefore, the ball volume can be calculated by integrating the volume element over the figure as
+%
+\begin{equation*}
+  \vball = \int_{\region B}\sxpos^2\sin\sypos\,d\sxpos d\sypos d\szpos\,.
+         = \int_{0}^{\rball}\sxpos^2\,d\sxpos \int_{0}^{2\pi} d\sypos \int_{0}^{\pi}\sin\szpos\,d\szpos 
+         = \dfrac 13\rball^3 2\pi 2
+         = \dfrac 43\pi\rball^3\,.
+\end{equation*}
+%
+Finally, constrain the volumes, \cref{eq:volumetricratioconstraint}, to have their volumetric ratio as
 %
 \begin{equation}\label{eq:volsbydifferentialgeometry}
-  \dfrac{\vball}{\vcyl} = \dfrac{4\pi}{3\pi}\dfrac{\rball^3}{\rball^2\rball}
+  \dfrac{\vball}{\vcyl} = \dfrac 43\pi\radius^3\,\dfrac{1}{2\pi\radius\radius^2}
                         = \dfrac 23\,.
 \end{equation}
 %
-\theme{Confirm previous work.} \Cref{eq:volsbydifferentialgeometry} agrees with our estimates, \cref{eq:firstestimate,eq:secondestimate}. In fact, it gives us the value for the dimensionless constant of \cref{eq:secondestimate}, $\kdim = 2/3$. 
+\theme{Compare with previous work.} The result of applying differential geometry, \cref{eq:volsbydifferentialgeometry}, goes further than those obtained by guessing, \cref{eq:firstestimate}, and by applying dimensional analysis, \cref{eq:secondestimate}, for it gives the \emph{exact} value for the volume ratio: $2/3$. However, the time spent in guessing and in doing DA was not wasted, since their results can be seen as \emph{sanity checks}. These checking systems are useful to \emph{confirm} differential geometry's long calculations.
 
-\theme{Reflect.} However, we found the constant value at the expense of the differential geometry: more concepts, formalism, and calculations than approximate methods.
+\theme{Reflect.} In other words, we can easily check what was found at the expense of the differential geometry -- a very abstract framework, full of concepts, formalism, and calculations -- by clean, economic, and intuitive approximate methods.
 
 % subsection differential_geometry (end)
 
@@ -260,7 +290,7 @@ Therefore, after applying the embedding constraint, the volumetric ratio is give
 \subsection{Elegant solution} % (fold)
 \label{sub:elegant_solution}
 
-\theme{Refine solution.} Rely on tailor made theorems to improve the solution: less verbosity, less calculations.
+\theme{Refine the solution.} To my taste, the differential geometry solution resulted in a long, error prone calculation, so it needs refinement. I will improve it by relying on tailor made theorems. With them, the solution will become less cluttered, less verbose, and with less calculation.
 
 \theme{Go fully abstract.} The volume of a $n$-dimensional ball of radius $\radius$ in $\nespace n$ is
 %
@@ -275,7 +305,7 @@ where $\Gamma$ is the gamma function. Then, the volume of a three dimensional ba
                    = \dfrac 43\pi\rball^3\,.
 \end{equation}
 
-\theme{Build on past work.} For the \emph{circular} cylinder of height $\hcyl$ and radius $\rcyl$, the parallel section area to the cylinder base is $\pi\rcyl^2$. Thus, by Cavalieri's principle, the cylinder volume is the section area times the cylinder height; \ie,
+\theme{Build on past work.} For the \emph{circular} cylinder of height $\hcyl$ and radius $\rcyl$, the area of a section parallel to the cylinder base is $\pi\rcyl^2$. Thus, by Cavalieri's principle, the cylinder volume is the section area times the cylinder height, or
 %
 \begin{equation}\label{eq:volumecylindercavalieri}
   \vcyl = \pi\hcyl\rcyl^2\,.
@@ -284,19 +314,12 @@ where $\Gamma$ is the gamma function. Then, the volume of a three dimensional ba
 Then, constrain \cref{eq:volumeballbyvolumeofndimensionalball,eq:volumecylindercavalieri} by \cref{eq:volumetricratioconstraint} to have the volumetric ratio:
 %
 \begin{equation}\label{eq:elegantsolution}
-  \dfrac\vcyl\vball = \dfrac 23\dfrac{\radius^3}{\radius\radius^2}
+  \dfrac\vcyl\vball = \dfrac 43\pi\radius^3\,\dfrac{1}{2\pi\radius\radius^2}
                     = \dfrac 23\,.
 \end{equation}
 
-\theme{Confirm previous work.} \Cref{eq:elegantsolution} accords with the differential geometry solution, \cref{eq:volsbydifferentialgeometry}.
-
-\theme{Reflect.}
+\theme{Compare with previous work.} \Cref{eq:elegantsolution} accords with the differential geometry solution, \cref{eq:volsbydifferentialgeometry}.
 
 % subsection elegant_solution (end)
 
-
-Axiomatic definition of volumes: \cite[p. 112]{apostol:1967}.
-
-
 % section archimedes_s_principle (end)
-

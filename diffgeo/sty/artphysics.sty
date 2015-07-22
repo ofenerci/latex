@@ -1,5 +1,5 @@
 
-\ProvidesPackage{./sty/physics}[2015/07/08 physics macros. rimbaudcode]
+\ProvidesPackage{./sty/artphysics}[2015/07/08 physics macros. rimbaudcode]
 
 % constants
 %
@@ -10,7 +10,8 @@
 \providecommand*{\cov}[1]{\tilde{#1}}     % covector
 \providecommand*{\idtens}{i}              % identity tensor
 \providecommand*{\event}[1]{\mathcal{#1}} % events (points in spacetime)
-\providecommand*{\transmat}{\Lambda}      % transformation matrix
+\providecommand*{\uvec}[1]{\hat{#1}}      % unit vector
+\providecommand*{\inv}[1]{\br{#1}^{-1}}   % inverse
 %
 % metric
 %
@@ -21,6 +22,11 @@
 %
 \providecommand*{\pos}{x}    % event position
 \providecommand*{\sep}{\xi}  % event separation
+%
+\providecommand*{\distance}{s}                            % distance between events
+\providecommand*{\difdist}{d\distance}                    % differential distance
+\providecommand*{\sqdifdist}{\parens{\difdist}^2}         % squared differential distance
+\providecommand*{\norm}[1]{\mleft\lvert{#1}\mright\rvert} % norm, length
 %
 % basis
 %
@@ -65,10 +71,33 @@
 %
 % change of basis
 %
-\providecommand*{\aidx}[1]{{#1}\sp{\prime}} % alternate index
+% tensor calculus
 %
-\providecommand*{\atbcov}[1]{\tensor{\bcov}{^{\aidx{#1}}}} % (alternative) basis covectors
-\providecommand*{\atbvec}[1]{\tensor{\bvec}{_{\aidx{#1}}}} % (alternative) basis vectors
+\providecommand*{\ipd}[1]{\partial_{#1}} % index partial derivative
 %
-\providecommand*{\ttransmat}[2]{\tensor{\transmat}{^{#1}_{#2}}} % transformation matrix components
-
+\providecommand*{\gradient}{\nabla}      % gradient
+\providecommand*{\gradcov}{\cov{\nabla}} % gradient covector
+\providecommand*{\gradvec}{\vec{\nabla}} % gradient vector
+%
+% coordinate components
+%
+% rectangular
+%
+\providecommand*{\xpos}{x} % x position in rectangular coord.
+\providecommand*{\ypos}{y} % y position in rectangular coord.
+\providecommand*{\zpos}{z} % z position in rectangular coord.
+%
+% cylindrical polar
+%
+\providecommand*{\cxpos}{r}       % x position in cylindrical polar coord.
+\providecommand*{\cypos}{\theta}  % y position in cylindrical polar coord.
+\providecommand*{\czpos}{z}       % z position in cylindrical polar coord.
+%
+% matrices
+%
+\providecommand*{\asmatrix}[1]{\mleft\lbrack{#1}\mright\rbrack}   % matrix representation
+\providecommand*{\transmat}{\Lambda}                              % transformation matrix
+\providecommand*{\ttransmat}[2]{\tensor{\transmat}{^{#1}_{#2}}}   % transformation matrix components
+\providecommand*{\aidx}[1]{{#1}\sp{\prime}}                       % alternate index
+\providecommand*{\ridx}[1]{\hat{#1}}                              % rectangular index
+\providecommand*{\trans}[1]{\tau}                                 % transpose (as superscript)
