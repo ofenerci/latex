@@ -1,0 +1,32 @@
+import System.Nemesis.Env
+import System.FilePath.Posix (replaceExtension)
+
+main = run $ do
+
+  clean [ "**/*.aux"
+        , "**/*.bak"
+        , "**/*.log"
+        , "**/*~"
+        , "**/*.acn"
+        , "**/*.glo"
+        , "**/*.ist"
+        , "**/*.lof"
+        , "**/*.lot"
+        , "**/*.ntn"
+        , "**/*.toc"
+        , "**/*.idx"
+        , "**/*.out"
+        , "**/*.acr"
+        , "**/*.bbl"
+        , "**/*.blg"
+        , "**/*.brf"
+        , "**/*.gls"
+        , "**/*.not"
+        , "**/*.nav"
+        , "**/*.snm"
+        , "**/*.gz"
+        , "**/*.fls"
+        , "**/*.synctex.gz*"
+        , "**/*.pdfsync"
+        , "**/*.fdb_latexmk"
+        ]
