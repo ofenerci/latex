@@ -13,14 +13,21 @@
 \providecommand*{\fdef}[3]{{#1}:{#2}\to{#3}}  % function definition
 \providecommand*{\fmap}[2]{{#1}\mapsto{#2}}   % function mapping
 %
+\providecommand*{\elset}[1]{\mleft\lbrace{#1}\mright\rbrace}          % elements of a set
+\providecommand*{\setprop}[2]{\mleft\lbrace{{#1}:{#2}}\mright\rbrace} % set with property
+%
 \providecommand*{\fdmap}[3]{{#1}:{#2}\mapsto{#3}}  % function definition and mapping
 %
 \providecommand*{\setprod}{\times} % set (Cartesian) product
 %
 % special sets
 %
-\providecommand*{\specialset}[1]{\mathbb{#1}} % reals, naturals, ...
-\providecommand*{\rspace}{\specialset{R}}     % real space
+\providecommand*{\specialset}[1]{\mathbb{#1}}       % reals, naturals, ...
+\providecommand*{\rspace}{\specialset{R}}           % real space
+\providecommand*{\nrspace}[1]{\specialset{R}^{#1}}  % n-dim real space
+%
+\providecommand*{\espace}{\specialset{E}}           % euclidean space
+\providecommand*{\nespace}[1]{\specialset{E}^{#1}}  % n-dim euclidean space
 
 % spaces
 %

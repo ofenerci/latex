@@ -10,8 +10,16 @@
 \providecommand*{\cov}[1]{\tilde{#1}}     % covector
 \providecommand*{\idtens}{i}              % identity tensor
 \providecommand*{\event}[1]{\mathcal{#1}} % events (points in spacetime)
+\providecommand*{\point}[1]{\mathcal{#1}} % point in a manifold
 \providecommand*{\uvec}[1]{\hat{#1}}      % unit vector
 \providecommand*{\inv}[1]{\br{#1}^{-1}}   % inverse
+%
+% regions
+%
+\providecommand*{\region}[1]{\set{#1}}                 % regions in space
+\providecommand*{\cregion}[1]{\region{#1}}             % closed regions in space
+\providecommand*{\oregion}[1]{\region{#1}^{{}\circ{}}} % open regions in space
+\providecommand*{\bregion}[1]{\partial\region{#1}}     % boundary of regions in space
 %
 % metric
 %
@@ -37,7 +45,8 @@
 
 % tensor products
 %
-\providecommand*{\iprod}{\cdot}                                   % dot product
+\providecommand*{\iprod}{\cdot}                                   % inner product
+\providecommand*{\oprod}{\wedge}                                  % outer product
 \providecommand*{\tprod}{\otimes}                                 % tensor product
 \providecommand*{\sprod}[2]{\mleft\langle{#1},{#2}\mright\rangle} % scalar product
 
@@ -79,7 +88,9 @@
 \providecommand*{\gradcov}{\cov{\nabla}} % gradient covector
 \providecommand*{\gradvec}{\vec{\nabla}} % gradient vector
 %
-% coordinate components
+% coordinate systems
+%
+\providecommand*{\coordsys}[3]{\seq{#1}{#2}{#3}} % coordinate system
 %
 % rectangular
 %
@@ -93,6 +104,12 @@
 \providecommand*{\cypos}{\theta}  % y position in cylindrical polar coord.
 \providecommand*{\czpos}{z}       % z position in cylindrical polar coord.
 %
+% spherical polar
+%
+\providecommand*{\sxpos}{\rho}    % x position in spherical polar coord.
+\providecommand*{\sypos}{\theta}  % y position in spherical polar coord.
+\providecommand*{\szpos}{\phi}    % z position in spherical polar coord.
+%
 % matrices
 %
 \providecommand*{\asmatrix}[1]{\mleft\lbrack{#1}\mright\rbrack}   % matrix representation
@@ -100,4 +117,6 @@
 \providecommand*{\ttransmat}[2]{\tensor{\transmat}{^{#1}_{#2}}}   % transformation matrix components
 \providecommand*{\aidx}[1]{{#1}\sp{\prime}}                       % alternate index
 \providecommand*{\ridx}[1]{\hat{#1}}                              % rectangular index
-\providecommand*{\trans}[1]{\tau}                                 % transpose (as superscript)
+\providecommand*{\trans}[1]{\br{#1}^{T}}                          % transpose (as superscript)
+%
+\providecommand*{\xttransmat}[2]{\dfrac{\partial\br{#1}}{\partial\br{#2}}} % expanded trans. matrix

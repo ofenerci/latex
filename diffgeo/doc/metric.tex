@@ -1,94 +1,237 @@
 \section{Metric tensor calculation}
 %
-As we have seen, the geometric object that carries information about lengths is the metric tensor. So, it should be the first object to be computed when a new coordinate system is met.
+\theme{Problem statement.} The advantage of the rectangular system is that all of its coordinates measure lengths. (In other systems, that is not the case: in spherical coordinates, for instance, only one coordinate measures lengths; the others, angles.) So it is pretty ease to work with them, albeit sometimes tedious. On the other hand, we would like to use other coordinate systems in those cases when working with rectangular coordinates may be overwhelming or when the symmetry of geometric figures may be exploited. As we have seen, the metric tensor is the geometric object that carries information about lengths. It allows us to work with the same ease in different coordinate systems as we do in the rectangular system. Therefore, the metric tensor coefficients should be the first to be computed when a new coordinate system is met. In this section, we provide a method to calculate them and, as an illustration of the method, we compute the metric tensor coefficients in spherical coordinates.
 
-As an illustration, we calculate the metric tensor in polar coordinates.
 
-\theme{Problem.} We want to work with the same ease in different coordinate systems as we work in rectangular coordinates.
-
-\theme{Rectangular coordinates advantage.} The advantage of rectangular coordinates is that they measure distances. Spherical coordinates, for instance, measure lengths and angles.
+\subsection{Method to compute the metric tensor coefficients}
+%
+To compute the metric tensor coefficients in a given coordinate system:
+%
+\begin{itemize}
+  \item map local coordinates $\tvec\pos\mu$ to rectangular coordinates $\tvec\pos{\ridx\mu}$: map $\tvec\pos\mu\mapsto\tvec\pos{\ridx\mu}$ or $\tvec\pos{\ridx\mu} = \tvec\pos{\ridx\mu}\vat{\tvec\pos\mu}$;
+  \item calculate the transformation matrix $\transmat$ between coordinates: $\ttransmat{\ridx\mu}\mu = \ipd\mu\tvec\pos{\ridx\mu}$;
+  \item compute the metric tensor in matrix form: $\asmatrix\metric = \trans{\ttransmat{\ridx\mu}\mu}\ttransmat{\ridx\mu}\mu$.
+\end{itemize}
+%
+The transformation matrix between coordinate bases can be computed analogously to a general transformation between two bases. Remember that, in general, a vector $\vec v\in\nespace n$ can be expanded on a basis $\bset{\tbvec\mu}{\mu = 1}{n}$ as $\vec v = \tvec v\mu\tbvec\mu$. Now, if we change to a new basis $\bset{\tbvec{\aidx\mu}}{\aidx\mu = 1}{n}$, then the components of $\vec v$ change to
+%
+\begin{equation*}
+  \tvec v\mu\tbvec\mu \mapsto \tvec v\mu\ttransmat{\aidx\mu}{\mu}\tbvec{\aidx\mu}
+                      = \tvec v{\aidx\mu}\tbvec{\aidx\mu} \,.
+\end{equation*}
+%
+In the particular case of coordinate transformation, the coordinates are \lingo{local coordinates} and the bases are \emph{coordinate} bases; therefore, the transformation matrix equals \lingo{Jacobi's matrix}: $\ttransmat{\aidx\mu}{\mu} = \ipd\mu\tvec\pos{\aidx\mu}$. This results from having defined the coordinate basis elements as $\tbvec\mu = \ipd\mu\tvec\pos\nu$.
 
 
 \subsection{Example}
 %
-Consider a disk, for instance. We would like to explode its symmetry by labeling points in the disk in polar coordinates $\tuple{\cxpos,\cypos}$. See that $\cxpos$ measures lengths; while $\cypos$ angles.
+Consider a nonempty three-dimensional ball $\cregion B$, \cref{fig:ball}. We want to profit from its symmetry by using spherical coordinates as \lingo{local coordinates}. To measure distances in local coordinates, however, we need to relate the local coordinates to the \lingo{reference coordinates}: rectangular.
 
-\theme{Metric.} We want, however, that the information about lengths is managed by an specific object: the metric tensor. So we head to calculate it.
+In the local coordinate system, ball points can labeled by a set of coordinates $\coordsys{\tvec\pos\mu}{\mu = 1}{3} = \tuple{\sxpos,\sypos,\szpos}$, as shown in \cref{fig:ballfrontview,fig:ballsideview}. Note that $\sxpos$ measures lengths; while $\sypos,\szpos$, angles.
+%
+\begin{figure}[b]
+  \capstart
+  \centering
+  %
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./graph/unit-ball}
+    \caption{Ball}
+    \label{fig:ball}
+  \end{subfigure}
+  %
+  \quad
+  %
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./graph/unit-ball-front}
+    \caption{Concentrical spheres -- front view}
+    \label{fig:ballsideview}
+  \end{subfigure}
+  %
+  \qquad
+  %
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./graph/unit-ball-side}
+    \caption{Concentrical spheres -- side view}
+    \label{fig:ballfrontview}
+  \end{subfigure}
+  %
+  \caption{Spherical coordinate system $\tuple{\sxpos,\sypos,\szpos}$ labeling points of a three-dimensional ball. The concentrical spheres show various radii ($\sxpos$ coordinate); while the contour lines in every sphere, latitudes ($\sypos$) and longitudes ($\szpos$).}
+  \label{fig:ballfrontsideview}
+\end{figure}
 
-\theme{Transformation.} We begin by stating the transformation from polar coordinates (the coordinates we decided to use) to rectangular coordinates (our reference coordinates):
+Then, any two coordinate systems are related by a mapping that takes coordinate values in the local system and returns coordinate values in the reference system. In our case, the mapping is between spherical coordinates and rectangular coordinates, given by
 %
 \begin{equation*}
-  \xpos = \cxpos\cos\cypos\quad\text{and}\quad
-  \ypos = \cxpos\sin\cypos\,.
+  \xpos = \sxpos\cos\szpos\sin\sypos\,,\quad
+  \ypos = \sxpos\sin\sypos\sin\szpos\,,\quad\text{and}\quad
+  \zpos = \sxpos\cos\sypos\,.
 \end{equation*}
 
-\theme{Differential position.} Consider now two neighboring points in the disk. The differential distance between them is given by the differential position $d\vec\pos$. Since the differential position measures lengths, we want to find a transformation matrix $\transmat$ that takes our differential position $d\vec\pos$ from polar to rectangular coordinates, or
-%
-\begin{equation*}
-  d\tvec\pos\mu\ttransmat{\ridx\mu}{\mu} \mapsto d\tvec\pos{\ridx\mu}\,,
-\end{equation*}
-%
-where the hat in $\ridx\mu$ represents reference (rectangular) coordinates. so we can measure distances comfortably.
-%
-Such a transformation matrix, from polar to rectangular coordinates, is given by Jacobi's matrix:
+The transformation matrix between systems, \lingo{Jacobi's matrix}, can be computed as
 %
 \begin{equation*}
   \ttransmat{\ridx\mu}\mu = \ipd\mu\tvec\pos{\ridx\mu}
                           = \dfrac{\partial\tvec\pos{\ridx\mu}}{\partial\tvec\pos\mu}
-                          = \dfrac{\partial\br{\xpos,\ypos}}{\partial\br{\cxpos,\cypos}}
+                          = \xttransmat{\xpos,\ypos,\zpos}{\sxpos,\sypos,\szpos}
                           = \begin{bmatrix}
-                              \cos\cypos & -\cxpos\sin\cypos \\
-                              \sin\cypos &  \cxpos\cos\cypos
-                            \end{bmatrix}\,,
+                              \cos\szpos\sin\sypos & \sxpos\cos\sypos\cos\zpos & -\sxpos\sin\sypos\sin\szpos \\
+                              \sin\sypos\sin\szpos & \sxpos\cos\sypos\sin\zpos & \sxpos\cos\szpos\sin\sypos  \\
+                              \cos\sypos           & -\sxpos\sin\sypos         & 0                           \\
+                            \end{bmatrix}\,.
 \end{equation*}
-%
-whose determinant is given by
+
+Then, the metric tensor components in spherical coordinates can now be found by (matrix) multiplying the transpose of the transformation matrix with the transformation matrix, which, after some algebra and trigonometry, becomes
 %
 \begin{equation*}
-  \det\ttransmat{\ridx\mu}\mu = \cxpos \neq 0 \,,
+  \asmatrix\metric =  \begin{bmatrix}
+                        1 & 0         & 0 \\
+                        0 & \sxpos^2  & 0 \\
+                        0 & 0         & \sxpos^2\sin^2\sypos \\
+                      \end{bmatrix} \,.
 \end{equation*}
 %
-so the transformation has an inverse.
+Thus, the metric coefficients are $\tmetric\mu\nu = \diag\asmatrix{1,\sxpos^2,\sxpos^2\sin^2\sypos}$.
 
-The metric tensor components in polar coordinates can now be found by (matrix) multiplying the transpose of the transformation matrix with the transformation matrix:
-%
-\begin{align*}
-  \asmatrix\metric &= \br{\ttransmat{\ridx\mu}{\mu}}^\tau\ttransmat{\ridx\mu}\mu \\
-                   &= \begin{bmatrix}
-                        \cos\cypos & -\cxpos\sin\cypos \\
-                        \sin\cypos &  \cxpos\cos\cypos
-                      \end{bmatrix}^{\tau}
-                      \begin{bmatrix}
-                        \cos\cypos & -\cxpos\sin\cypos \\
-                        \sin\cypos &  \cxpos\cos\cypos
-                      \end{bmatrix} \\
-                   &= \begin{bmatrix}
-                        \cos\cypos        & \sin\cypos \\
-                        -\cxpos\sin\cypos & \cxpos\cos\cypos
-                      \end{bmatrix}
-                      \begin{bmatrix}
-                        \cos\cypos & -\cxpos\sin\cypos \\
-                        \sin\cypos &  \cxpos\cos\cypos
-                      \end{bmatrix} \\
-                   &= \begin{bmatrix}
-                        \cos^2\cypos + \sin^2\cypos & 0 \\
-                        0                           & \cxpos^2\cos^2\cypos + \cxpos^2\sin^2\cypos
-                      \end{bmatrix} \\
-                   &= \begin{bmatrix}
-                        1 & 0 \\
-                        0 & \cxpos^2
-                      \end{bmatrix} \\
-                   &= \diag\tuple{1,\cxpos^2}\,.
-\end{align*}
-%
 With the metric tensor coefficients $\tmetric\mu\nu$, we can calculate distances between neighboring points by
 %
 \begin{equation*}
   \sqdifdist  = d\vec\pos\iprod d\vec\pos
-              = \tmetric\mu\nu d\tvec\pos\mu d\tvec\pos\nu\,.
+              = \tmetric\mu\nu d\tvec\pos\mu d\tvec\pos\nu\,,
+\end{equation*}
+%
+which, in our case, translates to
+%
+\begin{equation*}
+  \sqdifdist = \br{d\sxpos}^2 + \br{\sxpos\,d\sypos}^2 + \br{\sxpos\sin\sypos\,d\szpos}^2 \,.
 \end{equation*}
 
 
-\subsection{Method}
+\providecommand*{\ball}{\cregion B}
 %
+\providecommand*{\radius}{r}
+\providecommand*{\rball}{\radius_{\ball}}
+\providecommand*{\volume}{v}
+\providecommand*{\volball}{\volume_{\ball}}
 
+
+\subsection{Application}
+%
+To see how a properly chosen coordinate system can simplify computation, calculate the volume of a ball of radius $\rball$ using rectangular and spherical coordinates. Then, compare the methods.
+
+
+\subsubsection{Rectangular coordinates}
+%
+In rectangular coordinates, a closed, three-dimensional ball $\ball$ of radius $\rball$ is described by
+%
+\begin{equation*}
+  \ball = \setprop{\tuple{\xpos,\ypos,\zpos}\in\nrspace 3}{\xpos^2 + \ypos^2 + \zpos^2 \leq \rball^2}\,.
+\end{equation*}
+%
+Note that the ball is described by an equation relating coordinates $\xpos,\ypos,\zpos$ with $\rball$.
+
+Then, the ball volume $\volball$ can be calculated as
+%
+\begin{equation*}
+  \volball = \int_\ball\,\sqrt{\det\metric}\,d\xpos\oprod d\ypos\oprod d\zpos
+           = \int_\ball\,d\xpos d\ypos d\zpos
+           =  \int_{-\rball}^{\rball}
+              \int_{-\sqrt{\rball^2 - \xpos^2}}^{\sqrt{\rball^2 - \xpos^2}} 
+              \int_{-\sqrt{\rball^2 - \xpos^2 - \ypos^2}}^{\sqrt{\rball^2 - \xpos^2 - \ypos^2}}
+                d\xpos d\ypos d\zpos
+           = \dfrac 43\pi\rball^3 \,.
+\end{equation*}
+%
+Note how the relations among coordinates and the ball radius appears in the integration limits. They have to be solved before passing to the next integral. Such relationships complicate integration. This translates in a nice looking integrand; but in nasty integration limits. Finally, note that the metric tensor coefficients play no role to calculate the ball volume because rectangular coordinates themselves measure distances.
+
+
+\subsubsection{Spherical coordinates}
+%
+In spherical coordinates, a closed, three-dimensional ball $\ball$ of radius $\rball$ is described by
+%
+\begin{equation*}
+  \ball = \setprop{\tuple{\sxpos,\sypos,\szpos}\in\nrspace 3}
+          { 
+            0\leq\sxpos\leq\rball, 
+            0\leq\sypos\leq\pi, 
+            0 < \szpos\leq 2\pi
+          }\,.
+\end{equation*}
+%
+Note that the ball is described by a series of inequalities relating $\sxpos,\sypos,\szpos$ with $\rball$.
+
+Then, the ball volume $\volball$ can be calculated as
+%
+\begin{equation*}
+  \volball = \int_\ball\,\sqrt{\det\metric}\,d\sxpos\oprod d\sypos\oprod d\szpos
+           = \int_\ball\,\sxpos^2\sin\sypos\,d\sxpos d\sypos d\szpos
+           = \int_0^{\rball} \int_0^{\pi} \int_0^{2\pi}\,\sxpos^2\sin\sypos\,d\sxpos d\sypos d\szpos
+           = \dfrac 43\pi\rball^3 \,.
+\end{equation*}
+%
+Note how the inequalities relating coordinates and the ball radius integrate seamlessly with the integration limits. There is no need to solve any of them before passing to the next integral, we just have to plug them in. This eases integration and translates to a nice looking integrand and nice integration limits. Additionally, note that all the computation is done in local coordinates and we let the the metric tensor coefficients carry all the information about lengths. Thus, the coefficients play a significant role to calculate the ball volume because not all of the spherical coordinates measure distances. In fact, the coefficients can be seen as convention factors between angles and lengths.
+
+
+\subsection{Technicalities}
+%
+\subsubsection{Volume calculations}
+%
+Consider a region $\region K\subset\nespace n$. Then, its \lingo{volume form} is a $n$-form of the type:
+%
+\begin{equation*}
+  \sqrt{\det\metric}\,d^n\tvec\pos\mu\,,
+\end{equation*}
+%
+where $d^n\tvec\pos\mu$ is a shorthand notation for the product:
+%
+\begin{equation}
+  d^n\tvec\pos\mu = d\tvec\pos 1\oprod\dotsb\oprod d\tvec\pos n\,.
+\end{equation}
+
+From the volume form, we can calculate the \lingo{volume element}
+%
+\begin{equation*}
+  \sqrt{\det\metric}\,d\tvec\pos 1 \dotsb d\tvec\pos n\,,
+\end{equation*}
+%
+where the outer products $\oprod$ have been removed once the region was properly oriented.
+
+Finally, to find the volume of the region $\region K$, plug the volume form into a multiple integral:
+%
+\begin{equation*}
+  \volume_{\region K} = \int_{\region K}\,\sqrt{\det\metric}\,d\tvec\pos 1 \dotsb d\tvec\pos n\,.
+\end{equation*}
+
+
+\subsubsection{Ball symbolic description}
+%
+In $n$-Euclidean space, A \lingo{closed $n$-ball} of radius $\rball$ is the set of all points of distance less or equal than $\rball$ away from $\norm{\vec\pos}$. An \lingo{open $n$-ball} of radius $\rball$ and center $\vec\pos$ is the set of all points of distance less than $\rball$ from $\norm{\vec\pos}$. A \lingo{$n$-ball boundary} is the boundary of a closed $n$-ball.
+
+Symbolically, these definitions can be put using set theory notation:
+%
+\begin{align*}
+  \cregion\ball &= \setprop{\vec\pos\in\nespace n}{\norm{\vec\pos}\leq\rball}\,, && \eqtxt{closed ball} \\
+  \oregion\ball &= \setprop{\vec\pos\in\nespace n}{\norm{\vec\pos} <  \rball}\,, && \eqtxt{open ball}   \\
+  \bregion\ball &= \setprop{\vec\pos\in\nespace n}{\norm{\vec\pos} = \rball}\,, && \eqtxt{ball boundary, a $\br{n-1}$-sphere}
+\end{align*}
+%
+where $\partial$ is the boundary operator.
+
+
+\subsubsection{Spherical coordinates convention}
+%
+As seen in \cref{fig:isoconventionsphericalcoordinates}, we use the \brand{ISO-2:2009} (physics) convention for spherical coordinates: $\tuple{\sxpos,\sypos,\szpos}$, where $\sxpos$ represents the \lingo{radial distance}; $\sypos$, the \lingo{inclination} (\aka, zenith, colatitude, or polar angle); and $\szpos$, the \lingo{azimuth} (\aka, longitude). This choice of coordinates gives \emph{right-handed} orientation.
+
+As a side note, \brand{Mathematica} (v. 10) adopts the same convention for the coordinates and assumes the following ranges:
+%
+\begin{equation*}
+  0 < \sxpos\,,\qquad
+  0 < \sypos < \pi\,,\quad\text{and}\quad
+  -\pi < \szpos\leq\pi\,.
+\end{equation*}
+
+\begin{figure}[b]
+  \capstart\centering
+  \includegraphics[width=0.4\textwidth]{./graph/iso-convention-2}
+  \caption{\brand{ISO-2:2009} convention for spherical coordinates: $\tuple{r,\theta,\varphi}$. Herein, we used the same convention, but with different symbols: we use $\sxpos$ instead of $r$ and $\szpos$ instead of $\varphi$.}
+  \label{fig:isoconventionsphericalcoordinates}
+\end{figure}
