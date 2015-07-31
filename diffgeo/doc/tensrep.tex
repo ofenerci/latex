@@ -68,3 +68,49 @@ Finally, these results match \cref{eq:metricinvmetricidtensorexpansiononabasis}.
   
   \theme{Slot representation:} $t\vat{\tbcov\mu,\tbvec\nu,\tbvec\lambda}\implies t\vat{\cslot,\vslot,\vslot}$.
 \end{solution}
+
+
+\subsection{Graphical representation of tensors}
+%
+\begin{figure}[b]
+  \capstart
+  \centering
+  %
+  \begin{subfigure}{0.55\textwidth}
+    \includegraphics[width=\textwidth]{./graph/penrose}
+    \caption{Penrose notation}
+    \label{fig:penrosenotationfortensors}
+  \end{subfigure}
+  %
+  %\quad
+  %
+  \begin{subfigure}{0.60\textwidth}
+    \includegraphics[width=\textwidth]{./graph/cvitanovic}
+    \caption{Cvitanovic notation}
+    \label{fig:cvitanovicnotationfortensors}
+  \end{subfigure}
+  %
+  \caption{Penrose and Cvitanovic's graphical notation for tensors. Penrose's notation relies on shapes and wires: tensors are represented by prescribed shapes and indices by arrows: contravariant indices spring from above the figure; while covariant from below. Cvitanovic's notation, on the other hand, uses arrows springing for tensors: contravariant indices are represented by arrows pointing away from the tensor; while covariant, toward the tensor.}
+  \label{fig:graphicalnotationfortensors}
+\end{figure}
+%
+Cvitanovic's graphical notation for tensors: Penrose's notation modified by \cite[p.27]{cvitanovic:2008}], shown in \cref{fig:graphicalnotationfortensors}:
+%
+\begin{itemize}
+  \item tensors are enclosed by figures like boxes or circles;
+  \item arrows point \emph{away from the figure for the upper indices} (vector indices or contravariant indices); while \emph{toward the figure for the lower indices} (covector indices or covariant indices);
+  \item diagrammatic notation must indicate which in (out) arrow correspond to the first upper (lower) index of the tensor;
+  \item indices are read \emph{counterclockwise} around the vertex.
+\end{itemize}
+
+\theme{Mnemotecnic.} Vectors can be thought of a \scare{hot} spots: they release energy to space; therefore, its arrows point away from the box. Covectors can be thought of a \scare{cold} spots: they accept energy from space; thus, its arrow point toward the box.
+
+
+\subsection{Untraditional ways of solving problems}
+%
+Index notation, slot notation, ESC, and diagrammatic notation for tensors and ESC can be very effective in problem solving. Some examples, below.
+
+\theme{Linear momentum.} Let's get right the equation of linear of momentum $\lmom$ for a particle with mass $m$ moving with velocity $\vel$.
+
+We know that velocity is a vector, by definition: $\vec\vel$. Thus it has a covector slot: $\vec\vel\vat\cslot$, which means that its components are $\vec\vel\vat{\tbcov\mu}\implies\tvec\vel\mu$. On the other hand, from Lagrangian mechanics, we know that momentum is a covector. Thus, $\cov\lmom\implies\cov\lmom\vat\vslot\implies\cov\lmom\vat{\tbvec\mu}\implies\tcov\lmom\mu$.
+

@@ -108,7 +108,7 @@ The set of all covectors is a linear space complementary to, but different from,
 %
 \theme{Tensor of order $\torder mn$:} defined as a scalar function of $m$ vectors and $n$ covectors, linear in all of its arguments. Refer to a tensor of order $\torder mn$ also as $\torder mn$-tensor.
 
-\theme{Tensor types:} from the definition, scalars are $\torder 00$ tensors, vectors $\torder 10$ tensors, and covectors $\torder 10$ tensors.
+\theme{Tensor types:} from the definition, scalars are $\torder 00$ tensors, vectors $\torder 10$ tensors, and covectors $\torder 01$ tensors.
 
 \theme{Notation:} the $\torder mn$ notation does not distinguish were vectors and covectors are to be placed. To solve this, represent vectors by arrows and covectors by tildes in tensor slots; \eg, a $\torder 21$ tensor $t$ taking a vector in its first and third slots and a covector in the second will be noted as a linear function with two vector and one covector arguments: $t\vat{\vslot,\cslot,\vslot}$.
 
@@ -824,6 +824,705 @@ The basis covectors obey the rules $\tbcov\mu\iprod\tbcov\nu = \tinvmet\mu\nu$. 
 \theme{Convention:} from now on, unless otherwise noted, we will assume that our basis vectors are on a coordinate basis. We will use covectors and vectors interchangeably through the mapping provided by the metric tensor and its inverse.
 
 
-\subsection{Differentiation and integration}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% changing the equation counter
 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\setcounter{equation}{53}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+\subsection{Differentiation and integration}
+
+
+\subsubsection{Gradient of a scalar}
+%
+\theme{Covariant derivative} Consider a scalar field $f$. We have shown that the gradient is a covector and that, in a \emph{coordinate basis}, its components are simply the partial derivatives with respect to the coordinates:
+%
+\begin{equation}\label{eq:gradientofscalarfield}
+  \gradcov f = \br{\ipd\mu f}\tbcov\mu 
+             = \br{\tgradcov\mu f}\tbcov\mu\,.
+\end{equation}
+%
+\theme{Partial \vs covariant derivative.} Note the second notation, $\tgradcov\mu$, called the \lingo{covariant derivative} with respect to $\tvec\pos\mu$. By definition, the covariant derivative behaves like the components of a covector, but so does the partial derivative $\ipd\mu$, in \cref{eq:gradientofscalarfield}. Then, why a new symbol?
+
+\theme{Explanation.} Note that, since the gradient behaves like a $\torder 01$ tensor (covector), it changes the rank of a field from $\torder mn$ to $\torder{m}{n+1}$; \ie,
+%
+\begin{quotation}
+  application of the gradient is like taking the tensor product with a covector.
+\end{quotation}
+%
+The difference is that the components are \emph{not} the product of components, because $\tgradcov\mu$ is not a number. However, the resulting object must be a $\torder{m}{n+1}$ tensor, its components must transform like components of a $\torder{m}{n+1}$ tensor. The gradient of a scalar field $f$ is a $\torder 01$ tensor with components $\ipd\mu f$. Thus,
+%
+\begin{quotation}
+  the gradient is the covariant derivative of a scalar field: $\grad f = \gradcov f$.
+\end{quotation}
+
+
+\subsubsection{Gradient of a vector: covariant derivative}
+%
+Now, we take the gradient of a vector field $\vec a = \tvec a\mu\tbvec\mu$. In general, the basis vectors are functions of position as are the vector components. Thus, the gradient must act on both. In a coordinate basis, we have:
+%
+\begin{align}\label{eq:gradientofvectorfield}
+  \gradcov\vec a &= \gradcov\tprod\vec a \,,
+                  && \eqtxt{app. of grad. is like taking the tensor prod. with a covector}\\\nonumber
+                &= \br{\tbcov\mu\ipd\mu}\tprod\br{\tvec a\nu\tbvec\nu} \,,
+                  && \eqtxt{grad on coord basis, \cref{eq:gradientexpansiononcoordinatebasis}}\\\nonumber
+                &= \ipd\mu\tvec a\nu\,\tbcov\mu\tprod\tbvec\nu + \tvec a\nu\tbcov\mu\tprod\ipd\mu\tbvec\nu \,,
+                  && \eqtxt{prod. rule, distrib. of $\tprod$ over $+$}\\\nonumber
+                &= \br{\tgradcov\mu\tvec a\nu}\tbcov\mu\tprod\tbvec\nu\,.
+                  && \eqtxt{def. of covariant derivative}
+\end{align}
+%
+\theme{Warning.} Be careful to preserve the ordering of the vectors and tensors and do not confuse subscripts and superscripts. Otherwise, taking the gradient of a vector is straightforward.
+
+\theme{Result.} The result is a $\torder 11$ tensor with components $\tgradcov\mu\tvec a\nu$. But, now, see that the covariant derivative does not equal the partial derivative, $\tgradcov\mu\neq\ipd\mu$! That's why we just introduced a new symbol:
+%
+\begin{quotation}
+  reserve the covariant derivative notation $\tgradcov\mu$ for the actual components of the gradient of a tensor.
+\end{quotation}
+
+\theme{Alternative notations.} The alternative notation $\tensor{a}{^\mu_{;\nu}} = \tgradcov\mu\tvec a\nu$ is often used, replacing the comma of a partial derivative $\tensor{a}{^\mu_{,\nu}} = \ipd\mu\tvec a\nu$ with a semicolon for the covariant derivative.
+
+\theme{Mystery solved.} In other texts where basis vectors are ignored, the difference between the two derivatives seems mysterious. Vector notation in \cref{eq:gradientofvectorfield} makes it clear why there is a difference.
+
+\theme{Gradient of basis vectors.} \Cref{eq:gradientofvectorfield} does not help us evaluate the gradient of a vector, because we do not yet know what the gradients of the basis vectors are. However, they are straightforward to determine in a coordinate basis. First, note that, geometrically, $\ipd\mu\tbvec\nu$ is a vector at a point $\point P$: it is the difference of two vectors at infinitesimally close points, derived by a coordinate interval. (The easiest way to tell that $\ipd\mu\tbvec\nu$ is a vector is to note that it has one arrow.) So, 
+%
+\begin{quotation}
+  like all vectors, $\ipd\mu\tbvec\nu$ must be a linear combination of basis vectors at $\point P$.
+\end{quotation}
+%
+We can write the most general possible linear combination as
+%
+\begin{equation}\label{eq:gradientofbasisvectors}
+  \ipd\mu\tbvec\nu \defas \tchris\lambda\mu\nu\tbvec\lambda\,.
+\end{equation}
+
+
+\subsubsection{Christoffel's symbols}
+%
+\theme{Definition.} In \cref{eq:gradientofbasisvectors}, we introduced a set of coefficients $\tchris\lambda\mu\nu$ called the \lingo{connection symbols} or \lingo{Christoffel's symbols}. (Technically, the term Christoffel's symbols is reserved for a coordinate basis.) Despite their appearance, Christoffel's symbols are \emph{not} the components of a $\torder 12$ tensor. Rather, they may be considered as a set of four $\torder 11$ tensors, one for each basis vector $\tbvec\nu$, because
+%
+\begin{equation*}
+  \gradcov\tbvec\nu = \tchris\lambda\mu\nu\tbcov\mu\tprod\tbvec\lambda\,.
+\end{equation*}
+%
+However, since they do not transform like tensors, it is better to see $\tchris\lambda\mu\nu$ as a set of coefficients telling us how to differentiate basis vectors.
+
+\theme{Covariant derivative components.} The components of the gradient of $\vec a$, known also as the covariant derivative of $\tvec a\nu$, are, from \cref{eq:gradientofvectorfield,eq:gradientofbasisvectors},
+%
+\begin{equation}\label{eq:componentsofthegradientofavector}
+  \tgradcov\mu\tvec a\nu = \ipd\mu\tvec a\nu + \tchris\nu\mu\lambda\tvec a\lambda\,,
+\end{equation}
+%
+or, using the bases,
+%
+\begin{equation*}
+  \gradcov\vec a = \gradcov\tprod\vec a
+                = \tgradcov\mu\tbcov\mu\tprod\tvec a\nu\tbvec\nu
+                = \ipd\mu\tvec a\nu\,\tbcov\mu\tprod\tbvec\nu 
+                  + \tchris\nu\mu\lambda\tvec a\lambda\,\tbcov\mu\tprod\tbvec\nu\,.
+\end{equation*}
+
+\theme{Calculation.} How to determine the values of Christoffel's symbols? That is, how to evaluate the gradient of the basis vectors? One way is to \emph{express the basis vectors in terms of another set whose gradients are known}. For instance, consider polar coordinates $\tuple{\cxpos,\cypos}$ in the rectangular plane. The polar coordinate basis vectors were given in terms of the rectangular basis vectors in \cref{eq:polarbasisinrectangularbasis}. We know that the gradients of the rectangular basis vectors vanish and we know how to transform from rectangular to polar coordinates. It is a straightforward exercise from this to compute the gradients of the polar basis vectors:
+%
+\begin{equation}\label{eq:gradientsofpolarbasisvectors}
+  \gradcov\tbvec\cxpos = \dfrac{1}{\cxpos}\,\tbcov\cypos\tprod\tbvec\cypos\,,\quad
+  \gradcov\tbvec\cypos = \dfrac{1}{\cxpos}\,\tbcov\cxpos\tprod\tbvec\cypos 
+                        - \cxpos\,\tbcov\cypos\tprod\tbvec\cxpos\,.
+\end{equation}
+
+From \cref{eq:gradientofbasisvectors,eq:gradientsofpolarbasisvectors}, we conclude that the nonvanishing Christoffel's symbols are
+%
+\begin{equation}\label{eq:christoffelsymbolspolarcoordinates}
+  \tchris\cypos\cypos\cxpos = \tchris\cypos\cxpos\cypos
+                            = \dfrac 1\cxpos\,,\quad
+  \tchris\cxpos\cypos\cypos = -\cxpos\,.
+\end{equation}
+
+\theme{Extension to cylindrical coordinates.} Suppose that we add the third dimension, with coordinate $\czpos$, to get a three-dimensional Euclidean space with cylindrical coordinates $\tuple{\cxpos,\cypos,\czpos}$. The \lingo{line element} now becomes $\sqdifdist = d\cxpos^2 + \cxpos^2 d\cypos^2 + d\czpos^2$. Because $\tbvec\cxpos,\tbvec\cypos$ are independent of $\czpos$ and $\tbvec\czpos$ is itself constant, no new non-vanishing Christoffel's symbols appear. Now consider a related but different manifold: a cylinder. A cylinder is simply a surface of constant $\cxpos$ in our three-dimensional Euclidean space. This two-dimensional space is mapped by coordinates $\tuple{\cypos,\czpos}$, with basis vectors $\tbvec\cypos,\tbvec\czpos$. What are the gradients of these basis vectors? \emph{They vanish}! But, how can that be? From \cref{eq:gradientsofpolarbasisvectors}, $\ipd\cypos\tbvec\cypos = -\cxpos\tbvec\cxpos$. Have we forgotten about the $\tbvec\cxpos$ direction?
+
+\theme{Important lesson!} We cannot project tensors into basis vectors that do not exist in our manifold, whether it is a two-dimensional cylinder or a four-dimensional spacetime. A cylinder exists as a two-dimensional mathematical surface whether or not we choose to embed it in a three-dimensional Euclidean space. 
+%
+\begin{quotation}
+  If it happens that we can embed our manifold into a simpler higher-dimensional space, then we do so only as a matter of calculation convenience. If the result of a calculation is a vector normal to our manifold, then we must discard this result because this direction does not exist in our manifold.
+\end{quotation}
+%
+\theme{Ant analogy.} If this conclusion is troubling, consider a cylinder as seen by a two-dimensional ant crawling on its surface. If the ant goes around in circles about the $\czpos$-axis, then it is moving in the $\tbvec\cypos$ direction. We conclude that Christoffel's symbols indeed all vanish for a cylinder described by coordinates $\tuple{\cypos,\czpos}$.
+
+
+\subsubsection{Gradients of covectors and tensors}
+%
+Later we will return to the question of how to evaluate Christoffel's symbols in general. First, we investigate the gradient of covectors and of general tensor fields. 
+
+\theme{Covector gradient} Consider a covector field $\cov a = \tcov a\nu\tbcov\nu$. Its gradient in a coordinate basis is
+%
+\begin{equation}\label{eq:gradientofcovector}
+  \gradcov\cov a = \gradcov\tprod\cov a
+                = \gradcov\tprod\br{\tcov a\nu\tbcov\nu}
+                = \tbcov\mu\ipd\mu\tprod\br{\tcov a\nu\tbcov\nu}
+                = \br{\ipd\mu\tcov a\nu}\,\tbcov\mu\tprod\tbcov\nu
+                  + \tcov a\nu\tbcov\mu\tprod\br{\ipd\mu\tbcov\nu}
+                \defas \br{\tgradcov\mu\tcov a\nu}\tbcov\mu\tprod\tbcov\nu\,.
+\end{equation}
+
+\theme{Covariant derivative components.} Again, we have defined the covariant derivative operator to give the components of the gradient, this time of the covector. We cannot assume that $\tgradcov\mu$ has the same form here as in \cref{eq:componentsofthegradientofavector}. However, we can proceed as we did before to determine its relation, if any, to Christoffel's symbols. We note that the partial derivative of a covector in \cref{eq:gradientofcovector} must be a linear combination of covectors:
+%
+\begin{equation}\label{eq:gradientofbasiscovectors}
+  \ipd\mu\tbcov\nu \defas \tensor{\Pi}{^\nu_\mu_\lambda}\tbcov\lambda\,,
+\end{equation}
+%
+for some set of coefficients $\tensor{\Pi}{^\nu_\mu_\lambda}$ analogous to Christoffel's symbols. In fact, these coefficients are simply related to Christoffel's symbols, as we may see by differentiating the scalar product of dual basis covectors and vectors:
+%
+\begin{equation}\label{eq:differentiationofscalarproductofdualbases}
+  0 = \ipd\mu\sprod{\tbcov\nu}{\tbvec\lambda}
+    = \tensor{\Pi}{^\nu_\mu_\kappa}\sprod{\tbcov\kappa}{\tbvec\nu} 
+      + \tchris\kappa\mu\lambda\sprod{\tbcov\nu}{\tbvec\kappa}
+    = \tensor{\Pi}{^\nu_\mu_\lambda} + \tchris\kappa\mu\lambda\,.
+\end{equation}
+%
+We have used \cref{eq:relationbasisvecbasiscovec} plus the linearity of the scalar product. The result is $\tensor{\Pi}{^\nu_\mu_\lambda} = - \tchris\kappa\mu\lambda$, so that \cref{eq:differentiationofscalarproductofdualbases} becomes, simply,
+%
+\begin{equation}
+  \ipd\mu\tbcov\nu = -\tchris\nu\mu\lambda\tbcov\lambda\,.
+\end{equation}
+%
+Consequently, the components of the gradient of a covector $\cov a$, also known as the covariant derivative of $\tcov a\nu$, are
+%
+\begin{equation}\label{eq:gradientofcomponentsofcovector}
+  \tgradcov\mu\tcov a\nu = \ipd\mu\tcov a\nu - \tchris\lambda\mu\nu\tcov\nu\,.
+\end{equation}
+%
+\theme{Similarities.} This expression is similar to \cref{eq:componentsofthegradientofavector} for the covariant derivative of a vector except for the sign change and the exchange of the indices $\nu$ and $\lambda$ on Christoffel's symbol (necessary for consistency with ESC).
+
+\theme{Extension to higher-order tensors.} Extending the covariant derivative to higher-order tensors is straightforward:
+%
+\begin{itemize}
+  \item First, the partial derivative of the components is taken.
+  \item Then, one term with a Christoffel's symbol is added for every index on the tensor component, with a positive sign for contravariant indices and a minus sign for covariant indices. That is, for a $\torder mn$ tensor, there are $m$ positive terms and $n$ negative terms.
+  \item The placement of labels on Christoffel's symbols is a straightforward extension of \cref{eq:componentsofthegradientofavector,eq:gradientofcomponentsofcovector}.
+\end{itemize}
+%
+\theme{Illustration.} We illustrate the method with the gradients of the $\torder 02$ metric tensor, the $\torder 11$ identity tensor, and the $\torder 20$ inverse metric tensor:
+%
+\begin{equation}\label{eq:gradientmetric}
+  \gradcov\metric = \br{\tgradcov\lambda\tmetric\mu\nu}\,\tbcov\lambda\tprod\tbcov\mu\tprod\tbcov\nu\,,\qquad
+  \tgradcov\lambda\tmetric\mu\nu = \ipd\lambda\tmetric\mu\nu 
+                                  - \tchris\kappa\lambda\mu\tmetric\kappa\nu 
+                                  - \tchris\kappa\lambda\nu\tmetric\mu\kappa\,,
+\end{equation}
+%
+\begin{equation}\label{eq:gradientidtensor}
+  \gradcov\idtens = \br{\tgradcov\lambda\tkron\mu\nu}\,\tbcov\lambda\tprod\tbvec\mu\tprod\tbcov\nu\,,\qquad
+  \tgradcov\lambda\tkron\mu\nu = \ipd\lambda\tkron\mu\nu 
+                                + \tchris\mu\lambda\kappa\tkron\kappa\nu 
+                                - \tchris\kappa\lambda\nu\tkron\mu\kappa\,,
+\end{equation}
+%
+\begin{equation} \label{eq:gradientinvmetric}
+  \gradcov\invmet = \br{\tgradcov\lambda\tinvmet\mu\nu}\,\tbcov\lambda\tprod\tbvec\mu\tprod\tbvec\nu\,,
+  \tgradcov\lambda\tinvmet\mu\nu = \ipd\lambda\tinvmet\mu\nu 
+                                  + \tchris\mu\lambda\kappa\tinvmet\kappa\nu
+                                  + \tchris\nu\lambda\kappa\tinvmet\mu\kappa\,.
+\end{equation}
+%
+\theme{Id. Tensor gradient} Examination of \cref{eq:gradientidtensor} shows that the \emph{gradient of the identity tensor vanishes identically}. While this result is on surprising, it does have important implications.
+
+\theme{Recall} the isomorphism between $\metric,\invmet,\idtens$. As a result of this isomorphism, we would expect that all three tensors have vanishing gradient. Is this really so?
+
+\theme{Gradient of metric and id tensor vanish.} For a smooth (differentiable) manifold, the gradient of the metric tensor (and the inverse metric tensor) indeed vanishes. The proof: at a given point $\point P$ in a smooth manifold, we may construct a locally flat orthonormal (rectangular) coordinate system. We define a \lingo{locally flat coordinate system} to be one whose coordinate basis vectors satisfy the following conditions in a finite neighborhood around $\point P$: $\tbvec\mu\iprod\tbvec\nu = 0$, for $\mu\neq\nu$ and $\tbvec\mu\iprod\tbvec\nu = \pm 1$ (with no implied summation).
+
+\theme{Locally flat coordinates.} The existence of a locally flat coordinate system may be taken as the definition of a smooth manifold. For instance, on a two-sphere, we may erect a rectangular coordinate system $\tvec\pos{\ridx\mu}$, with orthonormal basis vectors $\tbvec{\ridx\mu}$, applying over a small region around $\point P$. (We decorate the index to denote the locally flat coordinates.) While these coordinates cannot, in general, be extended over the whole manifold, they are satisfactory for measuring distances in the neighborhood of $\point P$ using ...
+
+\theme{The key point} is that this statement is true not only at $\point P$, but also in a small neighborhood around it. (This argument relies on the absence of curvature singularities in the manifold, and would fail, for instance, if it were applied at the tip of a cone.) Consequently, the metric must have vanishing first derivative at $\point P$ in the locally flat coordinates: $\ipd{\ridx\lambda}\tmetric{\ridx\mu}{\ridx\nu} = 0$.
+%
+\begin{quotation}
+   The gradient of the metric (and the inverse metric) vanishes in the locally flat coordinate basis. But, the gradient of the metric is a tensor and tensor equations are true in any basis. Therefore, for any smooth manifold,
+  %
+  \begin{equation}\label{eq:gradientofthemetricvanishes}
+    \gradcov\metric = \gradcov\invmet = 0\,.
+  \end{equation}
+  %
+\end{quotation}
+
+
+\subsubsection{Evaluating Christoffel's symbols}
+%
+\theme{Christoffel's symbol symmetry.} We can extend the argument made above to prove the symmetry of Christoffel's symbols: $\tchris\lambda\mu\nu=\tchris\lambda\nu\mu$ for any coordinate basis. At a point $\point P$, the basis vectors corresponding to our locally flat coordinate system have vanishing derivatives: $\ipd{\ridx\mu}\tbvec{\ridx\nu} = 0$. From \cref{eq:gradientofbasisvectors}, this implies that \emph{Christoffel's symbols vanish at a point in a locally flat coordinate basis}. Now, let us transform to any other set of coordinates $\tvec\pos\mu$. Jacobi's matrix of this transformation is $\ttransmat{\kappa}{\ridx\mu} = \ipd{\ridx\mu}\tvec\pos\kappa$. Our basis vectors transform (\cref{eq:changeofbasisvectors}) according to $\tbvec{\ridx\mu} = \ttransmat\kappa{\ridx\mu}\tbvec\kappa$. We now evaluate $\ipd{\ridx\mu}\tbvec{\ridx\nu} = 0$ using the new basis vectors, being careful to use \cref{eq:gradientofbasisvectors} for their partial derivatives (which do \emph{not} vanish in non-flat coordinates):
+%
+\begin{equation}\label{eq:derivativeofcoordinatebasistransformation}
+  0 = \ipd{\ridx\mu}\tbvec{\ridx\nu}
+    = \dfrac{\partial^2\tvec\pos\kappa}{\partial\tvec\pos{\ridx\mu}\partial\tvec\pos{\ridx\nu}}\tbvec\kappa
+      + \dfrac{\partial\tvec\pos\kappa\partial\tvec\pos\lambda}{\partial\tvec\pos{\ridx\mu}\partial\tvec\pos{\ridx\nu}}\tchris\sigma\kappa\lambda\,\tbvec\sigma 
+    = 0\,.
+\end{equation}
+%
+Exchanging $\ridx\mu$ and $\ridx\nu$, we see that
+%
+\begin{equation}\label{eq:connectionistorsionfree}
+  \tchris\sigma\kappa\lambda = \tchris\sigma\lambda\kappa\quad\text{in a coordinate basis}\,,
+\end{equation}
+%
+implying that our connection is torsion-free.
+
+\theme{Chris. symbols evaluation.} We can now use \cref{eq:gradientmetric,eq:gradientofthemetricvanishes,eq:derivativeofcoordinatebasistransformation} to evaluate Christoffel's symbols in terms of partial derivatives of the metric coefficients in any coordinate basis. We write $\tgradcov\lambda\tmetric\mu\nu = 0$ and permute the indices twice, combining the results with one minus sign and using the inverse metric at the end. The result is
+%
+\begin{equation}\label{eq:christoffelsymbolsasfunctionsofmetric}
+  \tchris\lambda\mu\nu = \dfrac 12\tinvmet\lambda\kappa
+                            \br{\ipd\mu\tmetric\nu\kappa 
+                              + \ipd\nu\tmetric\mu\kappa 
+                              - \ipd\kappa\tmetric\mu\nu}\quad\text{in a coordinate basis}\,.
+\end{equation}
+
+\theme{Chris. symbols are no tensors.} Although Christoffel's symbols vanish at a point in a locally flat coordinate basis, they do not vanish in general. This confirms that Christoffel's symbols are \emph{not} tensors: if the components of a tensor vanish in one basis, then they must vanish in all bases.
+
+\theme{Summary:} the conditions defining a locally flat coordinate system $\tvec\pos{\ridx\mu}$ about a point $\point P_0$ are
+%
+\begin{equation}\label{eq:conditionsforlocallyflatcoordinatesystem}
+  \tmetric{\ridx\mu}{\ridx\nu} = \tminkmet{\ridx\mu}{\ridx\nu}\quad\text{and}\quad
+  \tchris{\ridx\mu}{\ridx\kappa}{\ridx\lambda} = 0\,,
+\end{equation}
+%
+or, equivalently, $\ipd{\ridx\mu}\tmetric{\ridx\kappa}{\ridx\lambda} = 0$.
+
+
+\subsubsection{Transformation to locally flat coordinates}
+%
+We have derived the expression for Christoffel's symbols beginning from a locally flat coordinate system. The problem may be turned around to determine a locally flat coordinate system at point $\point P$, given the metric and Christoffel's symbols in any coordinate system. The coordinate transformation is found by expanding the components $\tmetric\mu\nu_{\point P}$ of the metric in the non-flat coordinates $\tvec\pos\mu$ in a Taylor series about $\point P_0$ and relating them to the metric components $\tminkmet{\ridx\mu}{\ridx\nu}$ in the locally flat coordinates $\tvec\pos{\ridx\mu}$ using \cref{eq:metriccomponentstransformation}:
+%
+\begin{equation}\label{eq:taylorexpansionofmetric}
+  \eqtxt{missing}
+\end{equation}
+
+Note that the partial derivatives of $\tminkmet{\ridx\mu}{\ridx\nu}$ vanish as do those of any correction terms to the metric in the locally flat coordinates at $\tvec\pos{\ridx\mu} = \tvec{{\pos_0}}{\ridx\mu}$. \Cref{eq:taylorexpansionofmetric} imposes the two conditions required for a locally flat coordinate system \cref{eq:conditionsforlocallyflatcoordinatesystem}. However, the \emph{second} partial derivatives of the metric do not necessarily vanish, implying that we cannot necessarily make the derivatives of Christoffel's symbols vanish at $\point P_0$. Quadratic corrections to the flat metric are a manifestation of curvature. In fact, we will see that 
+%
+\begin{quotation}
+  all the information about the curvature and global geometry of our manifold is contained in the first and second derivatives of the metric.
+\end{quotation}
+%
+But first we must see whether general coordinates $\tvec\pos\mu$ can be transformed so that the zeroth and first derivatives of the metric at $\point P_0$ match the conditions implied by \cref{eq:taylorexpansionofmetric}.
+
+We expand the desired locally flat coordinates $\tvec\pos{\ridx\mu}$ in terms of the general coordinates $\tvec\pos\mu$ in a Taylor series about the point $\point P_0$:
+%
+\begin{equation}\label{eq:taylorexpansionofposition}
+  \eqtxt{missing}
+\end{equation}
+%
+where $\tvec{{\pos_0}}{\ridx\mu},\tensor{A}{^{\ridx\mu}_\kappa},\tensor{B}{^{\ridx\mu}_\kappa_\lambda}$ are all constants. By substituting \cref{eq:taylorexpansionofposition} into \cref{eq:taylorexpansionofmetric}, $\tensor{A}{^{\ridx\mu}_\kappa},\tensor{B}{^{\ridx\mu}_\kappa_\lambda}$ must satisfy the following constraints:
+%
+\begin{equation}\label{eq:taylorexpansionconstraints}
+  \eqtxt{missing}
+\end{equation}
+%
+If these constraints are satisfied, then we have found a transformation to a locally flat coordinate system. It is possible to satisfy these constraints provided that the metric and Christoffel's symbols are finite at $\point P_0$. This proves the consistency of the assumption underlying \cref{eq:gradientofthemetricvanishes}, at least away from singularities. (One should not expect to find a locally flat coordinate system centered on a black hole.)
+
+From \cref{eq:taylorexpansionconstraints}, we see that for a given matrix $\tensor{A}{^{\ridx\mu}_\kappa}$, $\tensor{B}{^{\ridx\mu}_\kappa_\lambda}$ is completely fixed by Christoffel's symbols in our nonflat coordinates. So, Christoffel's symbols determine the quadratic corrections to the coordinates relative to a locally flat coordinate system. As for the $\tensor{A}{^{\ridx\mu}_\kappa}$ matrix giving the linear transformation to flat coordinates, it has 16 independent coefficients in a four-dimensional spacetime. The metric tensor has only 10 independent coefficients, since it is symmetric. Form \cref{eq:taylorexpansionconstraints}, we see that we are left with 6 degrees of freedom for any transformation to locally flat spacetime coordinates. Could these 6 have any special significance? Yes! Given any locally flat coordinates in spacetime, we may rotate the spatial coordinates by any amount (labeled by one angle) about any direction (labeled by two angles), accounting for three degrees of freedom. The other three degrees correspond to a rotation of one of the space coordinates with the time coordinate; \ie, a Lorentz boost! This is exactly the freedom we would expect in defining an inertial frame in \emph{special} relativity. Indeed, in a locally inertial frame, general relativity reduces to special relativity by the \lingo{Equivalence principle}.
+
+
+\subsubsection{Volume integration}
+%
+\theme{Integration in curved space.} Suppose that we want to integrate a scalar field over a four-dimensional spacetime volume. We then need the \lingo{proper four-volume element}; \ie, the physical volume element that is invariant (a scalar) under coordinate transformations. We would like to express the proper volume element in terms of coordinate differentials $d\tvec\pos\mu$. In \emph{locally flat coordinates}, the proper volume element is
+%
+\begin{equation*}
+  \tvolel 4 \defas d\tvec\pos{\ridx 0} d\tvec\pos{\ridx 1} d\tvec\pos{\ridx 2} d\tvec\pos{\ridx 3}\,.
+\end{equation*}
+%
+\theme{Invariant volume.} However, $\tvolel 4$ is clearly not a scalar under general coordinate transformations. Fortunately, it is easy enough to obtain the correct scalar by looking for a scalar proper volume element that reduces to $\tvolel 4$ for locally flat coordinates. We recall from elementary calculus that, if we transform coordinate, then the volume element is multiplied by the determinant of Jacobi's matrix (by Jacobi's determinant) for the transformation. So, transforming from locally flat coordinates $\tvec\pos{\ridx\mu}$ to general coordinates $\tvec\pos\mu$, the proper volume (differential) becomes
+%
+\begin{equation}\label{eq:propervolumedifferential}
+  d\vol \defas \abs\br{\det\br{\ipd\mu\tvec\pos{\ridx\mu}}}\,\tvolel 4\,,
+\end{equation}
+%
+where $\abs$ stands for absolute value; while $\det$, determinant.
+
+\theme{Using metric.} Now, using the first of \cref{eq:taylorexpansionconstraints}, we determine Jacobi's determinant from the metric. Using matrix notation, the metric transformation relation is
+%
+\begin{equation*}
+  \metric = \trans\transmat\minkmet\transmat\,,
+\end{equation*}
+%
+where $\transmat$ is Jacobi's matrix appearing in \cref{eq:propervolumedifferential} and $\trans\transmat$ is its transpose. We now use the theorem of determinants:
+%
+\begin{quotation}
+  the determinant of a product of matrices equals the product of determinants.
+\end{quotation}
+%
+The determinant of $\tminkmet{\ridx\mu}{\ridx\nu} = \diag\asmatrix{-1, +1, +1, +1}$ is $-1$ for a four-dimensional spacetime. (if we were considering a spatial manifold with no time, the determinant were $+1$.) Defining $\metric = \det\br{\tmetric\mu\nu}$ to be the determinant of the metric, we find that $\det\transmat = \sqrt{\metric}$ and so the proper volume element is
+%
+\begin{equation}\label{eq:propervolumedifferentialfrommetric}
+  d\vol = \sqrt{-\metric}\,\tvolel 4\,,
+\end{equation}
+%
+\theme{Reflect.} This result is easy to understand in a \emph{coordinate basis} (which we are assuming). From [...], $\tmetric\mu\mu\br{d\tvec\pos\mu}^2$ for a fixed $\mu$ (no summation) is the squared distance corresponding to coordinate differential $d\tvec\pos\mu$. If the coordinates are locally orthogonal, then the product over $\mu$ gives the square of the volume element. The product of diagonal elements of the metric is not invariant under a rotation of coordinates but the determinant is and it equals the product for a diagonal matrix. For our example of polar coordinates in the Euclidean plane, \cref{eq:propervolumedifferentialfrommetric} recovers the well-known result
+%
+\begin{equation*}
+  d\vol = \cxpos\,d\cxpos d\cypos\,.
+\end{equation*}
+%
+\begin{figure}[bt]
+  \capstart
+  \centering
+  %
+  \begin{tikzpicture}[node distance=3cm, auto]
+    \node (A) {globally curved region (macroscopic)};
+    \node (B) [right of=A] {};
+    \node (C) [below of=B] {locally flat region (microscopic)};
+    \draw[->, bend left] (A) to node {{\footnotesize  [differential calculus (microscope)]}} (C);
+    \draw[->, bend left]  (C) to node {{\footnotesize [integral calculus (telescope)]}} (A);
+  \end{tikzpicture}
+  %
+  \caption{Mappings between globally curved geometry to locally flat geometry. Going from a globally curved region (manifold) to a locally flat region is done using differential calculus, as though using a microscope. On the other hand, going from the flat region to the curved one is done via integral calculus, as though using a telescope.}
+  \label{fig:globaltolocaltoglobal}
+\end{figure}
+
+
+\subsubsection{Surface integration}
+%
+Next, suppose that we want to integrate over a three-dimensional volume at fixed time. We can \emph{generalize} this by asking for the three-dimensional proper \scare{hypersurface} element normal to any given vector ($\tbvec t$ in the case of a spatial volume element at fixed $t$). What does it mean for a vector to be normal to a hypersurface in a curved manifold? The meaning is practically the same as in Euclidean geometry except that the normal is a covector $\cov n$ rather than a vector. The hypersurface is spanned by a set of vectors $\vec t$, called the \lingo{tangent vectors}, orthogonal at $\point P$ to the normal $\cov n$; \ie, $\sprod{\cov n}{\vec t} = 0$. The corresponding normal \emph{vector} $\vec n$ (such that $\vec n\iprod\vec t = 0$) is obtained using the inverse metric, \cref{eq:inversemetricasmap}.
+
+\theme{Hypersurface element.} To find the proper hypersurface element, consider the simpler case of a two-dimensional surface in three-dimensional Euclidean space. The surface area element is written $d\vec s = \uvec n da$, where $\uvec n$ is a unit vector and $da = \tvolel 2$ (the product of two orthonormal coordinate differentials) is the area normal to $\uvec n$. We may expect a similar expression in a general spacetime with $\uvec n$ replaced by the normal covector $\cov n$ and $\tvolel 2$ replaced by $\tvolel 3$. However, the determinant of the metric must appear also. To see how, let us choose our coordinates so that $\tvec n0 = \br{\pm\vec n\iprod\vec n}^{1/2}$ (with a minus sign if $\vec n$ is timelike) and $\tvec n0$ for $i = 1,2,3$. (It is a simple exercise to show that this is always possible provided that $\vec n$ is not a null vector.) In these coordinates, $\tmetric 00 = \pm 1$ and $\tmetric 0i = 0$ for $i = 1,2,3$. We will assume nothing about $\tmetric ij$, the components of the metric in the hypersurface normal to $\cov n$. We know therefore from analogy with \cref{eq:propervolumedifferentialfrommetric} that to get the proper hypersurface area we must multiply the coordinate hypersurface area by $\br{\abs\metric^{(3)}}^{1/3}$, where $\metric^{(3)}$ is the determinant of $\tmetric ij$. But, our four-by-four metric is block diagonal $\br{\tmetric 0i = \tmetric i0 = 0}$, so that the full determinant is $\metric = \tmetric 00\metric^{(3)} = \pm\metric^{(3)}$. (If $\vec n$ is timelike, then $\metric^{(3)} > 0$ and the minus sign is taken; if $\vec n$ is spacelike, then $\metric^{(3)} < 0$ and the plus sign is taken. In either case, in a four-dimensional spacetime, $\metric < 0$.) We can therefore write the proper hypersurface element as
+%
+\begin{equation}\label{eq:properhypersurfaceelement}
+  d\cov\area = \cov n\br{\abs\metric^{(3)}}^{1/2}
+             = \cov n\sqrt{-\metric}\,\tvolel 3\,.
+\end{equation}
+%
+This is the desired result.
+
+
+\subsubsection{Gauss's law}
+%
+\theme{Vector divergence.} To derive Gauss's law, we first obtain a general expression for the \lingo{divergence of a vector field}. From \cref{eq:componentsofthegradientofavector},
+%
+\begin{equation}\label{eq:contractionofgradientofvector}
+  \tgradcov\mu\tvec v\mu = \ipd\mu\tvec v\mu + \tchris\lambda\lambda\mu\tvec v\mu\,.
+\end{equation}
+
+\theme{Comment.} I think it was untold that the divergence is obtained by contracting the gradient, $\div\vec v = \cont\gradcov\vec v$.
+
+From \cref{eq:christoffelsymbolsasfunctionsofmetric}, we get $\tchris\lambda\lambda\mu = \br{1/2}\tinvmet\lambda\kappa\,\ipd\mu\tmetric\lambda\kappa$. Starting from the definition of the determinant in terms of minors and cofactors, one can shaw that the logarithmic derivative of the determinant of $\metric$ is $\ipd\mu\log\metric = \tinvmet\lambda\kappa\ipd\mu\tmetric\lambda\kappa$, where $\log$ is the natural logarithm. Combining these results with \cref{eq:contractionofgradientofvector} gives us an alternative form for the divergence of a vector field:
+%
+\begin{equation}\label{eq:divergenceofavector}
+  \div\vec v = \cont\gradcov\vec v
+             = \tgradcov\mu\tvec v\mu
+             = \dfrac{1}{\sqrt{-\metric}}\ipd\mu\br{\sqrt{-\metric}\tvec v\mu}\,.
+\end{equation}
+
+\theme{Verify.} It is easy to verify that this gives the expected results in polar coordinates, taking care to recall that that standard formulae assume vector components in an orthonormal basis rather than a coordinate basis.
+
+\theme{Example.} Calculate the divergence of a vector $\vec v\in\nespace 3$ defined as
+%
+\begin{equation*}
+  \vec v = \cxpos\sin\cypos\,\uvec\cxpos - \cxpos\cos\cypos\,\uvec\cypos\,.
+\end{equation*}
+%
+\theme{Solution.} First, note that $\vec v$ is expanded on unit basis vectors; the vector is written in its physical form. Thus, express it on coordinate basis, remembering that, for polar coordinates, $\sqrt{\tmetric\cxpos\cxpos} = 1$ and $\sqrt{\tmetric\cypos\cypos} = \cxpos$:
+%
+\begin{equation*}
+  \vec v = \cxpos\sin\cypos\,\tbvec\cxpos - \cos\cypos\,\tbvec\cypos\,.
+\end{equation*}
+%
+Then, find its divergence using \cref{eq:divergenceofavector} and $\sqrt{-\metric} = \cxpos$:
+%
+\begin{align*}
+  \div\vec v &= \dfrac{1}{\sqrt{-\metric}}\ipd\mu\br{\sqrt{-\metric}\tvec v\mu}\,, \\
+             &= \dfrac{1}{\cxpos}\br{\ipd\cxpos\cxpos^2\sin\cypos - \ipd\cypos\cxpos\cos\cypos}\,, \\
+             &= \dfrac{1}{\cxpos}\br{2\cxpos\sin\cypos + \cxpos\sin\cypos} \,,\\
+             &= 3\sin\cypos\,,
+\end{align*}
+%
+which yields the answer.
+
+On the other hand, the problem can be solved by \brand{Mathematica}:
+%
+\begin{lstlisting}
+  Div[{r Sin[\[Theta]], -r Cos[\[Theta]]}, {r, \[Theta]}, "Polar"]
+\end{lstlisting}
+%
+The response is $3\sin\cypos$, agreeing with our solution.
+
+\theme{Technicalities.} Note that \brand{Mathematica} finds $\div\vec v$ for $\vec v$ written on unit basis vectors (physical basis), but it does use polar coordinates -- no coordinate transformation required.
+
+\theme{Gauss's law.} From \cref{eq:divergenceofavector}, we obtain the general form of Gauss's law by integrating over proper volume, \cref{eq:propervolumedifferentialfrommetric}.:
+%
+\begin{equation}\label{eq:integralformgausslaw}
+  \int\div\vec v\,d\vol = \int\tgradcov\mu \tvec v\mu\,d\vol 
+                        = \int\ipd\mu\br{\sqrt{-\metric}\,\tvec v\mu}\,\tvolel 4
+                        = \oint\tvec v\mu\tcov n\nu\sqrt{-\metric}\,\tvolel 3\,.
+\end{equation}
+%
+\theme{Interpretation.} The four-dimensional integral is a \lingo{total derivative}, allowing it to be reduced to a three-dimensional integral over the closed hypersurface with normal covector $\cov n = \tcov n\mu\tbcov\mu$ bounding the four-volume region of integration (\eg, $\cov n = \tbcov t$ if we compute the difference of three-volume integrals at two times). Although it is difficult to visualize a four-volume or a closed three-dimensional hypersurface, the meaning is the same as for the standard Gauss's law in space three dimensions except that one more dimension has been added.
+%
+\begin{quotation}
+  It is important to note that \cref{eq:integralformgausslaw} is valid for any coordinate system.
+\end{quotation}
+
+
+\subsection{Parallel transport and geodesics}
+
+\subsubsection{Differentiation along a curve}
+%
+\theme{Differentiation along a curve.} As a prelude to parallel transport, consider another form of differentiation: \lingo{differentiation along a curve}. A \lingo{curve} is a parametrized path trough spacetime: $\curve\vat\ptime$, where $\ptime$ is a parameter that varies smoothly and monotonically along the path.
+
+\theme{Lingo.} There are subtle differences between a \lingo{curve}, a \lingo{trajectory}, an \lingo{orbit}, and a \lingo{world line}. A curve is a parametrized path. A trajectory is also a curve. But an orbit is a closed curve and a world line is a curve in relativity -- it includes the time dimension. Sometimes \lingo{history} is used as wold line.
+
+The curve has a tangent vector $\vec v\defas d_\ptime\vec\pos = d\vec\pos/d\ptime = d_\ptime\tvec\pos\mu\,\tbvec\mu$. If we wish, then we could make $\vec v$ a unit vector, provided $\vec v$ is not null, by setting $d\ptime = \br{\pm d\vec\pos\iprod d\vec\pos}^{1/2}$ to measure path length along the curve (with a minus sign if $d\vec\pos$ is timelike). However, we will impose no such a restriction in general. Now, suppose that we have a scalar field $f$ defined along the curve (if not all of spacetime). We define the derivative along the curve by a simple extension of \cref{eq:definitionofgradient,eq:coordinatefreegradient}:
+%
+\begin{equation}\label{eq:derivativealongacurve}
+  d_\ptime f = \dfrac{df}{d\ptime}
+             \defas \cgradcov{\vec v} f
+             \defas \sprod{\gradcov f}{\vec v}
+             = \tvec v\mu\ipd\mu f\,,\quad
+  \vec v = d_\ptime\vec\pos
+         = \dfrac{d\vec\pos}{d\ptime}\,.
+\end{equation}
+
+\theme{Symbol.} We have introduced the symbol $\cgradcov{\vec v}$ for the covariant derivative along $\vec v$, the tangent vector to the curve $\curve\vat\ptime$. 
+%
+\begin{quotation}
+  This is a natural generalization of $\tgradcov\mu$, the covariant derivative along the basis vector $\tbvec\mu$.
+\end{quotation}
+
+For the derivative of a scalar field, $\cgradcov{\vec v}$ involves just the partial derivatives $\ipd\mu$. Suppose, however, that we differentiate a vector field $\vec a$ along the curve. Now, the components of the gradient $\tgradcov\mu\tvec a\nu$ are \emph{not} simply the partial derivatives. As we saw earlier, the covariant derivative of a vector field differs from the partial derivatives. The same is true when we project the gradient onto the tangent vector $\vec v$ along a curve:
+%
+\begin{equation}\label{eq:gradientprojectionalongacurve}
+  d_\ptime\vec a \defas D_\ptime\tvec a\mu\tbvec\mu
+                 \defas \dfrac{D\tvec a\mu}{D\ptime}\tbvec\mu
+                 \defas \cgradcov{\vec v}\vec a
+                 \defas \sprod{\gradcov\vec a}{\vec v}
+                 = \tvec v\kappa\br{\tgradcov\kappa\tvec a\mu}\tbvec\mu
+                 = \br{d_\ptime\tvec a\mu + \tchris\mu\kappa\lambda\tvec v\kappa\tvec a\lambda}\tbvec\mu\,.
+\end{equation}
+%
+We retain the symbol $\cgradcov{\vec v}$ to indicate the covariant derivative along $\vec v$, but we have introduced the new notation
+%
+\begin{equation*}
+  D_\ptime = \dfrac{D}{D\ptime} = \tvec v\mu\tgradcov\mu
+           \neq d_\ptime = \dfrac{d}{d\ptime} = \tvec v\mu\ipd\mu\,.
+\end{equation*}
+
+
+\subsubsection{Parallel transport}
+%
+\theme{Definition.} The derivative of a vector along a curve leads us to an important concept called \lingo{parallel transport}. Suppose we have a curve $\curve\vat\ptime$ with tangent $\vec v$ and a vector $\vec a\vat 0$ define at one point on the curve (call it $\ptime = 0$). We define a procedure called parallel transport by defining a vector $\vec a\vat\ptime$ along each point of the curve in such a way that $D_\ptime\tvec a\mu = 0$:
+%
+\begin{equation}\label{eq:paralleltransport}
+  \cgradcov{\vec v}\vec a = 0\qquad\iff\qquad\text{parallel transport of $\vec a$ along $\vec v$}\,.
+\end{equation}
+%
+Over a small distance interval, this procedure is equivalent to transporting the vector $\vec a$ along the curve in such a way that the vector remains parallel to itself with constant length:
+%
+\begin{equation*}
+  \vec a\vat{\ptime + \Delta\ptime} = \vec a\vat\ptime + O\vat{\Delta\ptime}^2\,.
+\end{equation*}
+%
+In a locally flat coordinate system, with Christoffel's symbols vanishing at $\curve\vat\ptime$, the components of the vector do not change as the vector is transported along the curve. If the space were globally flat, then the components would not change at all no matter how the vector is transported. This is not the case in a curved space or in a flat space with curvilinear coordinates.
+%
+\begin{figure}[bt]
+  \capstart
+  \centering
+  %
+  \includegraphics[width=0.70\textwidth]{./graph/parallel-transport-1}
+  %
+  \caption{Parallel transport in curved space. The vector is kept parallel to itself and tangent to the curve.}
+  \label{fig:paralleltransport}
+\end{figure}
+
+
+\subsubsection{Geodesics}
+%
+\theme{Definition.} Parallel transport can be used to define a special class of curves called \lingo{geodesics}. A geodesic curve is one that parallel-transports its own tangent vector $\vec v = d_\ptime\vec\pos$; \ie, a curve that satisfies
+%
+\begin{equation*}
+  \cgradcov{\vec v}\vec v = 0\,.
+\end{equation*}
+%
+In other words, not only is $\vec v$ kept parallel to itself (with constant magnitude) along the curve, the curve continues to point in the same direction all along the path. A geodesic is the natural extension of the definition of \scare{straight line} to a curved manifold. Using \cref{eq:gradientprojectionalongacurve,eq:paralleltransport}, we get a second-order differential equation for the coordinates of a geodesic curve:
+%
+\begin{equation}\label{eq:coordinatesofageodesic}
+  D_\ptime\tvec v\mu = d_\ptime\tvec v\mu + \tchris\mu\kappa\lambda\tvec v\kappa\tvec v\lambda = 0
+    \qquad\text{for a geodesic,}\qquad
+  \tvec v\mu \defas d_\ptime\tvec\pos\mu\,.
+\end{equation}
+%
+\theme{Verify correspondence.} Indeed, in locally flat coordinates (such that Christoffel's symbols vanish at a point), this is the equation of a straight line. However, in a curved space Christoffel's symbols cannot be made to vanish everywhere. A well-known example of a geodesic in a curved space is a great circle on a sphere, \cref{fig:greatcirclesonsphere}.
+%
+%
+\begin{figure}[bt]
+  \capstart
+  \centering
+  %
+  \includegraphics[width=0.70\textwidth]{./graph/great-circles-sphere}
+  %
+  \caption{Great circle on a sphere, an example of a geodesic}
+  \label{fig:greatcirclesonsphere}
+\end{figure}
+
+\theme{Technicalities.} There are several technical points worth noting about geodesic curves. 
+%
+\begin{enumerate}
+  \item $\vec v\iprod\vec v = \metric\vat{\vec v,\vec v}$ is constant along a geodesic because $d_\ptime\vec v = 0$ and $\cgradcov{\vec v}\metric = 0$. Therefore, a geodesic may be classified by its tangent vector as being either timelike ($\vec v\iprod\vec v < 0$), spacelike ($\vec v\iprod\vec v > 0$), or null ($\vec v\iprod\vec v = 0$). 
+  \item a nonlinear transformation of the parameter $\ptime$ will invalidate \cref{eq:coordinatesofageodesic}. In other words, if $\tvec\pos\mu\vat\ptime$ solves \cref{eq:coordinatesofageodesic}, then $\tcov y\mu\vat\ptime\defas\tvec\pos\mu\vat{\xi\vat\ptime}$ will not solve it unless $\xi = a\ptime + b$, for some constants $a,b$. Only a special class of parameters, called \lingo{affine parameters}, can parametrize geodesic curves.
+\end{enumerate}
+%
+\theme{Affine parameter takes care of itself.} The affine parameter has a special interpretation for a non-null geodesic. We deduce this relation from the constancy along the geodesic of $\vec v\iprod\vec v = \br{d\vec\pos\iprod d\vec\pos/\br{d\ptime^2}}\defas a$, implying $ds = ad\ptime$ and therefore $s = a\ptime + b$, where $s$ is the path length, \cref{eq:squareddistancebetweenevents}. For a non-null geodesic ($\vec v\iprod\vec v\neq 0$), all affine parameters are linear functions of path length. The linear scaling of path length amounts simply to the freedom to change units of length and to choose any point as $\ptime = 0$. Note that originally we imposed no constraints on the parameter but that, for a non-null geodesic, the parameter naturally turns out to measure path length. In fact, we don't need to worry about the parameter in any case, because it will take care of itself (even for a null geodesic), when \cref{eq:coordinatesofageodesic} is integrated. One can always reparametrize the solution later or eliminate the parameter altogether by replacing it with one of the coordinates along the geodesic.
+
+\theme{Geodesic from stationary action.} Another interesting point is that the total path length is stationary for a geodesic:
+%
+\begin{equation}\label{eq:geodesicisstationary}
+  \delta\int_{\point A}^{\point B}\,ds 
+    = \delta\int_{\point A}^{\point B}
+        \br{\pm\tmetric\mu\nu\,d_\ptime\tvec\pos\mu d_\ptime\tvec\pos\nu}^{1/2}\,d\ptime = 0\,.
+\end{equation}
+%
+The $\delta$ refers to a variation of the integral arising from a variation of the curve, $\curve\vat\ptime\mapsto\tvec\pos\mu\vat\ptime + \delta\tvec\pos\mu\vat\ptime$, with fixed endpoints. The metric components are considered here to be functions of the coordinates. We leave it as an exercise for the reader to show that \cref{eq:geodesicisstationary} leads to \cref{eq:coordinatesofageodesic}. \Cref{eq:geodesicisstationary} is a curved space generalization of the statement that a straight line is the shortest path between two points in flat space.
+
+
+\subsubsection{Integrals of motion and Killing vectors}
+%
+\begin{equation}
+  \eqtxt{missing}
+\end{equation}
+%
+\begin{equation}
+  \eqtxt{missing}
+\end{equation}
+%
+\begin{equation}
+  \eqtxt{missing}
+\end{equation}
+
+
+\subsection{Curvature}
+%
+\theme{Intro.} We introduce curvature by considering parallel transport around a general (non-geodesic) closed curve.
+%
+\begin{quotation}
+  In a nonflat space, this procedure can lead to a different vector at the end of the curve than the one at the beginning.
+\end{quotation}
+%
+Consider, for instance, a sphere. Suppose we have a vector pointing east on the equation at longitude \ang{0}. We parallel transport the vector eastward on the equator by \ang{180}. At each point on the equator, the vector points east. Now the vector is parallel transported along a line of constant longitude over the pole and back to the starting point. At each point on this second part of the curve, the vector points at right angles to the curve, and its direction never changes. Yet, at the end of the curve, at the same point where the curve started, the vector points west!
+
+This result also implies that parallel transport along two different curves may lead to different final vectors. If a vector on the equator is parallel-transported to the opposite side of a sphere along the equator, and, alternatively, over the pole (in fact, both of these curves are geodesics), the resulting vectors will point in opposite directions. This recalls our earlier point that 
+%
+\begin{quotation}
+  it is not possible to directly compare vectors defined at different points in a curved manifold.
+\end{quotation}
+
+\theme{Riemann tensor.} A change in the vector $\vec a$ as a result of parallel transport over a closed curve is a dead giveaway of spatial curvature. Suppose that our curve consists of four infinitesimal segments: $d\vec\pos_1, d\vec\pos_2$, and $-d\vec\pos_1,-d\vec\pos_2$. In a flat space this would be called a parallelogram and the difference $d\vec a$ between the final and initial vectors would vanish. In a curved space, the change is a linear function of $\vec a,d\vec\pos_1,d\vec\pos_2$:
+%
+\begin{equation}\label{eq:definitionofriemannstensor}
+  d\vec a\vat{\cslot} \defas \riemann\vat{\cslot,\vec a,d\vec\pos_1,d\vec\pos_2}
+                      = \tbvec\mu\triemann\mu\nu\kappa\lambda\tvec a\nu\,d\tvec\pos\kappa d\tvec\pos\lambda\,.
+\end{equation}
+%
+We have defined a rank $\torder 13$ tensor called \lingo{Riemann's curvature tensor}. It is relatively straightforward exercise to determine the components of Riemann's tensor using \cref{eq:gradientprojectionalongacurve,eq:paralleltransport}. The result is
+%
+\begin{equation}\label{eq:componentsofriemannstensor}
+  \triemann\mu\nu\kappa\lambda = \ipd\kappa\tchris\mu\nu\lambda 
+                               - \ipd\lambda\tchris\mu\nu\kappa
+                               + \tchris\mu\alpha\kappa \tchris\alpha\nu\lambda
+                               - \tchris\mu\alpha\lambda \tchris\alpha\nu\kappa \,.
+\end{equation}
+%
+Note that some authors define the components with opposite sign. Our sign convention follows MTW, Wald, and Schutz.
+
+\theme{Riemann's tensor uniqueness.} Note that Riemann's tensor involves the first and second partial derivatives of the metric (through Christoffel's symbols). Riemann's tensor is the only tensor that can be constructed from the metric tensor and its first and second partial derivatives and is linear in the second derivatives. Recall that one can always define locally flat coordinates such that $\tchris\mu\nu\lambda = 0$, everywhere unless the space is \emph{globally flat}.
+%
+\begin{quotation}
+  Riemann's tensor vanishes everywhere if and only if the manifold is globally flat.
+\end{quotation}
+
+\theme{Riemann from metric.} An alternative derivation of Riemann's tensor is based on the non-commutativity of the second covariant derivatives of a vector. The covariant derivative $\tgradcov\mu\tvec a\nu$ is defined in \cref{eq:componentsofthegradientofavector}; as an order $\torder 11$ tensor, this quantity has a covariant derivative defined as in \cref{eq:gradientidtensor}. It can be shown that:
+%
+\begin{equation}\label{eq:riemanntensorequality}
+  \br{\tgradcov\kappa\tgradcov\lambda - \tgradcov\lambda\tgradcov\kappa}\tvec v\mu 
+    = \triemann\mu\nu\kappa\lambda\tvec v\nu\,.
+\end{equation}
+%
+with Riemann's tensor components defined as in \cref{eq:componentsofriemannstensor}.
+
+\theme{Symmetries.} If we lower an index on Riemann's tensor components, then we get the components of a $\torder 40$ tensor:
+%
+\begin{equation}\label{eq:lowerindicesinriemanntensor}
+  \tensor{\riemann}{_\mu_\nu_\kappa_\lambda} = \tmetric\mu\alpha\triemann\alpha\nu\kappa\lambda
+    = \dfrac 12
+      \br{
+        \tensor{\metric}{_\mu_\lambda_,_\nu_\kappa} - \tensor{\metric}{_\mu_\kappa_,_\nu_\lambda}
+        + \tensor{\metric}{_\nu_\kappa_,_\mu_\lambda} - \tensor{\metric}{_\nu_\lambda_,_\mu_\kappa}
+      }
+      + \tmetric\alpha\beta
+      \br{
+        \tchris\alpha\mu\lambda \tchris\beta\nu\kappa - \tchris\alpha\mu\kappa \tchris\beta\nu\lambda
+      }\,,
+\end{equation}
+%
+where we have used commas to denote partial derivatives for notational convenience. In this form, it is easy to determine the following symmetry properties of Riemann's tensor:
+%
+\begin{equation}\label{eq:riemanntensorsymmetryproperties}
+  \tensor{\riemann}{_\mu_\nu_\kappa_\lambda} 
+    = \tensor{\riemann}{_\kappa_\lambda_\mu_\nu}
+    = -\tensor{\riemann}{_\nu_\mu_\kappa_\lambda}
+    = -\tensor{\riemann}{_\mu_\nu_\lambda_\kappa}\,,
+  \qquad
+  \tensor{\riemann}{_\mu_\nu_\kappa_\lambda}
+  + \tensor{\riemann}{_\mu_\kappa_\lambda_\nu}
+  + \tensor{\riemann}{_\mu_\lambda_\nu_\kappa}
+  = 0\,.
+\end{equation}
+%
+It can be shown that these symmetries reduce the number of independent components of Riemann's tensor from $4^4$ to $20$.
+
+
+\subsubsection{Bianchi identities, Ricci tensor, and Einstein tensor}
+%
+\theme{Bianchi.} By differentiating the components of Riemann's tensor, one can prove \lingo{Bianchi's identities}:
+%
+\begin{equation}\label{eq:bianchiidentities}
+  \tgradcov\sigma\triemann\mu\nu\kappa\lambda 
+  + \tgradcov\kappa\triemann\mu\nu\lambda\sigma 
+  + \tgradcov\lambda\triemann\mu\nu\sigma\kappa
+  = 0\,.
+\end{equation}
+%
+\theme{Ricci tensor.} Note that the gradient symbols denote the covariant derivatives and \emph{not} the partial derivatives (otherwise, we would not have a tensor equation). Bianchi's identities imply the vanishing of the divergence of a certain $\torder 20$ tensor. We first define a symmetric contraction of Riemann's tensor, known as \lingo{Ricci's tensor}:
+%
+\begin{equation}\label{eq:riccitensordefinition}
+  \ricci\vat{\vslot,\vslot} 
+    = \cont_{1,3}\riemann\vat{\cslot,\vslot,\vslot,\vslot}
+    = \tricci\mu\nu \defas \triemann\alpha\mu\alpha\nu
+    = \tricci\nu\mu
+    = \ipd\kappa\tchris\kappa\mu\nu - \ipd\mu\tchris\kappa\kappa\nu 
+      + \tchris\kappa\kappa\lambda\tchris\lambda\mu\nu
+      - \tchris\kappa\mu\lambda\tchris\lambda\kappa\nu\,.
+\end{equation}
+%
+\theme{Ricci scalar.} One can shaw from \cref{eq:riemanntensorsymmetryproperties} that any other contraction of Riemann's tensor either vanishes or is proportional to Ricci's tensor. The contraction of Ricci's tensor is called \lingo{Ricci's scalar}:
+%
+\begin{equation}\label{eq:ricciscalardefinition}
+  \sricci \defas \cont\ricci\vat{\vslot,\vslot}
+    = \invmet\vat{\ricci\vat{\vslot,\vslot}}
+    = \tinvmet\mu\nu\tricci\mu\nu\,.
+\end{equation}
+%
+\theme{Einstein tensor.} Contracting Bianchi's identities twice and using the antisymmetry of Riemann's tensor, one obtains the following relation:
+%
+\begin{equation}\label{eq:einsteinstensordefinition}
+  \gradcov\einstein = 0\implies
+  \tgradcov\nu\teinstein\mu\nu = 0\,,\qquad
+  \teinstein\mu\nu \defas \tricci\mu\nu - \dfrac 12\tmetric\mu\nu\sricci = \teinstein\nu\mu\,.
+\end{equation}
+%
+The symmetric tensor $\teinstein\mu\nu$ that we have introduced is called \lingo{Einstein's tensor}. \Cref{eq:einsteinstensordefinition} is a math identity, \emph{not} a physics law. However., it illustrates a deep connection between math symmetries and physical conservation laws.
+
+Misner style:
+%
+\begin{align*}
+  \mricci\vat{\vslot,\vslot} &= \cont_{1,3}\mriemann\vat{\cslot,\vslot,\vslot,\vslot}\,,\quad \\
+  \sricci &= \mmetric\vat{\mricci\vat{\vslot,\vslot}}\,,\quad \\
+  \gradcov\meinstein &= 0\,,\\
+  \gradcov\meinstein\vat{\cslot,\cslot} &= \mricci\vat{\cslot,\cslot}
+    - \dfrac 12\sricci\minvmet\vat{\cslot,\cslot}\,.
+\end{align*}

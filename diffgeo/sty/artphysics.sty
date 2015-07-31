@@ -13,6 +13,10 @@
 \providecommand*{\point}[1]{\mathcal{#1}} % point in a manifold
 \providecommand*{\uvec}[1]{\hat{#1}}      % unit vector
 \providecommand*{\inv}[1]{\br{#1}^{-1}}   % inverse
+\providecommand*{\vol}{\omega}            % volume
+\providecommand*{\area}{\sigma}           % area
+\providecommand*{\curve}{\Gamma}          % curve
+\providecommand*{\ptime}{\tau}            % proper time
 %
 % regions
 %
@@ -27,6 +31,14 @@
 \providecommand*{\kron}{\delta}               % Kronecker's delta
 \providecommand*{\metric}{g}                  % metric tensor
 \providecommand*{\invmet}{\inverse{\metric}}  % inverse metric tensor
+\providecommand*{\minkmet}{\eta}              % minkowski metric tensor
+%
+% curvature
+%
+\providecommand*{\riemann}{r}      % riemann tensor
+\providecommand*{\ricci}{r}        % ricci tensor
+\providecommand*{\sricci}{r}       % ricci scalar
+\providecommand*{\einstein}{e}     % einstein tensor
 %
 \providecommand*{\pos}{x}    % event position
 \providecommand*{\sep}{\xi}  % event separation
@@ -42,6 +54,7 @@
 \providecommand*{\bcov}{\cov{\belem}}        % basis covector
 \providecommand*{\bvec}{\vec{\belem}}        % basis vector
 \providecommand*{\bset}[3]{\seq{#1}{#2}{#3}} % basis set
+\providecommand*{\chris}{\Gamma}             % Chirstoffel symbol
 
 % tensor products
 %
@@ -53,6 +66,7 @@
 % tensor slots
 %
 \providecommand*{\cslot}{{\scriptstyle\sim}}        % covector slot
+\providecommand*{\eslot}{{\scriptstyle\cdot}}       % empty slot
 \providecommand*{\fslot}{{\scriptstyle\checkmark}}  % filled slot
 \providecommand*{\vslot}{{\scriptstyle\rightarrow}} % vector slot
 
@@ -70,15 +84,16 @@
 \providecommand*{\tvec}[2]{\tensor{#1}{^{#2}}}                 % vector components
 \providecommand*{\tvecfmet}[2]{\tensor{\fmetric}{^{#1}^{#2}}}  % flat metric components
 %
-\providecommand*{\tmetric}[2]{\tensor{\metric}{_{#1}_{#2}}} % metric components
-\providecommand*{\tinvmet}[2]{\tensor{\metric}{^{#1}^{#2}}} % inverse metric components
-\providecommand*{\tidtens}[2]{\tensor{\idtens}{^{#1}_{#2}}} % identity tensor components
-\providecommand*{\tkron}[2]{\tensor{\kron}{^{#1}_{#2}}}     % Kronecker's delta components
+\providecommand*{\tmetric}[2]{\tensor{\metric}{_{#1}_{#2}}}   % metric components
+\providecommand*{\tinvmet}[2]{\tensor{\metric}{^{#1}^{#2}}}   % inverse metric components
+\providecommand*{\tidtens}[2]{\tensor{\idtens}{^{#1}_{#2}}}   % identity tensor components
+\providecommand*{\tkron}[2]{\tensor{\kron}{^{#1}_{#2}}}       % Kronecker's delta components
+\providecommand*{\tminkmet}[2]{\tensor{\minkmet}{_{#1}_{#2}}} % minkowski metric tensor components
 %
 \providecommand*{\tbcov}[1]{\tensor{\bcov}{^{#1}}} % basis covectors
 \providecommand*{\tbvec}[1]{\tensor{\bvec}{_{#1}}} % basis vectors
 %
-% change of basis
+\providecommand*{\tvolel}[1]{d^{#1}\pos} % volume element
 %
 % tensor calculus
 %
@@ -87,6 +102,14 @@
 \providecommand*{\gradient}{\nabla}      % gradient
 \providecommand*{\gradcov}{\cov{\nabla}} % gradient covector
 \providecommand*{\gradvec}{\vec{\nabla}} % gradient vector
+%
+\providecommand*{\cgradcov}[1]{\tensor{\gradcov}{_{#1}}} % gradient covector along a curve
+\providecommand*{\tgradcov}[1]{\tensor{\gradcov}{_{#1}}} % gradient covector
+%
+\providecommand*{\tchris}[3]{\tensor{\chris}{^{#1}_{#2}_{#3}}}          % chirstoffel symbol
+\providecommand*{\triemann}[4]{\tensor{\riemann}{^{#1}_{#2}_{#3}_{#4}}} % riemann tensor
+\providecommand*{\tricci}[2]{\tensor{\ricci}{_{#1}_{#2}}}               % ricci tensor
+\providecommand*{\teinstein}[2]{\tensor{\einstein}{^{#1}^{#2}}}         % einstein tensor
 %
 % coordinate systems
 %
@@ -120,3 +143,24 @@
 \providecommand*{\trans}[1]{\br{#1}^{T}}                          % transpose (as superscript)
 %
 \providecommand*{\xttransmat}[2]{\dfrac{\partial\br{#1}}{\partial\br{#2}}} % expanded trans. matrix
+
+% misner notation for special tensors
+%
+\providecommand*{\misnerstyle}[1]{\textit{\textsf{#1}}} % general style
+\providecommand*{\mmetric}{\misnerstyle{g}}             % misner metric
+\providecommand*{\minvmet}{\misnerstyle{g}^{-1}}        % misner metric
+\providecommand*{\mriemann}{\misnerstyle{Riemann}}      % misner riemann
+\providecommand*{\mricci}{\misnerstyle{Ricci}}          % misner ricci
+\providecommand*{\meinstein}{\misnerstyle{Einstein}}    % misner einstein
+
+% operators
+%
+\DeclareMathOperator{\grad}{grad} % gradient
+\let\div\division
+\DeclareMathOperator{\div}{div} % gradient
+
+% mechanics
+%
+\providecommand*{\lmom}{p} % linear momentum
+\providecommand*{\mass}{m} % mass
+\providecommand*{\vel}{v}  % velocity
